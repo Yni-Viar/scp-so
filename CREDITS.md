@@ -26,3 +26,6 @@ You can see it working in their Unity project ( https://github.com/VirtualBright
 ### Art (license - [CC-BY-SA 3.0](/LICENSE.CCBYSA3))
 - Game over screen(s) made by Yni.
 - Menu made by Yni.
+
+### Sounds (license - [CC-BY-SA 3.0](/LICENSE.CCBYSA3))
+- Sounds used from SCP - Containment Breach game.

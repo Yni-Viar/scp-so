@@ -3,30 +3,23 @@ using System;
 
 public partial class scp173npc : CharacterBody3D
 {
+    RandomNumberGenerator rng = new RandomNumberGenerator();
 	Node3D target;
 	VisibleOnScreenNotifier3D look;
-	//PlayerScript player = new PlayerScript();
+    AudioStreamPlayer3D crunchSound;
+
+
 	[Export] float speed = 20.0f;
 	internal bool canMove = false;
 
 	public override void _Ready()
 	{
 		look = GetNode<VisibleOnScreenNotifier3D>("CanSee");
+        crunchSound = GetNode<AudioStreamPlayer3D>("CrunchSound");
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		/*if (target != null)
-		{
-			if (player.ray.IsColliding())
-			{
-				canMove = false;
-			}
-			else
-			{
-				canMove = true;
-			}
-		}*/
 		if (canMove && target != null)
 		{
 			var playerDirection = (target.GlobalPosition - this.GlobalPosition).Normalized();
@@ -57,18 +50,19 @@ public partial class scp173npc : CharacterBody3D
 		canMove = false;
 	}
 
-
 	private void OnCanSeeScreenExited()
 	{
 		canMove = true;
 	}
+
+    private void OnCrunchAreaBodyEntered(Node3D body)
+    {
+        if (body.IsInGroup("Players"))
+        {
+            crunchSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/173/NeckSnap" + rng.RandiRange(1, 3) + ".ogg");
+            crunchSound.Play();
+        }
+    }
 }
-
-
-
-
-
-
-
 
 
