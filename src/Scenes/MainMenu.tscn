@@ -1,0 +1,133 @@
+[gd_scene load_steps=4 format=3 uid="uid://b345bk26jamix"]
+
+[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_10yld"]
+[ext_resource type="Texture2D" uid="uid://boboxmvoqy61t" path="res://Assets/Menu/MainMenuForeground.png" id="2_647vp"]
+[ext_resource type="FontFile" uid="uid://bmquuud55yceh" path="res://Assets/Fonts/Righteous/Righteous-Regular.ttf" id="3_gq784"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_10yld")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_647vp")
+
+[node name="Title" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.162
+anchor_top = 0.156
+anchor_right = 0.162
+anchor_bottom = 0.156
+offset_left = -247.04
+offset_top = -24.48
+offset_right = 246.96
+offset_bottom = 23.52
+theme_override_fonts/font = ExtResource("3_gq784")
+theme_override_font_sizes/font_size = 32
+text = "Simple SCP game"
+
+[node name="Play" type="Button" parent="Title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.108
+anchor_top = 0.389
+anchor_right = 0.108
+anchor_bottom = 0.389
+offset_left = -167.36
+offset_top = -28.12
+offset_right = 168.64
+offset_bottom = 28.88
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
+
+[node name="Credits" type="Button" parent="Title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.108
+anchor_top = 0.551
+anchor_right = 0.108
+anchor_bottom = 0.551
+offset_left = -167.36
+offset_top = -27.08
+offset_right = 167.64
+offset_bottom = 27.92
+grow_horizontal = 2
+grow_vertical = 2
+text = "Credits"
+
+[node name="Exit" type="Button" parent="Title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.106
+anchor_top = 0.656
+anchor_right = 0.106
+anchor_bottom = 0.656
+offset_left = -171.52
+offset_top = -28.48
+offset_right = 172.48
+offset_bottom = 27.52
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+
+[node name="CreditPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -172.0
+offset_right = 375.0
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CreditPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -140.0
+offset_right = 340.0
+offset_bottom = 143.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Map generation script created by VirtualBrightPlayz
+You can see it working in their Unity project
+( https://github.com/VirtualBrightPlayz/SCPCBRE )
+
+Room spawner created by Yni Viar.
+
+Assets from SCP - Containment Breach
+
+The license is CC-BY-SA-3.0"
+
+[connection signal="pressed" from="Title/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Title/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Title/Exit" to="." method="_on_exit_pressed"]

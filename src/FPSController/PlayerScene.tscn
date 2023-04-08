@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://cm7mcq5rrgaxi"]
+
+[ext_resource type="Script" path="res://FPSController/PlayerScript.cs" id="1_w825c"]
+
+[sub_resource type="CapsuleShape3D" id="1"]
+radius = 0.371158
+height = 2.26761
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hhjv1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s46hk"]
+height = 2.71688
+
+[node name="Player" type="CharacterBody3D" groups=["Players"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28033, 0)
+script = ExtResource("1_w825c")
+
+[node name="PlayerHead" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.968611, 0)
+
+[node name="PlayerCamera" type="Camera3D" parent="PlayerHead"]
+
+[node name="RayCast3D" type="RayCast3D" parent="PlayerHead"]
+target_position = Vector3(0, 0, -1)
+collide_with_areas = true
+
+[node name="PlayerFeet" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.852122, -0.183911)
+
+[node name="StairCheck" type="RayCast3D" parent="PlayerFeet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.368611, 0)
+target_position = Vector3(0, 0, -1)
+
+[node name="StairCheck2" type="RayCast3D" parent="PlayerFeet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00260222, -0.0596307, -0.00418782)
+target_position = Vector3(0, 0, -1)
+
+[node name="CollisionBodyCapsule" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.198127, 0)
+shape = SubResource("1")
+
+[node name="CollisionBodyCapsule2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.776617, 0)
+shape = SubResource("SphereShape3D_hhjv1")
+
+[node name="NPCInteract" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPCInteract"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0695751, 0)
+shape = SubResource("CapsuleShape3D_s46hk")
+
+[node name="UI" type="Node" parent="."]
+
+[node name="GameOver" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverScreen" type="TextureRect" parent="UI/GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="UI/GameOver"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.498
+anchor_top = 0.875
+anchor_right = 0.498
+anchor_bottom = 0.875
+offset_left = -254.16
+offset_top = -28.0001
+offset_right = 255.84
+offset_bottom = 27.9999
+grow_horizontal = 2
+grow_vertical = 2
+text = "Return into main menu"
+
+[connection signal="body_entered" from="NPCInteract" to="." method="OnNpcInteractBodyEntered"]
