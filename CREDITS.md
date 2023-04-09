@@ -14,7 +14,8 @@ You can see it working in their Unity project ( https://github.com/VirtualBright
 - Made by Yni.
 
 ### First person character (license - The Unlicense)
-- Originally made by [dzejpi](https://github.com/dzejpi/godot-3d-base-project), then I (Yni) merged some code from elmarcoh's FPS script (also public domain),
+- Originally made by [dzejpi](https://github.com/dzejpi/godot-3d-base-project),
+ then I (Yni) merged some code from elmarcoh's FPS script (also public domain),
  and now I added some code.
 
 ## Assets

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b345bk26jamix"]
+[gd_scene load_steps=5 format=3 uid="uid://b345bk26jamix"]
 
-[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_10yld"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/MainMenu.cs" id="1_s5ksq"]
 [ext_resource type="Texture2D" uid="uid://boboxmvoqy61t" path="res://Assets/Menu/MainMenuForeground.png" id="2_647vp"]
 [ext_resource type="FontFile" uid="uid://bmquuud55yceh" path="res://Assets/Fonts/Righteous/Righteous-Regular.ttf" id="3_gq784"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/CreditsPanel.cs" id="4_okfnt"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,7 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_10yld")
+script = ExtResource("1_s5ksq")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -60,21 +61,6 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Play"
 
-[node name="Credits" type="Button" parent="Title"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.108
-anchor_top = 0.551
-anchor_right = 0.108
-anchor_bottom = 0.551
-offset_left = -167.36
-offset_top = -27.08
-offset_right = 167.64
-offset_bottom = 27.92
-grow_horizontal = 2
-grow_vertical = 2
-text = "Credits"
-
 [node name="Exit" type="Button" parent="Title"]
 layout_mode = 1
 anchors_preset = -1
@@ -90,44 +76,198 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Exit"
 
-[node name="CreditPanel" type="Panel" parent="."]
+[node name="Credits" type="Button" parent="Title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.108
+anchor_top = 0.567
+anchor_right = 0.108
+anchor_bottom = 0.567
+offset_left = -175.36
+offset_top = -28.36
+offset_right = 176.64
+offset_bottom = 27.64
+grow_horizontal = 2
+grow_vertical = 2
+text = "Credits (New)"
+
+[node name="CreditsPanel" type="Panel" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -375.0
-offset_top = -172.0
-offset_right = 375.0
-offset_bottom = 172.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("4_okfnt")
 
-[node name="Label" type="Label" parent="CreditPanel"]
+[node name="Title" type="Label" parent="CreditsPanel"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.104
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -340.0
-offset_top = -140.0
-offset_right = 340.0
-offset_bottom = 143.0
+anchor_bottom = 0.104
+offset_left = -80.0
+offset_top = -32.32
+offset_right = 82.0
+offset_bottom = 31.68
 grow_horizontal = 2
 grow_vertical = 2
-text = "Map generation script created by VirtualBrightPlayz
-You can see it working in their Unity project
-( https://github.com/VirtualBrightPlayz/SCPCBRE )
+theme_override_fonts/font = ExtResource("3_gq784")
+theme_override_font_sizes/font_size = 48
+text = "Credits"
 
-Room spawner created by Yni Viar.
+[node name="Back" type="Button" parent="CreditsPanel"]
+layout_mode = 0
+offset_right = 448.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 24
+text = "Back"
 
-Assets from SCP - Containment Breach
+[node name="Panel" type="Panel" parent="CreditsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.175
+anchor_top = 0.185
+anchor_right = 0.833
+anchor_bottom = 1.0
+offset_left = -3.05176e-05
+offset_top = 0.199997
+offset_right = 0.639893
+grow_horizontal = 2
+grow_vertical = 2
 
-The license is CC-BY-SA-3.0"
+[node name="ScrollContainer" type="ScrollContainer" parent="CreditsPanel/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[connection signal="pressed" from="Title/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Title/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="Title/Exit" to="." method="_on_exit_pressed"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsPanel/Panel/ScrollContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1024, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[b]Code:[/b]"
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1024, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[i]Map generation algorithm (license - CC-BY-SA 3.0)[/i]
+
+- Map generation script created by VirtualBrightPlayz
+You can see it working in their Unity project ( https://github.com/VirtualBrightPlayz/SCPCBRE )
+
+- Room spawner created by Yni Viar.
+
+
+"
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1024, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[i]First person character (license - The Unlicense)[/i]
+
+- Originally made by [dzejpi](https://github.com/dzejpi/godot-3d-base-project),
+ then I (Yni) merged some code from elmarcoh's FPS script (also public domain),
+ and now I added some code.
+
+
+"
+fit_content = true
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1024, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[i]Other code[/i]
+
+This game, SCP-173 AI and Main Menu made by Yni. 
+Licensed under MIT\\X11 License.
+
+
+"
+fit_content = true
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1024, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[b]Assets[/b]"
+fit_content = true
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1024, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[i]Models (license - CC-BY-SA 3.0)[/i]
+
+- Room models used from SCP - Containment Breach game.
+- SCP-079 model - Hakkla
+- SCP-173 model - Aruspice (model, textures), Shakles (rig, animation), PixelPuffin (concept art)
+
+
+"
+fit_content = true
+
+[node name="RichTextLabel7" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1024, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[i]Art (license - (CC-BY-SA 3.0)[/i]
+
+- Game over screen(s) made by Yni.
+- Menu made by Yni.
+
+
+"
+fit_content = true
+
+[connection signal="pressed" from="Title/Play" to="." method="OnPlayPressed"]
+[connection signal="pressed" from="Title/Exit" to="." method="OnExitPressed"]
+[connection signal="pressed" from="Title/Credits" to="." method="OnCreditsPressed"]
+[connection signal="pressed" from="CreditsPanel/Back" to="CreditsPanel" method="OnBackPressed"]
