@@ -124,13 +124,13 @@ public partial class PlayerScript : CharacterBody3D
 		UpDirection = Vector3.Up;
 		MoveAndSlide();
 	}
-    private void OnNpcInteractBodyEntered(Node3D body)
-    {
-        if (body.Name == "scp173")
-        {
-            GameOver(0);
-        }
-    }
+	private void OnNpcInteractBodyEntered(Node3D body)
+	{
+		if (body.Name == "scp173")
+		{
+			GameOver(0);
+		}
+	}
 
 	private void GameOver(int whichScreen)
 	{
@@ -144,9 +144,15 @@ public partial class PlayerScript : CharacterBody3D
 				gameOverScreen.Texture = GD.Load<Texture2D>("res://Assets/GameOverScreens/GameOverCause_173.png");
 				break;
 		}
-        
+		Input.MouseMode = Input.MouseModeEnum.Visible;
 		GetNode<Control>("UI/GameOver").Show();
 	}
+
+    private void OnExitPressed()
+    {
+        GetTree().Quit();
+    }
 }
+
 
 

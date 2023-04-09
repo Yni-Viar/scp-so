@@ -68,7 +68,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="UI/GameOver"]
+[node name="Exit" type="Button" parent="UI/GameOver"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.498
@@ -81,6 +81,7 @@ offset_right = 255.84
 offset_bottom = 27.9999
 grow_horizontal = 2
 grow_vertical = 2
-text = "Return into main menu"
+text = "Exit"
 
 [connection signal="body_entered" from="NPCInteract" to="." method="OnNpcInteractBodyEntered"]
+[connection signal="pressed" from="UI/GameOver/Exit" to="." method="OnExitPressed"]
