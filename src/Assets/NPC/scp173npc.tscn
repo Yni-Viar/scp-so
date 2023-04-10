@@ -55,7 +55,7 @@ radius = 0.513865
 height = 2.61139
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fuua4"]
-radius = 0.611501
+radius = 0.52983
 height = 2.61363
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i5ka2"]
@@ -90,6 +90,9 @@ shape = SubResource("BoxShape3D_i5ka2")
 
 [node name="CrunchSound" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.918444, 0.737287)
+
+[node name="WalkSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0245, 0)
 
 [connection signal="screen_entered" from="CanSee" to="." method="OnCanSeeScreenEntered"]
 [connection signal="screen_exited" from="CanSee" to="." method="OnCanSeeScreenExited"]

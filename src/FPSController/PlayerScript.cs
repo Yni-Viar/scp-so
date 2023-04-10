@@ -6,11 +6,13 @@ public partial class PlayerScript : CharacterBody3D
 	/* This script was created by dzejpi. License - The Unlicense. 
 	 * Some parts used from elmarcoh (this script is also public domain).
 	 */
+    RandomNumberGenerator rng = new RandomNumberGenerator();
 	Node3D playerHead;
-	internal RayCast3D ray;
+	RayCast3D ray;
 	RayCast3D bottomRaycast;
 	RayCast3D topRaycast;
 	TextureRect gameOverScreen;
+    AudioStreamPlayer3D walkSounds;
 
 	float speed = 4.5f;
 	float jump = 4.5f;
@@ -29,6 +31,8 @@ public partial class PlayerScript : CharacterBody3D
 	Vector3 gravityVector = new Vector3();
 
 	bool isOnGround = true;
+    bool isSprinting = false;
+    bool isWalking = false;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -37,6 +41,7 @@ public partial class PlayerScript : CharacterBody3D
 		ray = GetNode<RayCast3D>("PlayerHead/RayCast3D");
 		bottomRaycast = GetNode<RayCast3D>("PlayerFeet/StairCheck");
 		topRaycast = GetNode<RayCast3D>("PlayerFeet/StairCheck2");
+        walkSounds = GetNode<AudioStreamPlayer3D>("WalkSounds");
 		gameOverScreen = GetNode<TextureRect>("UI/GameOver/GameOverScreen");
 		acceleration = groundAcceleration;
 		Input.MouseMode = Input.MouseModeEnum.Captured;
@@ -95,14 +100,39 @@ public partial class PlayerScript : CharacterBody3D
 			isOnGround = false;
 			gravityVector = Vector3.Up * jump;
 		}
-		if (Input.IsActionPressed("move_sprint"))
-		{
-			vel = vel.Lerp(direction * speed * 2, acceleration * (float)delta);
+        if (Input.IsActionPressed("move_sprint"))
+        {
+            vel = vel.Lerp(direction * speed * 2, acceleration * (float)delta);
+            isSprinting = true;
+            isWalking = false;
+        }
+        else
+        {
+            vel = vel.Lerp(direction * speed, acceleration * (float)delta);
+            isWalking = true;
+            isSprinting = false;
 		}
-		else
-		{
-			vel = vel.Lerp(direction * speed, acceleration * (float)delta);
-		}
+
+        //check if we don't stay still and is footstep audio playing;
+        if (Velocity.Length() != 0 && !walkSounds.Playing)
+        {
+            if (isSprinting)
+            {
+                walkSounds.Stream = GD.Load<AudioStream>("res://Sounds/Character/Human/Step/Run" + rng.RandiRange(1, 8) + ".ogg");
+                walkSounds.PitchScale = 2;
+                walkSounds.Play();
+            }
+            else if (isWalking)
+            {
+                walkSounds.Stream = GD.Load<AudioStream>("res://Sounds/Character/Human/Step/Step" + rng.RandiRange(1, 8) + ".ogg");
+                walkSounds.PitchScale = 1;
+                walkSounds.Play();
+            }
+        }
+        else if (Velocity.Length() == 0 && walkSounds.Playing)
+        {
+            walkSounds.Stop();
+        }
 
 		if (bottomRaycast.IsColliding() && !topRaycast.IsColliding())
 		{

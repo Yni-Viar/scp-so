@@ -85,11 +85,11 @@ anchor_right = 0.108
 anchor_bottom = 0.567
 offset_left = -175.36
 offset_top = -28.36
-offset_right = 176.64
+offset_right = 168.64
 offset_bottom = 27.64
 grow_horizontal = 2
 grow_vertical = 2
-text = "Credits (New)"
+text = "Credits"
 
 [node name="CreditsPanel" type="Panel" parent="."]
 visible = false

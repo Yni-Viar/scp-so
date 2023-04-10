@@ -49,6 +49,10 @@ shape = SubResource("SphereShape3D_hhjv1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0695751, 0)
 shape = SubResource("CapsuleShape3D_s46hk")
 
+[node name="WalkSounds" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.951681, 0)
+max_distance = 12.0
+
 [node name="UI" type="Node" parent="."]
 
 [node name="GameOver" type="Control" parent="UI"]

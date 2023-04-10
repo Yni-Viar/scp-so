@@ -6,6 +6,8 @@ public partial class scp173npc : CharacterBody3D
     RandomNumberGenerator rng = new RandomNumberGenerator();
 	Node3D target;
 	VisibleOnScreenNotifier3D look;
+
+    AudioStreamPlayer3D walkSound;
     AudioStreamPlayer3D crunchSound;
 
 
@@ -15,6 +17,7 @@ public partial class scp173npc : CharacterBody3D
 	public override void _Ready()
 	{
 		look = GetNode<VisibleOnScreenNotifier3D>("CanSee");
+        walkSound = GetNode<AudioStreamPlayer3D>("WalkSound");
         crunchSound = GetNode<AudioStreamPlayer3D>("CrunchSound");
 	}
 
@@ -24,6 +27,9 @@ public partial class scp173npc : CharacterBody3D
 		{
 			var playerDirection = (target.GlobalPosition - this.GlobalPosition).Normalized();
 			Velocity += speed * playerDirection * (float)delta;
+
+            walkSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/173/Rattle" + rng.RandiRange(1, 3) + ".ogg");
+            walkSound.Play();
 		}
 		MoveAndSlide();
 	}
