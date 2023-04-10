@@ -55,7 +55,7 @@ radius = 0.513865
 height = 2.61139
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fuua4"]
-radius = 0.52983
+radius = 0.519111
 height = 2.61363
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i5ka2"]
