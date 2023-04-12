@@ -1,0 +1,75 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://bk3iq0rgglynw"
+path="res://.godot/imported/RZ_room4.glb-60e1247d09a881ecab68116ce5747303.scn"
+
+[deps]
+
+source_file="res://Addons/MapGen/Resources/RoomAssets/RZ/RZ_room4.glb"
+dest_files=["res://.godot/imported/RZ_room4.glb-60e1247d09a881ecab68116ce5747303.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"mat0": {
+"use_external/enabled": true,
+"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/RZ/Materials/mat0.tres"
+},
+"mat1": {
+"use_external/enabled": true,
+"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/RZ/Materials/mat1.tres"
+},
+"mat2": {
+"use_external/enabled": true,
+"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/RZ/Materials/mat2.tres"
+},
+"mat3": {
+"use_external/enabled": true,
+"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/RZ/Materials/mat3.tres"
+},
+"mat4": {
+"use_external/enabled": true,
+"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/RZ/Materials/mat4.tres"
+},
+"mat5": {
+"use_external/enabled": true,
+"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/RZ/Materials/mat5.tres"
+},
+"mat6": {
+"use_external/enabled": true,
+"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/RZ/Materials/mat6.tres"
+},
+"mat7": {
+"use_external/enabled": true,
+"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/RZ/Materials/mat7.tres"
+},
+"mat8": {
+"use_external/enabled": true,
+"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/RZ/Materials/mat8.tres"
+},
+"mat9": {
+"use_external/enabled": true,
+"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/RZ/Materials/mat9.tres"
+}
+}
+}
+gltf/embedded_image_handling=1

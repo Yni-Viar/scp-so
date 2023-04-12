@@ -10,37 +10,60 @@ public partial class Room : Node3D
     string roomName;
     public Resource roomData;
 
-    public Room(int zone/*, MapGenerator.RoomType type, string roomName*/)
-    {
-        zone = this.zone;
-        //type = this.type;
-        //roomName = this.roomName;
-    }
-
-    public PackedScene GetRoomMesh(string roomName, MapGenerator.RoomType type)
+    public PackedScene GetRoomMesh(string roomName, MapGenerator.RoomType type, int zone)
     {
         //spawn usual room
         if (string.IsNullOrEmpty(roomName))
         {
             if (type == MapGenerator.RoomType.ROOM1)
             {
+                // both Research Zone and Light Containment Zone has the same endroom...
                 return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM1/lc_room_1_endroom.tscn");
             }
             else if (type == MapGenerator.RoomType.ROOM2)
             {
-                return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/lc_room_2.tscn");
+                //check is it Research Zone or not.
+                if (zone == 1)
+                {
+                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/rz_room_2.tscn");
+                }
+                else
+                {
+                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/lc_room_2.tscn");
+                }
             }
             else if (type == MapGenerator.RoomType.ROOM2C)
             {
-                return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2C/lc_room_2c.tscn");
+                if (zone == 1)
+                {
+                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2C/rz_room_2c.tscn");
+                }
+                else
+                {
+                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2C/lc_room_2c.tscn");
+                }
             }
             else if (type == MapGenerator.RoomType.ROOM3)
             {
-                return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM3/lc_room_3.tscn");
+                if (zone == 1)
+                {
+                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM3/rz_room_3.tscn");
+                }
+                else
+                {
+                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM3/lc_room_3.tscn");
+                }
             }
             else if (type == MapGenerator.RoomType.ROOM4)
             {
-                return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM4/lc_room_4.tscn");
+                if (zone == 1)
+                {
+                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM4/rz_room_4.tscn");
+                }
+                else
+                {
+                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM4/lc_room_4.tscn");
+                }
             }
             else
             {
@@ -53,6 +76,10 @@ public partial class Room : Node3D
             //and there, switch-case of the special rooms.
             switch (roomName)
             {
+                case "RZ_room2_mainoffice":
+                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/rz_room_2_mainoffice.tscn");
+                case "RZ_room2_toilets":
+                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/rz_room_2_toilets.tscn");
                 case "LC_room1_archive":
                     return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM1/lc_room_1_archive.tscn");
                 case "LC_cont1_049":
