@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dx6o0mjsa1dqt"]
+[gd_scene load_steps=4 format=3 uid="uid://dx6o0mjsa1dqt"]
 
+[ext_resource type="Script" path="res://Scripts/Facility.cs" id="1_7oawa"]
 [ext_resource type="Script" path="res://Addons/MapGen/Scripts/MapGenerator.cs" id="2_o55cs"]
 
 [sub_resource type="Environment" id="Environment_pp1cg"]
@@ -9,6 +10,7 @@ fog_density = 0.15
 fog_height = 1.25
 
 [node name="Game" type="Node3D"]
+script = ExtResource("1_7oawa")
 
 [node name="MapGen" type="Node" parent="."]
 script = ExtResource("2_o55cs")

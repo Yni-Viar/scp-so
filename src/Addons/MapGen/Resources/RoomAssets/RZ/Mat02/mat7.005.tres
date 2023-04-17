@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cy7bl881ch327"]
+
+[ext_resource type="Texture2D" uid="uid://bhqh1ouj3l461" path="res://Addons/MapGen/Resources/RoomAssets/RZ/chatscreen.jpg" id="1_7yv2x"]
+
+[resource]
+resource_name = "mat7.005"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_7yv2x")
+roughness = 0.950589

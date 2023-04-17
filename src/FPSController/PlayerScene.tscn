@@ -25,7 +25,7 @@ target_position = Vector3(0, 0, -1)
 collide_with_areas = true
 
 [node name="PlayerFeet" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.852122, -0.183911)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.852, 0)
 
 [node name="StairCheck" type="RayCast3D" parent="PlayerFeet"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.368611, 0)

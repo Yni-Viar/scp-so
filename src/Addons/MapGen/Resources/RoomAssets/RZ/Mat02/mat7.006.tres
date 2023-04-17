@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://mpp2j5mjyewy"]
+
+[ext_resource type="Texture2D" uid="uid://bax6vnpx1dw11" path="res://Addons/MapGen/Resources/RoomAssets/RZ/servers1.jpg" id="1_wkpht"]
+
+[resource]
+resource_name = "mat7.006"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_wkpht")
+roughness = 0.950589

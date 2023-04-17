@@ -76,8 +76,22 @@ public partial class Room : Node3D
             //and there, switch-case of the special rooms.
             switch (roomName)
             {
-                case "RZ_room2_mainoffice":
-                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/rz_room_2_mainoffice.tscn");
+                case "checkpoint1":
+                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/ck_rz_lcz.tscn");
+                case "RZ_exit1_gatea":
+                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM1/rz_exit_1_gatea.tscn");
+                case "RZ_exit1_gateb":
+                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM1/rz_exit_1_gateb.tscn");
+                case "RZ_room2_offices":
+                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/rz_room_2_offices.tscn");
+                case "RZ_room2_offices2":
+                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/rz_room_2_offices_2.tscn");
+                case "RZ_room2_poffices":
+                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/rz_room_2_poffices.tscn");
+                case "RZ_room2_servers":
+                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/rz_room_2_servers.tscn");
+                case "RZ_room2_medibay":
+                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/rz_room_2_medibay.tscn");
                 case "RZ_room2_toilets":
                     return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/rz_room_2_toilets.tscn");
                 case "LC_room1_archive":

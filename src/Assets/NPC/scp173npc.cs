@@ -3,12 +3,12 @@ using System;
 
 public partial class scp173npc : CharacterBody3D
 {
-    RandomNumberGenerator rng = new RandomNumberGenerator();
+	RandomNumberGenerator rng = new RandomNumberGenerator();
 	Node3D target;
 	VisibleOnScreenNotifier3D look;
 
-    AudioStreamPlayer3D walkSound;
-    AudioStreamPlayer3D crunchSound;
+	AudioStreamPlayer3D walkSound;
+	AudioStreamPlayer3D crunchSound;
 
 
 	[Export] float speed = 20.0f;
@@ -17,8 +17,8 @@ public partial class scp173npc : CharacterBody3D
 	public override void _Ready()
 	{
 		look = GetNode<VisibleOnScreenNotifier3D>("CanSee");
-        walkSound = GetNode<AudioStreamPlayer3D>("WalkSound");
-        crunchSound = GetNode<AudioStreamPlayer3D>("CrunchSound");
+		walkSound = GetNode<AudioStreamPlayer3D>("WalkSound");
+		crunchSound = GetNode<AudioStreamPlayer3D>("CrunchSound");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -28,8 +28,8 @@ public partial class scp173npc : CharacterBody3D
 			var playerDirection = (target.GlobalPosition - this.GlobalPosition).Normalized();
 			Velocity += speed * playerDirection * (float)delta;
 
-            walkSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/173/Rattle" + rng.RandiRange(1, 3) + ".ogg");
-            walkSound.Play();
+			walkSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/173/Rattle" + rng.RandiRange(1, 3) + ".ogg");
+			walkSound.Play();
 		}
 		MoveAndSlide();
 	}
@@ -58,17 +58,15 @@ public partial class scp173npc : CharacterBody3D
 
 	private void OnCanSeeScreenExited()
 	{
-		canMove = true;
+        canMove = true;
 	}
 
-    private void OnCrunchAreaBodyEntered(Node3D body)
-    {
-        if (body.IsInGroup("Players"))
-        {
-            crunchSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/173/NeckSnap" + rng.RandiRange(1, 3) + ".ogg");
-            crunchSound.Play();
-        }
-    }
+	private void OnCrunchAreaBodyEntered(Node3D body)
+	{
+		if (body.IsInGroup("Players"))
+		{
+			crunchSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/173/NeckSnap" + rng.RandiRange(1, 3) + ".ogg");
+			crunchSound.Play();
+		}
+	}
 }
-
-

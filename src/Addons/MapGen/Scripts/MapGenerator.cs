@@ -306,9 +306,20 @@ public partial class MapGenerator : Node
         int min_pos = 1;
         int max_pos = Room1Amount[0]-1;
 
-        MapRoom[(int)RoomType.ROOM2, 0] = "RZ_room2_mainoffice";
+        MapRoom[(int)RoomType.ROOM1, 0] = "RZ_exit1_gateb";
 
-        SetRoom(ref MapRoom, "RZ_room2_toilets", RoomType.ROOM2, Mathf.FloorToInt(0.8f * Room2Amount[0]), min_pos, max_pos);
+        SetRoom(ref MapRoom, "RZ_exit1_gatea", RoomType.ROOM2, Mathf.FloorToInt(0.1f * Room1Amount[0]), min_pos, max_pos);
+
+        min_pos = 1;
+        max_pos = Room2Amount[0]-1;
+
+        MapRoom[(int)RoomType.ROOM2, 0] = "RZ_room2_poffices";
+
+        SetRoom(ref MapRoom, "RZ_room2_offices", RoomType.ROOM2, Mathf.FloorToInt(0.2f * Room2Amount[0]), min_pos, max_pos);
+        SetRoom(ref MapRoom, "RZ_room2_offices2", RoomType.ROOM2, Mathf.FloorToInt(0.25f * Room2Amount[0]), min_pos, max_pos);
+        SetRoom(ref MapRoom, "RZ_room2_servers", RoomType.ROOM2, Mathf.FloorToInt(0.5f * Room2Amount[0]), min_pos, max_pos);
+        SetRoom(ref MapRoom, "RZ_room2_medibay", RoomType.ROOM2, Mathf.FloorToInt(0.75f * Room2Amount[0]), min_pos, max_pos);
+        SetRoom(ref MapRoom, "RZ_room2_toilets", RoomType.ROOM2, Mathf.FloorToInt(0.9f * Room2Amount[0]), min_pos, max_pos);
 
         //zone 2
         min_pos = Room1Amount[0];
@@ -343,7 +354,18 @@ public partial class MapGenerator : Node
             for (int x = 1; x < MapTemp.GetLength(0) - 1; x++)
             {
                 i++;
-                if (MapTemp[x, y] > 0)
+                //checkpoint room (if needed)
+                if (MapTemp[x, y] == 255)
+                {
+                    string chkpt = "checkpoint1";
+                    /*if (y+1 == Transitions[0])
+                    {
+                        chkpt = "checkpoint2";
+                    }*/
+                    Node3D r = await CreateRoom(GetZone(y), RoomType.ROOM2, x, 0, y, chkpt, rng);
+                    r.RotationDegrees = new Vector3(0f, 180f, 0f);
+                }
+                else if (MapTemp[x, y] > 0)
                 {
                     int temp = Mathf.Min(MapTemp[x + 1, y], 1) + Mathf.Min(MapTemp[x - 1, y], 1) + Mathf.Min(MapTemp[x, y + 1], 1) + Mathf.Min(MapTemp[x, y - 1], 1);
                     switch (temp)
