@@ -12,6 +12,7 @@ public partial class PlayerScript : CharacterBody3D
 	RayCast3D bottomRaycast;
 	RayCast3D topRaycast;
 	TextureRect gameOverScreen;
+    Label gameOverText;
     AudioStreamPlayer3D walkSounds;
 
 	float speed = 4.5f;
@@ -43,6 +44,7 @@ public partial class PlayerScript : CharacterBody3D
 		topRaycast = GetNode<RayCast3D>("PlayerFeet/StairCheck2");
         walkSounds = GetNode<AudioStreamPlayer3D>("WalkSounds");
 		gameOverScreen = GetNode<TextureRect>("UI/GameOver/GameOverScreen");
+        gameOverText = GetNode<Label>("UI/GameOver/GameOverMessage");
 		acceleration = groundAcceleration;
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 	}
@@ -167,13 +169,14 @@ public partial class PlayerScript : CharacterBody3D
 		GD.Print("Game Over!");
 		//I know that this code is not good. But I am a newb programmer... :( 
 		//-Yni
-		switch (whichScreen)
-		{
-			//left for future.
-			case 0:
-				gameOverScreen.Texture = GD.Load<Texture2D>("res://Assets/GameOverScreens/GameOverCause_173.png");
-				break;
-		}
+        switch (whichScreen)
+        {
+            //left for future.
+            case 0:
+                gameOverScreen.Texture = GD.Load<Texture2D>("res://Assets/GameOverScreens/GameOverCause_173.png");
+                gameOverText.Text = "Crunch!";
+                break;
+        }
 		Input.MouseMode = Input.MouseModeEnum.Visible;
 		GetNode<Control>("UI/GameOver").Show();
 	}

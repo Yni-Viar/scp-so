@@ -15,5 +15,7 @@ script = ExtResource("1_7oawa")
 [node name="MapGen" type="Node" parent="."]
 script = ExtResource("2_o55cs")
 
+[node name="Entities" type="Node3D" parent="."]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pp1cg")

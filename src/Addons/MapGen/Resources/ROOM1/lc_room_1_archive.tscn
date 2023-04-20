@@ -128,5 +128,5 @@ distance_fade_enabled = true
 distance_fade_begin = 20.0
 omni_range = 10.0
 
-[node name="playerspawn" type="Marker3D" parent="."]
+[node name="entityspawn" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.90112, 0)

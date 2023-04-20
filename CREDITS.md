@@ -7,7 +7,7 @@ You can see it working in their Unity project ( https://github.com/VirtualBright
 
 - Room spawner created by Yni Viar.
 
-### SCP-173 AI (license - [MIT](/LICENSE.MIT))
+### SCP-173 AI and SCP-650 AI (license - [MIT](/LICENSE.MIT))
 - Made by Yni.
 
 ### Main Menu (license - [MIT](/LICENSE.MIT))
@@ -23,6 +23,7 @@ You can see it working in their Unity project ( https://github.com/VirtualBright
 - Room models used from SCP - Containment Breach game.
 - SCP-079 model - Hakkla
 - SCP-173 model - Aruspice (model, textures), Shakles (rig, animation), PixelPuffin (concept art)
+- SCP-650 model - Shadowscale(model, textures)
 
 ### Art (license - [CC-BY-SA 3.0](/LICENSE.CCBYSA3))
 - Game over screen(s) made by Yni.

@@ -270,5 +270,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.82933, 2.67016, 6.62888)
 [node name="modern_ceiling_lamp_01_4k4" parent="." instance=ExtResource("12_82mhx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.90428, 2.67016, 6.62888)
 
-[node name="playerspawn" type="Marker3D" parent="."]
+[node name="entityspawn" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.17102, 0)

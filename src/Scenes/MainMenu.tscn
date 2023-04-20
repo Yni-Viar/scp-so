@@ -150,7 +150,21 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1024, 0)
+custom_minimum_size = Vector2(1234, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[b]This work is based on SCP Foundation.[/b]
+
+SCP Ideas, used ingame, are made by scpwiki community. [i]License - CC-BY-SA 3.0[/i]"
+fit_content = true
+
+[node name="RichTextLabel0" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1234, 0)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 24
 theme_override_font_sizes/bold_font_size = 24
@@ -162,7 +176,7 @@ text = "[b]Code:[/b]"
 fit_content = true
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1024, 0)
+custom_minimum_size = Vector2(1234, 0)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 24
 theme_override_font_sizes/bold_font_size = 24
@@ -182,7 +196,7 @@ You can see it working in their Unity project ( https://github.com/VirtualBright
 fit_content = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1024, 0)
+custom_minimum_size = Vector2(1234, 0)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 24
 theme_override_font_sizes/bold_font_size = 24
@@ -201,7 +215,7 @@ text = "[i]First person character (license - The Unlicense)[/i]
 fit_content = true
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1024, 0)
+custom_minimum_size = Vector2(1234, 0)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 24
 theme_override_font_sizes/bold_font_size = 24
@@ -211,7 +225,7 @@ theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "[i]Other code[/i]
 
-This game, SCP-173 AI and Main Menu made by Yni. 
+This game, SCP-173 AI,  SCP-650 AI and Main Menu made by Yni. 
 Licensed under MIT\\X11 License.
 
 
@@ -219,7 +233,7 @@ Licensed under MIT\\X11 License.
 fit_content = true
 
 [node name="RichTextLabel5" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1024, 0)
+custom_minimum_size = Vector2(1234, 0)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 24
 theme_override_font_sizes/bold_font_size = 24
@@ -231,7 +245,7 @@ text = "[b]Assets[/b]"
 fit_content = true
 
 [node name="RichTextLabel6" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1024, 0)
+custom_minimum_size = Vector2(1234, 0)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 24
 theme_override_font_sizes/bold_font_size = 24
@@ -244,13 +258,14 @@ text = "[i]Models (license - CC-BY-SA 3.0)[/i]
 - Room models used from SCP - Containment Breach game.
 - SCP-079 model - Hakkla
 - SCP-173 model - Aruspice (model, textures), Shakles (rig, animation), PixelPuffin (concept art)
+- SCP-650 model - Shadowscale(model, textures)
 
 
 "
 fit_content = true
 
 [node name="RichTextLabel7" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1024, 0)
+custom_minimum_size = Vector2(1234, 0)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 24
 theme_override_font_sizes/bold_font_size = 24

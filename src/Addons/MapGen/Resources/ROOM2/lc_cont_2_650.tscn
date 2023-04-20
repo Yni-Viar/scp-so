@@ -280,6 +280,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.38668, 3.68232, 6.44374)
 distance_fade_enabled = true
 distance_fade_begin = 20.0
 omni_range = 10.0
-
-[node name="playerspawn" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.02279, 0)
