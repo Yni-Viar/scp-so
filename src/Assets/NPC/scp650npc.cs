@@ -57,7 +57,7 @@ public partial class scp650npc : CharacterBody3D
                         //this.Position = behindPos.Position; //partly working solution;
                         
                         //Marker3D behindPos = target.GetNode<Marker3D>("650Spawn");
-                        this.Position = target.Transform.Origin; //partly working solution;
+                        this.Position = target.Transform.Origin + addPos; //partly working solution;
                         switch (pose)
                         {
                             case 0:
