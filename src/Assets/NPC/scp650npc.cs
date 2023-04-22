@@ -6,13 +6,13 @@ public partial class scp650npc : CharacterBody3D
     RandomNumberGenerator rng = new RandomNumberGenerator();
 
     Node3D target;
-    float rotationSpeed = 0.01f;
-    float gravity = 9.8f;
 
+    //needed to change pose
     double timer = 0f;
     float waiting;
     internal int pose;
 
+    //temporary solution. This is for not spawning 650 INTO player.
     Vector3 addPos = new Vector3(0, 0, 2);
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -31,10 +31,12 @@ public partial class scp650npc : CharacterBody3D
             {
                 if (this.Transform.Origin.DistanceTo(target.Transform.Origin) < 4)
                 {
+                    //staying still
                     timer = 0d;
                 }
                 else
                 {
+                    //teleporting for the first time
                     if (timer > waiting)
                     {
                         SetState("Pose 1");
@@ -45,19 +47,16 @@ public partial class scp650npc : CharacterBody3D
             {
                 if (this.Transform.Origin.DistanceTo(target.Transform.Origin) < 4)
                 {
+                    //staying still
                     timer = 0d;
                 }
                 else
                 {
                     if (timer > waiting)
                     {
+                        //teleporting
                         this.RotateY((float)Math.PI);
-                        //Godot.Collections.Array<Godot.Node> scp650Spawns = GetTree().GetNodesInGroup("650Spawns");
-                        //Marker3D behindPos = (Marker3D)scp650Spawns[rng.RandiRange(0, (scp650Spawns.Count - 1))];
-                        //this.Position = behindPos.Position; //partly working solution;
-                        
-                        //Marker3D behindPos = target.GetNode<Marker3D>("650Spawn");
-                        this.Position = target.Transform.Origin + addPos; //partly working solution;
+                        this.Position = target.Transform.Origin + addPos;
                         switch (pose)
                         {
                             case 0:

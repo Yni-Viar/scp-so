@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cm7mcq5rrgaxi"]
+[gd_scene load_steps=8 format=3 uid="uid://cm7mcq5rrgaxi"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerScript.cs" id="1_w825c"]
+[ext_resource type="Script" path="res://FPSController/PlayerHead.cs" id="2_2ar74"]
 [ext_resource type="FontFile" uid="uid://bmquuud55yceh" path="res://Assets/Fonts/Righteous/Righteous-Regular.ttf" id="2_f87lq"]
+[ext_resource type="Texture2D" uid="uid://cymko5vnq4vsh" path="res://Assets/HUD/Blink.png" id="2_rgvtn"]
 
 [sub_resource type="CapsuleShape3D" id="1"]
 radius = 0.371158
@@ -18,6 +20,7 @@ script = ExtResource("1_w825c")
 
 [node name="PlayerHead" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.968611, 0)
+script = ExtResource("2_2ar74")
 
 [node name="PlayerCamera" type="Camera3D" parent="PlayerHead"]
 
@@ -54,11 +57,38 @@ shape = SubResource("CapsuleShape3D_s46hk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.951681, 0)
 max_distance = 12.0
 
-[node name="UI" type="Node" parent="."]
+[node name="GameOverSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.918, 0)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Blink" type="Control" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="img" type="TextureRect" parent="UI/Blink"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rgvtn")
 
 [node name="GameOver" type="Control" parent="UI"]
 visible = false
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

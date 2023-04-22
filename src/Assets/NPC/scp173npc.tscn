@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhc3k2wqukwnb"]
+[gd_scene load_steps=10 format=3 uid="uid://bhc3k2wqukwnb"]
 
 [ext_resource type="Script" path="res://Assets/NPC/scp173npc.cs" id="1_ec03g"]
 [ext_resource type="Texture2D" uid="uid://n725qqakr610" path="res://Assets/Models/scp173/Merged_PM3D_Sphere3D4_Base_Color.png" id="1_vaqpg"]
@@ -54,10 +54,6 @@ shadow_mesh = SubResource("ArrayMesh_j410q")
 radius = 0.513865
 height = 2.61139
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fuua4"]
-radius = 0.519111
-height = 2.61363
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_i5ka2"]
 size = Vector3(20, 4, 20)
 
@@ -77,25 +73,15 @@ shape = SubResource("CapsuleShape3D_n0cb2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.130522, -0.0764288)
 aabb = AABB(-0.493795, -1.28693, -0.485845, 0.987591, 2.57386, 0.971689)
 
-[node name="CrunchArea" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CrunchArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.113245, 0)
-shape = SubResource("CapsuleShape3D_fuua4")
-
 [node name="FindPlayerArea" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FindPlayerArea"]
 shape = SubResource("BoxShape3D_i5ka2")
-
-[node name="CrunchSound" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.918444, 0.737287)
 
 [node name="WalkSound" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0245, 0)
 
 [connection signal="screen_entered" from="CanSee" to="." method="OnCanSeeScreenEntered"]
 [connection signal="screen_exited" from="CanSee" to="." method="OnCanSeeScreenExited"]
-[connection signal="body_entered" from="CrunchArea" to="." method="OnCrunchAreaBodyEntered"]
 [connection signal="body_entered" from="FindPlayerArea" to="." method="OnFindPlayerAreaBodyEntered"]
 [connection signal="body_exited" from="FindPlayerArea" to="." method="OnFindPlayerAreaBodyExited"]

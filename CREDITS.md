@@ -10,6 +10,9 @@ You can see it working in their Unity project ( https://github.com/VirtualBright
 ### SCP-173 AI and SCP-650 AI (license - [MIT](/LICENSE.MIT))
 - Made by Yni.
 
+### Blinking system (license - [MIT](/LICENSE.MIT))
+- Made by Yni.
+
 ### Main Menu (license - [MIT](/LICENSE.MIT))
 - Made by Yni.
 
