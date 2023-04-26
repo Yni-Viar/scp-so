@@ -7,12 +7,12 @@ public partial class MapGenerator : Node
 {
 
     //LCZ - HCZ - EZ transitions
-    public int[] Transitions = new int[] { 8 };
+    public int[] Transitions = new int[] { 15, 8 };
     static System.Random rnd = new Random();
     //seed
     public int RandomSeed = rnd.Next(0, 2147483647);
     
-    [Export] public Vector2I MapSize = new Vector2I(16, 16);
+    [Export] public Vector2I MapSize = new Vector2I(18, 18);
 
     public enum RoomType : int
     {
@@ -26,14 +26,13 @@ public partial class MapGenerator : Node
     public int GetZone(int y) //LCZ, HCZ or EZ.
     {
         int zone = 1;
-        /*
         if (y >= Transitions[1] && y < Transitions[0])
         {
             zone = 2;
-        }*/
+        }
         if (y >= Transitions[0])
         {
-            zone = 2;
+            zone = 3;
         }
         // if needed
         return zone;
@@ -68,7 +67,7 @@ public partial class MapGenerator : Node
         while (y >= 2)
         {
             //map width
-            int width = rng.Next(8, 12);
+            int width = rng.Next(10, 16);
 
             if (x > MapSize.X * 0.6f)
             {
@@ -150,7 +149,7 @@ public partial class MapGenerator : Node
             y = y - height;
         }
         //rooms and zone amount
-        int ZoneAmount = 2; //if you want more zones (CB-style), you can add this value.
+        int ZoneAmount = 3; //if you want more zones (CB-style), you can add this value.
         int[] Room1Amount = new int[ZoneAmount];
         int[] Room2Amount = new int[ZoneAmount];
         int[] Room2CAmount = new int[ZoneAmount];
@@ -293,11 +292,11 @@ public partial class MapGenerator : Node
         */
 
         int MaxRooms = 55 * MapSize.X / 20;
-        MaxRooms = Mathf.Max(MaxRooms, Room1Amount[0]+Room1Amount[1]+1);//+Room1Amount[2]
-        MaxRooms = Mathf.Max(MaxRooms, Room2Amount[0]+Room2Amount[1]+1);//+Room2Amount[2]
-        MaxRooms = Mathf.Max(MaxRooms, Room2CAmount[0]+Room2CAmount[1]+1);//+Room2CAmount[2]
-        MaxRooms = Mathf.Max(MaxRooms, Room3Amount[0]+Room3Amount[1]+1);//+Room3Amount[2]
-        MaxRooms = Mathf.Max(MaxRooms, Room4Amount[0]+Room4Amount[1]+1);//+Room4Amount[2]
+        MaxRooms = Mathf.Max(MaxRooms, Room1Amount[0]+Room1Amount[1]+Room1Amount[2]+1);
+        MaxRooms = Mathf.Max(MaxRooms, Room2Amount[0]+Room2Amount[1]+Room2Amount[2]+1);
+        MaxRooms = Mathf.Max(MaxRooms, Room2CAmount[0]+Room2CAmount[1]+Room2CAmount[2]+1);
+        MaxRooms = Mathf.Max(MaxRooms, Room3Amount[0]+Room3Amount[1]+Room3Amount[2]+1);
+        MaxRooms = Mathf.Max(MaxRooms, Room4Amount[0]+Room4Amount[1]+Room4Amount[2]+1);
         string[,] MapRoom = new string[(int)RoomType.ROOM4 + 1, MaxRooms];
 
         //there you need to put special rooms. MapRoom spawns the first room, SetRoom - others (more randomly)
@@ -308,7 +307,7 @@ public partial class MapGenerator : Node
 
         MapRoom[(int)RoomType.ROOM1, 0] = "RZ_exit1_gateb";
 
-        SetRoom(ref MapRoom, "RZ_exit1_gatea", RoomType.ROOM2, Mathf.FloorToInt(0.1f * Room1Amount[0]), min_pos, max_pos);
+        SetRoom(ref MapRoom, "RZ_exit1_gatea", RoomType.ROOM1, Mathf.FloorToInt(0.1f * Room1Amount[0]), min_pos, max_pos);
 
         min_pos = 1;
         max_pos = Room2Amount[0]-1;
@@ -339,6 +338,14 @@ public partial class MapGenerator : Node
         SetRoom(ref MapRoom, "LC_room2_vent", RoomType.ROOM2, Room2Amount[0]+Mathf.FloorToInt(0.4f * Room2Amount[1]), min_pos, max_pos);
         SetRoom(ref MapRoom, "LC_room2_sl", RoomType.ROOM2, Room2Amount[0]+Mathf.FloorToInt(0.8f * Room2Amount[1]), min_pos, max_pos);
 
+        //zone 3
+        MapRoom[(int)RoomType.ROOM1, Room1Amount[0]+Room1Amount[1]] = "HC_cont1_049";
+        MapRoom[(int)RoomType.ROOM1, Room1Amount[0]+Room1Amount[1]+Room1Amount[2]-1] = "HC_cont1_173";
+
+        min_pos = Room2Amount[0]+Room2Amount[1];
+        max_pos = Room2Amount[0]+Room2Amount[1]+Room2Amount[2]-1;
+
+        MapRoom[(int)RoomType.ROOM2, min_pos+Mathf.FloorToInt(0.1f*Room2Amount[2])] = "HC_cont2_testroom";
 
         await SpawnMap(MapTemp, MapRoom, MaxRooms, rng);
     }
@@ -358,10 +365,10 @@ public partial class MapGenerator : Node
                 if (MapTemp[x, y] == 255)
                 {
                     string chkpt = "checkpoint1";
-                    /*if (y+1 == Transitions[0])
+                    if (y+1 == Transitions[0])
                     {
                         chkpt = "checkpoint2";
-                    }*/
+                    }
                     Node3D r = await CreateRoom(GetZone(y), RoomType.ROOM2, x, 0, y, chkpt, rng);
                     r.RotationDegrees = new Vector3(0f, 180f, 0f);
                 }

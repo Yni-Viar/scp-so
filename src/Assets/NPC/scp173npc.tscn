@@ -55,7 +55,7 @@ radius = 0.513865
 height = 2.61139
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i5ka2"]
-size = Vector3(20, 4, 20)
+size = Vector3(64, 8, 64)
 
 [node name="scp173" type="CharacterBody3D"]
 script = ExtResource("1_ec03g")

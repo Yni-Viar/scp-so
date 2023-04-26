@@ -17,52 +17,63 @@ public partial class Room : Node3D
         {
             if (type == MapGenerator.RoomType.ROOM1)
             {
-                // both Research Zone and Light Containment Zone has the same endroom...
-                return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM1/lc_room_1_endroom.tscn");
+                switch (zone)
+                {
+                    case 3:
+                        //HCZ
+                        return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM1/hc_room_1_endroom.tscn");
+                    default:
+                        // both Research Zone and Light Containment Zone has the same endroom...
+                        return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM1/lc_room_1_endroom.tscn");
+                }
             }
             else if (type == MapGenerator.RoomType.ROOM2)
             {
-                //check is it Research Zone or not.
-                if (zone == 1)
+                switch (zone)
                 {
-                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/rz_room_2.tscn");
-                }
-                else
-                {
-                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/lc_room_2.tscn");
+                    //RZ
+                    case 1:
+                        return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/rz_room_2.tscn");
+                    case 3:
+                        return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/hc_room_2.tscn");
+                    default: //LCZ is by-default
+                        return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/lc_room_2.tscn");
                 }
             }
             else if (type == MapGenerator.RoomType.ROOM2C)
             {
-                if (zone == 1)
+                switch (zone)
                 {
-                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2C/rz_room_2c.tscn");
-                }
-                else
-                {
-                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2C/lc_room_2c.tscn");
+                    case 1:
+                        return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2C/rz_room_2c.tscn");
+                    case 3:
+                        return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2C/hc_room_2c.tscn");
+                    default:
+                        return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2C/lc_room_2c.tscn");
                 }
             }
             else if (type == MapGenerator.RoomType.ROOM3)
             {
-                if (zone == 1)
+                switch (zone)
                 {
-                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM3/rz_room_3.tscn");
-                }
-                else
-                {
-                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM3/lc_room_3.tscn");
+                    case 1:
+                        return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM3/rz_room_3.tscn");
+                    case 3:
+                        return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM3/hc_room_3.tscn");
+                    default:
+                        return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM3/lc_room_3.tscn");
                 }
             }
             else if (type == MapGenerator.RoomType.ROOM4)
             {
-                if (zone == 1)
+                switch (zone)
                 {
-                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM4/rz_room_4.tscn");
-                }
-                else
-                {
-                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM4/lc_room_4.tscn");
+                    case 1:
+                        return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM4/rz_room_4.tscn");
+                    case 3:
+                        return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM4/hc_room_4.tscn");
+                    default:
+                        return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM4/lc_room_4.tscn");
                 }
             }
             else
@@ -78,6 +89,8 @@ public partial class Room : Node3D
             {
                 case "checkpoint1":
                     return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/ck_rz_lcz.tscn");
+                case "checkpoint2":
+                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/ck_lcz_hcz.tscn");
                 case "RZ_exit1_gatea":
                     return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM1/rz_exit_1_gatea.tscn");
                 case "RZ_exit1_gateb":
@@ -110,6 +123,12 @@ public partial class Room : Node3D
                     return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/lc_room_2_sl.tscn");
                 case "LC_room2_vent":
                     return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/lc_room_2_vent.tscn");
+                case "HC_cont1_173":
+                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM1/hc_cont_1_173.tscn");
+                case "HC_cont1_049":
+                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM1/hc_cont_1_049.tscn");
+                case "HC_cont2_testroom":
+                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/hc_cont_2_testroom.tscn");
                 default:
                     GD.Print("Could not load an asset");
                     return null;

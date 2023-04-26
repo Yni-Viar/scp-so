@@ -27,6 +27,7 @@ You can see it working in their Unity project ( https://github.com/VirtualBright
 - SCP-079 model - Hakkla
 - SCP-173 model - Aruspice (model, textures), Shakles (rig, animation), PixelPuffin (concept art)
 - SCP-650 model - Shadowscale(model, textures)
+- PDA model - Model and textures by Shadowscale
 
 ### Art (license - [CC-BY-SA 3.0](/LICENSE.CCBYSA3))
 - Game over screen(s) made by Yni.

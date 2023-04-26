@@ -5,10 +5,14 @@ public partial class PlayerScript : CharacterBody3D
 {
     /* This script was created by dzejpi. License - The Unlicense. 
      * Some parts used from elmarcoh (this script is also public domain).
+     * 
+     * I (Yni) added some parts, such as blinking or game over triggers.
+     * Currently the script is a big mess :(
      */
     RandomNumberGenerator rng = new RandomNumberGenerator();
     Node3D playerHead;
-    //for future
+    //where we are going to store items.
+    Node3D playerHand;
     RayCast3D ray;
 
     //stair check
@@ -48,11 +52,16 @@ public partial class PlayerScript : CharacterBody3D
     bool isWalking = false;
     bool gameOver = false;
 
+    //item-specific properties
+    public Pickable holdingItem = null;
+
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         playerHead = GetNode<Node3D>("PlayerHead");
         ray = GetNode<RayCast3D>("PlayerHead/RayCast3D");
+        playerHand = GetNode<Node3D>("PlayerHand");
         blinkImage = GetNode<Control>("UI/Blink");
         bottomRaycast = GetNode<RayCast3D>("PlayerFeet/StairCheck");
         topRaycast = GetNode<RayCast3D>("PlayerFeet/StairCheck2");
@@ -88,7 +97,8 @@ public partial class PlayerScript : CharacterBody3D
             playerHead.RotateX(Mathf.Clamp(-m.Relative.Y * mouseSensivity.X / 10, -90, 90));
 
             Vector3 cameraRot = playerHead.Rotation;
-            cameraRot.X = Mathf.Clamp(cameraRot.X, Mathf.DegToRad(-85f), Mathf.DegToRad(85f));
+            cameraRot.X = Mathf.Clamp(playerHead.Rotation.X, Mathf.DegToRad(-85f), Mathf.DegToRad(85f));
+            playerHead.Rotation = cameraRot;
         }
         direction = new Vector3();
         direction.Z = -Input.GetActionStrength("move_forward") + Input.GetActionStrength("move_backward");
@@ -166,6 +176,46 @@ public partial class PlayerScript : CharacterBody3D
             {
                 walkSounds.Stop();
             }
+            
+            //Picking up items.
+            if (ray.IsColliding() && Input.IsActionJustPressed("interact_item"))
+            {
+                if (holdingItem != null)
+                {
+                    holdingItem.PickUpItem(this);
+                }
+                else
+                {
+                    //Debug: first iter
+                    var collidedWith = ray.GetCollider();
+                    if (collidedWith.HasMethod("PickUpItem"))
+                    {
+                        //Debug: Second iter
+                        collidedWith.Call("PickUpItem", this);
+                    }
+                }
+                
+                
+                /*
+                //If ray collider is in item dictionary
+                if (Facility.itemList.ContainsKey(ray.GetCollider().ToString()))
+                {
+                    GD.Print("Debug: took item");
+                    //if we already have item in hand
+                    if (playerHand.GetChildCount() >= 1)
+                    {
+                        itemToDrop = (Node3D)GD.Load<PackedScene>((string)Facility.itemList[ray.GetCollider().ToString()][0]).Instantiate();
+                        playerHand.GetChild(0).QueueFree();
+                        GetTree().Root.GetNode("Game/Items/").AddChild(itemToDrop);
+                    }
+                    //swap items
+                    itemToSpawn = (Node3D)GD.Load<PackedScene>((string)Facility.itemList[ray.GetCollider().ToString()][1]).Instantiate();
+                    ray.GetCollider().Free();
+                    playerHand.AddChild(itemToSpawn);
+                }
+                */
+            }
+            
 
             //needed for walking up and down stairs
             if (bottomRaycast.IsColliding() && !topRaycast.IsColliding())
@@ -204,9 +254,9 @@ public partial class PlayerScript : CharacterBody3D
     {
         //main blinking method
         blinkImage.Show();
-        PlayerHead.isBlinking = true;
-        await ToSignal(GetTree().CreateTimer(0.5), "timeout");
-        PlayerHead.isBlinking = false;
+        PlayerCommon.isBlinking = true;
+        await ToSignal(GetTree().CreateTimer(0.3), "timeout");
+        PlayerCommon.isBlinking = false;
         blinkImage.Hide();
     }
     private void GameOver(int whichScreen)

@@ -18,7 +18,7 @@ public partial class scp173npc : CharacterBody3D
 	public override void _PhysicsProcess(double delta)
 	{
         //basic SCP-173 rules - player don't see - 173 is closer.
-		if ((canMove || PlayerHead.isBlinking) && target != null)
+		if ((canMove || PlayerCommon.isBlinking) && target != null)
 		{
 			var playerDirection = (target.GlobalPosition - this.GlobalPosition).Normalized();
 			Velocity += speed * playerDirection;

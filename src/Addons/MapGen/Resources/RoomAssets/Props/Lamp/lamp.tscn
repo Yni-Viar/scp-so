@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdry0we6wlkr"]
+
+[ext_resource type="PackedScene" uid="uid://dpi21p0vfvrpu" path="res://Addons/MapGen/Resources/RoomAssets/Props/Lamp/Lamp.gltf" id="1_h0q05"]
+
+[node name="Lamp" instance=ExtResource("1_h0q05")]
+
+[node name="Cube" parent="." index="0"]
+visibility_range_end = 24.0
+
+[node name="Cube001" parent="." index="1"]
+visibility_range_end = 24.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.211882, 0)
+distance_fade_enabled = true
+distance_fade_begin = 24.0
+omni_range = 16.0

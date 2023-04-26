@@ -12,6 +12,8 @@ config_version=5
 
 config/name="SCP Game"
 run/main_scene="res://Scenes/MainMenu.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="SCPGame"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.png"
 config/windows_native_icon="res://icon.ico"
@@ -62,8 +64,17 @@ move_sprint={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194325,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
+interact_item={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":69,"physical_keycode":0,"key_label":0,"unicode":101,"echo":false,"script":null)
+]
+}
 
 [physics]
 
 2d/run_on_separate_thread=true
 3d/run_on_separate_thread=true
+
+[rendering]
+
+limits/opengl/max_lights_per_object=32

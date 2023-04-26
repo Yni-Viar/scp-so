@@ -1,0 +1,51 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://jocjjv54uwb1"
+path="res://.godot/imported/HC_room1_endroom.gltf-7270f1fa5fe6b36a4b9968a705c52e21.scn"
+
+[deps]
+
+source_file="res://Addons/MapGen/Resources/RoomAssets/HCZ/HC_room1_endroom.gltf"
+dest_files=["res://.godot/imported/HC_room1_endroom.gltf-7270f1fa5fe6b36a4b9968a705c52e21.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"mat0.007": {
+"use_external/enabled": true,
+"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/HCZ/Mat/mat0.007.tres"
+},
+"mat1.007": {
+"use_external/enabled": true,
+"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/HCZ/Mat/mat1.007.tres"
+},
+"mat2.007": {
+"use_external/enabled": true,
+"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/HCZ/Mat/mat2.007.tres"
+},
+"mat3.007": {
+"use_external/enabled": true,
+"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/HCZ/Mat/mat3.007.tres"
+}
+}
+}
+gltf/embedded_image_handling=1
