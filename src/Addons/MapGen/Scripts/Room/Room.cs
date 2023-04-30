@@ -90,7 +90,7 @@ public partial class Room : Node3D
                 case "checkpoint1":
                     return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/ck_rz_lcz.tscn");
                 case "checkpoint2":
-                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/ck_lcz_hcz.tscn");
+                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/lc_room_2.tscn");
                 case "RZ_exit1_gatea":
                     return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM1/rz_exit_1_gatea.tscn");
                 case "RZ_exit1_gateb":

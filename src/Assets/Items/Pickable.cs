@@ -17,7 +17,7 @@ public partial class Pickable : RigidBody3D
 	{
         if (pickedUp)
         {
-            this.GlobalTransform = holder.GetNode<Marker3D>("PlayerHand").GlobalTransform;
+            this.GlobalTransform = holder.GetNode<Marker3D>("PlayerHead/PlayerHand").GlobalTransform;
         }
 	}
 

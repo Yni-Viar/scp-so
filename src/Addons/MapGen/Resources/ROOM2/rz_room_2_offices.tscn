@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cr14d1c3nc77u"]
+[gd_scene load_steps=17 format=3 uid="uid://cr14d1c3nc77u"]
 
 [ext_resource type="Material" uid="uid://0clyb3qlp0mg" path="res://Addons/MapGen/Resources/RoomAssets/RZ/Mat02/mat0.003.tres" id="1_pogd1"]
 [ext_resource type="Material" uid="uid://dgvwsqnipa8dl" path="res://Addons/MapGen/Resources/RoomAssets/RZ/Mat02/mat1.003.tres" id="2_7hqk2"]
@@ -12,6 +12,7 @@
 [ext_resource type="Material" uid="uid://cfo0q57mf822j" path="res://Addons/MapGen/Resources/RoomAssets/RZ/Mat02/mat9.003.tres" id="10_6g2jp"]
 [ext_resource type="Material" uid="uid://l316lpemsc3s" path="res://Addons/MapGen/Resources/RoomAssets/RZ/Mat02/mat10.003.tres" id="11_ia1qy"]
 [ext_resource type="PackedScene" uid="uid://b3a05pjpbpf6s" path="res://Addons/MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="12_82mhx"]
+[ext_resource type="PackedScene" uid="uid://gykx2k47t5jl" path="res://Assets/Items/pda.tscn" id="13_dhl06"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ivvkc"]
 _surfaces = [{
@@ -272,3 +273,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.90428, 2.67016, 6.62888)
 
 [node name="entityspawn" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.17102, 0)
+
+[node name="PDA" parent="." instance=ExtResource("13_dhl06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02729, 1.40482, 0.429343)

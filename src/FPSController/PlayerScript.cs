@@ -11,8 +11,6 @@ public partial class PlayerScript : CharacterBody3D
      */
     RandomNumberGenerator rng = new RandomNumberGenerator();
     Node3D playerHead;
-    //where we are going to store items.
-    Node3D playerHand;
     RayCast3D ray;
 
     //stair check
@@ -61,7 +59,6 @@ public partial class PlayerScript : CharacterBody3D
     {
         playerHead = GetNode<Node3D>("PlayerHead");
         ray = GetNode<RayCast3D>("PlayerHead/RayCast3D");
-        playerHand = GetNode<Node3D>("PlayerHand");
         blinkImage = GetNode<Control>("UI/Blink");
         bottomRaycast = GetNode<RayCast3D>("PlayerFeet/StairCheck");
         topRaycast = GetNode<RayCast3D>("PlayerFeet/StairCheck2");
@@ -194,26 +191,6 @@ public partial class PlayerScript : CharacterBody3D
                         collidedWith.Call("PickUpItem", this);
                     }
                 }
-                
-                
-                /*
-                //If ray collider is in item dictionary
-                if (Facility.itemList.ContainsKey(ray.GetCollider().ToString()))
-                {
-                    GD.Print("Debug: took item");
-                    //if we already have item in hand
-                    if (playerHand.GetChildCount() >= 1)
-                    {
-                        itemToDrop = (Node3D)GD.Load<PackedScene>((string)Facility.itemList[ray.GetCollider().ToString()][0]).Instantiate();
-                        playerHand.GetChild(0).QueueFree();
-                        GetTree().Root.GetNode("Game/Items/").AddChild(itemToDrop);
-                    }
-                    //swap items
-                    itemToSpawn = (Node3D)GD.Load<PackedScene>((string)Facility.itemList[ray.GetCollider().ToString()][1]).Instantiate();
-                    ray.GetCollider().Free();
-                    playerHand.AddChild(itemToSpawn);
-                }
-                */
             }
             
 

@@ -7,7 +7,7 @@ public partial class scp173npc : CharacterBody3D
 	Node3D target;
 	AudioStreamPlayer3D walkSound;
 
-	[Export] float speed = 10.0f;
+	[Export] float speed = 7.5f;
 	internal bool canMove = false;
 
 	public override void _Ready()
@@ -26,6 +26,11 @@ public partial class scp173npc : CharacterBody3D
 			walkSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/173/Rattle" + rng.RandiRange(1, 3) + ".ogg");
 			walkSound.Play();
 		}
+        //else SCP-173 must stay still!
+        else
+        {
+            Velocity = Vector3.Zero;
+        }
 		MoveAndSlide();
 	}
 
