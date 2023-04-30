@@ -7,7 +7,7 @@ public partial class scp173npc : CharacterBody3D
 	Node3D target;
 	AudioStreamPlayer3D walkSound;
 
-	[Export] float speed = 7.5f;
+	[Export] float speed = 80.0f;
 	internal bool canMove = false;
 
 	public override void _Ready()
@@ -21,7 +21,7 @@ public partial class scp173npc : CharacterBody3D
 		if ((canMove || PlayerCommon.isBlinking) && target != null)
 		{
 			var playerDirection = (target.GlobalPosition - this.GlobalPosition).Normalized();
-			Velocity += speed * playerDirection;
+			Velocity += speed * playerDirection * (float)delta;
 
 			walkSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/173/Rattle" + rng.RandiRange(1, 3) + ".ogg");
 			walkSound.Play();

@@ -11,6 +11,7 @@ fog_height = 1.25
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_7oawa")
+spawn650 = false
 
 [node name="MapGen" type="Node" parent="."]
 script = ExtResource("2_o55cs")
