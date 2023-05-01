@@ -1,4 +1,9 @@
 # Pre-Alpha
+
+## v.0.0.3 (indev)
+
+- Basic inventory
+
 ## v.0.0.2
 - Picking up items
 - Heavy Containment Zone(HCZ) + redesigned SCP-173 Containment Chamber and the return of SCP-049 Containment Chamber from Map Generator era, but now also in HCZ.
