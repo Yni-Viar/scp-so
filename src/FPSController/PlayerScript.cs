@@ -104,7 +104,7 @@ public partial class PlayerScript : CharacterBody3D
 
         if (Input.IsActionJustPressed("ui_cancel"))
         {
-            GetTree().Quit();
+            GetNode<Control>("UI/PauseMenu").Show();
         }
     }
 
@@ -256,6 +256,6 @@ public partial class PlayerScript : CharacterBody3D
 
     private void OnExitPressed()
     {
-        GetTree().Quit();
+        GetTree().ChangeSceneToFile("res://Scenes/MainMenu.tscn");
     }
 }

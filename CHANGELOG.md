@@ -2,6 +2,7 @@
 
 ## v.0.0.3 (indev)
 
+- Pause menu and exit to menu implemented.
 - Basic inventory
 
 ## v.0.0.2

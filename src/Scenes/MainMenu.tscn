@@ -49,13 +49,13 @@ text = "SCP game"
 [node name="Play" type="Button" parent="Title"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.108
+anchor_left = 0.106
 anchor_top = 0.389
-anchor_right = 0.108
+anchor_right = 0.106
 anchor_bottom = 0.389
-offset_left = -167.36
+offset_left = -171.52
 offset_top = -28.12
-offset_right = 168.64
+offset_right = 172.48
 offset_bottom = 28.88
 grow_horizontal = 2
 grow_vertical = 2
@@ -90,6 +90,20 @@ offset_bottom = 27.64
 grow_horizontal = 2
 grow_vertical = 2
 text = "Credits"
+
+[node name="Button" type="Button" parent="Title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.106
+anchor_top = 0.481
+anchor_right = 0.106
+anchor_bottom = 0.481
+offset_left = -171.52
+offset_top = -31.48
+offset_right = 172.48
+offset_bottom = 30.52
+disabled = true
+text = "Settings (not available yet)"
 
 [node name="MainPanel" type="Panel" parent="."]
 layout_mode = 1
