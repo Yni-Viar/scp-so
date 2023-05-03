@@ -12,13 +12,7 @@ public partial class PauseMenu : Control
 	public override void _Process(double delta)
 	{
 	}
-
-    private void OnContinueButtonPressed()
-    {
-        this.Hide();
-    }
-
-
+    
     private void OnExitButtonPressed()
     {
         GetTree().ChangeSceneToFile("res://Scenes/MainMenu.tscn");

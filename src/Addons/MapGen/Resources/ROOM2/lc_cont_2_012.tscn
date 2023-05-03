@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dok50po1kf3dv"]
+[gd_scene load_steps=21 format=3 uid="uid://dok50po1kf3dv"]
 
 [ext_resource type="Material" uid="uid://bidnif1xig5ms" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat0.003.tres" id="1_8xp2h"]
 [ext_resource type="Material" uid="uid://dnr225rxfd5f" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat1.003.tres" id="2_ja20n"]
@@ -16,6 +16,7 @@
 [ext_resource type="Material" uid="uid://bhho8ro35iqlq" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat13.001.tres" id="14_dopgu"]
 [ext_resource type="Material" uid="uid://dqc6ma528bn1u" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat14.tres" id="15_0l0gt"]
 [ext_resource type="Material" uid="uid://cto6dcl6a7dh" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat15.tres" id="16_8xfum"]
+[ext_resource type="PackedScene" uid="uid://bdry0we6wlkr" path="res://Addons/MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="17_dyyjs"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_quakm"]
 _surfaces = [{
@@ -378,33 +379,25 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_w1eit")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0168252, 6.83983, -2.55913)
-distance_fade_enabled = true
-distance_fade_begin = 20.0
-omni_range = 10.0
+[node name="Lamp" parent="." instance=ExtResource("17_dyyjs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.833, 5.803)
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.62816, -0.663602, 8.35351)
-distance_fade_enabled = true
-distance_fade_begin = 20.0
-omni_range = 10.0
+[node name="Lamp2" parent="." instance=ExtResource("17_dyyjs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.833, 0)
 
-[node name="OmniLight3D4" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.38454, -3.02208, 7.62767)
-distance_fade_enabled = true
-distance_fade_begin = 20.0
-omni_range = 10.0
+[node name="Lamp3" parent="." instance=ExtResource("17_dyyjs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.833, -4.50817)
 
-[node name="OmniLight3D5" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.62202, -4.45077, 0.0317205)
+[node name="Lamp4" parent="." instance=ExtResource("17_dyyjs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.15698, 3.601, -6.97809)
+
+[node name="Lamp5" parent="." instance=ExtResource("17_dyyjs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01464, -2.77995, 8.21769)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.59204, -0.850441, -0.0560623)
 light_color = Color(1, 0, 0, 1)
 distance_fade_enabled = true
-distance_fade_begin = 20.0
-omni_range = 10.0
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0168252, 6.83983, 2.56169)
-distance_fade_enabled = true
-distance_fade_begin = 20.0
-omni_range = 10.0
+distance_fade_begin = 24.0
+spot_range = 17.4669
+spot_angle = 21.7373

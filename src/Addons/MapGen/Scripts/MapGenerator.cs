@@ -331,12 +331,12 @@ public partial class MapGenerator : Node
         min_pos = Room2Amount[0];
         max_pos = Room2Amount[0]+Room2Amount[1]-1;
 
-        MapRoom[(int)RoomType.ROOM2, Room2Amount[0]+Mathf.FloorToInt(0.2f*Room2Amount[1])] = "LC_room2_hall";
+        MapRoom[(int)RoomType.ROOM2, Room2Amount[0]+Mathf.FloorToInt(0.2f*Room2Amount[1])] = "LC_room2_sl";
 
         SetRoom(ref MapRoom, "LC_cont2_012", RoomType.ROOM2, Room2Amount[0]+Mathf.FloorToInt(0.1f * Room2Amount[1]), min_pos, max_pos);
         SetRoom(ref MapRoom, "LC_cont2_650", RoomType.ROOM2, Room2Amount[0]+Mathf.FloorToInt(0.2f * Room2Amount[1]), min_pos, max_pos);
         SetRoom(ref MapRoom, "LC_room2_vent", RoomType.ROOM2, Room2Amount[0]+Mathf.FloorToInt(0.4f * Room2Amount[1]), min_pos, max_pos);
-        SetRoom(ref MapRoom, "LC_room2_sl", RoomType.ROOM2, Room2Amount[0]+Mathf.FloorToInt(0.8f * Room2Amount[1]), min_pos, max_pos);
+        //SetRoom(ref MapRoom, "LC_room2_hall", RoomType.ROOM2, Room2Amount[0]+Mathf.FloorToInt(0.8f * Room2Amount[1]), min_pos, max_pos);
 
         //zone 3
         MapRoom[(int)RoomType.ROOM1, Room1Amount[0]+Room1Amount[1]] = "HC_cont1_049";

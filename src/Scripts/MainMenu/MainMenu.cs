@@ -29,6 +29,9 @@ public partial class MainMenu : Control
     {
         GetNode<Panel>("CreditsPanel").Show();
     }
+
+	private void OnSettingsPressed()
+	{
+		GetNode<Control>("Settings").Show();
+	}
 }
-
-

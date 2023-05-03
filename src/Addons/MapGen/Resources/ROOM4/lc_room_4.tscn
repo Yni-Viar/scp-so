@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bqi4alv8la60h"]
+[gd_scene load_steps=10 format=3 uid="uid://bqi4alv8la60h"]
 
 [ext_resource type="Material" uid="uid://cmr5ymyn25wtf" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat0.019.tres" id="1_wmfyc"]
 [ext_resource type="Material" uid="uid://cnv2ga6snmnm3" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat1.019.tres" id="2_nxy5n"]
 [ext_resource type="Material" uid="uid://d7qojajdflj" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat2.019.tres" id="3_ynhad"]
 [ext_resource type="Material" uid="uid://brpv0blv5kn2p" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat3.018.tres" id="4_5nrxt"]
 [ext_resource type="Material" uid="uid://k1lt4dxcynel" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat4.017.tres" id="5_qryt5"]
+[ext_resource type="PackedScene" uid="uid://bdry0we6wlkr" path="res://Addons/MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="6_d53nt"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ovxbc"]
 _surfaces = [{
@@ -129,18 +130,14 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_2fjrm")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0219679, 7.9035, -6.08377)
-omni_range = 10.0
+[node name="Lamp" parent="." instance=ExtResource("6_d53nt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.7543, 5.22984)
 
-[node name="OmniLight3D4" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0908, 7.9035, 0.00441682)
-omni_range = 10.0
+[node name="Lamp2" parent="." instance=ExtResource("6_d53nt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.04053, 7.754, 0)
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00940603, 7.9035, 6.0884)
-omni_range = 10.0
+[node name="Lamp4" parent="." instance=ExtResource("6_d53nt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98528, 7.754, 0)
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.07118, 7.9035, -0.0241065)
-omni_range = 10.0
+[node name="Lamp3" parent="." instance=ExtResource("6_d53nt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.754, -4.508)

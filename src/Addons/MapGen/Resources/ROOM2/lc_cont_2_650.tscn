@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bh5r2dubv7yqj"]
+[gd_scene load_steps=16 format=3 uid="uid://bh5r2dubv7yqj"]
 
 [ext_resource type="Material" uid="uid://cbbavktb180ud" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat0.004.tres" id="1_se6h8"]
 [ext_resource type="Material" uid="uid://cgdg1adiww1l" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat1.004.tres" id="2_cxxli"]
@@ -11,6 +11,7 @@
 [ext_resource type="Material" uid="uid://7fs5fxpgkic5" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat8.002.tres" id="9_0eddc"]
 [ext_resource type="Material" uid="uid://bgwvy4h7lfips" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat9.002.tres" id="10_2mjol"]
 [ext_resource type="Material" uid="uid://bj7xd0rl50end" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat10.002.tres" id="11_0i6xq"]
+[ext_resource type="PackedScene" uid="uid://bdry0we6wlkr" path="res://Addons/MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="12_j5cnv"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_f0s02"]
 _surfaces = [{
@@ -257,26 +258,14 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_q5krs")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.68232, 2.61448)
-distance_fade_enabled = true
-distance_fade_begin = 20.0
-omni_range = 10.0
+[node name="Lamp" parent="." instance=ExtResource("12_j5cnv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.56759, 5.803)
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.68232, -2.55151)
-distance_fade_enabled = true
-distance_fade_begin = 20.0
-omni_range = 10.0
+[node name="Lamp3" parent="." instance=ExtResource("12_j5cnv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.56759, -4.50817)
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.86573, 3.68232, 0.40049)
-distance_fade_enabled = true
-distance_fade_begin = 20.0
-omni_range = 10.0
+[node name="Lamp5" parent="." instance=ExtResource("12_j5cnv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.34157, 3.60487, -0.76099)
 
-[node name="OmniLight3D4" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.38668, 3.68232, 6.44374)
-distance_fade_enabled = true
-distance_fade_begin = 20.0
-omni_range = 10.0
+[node name="Lamp6" parent="." instance=ExtResource("12_j5cnv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.34157, 3.60487, 5.20994)

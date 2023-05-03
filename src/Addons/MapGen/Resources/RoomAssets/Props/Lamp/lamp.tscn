@@ -12,6 +12,8 @@ visibility_range_end = 24.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.211882, 0)
+light_energy = 8.0
 distance_fade_enabled = true
 distance_fade_begin = 24.0
 omni_range = 16.0
+omni_attenuation = 2.0

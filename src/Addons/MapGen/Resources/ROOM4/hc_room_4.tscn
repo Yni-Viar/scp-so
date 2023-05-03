@@ -199,6 +199,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.54148, 7.65754)
 [node name="Lamp4" parent="." instance=ExtResource("9_wm1ma")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.72275, 3.54148, 0)
 
+[node name="Lamp5" parent="." instance=ExtResource("9_wm1ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.541, 0)
+
 [node name="Lamp3" parent="." instance=ExtResource("9_wm1ma")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.54148, -7.82887)
 

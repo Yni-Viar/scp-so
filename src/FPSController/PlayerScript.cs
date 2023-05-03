@@ -45,6 +45,7 @@ public partial class PlayerScript : CharacterBody3D
     Vector3 movement = new Vector3();
     Vector3 gravityVector = new Vector3();
 
+    bool paused = false;
     bool isOnGround = true;
     bool isSprinting = false;
     bool isWalking = false;
@@ -78,6 +79,18 @@ public partial class PlayerScript : CharacterBody3D
         {
             blinkTimer += delta;
         }
+
+        if (paused)
+        {
+            GetNode<Control>("UI/PauseMenu").Show();
+            Input.MouseMode = Input.MouseModeEnum.Visible;
+        }
+        else
+        {
+            GetNode<Control>("UI/PauseMenu").Hide();
+            Input.MouseMode = Input.MouseModeEnum.Captured;
+        }
+
         if (blinkTimer > blinkWaiting)
         {
             Blink();
@@ -102,9 +115,11 @@ public partial class PlayerScript : CharacterBody3D
         direction.X = -Input.GetActionStrength("move_left") + Input.GetActionStrength("move_right");
         direction = direction.Normalized().Rotated(Vector3.Up, Rotation.Y);
 
+
+
         if (Input.IsActionJustPressed("ui_cancel"))
         {
-            GetNode<Control>("UI/PauseMenu").Show();
+            paused = !paused;
         }
     }
 

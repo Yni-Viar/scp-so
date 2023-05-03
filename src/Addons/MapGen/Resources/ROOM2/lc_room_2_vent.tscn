@@ -219,21 +219,21 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_xvrdi")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0273781, 6.6766, -2.50981)
-distance_fade_enabled = true
-distance_fade_begin = 20.0
-omni_range = 10.0
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0248505, 6.6766, 3.22218)
-distance_fade_enabled = true
-distance_fade_begin = 20.0
-omni_range = 10.0
-
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(0.0823171, 0.457284, -0.885503, -0.042327, 0.889321, 0.455321, 0.995707, 0, 0.0925618, -2.46332, 5.27761, -0.00860202)
 light_color = Color(1, 0.572549, 0.627451, 1)
 distance_fade_enabled = true
 distance_fade_begin = 20.0
 spot_range = 10.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00855809, 6.94329, -2.5235)
+distance_fade_enabled = true
+distance_fade_begin = 24.0
+spot_range = 27.8388
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00855809, 6.94329, 3.2284)
+distance_fade_enabled = true
+distance_fade_begin = 24.0
+spot_range = 27.8388

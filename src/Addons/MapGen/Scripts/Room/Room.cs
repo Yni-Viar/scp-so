@@ -117,8 +117,8 @@ public partial class Room : Node3D
                     return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/lc_cont_2_012.tscn");
                 case "LC_cont2_650":
                     return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/lc_cont_2_650.tscn");
-                case "LC_room2_hall":
-                    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/lc_room_2_hall.tscn");
+                //case "LC_room2_hall":
+                //    return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/lc_room_2_hall.tscn");
                 case "LC_room2_sl":
                     return ResourceLoader.Load<PackedScene>("res://Addons/MapGen/Resources/ROOM2/lc_room_2_sl.tscn");
                 case "LC_room2_vent":

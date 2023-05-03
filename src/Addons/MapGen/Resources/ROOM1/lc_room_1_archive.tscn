@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cuhopdmrjulgp"]
+[gd_scene load_steps=9 format=3 uid="uid://cuhopdmrjulgp"]
 
 [ext_resource type="Material" uid="uid://4ucy6rv6imgh" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat0.008.tres" id="1_esfvy"]
 [ext_resource type="Material" uid="uid://d1ottj6hw32g6" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat1.008.tres" id="2_3sgf6"]
 [ext_resource type="Material" uid="uid://xavvgo8mgt7d" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat2.008.tres" id="3_4kaxx"]
 [ext_resource type="Material" uid="uid://bgfqyca6uy6l" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat3.008.tres" id="4_ucie5"]
+[ext_resource type="PackedScene" uid="uid://bdry0we6wlkr" path="res://Addons/MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="5_2lk5e"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_errax"]
 _surfaces = [{
@@ -116,17 +117,11 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_vq8rv")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6314, 3.26384, -2.55579)
-distance_fade_enabled = true
-distance_fade_begin = 20.0
-omni_range = 10.0
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6314, 3.44742, 7.7007)
-distance_fade_enabled = true
-distance_fade_begin = 20.0
-omni_range = 10.0
-
 [node name="entityspawn" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.90112, 0)
+
+[node name="Lamp" parent="." instance=ExtResource("5_2lk5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0534036, 3.57699, 7.88132)
+
+[node name="Lamp2" parent="." instance=ExtResource("5_2lk5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.53586, 3.577, 0.646758)

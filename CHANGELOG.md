@@ -3,7 +3,10 @@
 ## v.0.0.3 (indev)
 
 - Pause menu and exit to menu implemented.
-- Basic inventory
+- Basic inventory (not done)
+- Updated graphics
+- Basic settings
+- Added a sound in the endroom
 
 ## v.0.0.2
 - Picking up items

@@ -93,7 +93,6 @@ grow_vertical = 2
 texture = ExtResource("2_rgvtn")
 
 [node name="PauseMenu" type="Control" parent="UI"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -110,19 +109,6 @@ anchor_bottom = 1.0
 offset_right = 0.959961
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="ContinueButton" type="Button" parent="UI/PauseMenu/Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.491
-anchor_top = 0.919
-anchor_right = 0.491
-anchor_bottom = 0.919
-offset_left = -191.896
-offset_top = -32.52
-offset_right = 192.104
-offset_bottom = 31.48
-text = "Continue"
 
 [node name="ExitButton" type="Button" parent="UI/PauseMenu/Panel"]
 layout_mode = 1
@@ -203,6 +189,5 @@ grow_vertical = 2
 texture = ExtResource("5_bcdcv")
 
 [connection signal="body_entered" from="NPCInteract" to="." method="OnNpcInteractBodyEntered"]
-[connection signal="pressed" from="UI/PauseMenu/Panel/ContinueButton" to="UI/PauseMenu" method="OnContinueButtonPressed"]
 [connection signal="pressed" from="UI/PauseMenu/Panel/ExitButton" to="UI/PauseMenu" method="OnExitButtonPressed"]
 [connection signal="pressed" from="UI/GameOver/Exit" to="." method="OnExitPressed"]
