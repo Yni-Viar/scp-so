@@ -9,8 +9,8 @@ public partial class itemsystem : EditorPlugin
     {
         // Initialization of the plugin goes here.
         // Add the new type with a name, a parent type, a script and an icon.
-        var script = GD.Load<Script>("res://Addons/itemsystem/ItemPickup/Pickable.cs");
-        var texture = GD.Load<Texture2D>("res://Addons/itemsystem/custom_label.svg");
+        var script = GD.Load<Script>("res://addons/itemsystem/itemhold/Pickable.cs");
+        var texture = GD.Load<Texture2D>("res://addons/itemsystem/custom_label.svg");
         AddCustomType("Pickable", "RigidBody3D", script, texture);
     }
 

@@ -30,7 +30,7 @@ project/assembly_name="scpgame"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/itemsystem/plugin.cfg")
 
 [input]
 
