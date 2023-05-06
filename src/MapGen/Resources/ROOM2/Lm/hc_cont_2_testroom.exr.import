@@ -1,0 +1,26 @@
+[remap]
+
+importer="2d_array_texture"
+type="CompressedTexture2DArray"
+uid="uid://bg6jjet7edg67"
+path="res://.godot/imported/hc_cont_2_testroom.exr-6969cb57100e2dbdb6755249ea8b16a9.ctexarray"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://MapGen/Resources/ROOM2/Lm/hc_cont_2_testroom.exr"
+dest_files=["res://.godot/imported/hc_cont_2_testroom.exr-6969cb57100e2dbdb6755249ea8b16a9.ctexarray"]
+
+[params]
+
+compress/mode=3
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/channel_pack=1
+mipmaps/generate=false
+mipmaps/limit=-1
+slices/horizontal=1
+slices/vertical=1

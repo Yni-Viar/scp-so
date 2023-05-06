@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://hl5gron2t3dk"]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Facility.cs" id="1_7oawa"]
-[ext_resource type="Script" path="res://Addons/MapGen/Scripts/MapGenerator.cs" id="2_o55cs"]
+[ext_resource type="Script" path="res://MapGen/Scripts/MapGenerator.cs" id="2_o55cs"]
+
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_7oawa")

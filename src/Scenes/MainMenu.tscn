@@ -134,11 +134,13 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[b]v.0.0.3-indev[/b] [i](Pre-Alpha)[/i]
+text = "[b]v.0.0.3[/b] [i](Pre-Alpha)[/i]
 - Pause menu and exit to menu implemented.
 - Updated graphics
 - Basic settings
-- Added a sound in the endroom"
+- Added a sound in the endroom
+- Moved MapGen outside Addons folder, because it was conflicting with Godot plugins.
+- Pickable is now a Godot plugin."
 
 [node name="DevWarning" type="Label" parent="."]
 layout_mode = 1
