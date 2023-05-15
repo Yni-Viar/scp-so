@@ -7,7 +7,7 @@ public partial class PlayerScript : CharacterBody3D
      * Some parts used from elmarcoh (this script is also public domain).
      * 
      * I (Yni) added some parts, such as blinking or game over triggers.
-     * Currently the script is a big mess :(
+     * Currently the script is a big mess, so it need refactoring :(
      */
     RandomNumberGenerator rng = new RandomNumberGenerator();
     Node3D playerHead;
@@ -45,7 +45,11 @@ public partial class PlayerScript : CharacterBody3D
     Vector3 movement = new Vector3();
     Vector3 gravityVector = new Vector3();
 
+    bool specialScreen = false;
     bool paused = false;
+    bool invOpened = false;
+
+
     bool isOnGround = true;
     bool isSprinting = false;
     bool isWalking = false;
@@ -80,14 +84,30 @@ public partial class PlayerScript : CharacterBody3D
             blinkTimer += delta;
         }
 
-        if (paused)
+        if (specialScreen)
         {
-            GetNode<Control>("UI/PauseMenu").Show();
+            if (paused)
+            {
+                GetNode<Control>("UI/PauseMenu").Show();
+            }
+            else if (invOpened)
+            {
+                GetNode<ColorRect>("UI/InventoryContainer").Show();
+            }
+            GetNode<TextureRect>("UI/Cursor").Hide();
             Input.MouseMode = Input.MouseModeEnum.Visible;
         }
         else
         {
-            GetNode<Control>("UI/PauseMenu").Hide();
+            if (!paused)
+            {
+                GetNode<Control>("UI/PauseMenu").Hide();
+            }
+            else if (!invOpened)
+            {
+                GetNode<ColorRect>("UI/InventoryContainer").Hide();
+            }
+            GetNode<TextureRect>("UI/Cursor").Show();
             Input.MouseMode = Input.MouseModeEnum.Captured;
         }
 
@@ -119,7 +139,14 @@ public partial class PlayerScript : CharacterBody3D
 
         if (Input.IsActionJustPressed("ui_cancel"))
         {
+            specialScreen = !specialScreen;
             paused = !paused;
+        }
+
+        if (Input.IsActionJustPressed("inventory"))
+        {
+            specialScreen = !specialScreen;
+            invOpened = !invOpened;
         }
     }
 
@@ -148,7 +175,7 @@ public partial class PlayerScript : CharacterBody3D
                 }
             }
             //jumping
-            if (Input.IsActionJustPressed("move_jump"))
+            if (Input.IsActionJustPressed("move_jump") && isOnGround)
             {
                 isOnGround = false;
                 gravityVector = Vector3.Up * jump;
