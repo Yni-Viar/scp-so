@@ -7,8 +7,7 @@ public partial class PlayerUI : Control
      * As for now (16.05.2023), the player UI will be in separate script. (Except blinking)
      */
     bool specialScreen = false;
-    bool paused = false;
-    bool invOpened = false;
+    bool visible;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -19,27 +18,11 @@ public partial class PlayerUI : Control
 	{
         if (specialScreen)
         {
-            if (paused)
-            {
-                GetNode<Control>("PauseMenu").Show();
-            }
-            if (invOpened)
-            {
-                GetNode<ColorRect>("InventoryContainer").Show();
-            }
             GetNode<TextureRect>("Cursor").Hide();
             Input.MouseMode = Input.MouseModeEnum.Visible;
         }
         else
         {
-            if (!paused)
-            {
-                GetNode<Control>("PauseMenu").Hide();
-            }
-            if (!invOpened)
-            {
-                GetNode<ColorRect>("InventoryContainer").Hide();
-            }
             GetNode<TextureRect>("Cursor").Show();
             Input.MouseMode = Input.MouseModeEnum.Captured;
         }
@@ -50,13 +33,13 @@ public partial class PlayerUI : Control
         if (Input.IsActionJustPressed("ui_cancel"))
         {
             specialScreen = !specialScreen;
-            paused = !paused;
+            GetNode<Control>("PauseMenu").Visible = !(GetNode<Control>("PauseMenu").Visible);
         }
 
         if (Input.IsActionJustPressed("inventory"))
         {
             specialScreen = !specialScreen;
-            invOpened = !invOpened;
+            GetNode<ColorRect>("InventoryContainer").Visible = !(GetNode<ColorRect>("InventoryContainer").Visible);
         }
     }
 }

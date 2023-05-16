@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c83i87t1dwt0k"]
+[gd_scene load_steps=3 format=3 uid="uid://dcviffwgvwh4k"]
 
 [ext_resource type="PackedScene" uid="uid://bioi4dk6pxvt4" path="res://InventorySystem/InventorySlotDisplay.tscn" id="1"]
-[ext_resource type="Script" path="res://InventorySystem/InventoryDisplay.cs" id="1_wu38a"]
+[ext_resource type="Script" path="res://InventorySystem/InventoryDisplay.cs" id="1_yk3un"]
 
 [node name="InventoryDisplay" type="GridContainer"]
 anchors_preset = 15
@@ -10,7 +10,7 @@ anchor_bottom = 1.0
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 5
-script = ExtResource("1_wu38a")
+script = ExtResource("1_yk3un")
 
 [node name="InventorySlotDisplay" parent="." instance=ExtResource("1")]
 layout_mode = 2

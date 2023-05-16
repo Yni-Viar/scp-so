@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://bmquuud55yceh" path="res://Assets/Fonts/Righteous/Righteous-Regular.ttf" id="2_f87lq"]
 [ext_resource type="Texture2D" uid="uid://cymko5vnq4vsh" path="res://Assets/HUD/Blink.png" id="2_rgvtn"]
 [ext_resource type="Script" path="res://FPSController/PlayerCommon.cs" id="2_wvrqv"]
-[ext_resource type="PackedScene" uid="uid://d3iiw6qab007e" path="res://InventorySystem/InventoryContainer.tscn" id="3_both4"]
+[ext_resource type="PackedScene" uid="uid://gom6tjixj21n" path="res://InventorySystem/InventoryContainer.tscn" id="3_both4"]
 [ext_resource type="Script" path="res://FPSController/PlayerUI.cs" id="3_my63u"]
 [ext_resource type="Script" path="res://FPSController/PauseMenu.cs" id="4_1av73"]
 [ext_resource type="Texture2D" uid="uid://bmw4fxmnmwhov" path="res://Assets/HUD/arrow.png" id="5_bcdcv"]
