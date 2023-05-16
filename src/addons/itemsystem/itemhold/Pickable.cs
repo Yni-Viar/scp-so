@@ -3,6 +3,7 @@ using System;
 //BIG THANKS to: TheRadMatt and their repo under the MIT License: https://github.com/TheRadMatt/3D-FPP-Interaction-Demo
 public partial class Pickable : RigidBody3D
 {
+    [Export] bool carriable = true;
     bool pickedUp = false;
 
     PlayerScript holder;
@@ -25,13 +26,20 @@ public partial class Pickable : RigidBody3D
     {
         holder = player;
 
-        if (pickedUp)
+        if (carriable)
         {
-            Drop();
+            if (pickedUp)
+            {
+                Drop();
+            }
+            else
+            {
+                Carry();
+            }
         }
         else
         {
-            Carry();
+            //To be finished...
         }
     }
 

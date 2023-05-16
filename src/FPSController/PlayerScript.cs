@@ -45,11 +45,6 @@ public partial class PlayerScript : CharacterBody3D
     Vector3 movement = new Vector3();
     Vector3 gravityVector = new Vector3();
 
-    bool specialScreen = false;
-    bool paused = false;
-    bool invOpened = false;
-
-
     bool isOnGround = true;
     bool isSprinting = false;
     bool isWalking = false;
@@ -84,33 +79,6 @@ public partial class PlayerScript : CharacterBody3D
             blinkTimer += delta;
         }
 
-        if (specialScreen)
-        {
-            if (paused)
-            {
-                GetNode<Control>("UI/PauseMenu").Show();
-            }
-            else if (invOpened)
-            {
-                GetNode<ColorRect>("UI/InventoryContainer").Show();
-            }
-            GetNode<TextureRect>("UI/Cursor").Hide();
-            Input.MouseMode = Input.MouseModeEnum.Visible;
-        }
-        else
-        {
-            if (!paused)
-            {
-                GetNode<Control>("UI/PauseMenu").Hide();
-            }
-            else if (!invOpened)
-            {
-                GetNode<ColorRect>("UI/InventoryContainer").Hide();
-            }
-            GetNode<TextureRect>("UI/Cursor").Show();
-            Input.MouseMode = Input.MouseModeEnum.Captured;
-        }
-
         if (blinkTimer > blinkWaiting)
         {
             Blink();
@@ -134,20 +102,6 @@ public partial class PlayerScript : CharacterBody3D
         direction.Z = -Input.GetActionStrength("move_forward") + Input.GetActionStrength("move_backward");
         direction.X = -Input.GetActionStrength("move_left") + Input.GetActionStrength("move_right");
         direction = direction.Normalized().Rotated(Vector3.Up, Rotation.Y);
-
-
-
-        if (Input.IsActionJustPressed("ui_cancel"))
-        {
-            specialScreen = !specialScreen;
-            paused = !paused;
-        }
-
-        if (Input.IsActionJustPressed("inventory"))
-        {
-            specialScreen = !specialScreen;
-            invOpened = !invOpened;
-        }
     }
 
     public override void _PhysicsProcess(double delta)
