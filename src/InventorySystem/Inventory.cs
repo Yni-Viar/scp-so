@@ -33,7 +33,25 @@ public partial class Inventory : Node
     {
         Resource previousItem = items[itemIndex];
         items[itemIndex] = null;
+        if (previousItem is Item _item)
+        {
+            Pickable pickable = (Pickable)ResourceLoader.Load<PackedScene>(_item.pickablePath).Instantiate();
+            pickable.Position = GetParent().GetParent().GetParent().GetNode<Marker3D>("PlayerHead/PlayerHand").GlobalPosition;
+            GetTree().Root.GetNode<Node3D>("Game/Items").AddChild(pickable);
+        }
         EmitSignal(SignalName.ItemsChanged, new Godot.Collections.Array{itemIndex});
         return previousItem;
+    }
+
+    internal void AddItem(Resource item)
+    {
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i] == null)
+            {
+                SetItem(i, item);
+                break;
+            }
+        }
     }
 }

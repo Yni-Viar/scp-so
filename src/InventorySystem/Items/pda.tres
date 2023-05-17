@@ -7,3 +7,4 @@
 script = ExtResource("1_2qjje")
 name = "PDA"
 texture = ExtResource("2_2rvge")
+pickablePath = "res://Assets/Items/pda.tscn"
