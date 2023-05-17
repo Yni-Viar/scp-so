@@ -4,6 +4,8 @@ using System;
 public partial class Pickable : RigidBody3D
 {
     [Export] bool carriable = false;
+
+    //applies inly if carriable = true
     bool pickedUp = false;
 
     PlayerScript holder;

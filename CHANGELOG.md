@@ -1,6 +1,12 @@
 # Changelog
 The current state of the game - Pre-Alpha.
 ## Pre-Alpha versions
+### v.0.0.4 (2023.05.17)
+
+- Inventory
+- Item can be moved to inventory, and dropped from it.
+- Fixed infinity jump bug.
+
 ### v.0.0.3 (2023.05.06)
 
 - Pause menu and exit to menu implemented.

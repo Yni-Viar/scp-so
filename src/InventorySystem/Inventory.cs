@@ -12,6 +12,8 @@ public partial class Inventory : Node
     internal Godot.Collections.Array<Resource> items = new Godot.Collections.Array<Resource>{
         null, null, null, null, null, null, null, null, null, null
     };
+
+    //Sets item in specific slot
     internal Resource SetItem(int itemIndex, Resource item)
     {
         Resource previousItem = items[itemIndex];
@@ -20,6 +22,7 @@ public partial class Inventory : Node
         return previousItem;
     }
 
+    //Swaps items
     internal void SwapItems(int itemIndex, int targetItemIndex)
     {
         Resource targetItem = items[targetItemIndex];
@@ -29,10 +32,13 @@ public partial class Inventory : Node
         EmitSignal(SignalName.ItemsChanged, new Godot.Collections.Array{itemIndex, targetItemIndex});
     }
 
+    //Remove items from inventory
     internal Resource RemoveItem(int itemIndex)
     {
         Resource previousItem = items[itemIndex];
         items[itemIndex] = null;
+
+        //Spawn item ingame
         if (previousItem is Item _item)
         {
             Pickable pickable = (Pickable)ResourceLoader.Load<PackedScene>(_item.pickablePath).Instantiate();
@@ -43,6 +49,7 @@ public partial class Inventory : Node
         return previousItem;
     }
 
+    //Add items to inventory, using FOR + SetItem()
     internal void AddItem(Resource item)
     {
         for (int i = 0; i < items.Count; i++)
