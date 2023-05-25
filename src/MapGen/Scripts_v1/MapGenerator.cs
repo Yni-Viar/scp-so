@@ -1,3 +1,7 @@
+/*
+
+THIS MAP GENERATOR IS DEPRECATED.
+
 using Godot;
 using System;
 using System.Threading.Tasks;
@@ -290,7 +294,7 @@ public partial class MapGenerator : Node
             }
         }
         */
-
+        /*
         int MaxRooms = 55 * MapSize.X / 20;
         MaxRooms = Mathf.Max(MaxRooms, Room1Amount[0]+Room1Amount[1]+Room1Amount[2]+1);
         MaxRooms = Mathf.Max(MaxRooms, Room2Amount[0]+Room2Amount[1]+Room2Amount[2]+1);
@@ -589,4 +593,4 @@ public partial class MapGenerator : Node
     {
         
     }*/
-}
+//}
