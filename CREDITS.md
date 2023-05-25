@@ -1,11 +1,8 @@
 # Credits
 ## Code
-### Map generation algorithm (license - [CC-BY-SA 3.0](/LICENSE.CCBYSA3))
-
-- Map generation script created by VirtualBrightPlayz
-You can see it working in their Unity project ( https://github.com/VirtualBrightPlayz/SCPCBRE )
-
-- Room spawner created by Yni Viar.
+### Map Generation algorithm v2 (license - [MIT](/src/MapGen/Scripts/LICENSE))
+- Map Generator created by schloppa.
+- Converted to 3d and added room spawner by Yni.
 
 ### SCP-173 AI and SCP-650 AI (license - [MIT](/LICENSE.MIT))
 - Made by Yni.

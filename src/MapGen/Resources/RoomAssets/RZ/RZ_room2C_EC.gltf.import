@@ -1,0 +1,87 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://b2as5wgc4so1w"
+path="res://.godot/imported/RZ_room2C_EC.gltf-12126bbf4772ac90866024e4ce260bf1.scn"
+
+[deps]
+
+source_file="res://MapGen/Resources/RoomAssets/RZ/RZ_room2C_EC.gltf"
+dest_files=["res://.godot/imported/RZ_room2C_EC.gltf-12126bbf4772ac90866024e4ce260bf1.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"mat0.015": {
+"use_external/enabled": true,
+"use_external/path": "res://MapGen/Resources/RoomAssets/RZ/Mat04/mat0.015.tres"
+},
+"mat1.015": {
+"use_external/enabled": true,
+"use_external/path": "res://MapGen/Resources/RoomAssets/RZ/Mat04/mat1.015.tres"
+},
+"mat10.004": {
+"use_external/enabled": true,
+"use_external/path": "res://MapGen/Resources/RoomAssets/RZ/Mat04/mat10.004.tres"
+},
+"mat11.004": {
+"use_external/enabled": true,
+"use_external/path": "res://MapGen/Resources/RoomAssets/RZ/Mat04/mat11.004.tres"
+},
+"mat12.001": {
+"use_external/enabled": true,
+"use_external/path": "res://MapGen/Resources/RoomAssets/RZ/Mat04/mat12.001.tres"
+},
+"mat2.015": {
+"use_external/enabled": true,
+"use_external/path": "res://MapGen/Resources/RoomAssets/RZ/Mat04/mat2.015.tres"
+},
+"mat3.015": {
+"use_external/enabled": true,
+"use_external/path": "res://MapGen/Resources/RoomAssets/RZ/Mat04/mat3.015.tres"
+},
+"mat4.012": {
+"use_external/enabled": true,
+"use_external/path": "res://MapGen/Resources/RoomAssets/RZ/Mat04/mat4.012.tres"
+},
+"mat5.012": {
+"use_external/enabled": true,
+"use_external/path": "res://MapGen/Resources/RoomAssets/RZ/Mat04/mat5.012.tres"
+},
+"mat6.010": {
+"use_external/enabled": true,
+"use_external/path": "res://MapGen/Resources/RoomAssets/RZ/Mat04/mat6.010.tres"
+},
+"mat7.007": {
+"use_external/enabled": true,
+"use_external/path": "res://MapGen/Resources/RoomAssets/RZ/Mat04/mat7.007.tres"
+},
+"mat8.006": {
+"use_external/enabled": true,
+"use_external/path": "res://MapGen/Resources/RoomAssets/RZ/Mat04/mat8.006.tres"
+},
+"mat9.004": {
+"use_external/enabled": true,
+"use_external/path": "res://MapGen/Resources/RoomAssets/RZ/Mat04/mat9.004.tres"
+}
+}
+}
+gltf/embedded_image_handling=1

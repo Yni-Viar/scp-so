@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ceibocehbei5d"]
+
+[ext_resource type="Texture2D" uid="uid://c0xvs0esq0jjh" path="res://MapGen/Resources/RoomAssets/RZ/scplogo.jpg" id="1_digug"]
+
+[resource]
+resource_name = "mat11.004"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_digug")
+roughness = 0.950589

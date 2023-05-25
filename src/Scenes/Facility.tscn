@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://deu5snsyufkck"]
 
 [ext_resource type="Script" path="res://Scripts/Facility.cs" id="1_7oawa"]
-[ext_resource type="Script" path="res://MapGen/Scripts/MapGenerator.cs" id="2_o55cs"]
+[ext_resource type="Script" path="res://MapGen/Scripts/Generator.cs" id="2_adnsv"]
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_7oawa")
 spawn650 = false
 
-[node name="MapGen" type="Node" parent="."]
-script = ExtResource("2_o55cs")
+[node name="MapGen" type="Node3D" parent="."]
+script = ExtResource("2_adnsv")
 
 [node name="Entities" type="Node3D" parent="."]
 
