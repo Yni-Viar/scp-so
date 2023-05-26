@@ -175,16 +175,19 @@ public partial class PlayerScript : CharacterBody3D
             {
                 if (holdingItem != null)
                 {
+                    //drop holding item
                     holdingItem.PickUpItem(this);
                 }
                 else
                 {
-                    //Debug: first iter
                     var collidedWith = ray.GetCollider();
-                    if (collidedWith.HasMethod("PickUpItem"))
+                    if (collidedWith.HasMethod("PickUpItem")) //pick up item.
                     {
-                        //Debug: Second iter
                         collidedWith.Call("PickUpItem", this);
+                    }
+                    if (collidedWith is ButtonInteract)
+                    {
+                        collidedWith.Call("Interact", this);
                     }
                 }
             }

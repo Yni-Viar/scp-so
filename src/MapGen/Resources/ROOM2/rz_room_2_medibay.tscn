@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://16tfnk1fda44"]
+[gd_scene load_steps=19 format=3 uid="uid://16tfnk1fda44"]
 
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat0.002.tres" id="1_o1uva"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat1.002.tres" id="2_sb2ii"]
@@ -14,6 +14,7 @@
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat11.002.tres" id="12_b2h4f"]
 [ext_resource type="PackedScene" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="13_cymhb"]
 [ext_resource type="PackedScene" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="14_hh74r"]
+[ext_resource type="PackedScene" uid="uid://bff0n6tx6aq40" path="res://MapGen/Resources/Doors/DoorLCZ.tscn" id="15_lg5on"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_r80jr"]
 _surfaces = [{
@@ -291,3 +292,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7973, 2.669, -6.57433)
 
 [node name="Lamp" parent="." instance=ExtResource("14_hh74r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.29689, 3.57438, 3.02765)
+
+[node name="Door" parent="." instance=ExtResource("15_lg5on")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.63869, 0, -6.36068)
+
+[node name="Door2" parent="." instance=ExtResource("15_lg5on")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.06563, 0, -3.83865)
