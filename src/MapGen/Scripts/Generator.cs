@@ -71,7 +71,6 @@ public partial class Generator : Node3D
         Initialize();
         GenerateMap();
         GenerateRooms();
-        SpawnDoors(mapGen);
     }
 
     void Initialize()
@@ -404,40 +403,6 @@ public partial class Generator : Node3D
                         rm.RotationDegrees = new Vector3(0, rooms[x, y].angle, 0);
                         AddChild(rm);
                         break;
-                }
-            }
-        }
-    }
-
-    void SpawnDoors(int[,] rooms)
-    {
-        for (int x = 0; x < width; x++)
-        {
-            for (int y = 0; y < height; y++)
-            {
-                Node3D d;
-                
-                if (x != width - 1)
-                {
-                    if (rooms[x, y] == 1 && rooms[x + 1, y] == 1)
-                    {
-                        d = (Node3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/Doors/DoorLCZ.tscn").Instantiate();
-                        d.Position = new Vector3(x * 20.48f + 10.24f, 0, y*20.48f);
-                        d.RotationDegrees = new Vector3(0, 90, 0);
-                        AddChild(d);
-                        break;
-                    }
-                }
-                if (y != height - 1)
-                {
-                    if (rooms[x, y] == 1 && rooms[x, y + 1] == 1)
-                    {
-                        d = (Node3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/Doors/DoorLCZ.tscn").Instantiate();
-                        d.Position = new Vector3(x * 20.48f, 0, y*20.48f + 10.24f);
-                        d.RotationDegrees = new Vector3(0, 0, 0);
-                        AddChild(d);
-                        break;
-                    }
                 }
             }
         }
