@@ -135,7 +135,10 @@ theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "[b]v.0.0.5-dev[/b] [i](Pre-Alpha)[/i]
-- Added new map generator, which fixes the last room bug."
+- Added new map generator, which fixes the last room bug.
+- Regress: only Research Zone spawns.
+- Added doors.
+- Item pickup sound."
 
 [node name="DevWarning" type="Label" parent="."]
 layout_mode = 1

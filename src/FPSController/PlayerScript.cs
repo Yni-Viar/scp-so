@@ -22,7 +22,7 @@ public partial class PlayerScript : CharacterBody3D
     TextureRect gameOverScreen;
     Label gameOverText;
     AudioStreamPlayer3D walkSounds;
-    AudioStreamPlayer3D gameOverSound;
+    AudioStreamPlayer3D interactSound;
 
     //blinking
     double blinkTimer = 0d;
@@ -63,7 +63,7 @@ public partial class PlayerScript : CharacterBody3D
         bottomRaycast = GetNode<RayCast3D>("PlayerFeet/StairCheck");
         topRaycast = GetNode<RayCast3D>("PlayerFeet/StairCheck2");
         walkSounds = GetNode<AudioStreamPlayer3D>("WalkSounds");
-        gameOverSound = GetNode<AudioStreamPlayer3D>("GameOverSound");
+        interactSound = GetNode<AudioStreamPlayer3D>("InteractSound");
         gameOverScreen = GetNode<TextureRect>("UI/GameOver/GameOverScreen");
         gameOverText = GetNode<Label>("UI/GameOver/GameOverMessage");
         acceleration = groundAcceleration;
@@ -184,6 +184,8 @@ public partial class PlayerScript : CharacterBody3D
                     if (collidedWith.HasMethod("PickUpItem")) //pick up item.
                     {
                         collidedWith.Call("PickUpItem", this);
+                        interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Interact/PickItem" + Convert.ToString(rng.RandiRange(1, 2)) + ".ogg");;
+                        interactSound.Play();
                     }
                     if (collidedWith is ButtonInteract)
                     {
@@ -221,8 +223,8 @@ public partial class PlayerScript : CharacterBody3D
         //CRUNCH!!!
         if (body.Name == "scp173" && !gameOver)
         {
-            gameOverSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/173/NeckSnap" + rng.RandiRange(1, 3) + ".ogg");
-            gameOverSound.Play();
+            interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/173/NeckSnap" + rng.RandiRange(1, 3) + ".ogg");
+            interactSound.Play();
             GameOver(0);
         }
     }
