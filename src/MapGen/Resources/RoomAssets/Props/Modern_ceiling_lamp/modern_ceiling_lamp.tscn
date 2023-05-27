@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://bratli6m21b8k"]
 
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/materials/modern_ceiling_lamp_01_glass.tres" id="1_gjw6f"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/materials/modern_ceiling_lamp_01.tres" id="2_ah316"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/materials/modern_ceiling_globe.tres" id="3_k7217"]
-
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_7u8t7"]
 _surfaces = [{
@@ -93,5 +92,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.341581, 0)
 light_size = 0.05
 distance_fade_enabled = true
 distance_fade_begin = 24.0
-omni_range = 8.0
+omni_range = 12.0
 omni_attenuation = 2.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3]
+[gd_scene load_steps=17 format=3 uid="uid://hkoecc6mgdl7"]
 
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat0.tres" id="1_2layf"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat1.tres" id="2_du4le"]
@@ -12,8 +12,7 @@
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat9.tres" id="10_qjg5y"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat10.tres" id="11_qshhj"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat11.tres" id="12_4w6qd"]
-[ext_resource type="PackedScene" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="13_b252a"]
-
+[ext_resource type="PackedScene" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="13_3dfeq"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_vokvk"]
 _surfaces = [{
@@ -282,9 +281,6 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_ktqko")
 
-[node name="modern_ceiling_lamp_01_4k" parent="." instance=ExtResource("13_b252a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0124592, 5.88239, 8.04476)
-
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.94672, 9.15215, -4.39707)
 distance_fade_enabled = true
@@ -308,3 +304,6 @@ spot_angle = 24.5418
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8995, 8.65149, -4.38676)
 distance_fade_enabled = true
 distance_fade_begin = 24.0
+
+[node name="Lamp" parent="." instance=ExtResource("13_3dfeq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00362754, 6.86411, 7.56634)

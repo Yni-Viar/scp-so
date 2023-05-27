@@ -1,14 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://deu5snsyufkck"]
+[gd_scene load_steps=4 format=3 uid="uid://bjcfcpj4q2im4"]
 
 [ext_resource type="Script" path="res://Scripts/Facility.cs" id="1_7oawa"]
-[ext_resource type="Script" path="res://MapGen/Scripts/Generator.cs" id="2_adnsv"]
+[ext_resource type="Script" path="res://MapGen/Scripts/GeneratorRZ.cs" id="2_qlw46"]
+[ext_resource type="Script" path="res://MapGen/Scripts/GeneratorLCZ.cs" id="3_3hb58"]
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_7oawa")
 spawn650 = false
 
-[node name="MapGen" type="Node3D" parent="."]
-script = ExtResource("2_adnsv")
+[node name="MapGenRZ" type="Node3D" parent="."]
+script = ExtResource("2_qlw46")
+
+[node name="MapGenLCZ" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
+script = ExtResource("3_3hb58")
 
 [node name="Entities" type="Node3D" parent="."]
 

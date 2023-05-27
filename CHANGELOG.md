@@ -1,6 +1,13 @@
 # Changelog
 The current state of the game - Pre-Alpha.
 ## Pre-Alpha versions
+### v.0.0.5 (2023.05.27)
+
+- Added new map generator, which fixes the last room bug.
+- Regress: Heavy Containment Zone don't spawn (due to the zone has few rooms), there is no way to transfer between zones.
+- Added doors.
+- Item pickup sound.
+
 ### v.0.0.4 (2023.05.17)
 
 - Inventory
