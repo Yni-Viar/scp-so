@@ -22,7 +22,7 @@ public partial class GeneratorLCZ : Node
         room4 = 4
     }
     [Export]
-    int width = 12, height = 12;
+    int width = 10, height = 10;
     [Export]
     int iterations = 32;
     struct room
@@ -57,9 +57,9 @@ public partial class GeneratorLCZ : Node
     }
     List<walker> walkers = new List<walker>();
     [Export]
-    int maxWalkers = 8;
+    int maxWalkers = 2;
     [Export(PropertyHint.Range, "0,1,0.05")]
-    float walkerDirChange = 0.5f, walkerSpawn = 0.05f;
+    float walkerDirChange = 0.2f, walkerSpawn = 0.05f;
     [Export(PropertyHint.Range, "0,1,0.05")]
     float walkerDestroy = 0.05f;
     [Export(PropertyHint.Range, "0,1,0.05")]
@@ -285,7 +285,6 @@ public partial class GeneratorLCZ : Node
 
         int currRoom1 = 0;
         int currRoom2 = 0;
-        int currRoom2c = 0;
         
         for (int x = 0; x < width; x++)
         {
@@ -345,7 +344,7 @@ public partial class GeneratorLCZ : Node
                                 AddChild(rm);
                                 currRoom2++;
                                 break;
-                            case 4:
+                            case 3:
                                 rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM2/lc_room_2_sl.tscn").Instantiate();
                                 rm.Position = new Vector3(x * 20.48f, 0, y*20.48f);
                                 rm.RotationDegrees = new Vector3(0, rooms[x, y].angle, 0);
