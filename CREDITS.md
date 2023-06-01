@@ -1,8 +1,7 @@
 # Credits
 ## Code
-### Map Generation algorithm v2 (license - [MIT](/src/MapGen/Scripts/LICENSE))
-- Map Generator created by schloppa.
-- Converted to 3d and added room spawner by Yni.
+### Map Generation algorithm v3 (license - [MIT](/src/MapGen/Scripts/LICENSE))
+- Made by Yni.
 
 ### SCP-173 AI and SCP-650 AI (license - [MIT](/LICENSE.MIT))
 - Made by Yni.
