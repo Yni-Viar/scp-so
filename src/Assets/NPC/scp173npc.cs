@@ -22,6 +22,7 @@ public partial class scp173npc : CharacterBody3D
 		{
 			var playerDirection = (target.GlobalPosition - this.GlobalPosition).Normalized();
 			Velocity += speed * playerDirection * (float)delta;
+            this.LookAt(target.GlobalPosition);
 
 			walkSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/173/Rattle" + rng.RandiRange(1, 3) + ".ogg");
 			walkSound.Play();

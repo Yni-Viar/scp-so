@@ -243,7 +243,7 @@ public partial class MapGeneratorRZ : Node3D
 
         int currRoom1 = 0;
         int currRoom2 = 0;
-        int currRoom2c = 0;
+        //int currRoom2c = 0;
         
         for (int x = 0; x < width; x++)
         {
@@ -257,19 +257,26 @@ public partial class MapGeneratorRZ : Node3D
                         switch (currRoom1)
                         {
                             case 0:
+                                rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM1/rz_ckpt_1.tscn").Instantiate();
+                                rm.Position = new Vector3(x * 20.48f, 0, y*20.48f);
+                                rm.RotationDegrees = new Vector3(0, mapGen[x, y].angle, 0);
+                                AddChild(rm);
+                                currRoom1++;
+                                break;
+                            /*case 1:
                                 rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM1/rz_exit_1_gatea.tscn").Instantiate();
                                 rm.Position = new Vector3(x * 20.48f, 0, y*20.48f);
                                 rm.RotationDegrees = new Vector3(0, mapGen[x, y].angle, 0);
                                 AddChild(rm);
                                 currRoom1++;
                                 break;
-                            case 1:
+                            case 2:
                                 rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM1/rz_exit_1_gateb.tscn").Instantiate();
                                 rm.Position = new Vector3(x * 20.48f, 0, y*20.48f);
                                 rm.RotationDegrees = new Vector3(0, mapGen[x, y].angle, 0);
                                 AddChild(rm);
                                 currRoom1++;
-                                break;
+                                break;*/
                             default:
                                 rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM1/lc_room_1_endroom.tscn").Instantiate();
                                 rm.Position = new Vector3(x * 20.48f, 0, y*20.48f);
@@ -333,7 +340,7 @@ public partial class MapGeneratorRZ : Node3D
                         }
                         break;
                     case RoomTypes.room2c:
-                        switch (currRoom2c)
+                        /*switch (currRoom2c)
                         {
                             case 0:
                                 rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM2C/rz_room_2c_ec.tscn").Instantiate();
@@ -348,7 +355,12 @@ public partial class MapGeneratorRZ : Node3D
                                 rm.RotationDegrees = new Vector3(0, mapGen[x, y].angle, 0);
                                 AddChild(rm);
                                 break;
-                        }
+                        }*/
+
+                        rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM2C/rz_room_2c.tscn").Instantiate();
+                        rm.Position = new Vector3(x * 20.48f, 0, y*20.48f);
+                        rm.RotationDegrees = new Vector3(0, mapGen[x, y].angle, 0);
+                        AddChild(rm);
                         break;
                     case RoomTypes.room3:
                         rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM3/rz_room_3.tscn").Instantiate();
@@ -396,7 +408,7 @@ public partial class MapGeneratorRZ : Node3D
         {
             Generate(rng.Randi(), 24);
         }
-        while(room1Amount < 2);
+        while(room1Amount < 1 && room2Amount < 1);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

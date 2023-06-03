@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ckr6epqdel5br"
+uid="uid://ddasxusg8jtcl"
 path="res://.godot/imported/HC_cont1_173.gltf-a2c9466b57cef093ebb2e30000e73984.scn"
 
 [deps]
@@ -30,41 +30,33 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
-"mat0.005": {
+"mat0.003": {
 "use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/HCZ/Mat/mat0.005.tres"
+"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat0.003.tres"
 },
-"mat1.005": {
+"mat1.003": {
 "use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/HCZ/Mat/mat1.005.tres"
+"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat1.003.tres"
 },
-"mat2.005": {
+"mat2.003": {
 "use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/HCZ/Mat/mat2.005.tres"
+"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat2.003.tres"
 },
-"mat3.005": {
+"mat3.003": {
 "use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/HCZ/Mat/mat3.005.tres"
+"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat3.003.tres"
 },
-"mat4.005": {
+"mat4.003": {
 "use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/HCZ/Mat/mat4.005.tres"
+"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat4.003.tres"
 },
-"mat5.005": {
+"mat5.003": {
 "use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/HCZ/Mat/mat5.005.tres"
+"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat5.003.tres"
 },
-"mat6.005": {
+"mat6.003": {
 "use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/HCZ/Mat/mat6.005.tres"
-},
-"mat7.002": {
-"use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/HCZ/Mat/mat7.002.tres"
-},
-"mat8.002": {
-"use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/HCZ/Mat/mat8.002.tres"
+"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat6.003.tres"
 }
 }
 }

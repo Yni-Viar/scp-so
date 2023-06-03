@@ -136,7 +136,12 @@ theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "[b]v.0.0.6 - dev[/b] [i](Pre-Alpha)[/i]
 - Map Generator v2 was not suitable for the game - then meet Map Generator v3 - made by me!
-- Added door generation."
+- Added door generation - because new map gen supports this!
+- Heavy Containment Zone is back!
+- SCP-173 now rotates to player, when blinking.
+
+[b]KNOWN ISSUES:[/b]
+- Rooms in Light Containment Zone can overlap because of big size."
 
 [node name="DevWarning" type="Label" parent="."]
 layout_mode = 1

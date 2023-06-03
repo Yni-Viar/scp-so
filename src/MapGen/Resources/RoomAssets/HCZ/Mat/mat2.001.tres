@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bpntaa31m2870"]
+
+[ext_resource type="Texture2D" uid="uid://c5hk3hq5jw67f" path="res://MapGen/Resources/RoomAssets/HCZ/metal.jpg" id="1_khsxk"]
+
+[resource]
+resource_name = "mat2.001"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_khsxk")
+roughness = 0.950589

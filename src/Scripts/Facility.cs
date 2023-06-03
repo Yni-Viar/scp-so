@@ -12,7 +12,7 @@ public partial class Facility : Node3D
     [Export] bool spawn650 = true;
 
     CharacterBody3D scp650Scene;
-	string[] spawnLocation = new string[] {"MapGenLCZ/LC_room1_archive/entityspawn", "MapGenRZ/RZ_room2_offices/entityspawn"/*, "MapGenHCZ/HC_cont1_173/entityspawn"*/};
+	string[] spawnLocation = new string[] {"MapGenLCZ/LC_room1_archive/entityspawn", "MapGenRZ/RZ_room2_offices/entityspawn", "MapGenHCZ/HC_cont1_173/entityspawn"};
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -20,7 +20,7 @@ public partial class Facility : Node3D
         graphics = GetNode<WorldEnvironment>("WorldEnvironment");
         //Spawn player
         playerScene = (CharacterBody3D)ResourceLoader.Load<PackedScene>("res://FPSController/PlayerScene.tscn").Instantiate();
-        playerScene.Position = GetNode<Marker3D>(spawnLocation[rng.RandiRange(0, 1)]).GlobalPosition;
+        playerScene.Position = GetNode<Marker3D>(spawnLocation[rng.RandiRange(0, 2)]).GlobalPosition;
         GetNode<Node3D>("Entities").AddChild(playerScene);
 
         if (spawn650)

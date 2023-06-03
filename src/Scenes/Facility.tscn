@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjcfcpj4q2im4"]
+[gd_scene load_steps=5 format=3 uid="uid://bjcfcpj4q2im4"]
 
 [ext_resource type="Script" path="res://Scripts/Facility.cs" id="1_7oawa"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorRZ.cs" id="2_q22e2"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorLCZ.cs" id="3_62und"]
+[ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorHCZ.cs" id="4_wob3a"]
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_7oawa")
@@ -14,6 +15,10 @@ script = ExtResource("2_q22e2")
 [node name="MapGenLCZ" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
 script = ExtResource("3_62und")
+
+[node name="MapGenHCZ" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -300, 0)
+script = ExtResource("4_wob3a")
 
 [node name="Entities" type="Node3D" parent="."]
 

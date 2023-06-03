@@ -14,3 +14,5 @@ fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
 fog_density = 0.15
 fog_height = 1.25
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
