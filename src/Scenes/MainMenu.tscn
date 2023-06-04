@@ -139,6 +139,7 @@ text = "[b]v.0.0.6 - dev[/b] [i](Pre-Alpha)[/i]
 - Added door generation - because new map gen supports this!
 - Heavy Containment Zone is back!
 - SCP-173 now rotates to player, when blinking.
+- Fixed dropping items out of the map
 
 [b]KNOWN ISSUES:[/b]
 - Rooms in Light Containment Zone can overlap because of big size."

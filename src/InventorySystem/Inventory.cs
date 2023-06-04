@@ -42,7 +42,7 @@ public partial class Inventory : Node
         if (previousItem is Item _item)
         {
             Pickable pickable = (Pickable)ResourceLoader.Load<PackedScene>(_item.pickablePath).Instantiate();
-            pickable.Position = GetParent().GetParent().GetParent().GetNode<Marker3D>("PlayerHead/PlayerHand").GlobalPosition;
+            pickable.Position = GetParent().GetParent().GetParent().GetNode<Marker3D>("PlayerHead/ItemSpawn").GlobalPosition;
             GetTree().Root.GetNode<Node3D>("Game/Items").AddChild(pickable);
         }
         EmitSignal(SignalName.ItemsChanged, new Godot.Collections.Array{itemIndex});
