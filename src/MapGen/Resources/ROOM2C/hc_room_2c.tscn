@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=11 format=3 uid="uid://cixdgx61vbd0d"]
 
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat0.011.tres" id="1_733q3"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat1.011.tres" id="2_epghk"]
@@ -7,7 +7,6 @@
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat4.008.tres" id="5_aah53"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat5.008.tres" id="6_a4o40"]
 [ext_resource type="PackedScene" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="7_cnlbm"]
-
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_nsptd"]
 _surfaces = [{
@@ -145,15 +144,15 @@ data = PackedVector3Array(-3.36, 0, 5.76, 3.36, 0, 5.76, 3.36, 0, 10.24, -3.36, 
 [node name="HC_room2C" type="StaticBody3D"]
 
 [node name="HC_room2C2" type="MeshInstance3D" parent="."]
-visibility_range_end = 24.0
+visibility_range_end = 48.0
 mesh = SubResource("ArrayMesh_35vkh")
 skeleton = NodePath("")
 
-[node name="Lamp" parent="HC_room2C2" instance=ExtResource("7_cnlbm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.521, 4.7575)
-
-[node name="Lamp2" parent="HC_room2C2" instance=ExtResource("7_cnlbm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.515, 3.521, 0)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConcavePolygonShape3D_qljpo")
+
+[node name="Lamp" parent="." instance=ExtResource("7_cnlbm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.521, 4.7575)
+
+[node name="Lamp2" parent="." instance=ExtResource("7_cnlbm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.515, 3.521, 0)

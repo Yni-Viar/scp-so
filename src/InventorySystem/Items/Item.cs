@@ -4,19 +4,27 @@ using System;
 public partial class Item : Resource
 {
     [Export]
-    public string name { get; set; }
+    public string Name { get; set; }
 
     [Export]
-    public Texture2D texture { get; set; }
+    public Texture2D Texture { get; set; }
 
     [Export]
-    public string pickablePath { get; set; }
+    public string PickablePath { get; set; }
 
-    public Item() : this(null, null, null) {}
-    public Item(string _name, Texture2D _texture, string _pickablePath)
+    [Export]
+    public bool OneTimeUse { get; set; }
+
+    public Item() : this(null, null, null, true) {}
+    public Item(string name, Texture2D texture, string pickablePath, bool oneTimeUse)
     {
-        name = _name;
-        texture = _texture;
-        pickablePath = _pickablePath;
+        Name = name;
+        Texture = texture;
+        PickablePath = pickablePath;
+        OneTimeUse = oneTimeUse;
+    }
+
+    public void OnUsed()
+    {
     }
 }

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b345bk26jamix"]
+[gd_scene load_steps=7 format=3 uid="uid://b345bk26jamix"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu/MainMenu.cs" id="1_s5ksq"]
 [ext_resource type="Texture2D" uid="uid://boboxmvoqy61t" path="res://Assets/Menu/MainMenuForeground.png" id="2_647vp"]
 [ext_resource type="FontFile" uid="uid://bmquuud55yceh" path="res://Assets/Fonts/Righteous/Righteous-Regular.ttf" id="3_gq784"]
+[ext_resource type="FontFile" uid="uid://cqaasvtiakcsw" path="res://Assets/Fonts/sans-normalcy-main/Normalcy-v0.1.7.otf" id="3_jfxly"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/SettingsPanel.cs" id="4_80vda"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/CreditsPanel.cs" id="4_okfnt"]
 
@@ -40,11 +41,11 @@ anchor_top = 0.207
 anchor_right = 0.112
 anchor_bottom = 0.207
 offset_left = -167.04
-offset_top = -95.56
+offset_top = -121.56
 offset_right = 168.96
 offset_bottom = 96.44
-theme_override_fonts/font = ExtResource("3_gq784")
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("3_jfxly")
+theme_override_font_sizes/font_size = 64
 text = "SCP game"
 
 [node name="Play" type="Button" parent="Title"]
@@ -139,10 +140,15 @@ text = "[b]v.0.0.6 - dev[/b] [i](Pre-Alpha)[/i]
 - Added door generation - because new map gen supports this!
 - Heavy Containment Zone is back!
 - SCP-173 now rotates to player, when blinking.
+- Added JSON support (currently is is only used by items)
+- Fixed the crunch workaround in SCP-173 (this workaround was made due to bad knowledge :) )
 - Fixed dropping items out of the map
+- Fixed item dupe.
 
 [b]KNOWN ISSUES:[/b]
-- Rooms in Light Containment Zone can overlap because of big size."
+- Rooms can be overlapped with another room, or if it size is too large.
+- The loading screen loads only once
+"
 
 [node name="DevWarning" type="Label" parent="."]
 layout_mode = 1

@@ -12,7 +12,7 @@
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat9.002.tres" id="10_doxm8"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat10.002.tres" id="11_h1wb5"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat11.002.tres" id="12_b2h4f"]
-[ext_resource type="PackedScene" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="13_cymhb"]
+[ext_resource type="PackedScene" uid="uid://bratli6m21b8k" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="13_cymhb"]
 [ext_resource type="PackedScene" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="14_hh74r"]
 [ext_resource type="PackedScene" uid="uid://bff0n6tx6aq40" path="res://MapGen/Resources/Doors/DoorLCZ.tscn" id="15_lg5on"]
 
@@ -273,7 +273,7 @@ data = PackedVector3Array(-10.24, 10.24, -3.84, 2.56, 10.24, -3.84, 2.56, -10.24
 
 [node name="RZ_room2_medibay2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
-visibility_range_end = 24.0
+visibility_range_end = 48.0
 mesh = SubResource("ArrayMesh_uii11")
 skeleton = NodePath("")
 

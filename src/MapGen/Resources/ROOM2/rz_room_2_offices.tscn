@@ -11,8 +11,8 @@
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat8.003.tres" id="9_x6fjx"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat9.003.tres" id="10_6g2jp"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat10.003.tres" id="11_ia1qy"]
-[ext_resource type="PackedScene" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="12_82mhx"]
-[ext_resource type="PackedScene" uid="uid://sgl0nj8hc13t" path="res://Assets/Items/pda.tscn" id="13_odyf2"]
+[ext_resource type="PackedScene" uid="uid://bratli6m21b8k" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="12_82mhx"]
+[ext_resource type="PackedScene" uid="uid://dav5esmhgwp0l" path="res://Assets/Items/pda.tscn" id="13_odyf2"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ivvkc"]
 _surfaces = [{
@@ -251,7 +251,7 @@ data = PackedVector3Array(10.24, 10.24, -3.84, 10.24, -10.24, -3.84, -6.08, -10.
 
 [node name="RZ_room2_offices2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
-visibility_range_end = 24.0
+visibility_range_end = 48.0
 mesh = SubResource("ArrayMesh_yfaw8")
 skeleton = NodePath("")
 

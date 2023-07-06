@@ -467,6 +467,7 @@ data = PackedVector3Array(-2.88, 0, -3.6968, -9.6, 0, -3.6968, -9.6, 0, -10.24, 
 [node name="RZ_ckpt1" type="StaticBody3D"]
 
 [node name="RZ_ckpt12" type="MeshInstance3D" parent="."]
+visibility_range_end = 48.0
 mesh = SubResource("ArrayMesh_d5w45")
 skeleton = NodePath("")
 

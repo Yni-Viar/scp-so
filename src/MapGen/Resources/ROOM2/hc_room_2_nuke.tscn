@@ -471,6 +471,7 @@ albedo = Color(1, 0, 0, 1)
 [node name="HC_room2_nuke" type="StaticBody3D"]
 
 [node name="HC_room2_nuke2" type="MeshInstance3D" parent="."]
+visibility_range_end = 48.0
 mesh = SubResource("ArrayMesh_d1fx7")
 skeleton = NodePath("")
 

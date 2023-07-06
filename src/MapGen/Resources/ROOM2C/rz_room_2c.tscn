@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=12 format=3 uid="uid://dax10uhl82hkx"]
 
 [ext_resource type="Material" uid="uid://bro0n70ggw5a7" path="res://MapGen/Resources/RoomAssets/RZ/Materials/mat0.002.tres" id="1_cls12"]
 [ext_resource type="Material" uid="uid://cgxi5avskbyap" path="res://MapGen/Resources/RoomAssets/RZ/Materials/mat1.002.tres" id="2_vtrxh"]
@@ -7,8 +7,7 @@
 [ext_resource type="Material" uid="uid://copce4c1l0xo7" path="res://MapGen/Resources/RoomAssets/RZ/Materials/mat4.002.tres" id="5_ta66l"]
 [ext_resource type="Material" uid="uid://dqmyutrf86sgv" path="res://MapGen/Resources/RoomAssets/RZ/Materials/mat5.002.tres" id="6_r2j5q"]
 [ext_resource type="Material" uid="uid://cp7qc6ufo1qj7" path="res://MapGen/Resources/RoomAssets/RZ/Materials/mat6.002.tres" id="7_k1j4n"]
-[ext_resource type="PackedScene" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="8_b2vir"]
-
+[ext_resource type="PackedScene" uid="uid://bratli6m21b8k" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="8_b2vir"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_lgt0y"]
 _surfaces = [{
@@ -166,7 +165,7 @@ data = PackedVector3Array(-0.96, 3.2, 10.24, 0.96, 3.2, 9.92, -0.96, 3.2, 9.92, 
 [node name="RZ_room2C" type="StaticBody3D"]
 
 [node name="RZ_room2C001" type="MeshInstance3D" parent="."]
-visibility_range_end = 24.0
+visibility_range_end = 48.0
 mesh = SubResource("ArrayMesh_kkeqq")
 skeleton = NodePath("")
 

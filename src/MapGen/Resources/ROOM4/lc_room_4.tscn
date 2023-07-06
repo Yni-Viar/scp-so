@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=10 format=3 uid="uid://biab7dtvh0byb"]
 
 [ext_resource type="Material" uid="uid://cmr5ymyn25wtf" path="res://MapGen/Resources/RoomAssets/LCZ/mat0.019.tres" id="1_wmfyc"]
 [ext_resource type="Material" uid="uid://cnv2ga6snmnm3" path="res://MapGen/Resources/RoomAssets/LCZ/mat1.019.tres" id="2_nxy5n"]
@@ -6,7 +6,6 @@
 [ext_resource type="Material" uid="uid://brpv0blv5kn2p" path="res://MapGen/Resources/RoomAssets/LCZ/mat3.018.tres" id="4_5nrxt"]
 [ext_resource type="Material" uid="uid://k1lt4dxcynel" path="res://MapGen/Resources/RoomAssets/LCZ/mat4.017.tres" id="5_qryt5"]
 [ext_resource type="PackedScene" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="6_d53nt"]
-
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ovxbc"]
 _surfaces = [{
@@ -123,7 +122,7 @@ data = PackedVector3Array(-2.9689, -7.04, -8, -3.04, -7.04, -8, -3.04, -8.32, -8
 
 [node name="LC_room42" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
-visibility_range_end = 24.0
+visibility_range_end = 48.0
 mesh = SubResource("ArrayMesh_c1tpm")
 skeleton = NodePath("")
 

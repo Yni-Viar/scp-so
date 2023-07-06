@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3]
+[gd_scene load_steps=16 format=3 uid="uid://b6jw7gaqvvwvw"]
 
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat0.006.tres" id="1_7i2jh"]
 [ext_resource type="LightmapGIData" uid="uid://dxt46o1hxi13s" path="res://MapGen/Resources/ROOM2/Lm/hc_cont_2_testroom.lmbake" id="1_oxte2"]
@@ -11,7 +11,6 @@
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat7.003.tres" id="8_qbvi8"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat8.003.tres" id="9_ljbe1"]
 [ext_resource type="PackedScene" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="11_qnlhu"]
-
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_b4c73"]
 _surfaces = [{
@@ -208,7 +207,7 @@ height_falloff = 3.0
 light_data = ExtResource("1_oxte2")
 
 [node name="HC_cont2_testroom2" type="MeshInstance3D" parent="."]
-visibility_range_end = 24.0
+visibility_range_end = 48.0
 mesh = SubResource("ArrayMesh_iegxd")
 skeleton = NodePath("")
 

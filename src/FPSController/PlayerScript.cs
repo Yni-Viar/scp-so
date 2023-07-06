@@ -220,13 +220,6 @@ public partial class PlayerScript : CharacterBody3D
     }
     private void OnNpcInteractBodyEntered(Node3D body)
     {
-        //CRUNCH!!!
-        if (body.Name == "scp173" && !gameOver)
-        {
-            interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/173/NeckSnap" + rng.RandiRange(1, 3) + ".ogg");
-            interactSound.Play();
-            GameOver(0);
-        }
     }
     private async void Blink()
     {

@@ -86,7 +86,7 @@ public partial class MapGeneratorRZ : Node3D
                     mapGen[tempX, tempY].south = true;
                 }
             }
-            else if (dir < 4 && tempX > 0)
+            else if (dir < 4 && tempY > 0)
             {
                 tempY -= 1;
                 mapGen[tempX, tempY].exist = true;

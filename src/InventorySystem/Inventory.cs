@@ -13,6 +13,11 @@ public partial class Inventory : Node
         null, null, null, null, null, null, null, null, null, null
     };
 
+    internal Resource GetItem(int itemIndex)
+    {
+        return items[itemIndex];
+    }
+
     //Sets item in specific slot
     internal Resource SetItem(int itemIndex, Resource item)
     {
@@ -39,9 +44,9 @@ public partial class Inventory : Node
         items[itemIndex] = null;
 
         //Spawn item ingame
-        if (previousItem is Item _item)
+        if (previousItem is Item _item) // anti-dupe
         {
-            Pickable pickable = (Pickable)ResourceLoader.Load<PackedScene>(_item.pickablePath).Instantiate();
+            Pickable pickable = (Pickable)ResourceLoader.Load<PackedScene>(_item.PickablePath).Instantiate();
             pickable.Position = GetParent().GetParent().GetParent().GetNode<Marker3D>("PlayerHead/ItemSpawn").GlobalPosition;
             GetTree().Root.GetNode<Node3D>("Game/Items").AddChild(pickable);
         }

@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://cqyvd6hadigaj"]
 
-[ext_resource type="Material" uid="uid://h8xc0er08muc" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat0.009.tres" id="1_d7lqq"]
-[ext_resource type="Material" uid="uid://c2cbrriqujp6y" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat1.009.tres" id="2_ilsih"]
-[ext_resource type="Material" uid="uid://mm1e0o0y1ppo" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat2.009.tres" id="3_riu2d"]
-[ext_resource type="Material" uid="uid://dcqxlln1pcaiw" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat3.009.tres" id="4_lxug8"]
-[ext_resource type="Material" uid="uid://3ybx2mwfu24h" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat4.008.tres" id="5_x8sos"]
-[ext_resource type="Material" uid="uid://p0r2hykdt2px" path="res://Addons/MapGen/Resources/RoomAssets/LCZ/mat5.008.tres" id="6_17hbm"]
+[ext_resource type="Material" uid="uid://h8xc0er08muc" path="res://MapGen/Resources/RoomAssets/LCZ/mat0.009.tres" id="1_d7lqq"]
+[ext_resource type="Material" uid="uid://c2cbrriqujp6y" path="res://MapGen/Resources/RoomAssets/LCZ/mat1.009.tres" id="2_ilsih"]
+[ext_resource type="Material" uid="uid://mm1e0o0y1ppo" path="res://MapGen/Resources/RoomAssets/LCZ/mat2.009.tres" id="3_riu2d"]
+[ext_resource type="Material" uid="uid://dcqxlln1pcaiw" path="res://MapGen/Resources/RoomAssets/LCZ/mat3.009.tres" id="4_lxug8"]
+[ext_resource type="Material" uid="uid://3ybx2mwfu24h" path="res://MapGen/Resources/RoomAssets/LCZ/mat4.008.tres" id="5_x8sos"]
+[ext_resource type="Material" uid="uid://p0r2hykdt2px" path="res://MapGen/Resources/RoomAssets/LCZ/mat5.008.tres" id="6_17hbm"]
 [ext_resource type="AudioStream" uid="uid://d5igvpb2o1qh" path="res://Sounds/Alarm/Alarm.ogg" id="7_n7xil"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_an3np"]
@@ -141,7 +141,7 @@ data = PackedVector3Array(-7.2, 3.2, 0, -2.2401, 3.2, 0, -2.24, 0.64, 0, -7.2, 3
 
 [node name="LC_room1_endroom2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
-visibility_range_end = 24.0
+visibility_range_end = 48.0
 mesh = SubResource("ArrayMesh_ww85u")
 skeleton = NodePath("")
 

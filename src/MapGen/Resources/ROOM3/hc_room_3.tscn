@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=11 format=3 uid="uid://dw50e4r51r73n"]
 
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat0.012.tres" id="1_fp0q8"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat1.012.tres" id="2_i3bo3"]
@@ -7,7 +7,6 @@
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat4.009.tres" id="5_6hbjt"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat5.009.tres" id="6_ykexq"]
 [ext_resource type="PackedScene" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="7_5obbu"]
-
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_nlg34"]
 _surfaces = [{
@@ -145,7 +144,7 @@ data = PackedVector3Array(-10.24, 0, -2.4, 10.24, 0, -2.4, 10.24, 0, 5.76, -10.2
 [node name="HC_room3" type="StaticBody3D"]
 
 [node name="HC_room32" type="MeshInstance3D" parent="."]
-visibility_range_end = 24.0
+visibility_range_end = 48.0
 mesh = SubResource("ArrayMesh_06g0l")
 skeleton = NodePath("")
 

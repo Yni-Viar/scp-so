@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_2qjje")
-name = "PDA"
-texture = ExtResource("2_2rvge")
-pickablePath = "res://Assets/Items/pda.tscn"
+Name = "PDA"
+Texture = ExtResource("2_2rvge")
+PickablePath = "res://Assets/Items/pda.tscn"
+OneTimeUse = false

@@ -214,7 +214,7 @@ data = PackedVector3Array(-0.12, 4.44, -7.88, -0.12, 4.44, -7.48, 0.12, 4.44, -7
 [node name="HC_cont1_049" type="StaticBody3D"]
 
 [node name="HC_cont1_0492" type="MeshInstance3D" parent="."]
-visibility_range_end = 24.0
+visibility_range_end = 48.0
 mesh = SubResource("ArrayMesh_voau2")
 skeleton = NodePath("")
 

@@ -5,6 +5,8 @@ public partial class Pickable : RigidBody3D
 {
     [Export] bool carriable = false;
 
+    [Export] internal Resource itemResource;
+
     //applies inly if carriable = true
     bool pickedUp = false;
 
@@ -44,14 +46,15 @@ public partial class Pickable : RigidBody3D
         else
         {
             inv = holder.GetNode<Inventory>("UI/InventoryContainer/Inventory");
-            switch (Name)
+
+            // This opens JSON, find item and add it to inventory.
+            if (JsonParser.ReadJson("user://itemlist.json").ContainsKey(SceneFilePath.TrimSuffix(".tscn").TrimPrefix("res://Assets/Items/")))
             {
-                case "PDA":
-                    inv.AddItem(ResourceLoader.Load("res://InventorySystem/Items/pda.tres"));
-                    break;
-                default:
-                    GD.PrintErr("Unknown item. Cannot add to inventory.");
-                    break;
+                inv.AddItem(ResourceLoader.Load(JsonParser.ReadJson("user://itemlist.json")[SceneFilePath.TrimSuffix(".tscn").TrimPrefix("res://Assets/Items/")]));
+            }
+            else
+            {
+                GD.PrintErr("Unknown item. Cannot add to inventory.");
             }
             this.QueueFree();
         }

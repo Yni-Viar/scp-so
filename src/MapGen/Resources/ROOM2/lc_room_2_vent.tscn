@@ -212,7 +212,7 @@ data = PackedVector3Array(3.04, 7.04, -3.5, 3.04, 7.06, -3.5, 3.04, 7.06, -3.54,
 
 [node name="LC_room2_vent2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
-visibility_range_end = 24.0
+visibility_range_end = 48.0
 mesh = SubResource("ArrayMesh_48dsy")
 skeleton = NodePath("")
 
