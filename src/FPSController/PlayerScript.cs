@@ -48,7 +48,7 @@ public partial class PlayerScript : CharacterBody3D
     bool isOnGround = true;
     bool isSprinting = false;
     bool isWalking = false;
-    bool gameOver = false;
+    internal bool gameOver = false;
 
     //item-specific properties
     public Pickable holdingItem = null;
@@ -230,7 +230,7 @@ public partial class PlayerScript : CharacterBody3D
         PlayerCommon.isBlinking = false;
         blinkImage.Hide();
     }
-    private void GameOver(int whichScreen)
+    internal void GameOver(int whichScreen)
     {
         gameOver = true;
         GD.Print("Game Over!");

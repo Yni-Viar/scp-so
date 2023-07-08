@@ -1,13 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjcfcpj4q2im4"]
+[gd_scene load_steps=6 format=3 uid="uid://bjcfcpj4q2im4"]
 
 [ext_resource type="Script" path="res://Scripts/Facility.cs" id="1_7oawa"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorRZ.cs" id="2_q22e2"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorLCZ.cs" id="3_62und"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorHCZ.cs" id="4_wob3a"]
+[ext_resource type="AudioStream" uid="uid://tbri732tktfl" path="res://Sounds/Music/LightContainment.ogg" id="5_wyc17"]
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_7oawa")
-spawn650 = false
 
 [node name="MapGenRZ" type="Node3D" parent="."]
 script = ExtResource("2_q22e2")
@@ -25,3 +25,6 @@ script = ExtResource("4_wob3a")
 [node name="Items" type="Node3D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_wyc17")

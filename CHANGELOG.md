@@ -1,6 +1,23 @@
 # Changelog
 The current state of the game - Pre-Alpha.
 ## Pre-Alpha versions
+
+### v.0.0.6 (2023.07.08)
+
+- Map Generator v2 was not suitable for the game - then meet Map Generator v3 - made by me!
+- Added door generation - because new map gen supports this!
+- Heavy Containment Zone is back!
+- SCP-173 now rotates to player, when blinking.
+- Added JSON support (currently is only used by items)
+- Added INI support (currently is only used by settings)
+- Added elevators between zones - now zones are fully connected!
+- Fixed the crunch workaround in SCP-173 (this workaround was made due to bad knowledge 🙂 )
+- Fixed dropping items out of the map
+- Fixed item dupe.
+- Door can be locked (keycards are still not implemented)
+- Now you can toggle out background music.
+- Now settings can be saved (through INI)
+
 ### v.0.0.5 (2023.05.27)
 
 - Added new map generator, which fixes the last room bug.

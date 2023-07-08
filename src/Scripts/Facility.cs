@@ -5,11 +5,9 @@ public partial class Facility : Node3D
 {
     //graphics settings field
     WorldEnvironment graphics = new WorldEnvironment();
-    [Export] public static bool HQSetting = true;
-
 	RandomNumberGenerator rng = new RandomNumberGenerator();
 	CharacterBody3D playerScene;
-    [Export] bool spawn650 = true;
+    [Export] internal static bool spawn650 = false;
 
     CharacterBody3D scp650Scene;
 	string[] spawnLocation = new string[] {"MapGenLCZ/LC_room1_archive/entityspawn", "MapGenRZ/RZ_room2_offices/entityspawn", "MapGenHCZ/HC_cont1_173/entityspawn"};
@@ -30,9 +28,17 @@ public partial class Facility : Node3D
             GetNode<Node3D>("Entities").AddChild(scp650Scene);
         }
 
-        if (HQSetting)
+        if (SettingsPanel.MusicSetting)
+        {
+            GD.Print("Yes!!!");
+            AudioStreamPlayer sfx = GetNode<AudioStreamPlayer>("BackgroundMusic");
+            sfx.Playing = true;
+        }
+
+        if (SettingsPanel.HQSetting)
         {
             graphics.Environment = ResourceLoader.Load<Godot.Environment>("res://FacilityLightingHighQuality.tres");
+            GD.Print("Yes.");
         }
         else
         {

@@ -15,6 +15,8 @@ run/main_scene="res://Scenes/MainMenu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="SCPGame"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://Assets/intro.png"
 config/icon="res://icon.png"
 config/windows_native_icon="res://icon.ico"
 
@@ -33,6 +35,10 @@ project/assembly_name="scpgame"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/itemsystem/plugin.cfg")
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input]
 

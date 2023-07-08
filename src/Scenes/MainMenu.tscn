@@ -135,20 +135,25 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[b]v.0.0.6 - dev[/b] [i](Pre-Alpha)[/i]
+text = "[b]v.0.0.6[/b] [i](Pre-Alpha)[/i]
 - Map Generator v2 was not suitable for the game - then meet Map Generator v3 - made by me!
 - Added door generation - because new map gen supports this!
 - Heavy Containment Zone is back!
 - SCP-173 now rotates to player, when blinking.
-- Added JSON support (currently is is only used by items)
+- Added JSON support (currently is only used by items)
+- Added INI support (currently is only used by settings)
+- Added elevators between zones - now zones are fully connected!
 - Fixed the crunch workaround in SCP-173 (this workaround was made due to bad knowledge :) )
 - Fixed dropping items out of the map
 - Fixed item dupe.
+- Door can be locked (keycards are still not implemented)
+- Now you can toggle out background music.
+- Now settings can be saved (through INI)
 
 [b]KNOWN ISSUES:[/b]
 - Rooms can be overlapped with another room, or if it size is too large.
 - The loading screen loads only once
-"
+- Currently, item system is a big mess, so in the next versions it will be refactored."
 
 [node name="DevWarning" type="Label" parent="."]
 layout_mode = 1
@@ -202,6 +207,17 @@ offset_bottom = 128.0
 theme_override_font_sizes/font_size = 24
 text = "Back"
 
+[node name="Save" type="Button" parent="Settings/SettingsPanel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -448.0
+offset_bottom = 128.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 24
+text = "Save"
+
 [node name="Title" type="Label" parent="Settings/SettingsPanel"]
 layout_mode = 1
 anchors_preset = -1
@@ -246,6 +262,17 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 button_pressed = true
 text = "High Quality Graphics"
+
+[node name="Label3" type="Label" parent="Settings/SettingsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Sounds:"
+
+[node name="MusicSet" type="CheckButton" parent="Settings/SettingsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+button_pressed = true
+text = "Enable backround music"
 
 [node name="CreditsPanel" type="Panel" parent="."]
 visible = false
@@ -316,7 +343,12 @@ theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "[b]This work is based on SCP Foundation.[/b]
 
-SCP Ideas, used ingame, are made by scpwiki community. [i]License - CC-BY-SA 3.0[/i]"
+SCP Ideas, used ingame, are made by scpwiki community. [i]License - CC-BY-SA 3.0[/i]
+
+This game, mostly (exceptions are below) made by Yni.
+
+
+"
 fit_content = true
 
 [node name="CreditsCode" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
@@ -474,5 +506,7 @@ fit_content = true
 [connection signal="pressed" from="Title/Credits" to="." method="OnCreditsPressed"]
 [connection signal="pressed" from="Title/Settings" to="." method="OnSettingsPressed"]
 [connection signal="pressed" from="Settings/SettingsPanel/Back" to="Settings/SettingsPanel" method="OnBackPressed"]
+[connection signal="pressed" from="Settings/SettingsPanel/Save" to="Settings/SettingsPanel" method="OnSavePressed"]
 [connection signal="toggled" from="Settings/SettingsPanel/ScrollContainer/VBoxContainer/HQSet" to="Settings/SettingsPanel" method="OnHqSetToggled"]
+[connection signal="toggled" from="Settings/SettingsPanel/ScrollContainer/VBoxContainer/MusicSet" to="Settings/SettingsPanel" method="OnMusicSetToggled"]
 [connection signal="pressed" from="CreditsPanel/Back" to="CreditsPanel" method="OnBackPressed"]

@@ -1,0 +1,43 @@
+/* THIS FILE IS A SAMPLE!!!
+ * This is Godot Docs' sample for loading INIs.
+ * It is useful for loading data in data-driven scripts, such as Settings.
+using Godot;
+using System;
+
+public partial class IniLoaderSample : Node
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+	}
+
+	internal void LoadIni()
+	{
+		var score_data = new Godot.Collections.Dictionary();
+		var config = new ConfigFile();
+		
+		// Load data from a file.
+		Error err = config.Load("user://scores.cfg");
+		
+		// If the file didn't load, ignore it.
+		if (err != Error.Ok)
+		{
+			return;
+		}
+		
+		// Iterate over all sections.
+		foreach (String player in config.GetSections())
+		{
+			// Fetch the data for each section.
+			var player_name = (String)config.GetValue(player, "player_name");
+			var player_score = (int)config.GetValue(player, "best_score");
+			score_data[player_name] = player_score;
+		}
+	}
+}
+*/

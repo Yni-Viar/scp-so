@@ -3,18 +3,29 @@ using System;
 
 public partial class Door : Node3D
 {
+    [Export] bool canOpen = true;
 	bool isOpened = false;
 	internal void DoorControl()
 	{
-		if (isOpened)
-		{
-			DoorClose();
-		}
+        if (canOpen)
+        {
+            if (isOpened)
+            {
+                DoorClose();
+            }
+            else
+            {
+                DoorOpen();
+            }
+
+            isOpened = !isOpened;
+        }
 		else
-		{
-			DoorOpen();
-		}
-		isOpened = !isOpened;
+        {
+            AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");
+            sfx.Stream = GD.Load<AudioStream>("res://Sounds/Interact/Button2.ogg");
+            sfx.Play();
+        }
 	}
 
 	void DoorOpen()

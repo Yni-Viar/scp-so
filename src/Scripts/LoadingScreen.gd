@@ -1,5 +1,6 @@
 extends Control
 
+# DEPRECATED
 
 #Written from tutorials ;D
 var path: String = "res://Scenes/Facility.tscn"

@@ -41,11 +41,14 @@ public partial class scp173npc : CharacterBody3D
 		{
 			KinematicCollision3D checkCollision = GetSlideCollision(i);
             var collidedWith = checkCollision.GetCollider();
-			if (collidedWith.HasMethod("GameOver"))
+			if (collidedWith is PlayerScript player)
 			{
-                interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/173/NeckSnap" + rng.RandiRange(1, 3) + ".ogg");
-                interactSound.Play();
-				collidedWith.Call("GameOver", 0); //crunch
+                if (!player.gameOver)
+                {
+                    interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/173/NeckSnap" + rng.RandiRange(1, 3) + ".ogg");
+                    interactSound.Play();
+                    player.GameOver(0); //crunch
+                }
             }
 		}
 		

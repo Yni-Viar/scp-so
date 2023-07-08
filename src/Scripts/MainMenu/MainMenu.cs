@@ -13,22 +13,22 @@ public partial class MainMenu : Control
 	{
 	}
 
-    private void OnPlayPressed()
-    {
-        GetTree().ChangeSceneToFile("res://Scenes/LoadingScreen.tscn");
-    }
+	private void OnPlayPressed()
+	{
+		GetTree().ChangeSceneToFile("res://Scenes/LoadingScreen.tscn");
+	}
 
 
-    private void OnExitPressed()
-    {
-        GetTree().Quit();
-    }
+	private void OnExitPressed()
+	{
+		GetTree().Quit();
+	}
 
 
-    private void OnCreditsPressed()
-    {
-        GetNode<Panel>("CreditsPanel").Show();
-    }
+	private void OnCreditsPressed()
+	{
+		GetNode<Panel>("CreditsPanel").Show();
+	}
 
 	private void OnSettingsPressed()
 	{
