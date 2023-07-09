@@ -8,7 +8,7 @@ public partial class SettingsPanel : Panel
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-        if (FileAccess.FileExists("user://settings.ini"))
+        if (FileAccess.FileExists("user://settings_0.1.0dev.ini"))
 		{
 			LoadIni();
 		}
@@ -21,7 +21,7 @@ public partial class SettingsPanel : Panel
 			}, new Godot.Collections.Array{
 				true,
 				true
-			}, "user://settings_0.0.6.ini");
+			}, "user://settings_0.1.0dev.ini");
 
             LoadIni();
 		}
@@ -88,7 +88,7 @@ public partial class SettingsPanel : Panel
 		}, new Godot.Collections.Array{
 			HQSetting,
 			MusicSetting
-		}, "user://settings_0.0.6.ini");
+		}, "user://settings_0.1.0dev.ini");
 
 		LoadIni();
 	}
@@ -98,7 +98,7 @@ public partial class SettingsPanel : Panel
 		var config = new ConfigFile();
 
 		// Load data from a file.
-		Error err = config.Load("user://settings_0.0.6.ini");
+		Error err = config.Load("user://settings_0.1.0dev.ini");
 
 		// If the file didn't load, ignore it.
 		if (err != Error.Ok)

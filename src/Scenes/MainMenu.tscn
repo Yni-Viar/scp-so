@@ -135,25 +135,12 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[b]v.0.0.6[/b] [i](Pre-Alpha)[/i]
-- Map Generator v2 was not suitable for the game - then meet Map Generator v3 - made by me!
-- Added door generation - because new map gen supports this!
-- Heavy Containment Zone is back!
-- SCP-173 now rotates to player, when blinking.
-- Added JSON support (currently is only used by items)
-- Added INI support (currently is only used by settings)
-- Added elevators between zones - now zones are fully connected!
-- Fixed the crunch workaround in SCP-173 (this workaround was made due to bad knowledge :) )
-- Fixed dropping items out of the map
-- Fixed item dupe.
-- Door can be locked (keycards are still not implemented)
-- Now you can toggle out background music.
-- Now settings can be saved (through INI)
+text = "[b]v.0.1.0 -dev[/b] [i](Pre-Alpha)[/i]
+- Item system is temporarily removed for refactoring.
 
 [b]KNOWN ISSUES:[/b]
 - Rooms can be overlapped with another room, or if it size is too large.
-- The loading screen loads only once
-- Currently, item system is a big mess, so in the next versions it will be refactored."
+- The loading screen loads only once"
 
 [node name="DevWarning" type="Label" parent="."]
 layout_mode = 1
@@ -394,40 +381,6 @@ text = "[i]First person character (license - The Unlicense)[/i]
  then I (Yni) merged some code from elmarcoh's FPS script (also public domain),
  and now I added some code.
 
-
-"
-fit_content = true
-
-[node name="CreditsCode3" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1234, 0)
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 24
-theme_override_font_sizes/bold_font_size = 24
-theme_override_font_sizes/italics_font_size = 24
-theme_override_font_sizes/bold_italics_font_size = 24
-theme_override_font_sizes/mono_font_size = 24
-bbcode_enabled = true
-text = "[i]Item pickup[/i]
-
-- Made by TheRadMatt (their repo under the MIT License: https://github.com/TheRadMatt/3D-FPP-Interaction-Demo)
-
-
-"
-fit_content = true
-
-[node name="CreditsCode4" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1234, 0)
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 24
-theme_override_font_sizes/bold_font_size = 24
-theme_override_font_sizes/italics_font_size = 24
-theme_override_font_sizes/bold_italics_font_size = 24
-theme_override_font_sizes/mono_font_size = 24
-bbcode_enabled = true
-text = "[i]Inventory system[/i]
-
-- Made by Heartbeast Studios (License - MIT)
-- Ported to C# by Yni.
 
 "
 fit_content = true
