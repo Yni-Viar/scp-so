@@ -5,7 +5,7 @@ public partial class InventorySlotDisplay : CenterContainer
 {
 	Inventory inventory = new Inventory();
 	TextureRect itemTextureRect;
-    bool itemHover = false;
+	bool itemHover = false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -17,29 +17,29 @@ public partial class InventorySlotDisplay : CenterContainer
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        //if (itemHover)
-        //{
-        // Use your item
-        if (Input.IsActionJustPressed("interact_item"))
-        {
-            int itemIndex = GetIndex();
-            Resource item = inventory.GetItem(itemIndex);
-            if (item is Item _item)
-            {
-                if (_item.OneTimeUse == true)
-                {
-                	inventory.RemoveItem(itemIndex);
-                }
-                _item.OnUsed();
-                GetParent().GetParent().GetParent().GetParent().GetNode<ColorRect>("InventoryContainer").Hide();
-            }
-        }
-        if (Input.IsActionJustPressed("inventory_remove_item"))
-        {
-            int itemIndex = GetIndex();
-            Resource item = inventory.RemoveItem(itemIndex);
-        }
-        //}
+		//if (itemHover)
+		//{
+		// Use your item
+		if (Input.IsActionJustPressed("interact_item"))
+		{
+			int itemIndex = GetIndex();
+			Resource item = inventory.GetItem(itemIndex);
+			if (item is Item _item)
+			{
+				if (_item.OneTimeUse == true)
+				{
+					inventory.RemoveItem(itemIndex);
+				}
+				_item.OnUsed();
+				GetParent().GetParent().GetParent().GetParent().GetNode<ColorRect>("InventoryContainer").Hide();
+			}
+		}
+		if (Input.IsActionJustPressed("inventory_remove_item"))
+		{
+			int itemIndex = GetIndex();
+			Resource item = inventory.RemoveItem(itemIndex);
+		}
+		//}
 	}
 
 	internal void DisplayItem(Resource item)
@@ -105,11 +105,11 @@ public partial class InventorySlotDisplay : CenterContainer
 
 	private void OnFakeButtonMouseEntered()
 	{
-        itemHover = true;
+		itemHover = true;
 	}
 
 	private void OnFakeButtonMouseExited()
 	{
-		itemHover  =false;
+		itemHover = false;
 	}
 }

@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bioi4dk6pxvt4"]
+[gd_scene load_steps=4 format=3 uid="uid://bioi4dk6pxvt4"]
 
 [ext_resource type="Script" path="res://InventorySystem/InventorySlotDisplay.cs" id="1_66jt7"]
 [ext_resource type="Texture2D" uid="uid://dbuijxl0c8q82" path="res://InventorySystem/inventoryitem_background.png" id="2_bx2h6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7cki"]
+size = Vector2(68, 68)
 
 [node name="InventorySlotDisplay" type="CenterContainer"]
 anchors_preset = 8
@@ -27,3 +30,12 @@ texture = ExtResource("2_bx2h6")
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 stretch_mode = 4
+
+[node name="FakeButton" type="Area2D" parent="."]
+position = Vector2(36, 36)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FakeButton"]
+shape = SubResource("RectangleShape2D_o7cki")
+
+[connection signal="mouse_entered" from="FakeButton" to="." method="OnFakeButtonMouseEntered"]
+[connection signal="mouse_exited" from="FakeButton" to="." method="OnFakeButtonMouseExited"]
