@@ -12,6 +12,12 @@
 ### Main Menu (license - [MIT](/LICENSE.MIT))
 - Made by Yni.
 
+### Item pickup (license - [MIT](/src/addons/itemsystem/itemhold/LICENSE))
+- Made by TheRadMatt (their repo under the MIT License: https://github.com/TheRadMatt/3D-FPP-Interaction-Demo)
+
+### Inventory (license - [MIT](/src/InventorySystem/LICENSE))
+- Made by Heartbeast Studios
+
 ### First person character (license - The Unlicense)
 - Originally made by [dzejpi](https://github.com/dzejpi/godot-3d-base-project),
  then I (Yni) merged some code from elmarcoh's FPS script (also public domain),

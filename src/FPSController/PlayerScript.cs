@@ -50,8 +50,8 @@ public partial class PlayerScript : CharacterBody3D
     bool isWalking = false;
     internal bool gameOver = false;
 
-    //item-specific properties (for item system from v.0.0.6 and earlier)
-    //public Pickable holdingItem = null;
+    //item-specific properties
+    public Pickable holdingItem = null;
 
 
     // Called when the node enters the scene tree for the first time.
@@ -171,27 +171,27 @@ public partial class PlayerScript : CharacterBody3D
             }
             
             //Picking up items.
-            if (ray.IsColliding() && Input.IsActionJustPressed("interact"))
+            if (ray.IsColliding() && Input.IsActionJustPressed("interact_item"))
             {
-                /*if (holdingItem != null) -item system from v.0.0.6 and earlier
+                if (holdingItem != null)
                 {
                     //drop holding item
                     holdingItem.PickUpItem(this);
                 }
                 else
-                {*/
+                {
                     var collidedWith = ray.GetCollider();
-                    /*if (collidedWith.HasMethod("PickUpItem")) //pick up item. - item system from v.0.0.6 and earlier
+                    if (collidedWith.HasMethod("PickUpItem")) //pick up item.
                     {
                         collidedWith.Call("PickUpItem", this);
                         interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Interact/PickItem" + Convert.ToString(rng.RandiRange(1, 2)) + ".ogg");;
                         interactSound.Play();
-                    }*/
+                    }
                     if (collidedWith is ButtonInteract)
                     {
                         collidedWith.Call("Interact", this);
                     }
-                //}
+                }
             }
             
 

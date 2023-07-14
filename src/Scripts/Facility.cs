@@ -30,6 +30,7 @@ public partial class Facility : Node3D
 
         if (SettingsPanel.MusicSetting)
         {
+            GD.Print("Yes!!!");
             AudioStreamPlayer sfx = GetNode<AudioStreamPlayer>("BackgroundMusic");
             sfx.Playing = true;
         }
@@ -37,6 +38,7 @@ public partial class Facility : Node3D
         if (SettingsPanel.HQSetting)
         {
             graphics.Environment = ResourceLoader.Load<Godot.Environment>("res://FacilityLightingHighQuality.tres");
+            GD.Print("Yes.");
         }
         else
         {

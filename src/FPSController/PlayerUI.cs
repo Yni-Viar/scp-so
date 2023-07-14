@@ -38,7 +38,8 @@ public partial class PlayerUI : Control
 
         if (Input.IsActionJustPressed("inventory"))
         {
-            GetNode<Label>("InventoryRefactorNotice").Visible = !(GetNode<Label>("InventoryRefactorNotice").Visible);
+            specialScreen = !specialScreen;
+            GetNode<ColorRect>("InventoryContainer").Visible = !(GetNode<ColorRect>("InventoryContainer").Visible);
         }
     }
 }
