@@ -135,25 +135,13 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[b]v.0.0.6[/b] [i](Pre-Alpha)[/i]
-- Map Generator v2 was not suitable for the game - then meet Map Generator v3 - made by me!
-- Added door generation - because new map gen supports this!
-- Heavy Containment Zone is back!
-- SCP-173 now rotates to player, when blinking.
-- Added JSON support (currently is only used by items)
-- Added INI support (currently is only used by settings)
-- Added elevators between zones - now zones are fully connected!
-- Fixed the crunch workaround in SCP-173 (this workaround was made due to bad knowledge :) )
-- Fixed dropping items out of the map
-- Fixed item dupe.
-- Door can be locked (keycards are still not implemented)
-- Now you can toggle out background music.
-- Now settings can be saved (through INI)
+text = "[b]v.0.1.0[/b] [i](Pre-Alpha)[/i]
+- The items can be used, no refactoring is required :D
+- Added debug console.
 
 [b]KNOWN ISSUES:[/b]
 - Rooms can be overlapped with another room, or if it size is too large.
-- The loading screen loads only once
-- Currently, item system is a big mess, so in the next versions it will be refactored."
+- The loading screen loads only once"
 
 [node name="DevWarning" type="Label" parent="."]
 layout_mode = 1
@@ -432,6 +420,23 @@ text = "[i]Inventory system[/i]
 "
 fit_content = true
 
+[node name="CreditsCode5" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1234, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[i]Debug console[/i]
+
+- Made by USBashka (License - Public Domain)
+- Ported to C# by Yni.
+
+"
+fit_content = true
+
 [node name="CreditsCodeOther" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(1234, 0)
 layout_mode = 2
@@ -443,7 +448,7 @@ theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "[i]Other code[/i]
 
-This game, SCP-173 AI,  SCP-650 AI, Blinking system and Main Menu made by Yni. 
+This game is made by Yni. 
 Licensed under MIT\\X11 License.
 
 

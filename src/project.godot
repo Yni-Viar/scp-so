@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="SCP Game"
+config/tags=PackedStringArray("scp_foundation", "game")
 run/main_scene="res://Scenes/MainMenu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="SCPGame"
@@ -19,6 +20,10 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://Assets/intro.png"
 config/icon="res://icon.png"
 config/windows_native_icon="res://icon.ico"
+
+[autoload]
+
+GdShellSharp="*res://GDsh/GDShellSharp.cs"
 
 [display]
 
@@ -89,6 +94,11 @@ inventory={
 inventory_remove_item={
 "deadzone": 0.5,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(157, 25),"global_position":Vector2(161, 68),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+console={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":96,"physical_keycode":0,"key_label":0,"unicode":96,"echo":false,"script":null)
 ]
 }
 

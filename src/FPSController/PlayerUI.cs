@@ -41,5 +41,11 @@ public partial class PlayerUI : Control
             specialScreen = !specialScreen;
             GetNode<ColorRect>("InventoryContainer").Visible = !(GetNode<ColorRect>("InventoryContainer").Visible);
         }
+
+        if (Input.IsActionJustPressed("console"))
+        {
+            specialScreen = !specialScreen;
+            GetNode<InGameConsole>("InGameConsole").Visible = !(GetNode<InGameConsole>("InGameConsole").Visible);
+        }
     }
 }
