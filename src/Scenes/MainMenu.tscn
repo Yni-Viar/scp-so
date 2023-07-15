@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b345bk26jamix"]
+[gd_scene load_steps=8 format=3 uid="uid://b345bk26jamix"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu/MainMenu.cs" id="1_s5ksq"]
 [ext_resource type="Texture2D" uid="uid://boboxmvoqy61t" path="res://Assets/Menu/MainMenuForeground.png" id="2_647vp"]
 [ext_resource type="FontFile" uid="uid://bmquuud55yceh" path="res://Assets/Fonts/Righteous/Righteous-Regular.ttf" id="3_gq784"]
+[ext_resource type="Texture2D" uid="uid://bf4keik5l7nsf" path="res://icon_256.png" id="3_hajc0"]
 [ext_resource type="FontFile" uid="uid://cqaasvtiakcsw" path="res://Assets/Fonts/sans-normalcy-main/Normalcy-v0.1.7.otf" id="3_jfxly"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/SettingsPanel.cs" id="4_80vda"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/CreditsPanel.cs" id="4_okfnt"]
@@ -16,7 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s5ksq")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,6 +25,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_647vp")
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 78.0
+offset_top = -284.0
+offset_right = 334.0
+offset_bottom = -28.0
+grow_vertical = 0
+texture = ExtResource("3_hajc0")
 
 [node name="Title" type="Control" parent="."]
 layout_mode = 1
@@ -46,7 +59,9 @@ offset_right = 168.96
 offset_bottom = 96.44
 theme_override_fonts/font = ExtResource("3_jfxly")
 theme_override_font_sizes/font_size = 64
-text = "SCP game"
+text = "SCP: 
+Site
+Offline"
 
 [node name="Play" type="Button" parent="Title"]
 layout_mode = 1

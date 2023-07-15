@@ -18,7 +18,7 @@ public partial class GDShellSharp : Node
     Godot.Collections.Dictionary<string, Godot.Collections.Dictionary<string, Variant>> commands;
         
     
-    PackedScene console = GD.Load<PackedScene>("res://addons/GDsh/InGameConsole.tscn");
+    PackedScene console = GD.Load<PackedScene>("res://GDsh/InGameConsole.tscn");
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{

@@ -10,11 +10,11 @@ config_version=5
 
 [application]
 
-config/name="SCP Game"
+config/name="SCP SiteOffline"
 config/tags=PackedStringArray("scp_foundation", "game")
 run/main_scene="res://Scenes/MainMenu.tscn"
 config/use_custom_user_dir=true
-config/custom_user_dir_name="SCPGame"
+config/custom_user_dir_name="SCPSO"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://Assets/intro.png"
@@ -35,7 +35,7 @@ window/size/borderless=true
 
 [dotnet]
 
-project/assembly_name="scpgame"
+project/assembly_name="scpso"
 
 [editor_plugins]
 
