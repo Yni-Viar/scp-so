@@ -13,6 +13,8 @@ public partial class InventoryDisplay : GridContainer
         GD.Print(inventory.items);
         //First items update
         UpdateInventoryDisplay();
+        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("give_item", new Callable(this, "AddItemAlias"), "Gives an item to inventory");
+        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("item_list", new Callable(this, "ItemList"), "Returns item names");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,5 +43,36 @@ public partial class InventoryDisplay : GridContainer
         {
             UpdateInventorySlotDisplay(itemIndex);
         }
+    }
+
+    string AddItemAlias(string[] args)
+    {
+        if (args.Length == 1)
+        {
+            if (JsonParser.ReadJson("user://itemlist.json").ContainsKey(args[0]))
+            {
+                inventory.AddItem(ResourceLoader.Load(JsonParser.ReadJson("user://itemlist.json")[args[0]]));
+                return "Item " + args[0] + " added to inventory";
+            }
+            else
+            {
+                return "Unknown item. Cannot add to inventory.";
+            }
+        }
+        else
+        {
+            return "Unknown item. Cannot add to inventory. Did you input the item?";
+        }
+        
+    }
+
+    string ItemList(string[] args)
+    {
+        string r = "";
+        foreach (var val in JsonParser.ReadJson("user://itemlist.json"))
+        {
+            r += val.Key + "\n";
+        }
+        return r;
     }
 }

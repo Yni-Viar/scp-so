@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dflkol6tnd06o"]
+[gd_scene load_steps=42 format=3 uid="uid://dflkol6tnd06o"]
 
 [ext_resource type="Material" uid="uid://cmc5sqsqcqdw" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat0.002.tres" id="1_l38fk"]
 [ext_resource type="Material" uid="uid://cimhpyr2jsudd" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat1.002.tres" id="2_nojd8"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" path="res://Scripts/Facility/TeleportElevator.cs" id="20_44y10"]
 [ext_resource type="Texture2D" uid="uid://ben08ytu3hn3q" path="res://MapGen/Resources/Doors/DoorLCZ/Door01.jpg" id="21_5quvn"]
 [ext_resource type="PackedScene" uid="uid://bpx6ko6t0w1o5" path="res://MapGen/Resources/Buttons/button_interact.tscn" id="22_c6cs7"]
+[ext_resource type="AudioStream" uid="uid://wqik022lymd8" path="res://Sounds/General/Elevator/Moving.ogg" id="23_sard5"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_7cnlx"]
 _surfaces = [{
@@ -649,6 +650,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49529, 1.99339, -0.396245)
 [node name="ButtonInteractDown" parent="ElevatorHc1" instance=ExtResource("22_c6cs7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49529, 1.43088, -0.396245)
 
+[node name="FakeMove" type="AudioStreamPlayer3D" parent="ElevatorHc1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -3.42403)
+stream = ExtResource("23_sard5")
+
 [node name="TeleportArea" type="Area3D" parent="ElevatorHc1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0198817, 0, -3.44586)
 
@@ -708,6 +713,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49529, 1.99339, -0.396245)
 
 [node name="ButtonInteractDown" parent="ElevatorHc2" instance=ExtResource("22_c6cs7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49529, 1.43088, -0.396245)
+
+[node name="FakeMove" type="AudioStreamPlayer3D" parent="ElevatorHc2"]
+transform = Transform3D(-1, 0, -3.17865e-08, 0, 1, 0, 3.17865e-08, 0, -1, 0, 0, -3.38553)
+stream = ExtResource("23_sard5")
 
 [node name="TeleportArea" type="Area3D" parent="ElevatorHc2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0198817, 0, -3.44586)

@@ -66,6 +66,8 @@ public partial class TeleportElevator : Node3D
         canInteract = false;
         Node3D toTeleport;
         toTeleport = (Node3D)(GetTree().Root.GetNode(elevators[currentFloor + direction]));
+        fromTeleport.GetNode<AudioStreamPlayer3D>("FakeMove").Play();
+        toTeleport.GetNode<AudioStreamPlayer3D>("FakeMove").Play();
         await ToSignal(GetTree().CreateTimer(5.0), "timeout");
         for (int i = 0; i < playersToTeleport.Count; i++)
         {

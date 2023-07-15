@@ -55,11 +55,11 @@ public partial class GDShellSharp : Node
         }
     }
 
-    void AddCommand(string name, Callable callable, string shortDesc = "", string descr = "")
+    internal void AddCommand(string name, Callable callable, string descr = "")
     {
         commands[name] = new Godot.Collections.Dictionary<string, Variant>{
             {"callable", callable},
-            {"description", shortDesc},
+            {"description", descr},
         };
     }
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://wkgsfomyretc"]
+[gd_scene load_steps=72 format=3 uid="uid://wkgsfomyretc"]
 
 [ext_resource type="Texture2D" uid="uid://bpork62ekk21y" path="res://MapGen/Resources/RoomAssets/RZ/metal3.jpg" id="1_hyxnq"]
 [ext_resource type="Texture2D" uid="uid://bdepgdphwfa72" path="res://MapGen/Resources/RoomAssets/RZ/tilefloor.jpg" id="2_k2qaa"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://Scripts/Facility/TeleportElevator.cs" id="19_f40x1"]
 [ext_resource type="Texture2D" uid="uid://ben08ytu3hn3q" path="res://MapGen/Resources/Doors/DoorLCZ/Door01.jpg" id="20_qka6i"]
 [ext_resource type="PackedScene" uid="uid://bpx6ko6t0w1o5" path="res://MapGen/Resources/Buttons/button_interact.tscn" id="21_1bsaw"]
+[ext_resource type="AudioStream" uid="uid://wqik022lymd8" path="res://Sounds/General/Elevator/Moving.ogg" id="22_37btk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58whi"]
 resource_name = "mat0.006"
@@ -888,6 +889,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49529, 1.99339, -0.396245)
 [node name="ButtonInteractDown" parent="ElevatorRz1" instance=ExtResource("21_1bsaw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49529, 1.43088, -0.396245)
 
+[node name="FakeMove" type="AudioStreamPlayer3D" parent="ElevatorRz1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0475454, 2.38419e-07, 8.97653)
+stream = ExtResource("22_37btk")
+
 [node name="TeleportArea" type="Area3D" parent="ElevatorRz1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0198817, 0, -3.44586)
 
@@ -947,6 +952,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49529, 1.99339, -0.396245)
 
 [node name="ButtonInteractDown" parent="ElevatorRz2" instance=ExtResource("21_1bsaw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49529, 1.43088, -0.396245)
+
+[node name="FakeMove" type="AudioStreamPlayer3D" parent="ElevatorRz2"]
+transform = Transform3D(1.98616e-08, 0, -1, 0, 1, 0, 1, 0, 1.98616e-08, -0.0860291, 2.38419e-07, 8.98139)
+stream = ExtResource("22_37btk")
 
 [node name="TeleportArea" type="Area3D" parent="ElevatorRz2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0198817, 0, -3.44586)

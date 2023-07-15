@@ -29,10 +29,14 @@ public partial class InGameConsole : Control
 		string[] list = text.StripEdges().Split(" ");
 		string command = list[0];
 		string[] args;
-		if (list.Length > 1)
+		if (list.Length == 2)
 		{
-			args = list[1..(list.Length - 1)];
+			args = new string[]{list[1]};
 		}
+        else if (list.Length > 2)
+        {
+            args = list[1..(list.Length - 1)];
+        }
 		else
 		{
 			args = new string[]{""};
