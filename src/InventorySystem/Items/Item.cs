@@ -24,7 +24,7 @@ public partial class Item : Resource
         OneTimeUse = oneTimeUse;
     }
 
-    public virtual void OnUsed()
+    public virtual void OnUsed(PlayerScript target)
     {
     }
 }

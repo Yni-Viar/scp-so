@@ -4,7 +4,8 @@ using System;
 public partial class ItemList : Node
 {
     public static Godot.Collections.Dictionary<string, string> items = new Godot.Collections.Dictionary<string, string>{
-        {"pda", "res://InventorySystem/Items/pda.tres"}
+        {"pda", "res://InventorySystem/Items/pda.tres"},
+        {"scp018", "res://InventorySystem/Items/scp018.tres"}
     };
 
 	// Called when the node enters the scene tree for the first time.

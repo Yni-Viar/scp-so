@@ -20,7 +20,7 @@ public partial class InventorySlotDisplay : CenterContainer
 		//if (itemHover)
 		//{
 		// Use your item
-		if (Input.IsActionJustPressed("interact_item"))
+		if (Input.IsActionJustPressed("interact_item") && itemHover)
 		{
 			int itemIndex = GetIndex();
 			Resource item = inventory.GetItem(itemIndex);
@@ -28,16 +28,16 @@ public partial class InventorySlotDisplay : CenterContainer
 			{
 				if (_item.OneTimeUse == true)
 				{
-					inventory.RemoveItem(itemIndex);
+					inventory.RemoveItem(itemIndex, false);
 				}
-				_item.OnUsed();
+				_item.OnUsed((PlayerScript)(GetTree().GetNodesInGroup("Players")[0])); //use on player
 				GetParent().GetParent().GetParent().GetParent().GetNode<ColorRect>("InventoryContainer").Hide();
 			}
 		}
 		if (Input.IsActionJustPressed("inventory_remove_item"))
 		{
 			int itemIndex = GetIndex();
-			Resource item = inventory.RemoveItem(itemIndex);
+			Resource item = inventory.RemoveItem(itemIndex, true);
 		}
 		//}
 	}

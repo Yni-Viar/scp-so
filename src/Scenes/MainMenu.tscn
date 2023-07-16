@@ -154,6 +154,8 @@ text = "[b]v.0.1.0[/b] [i](Pre-Alpha)[/i]
 - The items can be used, no refactoring is required :D
 - Added debug console.
 - Elevator has sounds now.
+- The game now has a name!
+- Added SCP-018.
 
 [b]KNOWN ISSUES:[/b]
 - Rooms can be overlapped with another room, or if it size is too large.

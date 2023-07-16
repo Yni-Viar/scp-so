@@ -38,13 +38,13 @@ public partial class Inventory : Node
     }
 
     //Remove items from inventory
-    internal Resource RemoveItem(int itemIndex)
+    internal Resource RemoveItem(int itemIndex, bool itemSpawn)
     {
         Resource previousItem = items[itemIndex];
         items[itemIndex] = null;
 
         //Spawn item ingame
-        if (previousItem is Item _item) // anti-dupe
+        if (previousItem is Item _item && itemSpawn) // anti-dupe
         {
             Pickable pickable = (Pickable)ResourceLoader.Load<PackedScene>(_item.PickablePath).Instantiate();
             pickable.Position = GetParent().GetParent().GetParent().GetNode<Marker3D>("PlayerHead/ItemSpawn").GlobalPosition;
