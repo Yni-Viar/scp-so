@@ -17,9 +17,18 @@ public partial class Scp018Activated : RigidBody3D
         if (collision != null)
         {
             vel = vel.Bounce(collision.GetNormal());
-            vel.X *= 2;
-            vel.Y *= 2;
-            vel.Z *= 2;
+            if ((vel.X < 1.28f && vel.Y < 1.28f && vel.Z < 1.28f))
+            {
+                vel.X *= 2;
+                vel.Y *= 2;
+                vel.Z *= 2;
+            }
+            else
+            {
+                vel.X *= 1;
+                vel.Y *= 1;
+                vel.Z *= 1;
+            }
         }
     }
 }
