@@ -25,7 +25,7 @@ public partial class SettingsPanel : Panel
 			}, new Godot.Collections.Array{
 				true,
 				true,
-				true,
+				false,
                 new Vector2(1920, 1080)
 			}, "user://settings_0.1.0.ini");
 
@@ -49,6 +49,15 @@ public partial class SettingsPanel : Panel
 		{
 			GetNode<CheckButton>("ScrollContainer/VBoxContainer/MusicSet").ButtonPressed = false;
 		}
+
+        if (FullscreenSetting)
+        {
+            DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+        }
+        else
+        {
+            DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
+        }
 	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -109,10 +118,12 @@ public partial class SettingsPanel : Panel
 		if (button_pressed)
 		{
 			DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+            FullscreenSetting = true;
 		}
 		else
 		{
 			DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
+            FullscreenSetting = false;
 		}
 	}
 	

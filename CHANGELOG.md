@@ -2,6 +2,16 @@
 The current state of the game - Pre-Alpha.
 ## Pre-Alpha versions
 
+### v.0.1.0 (2023.07.17)
+
+- The items can be used, no refactoring is required :D
+- Added debug console.
+- Elevator has sounds now.
+- The game now has a name!
+- Added SCP-018.
+- More settings.
+- Fixed bug (mouse button is released when using an item).
+
 ### v.0.0.6 (2023.07.08)
 
 - Map Generator v2 was not suitable for the game - then meet Map Generator v3 - made by me!

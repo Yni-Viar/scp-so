@@ -157,6 +157,7 @@ text = "[b]v.0.1.0[/b] [i](Pre-Alpha)[/i]
 - The game now has a name!
 - Added SCP-018.
 - More settings.
+- Fixed a bug (mouse button is released when using an item).
 
 [b]KNOWN ISSUES:[/b]
 - Rooms can be overlapped with another room, or if it size is too large.
