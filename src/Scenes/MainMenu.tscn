@@ -156,10 +156,12 @@ text = "[b]v.0.1.0[/b] [i](Pre-Alpha)[/i]
 - Elevator has sounds now.
 - The game now has a name!
 - Added SCP-018.
+- More settings.
 
 [b]KNOWN ISSUES:[/b]
 - Rooms can be overlapped with another room, or if it size is too large.
-- The loading screen loads only once"
+- The loading screen loads only once
+- SCP-018 can sometimes fly out of the map."
 
 [node name="DevWarning" type="Label" parent="."]
 layout_mode = 1
@@ -262,6 +264,29 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Graphics:"
+
+[node name="WindowSizeSet" type="OptionButton" parent="Settings/SettingsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+item_count = 6
+selected = 0
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1366x768"
+popup/item_2/id = 2
+popup/item_3/text = "1280x720"
+popup/item_3/id = 3
+popup/item_4/text = "1024x768"
+popup/item_4/id = 4
+popup/item_5/text = "800x600"
+popup/item_5/id = 5
+
+[node name="FullscreenSet" type="CheckButton" parent="Settings/SettingsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Fullscreen"
 
 [node name="HQSet" type="CheckButton" parent="Settings/SettingsPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -530,6 +555,8 @@ fit_content = true
 [connection signal="pressed" from="Title/Settings" to="." method="OnSettingsPressed"]
 [connection signal="pressed" from="Settings/SettingsPanel/Back" to="Settings/SettingsPanel" method="OnBackPressed"]
 [connection signal="pressed" from="Settings/SettingsPanel/Save" to="Settings/SettingsPanel" method="OnSavePressed"]
+[connection signal="item_selected" from="Settings/SettingsPanel/ScrollContainer/VBoxContainer/WindowSizeSet" to="Settings/SettingsPanel" method="OnWindowSizeSetItemSelected"]
+[connection signal="toggled" from="Settings/SettingsPanel/ScrollContainer/VBoxContainer/FullscreenSet" to="Settings/SettingsPanel" method="OnFullscreenSetToggled"]
 [connection signal="toggled" from="Settings/SettingsPanel/ScrollContainer/VBoxContainer/HQSet" to="Settings/SettingsPanel" method="OnHqSetToggled"]
 [connection signal="toggled" from="Settings/SettingsPanel/ScrollContainer/VBoxContainer/MusicSet" to="Settings/SettingsPanel" method="OnMusicSetToggled"]
 [connection signal="pressed" from="CreditsPanel/Back" to="CreditsPanel" method="OnBackPressed"]

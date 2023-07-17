@@ -29,9 +29,7 @@ GdShellSharp="*res://GDsh/GDShellSharp.cs"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=2
 window/size/resizable=false
-window/size/borderless=true
 
 [dotnet]
 
