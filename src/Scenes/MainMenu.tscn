@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b345bk26jamix"]
+[gd_scene load_steps=9 format=3 uid="uid://b345bk26jamix"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu/MainMenu.cs" id="1_s5ksq"]
 [ext_resource type="Texture2D" uid="uid://boboxmvoqy61t" path="res://Assets/Menu/MainMenuForeground.png" id="2_647vp"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://cqaasvtiakcsw" path="res://Assets/Fonts/sans-normalcy-main/Normalcy-v0.1.7.otf" id="3_jfxly"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/SettingsPanel.cs" id="4_80vda"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/CreditsPanel.cs" id="4_okfnt"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/PlayPanel.cs" id="5_yqbst"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -38,88 +39,52 @@ offset_bottom = -28.0
 grow_vertical = 0
 texture = ExtResource("3_hajc0")
 
-[node name="Title" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="Title"]
+[node name="Title" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.112
-anchor_top = 0.207
-anchor_right = 0.112
-anchor_bottom = 0.207
-offset_left = -167.04
-offset_top = -121.56
-offset_right = 168.96
-offset_bottom = 96.44
+anchor_left = 0.012
+anchor_top = 0.022
+anchor_right = 0.208
+anchor_bottom = 0.978
+offset_left = 0.959999
+offset_top = 0.239998
+offset_right = 0.639984
+offset_bottom = -0.23999
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 48
+
+[node name="Label" type="Label" parent="Title"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("3_jfxly")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 96
 text = "SCP: 
 Site
 Offline"
 
 [node name="Play" type="Button" parent="Title"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.106
-anchor_top = 0.389
-anchor_right = 0.106
-anchor_bottom = 0.389
-offset_left = -171.52
-offset_top = -28.12
-offset_right = 172.48
-offset_bottom = 28.88
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_jfxly")
+theme_override_font_sizes/font_size = 32
 text = "Play"
 
-[node name="Exit" type="Button" parent="Title"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.106
-anchor_top = 0.656
-anchor_right = 0.106
-anchor_bottom = 0.656
-offset_left = -171.52
-offset_top = -28.48
-offset_right = 172.48
-offset_bottom = 27.52
-grow_horizontal = 2
-grow_vertical = 2
-text = "Exit"
+[node name="Settings" type="Button" parent="Title"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_jfxly")
+theme_override_font_sizes/font_size = 32
+text = "Settings"
 
 [node name="Credits" type="Button" parent="Title"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.108
-anchor_top = 0.567
-anchor_right = 0.108
-anchor_bottom = 0.567
-offset_left = -175.36
-offset_top = -28.36
-offset_right = 168.64
-offset_bottom = 27.64
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_jfxly")
+theme_override_font_sizes/font_size = 32
 text = "Credits"
 
-[node name="Settings" type="Button" parent="Title"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.106
-anchor_top = 0.481
-anchor_right = 0.106
-anchor_bottom = 0.481
-offset_left = -171.52
-offset_top = -31.48
-offset_right = 172.48
-offset_bottom = 30.52
-text = "Settings"
+[node name="Exit" type="Button" parent="Title"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_jfxly")
+theme_override_font_sizes/font_size = 32
+text = "Exit"
 
 [node name="MainPanel" type="Panel" parent="."]
 layout_mode = 1
@@ -150,19 +115,81 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[b]v.0.1.0[/b] [i](Pre-Alpha)[/i]
-- The items can be used, no refactoring is required :D
-- Added debug console.
-- Elevator has sounds now.
-- The game now has a name!
-- Added SCP-018.
-- More settings.
-- Fixed a bug (mouse button is released when using an item).
+text = "[b]v.0.2.0-experimental[/b] [i](Pre-Alpha)[/i]
+- Added multiplayer playground.
 
 [b]KNOWN ISSUES:[/b]
+[i]Singleplayer:[/i]
 - Rooms can be overlapped with another room, or if it size is too large.
 - The loading screen loads only once
-- SCP-018 can sometimes fly out of the map."
+- SCP-018 can sometimes fly out of the map.
+[i]Multiplayer:[/i]"
+
+[node name="PlayPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.238
+anchor_top = 0.067
+anchor_right = 0.969
+anchor_bottom = 0.956
+offset_left = 0.039978
+offset_top = -0.360001
+offset_right = 0.519897
+offset_bottom = -0.47998
+script = ExtResource("5_yqbst")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -316.5
+offset_top = -320.0
+offset_right = 316.5
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="Host" type="Button" parent="PlayPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Host playground"
+
+[node name="IPAddress" type="LineEdit" parent="PlayPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+placeholder_text = "IP Address (connect only)"
+
+[node name="Port" type="LineEdit" parent="PlayPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Port"
+
+[node name="MaxClients" type="LineEdit" parent="PlayPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Max clients (host only)"
+
+[node name="Connect" type="Button" parent="PlayPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Connect to playground"
+
+[node name="Singleplayer" type="Button" parent="PlayPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Singleplayer (main game)"
+
+[node name="Info" type="Label" parent="PlayPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "WARNING! Multiplayer mode is NOT production-ready!
+Please, use singleplayer mode (before I upgrade
+all subsystems)!"
 
 [node name="DevWarning" type="Label" parent="."]
 layout_mode = 1
@@ -550,10 +577,29 @@ text = "[i]Art (license - (CC-BY-SA 3.0)[/i]
 "
 fit_content = true
 
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.111
+anchor_top = 0.851
+anchor_right = 0.111
+anchor_bottom = 0.851
+offset_left = -117.12
+offset_top = -119.08
+offset_right = 117.88
+offset_bottom = 118.92
+grow_vertical = 0
+
 [connection signal="pressed" from="Title/Play" to="." method="OnPlayPressed"]
-[connection signal="pressed" from="Title/Exit" to="." method="OnExitPressed"]
-[connection signal="pressed" from="Title/Credits" to="." method="OnCreditsPressed"]
 [connection signal="pressed" from="Title/Settings" to="." method="OnSettingsPressed"]
+[connection signal="pressed" from="Title/Credits" to="." method="OnCreditsPressed"]
+[connection signal="pressed" from="Title/Exit" to="." method="OnExitPressed"]
+[connection signal="pressed" from="PlayPanel/VBoxContainer/Host" to="PlayPanel" method="OnHostPressed"]
+[connection signal="text_changed" from="PlayPanel/VBoxContainer/IPAddress" to="PlayPanel" method="OnIpAddressTextChanged"]
+[connection signal="text_changed" from="PlayPanel/VBoxContainer/Port" to="PlayPanel" method="OnPortTextChanged"]
+[connection signal="text_changed" from="PlayPanel/VBoxContainer/MaxClients" to="PlayPanel" method="OnMaxClientsTextChanged"]
+[connection signal="pressed" from="PlayPanel/VBoxContainer/Connect" to="PlayPanel" method="OnConnectPressed"]
+[connection signal="pressed" from="PlayPanel/VBoxContainer/Singleplayer" to="PlayPanel" method="OnSingleplayerPressed"]
 [connection signal="pressed" from="Settings/SettingsPanel/Back" to="Settings/SettingsPanel" method="OnBackPressed"]
 [connection signal="pressed" from="Settings/SettingsPanel/Save" to="Settings/SettingsPanel" method="OnSavePressed"]
 [connection signal="item_selected" from="Settings/SettingsPanel/ScrollContainer/VBoxContainer/WindowSizeSet" to="Settings/SettingsPanel" method="OnWindowSizeSetItemSelected"]

@@ -12,7 +12,7 @@ config_version=5
 
 config/name="SCP: Site Offline"
 config/tags=PackedStringArray("scp_foundation", "game")
-run/main_scene="res://Scenes/MainMenu.tscn"
+run/main_scene="res://Scenes/Main.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="SCPSO"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
@@ -29,11 +29,15 @@ GdShellSharp="*res://GDsh/GDShellSharp.cs"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/resizable=false
 
 [dotnet]
 
 project/assembly_name="scpso"
+
+[editor]
+
+naming/default_signal_callback_name="On{NodeName}{SignalName}"
+naming/default_signal_callback_to_self_name="On{SignalName}"
 
 [editor_plugins]
 
