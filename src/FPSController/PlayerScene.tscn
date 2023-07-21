@@ -1,14 +1,19 @@
-[gd_scene load_steps=13 format=3 uid="uid://cm7mcq5rrgaxi"]
+[gd_scene load_steps=16 format=3 uid="uid://isp3qhbu0mf5"]
 
-[ext_resource type="Script" path="res://FPSController/PlayerScript.cs" id="1_w825c"]
-[ext_resource type="FontFile" uid="uid://bmquuud55yceh" path="res://Assets/Fonts/Righteous/Righteous-Regular.ttf" id="2_f87lq"]
-[ext_resource type="Texture2D" uid="uid://cymko5vnq4vsh" path="res://Assets/HUD/Blink.png" id="2_rgvtn"]
-[ext_resource type="Script" path="res://FPSController/PlayerCommon.cs" id="2_wvrqv"]
-[ext_resource type="PackedScene" uid="uid://gom6tjixj21n" path="res://InventorySystem/InventoryContainer.tscn" id="3_both4"]
-[ext_resource type="Script" path="res://FPSController/PlayerUI.cs" id="3_my63u"]
-[ext_resource type="Script" path="res://FPSController/PauseMenu.cs" id="4_1av73"]
-[ext_resource type="PackedScene" uid="uid://o6rnnciwmwvn" path="res://GDsh/InGameConsole.tscn" id="4_wk5ou"]
-[ext_resource type="Texture2D" uid="uid://bmw4fxmnmwhov" path="res://Assets/HUD/arrow.png" id="5_bcdcv"]
+[ext_resource type="Script" path="res://FPSController/PlayerScriptMP.cs" id="1_tw8h1"]
+[ext_resource type="Script" path="res://FPSController/PlayerCommonMP.cs" id="2_cwidx"]
+[ext_resource type="Script" path="res://FPSController/PlayerUIMP.cs" id="3_ux413"]
+[ext_resource type="Texture2D" uid="uid://cymko5vnq4vsh" path="res://Assets/HUD/Blink.png" id="4_yi4ry"]
+[ext_resource type="Script" path="res://FPSController/PauseMenuMP.cs" id="5_0d7sq"]
+[ext_resource type="PackedScene" uid="uid://gom6tjixj21n" path="res://InventorySystem/InventoryContainer.tscn" id="6_eruel"]
+[ext_resource type="FontFile" uid="uid://bmquuud55yceh" path="res://Assets/Fonts/Righteous/Righteous-Regular.ttf" id="7_dkx5u"]
+[ext_resource type="Texture2D" uid="uid://bmw4fxmnmwhov" path="res://Assets/HUD/arrow.png" id="8_enljs"]
+[ext_resource type="PackedScene" uid="uid://o6rnnciwmwvn" path="res://GDsh/InGameConsole.tscn" id="9_5x3m1"]
+[ext_resource type="Script" path="res://FPSController/PlayerSync.cs" id="10_8dn5b"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lnmrj"]
+radius = 0.4
+height = 2.6
 
 [sub_resource type="CapsuleShape3D" id="1"]
 radius = 0.371158
@@ -19,15 +24,38 @@ height = 2.26761
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s46hk"]
 height = 2.71688
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_6h10r"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/sync = true
+properties/1/watch = false
+properties/2/path = NodePath(".:scale")
+properties/2/spawn = true
+properties/2/sync = true
+properties/2/watch = false
+properties/3/path = NodePath("PlayerHead/PlayerCamera:rotation")
+properties/3/spawn = true
+properties/3/sync = true
+properties/3/watch = false
+
 [node name="Player" type="CharacterBody3D" groups=["Players"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28033, 0)
-script = ExtResource("1_w825c")
+collision_layer = 2
+script = ExtResource("1_tw8h1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0618534, 0)
+mesh = SubResource("CapsuleMesh_lnmrj")
 
 [node name="PlayerCommon" type="Node3D" parent="."]
-script = ExtResource("2_wvrqv")
+script = ExtResource("2_cwidx")
 
 [node name="PlayerHead" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.968611, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.968611, -0.409495)
 
 [node name="PlayerCamera" type="Camera3D" parent="PlayerHead"]
 
@@ -79,7 +107,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3_my63u")
+script = ExtResource("3_ux413")
 
 [node name="Blink" type="Control" parent="UI"]
 visible = false
@@ -97,7 +125,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_rgvtn")
+texture = ExtResource("4_yi4ry")
 
 [node name="PauseMenu" type="Control" parent="UI"]
 visible = false
@@ -107,7 +135,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_1av73")
+script = ExtResource("5_0d7sq")
 
 [node name="Panel" type="Panel" parent="UI/PauseMenu"]
 layout_mode = 1
@@ -131,7 +159,7 @@ offset_right = 192.104
 offset_bottom = 31.88
 text = "Exit"
 
-[node name="InventoryContainer" parent="UI" instance=ExtResource("3_both4")]
+[node name="InventoryContainer" parent="UI" instance=ExtResource("6_eruel")]
 visible = false
 layout_mode = 1
 
@@ -165,7 +193,7 @@ offset_right = 473.0
 offset_bottom = 62.5999
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_f87lq")
+theme_override_fonts/font = ExtResource("7_dkx5u")
 theme_override_font_sizes/font_size = 48
 text = "Game Over"
 horizontal_alignment = 1
@@ -198,13 +226,17 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_bcdcv")
+texture = ExtResource("8_enljs")
 
-[node name="InGameConsole" parent="UI" instance=ExtResource("4_wk5ou")]
+[node name="InGameConsole" parent="UI" instance=ExtResource("9_5x3m1")]
 visible = false
 layout_mode = 1
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="PlayerSync" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_6h10r")
+script = ExtResource("10_8dn5b")
 
 [connection signal="body_entered" from="NPCInteract" to="." method="OnNpcInteractBodyEntered"]
 [connection signal="pressed" from="UI/PauseMenu/Panel/ExitButton" to="UI/PauseMenu" method="OnExitButtonPressed"]

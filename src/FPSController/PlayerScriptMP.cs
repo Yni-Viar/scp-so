@@ -1,0 +1,268 @@
+using Godot;
+using System;
+
+public partial class PlayerScriptMP : CharacterBody3D
+{
+    /* This script was created by dzejpi. License - The Unlicense. 
+     * Some parts used from elmarcoh (this script is also public domain).
+     * 
+     * I (Yni) added some parts, such as blinking or game over triggers.
+     * Currently the script is a big mess, so it need refactoring :(
+     */
+    RandomNumberGenerator rng = new RandomNumberGenerator();
+    Node3D playerHead;
+    RayCast3D ray;
+
+    //stair check
+    RayCast3D bottomRaycast;
+    RayCast3D topRaycast;
+
+    //Walk sounds and gameover screens.
+    Control blinkImage;
+    // TextureRect gameOverScreen;
+    // Label gameOverText;
+    AudioStreamPlayer3D walkSounds;
+    AudioStreamPlayer3D interactSound;
+
+    //blinking
+    double blinkTimer = 0d;
+    float blinkWaiting;
+
+
+    float speed = 4.5f;
+    float jump = 4.5f;
+    float gravity = 9.8f;
+
+    float groundAcceleration = 8.0f;
+    float airAcceleration = 8.0f;
+    float acceleration;
+
+    float slidePrevention = 10.0f;
+    Vector2 mouseSensivity = new Vector2(0.125f, 2f);
+
+    Vector3 direction;
+    Vector3 vel = new Vector3();
+    Vector3 movement = new Vector3();
+    Vector3 gravityVector = new Vector3();
+
+    bool isSprinting = false;
+    bool isWalking = false;
+    // internal bool gameOver = false;
+
+    //item-specific properties
+    // public Pickable holdingItem = null;
+
+    public override void _EnterTree()
+    {
+        SetMultiplayerAuthority(int.Parse(Name));
+    }
+
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
+        Position = GetTree().Root.GetNode<Marker3D>("Main/Game/MapGenLCZ/LC_room1_archive/entityspawn").GlobalPosition;
+        if (IsMultiplayerAuthority())
+        {
+            GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = true;
+            playerHead = GetNode<Node3D>("PlayerHead");
+            ray = GetNode<RayCast3D>("PlayerHead/RayCast3D");
+            blinkImage = GetNode<Control>("UI/Blink");
+            bottomRaycast = GetNode<RayCast3D>("PlayerFeet/StairCheck");
+            topRaycast = GetNode<RayCast3D>("PlayerFeet/StairCheck2");
+            walkSounds = GetNode<AudioStreamPlayer3D>("WalkSounds");
+            interactSound = GetNode<AudioStreamPlayer3D>("InteractSound");
+            // gameOverScreen = GetNode<TextureRect>("UI/GameOver/GameOverScreen");
+            // gameOverText = GetNode<Label>("UI/GameOver/GameOverMessage");
+            acceleration = groundAcceleration;
+            // Input.MouseMode = Input.MouseModeEnum.Captured;
+            blinkWaiting = 5.2f;
+        }
+    }
+
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    /*public override void _Process(double delta)
+    {
+    }*/
+
+    public override void _Input(InputEvent @event)
+    {
+        if (IsMultiplayerAuthority())
+        {
+            if (@event is InputEventMouseMotion)
+            {
+                InputEventMouseMotion m = (InputEventMouseMotion) @event;
+                this.RotateY(Mathf.DegToRad(-m.Relative.X * mouseSensivity.Y / 10));
+                playerHead.RotateX(Mathf.Clamp(-m.Relative.Y * mouseSensivity.X / 10, -90, 90));
+    
+                Vector3 cameraRot = playerHead.Rotation;
+                cameraRot.X = Mathf.Clamp(playerHead.Rotation.X, Mathf.DegToRad(-85f), Mathf.DegToRad(85f));
+                playerHead.Rotation = cameraRot;
+            }
+        }
+        
+
+        // DEPRECATED
+        // direction = new Vector3();
+        // direction.Z = -Input.GetActionStrength("move_forward") + Input.GetActionStrength("move_backward");
+        // direction.X = -Input.GetActionStrength("move_left") + Input.GetActionStrength("move_right");
+        // direction = direction.Normalized().Rotated(Vector3.Up, Rotation.Y);
+        
+        
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        if (IsMultiplayerAuthority())
+        {
+            blinkTimer += delta;
+            //Anti-endless fall check. Needed to jump properly. - DEPRECATED, since v.0.2.0-MP-dev
+            /*if (IsOnFloor())
+            {
+                gravityVector = -GetFloorNormal() * slidePrevention;
+                acceleration = groundAcceleration;
+                isJumpingLocal = false;
+            }
+            else
+            {
+                if (isJumpingLocal) // How NOT to code... :(
+                {
+                    gravityVector += Vector3.Down * gravity * (float)delta;
+                    acceleration = airAcceleration;
+                }
+                else
+                {
+                    gravityVector = Vector3.Zero;
+                    isJumpingLocal = false;
+                }
+            }*/
+            if (!IsOnFloor())
+            {
+                gravityVector += Vector3.Down * gravity * (float)delta;
+            }
+            //jumping
+            if (GetNode<PlayerSync>("PlayerSync").isJumping && IsOnFloor())
+            {
+                gravityVector = Vector3.Up * jump;
+                GetNode<PlayerSync>("PlayerSync").isJumping = false;
+            }
+            Vector3 direction = (Transform.Basis * new Vector3(GetNode<PlayerSync>("PlayerSync").direction.X, 0, GetNode<PlayerSync>("PlayerSync").direction.Y));
+            //running
+            if (Input.IsActionPressed("move_sprint"))
+            {
+                vel = vel.Lerp(direction * speed * 2, acceleration * (float)delta);
+                isSprinting = true;
+                isWalking = false;
+            }
+            //walking
+            else
+            {
+                vel = vel.Lerp(direction * speed, acceleration * (float)delta);
+                isWalking = true;
+                isSprinting = false;
+            }
+            movement.Z = vel.Z + gravityVector.Z;
+            movement.X = vel.X + gravityVector.X;
+            movement.Y = gravityVector.Y;
+            Velocity = movement;
+        
+            
+            //check if we don't stay still and is footstep audio playing;
+            if (!direction.IsZeroApprox() && !walkSounds.Playing)
+            {
+                if (isSprinting)
+                {
+                    walkSounds.Stream = GD.Load<AudioStream>("res://Sounds/Character/Human/Step/Run" + rng.RandiRange(1, 8) + ".ogg");
+                    walkSounds.PitchScale = 2;
+                    walkSounds.Play();
+                }
+                else if (isWalking)
+                {
+                    walkSounds.Stream = GD.Load<AudioStream>("res://Sounds/Character/Human/Step/Step" + rng.RandiRange(1, 8) + ".ogg");
+                    walkSounds.PitchScale = 1;
+                    walkSounds.Play();
+                }
+            }
+            else if (direction.IsZeroApprox() && walkSounds.Playing)
+            {
+                walkSounds.Stop();
+            }
+
+            //Picking up items.
+            if (ray.IsColliding() && Input.IsActionJustPressed("interact_item"))
+            {
+                /*if (holdingItem != null)
+                {
+                    //drop holding item
+                    // holdingItem.PickUpItem(this);
+                }
+                else
+                {*/
+                    var collidedWith = ray.GetCollider();
+                    /*if (collidedWith.HasMethod("PickUpItem")) //pick up item.
+                    {
+                        collidedWith.Call("PickUpItem", this);
+                        interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Interact/PickItem" + Convert.ToString(rng.RandiRange(1, 2)) + ".ogg");;
+                        interactSound.Play();
+                    }*/
+                    if (collidedWith is ButtonInteract)
+                    {
+                        collidedWith.Call("Interact", this);
+                    }
+                // }
+            }
+            //needed for walking up and down stairs
+            if (bottomRaycast.IsColliding() && !topRaycast.IsColliding())
+            {
+                if (Input.IsActionPressed("move_backward") || Input.IsActionPressed("move_left") || Input.IsActionPressed("move_right"))
+                {
+                    FloorMaxAngle = 0.785398f; //45 degrees
+                }
+                else
+                {
+                    FloorMaxAngle = 1.308996f; //75 degrees, need to climb stairs
+                }
+            }
+            if (blinkTimer > blinkWaiting)
+            {
+                Blink();
+                blinkTimer = 0d;
+            }
+        }
+        UpDirection = Vector3.Up;
+        MoveAndSlide();
+    }
+    private void OnNpcInteractBodyEntered(Node3D body)
+    {
+    }
+    private async void Blink()
+    {
+        //main blinking method
+        blinkImage.Show();
+        PlayerCommon.isBlinking = true;
+        await ToSignal(GetTree().CreateTimer(0.3), "timeout");
+        PlayerCommon.isBlinking = false;
+        blinkImage.Hide();
+    }
+    /*internal void GameOver(int whichScreen) // DEPRECATED, since 0.2.0-MP-dev
+    {
+        gameOver = true;
+        GD.Print("Game Over!");
+        //I know that this code is not good. But I am a newb programmer... :( 
+        //-Yni
+        switch (whichScreen)
+        {
+            //left for future.
+            case 0:
+                gameOverScreen.Texture = GD.Load<Texture2D>("res://Assets/GameOverScreens/GameOverCause_173.png");
+                gameOverText.Text = "Crunch!";
+                break;
+        }
+        Input.MouseMode = Input.MouseModeEnum.Visible;
+        GetNode<Control>("UI/GameOver").Show();
+    }*/
+
+    private void OnExitPressed()
+    {
+        GetTree().ChangeSceneToFile("res://Scenes/MainMenu.tscn");
+    }
+}

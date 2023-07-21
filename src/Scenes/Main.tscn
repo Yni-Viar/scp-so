@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhs1iuqg4qex4"]
+[gd_scene load_steps=3 format=3 uid="uid://dhs1iuqg4qex4"]
 
 [ext_resource type="PackedScene" uid="uid://b345bk26jamix" path="res://Scenes/MainMenu.tscn" id="1_5tg38"]
 [ext_resource type="Script" path="res://Scripts/Multiplayer/NetworkManager.cs" id="1_nxheq"]
-[ext_resource type="PackedScene" uid="uid://bvj6crudwps0a" path="res://Scenes/Playground.tscn" id="3_kppqm"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_nxheq")
@@ -12,8 +11,6 @@ script = ExtResource("1_nxheq")
 [node name="MainMenu" parent="CanvasLayer" instance=ExtResource("1_5tg38")]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://Modules/FPSController/PlayerScene.tscn")
+_spawnable_scenes = PackedStringArray("res://Scenes/Facility.tscn")
 spawn_path = NodePath("..")
-
-[node name="Playground" parent="." instance=ExtResource("3_kppqm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.20098, 0)
+spawn_limit = 1

@@ -87,6 +87,7 @@ theme_override_font_sizes/font_size = 32
 text = "Exit"
 
 [node name="MainPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.238
@@ -126,7 +127,6 @@ text = "[b]v.0.2.0-experimental[/b] [i](Pre-Alpha)[/i]
 [i]Multiplayer:[/i]"
 
 [node name="PlayPanel" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.238
@@ -157,7 +157,7 @@ theme_override_constants/separation = 16
 [node name="Host" type="Button" parent="PlayPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Host playground"
+text = "Host"
 
 [node name="IPAddress" type="LineEdit" parent="PlayPanel/VBoxContainer"]
 layout_mode = 2
@@ -177,19 +177,13 @@ placeholder_text = "Max clients (host only)"
 [node name="Connect" type="Button" parent="PlayPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Connect to playground"
-
-[node name="Singleplayer" type="Button" parent="PlayPanel/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Singleplayer (main game)"
+text = "Connect"
 
 [node name="Info" type="Label" parent="PlayPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "WARNING! Multiplayer mode is NOT production-ready!
-Please, use singleplayer mode (before I upgrade
-all subsystems)!"
+"
 
 [node name="DevWarning" type="Label" parent="."]
 layout_mode = 1
@@ -319,7 +313,7 @@ text = "Fullscreen"
 [node name="HQSet" type="CheckButton" parent="Settings/SettingsPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-button_pressed = true
+disabled = true
 text = "High Quality Graphics"
 
 [node name="Label3" type="Label" parent="Settings/SettingsPanel/ScrollContainer/VBoxContainer"]
@@ -599,7 +593,6 @@ grow_vertical = 0
 [connection signal="text_changed" from="PlayPanel/VBoxContainer/Port" to="PlayPanel" method="OnPortTextChanged"]
 [connection signal="text_changed" from="PlayPanel/VBoxContainer/MaxClients" to="PlayPanel" method="OnMaxClientsTextChanged"]
 [connection signal="pressed" from="PlayPanel/VBoxContainer/Connect" to="PlayPanel" method="OnConnectPressed"]
-[connection signal="pressed" from="PlayPanel/VBoxContainer/Singleplayer" to="PlayPanel" method="OnSingleplayerPressed"]
 [connection signal="pressed" from="Settings/SettingsPanel/Back" to="Settings/SettingsPanel" method="OnBackPressed"]
 [connection signal="pressed" from="Settings/SettingsPanel/Save" to="Settings/SettingsPanel" method="OnSavePressed"]
 [connection signal="item_selected" from="Settings/SettingsPanel/ScrollContainer/VBoxContainer/WindowSizeSet" to="Settings/SettingsPanel" method="OnWindowSizeSetItemSelected"]

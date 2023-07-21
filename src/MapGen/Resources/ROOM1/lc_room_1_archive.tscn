@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://ba8eeynpw68y"]
+[gd_scene load_steps=9 format=3 uid="uid://ba8eeynpw68y"]
 
 [ext_resource type="Material" uid="uid://4ucy6rv6imgh" path="res://MapGen/Resources/RoomAssets/LCZ/mat0.008.tres" id="1_esfvy"]
 [ext_resource type="Material" uid="uid://d1ottj6hw32g6" path="res://MapGen/Resources/RoomAssets/LCZ/mat1.008.tres" id="2_3sgf6"]
 [ext_resource type="Material" uid="uid://xavvgo8mgt7d" path="res://MapGen/Resources/RoomAssets/LCZ/mat2.008.tres" id="3_4kaxx"]
 [ext_resource type="Material" uid="uid://bgfqyca6uy6l" path="res://MapGen/Resources/RoomAssets/LCZ/mat3.008.tres" id="4_ucie5"]
-[ext_resource type="PackedScene" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="5_2lk5e"]
-[ext_resource type="PackedScene" uid="uid://dav5esmhgwp0l" path="res://Assets/Items/pda.tscn" id="6_cgpx7"]
+[ext_resource type="PackedScene" uid="uid://cgaomav6767mx" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="5_2lk5e"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_errax"]
 _surfaces = [{
@@ -126,6 +125,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0534036, 3.57699, 7.88132)
 
 [node name="Lamp2" parent="." instance=ExtResource("5_2lk5e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.53586, 3.577, 0.646758)
-
-[node name="PDA" parent="." instance=ExtResource("6_cgpx7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.37307, 1.71651, -1.92292)

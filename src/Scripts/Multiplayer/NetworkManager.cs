@@ -75,12 +75,8 @@ public partial class NetworkManager : Node
     {
         peer.CreateServer(port, maxPlayers);
         Multiplayer.MultiplayerPeer = peer;
-        Multiplayer.PeerConnected += AddPlayer;
-        Multiplayer.PeerDisconnected += RemovePlayer;
-        //game = (Node3D)ResourceLoader.Load<PackedScene>("res://Scenes/Playground.tscn").Instantiate();
-        //AddChild(game, true);
+        StartGame();
         GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Hide();
-        AddPlayer(Multiplayer.GetUniqueId());
         GD.Print("Ready for connecting!");
     }
 
@@ -91,25 +87,28 @@ public partial class NetworkManager : Node
         Multiplayer.ConnectedToServer += ConnectedToServer;
         Multiplayer.ConnectionFailed += ConnectionFailed;
         Multiplayer.ServerDisconnected += ServerDisconnected;
-        
         GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Hide();
     }
-    
-    void AddPlayer(long id)
+
+    void StartGame()
     {
-        playerScene = (CharacterBody3D)ResourceLoader.Load<PackedScene>("res://Modules/FPSController/PlayerScene.tscn").Instantiate();
-        playerScene.Name = id.ToString();
-        AddChild(playerScene, true);
-        GD.Print("Player " + id.ToString() + " has joined the server!");
+        if (Multiplayer.IsServer())
+        {
+            CallDeferred("LoadLevel", GD.Load<PackedScene>("res://Scenes/Facility.tscn"));
+        }
     }
 
-    void RemovePlayer(long id)
+    void LoadLevel(PackedScene scene)
     {
-        if (GetNodeOrNull(id.ToString()) != null)
+        if (GetNodeOrNull("Game") != null)
         {
-            GetNode(id.ToString()).QueueFree();
-            GD.Print("Player " + id.ToString() + " has left the server!");
+            foreach (Node n in GetNode("Game").GetChildren())
+            {
+                GetNode("Game").RemoveChild(n);
+                n.QueueFree();
+            }
         }
+        AddChild(scene.Instantiate());
     }
 
     void ConnectedToServer()
@@ -126,6 +125,10 @@ public partial class NetworkManager : Node
     
     void ServerDisconnected()
     {
+        if (GetNodeOrNull("Game") != null)
+        {
+            GetNode("Game").QueueFree();
+        }
         GD.Print("You are disconnected from the server.");
         GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Show();
 

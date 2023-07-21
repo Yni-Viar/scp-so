@@ -4,12 +4,15 @@ using System;
 public partial class Door : Node3D
 {
     [Export] bool canOpen = true;
-	bool isOpened = false;
+	[Export] bool isOpened = false;
+
+    bool CanOpen { get=>canOpen; set=>canOpen = value; }
+    bool IsOpened { get=>isOpened; set=>isOpened = value; }
 	internal void DoorControl()
 	{
-        if (canOpen)
+        if (CanOpen)
         {
-            if (isOpened)
+            if (IsOpened)
             {
                 DoorClose();
             }
@@ -17,8 +20,6 @@ public partial class Door : Node3D
             {
                 DoorOpen();
             }
-
-            isOpened = !isOpened;
         }
 		else
         {
@@ -36,6 +37,7 @@ public partial class Door : Node3D
 		AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");
 		sfx.Stream = GD.Load<AudioStream>("res://Sounds/Door/DoorOpen" + Convert.ToString(rng.RandiRange(1, 3)) + ".ogg");
 		sfx.Play();
+        IsOpened = true;
 	}
 
 	void DoorClose()
@@ -46,6 +48,7 @@ public partial class Door : Node3D
 		AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");
 		sfx.Stream = GD.Load<AudioStream>("res://Sounds/Door/DoorClose" + Convert.ToString(rng.RandiRange(1, 3)) + ".ogg");
 		sfx.Play();
+        IsOpened = false;
 	}
 
 	

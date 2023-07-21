@@ -3,9 +3,18 @@ using System;
 
 public partial class MapGeneratorRZ : Node3D
 {
-    
     int width = 16; //use bigger value to fix map generation can bump into the end of map.
     int height = 16;
+    [Export] ulong seed;
+    /*ulong Seed { get=> seed; set=>seed=RandomSeed(); }
+
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
+    static ulong RandomSeed()
+    {
+        var random = new RandomNumberGenerator();
+        random.Randomize();
+        return random.Randi();
+    }*/
     int room1Amount, room2Amount, room2cAmount, room3Amount, room4Amount;
     enum RoomTypes : int { 
         empty = -1,
@@ -22,9 +31,10 @@ public partial class MapGeneratorRZ : Node3D
         internal RoomTypes type;
         internal float angle;
     }
-    void Generate(ulong seed, int numberOfRooms)
+    void Generate(int numberOfRooms)
     {
         RandomNumberGenerator rng = new RandomNumberGenerator();
+        rng.Seed = 0;
         Room[,] mapGen = new Room[width, height];
         //fill with zeros
         for (int x = 0; x < width; x++)
@@ -241,6 +251,15 @@ public partial class MapGeneratorRZ : Node3D
             }
         }
 
+        /*if (room1Amount < 1 && room2Amount < 1)
+        {
+            if (IsMultiplayerAuthority())
+            {
+                //seed = RandomSeed();
+                Generate(24);
+            }
+        }*/
+
         int currRoom1 = 0;
         int currRoom2 = 0;
         //int currRoom2c = 0;
@@ -403,12 +422,7 @@ public partial class MapGeneratorRZ : Node3D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-        RandomNumberGenerator rng = new RandomNumberGenerator();
-        do
-        {
-            Generate(rng.Randi(), 24);
-        }
-        while(room1Amount < 1 && room2Amount < 1);
+        Generate(24);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
