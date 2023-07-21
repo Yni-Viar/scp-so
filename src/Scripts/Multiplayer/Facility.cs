@@ -23,14 +23,14 @@ public partial class Facility : Node3D
             sfx.Playing = true;
         }
 
-        /*if (SettingsPanel.HQSetting)
+        if (SettingsPanel.HQSetting)
         {
             graphics.Environment = ResourceLoader.Load<Godot.Environment>("res://FacilityLightingHighQuality.tres");
         }
         else
         {
             graphics.Environment = ResourceLoader.Load<Godot.Environment>("res://FacilityLightingLowQuality.tres");
-        }*/
+        }
 
 
         //Multiplayer part.

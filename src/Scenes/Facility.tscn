@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjcfcpj4q2im4"]
+[gd_scene load_steps=7 format=3 uid="uid://bjcfcpj4q2im4"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/Facility.cs" id="1_p22hh"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorRZ.cs" id="2_q22e2"]
@@ -6,14 +6,19 @@
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorHCZ.cs" id="4_wob3a"]
 [ext_resource type="AudioStream" uid="uid://tbri732tktfl" path="res://Sounds/Music/LightContainment.ogg" id="5_wyc17"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_b6rwy"]
-size = Vector3(70, 1, 70)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_shkmn"]
-albedo_color = Color(1, 1, 1, 0.498039)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5wt6b"]
-data = PackedVector3Array(-35, 0.5, 35, 35, 0.5, 35, -35, -0.5, 35, 35, 0.5, 35, 35, -0.5, 35, -35, -0.5, 35, 35, 0.5, -35, -35, 0.5, -35, 35, -0.5, -35, -35, 0.5, -35, -35, -0.5, -35, 35, -0.5, -35, 35, 0.5, 35, 35, 0.5, -35, 35, -0.5, 35, 35, 0.5, -35, 35, -0.5, -35, 35, -0.5, 35, -35, 0.5, -35, -35, 0.5, 35, -35, -0.5, -35, -35, 0.5, 35, -35, -0.5, 35, -35, -0.5, -35, 35, 0.5, 35, -35, 0.5, 35, 35, 0.5, -35, -35, 0.5, 35, -35, 0.5, -35, 35, 0.5, -35, -35, -0.5, 35, 35, -0.5, 35, -35, -0.5, -35, 35, -0.5, 35, 35, -0.5, -35, -35, -0.5, -35)
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_pw38j"]
+properties/0/path = NodePath("MapGenLCZ:seed")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = true
+properties/1/path = NodePath("MapGenRZ:seed")
+properties/1/spawn = true
+properties/1/sync = true
+properties/1/watch = true
+properties/2/path = NodePath("MapGenHCZ:seed")
+properties/2/spawn = true
+properties/2/sync = true
+properties/2/watch = true
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_p22hh")
@@ -42,17 +47,5 @@ stream = ExtResource("5_wyc17")
 _spawnable_scenes = PackedStringArray("res://FPSController/PlayerScene.tscn")
 spawn_path = NodePath("..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
-mesh = SubResource("BoxMesh_b6rwy")
-surface_material_override/0 = SubResource("StandardMaterial3D_shkmn")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_5wt6b")
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.0588359, 0.998268, 0, -0.998268, 0.0588359, 0, 33.4248, 0)
-spot_range = 67.1549
-spot_attenuation = 0.116629
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_pw38j")

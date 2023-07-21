@@ -7,15 +7,15 @@ public partial class MapGeneratorHCZ : Node3D
     int width = 16; //use bigger value to fix map generation can bump into the end of map.
     int height = 16;
     [Export] ulong seed;
-    /*ulong Seed { get=> seed; set=>seed=RandomSeed(); }
+    ulong Seed { get=> seed; set=>seed=RandomSeed(); }
 
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
-    static ulong RandomSeed()
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+    ulong RandomSeed()
     {
         var random = new RandomNumberGenerator();
         random.Randomize();
         return random.Randi();
-    }*/
+    }
     int room1Amount, room2Amount, room2cAmount, room3Amount, room4Amount;
     enum RoomTypes : int { 
         empty = -1,
@@ -35,7 +35,7 @@ public partial class MapGeneratorHCZ : Node3D
     void Generate(int numberOfRooms)
     {
         RandomNumberGenerator rng = new RandomNumberGenerator();
-        rng.Seed = 0;
+        rng.Seed = seed;
         Room[,] mapGen = new Room[width, height];
         //fill with zeros
         for (int x = 0; x < width; x++)
@@ -252,14 +252,14 @@ public partial class MapGeneratorHCZ : Node3D
             }
         }
 
-        /*if (room1Amount < 3)
+        if (room1Amount < 3)
         {
-            if (IsMultiplayerAuthority())
+            if (Multiplayer.IsServer())
             {
-                //seed = RandomSeed();
-                Generate(24);
+                Seed = RandomSeed();
             }
-        }*/
+            Generate(24);
+        }
 
         int currRoom1 = 0;
         int currRoom2 = 0;
@@ -351,7 +351,7 @@ public partial class MapGeneratorHCZ : Node3D
             }
         }
 
-        for (int x = 0; x < width; x++)
+        /*for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {
@@ -371,11 +371,15 @@ public partial class MapGeneratorHCZ : Node3D
                     AddChild(d);
                 }
             }
-        }
+        }*/
     }
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+        if (Multiplayer.IsServer())
+        {
+            Seed = RandomSeed();
+        }
         Generate(24);
 	}
 
