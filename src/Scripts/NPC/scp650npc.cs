@@ -1,4 +1,4 @@
-using Godot;
+/*using Godot;
 using System;
 
 public partial class scp650npc : CharacterBody3D
@@ -123,6 +123,6 @@ public partial class scp650npc : CharacterBody3D
         timer = 0d;
     }
 }
-
+*/
 
 

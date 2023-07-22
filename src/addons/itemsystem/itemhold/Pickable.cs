@@ -63,7 +63,7 @@ public partial class Pickable : RigidBody3D
     internal void CarryPickable()
     {
         GetNode<CollisionShape3D>("CollisionShape3D").Disabled = true;
-        holder.holdingItem = this;
+        // holder.holdingItem = this;
         this.Freeze = true;
         pickedUp = true;
     }
@@ -71,7 +71,7 @@ public partial class Pickable : RigidBody3D
     internal void DropPickable()
     {
         GetNode<CollisionShape3D>("CollisionShape3D").Disabled = false;
-        holder.holdingItem = null;
+        // holder.holdingItem = null;
         this.Freeze = false;
         pickedUp = false;
     }

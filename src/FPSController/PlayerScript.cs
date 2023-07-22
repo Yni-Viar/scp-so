@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class PlayerScriptMP : CharacterBody3D
+public partial class PlayerScript : CharacterBody3D
 {
     /* This script was created by dzejpi. License - The Unlicense. 
      * Some parts used from elmarcoh (this script is also public domain).
@@ -60,7 +60,7 @@ public partial class PlayerScriptMP : CharacterBody3D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        Position = GetTree().Root.GetNode<Marker3D>("Main/Game/MapGenLCZ/LC_room1_archive/entityspawn").GlobalPosition;
+        Position = GetTree().Root.GetNode<Marker3D>("Main/Game/MapGenRZ/RZ_room2_offices/entityspawn").GlobalPosition;
         if (IsMultiplayerAuthority())
         {
             GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = true;

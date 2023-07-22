@@ -8,6 +8,8 @@ public partial class Door : Node3D
 
     bool CanOpen { get=>canOpen; set=>canOpen = value; }
     bool IsOpened { get=>isOpened; set=>isOpened = value; }
+
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
 	internal void DoorControl()
 	{
         if (CanOpen)
@@ -64,7 +66,7 @@ public partial class Door : Node3D
 
     private void OnButtonInteractInteracted(GodotObject player)
     {
-        DoorControl();
+        Rpc("DoorControl");
     }
 }
 

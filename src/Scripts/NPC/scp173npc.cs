@@ -1,4 +1,4 @@
-using Godot;
+/*using Godot;
 using System;
 
 public partial class scp173npc : CharacterBody3D
@@ -80,4 +80,4 @@ public partial class scp173npc : CharacterBody3D
 	{
         canMove = true;
 	}
-}
+}*/

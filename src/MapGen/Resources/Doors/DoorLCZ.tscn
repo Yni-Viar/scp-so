@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bff0n6tx6aq40"]
+[gd_scene load_steps=19 format=3 uid="uid://bff0n6tx6aq40"]
 
 [ext_resource type="Texture2D" uid="uid://ben08ytu3hn3q" path="res://MapGen/Resources/Doors/DoorLCZ/Door01.jpg" id="1_jhaf4"]
 [ext_resource type="Script" path="res://Scripts/Facility/Door.cs" id="1_x1118"]
@@ -169,6 +169,16 @@ _data = {
 "door_open": SubResource("Animation_48v2y")
 }
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_mccg3"]
+properties/0/path = NodePath(".:isOpened")
+properties/0/spawn = true
+properties/0/sync = false
+properties/0/watch = true
+properties/1/path = NodePath(".:canOpen")
+properties/1/spawn = true
+properties/1/sync = false
+properties/1/watch = true
+
 [node name="Door" type="Node3D"]
 script = ExtResource("1_x1118")
 
@@ -212,6 +222,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71255, 1.75841, -0.227053)
 
 [node name="ButtonInteract2" parent="." instance=ExtResource("3_mkb0f")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.67449, 1.76304, 0.231207)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_interval = 0.25
+replication_config = SubResource("SceneReplicationConfig_mccg3")
 
 [connection signal="Interacted" from="ButtonInteract" to="." method="OnButtonInteractInteracted"]
 [connection signal="Interacted" from="ButtonInteract2" to="." method="OnButtonInteractInteracted"]

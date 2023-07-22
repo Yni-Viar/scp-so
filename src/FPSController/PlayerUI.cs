@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class PlayerUIMP : Control
+public partial class PlayerUI : Control
 {
     /* A first attempt to refactor Player Script.
      * As for now (16.05.2023), the player UI will be in separate script. (Except blinking)
