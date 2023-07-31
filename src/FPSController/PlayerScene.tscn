@@ -1,14 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://isp3qhbu0mf5"]
+[gd_scene load_steps=14 format=3 uid="uid://isp3qhbu0mf5"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerScript.cs" id="1_tw8h1"]
 [ext_resource type="Script" path="res://FPSController/PlayerCommon.cs" id="2_cwidx"]
 [ext_resource type="Script" path="res://FPSController/PlayerUI.cs" id="3_ux413"]
 [ext_resource type="Texture2D" uid="uid://cymko5vnq4vsh" path="res://Assets/HUD/Blink.png" id="4_yi4ry"]
 [ext_resource type="Script" path="res://FPSController/PauseMenu.cs" id="5_0d7sq"]
-[ext_resource type="PackedScene" uid="uid://gom6tjixj21n" path="res://InventorySystem/InventoryContainer.tscn" id="6_eruel"]
 [ext_resource type="FontFile" uid="uid://bmquuud55yceh" path="res://Assets/Fonts/Righteous/Righteous-Regular.ttf" id="7_dkx5u"]
 [ext_resource type="Texture2D" uid="uid://bmw4fxmnmwhov" path="res://Assets/HUD/arrow.png" id="8_enljs"]
-[ext_resource type="PackedScene" uid="uid://o6rnnciwmwvn" path="res://GDsh/InGameConsole.tscn" id="9_5x3m1"]
 [ext_resource type="Script" path="res://FPSController/PlayerSync.cs" id="10_8dn5b"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lnmrj"]
@@ -159,10 +157,6 @@ offset_right = 192.104
 offset_bottom = 31.88
 text = "Exit"
 
-[node name="InventoryContainer" parent="UI" instance=ExtResource("6_eruel")]
-visible = false
-layout_mode = 1
-
 [node name="GameOver" type="Control" parent="UI"]
 visible = false
 layout_mode = 1
@@ -227,12 +221,6 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_enljs")
-
-[node name="InGameConsole" parent="UI" instance=ExtResource("9_5x3m1")]
-visible = false
-layout_mode = 1
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="PlayerSync" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_6h10r")

@@ -60,7 +60,7 @@ public partial class PlayerScript : CharacterBody3D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        Position = GetTree().Root.GetNode<Marker3D>("Main/Game/MapGenRZ/RZ_room2_offices/entityspawn").GlobalPosition;
+        Position = GetTree().Root.GetNode<Marker3D>("Main/Game/MapGenLCZ/LC_room1_archive/entityspawn").GlobalPosition;
         if (IsMultiplayerAuthority())
         {
             GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = true;
@@ -101,7 +101,7 @@ public partial class PlayerScript : CharacterBody3D
         }
         
 
-        // DEPRECATED
+        // DEPRECATED, since v.0.2.0-MP-dev
         // direction = new Vector3();
         // direction.Z = -Input.GetActionStrength("move_forward") + Input.GetActionStrength("move_backward");
         // direction.X = -Input.GetActionStrength("move_left") + Input.GetActionStrength("move_right");
@@ -201,8 +201,8 @@ public partial class PlayerScript : CharacterBody3D
                     /*if (collidedWith.HasMethod("PickUpItem")) //pick up item.
                     {
                         collidedWith.Call("PickUpItem", this);
-                        interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Interact/PickItem" + Convert.ToString(rng.RandiRange(1, 2)) + ".ogg");;
-                        interactSound.Play();
+                        //interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Interact/PickItem" + Convert.ToString(rng.RandiRange(1, 2)) + ".ogg");
+                        //interactSound.Play();
                     }*/
                     if (collidedWith is ButtonInteract)
                     {
@@ -243,7 +243,7 @@ public partial class PlayerScript : CharacterBody3D
         PlayerCommon.isBlinking = false;
         blinkImage.Hide();
     }
-    /*internal void GameOver(int whichScreen) // DEPRECATED, since 0.2.0-MP-dev
+    /*internal void GameOver(int whichScreen) // DEPRECATED, since 0.2.0-MP-dev, will be rewritten after player class manager + health will be implemented
     {
         gameOver = true;
         GD.Print("Game Over!");

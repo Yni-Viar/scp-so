@@ -110,7 +110,7 @@ public partial class GDShellSharp : Node
             new Godot.Collections.Dictionary<string, string>{
                 {"OS", OS.GetName()},
                 {"Host", OS.GetModelName()},
-                {"Engine", "Godot" + Engine.GetVersionInfo()},
+                {"Engine version", "Godot" + Engine.GetVersionInfo()},
                 {"Uptime", uptimeStr},
                 {"Game version", GetVersionInfo()},
                 {"Resolution", (GetTree().Root.GetVisibleRect().Size).ToString()},
@@ -121,7 +121,7 @@ public partial class GDShellSharp : Node
         
         foreach (var line in stats)
         {
-            r += line.Key + " " + stats[line.Key] + "\n";
+            r += line.Key + ": " + stats[line.Key] + "\n";
         }
         return r;
     }

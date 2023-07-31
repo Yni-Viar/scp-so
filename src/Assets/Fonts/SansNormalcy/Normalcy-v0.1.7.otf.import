@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cqaasvtiakcsw"
-path="res://.godot/imported/Normalcy-v0.1.7.otf-91d3f505f2baa2d34e54e95e8e73cf12.fontdata"
+path="res://.godot/imported/Normalcy-v0.1.7.otf-13c6425a24db29d147d394d777313e5a.fontdata"
 
 [deps]
 
-source_file="res://Assets/Fonts/sans-normalcy-main/Normalcy-v0.1.7.otf"
-dest_files=["res://.godot/imported/Normalcy-v0.1.7.otf-91d3f505f2baa2d34e54e95e8e73cf12.fontdata"]
+source_file="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf"
+dest_files=["res://.godot/imported/Normalcy-v0.1.7.otf-13c6425a24db29d147d394d777313e5a.fontdata"]
 
 [params]
 

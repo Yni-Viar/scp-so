@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhs1iuqg4qex4"]
+[gd_scene load_steps=4 format=3 uid="uid://dhs1iuqg4qex4"]
 
 [ext_resource type="PackedScene" uid="uid://b345bk26jamix" path="res://Scenes/MainMenu.tscn" id="1_5tg38"]
 [ext_resource type="Script" path="res://Scripts/Multiplayer/NetworkManager.cs" id="1_nxheq"]
+[ext_resource type="PackedScene" uid="uid://o6rnnciwmwvn" path="res://GDsh/InGameConsole.tscn" id="3_qd7e1"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_nxheq")
@@ -9,6 +10,11 @@ script = ExtResource("1_nxheq")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MainMenu" parent="CanvasLayer" instance=ExtResource("1_5tg38")]
+
+[node name="InGameConsole" parent="CanvasLayer" instance=ExtResource("3_qd7e1")]
+visible = false
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Scenes/Facility.tscn")

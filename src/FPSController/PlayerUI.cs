@@ -14,7 +14,7 @@ public partial class PlayerUI : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        if (GetNode<Control>("PauseMenu").Visible || GetNode<ColorRect>("InventoryContainer").Visible || GetNode<InGameConsole>("InGameConsole").Visible)
+        if (GetNode<Control>("PauseMenu").Visible || /*GetNode<ColorRect>("InventoryContainer").Visible || */GetTree().Root.GetNode<InGameConsole>("Main/CanvasLayer/InGameConsole").Visible)
         {
             SpecialScreen(true);
         }
@@ -35,11 +35,6 @@ public partial class PlayerUI : Control
         {
             GetNode<ColorRect>("InventoryContainer").Visible = !(GetNode<ColorRect>("InventoryContainer").Visible);
         }*/
-
-        if (Input.IsActionJustPressed("console"))
-        {
-            GetNode<InGameConsole>("InGameConsole").Visible = !(GetNode<InGameConsole>("InGameConsole").Visible);
-        }
     }
 
     void SpecialScreen(bool enabled = false)
