@@ -239,7 +239,6 @@ public partial class PlayerScript : CharacterBody3D
                 blinkTimer = 0d;
             }
         }
-        GetTree().Root.GetNode<Label>("Main/CanvasLayer/PlayerUI/ClassInfo").Text = className;
         UpDirection = Vector3.Up;
         MoveAndSlide();
     }
@@ -251,22 +250,29 @@ public partial class PlayerScript : CharacterBody3D
     {
         if (args.Length == 1)
         {
-            if (IsMultiplayerAuthority())
+            CallForceclass(args[0]);
+            return "Tried to forceclass to " + args[0];
+            /*if (IsMultiplayerAuthority())
             {
                 // Rpc("SetPlayerClass", args[0]);
                 // Forceclass this player.
-                GetParent().GetParent().GetNode<FacilityManager>("Game").ForceClass(this.Name, args[0]);
-                return "Tried to forceclass to " + args[0];
+                //GetParent().GetParent().GetNode<FacilityManager>("Game").ForceClass(this.Name, args[0]);
+                
             }
             else
             {
                 return "You are not authorized to do this";
-            }
+            }*/
         }
         else
         {
             return "You need ONLY 1 argument to forceclass. E.g. to spawn as SCP-173, you need to write \"forceclass scp173\"";
         }
+    }
+
+    void CallForceclass(string to)
+    {
+        GetParent().GetParent().GetNode<FacilityManager>("Game").Rpc("SetPlayerClass", this.Name, to);
     }
 
     string ClassList(string[] args)

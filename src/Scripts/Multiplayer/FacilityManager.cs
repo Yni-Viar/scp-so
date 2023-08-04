@@ -91,7 +91,6 @@ public partial class FacilityManager : Node3D
                 Rpc("SetPlayerClass", playerScript.Name, TossPlayerClass());
             }
         }
-        Rpc("LoadModels", playersList);
     }
 
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
@@ -104,13 +103,14 @@ public partial class FacilityManager : Node3D
         GetNode<PlayerScript>(playerName).speed = (float)ClassParser.ReadJson("user://playerclass_0.2.0.json")[nameOfClass]["speed"];
         GetNode<PlayerScript>(playerName).jump = (float)ClassParser.ReadJson("user://playerclass_0.2.0.json")[nameOfClass]["jump"];
         GetNode<PlayerScript>(playerName).Position = GetTree().Root.GetNode<Marker3D>((string)ClassParser.ReadJson("user://playerclass_0.2.0.json")[nameOfClass]["spawnPoint"]).GlobalPosition;
+        Rpc("LoadModels", playersList);
     }
 
-    internal void ForceClass(string playerName, string nameOfClass)
+    /*internal void ForceClass(string playerName, string nameOfClass)
     {
         Rpc("SetPlayerClass", playerName, nameOfClass);
         Rpc("LoadModels", playersList);
-    }
+    }*/
 
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
     void LoadModels(Godot.Collections.Array<string> players)

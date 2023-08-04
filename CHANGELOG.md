@@ -2,6 +2,10 @@
 The current state of the game - Pre-Alpha.
 ## Pre-Alpha versions
 
+### v.0.2.0.2 (2023.08.04)
+
+- Hotfix: forceclass command now works.
+
 ### v.0.2.0.1 (2023.08.04)
 
 - Hotfix: added changelog, remove -dev sign and tried to fix mapgen overlapping.

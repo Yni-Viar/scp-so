@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhs1iuqg4qex4"]
+[gd_scene load_steps=7 format=3 uid="uid://dhs1iuqg4qex4"]
 
 [ext_resource type="PackedScene" uid="uid://b345bk26jamix" path="res://Scenes/MainMenu.tscn" id="1_5tg38"]
 [ext_resource type="Script" path="res://Scripts/Multiplayer/NetworkManager.cs" id="1_nxheq"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bmw4fxmnmwhov" path="res://Assets/HUD/arrow.png" id="4_l4f2s"]
 [ext_resource type="Script" path="res://Scripts/PlayerUI.cs" id="4_pne50"]
 [ext_resource type="Script" path="res://Scripts/PauseMenu.cs" id="5_mth3v"]
-[ext_resource type="FontFile" uid="uid://cqaasvtiakcsw" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="6_4hkyt"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_nxheq")
@@ -40,22 +39,6 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_l4f2s")
-
-[node name="ClassInfo" type="Label" parent="CanvasLayer/PlayerUI"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -253.5
-offset_top = -52.0
-offset_right = 253.5
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("6_4hkyt")
-theme_override_font_sizes/font_size = 32
-horizontal_alignment = 1
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer/PlayerUI"]
 visible = false

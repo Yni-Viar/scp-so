@@ -115,15 +115,13 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[b]v.0.2.0.1[/b] [i](Pre-Alpha)[/i]
-- Ported the game to multiplayer, except inventory and item system.
-- Various fixes + old loading screen got deprecated (it is still in game files, but is not used).
-- Added player classes (currently only placeholder human and SCP-173 present)
-- [i]0.2.0.1 Hotfix[/i]: added changelog for 0.2.0, remove -dev sign and tried to fix mapgen overlapping.
+text = "[b]v.0.2.0.2[/b] [i](Pre-Alpha)[/i]
+- [i]Hotfix[/i]: forceclass command now works.
 
 [b]KNOWN ISSUES:[/b]
 - Rooms can be overlapped with another room, or if it size is too large.
-- There is NO loading screen, so you need to wait."
+- There is NO loading screen, so you need to wait.
+- You can be not spawned at the room, because of lack of it. Simply restart the server."
 
 [node name="PlayPanel" type="Panel" parent="."]
 visible = false
