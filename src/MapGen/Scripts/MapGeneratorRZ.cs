@@ -251,15 +251,6 @@ public partial class MapGeneratorRZ : Node3D
             }
         }
 
-        if (room1Amount < 1 && room2Amount < 1)
-        {
-            if (Multiplayer.IsServer())
-            {
-                Seed = RandomSeed();
-            }
-            Generate(24);
-        }
-
         int currRoom1 = 0;
         int currRoom2 = 0;
         //int currRoom2c = 0;

@@ -115,10 +115,11 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[b]v.0.2.0-dev[/b] [i](Pre-Alpha)[/i]
+text = "[b]v.0.2.0.1[/b] [i](Pre-Alpha)[/i]
 - Ported the game to multiplayer, except inventory and item system.
 - Various fixes + old loading screen got deprecated (it is still in game files, but is not used).
 - Added player classes (currently only placeholder human and SCP-173 present)
+- [i]0.2.0.1 Hotfix[/i]: added changelog for 0.2.0, remove -dev sign and tried to fix mapgen overlapping.
 
 [b]KNOWN ISSUES:[/b]
 - Rooms can be overlapped with another room, or if it size is too large.
@@ -445,40 +446,6 @@ text = "[i]First person character (license - The Unlicense)[/i]
  then I (Yni) merged some code from elmarcoh's FPS script (also public domain),
  and now I added some code.
 
-
-"
-fit_content = true
-
-[node name="CreditsCode3" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1234, 0)
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 24
-theme_override_font_sizes/bold_font_size = 24
-theme_override_font_sizes/italics_font_size = 24
-theme_override_font_sizes/bold_italics_font_size = 24
-theme_override_font_sizes/mono_font_size = 24
-bbcode_enabled = true
-text = "[i]Item pickup[/i]
-
-- Made by TheRadMatt (their repo under the MIT License: https://github.com/TheRadMatt/3D-FPP-Interaction-Demo)
-
-
-"
-fit_content = true
-
-[node name="CreditsCode4" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1234, 0)
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 24
-theme_override_font_sizes/bold_font_size = 24
-theme_override_font_sizes/italics_font_size = 24
-theme_override_font_sizes/bold_italics_font_size = 24
-theme_override_font_sizes/mono_font_size = 24
-bbcode_enabled = true
-text = "[i]Inventory system[/i]
-
-- Made by Heartbeast Studios (License - MIT)
-- Ported to C# by Yni.
 
 "
 fit_content = true

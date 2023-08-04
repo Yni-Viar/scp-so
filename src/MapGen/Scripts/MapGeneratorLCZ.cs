@@ -254,15 +254,6 @@ public partial class MapGeneratorLCZ : Node3D
             }
         }
 
-        if (room1Amount < 3)
-        {
-            if (Multiplayer.IsServer())
-            {
-                Seed = RandomSeed();
-            }
-            Generate(24);
-        }
-
         int currRoom1 = 0;
         int currRoom2 = 0;
         

@@ -2,6 +2,16 @@
 The current state of the game - Pre-Alpha.
 ## Pre-Alpha versions
 
+### v.0.2.0.1 (2023.08.04)
+
+- Hotfix: added changelog, remove -dev sign and tried to fix mapgen overlapping.
+
+### v.0.2.0 (2023.08.04)
+
+- Ported the game to multiplayer, except inventory and item system.
+- Various fixes + old loading screen got deprecated (it is still in game files, but is not used).
+- Added player classes (currently only placeholder human and SCP-173 present)
+
 ### v.0.1.0 (2023.07.17)
 
 - The items can be used, no refactoring is required :D
