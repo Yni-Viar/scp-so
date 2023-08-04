@@ -1,17 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://isp3qhbu0mf5"]
+[gd_scene load_steps=10 format=3 uid="uid://isp3qhbu0mf5"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerScript.cs" id="1_tw8h1"]
 [ext_resource type="Script" path="res://FPSController/PlayerCommon.cs" id="2_cwidx"]
-[ext_resource type="Script" path="res://FPSController/PlayerUI.cs" id="3_ux413"]
 [ext_resource type="Texture2D" uid="uid://cymko5vnq4vsh" path="res://Assets/HUD/Blink.png" id="4_yi4ry"]
-[ext_resource type="Script" path="res://FPSController/PauseMenu.cs" id="5_0d7sq"]
 [ext_resource type="FontFile" uid="uid://bmquuud55yceh" path="res://Assets/Fonts/Righteous/Righteous-Regular.ttf" id="7_dkx5u"]
-[ext_resource type="Texture2D" uid="uid://bmw4fxmnmwhov" path="res://Assets/HUD/arrow.png" id="8_enljs"]
 [ext_resource type="Script" path="res://FPSController/PlayerSync.cs" id="10_8dn5b"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_lnmrj"]
-radius = 0.4
-height = 2.6
 
 [sub_resource type="CapsuleShape3D" id="1"]
 radius = 0.371158
@@ -45,9 +38,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28033, 0)
 collision_layer = 2
 script = ExtResource("1_tw8h1")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0618534, 0)
-mesh = SubResource("CapsuleMesh_lnmrj")
+[node name="PlayerModel" type="Node3D" parent="."]
 
 [node name="PlayerCommon" type="Node3D" parent="."]
 script = ExtResource("2_cwidx")
@@ -105,7 +96,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3_ux413")
 
 [node name="Blink" type="Control" parent="UI"]
 visible = false
@@ -124,38 +114,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_yi4ry")
-
-[node name="PauseMenu" type="Control" parent="UI"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("5_0d7sq")
-
-[node name="Panel" type="Panel" parent="UI/PauseMenu"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.237
-anchor_bottom = 1.0
-offset_right = 0.959961
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ExitButton" type="Button" parent="UI/PauseMenu/Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.491
-anchor_top = 0.089
-anchor_right = 0.491
-anchor_bottom = 0.089
-offset_left = -191.896
-offset_top = -32.12
-offset_right = 192.104
-offset_bottom = 31.88
-text = "Exit"
 
 [node name="GameOver" type="Control" parent="UI"]
 visible = false
@@ -192,40 +150,8 @@ theme_override_font_sizes/font_size = 48
 text = "Game Over"
 horizontal_alignment = 1
 
-[node name="Exit" type="Button" parent="UI/GameOver"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.498
-anchor_top = 0.875
-anchor_right = 0.498
-anchor_bottom = 0.875
-offset_left = -254.16
-offset_top = -28.0001
-offset_right = 255.84
-offset_bottom = 27.9999
-grow_horizontal = 2
-grow_vertical = 2
-text = "Exit"
-
-[node name="Cursor" type="TextureRect" parent="UI"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("8_enljs")
-
 [node name="PlayerSync" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_6h10r")
 script = ExtResource("10_8dn5b")
 
 [connection signal="body_entered" from="NPCInteract" to="." method="OnNpcInteractBodyEntered"]
-[connection signal="pressed" from="UI/PauseMenu/Panel/ExitButton" to="UI/PauseMenu" method="OnExitButtonPressed"]
-[connection signal="pressed" from="UI/GameOver/Exit" to="." method="OnExitPressed"]

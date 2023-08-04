@@ -3,9 +3,6 @@ using System;
 
 public partial class PlayerUI : Control
 {
-    /* A first attempt to refactor Player Script.
-     * As for now (16.05.2023), the player UI will be in separate script. (Except blinking)
-     */
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -14,7 +11,7 @@ public partial class PlayerUI : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        if (GetNode<Control>("PauseMenu").Visible || /*GetNode<ColorRect>("InventoryContainer").Visible || */GetTree().Root.GetNode<InGameConsole>("Main/CanvasLayer/InGameConsole").Visible)
+        if (GetTree().Root.GetNode<Control>("Main/CanvasLayer/PlayerUI/PauseMenu").Visible || GetTree().Root.GetNode<InGameConsole>("Main/CanvasLayer/InGameConsole").Visible)
         {
             SpecialScreen(true);
         }
@@ -28,7 +25,7 @@ public partial class PlayerUI : Control
     {
         if (Input.IsActionJustPressed("ui_cancel"))
         {
-            GetNode<Control>("PauseMenu").Visible = !(GetNode<Control>("PauseMenu").Visible);
+            GetTree().Root.GetNode<Control>("Main/CanvasLayer/PlayerUI/PauseMenu").Visible = !(GetTree().Root.GetNode<Control>("Main/CanvasLayer/PlayerUI/PauseMenu").Visible);
         }
 
         /*if (Input.IsActionJustPressed("inventory"))
@@ -37,7 +34,7 @@ public partial class PlayerUI : Control
         }*/
     }
 
-    void SpecialScreen(bool enabled = false)
+    internal void SpecialScreen(bool enabled = false)
     {
         if (enabled)
         {

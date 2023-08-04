@@ -9,6 +9,8 @@ public partial class NetworkManager : Node
 
     ENetMultiplayerPeer peer;
 
+    internal static Godot.Collections.Array<string> playersList = new Godot.Collections.Array<string>();
+
     Node3D game; // replicated map.
     CharacterBody3D playerScene; // replicated player.
 	// Called when the node enters the scene tree for the first time.
@@ -79,8 +81,9 @@ public partial class NetworkManager : Node
     {
         peer.CreateServer(port, maxPlayers);
         Multiplayer.MultiplayerPeer = peer;
-        StartGame();
+        LoadGame();
         GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Hide();
+        GetTree().Root.GetNode<Control>("Main/CanvasLayer/PlayerUI").Show();
         GD.Print("Ready for connecting!");
     }
 
@@ -92,9 +95,12 @@ public partial class NetworkManager : Node
         Multiplayer.ConnectionFailed += ConnectionFailed;
         Multiplayer.ServerDisconnected += ServerDisconnected;
         GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Hide();
+        GetTree().Root.GetNode<Control>("Main/CanvasLayer/PlayerUI").Show();
     }
 
-    void StartGame()
+    // NOT to be confused with LoadLevel, LoadGame is a serverside function, while LoadLevel - clientside.
+    // Both needed to spawn a level to every player via Multiplayer Spawner.
+    void LoadGame()
     {
         if (Multiplayer.IsServer())
         {
@@ -124,6 +130,7 @@ public partial class NetworkManager : Node
     {
         GD.Print("Connection Failed!");
         GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Show();
+        GetTree().Root.GetNode<Control>("Main/CanvasLayer/PlayerUI").Hide();
     }
 
     
@@ -135,6 +142,7 @@ public partial class NetworkManager : Node
         }
         GD.Print("You are disconnected from the server.");
         GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Show();
+        GetTree().Root.GetNode<Control>("Main/CanvasLayer/PlayerUI").Hide();
 
     }
 }

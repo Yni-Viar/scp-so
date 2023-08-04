@@ -28,10 +28,16 @@ public partial class PlayerScript : CharacterBody3D
     double blinkTimer = 0d;
     float blinkWaiting;
 
-
-    float speed = 4.5f;
-    float jump = 4.5f;
+    [Export] internal string classKey;
+    [Export] internal string className;
+    [Export] internal string spawnPoint;
+    [Export] internal string playerModelSource;
+    [Export] internal float speed = 0f;
+    [Export] internal float jump = 0f;
+    [Export] internal Godot.Collections.Array<string> footstepSounds;
     float gravity = 9.8f;
+    // SCP Number. Set -1 for humans.
+    [Export] internal int scpNumber = -1;
 
     float groundAcceleration = 8.0f;
     float airAcceleration = 8.0f;
@@ -49,7 +55,7 @@ public partial class PlayerScript : CharacterBody3D
     bool isWalking = false;
     // internal bool gameOver = false;
 
-    //item-specific properties
+    //item-specific properties, currently removed.
     // public Pickable holdingItem = null;
 
     public override void _EnterTree()
@@ -60,7 +66,6 @@ public partial class PlayerScript : CharacterBody3D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        Position = GetTree().Root.GetNode<Marker3D>("Main/Game/MapGenLCZ/LC_room1_archive/entityspawn").GlobalPosition;
         if (IsMultiplayerAuthority())
         {
             GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = true;
@@ -76,7 +81,10 @@ public partial class PlayerScript : CharacterBody3D
             acceleration = groundAcceleration;
             // Input.MouseMode = Input.MouseModeEnum.Captured;
             blinkWaiting = 5.2f;
+            FloorMaxAngle = 1.308996f;
         }
+        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("forceclass", new Callable(this, "Forceclass"), "Forceclass the player (1 argument needed)");
+        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("classlist", new Callable(this, "ClassList"), "Returns class names (for forceclass)");
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -114,7 +122,10 @@ public partial class PlayerScript : CharacterBody3D
     {
         if (IsMultiplayerAuthority())
         {
-            blinkTimer += delta;
+            if (scpNumber == -1)
+            {
+                blinkTimer += delta;
+            }
             //Anti-endless fall check. Needed to jump properly. - DEPRECATED, since v.0.2.0-MP-dev
             /*if (IsOnFloor())
             {
@@ -147,7 +158,7 @@ public partial class PlayerScript : CharacterBody3D
             }
             Vector3 direction = (Transform.Basis * new Vector3(GetNode<PlayerSync>("PlayerSync").direction.X, 0, GetNode<PlayerSync>("PlayerSync").direction.Y));
             //running
-            if (Input.IsActionPressed("move_sprint"))
+            if (Input.IsActionPressed("move_sprint") && scpNumber == -1) //SCPs cannot sprint
             {
                 vel = vel.Lerp(direction * speed * 2, acceleration * (float)delta);
                 isSprinting = true;
@@ -177,7 +188,7 @@ public partial class PlayerScript : CharacterBody3D
                 }
                 else if (isWalking)
                 {
-                    walkSounds.Stream = GD.Load<AudioStream>("res://Sounds/Character/Human/Step/Step" + rng.RandiRange(1, 8) + ".ogg");
+                    walkSounds.Stream = GD.Load<AudioStream>(footstepSounds[rng.RandiRange(0, footstepSounds.Count - 1)]);
                     walkSounds.PitchScale = 1;
                     walkSounds.Play();
                 }
@@ -210,8 +221,8 @@ public partial class PlayerScript : CharacterBody3D
                     }
                 // }
             }
-            //needed for walking up and down stairs
-            if (bottomRaycast.IsColliding() && !topRaycast.IsColliding())
+            //needed for walking up and down stairs, deprecated in 0.2.0 for optimizing the game.
+            /*if (bottomRaycast.IsColliding() && !topRaycast.IsColliding())
             {
                 if (Input.IsActionPressed("move_backward") || Input.IsActionPressed("move_left") || Input.IsActionPressed("move_right"))
                 {
@@ -221,18 +232,51 @@ public partial class PlayerScript : CharacterBody3D
                 {
                     FloorMaxAngle = 1.308996f; //75 degrees, need to climb stairs
                 }
-            }
+            }*/
             if (blinkTimer > blinkWaiting)
             {
                 Blink();
                 blinkTimer = 0d;
             }
         }
+        GetTree().Root.GetNode<Label>("Main/CanvasLayer/PlayerUI/ClassInfo").Text = className;
         UpDirection = Vector3.Up;
         MoveAndSlide();
     }
     private void OnNpcInteractBodyEntered(Node3D body)
     {
+    }
+
+    string Forceclass(string[] args)
+    {
+        if (args.Length == 1)
+        {
+            if (IsMultiplayerAuthority())
+            {
+                // Rpc("SetPlayerClass", args[0]);
+                // Forceclass this player.
+                GetParent().GetParent().GetNode<FacilityManager>("Game").ForceClass(this.Name, args[0]);
+                return "Tried to forceclass to " + args[0];
+            }
+            else
+            {
+                return "You are not authorized to do this";
+            }
+        }
+        else
+        {
+            return "You need ONLY 1 argument to forceclass. E.g. to spawn as SCP-173, you need to write \"forceclass scp173\"";
+        }
+    }
+
+    string ClassList(string[] args)
+    {
+        string r = "";
+        foreach (var val in ClassParser.ReadJson("user://playerclass_0.2.0.json"))
+        {
+            r += val.Key + "\n";
+        }
+        return r;
     }
     private async void Blink()
     {
@@ -260,9 +304,4 @@ public partial class PlayerScript : CharacterBody3D
         Input.MouseMode = Input.MouseModeEnum.Visible;
         GetNode<Control>("UI/GameOver").Show();
     }*/
-
-    private void OnExitPressed()
-    {
-        GetTree().ChangeSceneToFile("res://Scenes/MainMenu.tscn");
-    }
 }

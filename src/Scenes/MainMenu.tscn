@@ -116,13 +116,12 @@ theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "[b]v.0.2.0-dev[/b] [i](Pre-Alpha)[/i]
-- Ported the game to multiplayer.
-- Items has unique sounds (in previous versions sounds were random)
+- Ported the game to multiplayer, except inventory and item system.
 - Various fixes + old loading screen got deprecated (it is still in game files, but is not used).
+- Added player classes (currently only placeholder human and SCP-173 present)
 
 [b]KNOWN ISSUES:[/b]
 - Rooms can be overlapped with another room, or if it size is too large.
-- SCP-018 can sometimes fly out of the map.
 - There is NO loading screen, so you need to wait."
 
 [node name="PlayPanel" type="Panel" parent="."]
