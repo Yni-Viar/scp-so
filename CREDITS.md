@@ -1,7 +1,8 @@
 # Credits
 ## Code
-### Map Generation algorithm v3 (license - [MIT](/src/MapGen/Scripts/LICENSE))
-- Made by Yni.
+### Map Generation algorithm (License - CC-BY-SA 3.0)
+- Map Generator created by juanjp600.
+- Ported to C# by Yni
 
 ### SCP-173 AI and SCP-650 AI (license - [MIT](/LICENSE.MIT))
 - Made by Yni.

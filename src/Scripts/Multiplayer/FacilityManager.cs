@@ -97,12 +97,12 @@ public partial class FacilityManager : Node3D
     internal void SetPlayerClass(string playerName, string nameOfClass) //Note: RPC ONLY HANDLES PRIMITIVE TYPES, NOT PLAYERSCRIPT!
     {
         GetNode<PlayerScript>(playerName).classKey = nameOfClass;
-        GetNode<PlayerScript>(playerName).className = (string)ClassParser.ReadJson("user://playerclass_0.2.0.json")[nameOfClass]["className"];
-        GetNode<PlayerScript>(playerName).scpNumber = (int)ClassParser.ReadJson("user://playerclass_0.2.0.json")[nameOfClass]["scpNumber"];
-        GetNode<PlayerScript>(playerName).footstepSounds = (Godot.Collections.Array<string>)ClassParser.ReadJson("user://playerclass_0.2.0.json")[nameOfClass]["footstepSounds"];
-        GetNode<PlayerScript>(playerName).speed = (float)ClassParser.ReadJson("user://playerclass_0.2.0.json")[nameOfClass]["speed"];
-        GetNode<PlayerScript>(playerName).jump = (float)ClassParser.ReadJson("user://playerclass_0.2.0.json")[nameOfClass]["jump"];
-        GetNode<PlayerScript>(playerName).Position = GetTree().Root.GetNode<Marker3D>((string)ClassParser.ReadJson("user://playerclass_0.2.0.json")[nameOfClass]["spawnPoint"]).GlobalPosition;
+        GetNode<PlayerScript>(playerName).className = (string)ClassParser.ReadJson("user://playerclass_0.3.0.json")[nameOfClass]["className"];
+        GetNode<PlayerScript>(playerName).scpNumber = (int)ClassParser.ReadJson("user://playerclass_0.3.0.json")[nameOfClass]["scpNumber"];
+        GetNode<PlayerScript>(playerName).footstepSounds = (Godot.Collections.Array<string>)ClassParser.ReadJson("user://playerclass_0.3.0.json")[nameOfClass]["footstepSounds"];
+        GetNode<PlayerScript>(playerName).speed = (float)ClassParser.ReadJson("user://playerclass_0.3.0.json")[nameOfClass]["speed"];
+        GetNode<PlayerScript>(playerName).jump = (float)ClassParser.ReadJson("user://playerclass_0.3.0.json")[nameOfClass]["jump"];
+        GetNode<PlayerScript>(playerName).Position = GetTree().Root.GetNode<Marker3D>((string)ClassParser.ReadJson("user://playerclass_0.3.0.json")[nameOfClass]["spawnPoint"]).GlobalPosition;
         Rpc("LoadModels", playersList);
     }
 
@@ -118,14 +118,14 @@ public partial class FacilityManager : Node3D
         foreach (string playerName in players)
         {
             PlayerScript playerScript = GetNode<PlayerScript>(playerName);
-            if (ClassParser.ReadJson("user://playerclass_0.2.0.json").Keys.Contains(playerScript.classKey))
+            if (ClassParser.ReadJson("user://playerclass_0.3.0.json").Keys.Contains(playerScript.classKey))
             {
                 Node ModelRoot = playerScript.GetNode("PlayerModel");
                 if (ModelRoot.GetChild(0) != null)
                 {
                     ModelRoot.GetChild(0).QueueFree();
                 }
-                Node tmpModel = ResourceLoader.Load<PackedScene>((string)ClassParser.ReadJson("user://playerclass_0.2.0.json")[playerScript.classKey]["playerModelSource"]).Instantiate();
+                Node tmpModel = ResourceLoader.Load<PackedScene>((string)ClassParser.ReadJson("user://playerclass_0.3.0.json")[playerScript.classKey]["playerModelSource"]).Instantiate();
                 ModelRoot.AddChild(tmpModel, true);
             }
         }
@@ -134,7 +134,7 @@ public partial class FacilityManager : Node3D
     string TossPlayerClass()
     {
         Godot.Collections.Array<string> tossClass = new Godot.Collections.Array<string>();
-        foreach(string val in ClassParser.ReadJson("user://playerclass_0.2.0.json").Keys)
+        foreach(string val in ClassParser.ReadJson("user://playerclass_0.3.0.json").Keys)
         {
             tossClass.Add(val);
         }

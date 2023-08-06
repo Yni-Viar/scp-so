@@ -7,7 +7,7 @@ public partial class ClassData : Node
       new Godot.Collections.Dictionary<string, Godot.Collections.Dictionary<string, Variant>>{
         {"default", new Godot.Collections.Dictionary<string, Variant>{
             {"className", "Test"},
-            {"spawnPoint", "Main/Game/MapGenLCZ/LC_room1_archive/entityspawn"},
+            {"spawnPoint", "Main/Game/MapGen/LC_room1_archive/entityspawn"},
             {"playerModelSource", "res://FPSController/PlayerClassPrefab/Default.tscn"},
             {"speed", 4.5f},
             {"jump", 4.25f},
@@ -25,7 +25,7 @@ public partial class ClassData : Node
         }},
         {"scp173", new Godot.Collections.Dictionary<string, Variant>{
             {"className", "SCP-173"},
-            {"spawnPoint", "Main/Game/MapGenHCZ/HC_cont1_173/entityspawn"},
+            {"spawnPoint", "Main/Game/MapGen/HC_cont1_173/entityspawn"},
             {"playerModelSource", "res://FPSController/PlayerClassPrefab/scp173.tscn"},
             {"speed", 9f},
             {"jump", 3f},
