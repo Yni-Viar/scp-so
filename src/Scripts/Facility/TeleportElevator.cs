@@ -1,6 +1,7 @@
-using Godot;
+/*using Godot;
 using System;
 
+// 0.3.0 update: due to map gen change, the teleporting elevator script is unused. Maybe in future this script will be readded.
 public partial class TeleportElevator : Node3D
 {
     [Export] internal string[] elevators; // need to handle open-close doors
@@ -177,3 +178,4 @@ public partial class TeleportElevator : Node3D
         }
     }
 }
+*/

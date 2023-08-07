@@ -1,10 +1,8 @@
 using Godot;
 using System;
-
+/* Deprecated, beginning with 0.3.0-dev
 public partial class PlayerCommon : Node3D
 {
-    //A variable, that is used for SCP-173 to check, are we blinking or not.
-    internal static bool isBlinking = false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -14,4 +12,4 @@ public partial class PlayerCommon : Node3D
 	public override void _Process(double delta)
 	{
 	}
-}
+}*/

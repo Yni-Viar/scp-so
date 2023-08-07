@@ -13,31 +13,28 @@ public partial class PlayerScript : CharacterBody3D
     Node3D playerHead;
     RayCast3D ray;
 
-    //stair check
-    RayCast3D bottomRaycast;
-    RayCast3D topRaycast;
-
     //Walk sounds and gameover screens.
-    Control blinkImage;
+    // Control blinkImage;
     // TextureRect gameOverScreen;
     // Label gameOverText;
     AudioStreamPlayer3D walkSounds;
     AudioStreamPlayer3D interactSound;
 
-    //blinking
-    double blinkTimer = 0d;
-    float blinkWaiting;
+    //blinking, deprecated in 0.3.0-dev
+    // double blinkTimer = 0d;
+    // float blinkWaiting;
 
     [Export] internal string classKey;
     [Export] internal string className;
     [Export] internal string spawnPoint;
     [Export] internal string playerModelSource;
+    [Export] internal float health = 100f;
     [Export] internal float speed = 0f;
     [Export] internal float jump = 0f;
     [Export] internal Godot.Collections.Array<string> footstepSounds;
     float gravity = 9.8f;
-    // SCP Number. Set -1 for humans.
-    [Export] internal int scpNumber = -1;
+    // SCP Number. Set -1 for humans, -2 for spectators.
+    [Export] internal int scpNumber = -2;
 
     float groundAcceleration = 8.0f;
     float airAcceleration = 8.0f;
@@ -71,20 +68,22 @@ public partial class PlayerScript : CharacterBody3D
             GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = true;
             playerHead = GetNode<Node3D>("PlayerHead");
             ray = GetNode<RayCast3D>("PlayerHead/RayCast3D");
-            blinkImage = GetNode<Control>("UI/Blink");
-            bottomRaycast = GetNode<RayCast3D>("PlayerFeet/StairCheck");
-            topRaycast = GetNode<RayCast3D>("PlayerFeet/StairCheck2");
+            // blinkImage = GetNode<Control>("UI/Blink");
             walkSounds = GetNode<AudioStreamPlayer3D>("WalkSounds");
             interactSound = GetNode<AudioStreamPlayer3D>("InteractSound");
             // gameOverScreen = GetNode<TextureRect>("UI/GameOver/GameOverScreen");
             // gameOverText = GetNode<Label>("UI/GameOver/GameOverMessage");
             acceleration = groundAcceleration;
             // Input.MouseMode = Input.MouseModeEnum.Captured;
-            blinkWaiting = 5.2f;
             FloorMaxAngle = 1.308996f;
         }
         GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("forceclass", new Callable(this, "Forceclass"), "Forceclass the player (1 argument needed)");
         GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("classlist", new Callable(this, "ClassList"), "Returns class names (for forceclass)");
+    }
+
+    private bool IsLocalAuthority()
+    {
+        return GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() == Multiplayer.GetUniqueId();
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -107,44 +106,15 @@ public partial class PlayerScript : CharacterBody3D
                 playerHead.Rotation = cameraRot;
             }
         }
-        
-
-        // DEPRECATED, since v.0.2.0-MP-dev
-        // direction = new Vector3();
-        // direction.Z = -Input.GetActionStrength("move_forward") + Input.GetActionStrength("move_backward");
-        // direction.X = -Input.GetActionStrength("move_left") + Input.GetActionStrength("move_right");
-        // direction = direction.Normalized().Rotated(Vector3.Up, Rotation.Y);
-        
-        
     }
 
     public override void _PhysicsProcess(double delta)
     {
         if (IsMultiplayerAuthority())
         {
-            if (scpNumber == -1)
+            /*if (scpNumber == -1) //deprecated in 0.3.0-dev
             {
                 blinkTimer += delta;
-            }
-            //Anti-endless fall check. Needed to jump properly. - DEPRECATED, since v.0.2.0-MP-dev
-            /*if (IsOnFloor())
-            {
-                gravityVector = -GetFloorNormal() * slidePrevention;
-                acceleration = groundAcceleration;
-                isJumpingLocal = false;
-            }
-            else
-            {
-                if (isJumpingLocal) // How NOT to code... :(
-                {
-                    gravityVector += Vector3.Down * gravity * (float)delta;
-                    acceleration = airAcceleration;
-                }
-                else
-                {
-                    gravityVector = Vector3.Zero;
-                    isJumpingLocal = false;
-                }
             }*/
             if (!IsOnFloor())
             {
@@ -171,6 +141,7 @@ public partial class PlayerScript : CharacterBody3D
                 isWalking = true;
                 isSprinting = false;
             }
+            
             movement.Z = vel.Z + gravityVector.Z;
             movement.X = vel.X + gravityVector.X;
             movement.Y = gravityVector.Y;
@@ -178,7 +149,7 @@ public partial class PlayerScript : CharacterBody3D
         
             
             //check if we don't stay still and is footstep audio playing;
-            if (!direction.IsZeroApprox() && !walkSounds.Playing)
+            if (!direction.IsZeroApprox() && !walkSounds.Playing && scpNumber != -2)
             {
                 if (isSprinting)
                 {
@@ -192,34 +163,22 @@ public partial class PlayerScript : CharacterBody3D
                     walkSounds.PitchScale = 1;
                     walkSounds.Play();
                 }
-            }
-            else if (direction.IsZeroApprox() && walkSounds.Playing)
-            {
-                walkSounds.Stop();
-            }
 
-            //Picking up items.
-            if (ray.IsColliding() && Input.IsActionJustPressed("interact_item"))
-            {
-                /*if (holdingItem != null)
+                else if (direction.IsZeroApprox() && walkSounds.Playing)
                 {
-                    //drop holding item
-                    // holdingItem.PickUpItem(this);
+                    walkSounds.Stop();
                 }
-                else
-                {*/
-                    var collidedWith = ray.GetCollider();
-                    /*if (collidedWith.HasMethod("PickUpItem")) //pick up item.
-                    {
-                        collidedWith.Call("PickUpItem", this);
-                        //interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Interact/PickItem" + Convert.ToString(rng.RandiRange(1, 2)) + ".ogg");
-                        //interactSound.Play();
-                    }*/
-                    if (collidedWith is ButtonInteract)
-                    {
-                        collidedWith.Call("Interact", this);
-                    }
-                // }
+            }
+            
+
+            //Interacting. (item subsystem will be rewritten)
+            if (ray.IsColliding() && Input.IsActionJustPressed("interact"))
+            {
+                var collidedWith = ray.GetCollider();
+                if (collidedWith is ButtonInteract)
+                {
+                    collidedWith.Call("Interact", this);
+                }
             }
             //needed for walking up and down stairs, deprecated in 0.2.0 for optimizing the game.
             /*if (bottomRaycast.IsColliding() && !topRaycast.IsColliding())
@@ -233,11 +192,11 @@ public partial class PlayerScript : CharacterBody3D
                     FloorMaxAngle = 1.308996f; //75 degrees, need to climb stairs
                 }
             }*/
-            if (blinkTimer > blinkWaiting)
+            /*if (blinkTimer > blinkWaiting) //deprecated in 0.3.0-dev, because of blink system rework.
             {
                 Blink();
                 blinkTimer = 0d;
-            }
+            }*/
         }
         UpDirection = Vector3.Up;
         MoveAndSlide();
@@ -272,27 +231,27 @@ public partial class PlayerScript : CharacterBody3D
 
     void CallForceclass(string to)
     {
-        GetParent().GetParent().GetNode<FacilityManager>("Game").Rpc("SetPlayerClass", this.Name, to);
+        GetParent().GetParent().GetNode<FacilityManager>("Game").Rpc("SetPlayerClass", Multiplayer.GetUniqueId().ToString(), to);
     }
 
     string ClassList(string[] args)
     {
         string r = "";
-        foreach (var val in ClassParser.ReadJson("user://playerclass_0.2.0.json"))
+        foreach (var val in ClassParser.ReadJson("user://playerclass_0.3.0.json"))
         {
             r += val.Key + "\n";
         }
         return r;
     }
-    private async void Blink()
+    /*private async void Blink() //Deprecated in 0.3.0-dev due to blink system rework.
     {
         //main blinking method
         blinkImage.Show();
-        PlayerCommon.isBlinking = true;
+        isBlinking = true;
         await ToSignal(GetTree().CreateTimer(0.3), "timeout");
-        PlayerCommon.isBlinking = false;
+        isBlinking = false;
         blinkImage.Hide();
-    }
+    }*/
     /*internal void GameOver(int whichScreen) // DEPRECATED, since 0.2.0-MP-dev, will be rewritten after player class manager + health will be implemented
     {
         gameOver = true;

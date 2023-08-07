@@ -86,9 +86,7 @@ public partial class FacilityManager : Node3D
             if (player is PlayerScript playerScript)
             {
                 playersList.Add(playerScript.Name);
-                //playerScript.RpcId(int.Parse(player.Name), "SetPlayerClass", "default");
-                //playerScript.Rpc("GetPlayerModel");
-                Rpc("SetPlayerClass", playerScript.Name, TossPlayerClass());
+                Rpc("SetPlayerClass", playerScript.Name, "default");
             }
         }
     }
@@ -105,12 +103,6 @@ public partial class FacilityManager : Node3D
         GetNode<PlayerScript>(playerName).Position = GetTree().Root.GetNode<Marker3D>((string)ClassParser.ReadJson("user://playerclass_0.3.0.json")[nameOfClass]["spawnPoint"]).GlobalPosition;
         Rpc("LoadModels", playersList);
     }
-
-    /*internal void ForceClass(string playerName, string nameOfClass)
-    {
-        Rpc("SetPlayerClass", playerName, nameOfClass);
-        Rpc("LoadModels", playersList);
-    }*/
 
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
     void LoadModels(Godot.Collections.Array<string> players)
@@ -139,6 +131,6 @@ public partial class FacilityManager : Node3D
             tossClass.Add(val);
         }
         rng.Randomize();
-        return tossClass[rng.RandiRange(0, tossClass.Count - 1)];
+        return tossClass[rng.RandiRange(1, tossClass.Count - 1)];
     }
 }

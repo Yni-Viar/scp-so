@@ -5,6 +5,15 @@ public partial class ClassData : Node
 {
     public static Godot.Collections.Dictionary<string, Godot.Collections.Dictionary<string, Variant>> playerClasses = 
       new Godot.Collections.Dictionary<string, Godot.Collections.Dictionary<string, Variant>>{
+        {"spectator", new Godot.Collections.Dictionary<string, Variant>{
+            {"className", "MTF Omega-0 'Ará Orún'"},
+            {"spawnPoint", "Main/Game/MapGen/LC_room1_archive/entityspawn"},
+            {"playerModelSource", "res://FPSController/PlayerClassPrefab/spectator.tscn"},
+            {"speed", 2f},
+            {"jump", 2f},
+            {"footstepSounds", new Godot.Collections.Array<string>{}},
+            {"scpNumber", -2}
+        }},
         {"default", new Godot.Collections.Dictionary<string, Variant>{
             {"className", "Test"},
             {"spawnPoint", "Main/Game/MapGen/LC_room1_archive/entityspawn"},

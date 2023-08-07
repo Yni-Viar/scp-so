@@ -1,8 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://isp3qhbu0mf5"]
+[gd_scene load_steps=8 format=3 uid="uid://isp3qhbu0mf5"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerScript.cs" id="1_tw8h1"]
-[ext_resource type="Script" path="res://FPSController/PlayerCommon.cs" id="2_cwidx"]
-[ext_resource type="Texture2D" uid="uid://cymko5vnq4vsh" path="res://Assets/HUD/Blink.png" id="4_yi4ry"]
 [ext_resource type="FontFile" uid="uid://bmquuud55yceh" path="res://Assets/Fonts/Righteous/Righteous-Regular.ttf" id="7_dkx5u"]
 [ext_resource type="Script" path="res://FPSController/PlayerSync.cs" id="10_8dn5b"]
 
@@ -40,9 +38,6 @@ script = ExtResource("1_tw8h1")
 
 [node name="PlayerModel" type="Node3D" parent="."]
 
-[node name="PlayerCommon" type="Node3D" parent="."]
-script = ExtResource("2_cwidx")
-
 [node name="PlayerHead" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.968611, -0.409495)
 
@@ -54,19 +49,8 @@ target_position = Vector3(0, 0, -3)
 [node name="PlayerHand" type="Marker3D" parent="PlayerHead"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.472)
 
-[node name="ItemSpawn" type="Marker3D" parent="PlayerHead"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.393654, 0)
-
-[node name="PlayerFeet" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.852, 0)
-
-[node name="StairCheck" type="RayCast3D" parent="PlayerFeet"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.368611, 0)
-target_position = Vector3(0, 0, -1)
-
-[node name="StairCheck2" type="RayCast3D" parent="PlayerFeet"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00260222, -0.0596307, -0.00418782)
-target_position = Vector3(0, 0, -1)
+[node name="VisionRadius" type="RayCast3D" parent="PlayerHead"]
+target_position = Vector3(0, 0, -24)
 
 [node name="CollisionBodyCapsule" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.198127, 0)
@@ -96,24 +80,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Blink" type="Control" parent="UI"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="img" type="TextureRect" parent="UI/Blink"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_yi4ry")
 
 [node name="GameOver" type="Control" parent="UI"]
 visible = false

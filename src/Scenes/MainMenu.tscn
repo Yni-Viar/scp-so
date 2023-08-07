@@ -115,7 +115,7 @@ theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "[b]v.0.3.0-dev[/b] [i](Pre-Alpha)[/i]
-- New map gen (again, because previous could not spawn important rooms. This mapgen can also not spawn rooms, but this is a waaay rarier)
+- New map gen (again, because previous could not spawn important rooms. This mapgen may also not spawn rooms, but this is a waaay rarier)
 
 [b]KNOWN ISSUES:[/b]
 - There is NO loading screen, so you need to wait."

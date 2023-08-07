@@ -123,11 +123,13 @@ public partial class NetworkManager : Node
 
     void ConnectedToServer()
     {
+
         GD.Print("Connected to the server!");
     }
 
     void ConnectionFailed()
     {
+        Multiplayer.MultiplayerPeer = null;
         GD.Print("Connection Failed!");
         GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Show();
         GetTree().Root.GetNode<Control>("Main/CanvasLayer/PlayerUI").Hide();
@@ -136,6 +138,7 @@ public partial class NetworkManager : Node
     
     void ServerDisconnected()
     {
+        Multiplayer.MultiplayerPeer = null;
         if (GetNodeOrNull("Game") != null)
         {
             GetNode("Game").QueueFree();

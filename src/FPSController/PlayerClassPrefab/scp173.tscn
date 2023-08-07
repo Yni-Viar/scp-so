@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://vouktwqujjrm"]
+[gd_scene load_steps=8 format=3 uid="uid://vouktwqujjrm"]
 
+[ext_resource type="Script" path="res://FPSController/PlayerClassScript/Scp173PlayerScript.cs" id="1_4av21"]
 [ext_resource type="Texture2D" uid="uid://n725qqakr610" path="res://Assets/Models/scp173/Merged_PM3D_Sphere3D4_Base_Color.png" id="1_xupd5"]
 [ext_resource type="Texture2D" uid="uid://bh6i7bote60vy" path="res://Assets/Models/scp173/Merged_PM3D_Sphere3D4_Metallic-Merged_PM3D_Sphere3D4_Roughness.png" id="2_1frgq"]
 [ext_resource type="Texture2D" uid="uid://bkwbsf716sar8" path="res://Assets/Models/scp173/Merged_PM3D_Sphere3D4_Normal_OpenGL.png" id="3_thslv"]
@@ -50,6 +51,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_sva7e")
 
 [node name="scp173" type="Node3D"]
+script = ExtResource("1_4av21")
 
 [node name="Merged_PM3D_Sphere3D4" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.5, -4.37114e-08, 1.91069e-15, 0, -2.18557e-08, -0.5, 4.37114e-08, -0.5, 2.18557e-08, 0, 0, 0)
