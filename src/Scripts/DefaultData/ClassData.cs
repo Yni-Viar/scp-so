@@ -16,7 +16,7 @@ public partial class ClassData : Node
         }},
         {"default", new Godot.Collections.Dictionary<string, Variant>{
             {"className", "Test"},
-            {"spawnPoint", "Main/Game/MapGen/LC_room1_archive/entityspawn"},
+            {"spawnPoint", "Main/Game/MapGen/LC_room2_sl/entityspawn"},
             {"playerModelSource", "res://FPSController/PlayerClassPrefab/Default.tscn"},
             {"speed", 4.5f},
             {"jump", 4.25f},

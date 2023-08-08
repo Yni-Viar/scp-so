@@ -13,7 +13,7 @@
 [ext_resource type="Material" uid="uid://bj62gbs7ylf25" path="res://MapGen/Resources/RoomAssets/LCZ/mat10.003.tres" id="11_tkk75"]
 [ext_resource type="Material" uid="uid://c71ytr8fba043" path="res://MapGen/Resources/RoomAssets/LCZ/mat11.002.tres" id="12_yeuvv"]
 [ext_resource type="Material" uid="uid://crebdanmmt2if" path="res://MapGen/Resources/RoomAssets/LCZ/mat12.002.tres" id="13_475yq"]
-[ext_resource type="PackedScene" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="14_jcfnl"]
+[ext_resource type="PackedScene" uid="uid://cgaomav6767mx" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="14_jcfnl"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_376ed"]
 _surfaces = [{
@@ -327,3 +327,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23897, 9.33626, -2.28625)
 
 [node name="Lamp2" parent="." instance=ExtResource("14_jcfnl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.59683, -3.96222)
+
+[node name="entityspawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.90112, 0)

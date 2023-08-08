@@ -14,10 +14,9 @@ public partial class MapGenerator : Node
         random.Randomize();
         return random.Randi();
     }
-
+    [Export] int zones = 3;
 
     internal enum RoomTypes { ROOM1, ROOM2, ROOM2C, ROOM3, ROOM4, EMPTY };
-    int room1Amount, room2Amount, room2cAmount, room3Amount, room4Amount;
     internal struct TempRoom
     {
         internal RoomTypes type;
@@ -38,11 +37,11 @@ public partial class MapGenerator : Node
         int x2, y2;
         int width, height;
 
-        TempRoom[,] roomTemp = new TempRoom[20, 20];
+        TempRoom[,] roomTemp = new TempRoom[16, 16];
 
-        for (x = 0; x < 20; x++)
+        for (x = 0; x < 16; x++)
         {
-            for (y = 0; y < 20; y++)
+            for (y = 0; y < 16; y++)
             {
                 //roomArray[x][y] = nullptr; - does not work, but is not necessary
                 roomTemp[x, y].type = RoomTypes.ROOM1; //fill the data with values
@@ -50,17 +49,17 @@ public partial class MapGenerator : Node
             }
         }
 
-        x = 10;
-        y = 18;
+        x = 8;
+        y = 15;
 
-        for (int i = y; i < 20; i++)
+        for (int i = y; i < 16; i++)
         {
             roomTemp[x, i].angle = 0; //fill angles
         }
 
         while (y >= 2)
         {
-            width = (rand.RandiRange(0, 5)) + 10; //map width
+            width = (rand.RandiRange(0, 3)) + 8; //map width
 
             if (x > 12)
             {
@@ -68,13 +67,13 @@ public partial class MapGenerator : Node
             }
             else if (x > 8)
             {
-                x = x - 10;
+                x = x - 8;
             }
 
             //make sure the hallway doesn't go outside the array
-            if (x + width > 17)
+            if (x + width > 13)
             {
-                width = 17 - x;
+                width = 13 - x;
             }
             else if (x + width < 2)
             {
@@ -85,18 +84,18 @@ public partial class MapGenerator : Node
             width = Math.Abs(width);
             for (int i = x; i <= x + width; i++)
             {
-                roomTemp[Math.Min(i, 19), y].angle = 0;
+                roomTemp[Math.Min(i, 15), y].angle = 0;
             }
 
             //height is random
-            height = (rand.RandiRange(0, 1)) + 3;
+            height = (rand.RandiRange(0, 1)) + 2;
             if (y - height < 1) height = y;
             //height for each zone
-            int yhallways = (rand.RandiRange(0, 1)) + 4;
+            int yhallways = (rand.RandiRange(0, 1)) + 2;
 
             for (int i = 1; i <= yhallways; i++)
             {
-                x2 = Math.Max(Math.Min((rand.RandiRange(0, width - 2)) + x, 18), 2);
+                x2 = Math.Max(Math.Min((rand.RandiRange(0, width - 2)) + x, 8), 2);
                 while (roomTemp[x2, y - 1].angle >= 0 || roomTemp[x2 - 1, y - 1].angle >= 0 || roomTemp[x2 + 1, y - 1].angle >= 0)
                 {
                     x2++;
@@ -126,11 +125,9 @@ public partial class MapGenerator : Node
 
             y -= height;
         }
-
-        room1Amount = room2Amount = room2cAmount = room3Amount = room4Amount = 0;
-        for (x = 0; x < 20; x++)
+        for (x = 0; x < 16; x++)
         {
-            for (y = 0; y < 20; y++)
+            for (y = 0; y < 16; y++)
             {
                 bool hasNorth, hasSouth, hasEast, hasWest;
                 hasNorth = hasSouth = hasEast = hasWest = false;
@@ -140,7 +137,7 @@ public partial class MapGenerator : Node
                     {
                         hasWest = (roomTemp[x - 1,y].angle > -1);
                     }
-                    if (x < 19)
+                    if (x < 15)
                     {
                         hasEast = (roomTemp[x + 1,y].angle > -1);
                     }
@@ -148,7 +145,7 @@ public partial class MapGenerator : Node
                     {
                         hasNorth = (roomTemp[x,y - 1].angle > -1);
                     }
-                    if (y < 19)
+                    if (y < 15)
                     {
                         hasSouth = (roomTemp[x,y + 1].angle > -1);
                     }
@@ -267,7 +264,6 @@ public partial class MapGenerator : Node
             }
             Console.WriteLine();
         }*/
-
         int Hcz1 = 0; //Hcz/lcz/rz is zone where room will be spawned, 1/2 - type of rooms
         int Hcz2 = 0;
         int Lcz1 = 0;
@@ -277,19 +273,19 @@ public partial class MapGenerator : Node
         // int Rz2c = 0;
         int zone = 0; //0 is HCZ, 1 is LCZ, 2 is RZ.
         
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 16; i++)
         {
-            for (int j = 0; j < 20; j++)
+            for (int j = 0; j < 16; j++)
             {
-                if (j < 7)
+                if (j < 5)
                 {
                     zone = 0;
                 }
-                if (j >= 7 && j < 14)
+                if (j >= 5 && j < 11)
                 {
                     zone = 1;
                 }
-                if (j >= 14 && j < 20)
+                if (j >= 11 && j < 16)
                 {
                     zone = 2;
                 }
@@ -409,14 +405,14 @@ public partial class MapGenerator : Node
                                         Lcz2++;
                                         break;
                                     case 2:
-                                        rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM2/lc_room_2_vent.tscn").Instantiate();
+                                        rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM2/lc_room_2_sl.tscn").Instantiate();
                                         rm.Position = new Vector3(i * 20.48f, 0, j*20.48f);
                                         rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
                                         AddChild(rm);
                                         Lcz2++;
                                         break;
                                     case 3:
-                                        rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM2/lc_room_2_sl.tscn").Instantiate();
+                                        rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM2/lc_room_2_vent.tscn").Instantiate();
                                         rm.Position = new Vector3(i * 20.48f, 0, j*20.48f);
                                         rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
                                         AddChild(rm);
