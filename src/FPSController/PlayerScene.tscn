@@ -49,6 +49,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.968611, -0.409495)
 
 [node name="RayCast3D" type="RayCast3D" parent="PlayerHead"]
 target_position = Vector3(0, 0, -3)
+collision_mask = 3
 
 [node name="PlayerHand" type="Marker3D" parent="PlayerHead"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.472)

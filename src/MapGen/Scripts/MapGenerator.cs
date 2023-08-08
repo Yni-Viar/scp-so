@@ -281,15 +281,15 @@ public partial class MapGenerator : Node
         {
             for (int j = 0; j < 20; j++)
             {
-                if (i < 7)
+                if (j < 7)
                 {
                     zone = 0;
                 }
-                if (i >= 7 && i < 14)
+                if (j >= 7 && j < 14)
                 {
                     zone = 1;
                 }
-                if (i >= 14 && i < 20)
+                if (j >= 14 && j < 20)
                 {
                     zone = 2;
                 }

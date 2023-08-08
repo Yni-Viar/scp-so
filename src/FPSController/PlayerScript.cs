@@ -11,7 +11,7 @@ public partial class PlayerScript : CharacterBody3D
      */
     RandomNumberGenerator rng = new RandomNumberGenerator();
     Node3D playerHead;
-    RayCast3D ray;
+    internal RayCast3D ray;
 
     //Walk sounds and gameover screens.
     // Control blinkImage;
@@ -221,17 +221,6 @@ public partial class PlayerScript : CharacterBody3D
         {
             CallForceclass(args[0]);
             return "Tried to forceclass to " + args[0];
-            /*if (IsMultiplayerAuthority())
-            {
-                // Rpc("SetPlayerClass", args[0]);
-                // Forceclass this player.
-                //GetParent().GetParent().GetNode<FacilityManager>("Game").ForceClass(this.Name, args[0]);
-                
-            }
-            else
-            {
-                return "You are not authorized to do this";
-            }*/
         }
         else
         {
@@ -252,6 +241,17 @@ public partial class PlayerScript : CharacterBody3D
             r += val.Key + "\n";
         }
         return r;
+    }
+
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
+    void HealthManage(int amount)
+    {
+        health += amount;
+
+        if (health < 0)
+        {
+            CallForceclass("spectator");
+        }
     }
     /*private async void Blink() //Deprecated in 0.3.0-dev due to blink system rework.
     {
