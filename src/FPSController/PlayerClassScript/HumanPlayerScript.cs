@@ -16,9 +16,12 @@ public partial class HumanPlayerScript : Node3D
         if (vision.IsColliding())
         {
             var collidedWith = vision.GetCollider();
-            if (collidedWith is Scp173PlayerScript scp)
+            if (collidedWith is PlayerScript player)
             {
-                scp.CanMove = false;
+                if (player.scpNumber == 173)
+                {
+                    player.GetNode<Scp173PlayerScript>("PlayerModel/scp173").RpcId(int.Parse(player.Name), "Scp173");
+                }
             }
         }
 	}

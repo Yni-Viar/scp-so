@@ -116,6 +116,8 @@ theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "[b]v.0.3.0-dev[/b] [i](Pre-Alpha)[/i]
 - New map gen (again, because previous could not spawn important rooms. This mapgen may also not spawn rooms, but this is a waaay rarier)
+- Fixed forceclass working only on first player, who used this command.
+- SCP-173 now works as it should!
 
 [b]KNOWN ISSUES:[/b]
 - There is NO loading screen, so you need to wait."

@@ -36,6 +36,9 @@ public partial class PlayerScript : CharacterBody3D
     // SCP Number. Set -1 for humans, -2 for spectators.
     [Export] internal int scpNumber = -2;
 
+    [Export] bool canMove = true;
+    internal bool CanMove {get=>canMove; set=>canMove = value;}
+    
     float groundAcceleration = 8.0f;
     float airAcceleration = 8.0f;
     float acceleration;
@@ -127,26 +130,33 @@ public partial class PlayerScript : CharacterBody3D
                 GetNode<PlayerSync>("PlayerSync").isJumping = false;
             }
             Vector3 direction = (Transform.Basis * new Vector3(GetNode<PlayerSync>("PlayerSync").direction.X, 0, GetNode<PlayerSync>("PlayerSync").direction.Y));
-            //running
-            if (Input.IsActionPressed("move_sprint") && scpNumber == -1) //SCPs cannot sprint
+            
+            if (canMove)
             {
-                vel = vel.Lerp(direction * speed * 2, acceleration * (float)delta);
-                isSprinting = true;
-                isWalking = false;
+                //running
+                if (Input.IsActionPressed("move_sprint") && scpNumber == -1) //SCPs cannot sprint
+                {
+                    vel = vel.Lerp(direction * speed * 2, acceleration * (float)delta);
+                    isSprinting = true;
+                    isWalking = false;
+                }
+                //walking
+                else
+                {
+                    vel = vel.Lerp(direction * speed, acceleration * (float)delta);
+                    isWalking = true;
+                    isSprinting = false;
+                }
+
+                movement.Z = vel.Z + gravityVector.Z;
+                movement.X = vel.X + gravityVector.X;
+                movement.Y = gravityVector.Y;
+                Velocity = movement;
             }
-            //walking
             else
             {
-                vel = vel.Lerp(direction * speed, acceleration * (float)delta);
-                isWalking = true;
-                isSprinting = false;
+                Velocity = Vector3.Zero;
             }
-            
-            movement.Z = vel.Z + gravityVector.Z;
-            movement.X = vel.X + gravityVector.X;
-            movement.Y = gravityVector.Y;
-            Velocity = movement;
-        
             
             //check if we don't stay still and is footstep audio playing;
             if (!direction.IsZeroApprox() && !walkSounds.Playing && scpNumber != -2)
