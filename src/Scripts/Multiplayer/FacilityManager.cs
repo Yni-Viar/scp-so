@@ -100,6 +100,7 @@ public partial class FacilityManager : Node3D
         GetNode<PlayerScript>(playerName).footstepSounds = (Godot.Collections.Array<string>)ClassParser.ReadJson("user://playerclass_0.3.0.json")[nameOfClass]["footstepSounds"];
         GetNode<PlayerScript>(playerName).speed = (float)ClassParser.ReadJson("user://playerclass_0.3.0.json")[nameOfClass]["speed"];
         GetNode<PlayerScript>(playerName).jump = (float)ClassParser.ReadJson("user://playerclass_0.3.0.json")[nameOfClass]["jump"];
+        GetNode<PlayerScript>(playerName).health = (float)ClassParser.ReadJson("user://playerclass_0.3.0.json")[nameOfClass]["health"];
         GetNode<PlayerScript>(playerName).Position = GetTree().Root.GetNode<Marker3D>((string)ClassParser.ReadJson("user://playerclass_0.3.0.json")[nameOfClass]["spawnPoint"]).GlobalPosition;
         Rpc("LoadModels", playersList);
     }

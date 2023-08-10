@@ -1,14 +1,24 @@
-[gd_scene load_steps=12 format=3 uid="uid://bjcfcpj4q2im4"]
+[gd_scene load_steps=14 format=3 uid="uid://bjcfcpj4q2im4"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/FacilityManager.cs" id="1_p22hh"]
-[ext_resource type="Script" path="res://MapGen/Scripts/MapGenerator.cs" id="2_76ea7"]
+[ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorLcz.cs" id="2_tjaxg"]
+[ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorRz.cs" id="2_ya4qo"]
+[ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorHcz.cs" id="4_rnfjk"]
 [ext_resource type="AudioStream" uid="uid://tbri732tktfl" path="res://Sounds/Music/LightContainment.ogg" id="5_wyc17"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_pw38j"]
-properties/0/path = NodePath("MapGen:seed")
+properties/0/path = NodePath("MapGenLcz:seed")
 properties/0/spawn = true
 properties/0/sync = true
 properties/0/watch = false
+properties/1/path = NodePath("MapGenHcz:seed")
+properties/1/spawn = true
+properties/1/sync = true
+properties/1/watch = false
+properties/2/path = NodePath("MapGenRz:seed")
+properties/2/spawn = true
+properties/2/sync = true
+properties/2/watch = false
 
 [sub_resource type="BoxMesh" id="BoxMesh_umn33"]
 size = Vector3(5, 0.1, 5)
@@ -34,9 +44,17 @@ data = PackedVector3Array(-2.5, 2.5, 0.05, 2.5, 2.5, 0.05, -2.5, -2.5, 0.05, 2.5
 [node name="Game" type="Node3D"]
 script = ExtResource("1_p22hh")
 
-[node name="MapGen" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -300, 0)
-script = ExtResource("2_76ea7")
+[node name="MapGenRz" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32, 0)
+script = ExtResource("2_ya4qo")
+
+[node name="MapGenLcz" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -128, 0)
+script = ExtResource("2_tjaxg")
+
+[node name="MapGenHcz" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -384, 0)
+script = ExtResource("4_rnfjk")
 
 [node name="Entities" type="Node3D" parent="."]
 
