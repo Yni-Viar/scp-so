@@ -43,10 +43,10 @@ public partial class PlayerScript : CharacterBody3D
     float airAcceleration = 8.0f;
     float acceleration;
 
-    float slidePrevention = 10.0f;
+    // float slidePrevention = 10.0f;
     Vector2 mouseSensivity = new Vector2(0.125f, 2f);
 
-    Vector3 direction;
+    // Vector3 direction;
     Vector3 vel = new Vector3();
     Vector3 movement = new Vector3();
     Vector3 gravityVector = new Vector3();

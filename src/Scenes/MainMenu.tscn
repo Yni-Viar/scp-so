@@ -114,13 +114,15 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[b]v.0.3.0-dev[/b] [i](Pre-Alpha)[/i]
+text = "[b]v.0.3.0-dev[/b] [i](Alpha)[/i]
 - New map gen (again, because previous could not spawn important rooms. This mapgen may also not spawn rooms, but this is a waaay rarier)
 - Fixed forceclass working only on first player, who used this command.
-- SCP-173 now works as it should!
+- SCP-173 now works as it should. (except some bugs, mentioned below)
+- Elevators are working again!
 
 [b]KNOWN ISSUES:[/b]
-- There is NO loading screen, so you need to wait."
+- There is NO loading screen, so you need to wait.
+- SCP-173 sometimes can move while being watched."
 
 [node name="PlayPanel" type="Panel" parent="."]
 visible = false
@@ -196,7 +198,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
-text = "WARNING! This game is in PRE-ALPHA stage of development.
+text = "WARNING! This game is in ALPHA stage of development.
 This means, that the game has some missing, incomplete or not-working features."
 horizontal_alignment = 1
 

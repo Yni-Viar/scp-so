@@ -661,7 +661,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yfabu"]
-size = Vector3(6.0234, 1, 6.03273)
+size = Vector3(6.0234, 5.10324, 6.03273)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_olp3q"]
 resource_name = "material0.001"
@@ -829,7 +829,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jyh56"]
-size = Vector3(6.0234, 1, 6.03273)
+size = Vector3(6.0234, 5.11136, 6.03273)
 
 [node name="LC_ckpt1" type="StaticBody3D"]
 
@@ -865,7 +865,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.18881, 4.57384, -6.88657)
 [node name="ElevatorLc1" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.79213, -2.38419e-07, -6.86254)
 script = ExtResource("19_b61aj")
-elevators = PackedStringArray("Game/MapGenHCZ/HC_ckpt1/ElevatorHc1", "Game/MapGenLCZ/LC_ckpt1/ElevatorLc1", "Game/MapGenRZ/RZ_ckpt1/ElevatorRz1")
+elevators = PackedStringArray("Game/MapGenHcz/HC_ckpt1/ElevatorHc1", "Game/MapGenLcz/LC_ckpt1/ElevatorLc1", "Game/MapGenRz/RZ_ckpt1/ElevatorRz1")
 destinationPoints = PackedStringArray("Hc1", "Lc1", "Rz1")
 currentFloor = 2
 
@@ -921,7 +921,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0373
 stream = ExtResource("22_7iqbh")
 
 [node name="TeleportArea" type="Area3D" parent="ElevatorLc1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0198817, 0, -3.44586)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02, 2.404, -3.446)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ElevatorLc1/TeleportArea"]
 shape = SubResource("BoxShape3D_yfabu")
@@ -929,7 +931,7 @@ shape = SubResource("BoxShape3D_yfabu")
 [node name="ElevatorLc2" type="Node3D" parent="."]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 2.80123, -2.38419e-07, -6.86254)
 script = ExtResource("19_b61aj")
-elevators = PackedStringArray("Game/MapGenHCZ/HC_ckpt1/ElevatorHc2", "Game/MapGenLCZ/LC_ckpt1/ElevatorLc2", "Game/MapGenRZ/RZ_ckpt1/ElevatorRz2")
+elevators = PackedStringArray("Game/MapGenHcz/HC_ckpt1/ElevatorHc2", "Game/MapGenLcz/LC_ckpt1/ElevatorLc2", "Game/MapGenRz/RZ_ckpt1/ElevatorRz2")
 destinationPoints = PackedStringArray("Hc2", "Lc2", "Rz2")
 currentFloor = 2
 
@@ -985,7 +987,9 @@ transform = Transform3D(1.98616e-08, 0, -1, 0, 1, 0, 1, 0, 1.98616e-08, -0.04398
 stream = ExtResource("22_7iqbh")
 
 [node name="TeleportArea" type="Area3D" parent="ElevatorLc2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0198817, 0, -3.44586)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02, 2.404, -3.446)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ElevatorLc2/TeleportArea"]
 shape = SubResource("BoxShape3D_jyh56")

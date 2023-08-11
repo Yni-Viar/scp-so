@@ -7,8 +7,8 @@ public partial class TeleportElevator : Node3D
     [Export] internal string[] elevators; // need to handle open-close doors
     [Export] internal string[] destinationPoints; // need for teleporting
     [Export] int currentFloor;
-    Godot.Collections.Array<CharacterBody3D> playersToTeleport  = new Godot.Collections.Array<CharacterBody3D>();
-    bool isOpened = false;
+    [Export] Godot.Collections.Array<string> playersToTeleport  = new Godot.Collections.Array<string>();
+    // bool isOpened = false;
     bool canInteract = true;
 
     bool CurrentDest() // check if the elevator is on the right floor at start.
@@ -56,9 +56,10 @@ public partial class TeleportElevator : Node3D
     {
     }
 
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
     public async void ElevatorMove(int direction)
     {
-        Node3D fromTeleport = (Node3D)(GetTree().Root.GetNode(elevators[currentFloor])); 
+        Node3D fromTeleport = (Node3D)(GetTree().Root.GetNode("Main/" + elevators[currentFloor])); 
         // find first elevator node and close the door
         if (fromTeleport is TeleportElevator liftFrom)
         {
@@ -66,23 +67,22 @@ public partial class TeleportElevator : Node3D
         }
         canInteract = false;
         Node3D toTeleport;
-        toTeleport = (Node3D)(GetTree().Root.GetNode(elevators[currentFloor + direction]));
+        toTeleport = (Node3D)(GetTree().Root.GetNode("Main/" + elevators[currentFloor + direction]));
         fromTeleport.GetNode<AudioStreamPlayer3D>("FakeMove").Play();
         toTeleport.GetNode<AudioStreamPlayer3D>("FakeMove").Play();
         await ToSignal(GetTree().CreateTimer(5.0), "timeout");
-        for (int i = 0; i < playersToTeleport.Count; i++)
+        GD.Print(playersToTeleport.Count);
+        if (playersToTeleport.Count != 0)
         {
-            if (playersToTeleport.Count == 0)
+            for (int i = 0; i < playersToTeleport.Count; i++)
             {
-                // do not do anything, if there are no players.
-                break;
-            }
-            if (playersToTeleport[i] is PlayerScript player)
-            {
+                GD.Print("Yes.");
                 // move player to the next zone.
-                playersToTeleport[i].GlobalPosition = toTeleport.GetNode<Marker3D>(destinationPoints[currentFloor + direction]).GlobalPosition;
+                //playersToTeleport[i].Position = toTeleport.GetNode<Marker3D>(destinationPoints[currentFloor + direction]).GlobalPosition;
+                GetTree().Root.GetNode<PlayerScript>("Main/Game/" + playersToTeleport[i]).Position = toTeleport.GetNode<Marker3D>(destinationPoints[currentFloor + direction]).GlobalPosition;
             }
         }
+        
         await ToSignal(GetTree().CreateTimer(5.0), "timeout");
         canInteract = true;
         currentFloor += direction;
@@ -102,10 +102,12 @@ public partial class TeleportElevator : Node3D
                 switch (currentFloor)
                 {
                     case 1:
-                        ElevatorMove(-1);
+                        //ElevatorMove(-1);
+                        Rpc("ElevatorMove", -1);
                         break;
                     case 2:
-                        ElevatorMove(-2);
+                        //ElevatorMove(-2);
+                        Rpc("ElevatorMove", -2);
                         break;
                     default:
                         GD.PrintErr("Could not determine the floor you are in.");
@@ -117,10 +119,12 @@ public partial class TeleportElevator : Node3D
                 switch (currentFloor)
                 {
                     case 0:
-                        ElevatorMove(1);
+                        //ElevatorMove(1);
+                        Rpc("ElevatorMove", 1);
                         break;
                     case 2:
-                        ElevatorMove(-1);
+                        //ElevatorMove(-1);
+                        Rpc("ElevatorMove", -1);
                         break;
                     default:
                         GD.PrintErr("Could not determine the floor you are in.");
@@ -132,10 +136,12 @@ public partial class TeleportElevator : Node3D
                 switch (currentFloor)
                 {
                     case 1:
-                        ElevatorMove(2);
+                        //ElevatorMove(2);
+                        Rpc("ElevatorMove", 2);
                         break;
                     case 2:
-                        ElevatorMove(1);
+                        //ElevatorMove(1);
+                        Rpc("ElevatorMove", 1);
                         break;
                     default:
                         GD.PrintErr("Could not determine the floor you are in.");
@@ -143,14 +149,23 @@ public partial class TeleportElevator : Node3D
                 }
             }
         }
-        
+    }
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
+    void AddPlayer(string name)
+    {
+        playersToTeleport.Add(name);
+    }
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
+    void RemovePlayer(string name)
+    {
+        playersToTeleport.Remove(name);
     }
 
     private void OnButtonInteractUpInteracted(CharacterBody3D player)
     {
         if (GetChild<Marker3D>(0).Name != destinationPoints[2] && canInteract)
         {
-            ElevatorMove(1); //move the elevator up.
+            Rpc("ElevatorMove", 1); //move the elevator up.
         }
     }
     
@@ -158,7 +173,7 @@ public partial class TeleportElevator : Node3D
     {
         if (GetChild<Marker3D>(0).Name != destinationPoints[0] && canInteract)
         {
-            ElevatorMove(-1); //move the elevator down.
+            Rpc("ElevatorMove", -1); //move the elevator down.
         }
     }
 
@@ -166,7 +181,8 @@ public partial class TeleportElevator : Node3D
     {
         if (body is CharacterBody3D character)
         {
-            playersToTeleport.Add(character);
+            //playersToTeleport.Add(character.Name);
+            Rpc("AddPlayer", character.Name);
         }
     }
 
@@ -174,7 +190,8 @@ public partial class TeleportElevator : Node3D
     {
         if (body is CharacterBody3D character)
         {
-            playersToTeleport.Remove(character);
+            //playersToTeleport.Remove(character.Name);
+            Rpc("RemovePlayer", character.Name);
         }
     }
 }
