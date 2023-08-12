@@ -103,6 +103,7 @@ public partial class FacilityManager : Node3D
         GetNode<PlayerScript>(playerName).health = (float)ClassParser.ReadJson("user://playerclass_0.3.0.json")[nameOfClass]["health"];
         GetNode<PlayerScript>(playerName).Position = GetTree().Root.GetNode<Marker3D>((string)ClassParser.ReadJson("user://playerclass_0.3.0.json")[nameOfClass]["spawnPoint"]).GlobalPosition;
         Rpc("LoadModels", playersList);
+        RpcId(int.Parse(playerName), "UpdateClassUI", GetNode<PlayerScript>(playerName).className, GetNode<PlayerScript>(playerName).health);
     }
 
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
@@ -124,7 +125,14 @@ public partial class FacilityManager : Node3D
         }
     }
 
-    string TossPlayerClass()
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
+    void UpdateClassUI(string className, float health)
+    {
+        GetNode<Label>("PlayerUI/ClassInfo").Text = className;
+        GetNode<Label>("PlayerUI/HealthInfo").Text = Mathf.Ceil(health).ToString();
+    }
+
+    string TossPlayerClass() //to be reworked.
     {
         Godot.Collections.Array<string> tossClass = new Godot.Collections.Array<string>();
         foreach(string val in ClassParser.ReadJson("user://playerclass_0.3.0.json").Keys)

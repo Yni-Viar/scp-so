@@ -11,7 +11,7 @@ public partial class PlayerUI : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        if (GetTree().Root.GetNode<Control>("Main/CanvasLayer/PlayerUI/PauseMenu").Visible || GetTree().Root.GetNode<InGameConsole>("Main/CanvasLayer/InGameConsole").Visible)
+        if (GetTree().Root.GetNode<Control>("Main/CanvasLayer/PauseMenu").Visible || GetTree().Root.GetNode<InGameConsole>("Main/CanvasLayer/InGameConsole").Visible)
         {
             SpecialScreen(true);
         }
@@ -25,7 +25,7 @@ public partial class PlayerUI : Control
     {
         if (Input.IsActionJustPressed("ui_cancel"))
         {
-            GetTree().Root.GetNode<Control>("Main/CanvasLayer/PlayerUI/PauseMenu").Visible = !(GetTree().Root.GetNode<Control>("Main/CanvasLayer/PlayerUI/PauseMenu").Visible);
+            GetTree().Root.GetNode<Control>("Main/CanvasLayer/PauseMenu").Visible = !GetTree().Root.GetNode<Control>("Main/CanvasLayer/PauseMenu").Visible;
         }
 
         /*if (Input.IsActionJustPressed("inventory"))

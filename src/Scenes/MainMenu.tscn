@@ -119,6 +119,8 @@ text = "[b]v.0.3.0-dev[/b] [i](Alpha)[/i]
 - Fixed forceclass working only on first player, who used this command.
 - SCP-173 now works as it should. (except some bugs, mentioned below)
 - Elevators are working again!
+- Added Player HUD Prototype.
+- Added SCP-3199.
 
 [b]KNOWN ISSUES:[/b]
 - There is NO loading screen, so you need to wait.
@@ -512,6 +514,7 @@ text = "[i]Models (license - CC-BY-SA 3.0)[/i]
 - SCP-079 model - Hakkla
 - SCP-173 model - Aruspice (model, textures), Shakles (rig, animation), PixelPuffin (concept art)
 - SCP-650 model - Shadowscale(model, textures)
+- SCP-3199 model - Aruspice (model, textures), Shakles (rig, animation)
 - PDA - Model and textures by Shadowscale
 
 

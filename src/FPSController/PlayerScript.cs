@@ -207,6 +207,8 @@ public partial class PlayerScript : CharacterBody3D
                 Blink();
                 blinkTimer = 0d;
             }*/
+
+            GetParent().GetNode<Label>("PlayerUI/HealthInfo").Text = Mathf.Ceil(health).ToString();
         }
         UpDirection = Vector3.Up;
         MoveAndSlide();
@@ -243,12 +245,11 @@ public partial class PlayerScript : CharacterBody3D
         return r;
     }
 
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
     void HealthManage(int amount)
     {
         health += amount;
-
-        if (health < 0)
+        
+        if (health <= 0)
         {
             CallForceclass("spectator");
         }

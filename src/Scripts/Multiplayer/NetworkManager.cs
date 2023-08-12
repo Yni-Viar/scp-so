@@ -83,7 +83,7 @@ public partial class NetworkManager : Node
         Multiplayer.MultiplayerPeer = peer;
         LoadGame();
         GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Hide();
-        GetTree().Root.GetNode<Control>("Main/CanvasLayer/PlayerUI").Show();
+        // GetTree().Root.GetNode<Control>("Main/CanvasLayer/PlayerUI").Show();
         GD.Print("Ready for connecting!");
     }
 
@@ -95,7 +95,7 @@ public partial class NetworkManager : Node
         Multiplayer.ConnectionFailed += ConnectionFailed;
         Multiplayer.ServerDisconnected += ServerDisconnected;
         GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Hide();
-        GetTree().Root.GetNode<Control>("Main/CanvasLayer/PlayerUI").Show();
+        // GetTree().Root.GetNode<Control>("Main/CanvasLayer/PlayerUI").Show();
     }
 
     // NOT to be confused with LoadLevel, LoadGame is a serverside function, while LoadLevel - clientside.

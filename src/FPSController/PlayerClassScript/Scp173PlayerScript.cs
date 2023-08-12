@@ -29,7 +29,6 @@ public partial class Scp173PlayerScript : Node3D
         if (Input.IsActionJustPressed("attack") && ray.IsColliding())
         {
             var collidedWith = ray.GetCollider();
-            GD.Print(collidedWith);
             if (collidedWith is PlayerScript player)
             {
                 if (player.scpNumber == -1)

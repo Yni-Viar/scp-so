@@ -10,7 +10,7 @@
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat6.006.tres" id="7_b1wju"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat7.003.tres" id="8_qbvi8"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat8.003.tres" id="9_ljbe1"]
-[ext_resource type="PackedScene" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="11_qnlhu"]
+[ext_resource type="PackedScene" uid="uid://cgaomav6767mx" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="11_qnlhu"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_b4c73"]
 _surfaces = [{
@@ -230,3 +230,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.20605, 3.67586, -3.01315)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.88215, -8.96173, 0)
 size = Vector3(15.769, 8.09927, 19.7264)
 material = SubResource("FogMaterial_wxhlt")
+
+[node name="entityspawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17294, -10.482, 0)
