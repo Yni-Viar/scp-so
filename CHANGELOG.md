@@ -1,5 +1,16 @@
 # Changelog
-The current state of the game - Pre-Alpha.
+The current state of the game - Alpha.
+## Alpha versions
+### v.0.3.0 (2023.08.12)
+
+- New map gen (again, because previous could not spawn important rooms. This mapgen may also not spawn rooms, but this is a waaay rarier)
+- Fixed forceclass working only on first player, who used this command.
+- SCP-173 now works as it should. (except some bugs, mentioned below)
+- Elevators are working again!
+- Added Player HUD Prototype.
+- Added SCP-650.
+- Added SCP-3199.
+
 ## Pre-Alpha versions
 
 ### v.0.2.0.2 (2023.08.04)

@@ -48,6 +48,20 @@ public partial class ClassData : Node
             {"scpNumber", 173},
             {"health", 10000f}
         }},
+        {"scp650", new Godot.Collections.Dictionary<string, Variant>{
+            {"className", "SCP-650"},
+            {"spawnPoint", "Main/Game/MapGenLcz/LC_cont2_650/entityspawn"},
+            {"playerModelSource", "res://FPSController/PlayerClassPrefab/scp650.tscn"},
+            {"speed", 0f},
+            {"jump", 0f},
+            {"footstepSounds", new Godot.Collections.Array<string>{
+                "res://Sounds/Character/173/Rattle1.ogg",
+                "res://Sounds/Character/173/Rattle2.ogg",
+                "res://Sounds/Character/173/Rattle3.ogg"
+            }},
+            {"scpNumber", 650},
+            {"health", 5000f}
+        }},
         {"scp3199", new Godot.Collections.Dictionary<string, Variant>{
             {"className", "SCP-3199"},
             {"spawnPoint", "Main/Game/MapGenHcz/HC_cont2_testroom/entityspawn"},

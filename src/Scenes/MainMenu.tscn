@@ -114,12 +114,13 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[b]v.0.3.0-dev[/b] [i](Alpha)[/i]
+text = "[b]v.0.3.0[/b] [i](Alpha)[/i]
 - New map gen (again, because previous could not spawn important rooms. This mapgen may also not spawn rooms, but this is a waaay rarier)
 - Fixed forceclass working only on first player, who used this command.
 - SCP-173 now works as it should. (except some bugs, mentioned below)
 - Elevators are working again!
 - Added Player HUD Prototype.
+- Added SCP-650.
 - Added SCP-3199.
 
 [b]KNOWN ISSUES:[/b]
@@ -183,8 +184,7 @@ text = "Connect"
 [node name="Info" type="Label" parent="PlayPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "WARNING! Multiplayer mode is NOT production-ready!
-"
+text = "WARNING! Multiplayer mode is NOT production-ready!"
 
 [node name="DevWarning" type="Label" parent="."]
 layout_mode = 1

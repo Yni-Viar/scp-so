@@ -142,4 +142,10 @@ public partial class FacilityManager : Node3D
         rng.Randomize();
         return tossClass[rng.RandiRange(1, tossClass.Count - 1)];
     }
+
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
+    void RandomTeleport(string playerName)
+    {
+        GetNode<PlayerScript>(playerName).Position = GetNode<PlayerScript>(playersList[rng.RandiRange(0, playersList.Count - 1)]).GlobalPosition;
+    }
 }
