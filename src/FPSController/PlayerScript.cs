@@ -219,7 +219,7 @@ public partial class PlayerScript : CharacterBody3D
 
     string Forceclass(string[] args)
     {
-        if (args.Length == 1)
+        if (args.Length == 1 && ClassParser.ReadJson("user://playerclass_0.3.0.json").Keys.Contains(args[0]))
         {
             CallForceclass(args[0]);
             return "Tried to forceclass to " + args[0];
@@ -245,6 +245,7 @@ public partial class PlayerScript : CharacterBody3D
         return r;
     }
 
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
     void HealthManage(int amount)
     {
         health += amount;

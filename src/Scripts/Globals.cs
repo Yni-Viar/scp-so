@@ -3,7 +3,7 @@ using System;
 
 public partial class Globals : Node
 {
-    public static string version = "0.3.0";
+    public static string version = "0.3.1";
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

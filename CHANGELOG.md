@@ -1,6 +1,12 @@
 # Changelog
 The current state of the game - Alpha.
 ## Alpha versions
+### v.0.3.1 (2023.08.13)
+
+- SCP-650 now has animations!
+- Fixes the bug, where you cannot kill the player as SCP-173 or SCP-3199.
+- Fixes the bug, where player model got duplicated.
+
 ### v.0.3.0 (2023.08.12)
 
 - New map gen (again, because previous could not spawn important rooms. This mapgen may also not spawn rooms, but this is a waaay rarier)

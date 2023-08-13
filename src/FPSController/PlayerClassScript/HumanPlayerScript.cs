@@ -8,6 +8,7 @@ public partial class HumanPlayerScript : Node3D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+        GetParent().GetParent<PlayerScript>().CanMove = true;
         vision = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/VisionRadius");
 	}
 
@@ -23,6 +24,8 @@ public partial class HumanPlayerScript : Node3D
                 {
                     player.GetNode<Scp173PlayerScript>("PlayerModel/scp173").RpcId(int.Parse(player.Name), "Scp173");
                 }
+            }
+                /* THIS SECTION IS BUGGY!
                 if (player.scpNumber == 650)
                 {
                     player.GetNode<Scp650PlayerScript>("PlayerModel/scp650").RpcId(int.Parse(player.Name), "Scp650", true);
@@ -42,7 +45,7 @@ public partial class HumanPlayerScript : Node3D
                 {
                     scp650.GetNode<Scp650PlayerScript>("PlayerModel/scp650").RpcId(int.Parse(scp650.Name), "Scp650", false);
                 }
-            }
+            }*/
         }
 	}
 }

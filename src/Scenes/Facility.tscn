@@ -22,6 +22,10 @@ properties/2/path = NodePath("MapGenRz:seed")
 properties/2/spawn = true
 properties/2/sync = true
 properties/2/watch = false
+properties/3/path = NodePath(".:playersList")
+properties/3/spawn = true
+properties/3/sync = true
+properties/3/watch = false
 
 [sub_resource type="BoxMesh" id="BoxMesh_umn33"]
 size = Vector3(5, 0.1, 5)

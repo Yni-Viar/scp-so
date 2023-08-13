@@ -9,7 +9,7 @@ public partial class FacilityManager : Node3D
     WorldEnvironment graphics = new WorldEnvironment();
 	RandomNumberGenerator rng = new RandomNumberGenerator();
 	CharacterBody3D playerScene;
-    Godot.Collections.Array<string> playersList = new Godot.Collections.Array<string>();
+    [Export] Godot.Collections.Array<string> playersList = new Godot.Collections.Array<string>();
 
 	// string[] spawnLocation = new string[] {"MapGenLCZ/LC_room1_archive/entityspawn", "MapGenRZ/RZ_room2_offices/entityspawn", "MapGenHCZ/HC_cont1_173/entityspawn"};
 
@@ -102,8 +102,11 @@ public partial class FacilityManager : Node3D
         GetNode<PlayerScript>(playerName).jump = (float)ClassParser.ReadJson("user://playerclass_0.3.0.json")[nameOfClass]["jump"];
         GetNode<PlayerScript>(playerName).health = (float)ClassParser.ReadJson("user://playerclass_0.3.0.json")[nameOfClass]["health"];
         GetNode<PlayerScript>(playerName).Position = GetTree().Root.GetNode<Marker3D>((string)ClassParser.ReadJson("user://playerclass_0.3.0.json")[nameOfClass]["spawnPoint"]).GlobalPosition;
-        Rpc("LoadModels", playersList);
         RpcId(int.Parse(playerName), "UpdateClassUI", GetNode<PlayerScript>(playerName).className, GetNode<PlayerScript>(playerName).health);
+        if (IsMultiplayerAuthority()) //YESSS!!! IsMultiplayerAuthority() is NECESSARY for NOT duplicating player models!
+        {
+            Rpc("LoadModels", playersList);
+        }
     }
 
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
