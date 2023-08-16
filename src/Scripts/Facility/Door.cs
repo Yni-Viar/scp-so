@@ -5,6 +5,8 @@ public partial class Door : Node3D
 {
     [Export] bool canOpen = true;
 	[Export] bool isOpened = false;
+    [Export] string[] openDoorSounds;
+    [Export] string[] closeDoorSounds;
 
     bool CanOpen { get=>canOpen; set=>canOpen = value; }
     bool IsOpened { get=>isOpened; set=>isOpened = value; }
@@ -37,7 +39,7 @@ public partial class Door : Node3D
 		AnimationPlayer animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		animPlayer.Play("door_open");
 		AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");
-		sfx.Stream = GD.Load<AudioStream>("res://Sounds/Door/DoorOpen" + Convert.ToString(rng.RandiRange(1, 3)) + ".ogg");
+		sfx.Stream = GD.Load<AudioStream>(openDoorSounds[rng.RandiRange(0, openDoorSounds.Length - 1)]);
 		sfx.Play();
         IsOpened = true;
 	}
@@ -48,7 +50,7 @@ public partial class Door : Node3D
 		AnimationPlayer animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		animPlayer.Play("door_open", -1, -1, true);
 		AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");
-		sfx.Stream = GD.Load<AudioStream>("res://Sounds/Door/DoorClose" + Convert.ToString(rng.RandiRange(1, 3)) + ".ogg");
+		sfx.Stream = GD.Load<AudioStream>(closeDoorSounds[rng.RandiRange(0, closeDoorSounds.Length - 1)]);
 		sfx.Play();
         IsOpened = false;
 	}

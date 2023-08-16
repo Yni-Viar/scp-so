@@ -1,17 +1,13 @@
 # Credits
+## SCP: Site Offline (license - [MIT](/LICENSE.MIT))
+### Authors:
+- Yni (Yni Viar, the Creator of this game)
+
+# Third-party data credits
 ## Code
 ### Map Generation algorithm (License - CC-BY-SA 3.0)
 - Map Generator created by juanjp600.
 - Ported to C# by Yni
-
-### SCP-173 AI and SCP-650 AI (license - [MIT](/LICENSE.MIT))
-- Made by Yni.
-
-### Blinking system (license - [MIT](/LICENSE.MIT))
-- Made by Yni.
-
-### Main Menu (license - [MIT](/LICENSE.MIT))
-- Made by Yni.
 
 ### First person character (license - The Unlicense)
 - Originally made by [dzejpi](https://github.com/dzejpi/godot-3d-base-project),
@@ -24,6 +20,7 @@
 - SCP-079 model - Hakkla
 - SCP-173 model - Aruspice (model, textures), Shakles (rig, animation), PixelPuffin (concept art)
 - SCP-650 model - Shadowscale(model, textures)
+- SCP-3199 model - Aruspice (model, textures), Shakles (rig, animation)
 - PDA model - Model and textures by Shadowscale
 
 ### Art (license - [CC-BY-SA 3.0](/LICENSE.CCBYSA3))

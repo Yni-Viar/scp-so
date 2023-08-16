@@ -181,9 +181,11 @@ properties/1/watch = true
 
 [node name="Door" type="Node3D"]
 script = ExtResource("1_x1118")
+openDoorSounds = PackedStringArray("res://Sounds/Door/DoorOpen1.ogg", "res://Sounds/Door/DoorOpen2.ogg", "res://Sounds/Door/DoorOpen3.ogg")
+closeDoorSounds = PackedStringArray("res://Sounds/Door/DoorClose1.ogg", "res://Sounds/Door/DoorClose2.ogg", "res://Sounds/Door/DoorClose3.ogg")
 
 [node name="Scene_Root" type="MeshInstance3D" parent="."]
-visibility_range_end = 48.0
+visibility_range_end = 64.0
 mesh = SubResource("ArrayMesh_mvb1h")
 skeleton = NodePath("")
 
@@ -193,7 +195,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_yksq8")
 
 [node name="Scene_Root001" type="MeshInstance3D" parent="."]
-visibility_range_end = 48.0
+visibility_range_end = 64.0
 mesh = SubResource("ArrayMesh_cvxq2")
 skeleton = NodePath("")
 

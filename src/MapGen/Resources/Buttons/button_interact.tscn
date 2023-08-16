@@ -49,7 +49,7 @@ size = Vector3(0.720327, 0.472926, 0.305825)
 script = ExtResource("1_kwgc0")
 
 [node name="Button" type="MeshInstance3D" parent="."]
-visibility_range_end = 32.0
+visibility_range_end = 64.0
 mesh = SubResource("ArrayMesh_7d58f")
 skeleton = NodePath("")
 

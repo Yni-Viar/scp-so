@@ -13,7 +13,7 @@ public partial class ClassData : Node
             {"jump", 2f},
             {"footstepSounds", new Godot.Collections.Array<string>{}},
             {"scpNumber", -2},
-            {"health", 100f}
+            {"health", 1f}
         }},
         {"default", new Godot.Collections.Dictionary<string, Variant>{
             {"className", "Test"},
@@ -60,14 +60,14 @@ public partial class ClassData : Node
                 "res://Sounds/Character/173/Rattle3.ogg"
             }},
             {"scpNumber", 650},
-            {"health", 5000f}
+            {"health", 1500f}
         }},
         {"scp3199", new Godot.Collections.Dictionary<string, Variant>{
             {"className", "SCP-3199"},
             {"spawnPoint", "Main/Game/MapGenHcz/HC_cont2_testroom/entityspawn"},
             {"playerModelSource", "res://FPSController/PlayerClassPrefab/scp3199.tscn"},
-            {"speed", 4f},
-            {"jump", 4f},
+            {"speed", 4.4f},
+            {"jump", 4.48f},
             {"footstepSounds", new Godot.Collections.Array<string>{
                 "res://Sounds/Character/SCPCommon/StepSCP1.ogg",
                 "res://Sounds/Character/SCPCommon/StepSCP2.ogg",

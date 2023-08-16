@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c167p7so3awia"]
+[gd_scene load_steps=20 format=3 uid="uid://c167p7so3awia"]
 
 [ext_resource type="Texture2D" uid="uid://htotu3nbgtnn" path="res://MapGen/Resources/RoomAssets/HCZ/misc.jpg" id="1_ji0gk"]
 [ext_resource type="Texture2D" uid="uid://c6ug2umd27c0w" path="res://MapGen/Resources/RoomAssets/HCZ/dirtymetal.jpg" id="2_lr6bm"]
@@ -7,7 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://6atirug73xa8" path="res://MapGen/Resources/RoomAssets/HCZ/concretewall.jpg" id="5_garuv"]
 [ext_resource type="Texture2D" uid="uid://bxtl2tmj6pffc" path="res://MapGen/Resources/RoomAssets/HCZ/concretefloor.jpg" id="6_2f1ud"]
 [ext_resource type="Texture2D" uid="uid://b1t4ns16034wn" path="res://MapGen/Resources/RoomAssets/HCZ/metalpanels2.jpg" id="7_4tbne"]
-[ext_resource type="PackedScene" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="8_rj4mi"]
+[ext_resource type="PackedScene" uid="uid://cgaomav6767mx" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="8_rj4mi"]
+[ext_resource type="PackedScene" uid="uid://c6ga54vkki72d" path="res://MapGen/Resources/Doors/DoorGate.tscn" id="9_t3hnn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hsa4f"]
 resource_name = "mat0.001"
@@ -232,3 +233,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.84219, 4.36574, 0.738607)
 
 [node name="Lamp4" parent="." instance=ExtResource("8_rj4mi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.96005, 4.36574, -4.6474)
+
+[node name="Gate" parent="." instance=ExtResource("9_t3hnn")]
+transform = Transform3D(1.05356, 0, 0, 0, 1, 0, 0, 0, 1, -0.556811, 2.38419e-07, 5.02319)

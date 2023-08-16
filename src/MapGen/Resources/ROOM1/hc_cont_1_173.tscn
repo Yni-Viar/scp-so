@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bck42hnhduvpp"]
+[gd_scene load_steps=13 format=3 uid="uid://bck42hnhduvpp"]
 
 [ext_resource type="Material" uid="uid://40nbr5uh5xf4" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat0.003.tres" id="1_mcn7q"]
 [ext_resource type="Material" uid="uid://bnjexmu6wfl3" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat1.003.tres" id="2_iu1d5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://4n7fspy7fwiv" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat4.003.tres" id="5_bk444"]
 [ext_resource type="Material" uid="uid://ck66ddwc23a1w" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat5.003.tres" id="6_ctl5x"]
 [ext_resource type="Material" uid="uid://n0w5itmdsnq4" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat6.003.tres" id="7_mpdlf"]
+[ext_resource type="PackedScene" uid="uid://c6ga54vkki72d" path="res://MapGen/Resources/Doors/DoorGate.tscn" id="9_dfsnp"]
 [ext_resource type="PackedScene" uid="uid://cgaomav6767mx" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="10_51h1x"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ssgtx"]
@@ -186,3 +187,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.67001, 4.53974, 6.16495)
 
 [node name="entityspawn" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.116309, 2.26711, -5.44584)
+
+[node name="Gate" parent="." instance=ExtResource("9_dfsnp")]
+transform = Transform3D(1.03305, 0, 0, 0, 1, 0, 0, 0, 1, -1.28497, 0, 2.66398)

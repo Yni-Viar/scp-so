@@ -219,7 +219,7 @@ public partial class PlayerScript : CharacterBody3D
 
     string Forceclass(string[] args)
     {
-        if (args.Length == 1 && ClassParser.ReadJson("user://playerclass_0.3.0.json").Keys.Contains(args[0]))
+        if (args.Length == 1 && ClassParser.ReadJson("user://playerclass_0.4.0.json").Keys.Contains(args[0]))
         {
             CallForceclass(args[0]);
             return "Tried to forceclass to " + args[0];
@@ -238,7 +238,7 @@ public partial class PlayerScript : CharacterBody3D
     string ClassList(string[] args)
     {
         string r = "";
-        foreach (var val in ClassParser.ReadJson("user://playerclass_0.3.0.json"))
+        foreach (var val in ClassParser.ReadJson("user://playerclass_0.4.0.json"))
         {
             r += val.Key + "\n";
         }

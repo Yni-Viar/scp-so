@@ -114,10 +114,12 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[b]v.0.3.1[/b] [i](Alpha)[/i]
-- SCP-650 now has animations!
-- Fixes the bug, where you cannot kill the player as SCP-173 or SCP-3199.
-- Fixes the bug, where player model got duplicated.
+text = "[b]v.0.4.0-dev[/b] [i](Alpha)[/i]
+- Added gates
+- Started the Light Containment Zone overhaul.
+- This game is in my project now.
+- Improved door system.
+- Nerfed SCP-650.
 
 [b]KNOWN ISSUES:[/b]
 - There is NO loading screen, so you need to wait.
@@ -400,6 +402,35 @@ This game, mostly (exceptions are below) made by Yni.
 "
 fit_content = true
 
+[node name="CreditsMain2" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1234, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[b]SCP: Site Offline code is licensed under MIT License[/b]
+
+[i]Authors:[/i]
+- Yni (Yni Viar, the Creator of this game)
+
+"
+fit_content = true
+
+[node name="CreditsMain3" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1234, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[b]Third-party data credits:[/b]"
+fit_content = true
+
 [node name="CreditsCode" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(1234, 0)
 layout_mode = 2
@@ -465,24 +496,6 @@ text = "[i]Debug console[/i]
 "
 fit_content = true
 
-[node name="CreditsCodeOther" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1234, 0)
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 24
-theme_override_font_sizes/bold_font_size = 24
-theme_override_font_sizes/italics_font_size = 24
-theme_override_font_sizes/bold_italics_font_size = 24
-theme_override_font_sizes/mono_font_size = 24
-bbcode_enabled = true
-text = "[i]Other code[/i]
-
-This game is made by Yni. 
-Licensed under MIT\\X11 License.
-
-
-"
-fit_content = true
-
 [node name="CreditsArt" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(1234, 0)
 layout_mode = 2
@@ -512,24 +525,6 @@ text = "[i]Models (license - CC-BY-SA 3.0)[/i]
 - SCP-650 model - Shadowscale(model, textures)
 - SCP-3199 model - Aruspice (model, textures), Shakles (rig, animation)
 - PDA - Model and textures by Shadowscale
-
-
-"
-fit_content = true
-
-[node name="CreditsArtOther" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1234, 0)
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 24
-theme_override_font_sizes/bold_font_size = 24
-theme_override_font_sizes/italics_font_size = 24
-theme_override_font_sizes/bold_italics_font_size = 24
-theme_override_font_sizes/mono_font_size = 24
-bbcode_enabled = true
-text = "[i]Art (license - (CC-BY-SA 3.0)[/i]
-
-- Game over screen(s) made by Yni.
-- Menu made by Yni.
 
 
 "
