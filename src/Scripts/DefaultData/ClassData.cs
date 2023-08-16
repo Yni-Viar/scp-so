@@ -64,7 +64,7 @@ public partial class ClassData : Node
         }},
         {"scp3199", new Godot.Collections.Dictionary<string, Variant>{
             {"className", "SCP-3199"},
-            {"spawnPoint", "Main/Game/MapGenHcz/HC_cont2_testroom/entityspawn"},
+            {"spawnPoint", "Main/Game/MapGenHcz/HC_cont1_3199/entityspawn"},
             {"playerModelSource", "res://FPSController/PlayerClassPrefab/scp3199.tscn"},
             {"speed", 4.4f},
             {"jump", 4.48f},
