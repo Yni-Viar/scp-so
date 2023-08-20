@@ -28,7 +28,7 @@ public partial class PlayerScript : CharacterBody3D
     [Export] internal string className;
     [Export] internal string spawnPoint;
     [Export] internal string playerModelSource;
-    [Export] internal float health = 100f;
+    [Export] internal float health = 1f;
     [Export] internal float speed = 0f;
     [Export] internal float jump = 0f;
     [Export] internal Godot.Collections.Array<string> footstepSounds;
@@ -36,7 +36,8 @@ public partial class PlayerScript : CharacterBody3D
     // SCP Number. Set -1 for humans, -2 for spectators.
     [Export] internal int scpNumber = -2;
 
-    [Export] bool canMove = true;
+    // beginning with 0.4.0-dev, you cannot move while waiting for match. Instead, every class re-enables the movement toggle.
+    [Export] bool canMove = false; 
     internal bool CanMove {get=>canMove; set=>canMove = value;}
     
     float groundAcceleration = 8.0f;
@@ -248,7 +249,14 @@ public partial class PlayerScript : CharacterBody3D
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
     void HealthManage(int amount)
     {
-        health += amount;
+        if (scpNumber != -2)
+        {
+            health += amount;
+        }
+        else
+        {
+            GD.Print("You cannot change HP for spectators");
+        }
         
         if (health <= 0)
         {

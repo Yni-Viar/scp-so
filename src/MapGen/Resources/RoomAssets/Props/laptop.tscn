@@ -289,17 +289,21 @@ shadow_mesh = SubResource("ArrayMesh_bham7")
 size = Vector3(3.93093, 0.100765, 2.80447)
 
 [node name="laptop" type="StaticBody3D"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
 [node name="Cube" type="MeshInstance3D" parent="."]
+visibility_range_end = 512.0
 mesh = SubResource("ArrayMesh_25mfk")
 skeleton = NodePath("")
 
 [node name="Cube_001" type="MeshInstance3D" parent="Cube"]
 transform = Transform3D(1, 0, 0, 0, 0.921206, -0.389076, 0, 0.389076, 0.921206, 0, -0.394401, -0.116215)
+visibility_range_end = 512.0
 mesh = SubResource("ArrayMesh_5mcly")
 skeleton = NodePath("")
 
 [node name="Cube_002" type="MeshInstance3D" parent="Cube"]
+visibility_range_end = 512.0
 mesh = SubResource("ArrayMesh_07joy")
 skeleton = NodePath("")
 

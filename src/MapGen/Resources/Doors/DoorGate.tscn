@@ -132,7 +132,7 @@ openDoorSounds = PackedStringArray("res://Sounds/Door/BigDoorOpen.ogg", "res://S
 closeDoorSounds = PackedStringArray("res://Sounds/Door/BigDoorClose.ogg", "res://Sounds/Door/BigDoorClose1.ogg", "res://Sounds/Door/BigDoorClose2.ogg")
 
 [node name="Cube_001" type="MeshInstance3D" parent="."]
-visibility_range_end = 64.0
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_vdru4")
 skeleton = NodePath("")
 
@@ -143,7 +143,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.01449, 0.00306654)
 shape = SubResource("BoxShape3D_374he")
 
 [node name="Frame" type="MeshInstance3D" parent="."]
-visibility_range_end = 64.0
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_oo2qq")
 skeleton = NodePath("")
 

@@ -1,0 +1,26 @@
+[remap]
+
+importer="2d_array_texture"
+type="CompressedTexture2DArray"
+uid="uid://6j8vjncrj7lb"
+path="res://.godot/imported/sz_site_19.exr-7cc3c06017ea455298357a52c87ed808.ctexarray"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://MapGen/Resources/RoomAssets/SZ/lm/sz_site_19.exr"
+dest_files=["res://.godot/imported/sz_site_19.exr-7cc3c06017ea455298357a52c87ed808.ctexarray"]
+
+[params]
+
+compress/mode=3
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/channel_pack=1
+mipmaps/generate=false
+mipmaps/limit=-1
+slices/horizontal=1
+slices/vertical=1

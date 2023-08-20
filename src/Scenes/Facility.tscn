@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bjcfcpj4q2im4"]
+[gd_scene load_steps=18 format=3 uid="uid://bjcfcpj4q2im4"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/FacilityManager.cs" id="1_p22hh"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorLcz.cs" id="2_tjaxg"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/PlayerUI.cs" id="6_l6v83"]
 [ext_resource type="Texture2D" uid="uid://bmw4fxmnmwhov" path="res://Assets/HUD/arrow.png" id="7_bwdaw"]
 [ext_resource type="FontFile" uid="uid://cqaasvtiakcsw" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="8_1slp4"]
+[ext_resource type="PackedScene" uid="uid://bo1bq3rj35a57" path="res://MapGen/Resources/surface_map.tscn" id="9_1te4l"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_pw38j"]
 properties/0/path = NodePath("MapGenLcz:seed")
@@ -52,15 +53,15 @@ data = PackedVector3Array(-2.5, 2.5, 0.05, 2.5, 2.5, 0.05, -2.5, -2.5, 0.05, 2.5
 script = ExtResource("1_p22hh")
 
 [node name="MapGenRz" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -200, 0)
 script = ExtResource("2_ya4qo")
 
 [node name="MapGenLcz" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -128, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -300, 0)
 script = ExtResource("2_tjaxg")
 
 [node name="MapGenHcz" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -384, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -500, 0)
 script = ExtResource("4_rnfjk")
 
 [node name="Entities" type="Node3D" parent="."]
@@ -87,6 +88,16 @@ mesh = SubResource("BoxMesh_umn33")
 [node name="StaticBody3D" type="StaticBody3D" parent="LobbyFloor"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LobbyFloor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jdp8w")
+
+[node name="LobbyFloor2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.06653, 0)
+visibility_range_end = 24.0
+mesh = SubResource("BoxMesh_umn33")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LobbyFloor2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LobbyFloor2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_jdp8w")
 
 [node name="LobbyWall" type="MeshInstance3D" parent="."]
@@ -128,6 +139,8 @@ mesh = SubResource("BoxMesh_8qt81")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LobbyWall4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5i7cn")
+
+[node name="SurfaceMap" parent="." instance=ExtResource("9_1te4l")]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.36975, 0.0489206)

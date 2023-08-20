@@ -7,7 +7,7 @@ public partial class ClassData : Node
       new Godot.Collections.Dictionary<string, Godot.Collections.Dictionary<string, Variant>>{
         {"spectator", new Godot.Collections.Dictionary<string, Variant>{
             {"className", "MTF Omega-0 'Ará Orún'"},
-            {"spawnPoint", "Main/Game/MapGenLcz/LC_room1_archive/entityspawn"},
+            {"spawnPoint", "Main/Game/SurfaceMap/entityspawn_sp"},
             {"playerModelSource", "res://FPSController/PlayerClassPrefab/spectator.tscn"},
             {"speed", 2f},
             {"jump", 2f},

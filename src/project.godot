@@ -39,6 +39,10 @@ project/assembly_name="scpso"
 naming/default_signal_callback_name="On{NodeName}{SignalName}"
 naming/default_signal_callback_to_self_name="On{SignalName}"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/zylann.hterrain/plugin.cfg")
+
 [filesystem]
 
 import/blender/enabled=false
