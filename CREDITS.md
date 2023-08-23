@@ -14,6 +14,10 @@
  then I (Yni) merged some code from elmarcoh's FPS script (also public domain),
  and now I added some code.
 
+### HeightMap terrain for Godot Engine (MIT License)
+
+- Copyright (c) 2016-2023 Marc Gilleron
+
 ## Assets
 ### Models (license - [CC-BY-SA 3.0](/LICENSE.CCBYSA3))
 - Room models used from SCP - Containment Breach game.
