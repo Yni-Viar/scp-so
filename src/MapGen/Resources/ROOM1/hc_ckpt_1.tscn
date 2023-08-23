@@ -602,6 +602,8 @@ script = ExtResource("20_44y10")
 elevators = PackedStringArray("Game/MapGenHcz/HC_ckpt1/ElevatorHc1", "Game/MapGenLcz/LC_ckpt1/ElevatorLc1", "Game/MapGenRz/RZ_ckpt1/ElevatorRz1")
 destinationPoints = PackedStringArray("Hc1", "Lc1", "Rz1")
 currentFloor = 2
+openDoorSounds = PackedStringArray("res://Sounds/Door/ElevatorOpen1.ogg", "res://Sounds/Door/ElevatorOpen2.ogg", "res://Sounds/Door/ElevatorOpen3.ogg")
+closeDoorSounds = PackedStringArray("res://Sounds/Door/ElevatorClose1.ogg", "res://Sounds/Door/ElevatorClose2.ogg", "res://Sounds/Door/ElevatorClose3.ogg")
 
 [node name="Hc1" type="Marker3D" parent="ElevatorHc1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0198827, 2.93814, -3.44586)
@@ -668,6 +670,8 @@ script = ExtResource("20_44y10")
 elevators = PackedStringArray("Game/MapGenHcz/HC_ckpt1/ElevatorHc2", "Game/MapGenLcz/LC_ckpt1/ElevatorLc2", "Game/MapGenRz/RZ_ckpt1/ElevatorRz2")
 destinationPoints = PackedStringArray("Hc2", "Lc2", "Rz2")
 currentFloor = 2
+openDoorSounds = PackedStringArray("res://Sounds/Door/ElevatorOpen1.ogg", "res://Sounds/Door/ElevatorOpen2.ogg", "res://Sounds/Door/ElevatorOpen3.ogg")
+closeDoorSounds = PackedStringArray("res://Sounds/Door/ElevatorClose1.ogg", "res://Sounds/Door/ElevatorClose2.ogg", "res://Sounds/Door/ElevatorClose3.ogg")
 
 [node name="Hc2" type="Marker3D" parent="ElevatorHc2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0198827, 2.93814, -3.44586)

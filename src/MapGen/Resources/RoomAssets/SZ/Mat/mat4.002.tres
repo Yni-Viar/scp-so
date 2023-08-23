@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://dgsgkmeb084vp"]
+
+[ext_resource type="Texture2D" uid="uid://tmid7chg7py7" path="res://MapGen/Resources/RoomAssets/SZ/tiles107_2k_color.png" id="1_7e5wv"]
+[ext_resource type="Texture2D" uid="uid://by2qhgdaytfhl" path="res://MapGen/Resources/RoomAssets/SZ/Tiles107_2K_Roughness.png" id="2_phej4"]
+[ext_resource type="Texture2D" uid="uid://60oj0srov6jp" path="res://MapGen/Resources/RoomAssets/SZ/Tiles107_2K_NormalGL.png" id="3_eeyws"]
+
+[resource]
+resource_name = "mat4.002"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_7e5wv")
+metallic_texture = ExtResource("2_phej4")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_phej4")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_eeyws")

@@ -122,6 +122,8 @@ text = "[b]v.0.4.0-dev[/b] [i](Alpha)[/i]
 - More rooms.
 - Nerfed SCP-650.
 - SCP-3199 has new home!
+- Added Surface Zone!
+- Added SCP-914 (currently, it can refine only players (because item system is currently not implemented))
 
 [b]KNOWN ISSUES:[/b]
 - There is NO loading screen, so you need to wait.
@@ -476,6 +478,23 @@ text = "[i]First person character (license - The Unlicense)[/i]
 - Originally made by [dzejpi](https://github.com/dzejpi/godot-3d-base-project),
  then I (Yni) merged some code from elmarcoh's FPS script (also public domain),
  and now I added some code.
+
+
+"
+fit_content = true
+
+[node name="CreditsCode3" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1234, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[i]HeightMap terrain for Godot Engine (MIT License)[/i]
+
+Copyright (c) 2016-2023 Marc Gilleron
 
 
 "

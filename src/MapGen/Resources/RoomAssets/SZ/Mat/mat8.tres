@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dn44wioah123q"]
+
+[ext_resource type="Texture2D" uid="uid://q31fs7ow5rpe" path="res://MapGen/Resources/RoomAssets/SZ/metalpanels.jpg" id="1_yy7q1"]
+
+[resource]
+resource_name = "mat8"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_yy7q1")
+roughness = 0.950589

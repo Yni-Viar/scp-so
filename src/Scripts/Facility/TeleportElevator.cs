@@ -1,13 +1,15 @@
 using Godot;
 using System;
 
-// 0.3.0 update: due to map gen change, the teleporting elevator script is unused. Maybe in future this script will be readded.
+
 public partial class TeleportElevator : Node3D
 {
     [Export] internal string[] elevators; // need to handle open-close doors
     [Export] internal string[] destinationPoints; // need for teleporting
     [Export] int currentFloor;
     [Export] Godot.Collections.Array<string> playersToTeleport  = new Godot.Collections.Array<string>();
+    [Export] string[] openDoorSounds;
+    [Export] string[] closeDoorSounds;
     // bool isOpened = false;
     bool canInteract = true;
 
@@ -29,7 +31,7 @@ public partial class TeleportElevator : Node3D
         AnimationPlayer animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         animPlayer.Play("door_open");
         AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");
-        sfx.Stream = GD.Load<AudioStream>("res://Sounds/Door/DoorOpen" + Convert.ToString(rng.RandiRange(1, 3)) + ".ogg");
+        sfx.Stream = GD.Load<AudioStream>(openDoorSounds[rng.RandiRange(0, openDoorSounds.Length - 1)]);
         sfx.Play();
     }
 
@@ -39,7 +41,7 @@ public partial class TeleportElevator : Node3D
         AnimationPlayer animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         animPlayer.Play("door_open", -1, -1, true);
         AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");
-        sfx.Stream = GD.Load<AudioStream>("res://Sounds/Door/DoorClose" + Convert.ToString(rng.RandiRange(1, 3)) + ".ogg");
+        sfx.Stream = GD.Load<AudioStream>(closeDoorSounds[rng.RandiRange(0, closeDoorSounds.Length - 1)]);
         sfx.Play();
     }
     // Called when the node enters the scene tree for the first time.
