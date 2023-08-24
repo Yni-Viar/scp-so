@@ -31,7 +31,10 @@ public partial class PlayerScript : CharacterBody3D
     [Export] internal float health = 1f;
     [Export] internal float speed = 0f;
     [Export] internal float jump = 0f;
+    [Export] internal bool sprintEnabled = false;
+    [Export] internal bool moveSoundsEnabled = false;
     [Export] internal Godot.Collections.Array<string> footstepSounds;
+    [Export] internal Godot.Collections.Array<string> sprintSounds;
     float gravity = 9.8f;
     // SCP Number. Set -1 for humans, -2 for spectators.
     [Export] internal int scpNumber = -2;
@@ -44,10 +47,9 @@ public partial class PlayerScript : CharacterBody3D
     float airAcceleration = 8.0f;
     float acceleration;
 
-    // float slidePrevention = 10.0f;
     Vector2 mouseSensivity = new Vector2(0.125f, 2f);
 
-    // Vector3 direction;
+    internal Vector3 dir = new Vector3();
     Vector3 vel = new Vector3();
     Vector3 movement = new Vector3();
     Vector3 gravityVector = new Vector3();
@@ -131,11 +133,12 @@ public partial class PlayerScript : CharacterBody3D
                 GetNode<PlayerSync>("PlayerSync").isJumping = false;
             }
             Vector3 direction = (Transform.Basis * new Vector3(GetNode<PlayerSync>("PlayerSync").direction.X, 0, GetNode<PlayerSync>("PlayerSync").direction.Y));
+            dir = direction; // Save this for outer value, used by class player scripts, but don't reveal the "true" direction variable.
             
             if (canMove)
             {
                 //running
-                if (Input.IsActionPressed("move_sprint") && scpNumber == -1) //SCPs cannot sprint
+                if (Input.IsActionPressed("move_sprint") && sprintEnabled)
                 {
                     vel = vel.Lerp(direction * speed * 2, acceleration * (float)delta);
                     isSprinting = true;
@@ -160,11 +163,11 @@ public partial class PlayerScript : CharacterBody3D
             }
             
             //check if we don't stay still and is footstep audio playing;
-            if (!direction.IsZeroApprox() && !walkSounds.Playing && scpNumber != -2)
+            if (!direction.IsZeroApprox() && !walkSounds.Playing && moveSoundsEnabled)
             {
                 if (isSprinting)
                 {
-                    walkSounds.Stream = GD.Load<AudioStream>("res://Sounds/Character/Human/Step/Run" + rng.RandiRange(1, 8) + ".ogg");
+                    walkSounds.Stream = GD.Load<AudioStream>(sprintSounds[rng.RandiRange(0, footstepSounds.Count - 1)]);
                     walkSounds.PitchScale = 2;
                     walkSounds.Play();
                 }
@@ -190,19 +193,15 @@ public partial class PlayerScript : CharacterBody3D
                 {
                     collidedWith.Call("Interact", this);
                 }
+                if (collidedWith is scp914devicekey)
+                {
+                    collidedWith.Call("RefineCall");
+                }
+                if (collidedWith is scp914gears)
+                {
+                    collidedWith.Call("Interact");
+                }
             }
-            //needed for walking up and down stairs, deprecated in 0.2.0 for optimizing the game.
-            /*if (bottomRaycast.IsColliding() && !topRaycast.IsColliding())
-            {
-                if (Input.IsActionPressed("move_backward") || Input.IsActionPressed("move_left") || Input.IsActionPressed("move_right"))
-                {
-                    FloorMaxAngle = 0.785398f; //45 degrees
-                }
-                else
-                {
-                    FloorMaxAngle = 1.308996f; //75 degrees, need to climb stairs
-                }
-            }*/
             /*if (blinkTimer > blinkWaiting) //deprecated in 0.3.0-dev, because of blink system rework.
             {
                 Blink();
@@ -214,16 +213,21 @@ public partial class PlayerScript : CharacterBody3D
         UpDirection = Vector3.Up;
         MoveAndSlide();
     }
+    //unused
     private void OnNpcInteractBodyEntered(Node3D body)
     {
     }
-
+    /// <summary>
+    /// GDSh command. Calls helper CallForceclass() method to change the player class.
+    /// </summary>
+    /// <param name="args">Player class to become</param>
+    /// <returns>Success or failure for changing the player class</returns>
     string Forceclass(string[] args)
     {
-        if (args.Length == 1 && ClassParser.ReadJson("user://playerclass_0.4.0.json").Keys.Contains(args[0]))
+        if (args.Length == 1 && ClassData.playerClasses.Keys.Contains(args[0]))
         {
             CallForceclass(args[0]);
-            return "Tried to forceclass to " + args[0];
+            return "Forceclassed to " + args[0];
         }
         else
         {
@@ -231,21 +235,33 @@ public partial class PlayerScript : CharacterBody3D
         }
     }
 
-    void CallForceclass(string to)
+    /// <summary>
+    /// Helper method to call FacilityManager for changing player class.
+    /// </summary>
+    /// <param name="to">Player class to become</param>
+    private void CallForceclass(string to)
     {
         GetParent().GetParent().GetNode<FacilityManager>("Game").Rpc("SetPlayerClass", Multiplayer.GetUniqueId().ToString(), to);
     }
 
+    /// <summary>
+    /// GDSh command.
+    /// </summary>
+    /// <param name="args">Unused, but is necessary for GDSh</param>
+    /// <returns>All available classes.</returns>
     string ClassList(string[] args)
     {
         string r = "";
-        foreach (var val in ClassParser.ReadJson("user://playerclass_0.4.0.json"))
+        foreach (var val in ClassData.playerClasses)
         {
             r += val.Key + "\n";
         }
         return r;
     }
-
+    /// <summary>
+    /// Add or depletes health (don't work on spectators). If health is below 0, the players forceclasses as spectator.
+    /// </summary>
+    /// <param name="amount">How much health to add/deplete</param>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
     void HealthManage(int amount)
     {
@@ -271,22 +287,5 @@ public partial class PlayerScript : CharacterBody3D
         await ToSignal(GetTree().CreateTimer(0.3), "timeout");
         isBlinking = false;
         blinkImage.Hide();
-    }*/
-    /*internal void GameOver(int whichScreen) // DEPRECATED, since 0.2.0-MP-dev, will be rewritten after player class manager + health will be implemented
-    {
-        gameOver = true;
-        GD.Print("Game Over!");
-        //I know that this code is not good. But I am a newb programmer... :( 
-        //-Yni
-        switch (whichScreen)
-        {
-            //left for future.
-            case 0:
-                gameOverScreen.Texture = GD.Load<Texture2D>("res://Assets/GameOverScreens/GameOverCause_173.png");
-                gameOverText.Text = "Crunch!";
-                break;
-        }
-        Input.MouseMode = Input.MouseModeEnum.Visible;
-        GetNode<Control>("UI/GameOver").Show();
     }*/
 }

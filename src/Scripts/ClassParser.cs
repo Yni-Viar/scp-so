@@ -1,5 +1,8 @@
-using Godot;
+/* using Godot;
 using System;
+
+
+// As of 0.4.0-dev the JSON parser is unused.
 
 public partial class ClassParser : Node
 {
@@ -33,3 +36,4 @@ public partial class ClassParser : Node
         }
     }
 }
+*/

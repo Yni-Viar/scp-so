@@ -124,10 +124,13 @@ text = "[b]v.0.4.0-dev[/b] [i](Alpha)[/i]
 - SCP-3199 has new home!
 - Added Surface Zone!
 - Added SCP-914 (currently, it can refine only players (because item system is currently not implemented))
+- Added MTF.
+- No disturbing models in first-person (only for classes, which have models)
 
 [b]KNOWN ISSUES:[/b]
 - There is NO loading screen, so you need to wait.
-- SCP-173 sometimes can move while being watched."
+- SCP-173 sometimes can move while being watched.
+- MTF and SCP-3199 may have broken animations."
 
 [node name="PlayPanel" type="Panel" parent="."]
 visible = false

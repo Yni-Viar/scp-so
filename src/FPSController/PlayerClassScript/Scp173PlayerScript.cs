@@ -10,6 +10,10 @@ public partial class Scp173PlayerScript : Node3D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+        if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
+        {
+            GetNode<Node3D>("Merged_PM3D_Sphere3D4").Hide();
+        }
         GetParent().GetParent<PlayerScript>().CanMove = true;
         ray = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/RayCast3D");
         interactSound = GetParent().GetParent<PlayerScript>().GetNode<AudioStreamPlayer3D>("InteractSound");
@@ -41,7 +45,9 @@ public partial class Scp173PlayerScript : Node3D
             }
         }
 	}
-
+    /// <summary>
+    /// Method, that holds blinking. Needs reworking...
+    /// </summary>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true, TransferMode = MultiplayerPeer.TransferModeEnum.Unreliable)]
     async void Scp173()
     {

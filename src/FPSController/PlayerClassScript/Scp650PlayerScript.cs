@@ -9,6 +9,10 @@ public partial class Scp650PlayerScript : Node3D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+        if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
+        {
+            GetNode<Node3D>("Armature").Hide();
+        }
         GetParent().GetParent<PlayerScript>().CanMove = false;
 	}
 
@@ -38,15 +42,17 @@ public partial class Scp650PlayerScript : Node3D
             isWatching = false;
         }
 	}*/
-
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
+    /// <summary>
+    /// Set animation to an entity.
+    /// </summary>
+    /// <param name="s">Animation name</param>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     private void SetState(string s)
     {
-        if (GetNode<AnimationPlayer>("AnimationPlayer").CurrentAnimation == s)
+        if (GetNode<AnimationPlayer>("AnimationPlayer").CurrentAnimation != s)
         {
-            return; //if this animation already applied, then no action.
+            //Change the animation.
+            GetNode<AnimationPlayer>("AnimationPlayer").Play(s);
         }
-        //Change the animation.
-        GetNode<AnimationPlayer>("AnimationPlayer").Play(s);
     }
 }

@@ -8,10 +8,10 @@ public partial class FacilityManager : Node3D
     //graphics settings field
     WorldEnvironment graphics = new WorldEnvironment();
 	RandomNumberGenerator rng = new RandomNumberGenerator();
+
+    //player class manager data
 	CharacterBody3D playerScene;
     [Export] Godot.Collections.Array<string> playersList = new Godot.Collections.Array<string>();
-
-	// string[] spawnLocation = new string[] {"MapGenLCZ/LC_room1_archive/entityspawn", "MapGenRZ/RZ_room2_offices/entityspawn", "MapGenHCZ/HC_cont1_173/entityspawn"};
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -55,6 +55,10 @@ public partial class FacilityManager : Node3D
     {
     }
 
+    /// <summary>
+    /// Adds player to server.
+    /// </summary>
+    /// <param name="id">Unique multiplayer ID</param>
     void AddPlayer(long id)
     {
         playerScene = (CharacterBody3D)ResourceLoader.Load<PackedScene>("res://FPSController/PlayerScene.tscn").Instantiate();
@@ -63,6 +67,10 @@ public partial class FacilityManager : Node3D
         GD.Print("Player " + id.ToString() + " has joined the server!");
     }
 
+    /// <summary>
+    /// Removes the player from server
+    /// </summary>
+    /// <param name="id">Unique multiplayer ID</param>
     void RemovePlayer(long id)
     {
         if (GetNodeOrNull(id.ToString()) != null)
@@ -72,12 +80,18 @@ public partial class FacilityManager : Node3D
         }
     }
 
+    /// <summary>
+    /// Waits for people gather before the round starts.
+    /// </summary>
     async void WaitForBeginning()
     {
         await ToSignal(GetTree().CreateTimer(15.0), "timeout");
         BeginGame();
     }
 
+    /// <summary>
+    /// Round start. Adds the players in the list and tosses their classes.
+    /// </summary>
     void BeginGame()
     {
         Godot.Collections.Array<Node> players = GetTree().GetNodesInGroup("Players");
@@ -91,17 +105,25 @@ public partial class FacilityManager : Node3D
         }
     }
 
+    /// <summary>
+    /// Sets player class through the RPC.
+    /// </summary>
+    /// <param name="playerName">Player ID, contained in name</param>
+    /// <param name="nameOfClass">Class, that will be granted</param>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
     internal void SetPlayerClass(string playerName, string nameOfClass) //Note: RPC ONLY HANDLES PRIMITIVE TYPES, NOT PLAYERSCRIPT!
     {
         GetNode<PlayerScript>(playerName).classKey = nameOfClass;
-        GetNode<PlayerScript>(playerName).className = (string)ClassParser.ReadJson("user://playerclass_0.4.0.json")[nameOfClass]["className"];
-        GetNode<PlayerScript>(playerName).scpNumber = (int)ClassParser.ReadJson("user://playerclass_0.4.0.json")[nameOfClass]["scpNumber"];
-        GetNode<PlayerScript>(playerName).footstepSounds = (Godot.Collections.Array<string>)ClassParser.ReadJson("user://playerclass_0.4.0.json")[nameOfClass]["footstepSounds"];
-        GetNode<PlayerScript>(playerName).speed = (float)ClassParser.ReadJson("user://playerclass_0.4.0.json")[nameOfClass]["speed"];
-        GetNode<PlayerScript>(playerName).jump = (float)ClassParser.ReadJson("user://playerclass_0.4.0.json")[nameOfClass]["jump"];
-        GetNode<PlayerScript>(playerName).health = (float)ClassParser.ReadJson("user://playerclass_0.4.0.json")[nameOfClass]["health"];
-        GetNode<PlayerScript>(playerName).Position = GetTree().Root.GetNode<Marker3D>((string)ClassParser.ReadJson("user://playerclass_0.4.0.json")[nameOfClass]["spawnPoint"]).GlobalPosition;
+        GetNode<PlayerScript>(playerName).className = (string)ClassData.playerClasses[nameOfClass]["className"];
+        GetNode<PlayerScript>(playerName).scpNumber = (int)ClassData.playerClasses[nameOfClass]["scpNumber"];
+        GetNode<PlayerScript>(playerName).sprintEnabled = (bool)ClassData.playerClasses[nameOfClass]["sprintEnabled"];
+        GetNode<PlayerScript>(playerName).moveSoundsEnabled = (bool)ClassData.playerClasses[nameOfClass]["moveSoundsEnabled"];
+        GetNode<PlayerScript>(playerName).footstepSounds = (Godot.Collections.Array<string>)ClassData.playerClasses[nameOfClass]["footstepSounds"];
+        GetNode<PlayerScript>(playerName).sprintSounds = (Godot.Collections.Array<string>)ClassData.playerClasses[nameOfClass]["sprintSounds"];
+        GetNode<PlayerScript>(playerName).speed = (float)ClassData.playerClasses[nameOfClass]["speed"];
+        GetNode<PlayerScript>(playerName).jump = (float)ClassData.playerClasses[nameOfClass]["jump"];
+        GetNode<PlayerScript>(playerName).health = (float)ClassData.playerClasses[nameOfClass]["health"];
+        GetNode<PlayerScript>(playerName).Position = GetTree().Root.GetNode<Marker3D>((string)ClassData.playerClasses[nameOfClass]["spawnPoint"]).GlobalPosition;
         RpcId(int.Parse(playerName), "UpdateClassUI", GetNode<PlayerScript>(playerName).className, GetNode<PlayerScript>(playerName).health);
         if (IsMultiplayerAuthority()) //YESSS!!! IsMultiplayerAuthority() is NECESSARY for NOT duplicating player models!
         {
@@ -109,24 +131,34 @@ public partial class FacilityManager : Node3D
         }
     }
 
+    /// <summary>
+    /// Loads the models of players. Note, that you must use ISMultiplayerAuthority() before calling, because of duplicated player model problem.
+    /// </summary>
+    /// <param name="players">Player list, where each player is getting the model.</param>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
     void LoadModels(Godot.Collections.Array<string> players)
     {
         foreach (string playerName in players)
         {
             PlayerScript playerScript = GetNode<PlayerScript>(playerName);
-            if (ClassParser.ReadJson("user://playerclass_0.4.0.json").Keys.Contains(playerScript.classKey))
+            if (ClassData.playerClasses.Keys.Contains(playerScript.classKey))
             {
                 Node ModelRoot = playerScript.GetNode("PlayerModel");
                 if (ModelRoot.GetChild(0) != null)
                 {
                     ModelRoot.GetChild(0).QueueFree();
                 }
-                Node tmpModel = ResourceLoader.Load<PackedScene>((string)ClassParser.ReadJson("user://playerclass_0.4.0.json")[playerScript.classKey]["playerModelSource"]).Instantiate();
+                Node tmpModel = ResourceLoader.Load<PackedScene>((string)ClassData.playerClasses[playerScript.classKey]["playerModelSource"]).Instantiate();
                 ModelRoot.AddChild(tmpModel, true);
             }
         }
     }
+
+    /// <summary>
+    /// Update the class UI, when forceclassing.
+    /// </summary>
+    /// <param name="className">Name of the class</param>
+    /// <param name="health">Health of the class</param>
 
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
     void UpdateClassUI(string className, float health)
@@ -138,7 +170,7 @@ public partial class FacilityManager : Node3D
     string TossPlayerClass() //to be reworked.
     {
         Godot.Collections.Array<string> tossClass = new Godot.Collections.Array<string>();
-        foreach(string val in ClassParser.ReadJson("user://playerclass_0.4.0.json").Keys)
+        foreach(string val in ClassData.playerClasses.Keys)
         {
             tossClass.Add(val);
         }
@@ -146,6 +178,10 @@ public partial class FacilityManager : Node3D
         return tossClass[rng.RandiRange(1, tossClass.Count - 1)];
     }
 
+    /// <summary>
+    /// Specific usage. Is only used by SCP-650 (and SCP-106 in future) to teleport to another player.
+    /// </summary>
+    /// <param name="playerName">Name of the teleporting player</param>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
     void RandomTeleport(string playerName)
     {

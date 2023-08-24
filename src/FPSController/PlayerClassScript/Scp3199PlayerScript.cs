@@ -8,6 +8,10 @@ public partial class Scp3199PlayerScript : Node3D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+        if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
+        {
+            GetNode<Node3D>("Armature").Hide();
+        }
         GetParent().GetParent<PlayerScript>().CanMove = true;
         ray = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/RayCast3D");
         interactSound = GetParent().GetParent<PlayerScript>().GetNode<AudioStreamPlayer3D>("InteractSound");
@@ -17,7 +21,7 @@ public partial class Scp3199PlayerScript : Node3D
 	public override void _Process(double delta)
 	{
         var state = GetNode<AnimationPlayer>("AnimationPlayer").CurrentAnimation;
-        if (GetParent().GetParent<PlayerScript>().Velocity.IsZeroApprox())
+        if (GetParent().GetParent<PlayerScript>().dir.IsZeroApprox())
         {
             Rpc("SetState", "3199_Idle");
         }
@@ -41,15 +45,17 @@ public partial class Scp3199PlayerScript : Node3D
         }
 	}
 
-    //Set animation to an entity.
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
+    /// <summary>
+    /// Set animation to an entity.
+    /// </summary>
+    /// <param name="s">Animation name</param>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     private void SetState(string s)
     {
-        if (GetNode<AnimationPlayer>("AnimationPlayer").CurrentAnimation == s)
+        if (GetNode<AnimationPlayer>("AnimationPlayer").CurrentAnimation != s)
         {
-            return; //if this animation already applied, then no action.
+            //Change the animation.
+            GetNode<AnimationPlayer>("AnimationPlayer").Play(s);
         }
-        //Change the animation.
-        GetNode<AnimationPlayer>("AnimationPlayer").Play(s);
     }
 }

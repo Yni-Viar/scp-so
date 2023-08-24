@@ -38,11 +38,16 @@ public partial class GDShellSharp : Node
         };
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	/*public override void _Process(double delta)
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    /*public override void _Process(double delta)
 	{
 	}*/
-
+    /// <summary>
+    /// Calls command.
+    /// </summary>
+    /// <param name="command">Name of the command</param>
+    /// <param name="args">It's arguments (if it has)</param>
+    /// <returns>Success or failure of calling</returns>
     internal Variant CallCommand(string command, string[] args)
     {
         if (commands.ContainsKey(command))
@@ -54,7 +59,12 @@ public partial class GDShellSharp : Node
             return "No such command: " + command;
         }
     }
-
+    /// <summary>
+    /// Adds new command.
+    /// </summary>
+    /// <param name="name">Name of the command</param>
+    /// <param name="callable">Which method it calls</param>
+    /// <param name="descr">Description</param>
     internal void AddCommand(string name, Callable callable, string descr = "")
     {
         commands[name] = new Godot.Collections.Dictionary<string, Variant>{
@@ -62,17 +72,28 @@ public partial class GDShellSharp : Node
             {"description", descr},
         };
     }
-
+    /// <summary>
+    /// Removes command
+    /// </summary>
+    /// <param name="name">Name of the command</param>
+    /// <returns>Removes command</returns>
     bool RemoveCommand(string name)
     {
         return commands.Remove(name);
     }
-
+    /// <summary>
+    /// Returns game version.
+    /// </summary>
+    /// <returns>Returns game version.</returns>
     string GetVersionInfo()
     {
         return Globals.version;
     }
-
+    /// <summary>
+    /// Built-in command.
+    /// </summary>
+    /// <param name="args">Unused, but is necessary for GDSh</param>
+    /// <returns>List of commands</returns>
     string Help(string[] args)
     {
         string r = "";
@@ -84,12 +105,20 @@ public partial class GDShellSharp : Node
         r += "[/ul]";
         return r;
     }
-
+    /// <summary>
+    /// Built-in command.
+    /// </summary>
+    /// <param name="args">Command's args</param>
+    /// <returns>Echoes the command</returns>
     string Echo(string[] args)
     {
         return " " + args;
     }
-
+    /// <summary>
+    /// Built-in command.
+    /// </summary>
+    /// <param name="args">Unused, but is necessary for GDSh</param>
+    /// <returns>System info (such as game version, version of Godot Engine and uptime)</returns>
     string SystemInfo(string[] args)
     {
         string r = "";

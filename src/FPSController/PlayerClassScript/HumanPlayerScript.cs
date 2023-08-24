@@ -3,7 +3,7 @@ using System;
 
 public partial class HumanPlayerScript : Node3D
 {
-    PlayerScript scp650;
+    // PlayerScript scp650;
     RayCast3D vision;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

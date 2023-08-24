@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://isp3qhbu0mf5"]
+[gd_scene load_steps=7 format=3 uid="uid://isp3qhbu0mf5"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerScript.cs" id="1_tw8h1"]
 [ext_resource type="FontFile" uid="uid://bmquuud55yceh" path="res://Assets/Fonts/Righteous/Righteous-Regular.ttf" id="7_dkx5u"]
@@ -6,9 +6,7 @@
 
 [sub_resource type="CapsuleShape3D" id="1"]
 radius = 0.371158
-height = 2.26761
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_hhjv1"]
+height = 2.64793
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s46hk"]
 height = 2.71688
@@ -59,12 +57,8 @@ target_position = Vector3(0, 0, -24)
 collision_mask = 3
 
 [node name="CollisionBodyCapsule" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.198127, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0386829, 0)
 shape = SubResource("1")
-
-[node name="CollisionBodyCapsule2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.776617, 0)
-shape = SubResource("SphereShape3D_hhjv1")
 
 [node name="NPCInteract" type="Area3D" parent="."]
 
