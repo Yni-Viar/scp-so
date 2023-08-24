@@ -1,6 +1,10 @@
 # Changelog
 The current state of the game - Alpha.
 ## Alpha versions
+### v.0.4.0.1 (2023.08.24)
+
+- Fixed too dark Surface Zone, when SDFGI is disabled.
+
 ### v.0.4.0 (2023.08.24)
 
 - Added gates
