@@ -1,6 +1,21 @@
 # Changelog
 The current state of the game - Alpha.
 ## Alpha versions
+### v.0.4.0 (2023.08.24)
+
+- Added gates
+- Started the Light Containment Zone overhaul.
+- This game is in my project now.
+- Improved door system.
+- More rooms.
+- Nerfed SCP-650.
+- SCP-3199 has new home!
+- Added Surface Zone!
+- Added SCP-914 (currently, it does not refine at all)
+- Added MTF.
+- No disturbing models in first-person (only for classes, which have models)
+- Optimized door system.
+
 ### v.0.3.1 (2023.08.13)
 
 - SCP-650 now has animations!

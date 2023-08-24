@@ -14,7 +14,7 @@ public partial class scp914 : AnimatableBody3D
 	}
 
     // Godot.Collections.Array<Pickable> itemsToRefine = new Godot.Collections.Array<Pickable>();
-    Godot.Collections.Array<PlayerScript> playersToRefine  = new Godot.Collections.Array<PlayerScript>();
+    Godot.Collections.Array<string> playersToRefine  = new Godot.Collections.Array<string>();
 
 	internal bool isRefining = false;
 	internal static Modes currentMode = Modes.ONETOONE;
@@ -43,7 +43,7 @@ public partial class scp914 : AnimatableBody3D
 		}
 		animPlayer.Play("Armature|Armature|Armature|Armature|Event|Armature|Event|Armatu");
 		await ToSignal(GetTree().CreateTimer(6.0), "timeout");
-        for (int i = 0; i < playersToRefine.Count; i++)
+        /*for (int i = 0; i < playersToRefine.Count; i++) //not working
         {
             if (playersToRefine.Count == 0)
             {
@@ -54,30 +54,30 @@ public partial class scp914 : AnimatableBody3D
                 switch (currentMode)
                 {
                     case Modes.ROUGH:
-                        playersToRefine[i].Position = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
-                        playersToRefine[i].RpcId(int.Parse(playersToRefine[i].Name), "HealthManage", -16777216);
+                        GetTree().Root.GetNode<PlayerScript>("Main/Game/" + playersToRefine[i]).Position = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
+                        GetTree().Root.GetNode<PlayerScript>("Main/Game/" + playersToRefine[i]).RpcId(int.Parse(GetTree().Root.GetNode<PlayerScript>("Main/Game/" + playersToRefine[i]).Name), "HealthManage", -16777216);
                         break;
                     case Modes.COARSE:
-                        playersToRefine[i].Position = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
-                        playersToRefine[i].RpcId(int.Parse(playersToRefine[i].Name), "HealthManage", -50);
+                        GetTree().Root.GetNode<PlayerScript>("Main/Game/" + playersToRefine[i]).Position = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
+                        GetTree().Root.GetNode<PlayerScript>("Main/Game/" + playersToRefine[i]).RpcId(int.Parse(GetTree().Root.GetNode<PlayerScript>("Main/Game/" + playersToRefine[i]).Name), "HealthManage", -50);
                         break;
                     case Modes.ONETOONE:
                         GD.Print("To be implemented, need to forceclass to another human");
                         break;
                     case Modes.FINE:
                         GD.Print("To be implemented, need to forceclass to invincible human. Currently is working like ROUGH");
-                        playersToRefine[i].Position = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
-                        playersToRefine[i].RpcId(int.Parse(playersToRefine[i].Name), "HealthManage", -16777216);
+                        GetTree().Root.GetNode<PlayerScript>("Main/Game/" + playersToRefine[i]).Position = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
+                        GetTree().Root.GetNode<PlayerScript>("Main/Game/" + playersToRefine[i]).RpcId(int.Parse(GetTree().Root.GetNode<PlayerScript>("Main/Game/" + playersToRefine[i]).Name), "HealthManage", -16777216);
                         break;
                     case Modes.VERYFINE:
                         GD.Print("To be implemented, need to forceclass to invincible human. Currently is working like ROUGH");
-                        playersToRefine[i].Position = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
-                        playersToRefine[i].RpcId(int.Parse(playersToRefine[i].Name), "HealthManage", -16777216);
+                        GetTree().Root.GetNode<PlayerScript>("Main/Game/" + playersToRefine[i]).Position = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
+                        GetTree().Root.GetNode<PlayerScript>("Main/Game/" + playersToRefine[i]).RpcId(int.Parse(GetTree().Root.GetNode<PlayerScript>("Main/Game/" + playersToRefine[i]).Name), "HealthManage", -16777216);
                         break;
                 }
             }
         }
-
+        */
         await ToSignal(GetTree().CreateTimer(6.0), "timeout");
         // itemsToRefine.Clear();
         playersToRefine.Clear();
@@ -95,7 +95,7 @@ public partial class scp914 : AnimatableBody3D
         }*/
         if (body is PlayerScript player)
         {
-            playersToRefine.Add(player);
+            playersToRefine.Add(player.Name);
         }
     }
 
@@ -109,7 +109,7 @@ public partial class scp914 : AnimatableBody3D
         }*/
         if (body is PlayerScript player)
         {
-            playersToRefine.Remove(player);
+            playersToRefine.Remove(player.Name);
         }
     }
 }

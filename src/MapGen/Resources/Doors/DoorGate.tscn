@@ -117,14 +117,10 @@ _data = {
 }
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_dsm0d"]
-properties/0/path = NodePath(".:isOpened")
+properties/0/path = NodePath(".:canOpen")
 properties/0/spawn = true
 properties/0/sync = false
-properties/0/watch = true
-properties/1/path = NodePath(".:canOpen")
-properties/1/spawn = true
-properties/1/sync = false
-properties/1/watch = true
+properties/0/watch = false
 
 [node name="Gate" type="Node3D"]
 script = ExtResource("1_xhv6f")

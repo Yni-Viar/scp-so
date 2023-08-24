@@ -114,7 +114,7 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[b]v.0.4.0-dev[/b] [i](Alpha)[/i]
+text = "[b]v.0.4.0[/b] [i](Alpha)[/i]
 - Added gates
 - Started the Light Containment Zone overhaul.
 - This game is in my project now.
@@ -123,14 +123,18 @@ text = "[b]v.0.4.0-dev[/b] [i](Alpha)[/i]
 - Nerfed SCP-650.
 - SCP-3199 has new home!
 - Added Surface Zone!
-- Added SCP-914 (currently, it can refine only players (because item system is currently not implemented))
+- Added SCP-914 (currently, it does not refine at all)
 - Added MTF.
 - No disturbing models in first-person (only for classes, which have models)
+- Optimized door system.
+
 
 [b]KNOWN ISSUES:[/b]
 - There is NO loading screen, so you need to wait.
 - SCP-173 sometimes can move while being watched.
-- MTF and SCP-3199 may have broken animations."
+- MTF and SCP-3199 may have broken animations.
+- Don't try to run multiple clients with SDFGI enabled.
+- Background music may play once"
 
 [node name="PlayPanel" type="Panel" parent="."]
 visible = false
