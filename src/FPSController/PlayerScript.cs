@@ -77,11 +77,12 @@ public partial class PlayerScript : CharacterBody3D
             // blinkImage = GetNode<Control>("UI/Blink");
             walkSounds = GetNode<AudioStreamPlayer3D>("WalkSounds");
             interactSound = GetNode<AudioStreamPlayer3D>("InteractSound");
-            // gameOverScreen = GetNode<TextureRect>("UI/GameOver/GameOverScreen");
-            // gameOverText = GetNode<Label>("UI/GameOver/GameOverMessage");
             acceleration = groundAcceleration;
-            // Input.MouseMode = Input.MouseModeEnum.Captured;
-            FloorMaxAngle = 1.308996f;
+            if (!OS.IsDebugBuild()) //this method checks is this a debug build.
+            {
+                Input.MouseMode = Input.MouseModeEnum.Captured;
+            }
+            FloorMaxAngle = 1.439897f; //82.5 degrees.
         }
         GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("forceclass", new Callable(this, "Forceclass"), "Forceclass the player (1 argument needed)");
         GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("classlist", new Callable(this, "ClassList"), "Returns class names (for forceclass)");

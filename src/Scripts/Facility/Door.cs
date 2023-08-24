@@ -10,20 +10,24 @@ public partial class Door : Node3D
 
     bool CanOpen { get=>canOpen; set=>canOpen = value; }
     bool IsOpened { get=>isOpened; set=>isOpened = value; }
+    AnimationPlayer animPlayer;
 
+    /// <summary>
+    /// Main control method, which checks - is the door opened.
+    /// </summary>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
 	internal void DoorControl()
 	{
         if (CanOpen)
         {
-            if (IsOpened)
+            if (IsOpened && !animPlayer.IsPlaying())
             {
                 DoorClose();
             }
-            else
-            {
-                DoorOpen();
-            }
+            else if (!animPlayer.IsPlaying())
+			{
+				DoorOpen();
+			}
         }
 		else
         {
@@ -32,18 +36,21 @@ public partial class Door : Node3D
             sfx.Play();
         }
 	}
-
+	/// <summary>
+	/// Helper method, opens the door.
+	/// </summary>
 	void DoorOpen()
 	{
 		RandomNumberGenerator rng = new RandomNumberGenerator();
-		AnimationPlayer animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		animPlayer.Play("door_open");
 		AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");
 		sfx.Stream = GD.Load<AudioStream>(openDoorSounds[rng.RandiRange(0, openDoorSounds.Length - 1)]);
 		sfx.Play();
         IsOpened = true;
 	}
-
+	/// <summary>
+	/// Helper method, close the door.
+	/// </summary>
 	void DoorClose()
 	{
 		RandomNumberGenerator rng = new RandomNumberGenerator();
@@ -59,12 +66,13 @@ public partial class Door : Node3D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-	}
+		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-	}
+    }
 
     private void OnButtonInteractInteracted(GodotObject player)
     {

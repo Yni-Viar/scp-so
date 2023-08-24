@@ -869,11 +869,6 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ElevatorSz/TeleportArea"]
 shape = SubResource("BoxShape3D_5jklw")
 
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.64265, 2.24566, 7.16222)
-text = "SCP-914 currently, is not working.
-It only play animation when launch."
-
 [connection signal="Interacted" from="Gate3/ButtonInteract" to="Gate3" method="OnButtonInteractInteracted" flags=18]
 [connection signal="Interacted" from="Gate3/ButtonInteract2" to="Gate3" method="OnButtonInteractInteracted" flags=18]
 [connection signal="Interacted" from="ElevatorSz/ButtonInteractCall" to="ElevatorSz" method="OnButtonInteractInteracted"]

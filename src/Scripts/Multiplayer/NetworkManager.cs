@@ -60,6 +60,9 @@ public partial class NetworkManager : Node
         }
 	}
 
+    /// <summary>
+    /// Loads INI File.
+    /// </summary>
     public static void LoadIni()
 	{
 		var config = new ConfigFile();
@@ -77,6 +80,9 @@ public partial class NetworkManager : Node
 		maxPlayers = (int)config.GetValue("ServerConfig", "MaxPlayers");
 	}
 
+    /// <summary>
+    /// General host method.
+    /// </summary>
     internal void Host()
     {
         peer.CreateServer(port, maxPlayers);
@@ -87,6 +93,9 @@ public partial class NetworkManager : Node
         GD.Print("Ready for connecting!");
     }
 
+    /// <summary>
+    /// General join method.
+    /// </summary>
     internal void Join()
     {
         peer.CreateClient(ipAddress, port);
@@ -100,6 +109,10 @@ public partial class NetworkManager : Node
 
     // NOT to be confused with LoadLevel, LoadGame is a serverside function, while LoadLevel - clientside.
     // Both needed to spawn a level to every player via Multiplayer Spawner.
+
+    /// <summary>
+    /// Loads the game server-side.
+    /// </summary>
     void LoadGame()
     {
         if (Multiplayer.IsServer())
@@ -108,6 +121,10 @@ public partial class NetworkManager : Node
         }
     }
 
+    /// <summary>
+    /// Loads the game client-side.
+    /// </summary>
+    /// <param name="scene">Scene to load</param>
     void LoadLevel(PackedScene scene)
     {
         if (GetNodeOrNull("Game") != null)
@@ -121,12 +138,18 @@ public partial class NetworkManager : Node
         AddChild(scene.Instantiate());
     }
 
+    /// <summary>
+    /// Emitted when successfully connected to server.
+    /// </summary>
     void ConnectedToServer()
     {
 
         GD.Print("Connected to the server!");
     }
 
+    /// <summary>
+    /// Emitted when connection is failed.
+    /// </summary>
     void ConnectionFailed()
     {
         Multiplayer.MultiplayerPeer = null;
@@ -135,7 +158,9 @@ public partial class NetworkManager : Node
         GetTree().Root.GetNode<Control>("Main/CanvasLayer/PlayerUI").Hide();
     }
 
-    
+    /// <summary>
+    /// Emitted when server is disconnected.
+    /// </summary>
     void ServerDisconnected()
     {
         Multiplayer.MultiplayerPeer = null;

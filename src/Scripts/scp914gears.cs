@@ -7,7 +7,7 @@ public partial class scp914gears : AnimatableBody3D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-        scp914.currentMode = (scp914.Modes)currentModeCount;
+        GetParent().GetParent().GetNode<scp914>("scp914").currentMode = (scp914.Modes)currentModeCount;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,6 +16,12 @@ public partial class scp914gears : AnimatableBody3D
 	}
 
     internal void Interact()
+    {
+        Rpc("SetMode");
+    }
+
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    void SetMode()
     {
         AnimationPlayer animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         AudioStreamPlayer3D sound = GetNode<AudioStreamPlayer3D>("LeverFlip");
@@ -41,13 +47,13 @@ public partial class scp914gears : AnimatableBody3D
                     sound.Play();
                     break;
             }
-            scp914.currentMode = (scp914.Modes)currentModeCount;
+            GetParent().GetParent().GetNode<scp914>("scp914").currentMode = (scp914.Modes)currentModeCount;
         }
         else
         {
             currentModeCount = 0;
             animPlayer.Play("reset");
-            scp914.currentMode = (scp914.Modes)currentModeCount;
+            GetParent().GetParent().GetNode<scp914>("scp914").currentMode = (scp914.Modes)currentModeCount;
         }
     }
 }

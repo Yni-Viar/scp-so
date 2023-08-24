@@ -44,7 +44,10 @@ public partial class PlayerUI : Control
         else
         {
             GetNode<TextureRect>("Cursor").Show();
-            // Input.MouseMode = Input.MouseModeEnum.Captured;
+            if (!OS.IsDebugBuild()) //this method checks is this a debug build.
+            {
+                Input.MouseMode = Input.MouseModeEnum.Captured;
+            }
         }
     }
 }

@@ -16,6 +16,7 @@ public partial class PauseMenu : Control
     private void OnExitButtonPressed()
     {
         GetTree().ChangeSceneToFile("res://Scenes/MainMenu.tscn");
+		Multiplayer.MultiplayerPeer = null;
     }
 }
 

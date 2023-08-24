@@ -123,11 +123,18 @@ public partial class FacilityManager : Node3D
         GetNode<PlayerScript>(playerName).speed = (float)ClassData.playerClasses[nameOfClass]["speed"];
         GetNode<PlayerScript>(playerName).jump = (float)ClassData.playerClasses[nameOfClass]["jump"];
         GetNode<PlayerScript>(playerName).health = (float)ClassData.playerClasses[nameOfClass]["health"];
-        GetNode<PlayerScript>(playerName).Position = GetTree().Root.GetNode<Marker3D>((string)ClassData.playerClasses[nameOfClass]["spawnPoint"]).GlobalPosition;
         RpcId(int.Parse(playerName), "UpdateClassUI", GetNode<PlayerScript>(playerName).className, GetNode<PlayerScript>(playerName).health);
         if (IsMultiplayerAuthority()) //YESSS!!! IsMultiplayerAuthority() is NECESSARY for NOT duplicating player models!
         {
             Rpc("LoadModels", playersList);
+        }
+        if (GetTree().Root.GetNodeOrNull((string)ClassData.playerClasses[nameOfClass]["spawnPoint"]) != null) //SCP CB Multiplayer moment (:
+        {
+            GetNode<PlayerScript>(playerName).Position = GetTree().Root.GetNode<Marker3D>((string)ClassData.playerClasses[nameOfClass]["spawnPoint"]).GlobalPosition;
+        }
+        else //if simpler, if there is no spawnroom this round - force spawn in HCZ testroom.
+        {
+            GetNode<PlayerScript>(playerName).Position = GetTree().Root.GetNode<Marker3D>("Main/Game/MapGenHcz/HC_cont2_testroom/entityspawn").GlobalPosition;
         }
     }
 
