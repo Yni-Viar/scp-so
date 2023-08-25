@@ -1,9 +1,14 @@
 using Godot;
 using System;
+using System.Xml.Linq;
 
 public partial class scp914 : AnimatableBody3D
 {
-    //Random rnd = new Random();
+    //Random rnd = new Random(); //for items only
+
+    /// <summary>
+    /// All SCP-914 modes
+    /// </summary>
 	internal enum Modes
 	{
 		ROUGH,
@@ -14,8 +19,7 @@ public partial class scp914 : AnimatableBody3D
 	}
 
     // Godot.Collections.Array<Pickable> itemsToRefine = new Godot.Collections.Array<Pickable>();
-    Godot.Collections.Array<string> playersToRefine  = new Godot.Collections.Array<string>();
-    string nextRefinedPlayer;
+    Godot.Collections.Array<string> playersToRefine = new Godot.Collections.Array<string>();
 
 	[Export] internal bool isRefining = false;
 	[Export] internal Modes currentMode = Modes.ONETOONE;
@@ -30,6 +34,9 @@ public partial class scp914 : AnimatableBody3D
 	{
 	}
 
+    /// <summary>
+    /// Main refine method. Processes players (and in future - also items) and refines them.
+    /// </summary>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     public async void Refine()
 	{
@@ -44,7 +51,7 @@ public partial class scp914 : AnimatableBody3D
 		}
 		animPlayer.Play("Armature|Armature|Armature|Armature|Event|Armature|Event|Armatu");
 		await ToSignal(GetTree().CreateTimer(6.0), "timeout");
-        for (int i = 0; i < playersToRefine.Count; i++) //not working
+        for (int i = 0; i < playersToRefine.Count; i++) //don't forget about layers, Yni...
         {
             if (playersToRefine.Count == 0)
             {
@@ -57,16 +64,15 @@ public partial class scp914 : AnimatableBody3D
                     switch (currentMode)
                     {
                         case Modes.ROUGH:
-                            GD.Print("Rough.");
                             player.Position = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
                             player.RpcId(int.Parse(player.Name), "HealthManage", -16777216);
                             break;
                         case Modes.COARSE:
-                            GD.Print("Coarse.");
                             player.Position = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
-                            player.RpcId(int.Parse(player.Name), "HealthManage", -50);
+                            player.RpcId(int.Parse(player.Name), "HealthManage", -30);
                             break;
                         case Modes.ONETOONE:
+                            player.Position = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
                             GD.Print("To be implemented, need to forceclass to another human");
                             break;
                         case Modes.FINE:
@@ -118,18 +124,29 @@ public partial class scp914 : AnimatableBody3D
         }
     }
 
+    /// <summary>
+    /// Adds player to array for all players.
+    /// </summary>
+    /// <param name="name">Player name</param>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void AddPlayer(string name)
     {
         playersToRefine.Add(name);
-        GD.Print(name);
     }
-
+    /// <summary>
+    /// Removes player from array for all players.
+    /// </summary>
+    /// <param name="name">Player name</param>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void RemovePlayer(string name)
     {
-        playersToRefine.Remove(name);
-        GD.Print(name);
+        foreach (string item in playersToRefine)
+        {
+            if (item == name)
+            {
+                playersToRefine.Remove(item);
+            }
+        }
     }
 }
 

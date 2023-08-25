@@ -1,6 +1,13 @@
 # Changelog
 The current state of the game - Alpha.
 ## Alpha versions
+### v.0.4.1 (2023.08.25)
+
+- Fixed bug when an entity had problem in spawning just because the spawn room was not spawned.
+- Fixed door button spamming.
+- Only debug builds has no mouse capture.
+- SCP-914 can now refine players (items are still NOT implemented)
+
 ### v.0.4.0.1 (2023.08.24)
 
 - Fixed too dark Surface Zone, when SDFGI is disabled.
