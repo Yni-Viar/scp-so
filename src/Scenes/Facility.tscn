@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://bjcfcpj4q2im4"]
+[gd_scene load_steps=19 format=3 uid="uid://bjcfcpj4q2im4"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/FacilityManager.cs" id="1_p22hh"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorLcz.cs" id="2_tjaxg"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorRz.cs" id="2_ya4qo"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorHcz.cs" id="4_rnfjk"]
+[ext_resource type="Environment" uid="uid://cpjkvy5s2l8ae" path="res://FacilityGraphics.tres" id="5_u1dtw"]
 [ext_resource type="AudioStream" uid="uid://tbri732tktfl" path="res://Sounds/Music/LightContainment.ogg" id="5_wyc17"]
 [ext_resource type="Script" path="res://Scripts/PlayerUI.cs" id="6_l6v83"]
 [ext_resource type="Texture2D" uid="uid://bmw4fxmnmwhov" path="res://Assets/HUD/arrow.png" id="7_bwdaw"]
@@ -69,6 +70,7 @@ script = ExtResource("4_rnfjk")
 [node name="Items" type="Node3D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("5_u1dtw")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_wyc17")

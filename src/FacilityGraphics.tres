@@ -1,0 +1,11 @@
+[gd_resource type="Environment" format=3 uid="uid://cpjkvy5s2l8ae"]
+
+[resource]
+tonemap_mode = 2
+tonemap_white = 12.0
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_cascades = 1
+sdfgi_energy = 2.0
+volumetric_fog_density = 0.03

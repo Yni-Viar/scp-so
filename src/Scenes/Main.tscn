@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhs1iuqg4qex4"]
+[gd_scene load_steps=6 format=3 uid="uid://dhs1iuqg4qex4"]
 
 [ext_resource type="PackedScene" uid="uid://b345bk26jamix" path="res://Scenes/MainMenu.tscn" id="1_5tg38"]
 [ext_resource type="Script" path="res://Scripts/Multiplayer/NetworkManager.cs" id="1_nxheq"]
 [ext_resource type="PackedScene" uid="uid://o6rnnciwmwvn" path="res://GDsh/InGameConsole.tscn" id="3_qd7e1"]
+[ext_resource type="Script" path="res://Scripts/FPSCounter.cs" id="4_jvqyq"]
 [ext_resource type="Script" path="res://Scripts/PauseMenu.cs" id="5_mth3v"]
 
 [node name="Main" type="Node"]
@@ -44,6 +45,12 @@ offset_top = -32.12
 offset_right = 192.104
 offset_bottom = 31.88
 text = "Exit"
+
+[node name="Counter" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 26.0
+text = "FPS"
+script = ExtResource("4_jvqyq")
 
 [node name="InGameConsole" parent="CanvasLayer" instance=ExtResource("3_qd7e1")]
 visible = false

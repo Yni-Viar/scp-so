@@ -6,8 +6,9 @@ public partial class FacilityManager : Node3D
     // The facility manager not only manages the facility - it is a player class manager too!
 
     //graphics settings field
-    WorldEnvironment graphics = new WorldEnvironment();
+    Settings settings;
 	RandomNumberGenerator rng = new RandomNumberGenerator();
+    WorldEnvironment env;
 
     //player class manager data
 	CharacterBody3D playerScene;
@@ -16,23 +17,20 @@ public partial class FacilityManager : Node3D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        graphics = GetNode<WorldEnvironment>("WorldEnvironment");
+        settings = GetTree().Root.GetNode<Settings>("Settings");
+        env = GetNode<WorldEnvironment>("WorldEnvironment");
 
-        if (SettingsPanel.MusicSetting)
+        if (settings.MusicSetting)
         {
             AudioStreamPlayer sfx = GetNode<AudioStreamPlayer>("BackgroundMusic");
             sfx.Playing = true;
         }
 
-        if (SettingsPanel.HQSetting)
-        {
-            graphics.Environment = ResourceLoader.Load<Godot.Environment>("res://FacilityLightingHighQuality.tres");
-        }
-        else
-        {
-            graphics.Environment = ResourceLoader.Load<Godot.Environment>("res://FacilityLightingLowQuality.tres");
-        }
-
+        env.Environment.SdfgiEnabled = settings.SdfgiSetting;
+        env.Environment.SsaoEnabled = settings.SsaoSetting;
+        env.Environment.SsilEnabled = settings.SsilSetting;
+        env.Environment.SsrEnabled = settings.SsrSetting;
+        env.Environment.VolumetricFogEnabled = settings.FogSetting;
 
         //Multiplayer part.
         if (!Multiplayer.IsServer())

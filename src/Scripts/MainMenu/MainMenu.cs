@@ -3,7 +3,7 @@ using System;
 
 public partial class MainMenu : Control
 {
-    bool playInfoToggle = false;
+	bool playInfoToggle = false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -14,20 +14,20 @@ public partial class MainMenu : Control
 	{
 	}
 
-    private void OnPlayPressed()
-    {
-        playInfoToggle = !playInfoToggle;
-        if (playInfoToggle)
-        {
-            GetNode<Panel>("PlayPanel").Show();
-            GetNode<Panel>("MainPanel").Hide();
-        }
-        else
-        {
-            GetNode<Panel>("PlayPanel").Hide();
-            GetNode<Panel>("MainPanel").Show();
-        }
-    }
+	private void OnPlayPressed()
+	{
+		playInfoToggle = !playInfoToggle;
+		if (playInfoToggle)
+		{
+			GetNode<Panel>("PlayPanel").Show();
+			GetNode<Panel>("MainPanel").Hide();
+		}
+		else
+		{
+			GetNode<Panel>("PlayPanel").Hide();
+			GetNode<Panel>("MainPanel").Show();
+		}
+	}
 
 
 	private void OnExitPressed()
@@ -43,6 +43,6 @@ public partial class MainMenu : Control
 
 	private void OnSettingsPressed()
 	{
-		GetNode<Control>("Settings").Show();
+		GetNode<CanvasLayer>("Settings").Show();
 	}
 }

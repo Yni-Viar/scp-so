@@ -3,61 +3,30 @@ using System;
 
 public partial class SettingsPanel : Panel
 {
+	Settings settings;
+
 	public static bool HQSetting;
-	public static bool MusicSetting;
-	public static bool FullscreenSetting;
-    public static Vector2I WindowSizeSetting = new Vector2I((int)ProjectSettings.GetSetting("display/window/size/width"), (int)ProjectSettings.GetSetting("display/window/size/height"));
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		if (FileAccess.FileExists("user://settings_0.1.0.ini"))
+		settings = GetTree().Root.GetNode<Settings>("Settings");
+
+		GetNode<CheckButton>("ScrollContainer/VBoxContainer/SDFGISet").ButtonPressed = settings.SdfgiSetting;
+		GetNode<CheckButton>("ScrollContainer/VBoxContainer/SSAOSet").ButtonPressed = settings.SsaoSetting;
+		GetNode<CheckButton>("ScrollContainer/VBoxContainer/SSILSet").ButtonPressed = settings.SsilSetting;
+		GetNode<CheckButton>("ScrollContainer/VBoxContainer/SSRSet").ButtonPressed = settings.SsrSetting;
+		GetNode<CheckButton>("ScrollContainer/VBoxContainer/FogSet").ButtonPressed = settings.SsrSetting;
+		GetNode<CheckButton>("ScrollContainer/VBoxContainer/LightSet").ButtonPressed = settings.SsrSetting;
+		GetNode<CheckButton>("ScrollContainer/VBoxContainer/MusicSet").ButtonPressed = settings.MusicSetting;
+
+		if (settings.FullscreenSetting)
 		{
-			LoadIni();
+			DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
 		}
 		else
 		{
-			IniSaver ini = new IniSaver();
-			ini.SaveIni("Settings", new Godot.Collections.Array<string>{
-				"HQSetting",
-				"MusicSetting",
-				"FullscreenSetting",
-                "WindowSizeSetting"
-			}, new Godot.Collections.Array{
-				true,
-				true,
-				false,
-                new Vector2(1920, 1080)
-			}, "user://settings_0.1.0.ini");
-
-			LoadIni();
+			DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
 		}
-
-		if (HQSetting)
-		{
-			GetNode<CheckButton>("ScrollContainer/VBoxContainer/HQSet").ButtonPressed = true;
-		}
-		else
-		{
-			GetNode<CheckButton>("ScrollContainer/VBoxContainer/HQSet").ButtonPressed = false;
-		}
-
-		if (MusicSetting)
-		{
-			GetNode<CheckButton>("ScrollContainer/VBoxContainer/MusicSet").ButtonPressed = true;
-		}
-		else
-		{
-			GetNode<CheckButton>("ScrollContainer/VBoxContainer/MusicSet").ButtonPressed = false;
-		}
-
-        if (FullscreenSetting)
-        {
-            DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
-        }
-        else
-        {
-            DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
-        }
 	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -67,49 +36,44 @@ public partial class SettingsPanel : Panel
 
 	private void OnBackPressed()
 	{
-		GetParent().GetParent().GetNode<Control>("Settings").Hide();
+		GetParent().GetParent().GetNode<CanvasLayer>("Settings").Hide();
 	}
-
-	private void OnHqSetToggled(bool button_pressed)
-	{
-		if (button_pressed)
-		{
-			HQSetting = true;
-		}
-		else
-		{
-			HQSetting = false;
-		}
-	}
-
 
 	private void OnMusicSetToggled(bool button_pressed)
 	{
 		if (button_pressed)
 		{
-			MusicSetting = true;
+			settings.MusicSetting = true;
 		}
 		else
 		{
-			MusicSetting = false;
+			settings.MusicSetting = false;
 		}
 	}
 	private void OnSavePressed()
 	{
 		IniSaver ini = new IniSaver();
 		ini.SaveIni("Settings", new Godot.Collections.Array<string>{
-			"HQSetting",
+			"SdfgiSetting",
+			"SsaoSetting",
+			"SsilSetting",
+			"SsrSetting",
+			"FogSetting",
 			"MusicSetting",
 			"FullscreenSetting",
-            "WindowSizeSetting"
+			"WindowSizeSetting"
 		}, new Godot.Collections.Array{
-			HQSetting,
-			MusicSetting,
-			FullscreenSetting,
-            WindowSizeSetting
-		}, "user://settings_0.1.0.ini");
+			settings.SdfgiSetting,
+			settings.SsaoSetting,
+			settings.SsilSetting, 
+			settings.SsrSetting, 
+			settings.FogSetting, 
+			settings.MusicSetting,
+			settings.FullscreenSetting,
+			settings.WindowSizeSetting
+		}, "user://settings_0.5.0.ini");
 
-		LoadIni();
+		settings.LoadIni();
 	}
 
 	
@@ -118,58 +82,98 @@ public partial class SettingsPanel : Panel
 		if (button_pressed)
 		{
 			DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
-            FullscreenSetting = true;
+			settings.FullscreenSetting = true;
 		}
 		else
 		{
 			DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
-            FullscreenSetting = false;
+			settings.FullscreenSetting = false;
 		}
 	}
 	
 	private void OnWindowSizeSetItemSelected(long index)
-    {
-        switch (index)
-        {
-            case 0:
-                WindowSizeSetting = new Vector2I(1920, 1080);
-                break;
-            case 1:
-                WindowSizeSetting = new Vector2I(1600, 900);
-                break;
-            case 2:
-                WindowSizeSetting = new Vector2I(1366, 768);
-                break;
-            case 3:
-                WindowSizeSetting = new Vector2I(1280, 720);
-                break;
-            case 4:
-                WindowSizeSetting = new Vector2I(1024, 768);
-                break;
-            case 5:
-                WindowSizeSetting = new Vector2I(800, 600);
-                break;
-        }
+	{
+		switch (index)
+		{
+			case 0:
+				settings.WindowSizeSetting = new Vector2I(1920, 1080);
+				break;
+			case 1:
+				settings.WindowSizeSetting = new Vector2I(1600, 900);
+				break;
+			case 2:
+				settings.WindowSizeSetting = new Vector2I(1366, 768);
+				break;
+			case 3:
+				settings.WindowSizeSetting = new Vector2I(1280, 720);
+				break;
+			case 4:
+				settings.WindowSizeSetting = new Vector2I(1024, 768);
+				break;
+			case 5:
+				settings.WindowSizeSetting = new Vector2I(800, 600);
+				break;
+		}
+		DisplayServer.WindowSetSize(settings.WindowSizeSetting);
+	}
 
-        DisplayServer.WindowSetSize(WindowSizeSetting);
+	private void OnSdfgiSetToggled(bool button_pressed)
+	{
+        if (button_pressed)
+        {
+            settings.SdfgiSetting = true;
+        }
+        else
+        {
+            settings.SdfgiSetting = false;
+        }
     }
 
-	public static void LoadIni()
+	private void OnSsaoSetToggled(bool button_pressed)
 	{
-		var config = new ConfigFile();
+        if (button_pressed)
+        {
+            settings.SsaoSetting = true;
+        }
+        else
+        {
+            settings.SsaoSetting = false;
+        }
+    }
 
-		// Load data from a file.
-		Error err = config.Load("user://settings_0.1.0.ini");
+	private void OnSsilSetToggled(bool button_pressed)
+	{
+        if (button_pressed)
+        {
+            settings.SsilSetting = true;
+        }
+        else
+        {
+            settings.SsilSetting = false;
+        }
+    }
 
-		// If the file didn't load, ignore it.
-		if (err != Error.Ok)
-		{
-			return;
-		}
-		// Fetch the data for each section.
-		SettingsPanel.HQSetting = (bool)config.GetValue("Settings", "HQSetting");
-		SettingsPanel.MusicSetting = (bool)config.GetValue("Settings", "MusicSetting");
-		SettingsPanel.FullscreenSetting = (bool)config.GetValue("Settings", "FullscreenSetting");
-        SettingsPanel.WindowSizeSetting = (Vector2I)config.GetValue("Settings", "WindowSizeSetting");
-	}
+	private void OnSsrSetToggled(bool button_pressed)
+	{
+        if (button_pressed)
+        {
+            settings.SsilSetting = true;
+        }
+        else
+        {
+            settings.SsilSetting = false;
+        }
+    }
+
+	private void OnFogSetToggled(bool button_pressed)
+	{
+        if (button_pressed)
+        {
+            settings.FogSetting = true;
+        }
+        else
+        {
+            settings.FogSetting = false;
+        }
+    }
 }

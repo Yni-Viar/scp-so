@@ -1,0 +1,158 @@
+[gd_scene load_steps=4 format=3 uid="uid://bibp8fjrbul66"]
+
+[ext_resource type="Script" path="res://Scripts/MainMenu/SettingsPanel.cs" id="2_fv068"]
+[ext_resource type="Theme" uid="uid://4k2un7nm7xc6" path="res://UITheme.tres" id="3_2qins"]
+[ext_resource type="FontFile" uid="uid://bmquuud55yceh" path="res://Assets/Fonts/Righteous/Righteous-Regular.ttf" id="3_boifm"]
+
+[node name="Settings" type="CanvasLayer"]
+
+[node name="SettingsPanel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_fv068")
+
+[node name="Back" type="Button" parent="SettingsPanel"]
+layout_mode = 0
+offset_right = 448.0
+offset_bottom = 128.0
+theme = ExtResource("3_2qins")
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[node name="Save" type="Button" parent="SettingsPanel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -448.0
+offset_bottom = 128.0
+grow_horizontal = 0
+theme = ExtResource("3_2qins")
+theme_override_font_sizes/font_size = 24
+text = "Save"
+
+[node name="Title" type="Label" parent="SettingsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.104
+anchor_right = 0.5
+anchor_bottom = 0.104
+offset_left = -80.0
+offset_top = -32.32
+offset_right = 82.0
+offset_bottom = 31.68
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_boifm")
+theme_override_font_sizes/font_size = 48
+text = "Settings"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SettingsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = 0.178
+anchor_right = 0.967
+anchor_bottom = 0.948
+offset_left = 0.639999
+offset_top = -0.240005
+offset_right = -0.640137
+offset_bottom = 0.159912
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel/ScrollContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Graphics:"
+
+[node name="WindowSizeSet" type="OptionButton" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_2qins")
+theme_override_font_sizes/font_size = 24
+item_count = 6
+selected = 0
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1366x768"
+popup/item_2/id = 2
+popup/item_3/text = "1280x720"
+popup/item_3/id = 3
+popup/item_4/text = "1024x768"
+popup/item_4/id = 4
+popup/item_5/text = "800x600"
+popup/item_5/id = 5
+
+[node name="FullscreenSet" type="CheckButton" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_2qins")
+theme_override_font_sizes/font_size = 24
+text = "Fullscreen"
+
+[node name="SDFGISet" type="CheckButton" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_2qins")
+theme_override_font_sizes/font_size = 24
+button_pressed = true
+text = "SDFGI"
+
+[node name="SSAOSet" type="CheckButton" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_2qins")
+theme_override_font_sizes/font_size = 24
+button_pressed = true
+text = "SSAO"
+
+[node name="SSILSet" type="CheckButton" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_2qins")
+theme_override_font_sizes/font_size = 24
+button_pressed = true
+text = "SSIL"
+
+[node name="SSRSet" type="CheckButton" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_2qins")
+theme_override_font_sizes/font_size = 24
+text = "SSR"
+
+[node name="FogSet" type="CheckButton" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_2qins")
+theme_override_font_sizes/font_size = 24
+button_pressed = true
+text = "Fog set
+(it is NOT recommended to disable this,
+so use this at last resort if you have low performance)"
+
+[node name="Label3" type="Label" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Sounds:"
+
+[node name="MusicSet" type="CheckButton" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_2qins")
+theme_override_font_sizes/font_size = 24
+button_pressed = true
+text = "Enable backround music"
+
+[connection signal="pressed" from="SettingsPanel/Back" to="SettingsPanel" method="OnBackPressed"]
+[connection signal="pressed" from="SettingsPanel/Save" to="SettingsPanel" method="OnSavePressed"]
+[connection signal="item_selected" from="SettingsPanel/ScrollContainer/VBoxContainer/WindowSizeSet" to="SettingsPanel" method="OnWindowSizeSetItemSelected"]
+[connection signal="toggled" from="SettingsPanel/ScrollContainer/VBoxContainer/FullscreenSet" to="SettingsPanel" method="OnFullscreenSetToggled"]
+[connection signal="toggled" from="SettingsPanel/ScrollContainer/VBoxContainer/SDFGISet" to="SettingsPanel" method="OnSdfgiSetToggled"]
+[connection signal="toggled" from="SettingsPanel/ScrollContainer/VBoxContainer/SSAOSet" to="SettingsPanel" method="OnSsaoSetToggled"]
+[connection signal="toggled" from="SettingsPanel/ScrollContainer/VBoxContainer/SSILSet" to="SettingsPanel" method="OnSsilSetToggled"]
+[connection signal="toggled" from="SettingsPanel/ScrollContainer/VBoxContainer/SSRSet" to="SettingsPanel" method="OnSsrSetToggled"]
+[connection signal="toggled" from="SettingsPanel/ScrollContainer/VBoxContainer/FogSet" to="SettingsPanel" method="OnFogSetToggled"]
+[connection signal="toggled" from="SettingsPanel/ScrollContainer/VBoxContainer/MusicSet" to="SettingsPanel" method="OnMusicSetToggled"]
