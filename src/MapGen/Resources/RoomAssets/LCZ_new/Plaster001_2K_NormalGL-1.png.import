@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cngsltngxypa3"
+uid="uid://djnh7vs5vbwpe"
 path.s3tc="res://.godot/imported/Plaster001_2K_NormalGL-1.png-2211b0b7dbef56a391bffa5d24e2dba5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -24,8 +24,8 @@ compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://MapGen/Resources/RoomAssets/LCZ_new/Plaster001_2K_NormalGL-1.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

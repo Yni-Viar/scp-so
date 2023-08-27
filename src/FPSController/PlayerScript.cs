@@ -33,8 +33,8 @@ public partial class PlayerScript : CharacterBody3D
     [Export] internal float jump = 0f;
     [Export] internal bool sprintEnabled = false;
     [Export] internal bool moveSoundsEnabled = false;
-    [Export] internal Godot.Collections.Array<string> footstepSounds;
-    [Export] internal Godot.Collections.Array<string> sprintSounds;
+    [Export] internal string[] footstepSounds;
+    [Export] internal string[] sprintSounds;
     float gravity = 9.8f;
     // SCP Number. Set -1 for humans, -2 for spectators.
     [Export] internal int scpNumber = -2;
@@ -85,7 +85,7 @@ public partial class PlayerScript : CharacterBody3D
             FloorMaxAngle = 1.439897f; //82.5 degrees.
         }
         GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("forceclass", new Callable(this, "Forceclass"), "Forceclass the player (1 argument needed)");
-        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("classlist", new Callable(this, "ClassList"), "Returns class names (for forceclass)");
+        // GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("classlist", new Callable(this, "ClassList"), "Returns class names (for forceclass)");
     }
 
     private bool IsLocalAuthority()
@@ -168,13 +168,13 @@ public partial class PlayerScript : CharacterBody3D
             {
                 if (isSprinting)
                 {
-                    walkSounds.Stream = GD.Load<AudioStream>(sprintSounds[rng.RandiRange(0, footstepSounds.Count - 1)]);
+                    walkSounds.Stream = GD.Load<AudioStream>(sprintSounds[rng.RandiRange(0, footstepSounds.Length - 1)]);
                     walkSounds.PitchScale = 2;
                     walkSounds.Play();
                 }
                 else if (isWalking)
                 {
-                    walkSounds.Stream = GD.Load<AudioStream>(footstepSounds[rng.RandiRange(0, footstepSounds.Count - 1)]);
+                    walkSounds.Stream = GD.Load<AudioStream>(footstepSounds[rng.RandiRange(0, footstepSounds.Length - 1)]);
                     walkSounds.PitchScale = 1;
                     walkSounds.Play();
                 }
@@ -225,7 +225,7 @@ public partial class PlayerScript : CharacterBody3D
     /// <returns>Success or failure for changing the player class</returns>
     string Forceclass(string[] args)
     {
-        if (args.Length == 1 && ClassData.playerClasses.Keys.Contains(args[0]))
+        if (args.Length == 1 && ResourceLoader.Exists("res://FPSController/PlayerClassResources/" + args[0] + ".tres"))
         {
             CallForceclass(args[0]);
             return "Forceclassed to " + args[0];
@@ -245,12 +245,8 @@ public partial class PlayerScript : CharacterBody3D
         GetParent().GetParent().GetNode<FacilityManager>("Game").Rpc("SetPlayerClass", Multiplayer.GetUniqueId().ToString(), to);
     }
 
-    /// <summary>
-    /// GDSh command.
-    /// </summary>
-    /// <param name="args">Unused, but is necessary for GDSh</param>
-    /// <returns>All available classes.</returns>
-    string ClassList(string[] args)
+    //depreacted since 0.5.0-dev
+    /*string ClassList(string[] args)
     {
         string r = "";
         foreach (var val in ClassData.playerClasses)
@@ -258,7 +254,7 @@ public partial class PlayerScript : CharacterBody3D
             r += val.Key + "\n";
         }
         return r;
-    }
+    }*/
     /// <summary>
     /// Add or depletes health (don't work on spectators). If health is below 0, the players forceclasses as spectator.
     /// </summary>

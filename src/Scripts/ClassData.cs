@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+// Deprecated since 0.5.0-dev
 public partial class ClassData : Node
 {
     /// <summary>
@@ -45,12 +46,14 @@ public partial class ClassData : Node
             {"footstepSounds", new Godot.Collections.Array<string>{}},
             {"sprintSounds", new Godot.Collections.Array<string>{}},
             {"scpNumber", -2},
-            {"health", 1f}
+            {"team", "SPT"}, 
+            {"health", 1f},
+            {"customSpawnPoint", true}
         }},
-        {"default", new Godot.Collections.Dictionary<string, Variant>{
-            {"className", "Test"},
+        {"guard", new Godot.Collections.Dictionary<string, Variant>{
+            {"className", "Security staff"},
             {"spawnPoint", "Main/Game/MapGenLcz/LC_room2_sl/entityspawn"},
-            {"playerModelSource", "res://FPSController/PlayerClassPrefab/Default.tscn"},
+            {"playerModelSource", "res://FPSController/PlayerClassPrefab/guard.tscn"},
             {"speed", 4.5f},
             {"jump", 4.25f},
             {"sprintEnabled", true},
@@ -76,14 +79,16 @@ public partial class ClassData : Node
                 "res://Sounds/Character/Human/Step/Run8.ogg"
             }},
             {"scpNumber", -1},
-            {"health", 100f}
+            {"team", "SPT"},
+            {"health", 100f},
+            {"customSpawnPoint", false}
         }},
         {"mtfe11", new Godot.Collections.Dictionary<string, Variant>{
             {"className", "MTF Epsilon-11 \"Nine-Tailed Fox\""},
             {"spawnPoint", "Main/Game/SurfaceMap/entityspawn"},
             {"playerModelSource", "res://FPSController/PlayerClassPrefab/mtf.tscn"},
-            {"speed", 4.5f},
-            {"jump", 4.25f},
+            {"speed", 4.51f},
+            {"jump", 4.26f},
             {"sprintEnabled", true},
             {"moveSoundsEnabled", true},
             {"footstepSounds", new Godot.Collections.Array<string>{
@@ -107,11 +112,12 @@ public partial class ClassData : Node
                 "res://Sounds/Character/Human/Step/Run8.ogg"
             }},
             {"scpNumber", -1},
-            {"health", 100f}
+            {"health", 100f},
+            {"customSpawnPoint", false}
         }},
 
         {"scp173", new Godot.Collections.Dictionary<string, Variant>{
-            {"className", "SCP-173"},
+            {"className", "SCP-173 \"Sculpture\""},
             {"spawnPoint", "Main/Game/MapGenHcz/HC_cont1_173/entityspawn"},
             {"playerModelSource", "res://FPSController/PlayerClassPrefab/scp173.tscn"},
             {"speed", 9f},
@@ -129,10 +135,11 @@ public partial class ClassData : Node
                 "res://Sounds/Character/173/Rattle3.ogg"
             }},
             {"scpNumber", 173},
-            {"health", 10000f}
+            {"health", 10000f},
+            {"customSpawnPoint", false}
         }},
         {"scp650", new Godot.Collections.Dictionary<string, Variant>{
-            {"className", "SCP-650"},
+            {"className", "SCP-650 \"Startling Statue\""},
             {"spawnPoint", "Main/Game/MapGenLcz/LC_cont2_650/entityspawn"},
             {"playerModelSource", "res://FPSController/PlayerClassPrefab/scp650.tscn"},
             {"speed", 0f},
@@ -142,10 +149,11 @@ public partial class ClassData : Node
             {"footstepSounds", new Godot.Collections.Array<string>{}},
             {"sprintSounds", new Godot.Collections.Array<string>{}},
             {"scpNumber", 650},
-            {"health", 1500f}
+            {"health", 1500f},
+            {"customSpawnPoint", false}
         }},
         {"scp3199", new Godot.Collections.Dictionary<string, Variant>{
-            {"className", "SCP-3199"},
+            {"className", "SCP-3199 \"Humans, Refuted\""},
             {"spawnPoint", "Main/Game/MapGenHcz/HC_cont1_3199/entityspawn"},
             {"playerModelSource", "res://FPSController/PlayerClassPrefab/scp3199.tscn"},
             {"speed", 4.4f},
@@ -165,7 +173,8 @@ public partial class ClassData : Node
                 "res://Sounds/Character/SCPCommon/StepSCP4.ogg"
             }},
             {"scpNumber", 3199},
-            {"health", 2000f}
+            {"health", 2000f},
+            {"customSpawnPoint", false}
         }}
     };
 }

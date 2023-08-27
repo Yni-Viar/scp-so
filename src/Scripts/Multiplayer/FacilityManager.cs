@@ -98,7 +98,7 @@ public partial class FacilityManager : Node3D
             if (player is PlayerScript playerScript)
             {
                 playersList.Add(playerScript.Name);
-                Rpc("SetPlayerClass", playerScript.Name, "default");
+                Rpc("SetPlayerClass", playerScript.Name, "guard");
             }
         }
     }
@@ -111,24 +111,25 @@ public partial class FacilityManager : Node3D
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
     internal void SetPlayerClass(string playerName, string nameOfClass) //Note: RPC ONLY HANDLES PRIMITIVE TYPES, NOT PLAYERSCRIPT!
     {
+        BaseClass classData = GD.Load<BaseClass>("res://FPSController/PlayerClassResources/" + nameOfClass + ".tres");
         GetNode<PlayerScript>(playerName).classKey = nameOfClass;
-        GetNode<PlayerScript>(playerName).className = (string)ClassData.playerClasses[nameOfClass]["className"];
-        GetNode<PlayerScript>(playerName).scpNumber = (int)ClassData.playerClasses[nameOfClass]["scpNumber"];
-        GetNode<PlayerScript>(playerName).sprintEnabled = (bool)ClassData.playerClasses[nameOfClass]["sprintEnabled"];
-        GetNode<PlayerScript>(playerName).moveSoundsEnabled = (bool)ClassData.playerClasses[nameOfClass]["moveSoundsEnabled"];
-        GetNode<PlayerScript>(playerName).footstepSounds = (Godot.Collections.Array<string>)ClassData.playerClasses[nameOfClass]["footstepSounds"];
-        GetNode<PlayerScript>(playerName).sprintSounds = (Godot.Collections.Array<string>)ClassData.playerClasses[nameOfClass]["sprintSounds"];
-        GetNode<PlayerScript>(playerName).speed = (float)ClassData.playerClasses[nameOfClass]["speed"];
-        GetNode<PlayerScript>(playerName).jump = (float)ClassData.playerClasses[nameOfClass]["jump"];
-        GetNode<PlayerScript>(playerName).health = (float)ClassData.playerClasses[nameOfClass]["health"];
+        GetNode<PlayerScript>(playerName).className = classData.ClassName;
+        GetNode<PlayerScript>(playerName).scpNumber = classData.ScpNumber;
+        GetNode<PlayerScript>(playerName).sprintEnabled = classData.SprintEnabled;
+        GetNode<PlayerScript>(playerName).moveSoundsEnabled = classData.MoveSoundsEnabled;
+        GetNode<PlayerScript>(playerName).footstepSounds = classData.FootstepSounds;
+        GetNode<PlayerScript>(playerName).sprintSounds = classData.SprintSounds;
+        GetNode<PlayerScript>(playerName).speed = classData.Speed;
+        GetNode<PlayerScript>(playerName).jump = classData.Jump;
+        GetNode<PlayerScript>(playerName).health = classData.Health;
         RpcId(int.Parse(playerName), "UpdateClassUI", GetNode<PlayerScript>(playerName).className, GetNode<PlayerScript>(playerName).health);
         if (IsMultiplayerAuthority()) //YESSS!!! IsMultiplayerAuthority() is NECESSARY for NOT duplicating player models!
         {
             Rpc("LoadModels", playersList);
         }
-        if (GetTree().Root.GetNodeOrNull((string)ClassData.playerClasses[nameOfClass]["spawnPoint"]) != null) //SCP CB Multiplayer moment (:
+        if (GetTree().Root.GetNodeOrNull(classData.SpawnPoint) != null) //SCP CB Multiplayer moment (:
         {
-            GetNode<PlayerScript>(playerName).Position = GetTree().Root.GetNode<Marker3D>((string)ClassData.playerClasses[nameOfClass]["spawnPoint"]).GlobalPosition;
+            GetNode<PlayerScript>(playerName).Position = GetTree().Root.GetNode<Marker3D>(classData.SpawnPoint).GlobalPosition;
         }
         else //if simpler, if there is no spawnroom this round - force spawn in HCZ testroom.
         {
@@ -146,14 +147,15 @@ public partial class FacilityManager : Node3D
         foreach (string playerName in players)
         {
             PlayerScript playerScript = GetNode<PlayerScript>(playerName);
-            if (ClassData.playerClasses.Keys.Contains(playerScript.classKey))
+            if (ResourceLoader.Exists("res://FPSController/PlayerClassResources/" + playerScript.classKey + ".tres"))
             {
                 Node ModelRoot = playerScript.GetNode("PlayerModel");
                 if (ModelRoot.GetChild(0) != null)
                 {
                     ModelRoot.GetChild(0).QueueFree();
                 }
-                Node tmpModel = ResourceLoader.Load<PackedScene>((string)ClassData.playerClasses[playerScript.classKey]["playerModelSource"]).Instantiate();
+                BaseClass classData = GD.Load<BaseClass>("res://FPSController/PlayerClassResources/" + playerScript.classKey + ".tres");
+                Node tmpModel = ResourceLoader.Load<PackedScene>(classData.PlayerModelSource).Instantiate();
                 ModelRoot.AddChild(tmpModel, true);
             }
         }

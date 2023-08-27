@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cjfmrr53vopmv"]
+
+[ext_resource type="Script" path="res://FPSController/PlayerClassResources/BaseClass.cs" id="1_cmdht"]
+
+[resource]
+script = ExtResource("1_cmdht")
+ClassName = "SCP-173 \"Sculpture\""
+SpawnPoint = "Main/Game/MapGenHcz/HC_cont1_173/entityspawn"
+PlayerModelSource = "res://FPSController/PlayerClassPrefab/scp173.tscn"
+PlayerRagdollSource = ""
+Speed = 9.0
+Jump = 3.0
+SprintEnabled = false
+MoveSoundsEnabled = true
+FootstepSounds = PackedStringArray("res://Sounds/Character/173/Rattle1.ogg", "res://Sounds/Character/173/Rattle2.ogg", "res://Sounds/Character/173/Rattle3.ogg")
+SprintSounds = PackedStringArray("res://Sounds/Character/173/Rattle1.ogg", "res://Sounds/Character/173/Rattle2.ogg", "res://Sounds/Character/173/Rattle3.ogg")
+ScpNumber = 173
+Team = "DSE"
+Health = 10000.0
+CustomSpawn = false

@@ -3,18 +3,79 @@ using System;
 
 public partial class HumanPlayerScript : Node3D
 {
-    // PlayerScript scp650;
+    internal bool isWatchingAtScp173 = false;
     RayCast3D vision;
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
 	{
+        if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
+        {
+            GetNode<Node3D>("Armature").Hide();
+        }
         GetParent().GetParent<PlayerScript>().CanMove = true;
         vision = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/VisionRadius");
-	}
+    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+        if (GetParent().GetParent<PlayerScript>().dir.IsZeroApprox())
+        {
+            switch (Name)
+            {
+                case "mtf":
+                    Rpc("SetState", "MTF_Idle");
+                    break;
+                default:
+                    Rpc("SetState", "Idle");
+                    break;
+            }
+        }
+        else
+        {
+            if (Input.IsActionPressed("move_sprint"))
+            {
+                switch (Name)
+                {
+                    case "mtf":
+                        Rpc("SetState", "MTF_Running");
+                        break;
+                    default:
+                        Rpc("SetState", "Running");
+                        break;
+                }
+            }
+            else
+            {
+                switch (Name)
+                {
+                    case "mtf":
+                        Rpc("SetState", "MTF_Walking");
+                        break;
+                    default:
+                        Rpc("SetState", "Walking");
+                        break;
+                }
+            }
+        }
+    }
+    /// <summary>
+    /// Set animation to an entity.
+    /// </summary>
+    /// <param name="s">Animation name</param>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    private void SetState(string s)
+    {
+        if (GetNode<AnimationPlayer>("AnimationPlayer").CurrentAnimation != s)
+        {
+            //Change the animation.
+            GetNode<AnimationPlayer>("AnimationPlayer").Play(s);
+        }
+    }
+
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    void WatchAtScp173()
+    {
         if (vision.IsColliding())
         {
             var collidedWith = vision.GetCollider();
@@ -22,30 +83,19 @@ public partial class HumanPlayerScript : Node3D
             {
                 if (player.scpNumber == 173)
                 {
-                    player.GetNode<Scp173PlayerScript>("PlayerModel/scp173").RpcId(int.Parse(player.Name), "Scp173");
-                }
-            }
-                /* THIS SECTION IS BUGGY!
-                if (player.scpNumber == 650)
-                {
-                    player.GetNode<Scp650PlayerScript>("PlayerModel/scp650").RpcId(int.Parse(player.Name), "Scp650", true);
-                    scp650 = player; //if watched at 650, invoke its method and save it in var.
+                    isWatchingAtScp173 = true;
                 }
                 else
                 {
-                    if (scp650 != null) //free 650 from being watched.
-                    {
-                        scp650.GetNode<Scp650PlayerScript>("PlayerModel/scp650").RpcId(int.Parse(scp650.Name), "Scp650", false);
-                    }
+                    isWatchingAtScp173 = false;
                 }
             }
             else
             {
-                if (scp650 != null) //free 650 from being watched.
-                {
-                    scp650.GetNode<Scp650PlayerScript>("PlayerModel/scp650").RpcId(int.Parse(scp650.Name), "Scp650", false);
-                }
-            }*/
+                isWatchingAtScp173 = false;
+            }
         }
-	}
+    }
+
+
 }

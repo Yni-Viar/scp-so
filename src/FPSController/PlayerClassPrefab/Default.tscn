@@ -1,13 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4dppoochrr7u"]
-
-[ext_resource type="Script" path="res://FPSController/PlayerClassScript/HumanPlayerScript.cs" id="1_xrfy6"]
+[gd_scene load_steps=2 format=3 uid="uid://c4dppoochrr7u"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lnmrj"]
 radius = 0.4
 height = 2.6
 
 [node name="Default" type="Node3D"]
-script = ExtResource("1_xrfy6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0618534, 0)

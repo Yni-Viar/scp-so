@@ -60,7 +60,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("4_yqqir")
 theme_override_font_sizes/font_size = 64
 text = "SCP: 
-Site Offline"
+Site Online"
 
 [node name="Play" type="Button" parent="Title"]
 layout_mode = 2
@@ -123,6 +123,9 @@ text = "[b]v.0.5.0-dev[/b] [i](Alpha)[/i]
 - Added FPS counter.
 - Settings refactor.
 - Added own UI style.
+- More new rooms in Light Containment Zone.
+- Player Class System refactor.
+- Fixed a bug in Surface Zone, where player couldn't return to the facility, while being off the road.
 
 [b]KNOWN ISSUES:[/b]
 - There is NO loading screen, so you need to wait.

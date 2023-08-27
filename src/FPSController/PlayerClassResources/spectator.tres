@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b300h2igeddqp"]
+
+[ext_resource type="Script" path="res://FPSController/PlayerClassResources/BaseClass.cs" id="1_cfqey"]
+
+[resource]
+script = ExtResource("1_cfqey")
+ClassName = "MTF Omega-0 \"Ará Orún\""
+SpawnPoint = "Main/Game/SurfaceMap/entityspawn_sp"
+PlayerModelSource = "res://FPSController/PlayerClassPrefab/spectator.tscn"
+PlayerRagdollSource = ""
+Speed = 2.0
+Jump = 2.0
+SprintEnabled = false
+MoveSoundsEnabled = true
+FootstepSounds = PackedStringArray()
+SprintSounds = PackedStringArray()
+ScpNumber = -2
+Team = "SPT"
+Health = 1.0
+CustomSpawn = true

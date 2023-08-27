@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://7ny3i5vtpso0"]
+
+[ext_resource type="Script" path="res://FPSController/PlayerClassResources/BaseClass.cs" id="1_gb5of"]
+
+[resource]
+script = ExtResource("1_gb5of")
+ClassName = "SCP-650 \"Startling Statue\""
+SpawnPoint = "Main/Game/MapGenLcz/LC_cont2_650/entityspawn"
+PlayerModelSource = "res://FPSController/PlayerClassPrefab/scp650.tscn"
+PlayerRagdollSource = ""
+Speed = 0.0
+Jump = 0.0
+SprintEnabled = false
+MoveSoundsEnabled = false
+FootstepSounds = PackedStringArray()
+SprintSounds = PackedStringArray()
+ScpNumber = 650
+Team = ""
+Health = 1500.0
+CustomSpawn = false
