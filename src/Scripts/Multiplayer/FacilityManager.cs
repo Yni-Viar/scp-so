@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Formats.Asn1;
 
 public partial class FacilityManager : Node3D
 {
@@ -209,16 +210,21 @@ public partial class FacilityManager : Node3D
     }*/
 
     /// <summary>
-    /// Tosses player classes
+    /// Tosses player classes at round start.
     /// </summary>
-    /// <param name="i"></param>
-    /// <returns></returns>
+    /// <param name="i">Counter</param>
+    /// <returns>A random class</returns>
     string TossPlayerClass(uint i)
     {
+        uint scpLimit = 3;
         string[] classesArr = classes.Split(" \n ");
         Godot.Collections.Array<int> usedScps = new Godot.Collections.Array<int>();
         if (i == 2 || i % 8 == 0)
         {
+            if (usedScps.Count > scpLimit)
+            {
+                return classesArr[1/*rng.RandiRange(1, 2)*/];
+            }
             int randomScpClass = rng.RandiRange(3, classesArr.Length - 1);
             while (usedScps.Contains(randomScpClass))
             {
@@ -229,7 +235,7 @@ public partial class FacilityManager : Node3D
         }
         else
         {
-            return classesArr[rng.RandiRange(1, 2)];
+            return classesArr[1/*rng.RandiRange(1, 2)*/];
         }
     }
 
