@@ -13,6 +13,7 @@ public partial class FacilityManager : Node3D
     //player class manager data
 	CharacterBody3D playerScene;
     [Export] Godot.Collections.Array<string> playersList = new Godot.Collections.Array<string>();
+    string classes;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -45,6 +46,26 @@ public partial class FacilityManager : Node3D
             AddPlayer(id);
         }
         AddPlayer(1);
+
+
+        // For support custom classes.
+        if (Multiplayer.IsServer())
+        {
+            if (FileAccess.FileExists("user://classes_0.5.txt"))
+            {
+                classes = TxtParser.Load("user://classes_0.5.txt");
+            }
+            else
+            {
+                TxtParser.Save("user://classes_0.5.txt", DefaultClassList.data);
+            }
+        }
+        else
+        {
+            TxtParser.Save("user://classes_0.5.txt", classes);
+        }
+
+        //Start round
         WaitForBeginning();
     }
 
@@ -93,12 +114,14 @@ public partial class FacilityManager : Node3D
     void BeginGame()
     {
         Godot.Collections.Array<Node> players = GetTree().GetNodesInGroup("Players");
+        uint i = 0;
         foreach (Node player in players)
         {
             if (player is PlayerScript playerScript)
             {
                 playersList.Add(playerScript.Name);
-                Rpc("SetPlayerClass", playerScript.Name, "guard");
+                Rpc("SetPlayerClass", playerScript.Name, TossPlayerClass(i));
+                i++;
             }
         }
     }
@@ -174,7 +197,7 @@ public partial class FacilityManager : Node3D
         GetNode<Label>("PlayerUI/HealthInfo").Text = Mathf.Ceil(health).ToString();
     }
 
-    string TossPlayerClass() //to be reworked.
+    /*string TossPlayerClass() //Deprecated since 0.5.0-dev
     {
         Godot.Collections.Array<string> tossClass = new Godot.Collections.Array<string>();
         foreach(string val in ClassData.playerClasses.Keys)
@@ -183,6 +206,31 @@ public partial class FacilityManager : Node3D
         }
         rng.Randomize();
         return tossClass[rng.RandiRange(1, tossClass.Count - 1)];
+    }*/
+
+    /// <summary>
+    /// Tosses player classes
+    /// </summary>
+    /// <param name="i"></param>
+    /// <returns></returns>
+    string TossPlayerClass(uint i)
+    {
+        string[] classesArr = classes.Split(" \n ");
+        Godot.Collections.Array<int> usedScps = new Godot.Collections.Array<int>();
+        if (i == 2 || i % 8 == 0)
+        {
+            int randomScpClass = rng.RandiRange(3, classesArr.Length - 1);
+            while (usedScps.Contains(randomScpClass))
+            {
+                randomScpClass = rng.RandiRange(3, classesArr.Length - 1);
+            }
+            usedScps.Add(randomScpClass);
+            return classesArr[randomScpClass];
+        }
+        else
+        {
+            return classesArr[rng.RandiRange(1, 2)];
+        }
     }
 
     /// <summary>

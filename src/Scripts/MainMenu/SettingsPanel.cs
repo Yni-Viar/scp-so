@@ -15,8 +15,7 @@ public partial class SettingsPanel : Panel
 		GetNode<CheckButton>("ScrollContainer/VBoxContainer/SSAOSet").ButtonPressed = settings.SsaoSetting;
 		GetNode<CheckButton>("ScrollContainer/VBoxContainer/SSILSet").ButtonPressed = settings.SsilSetting;
 		GetNode<CheckButton>("ScrollContainer/VBoxContainer/SSRSet").ButtonPressed = settings.SsrSetting;
-		GetNode<CheckButton>("ScrollContainer/VBoxContainer/FogSet").ButtonPressed = settings.SsrSetting;
-		GetNode<CheckButton>("ScrollContainer/VBoxContainer/LightSet").ButtonPressed = settings.SsrSetting;
+		GetNode<CheckButton>("ScrollContainer/VBoxContainer/FogSet").ButtonPressed = settings.FogSetting;
 		GetNode<CheckButton>("ScrollContainer/VBoxContainer/MusicSet").ButtonPressed = settings.MusicSetting;
 
 		if (settings.FullscreenSetting)

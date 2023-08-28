@@ -15,6 +15,6 @@ MoveSoundsEnabled = true
 FootstepSounds = PackedStringArray("res://Sounds/Character/173/Rattle1.ogg", "res://Sounds/Character/173/Rattle2.ogg", "res://Sounds/Character/173/Rattle3.ogg")
 SprintSounds = PackedStringArray("res://Sounds/Character/173/Rattle1.ogg", "res://Sounds/Character/173/Rattle2.ogg", "res://Sounds/Character/173/Rattle3.ogg")
 ScpNumber = 173
-Team = "DSE"
+Team = 4
 Health = 10000.0
 CustomSpawn = false

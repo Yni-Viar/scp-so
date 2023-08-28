@@ -1,4 +1,4 @@
-using Godot;
+/*using Godot;
 using System;
 
 // Deprecated since 0.5.0-dev
@@ -177,4 +177,4 @@ public partial class ClassData : Node
             {"customSpawnPoint", false}
         }}
     };
-}
+}*/

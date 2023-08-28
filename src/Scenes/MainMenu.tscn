@@ -126,11 +126,14 @@ text = "[b]v.0.5.0-dev[/b] [i](Alpha)[/i]
 - More new rooms in Light Containment Zone.
 - Player Class System refactor.
 - Fixed a bug in Surface Zone, where player couldn't return to the facility, while being off the road.
+- Fixed a bug, where checkpoint rooms couldn't be spawned.
+- Fixed a bug, where SDFGI stuttered the game.
+- Fixed SCP-173.
+- Implemented proper round start.
+- We are ON-line now,  not OFF-line ;)
 
 [b]KNOWN ISSUES:[/b]
 - There is NO loading screen, so you need to wait.
-- SCP-173 sometimes can move while being watched.
-- Don't try to run multiple clients with SDFGI enabled.
 - Background music may play once."
 
 [node name="PlayPanel" type="Panel" parent="."]

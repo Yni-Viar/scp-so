@@ -3,8 +3,10 @@ using System;
 
 public partial class HumanPlayerScript : Node3D
 {
-    internal bool isWatchingAtScp173 = false;
+    [Export] internal bool isWatchingAtScp173 = false;
+    bool isBlinking = false;
     RayCast3D vision;
+    double blinkTimer = 0d;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
@@ -17,7 +19,7 @@ public partial class HumanPlayerScript : Node3D
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public override async void _Process(double delta)
 	{
         if (GetParent().GetParent<PlayerScript>().dir.IsZeroApprox())
         {
@@ -58,6 +60,19 @@ public partial class HumanPlayerScript : Node3D
                 }
             }
         }
+
+        if (blinkTimer < 5.2d)
+        {
+            blinkTimer += delta;
+        }
+        else
+        {
+            isBlinking = true;
+            await ToSignal(GetTree().CreateTimer(0.3), "timeout");
+            blinkTimer = 0d;
+            isBlinking = false;
+        }
+        WatchAtScp173();
     }
     /// <summary>
     /// Set animation to an entity.
@@ -73,7 +88,9 @@ public partial class HumanPlayerScript : Node3D
         }
     }
 
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    /// <summary>
+    /// Method, that holds watching at SCP-173.
+    /// </summary>
     void WatchAtScp173()
     {
         if (vision.IsColliding())
@@ -81,7 +98,7 @@ public partial class HumanPlayerScript : Node3D
             var collidedWith = vision.GetCollider();
             if (collidedWith is PlayerScript player)
             {
-                if (player.scpNumber == 173)
+                if (player.scpNumber == 173 && !isBlinking)
                 {
                     isWatchingAtScp173 = true;
                 }

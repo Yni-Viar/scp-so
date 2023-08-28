@@ -15,6 +15,6 @@ MoveSoundsEnabled = true
 FootstepSounds = PackedStringArray("res://Sounds/Character/SCPCommon/StepSCP1.ogg", "res://Sounds/Character/SCPCommon/StepSCP2.ogg", "res://Sounds/Character/SCPCommon/StepSCP3.ogg", "res://Sounds/Character/SCPCommon/StepSCP4.ogg")
 SprintSounds = PackedStringArray("res://Sounds/Character/SCPCommon/StepSCP1.ogg", "res://Sounds/Character/SCPCommon/StepSCP2.ogg", "res://Sounds/Character/SCPCommon/StepSCP3.ogg", "res://Sounds/Character/SCPCommon/StepSCP4.ogg")
 ScpNumber = 3199
-Team = "DSE"
+Team = 4
 Health = 2000.0
 CustomSpawn = false

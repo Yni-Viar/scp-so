@@ -15,6 +15,6 @@ MoveSoundsEnabled = false
 FootstepSounds = PackedStringArray()
 SprintSounds = PackedStringArray()
 ScpNumber = 650
-Team = ""
+Team = 4
 Health = 1500.0
 CustomSpawn = false
