@@ -115,7 +115,7 @@ public partial class FacilityManager : Node3D
     void BeginGame()
     {
         Godot.Collections.Array<Node> players = GetTree().GetNodesInGroup("Players");
-        uint i = 0;
+        uint i = 1;
         foreach (Node player in players)
         {
             if (player is PlayerScript playerScript)
@@ -171,7 +171,8 @@ public partial class FacilityManager : Node3D
         foreach (string playerName in players)
         {
             PlayerScript playerScript = GetNode<PlayerScript>(playerName);
-            if (ResourceLoader.Exists("res://FPSController/PlayerClassResources/" + playerScript.classKey + ".tres"))
+            //if class exists, then despawn old model, and change it on a new one.
+            if (ResourceLoader.Exists("res://FPSController/PlayerClassResources/" + playerScript.classKey + ".tres")) 
             {
                 Node ModelRoot = playerScript.GetNode("PlayerModel");
                 if (ModelRoot.GetChild(0) != null)
@@ -198,17 +199,6 @@ public partial class FacilityManager : Node3D
         GetNode<Label>("PlayerUI/HealthInfo").Text = Mathf.Ceil(health).ToString();
     }
 
-    /*string TossPlayerClass() //Deprecated since 0.5.0-dev
-    {
-        Godot.Collections.Array<string> tossClass = new Godot.Collections.Array<string>();
-        foreach(string val in ClassData.playerClasses.Keys)
-        {
-            tossClass.Add(val);
-        }
-        rng.Randomize();
-        return tossClass[rng.RandiRange(1, tossClass.Count - 1)];
-    }*/
-
     /// <summary>
     /// Tosses player classes at round start.
     /// </summary>
@@ -216,26 +206,26 @@ public partial class FacilityManager : Node3D
     /// <returns>A random class</returns>
     string TossPlayerClass(uint i)
     {
-        uint scpLimit = 3;
-        string[] classesArr = classes.Split(" \n ");
-        Godot.Collections.Array<int> usedScps = new Godot.Collections.Array<int>();
+        uint scpLimit = 3; //SCP Limit
+        string[] classesArr = classes.Split(" \n "); //All classes list
+        Godot.Collections.Array<int> usedScps = new Godot.Collections.Array<int>(); //Already spawned SCPs
         if (i == 2 || i % 8 == 0)
         {
-            if (usedScps.Count > scpLimit)
+            if (usedScps.Count > scpLimit) //if there are more SCPs than exist - spawn a human instead.
             {
-                return classesArr[1/*rng.RandiRange(1, 2)*/];
+                return classesArr[rng.RandiRange(1, 3)];
             }
-            int randomScpClass = rng.RandiRange(3, classesArr.Length - 1);
+            int randomScpClass = rng.RandiRange(5, classesArr.Length - 1);
             while (usedScps.Contains(randomScpClass))
             {
-                randomScpClass = rng.RandiRange(3, classesArr.Length - 1);
-            }
+                randomScpClass = rng.RandiRange(5, classesArr.Length - 1);
+            } //Spawn SCP
             usedScps.Add(randomScpClass);
             return classesArr[randomScpClass];
         }
-        else
+        else //Spawn a human.
         {
-            return classesArr[1/*rng.RandiRange(1, 2)*/];
+            return classesArr[rng.RandiRange(1, 3)];
         }
     }
 

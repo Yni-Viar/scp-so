@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cuprelvgm18v8"]
+
+[ext_resource type="Script" path="res://FPSController/PlayerClassResources/BaseClass.cs" id="1_6rymv"]
+
+[resource]
+script = ExtResource("1_6rymv")
+ClassName = "Class-D Personnel"
+SpawnPoint = "Main/Game/MapGenHcz/HC_cont2_testroom/entityspawn"
+PlayerModelSource = "res://FPSController/PlayerClassPrefab/classd2.tscn"
+PlayerRagdollSource = ""
+Speed = 4.5
+Jump = 4.25
+SprintEnabled = true
+MoveSoundsEnabled = true
+FootstepSounds = PackedStringArray("res://Sounds/Character/Human/Step/Step1.ogg", "res://Sounds/Character/Human/Step/Step2.ogg", "res://Sounds/Character/Human/Step/Step3.ogg", "res://Sounds/Character/Human/Step/Step4.ogg", "res://Sounds/Character/Human/Step/Step5.ogg", "res://Sounds/Character/Human/Step/Step6.ogg", "res://Sounds/Character/Human/Step/Step7.ogg", "res://Sounds/Character/Human/Step/Step8.ogg")
+SprintSounds = PackedStringArray("res://Sounds/Character/Human/Step/Run1.ogg", "res://Sounds/Character/Human/Step/Run2.ogg", "res://Sounds/Character/Human/Step/Run3.ogg", "res://Sounds/Character/Human/Step/Run4.ogg", "res://Sounds/Character/Human/Step/Run5.ogg", "res://Sounds/Character/Human/Step/Run6.ogg", "res://Sounds/Character/Human/Step/Run7.ogg", "res://Sounds/Character/Human/Step/Run8.ogg")
+ScpNumber = -1
+Team = 1
+Health = 100.0
+CustomSpawn = false
