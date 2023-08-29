@@ -14,7 +14,7 @@ public partial class FacilityManager : Node3D
     //player class manager data
 	CharacterBody3D playerScene;
     [Export] Godot.Collections.Array<string> playersList = new Godot.Collections.Array<string>();
-    string classes;
+    Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classes;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -52,18 +52,11 @@ public partial class FacilityManager : Node3D
         // For support custom classes.
         if (Multiplayer.IsServer())
         {
-            if (FileAccess.FileExists("user://classes_0.5.txt"))
-            {
-                classes = TxtParser.Load("user://classes_0.5.txt");
-            }
-            else
-            {
-                TxtParser.Save("user://classes_0.5.txt", DefaultClassList.data);
-            }
+            classes = ClassParser.ReadJson("user://playerclasses_0.5.0.json");
         }
         else
         {
-            TxtParser.Save("user://classes_0.5.txt", classes);
+            ClassParser.SaveJson("user://playerclasses_0.5.0.json", classes);
         }
 
         //Start round
@@ -207,25 +200,24 @@ public partial class FacilityManager : Node3D
     string TossPlayerClass(uint i)
     {
         uint scpLimit = 3; //SCP Limit
-        string[] classesArr = classes.Split(" \n "); //All classes list
         Godot.Collections.Array<int> usedScps = new Godot.Collections.Array<int>(); //Already spawned SCPs
         if (i == 2 || i % 8 == 0)
         {
             if (usedScps.Count > scpLimit) //if there are more SCPs than exist - spawn a human instead.
             {
-                return classesArr[rng.RandiRange(1, 3)];
+                return classes["spawnableHuman"][rng.RandiRange(0, classes["spawnableHuman"].Count - 1)];
             }
-            int randomScpClass = rng.RandiRange(5, classesArr.Length - 1);
+            int randomScpClass = rng.RandiRange(0, classes["spawnableScps"].Count - 1);
             while (usedScps.Contains(randomScpClass))
             {
-                randomScpClass = rng.RandiRange(5, classesArr.Length - 1);
+                randomScpClass = rng.RandiRange(0, classes["spawnableScps"].Count - 1);
             } //Spawn SCP
             usedScps.Add(randomScpClass);
-            return classesArr[randomScpClass];
+            return classes["spawnableScps"][randomScpClass];
         }
         else //Spawn a human.
         {
-            return classesArr[rng.RandiRange(1, 3)];
+            return classes["spawnableHuman"][rng.RandiRange(0, classes["spawnableHuman"].Count - 1)];
         }
     }
 

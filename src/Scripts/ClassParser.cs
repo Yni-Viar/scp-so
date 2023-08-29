@@ -1,4 +1,4 @@
-/* using Godot;
+using Godot;
 using System;
 
 
@@ -17,23 +17,27 @@ public partial class ClassParser : Node
 	{
 	}
 
-    public static Godot.Collections.Dictionary<string, Godot.Collections.Dictionary<string, Variant>> ReadJson(string data)
+    public static Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> ReadJson(string placeToSave)
     {
-        if (FileAccess.FileExists(data))
+        if (FileAccess.FileExists(placeToSave))
         {
-            FileAccess file = FileAccess.Open(data, FileAccess.ModeFlags.Read);
+            FileAccess file = FileAccess.Open(placeToSave, FileAccess.ModeFlags.Read);
             Variant parsedResult = Json.ParseString(file.GetAsText());
-            return (Godot.Collections.Dictionary<string, Godot.Collections.Dictionary<string, Variant>>)parsedResult;
+            return (Godot.Collections.Dictionary<string, Godot.Collections.Array<string>>)parsedResult;
         }
         else
         {
-            GD.Print("The data isn't saved into userdata. Saving...");
-            Variant jsonData = Json.Stringify(ClassData.playerClasses);
-            FileAccess file = FileAccess.Open(data, FileAccess.ModeFlags.Write);
-            file.StoreLine((string)jsonData);
-            file.Close();
-            return ClassData.playerClasses;
+            return SaveJson(placeToSave, DefaultClassList.classData);
         }
     }
+
+    public static Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> SaveJson(string placeToSave, Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> data)
+    {
+        GD.Print("The data isn't saved into userdata. Saving...");
+        Variant jsonData = Json.Stringify(data);
+        FileAccess file = FileAccess.Open(placeToSave, FileAccess.ModeFlags.Write);
+        file.StoreLine((string)jsonData);
+        file.Close();
+        return data;
+    }
 }
-*/
