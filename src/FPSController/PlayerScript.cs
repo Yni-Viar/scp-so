@@ -35,6 +35,7 @@ public partial class PlayerScript : CharacterBody3D
     [Export] internal bool moveSoundsEnabled = false;
     [Export] internal string[] footstepSounds;
     [Export] internal string[] sprintSounds;
+    [Export] internal DefaultClassList.Team team;
     float gravity = 9.8f;
     // SCP Number. Set -1 for humans, -2 for spectators.
     [Export] internal int scpNumber = -2;
@@ -240,7 +241,7 @@ public partial class PlayerScript : CharacterBody3D
     /// Helper method to call FacilityManager for changing player class.
     /// </summary>
     /// <param name="to">Player class to become</param>
-    private void CallForceclass(string to)
+    internal void CallForceclass(string to)
     {
         GetParent().GetParent().GetNode<FacilityManager>("Game").Rpc("SetPlayerClass", Multiplayer.GetUniqueId().ToString(), to);
     }
