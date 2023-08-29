@@ -86,7 +86,7 @@ public partial class PlayerScript : CharacterBody3D
             FloorMaxAngle = 1.439897f; //82.5 degrees.
         }
         GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("forceclass", new Callable(this, "Forceclass"), "Forceclass the player (1 argument needed)");
-        // GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("classlist", new Callable(this, "ClassList"), "Returns class names (for forceclass)");
+        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("classlist", new Callable(this, "ClassList"), "Returns class names (for forceclass)");
     }
 
     private bool IsLocalAuthority()
@@ -246,16 +246,26 @@ public partial class PlayerScript : CharacterBody3D
         GetParent().GetParent().GetNode<FacilityManager>("Game").Rpc("SetPlayerClass", Multiplayer.GetUniqueId().ToString(), to);
     }
 
-    //depreacted since 0.5.0-dev
-    /*string ClassList(string[] args)
+    /// <summary>
+    /// GDSh command.
+    /// </summary>
+    /// <param name="args">Necessary by GDsh but not used</param>
+    /// <returns>List of classes, available ingame</returns>
+    string ClassList(string[] args)
     {
+        Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classes = ClassParser.ReadJson("user://playerclasses_0.5.0.json");
+        string[] groups = new string[] { "spawnableHuman", "arrivingHuman", "spawnableScps" };
         string r = "";
-        foreach (var val in ClassData.playerClasses)
+        for (int i = 0; i < groups.Length; i++)
         {
-            r += val.Key + "\n";
+            foreach (var val in classes[groups[i]])
+            {
+                r += val + "\n";
+            }
         }
+        
         return r;
-    }*/
+    }
     /// <summary>
     /// Add or depletes health (don't work on spectators). If health is below 0, the players forceclasses as spectator.
     /// </summary>
