@@ -61,6 +61,7 @@ public partial class SurfaceElevator : Node3D
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
     public async void ElevatorMove(int direction)
     {
+        
         Node3D fromTeleport = (Node3D)(GetTree().Root.GetNode("Main/" + elevators[currentFloor])); 
         // find first elevator node and close the door
         if (fromTeleport is SurfaceElevator liftFrom)
@@ -84,10 +85,17 @@ public partial class SurfaceElevator : Node3D
                 GetTree().Root.GetNode<PlayerScript>("Main/Game/" + playersToTeleport[i]).Position = toTeleport.GetNode<Marker3D>(destinationPoints[currentFloor + direction]).GlobalPosition;
             }
         }
-        
+        foreach (var updDest in elevators)
+        {
+            Node3D what = (Node3D)(GetTree().Root.GetNode("Main/" + updDest));
+            // find first elevator node and close the door
+            if (what is SurfaceElevator lift)
+            {
+                lift.currentFloor += direction;
+            }
+        }
         await ToSignal(GetTree().CreateTimer(5.0), "timeout");
         canInteract = true;
-        currentFloor += direction;
         // find second elevator node and open the door
         if (toTeleport is SurfaceElevator liftTo)
         {

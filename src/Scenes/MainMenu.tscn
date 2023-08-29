@@ -128,14 +128,14 @@ text = "[b]v.0.5.0-dev[/b] [i](Alpha)[/i]
 - Fixed a bug in Surface Zone, where player couldn't return to the facility, while being off the road.
 - Fixed a bug, where checkpoint rooms couldn't be spawned.
 - Fixed a bug, where SDFGI stuttered the game.
+- Fixed a bug, where elevators were working only once.
 - Fixed SCP-173.
 - Implemented proper round start and escape - this game is playable now! But... it is still Alpha - not all features are done...
 - We are ON-line now,  not OFF-line ;)
 
 [b]KNOWN ISSUES:[/b]
 - There is NO loading screen, so you need to wait.
-- Background music may play once.
-- Elevators are... a bit bugged..."
+- Background music may play once."
 
 [node name="PlayPanel" type="Panel" parent="."]
 visible = false

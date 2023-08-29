@@ -6,6 +6,7 @@ public partial class TeleportElevator : Node3D
 {
     [Export] internal string[] elevators; // need to handle open-close doors
     [Export] internal string[] destinationPoints; // need for teleporting
+
     [Export] int currentFloor;
     [Export] Godot.Collections.Array<string> playersToTeleport  = new Godot.Collections.Array<string>();
     [Export] string[] openDoorSounds;
@@ -84,10 +85,17 @@ public partial class TeleportElevator : Node3D
                 GetTree().Root.GetNode<PlayerScript>("Main/Game/" + playersToTeleport[i]).Position = toTeleport.GetNode<Marker3D>(destinationPoints[currentFloor + direction]).GlobalPosition;
             }
         }
-        
+        foreach (var updDest in elevators)
+        {
+            Node3D what = (Node3D)(GetTree().Root.GetNode("Main/" + updDest));
+            // find first elevator node and close the door
+            if (what is TeleportElevator lift)
+            {
+                lift.currentFloor += direction;
+            }
+        }
         await ToSignal(GetTree().CreateTimer(5.0), "timeout");
         canInteract = true;
-        currentFloor += direction;
         // find second elevator node and open the door
         if (toTeleport is TeleportElevator liftTo)
         {
