@@ -1,0 +1,23 @@
+using Godot;
+using System;
+
+public partial class DeadlyArea : Area3D
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+	}
+
+	private void OnBodyEntered(Node3D body)
+	{
+		if (body is PlayerScript player)
+		{
+            player.RpcId(int.Parse(player.Name), "HealthManage", -16777216);
+        }
+	}
+}

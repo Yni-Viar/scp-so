@@ -413,7 +413,7 @@ size = Vector3(8.30128, 5.10324, 8.25571)
 
 [node name="RZ_exit12" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.01, 0, 0, 0, 0, -0.01, 0, 0.01, 0, 0, 0, 0)
-visibility_range_end = 48.0
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_whns4")
 skeleton = NodePath("")
 

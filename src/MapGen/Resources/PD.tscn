@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://byljcjbr7klo"]
+
+[ext_resource type="PackedScene" uid="uid://d3f4xu3m0hepf" path="res://MapGen/Resources/RoomAssets/PD/pd_startroom.tscn" id="1_q22uc"]
+[ext_resource type="PackedScene" uid="uid://ryujbgfyn14m" path="res://MapGen/Resources/RoomAssets/PD/pd_basement.tscn" id="2_c6vqh"]
+
+[node name="PD" type="Node3D"]
+
+[node name="PD_startroom" parent="." instance=ExtResource("1_q22uc")]
+
+[node name="PD_basement" parent="." instance=ExtResource("2_c6vqh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -282.729)

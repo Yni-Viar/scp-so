@@ -359,6 +359,7 @@ data = PackedVector3Array(2.285, 5.6878, 7.0768, 2.285, 7.0226, 10.0768, 2.285, 
 [node name="LC_room3" type="StaticBody3D"]
 
 [node name="LCZWallStraigh_001" type="MeshInstance3D" parent="."]
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_2b8rv")
 skeleton = NodePath("")
 
@@ -366,6 +367,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_el2qg")
 
 [node name="LCZWallCurve" type="MeshInstance3D" parent="."]
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_wn71d")
 skeleton = NodePath("")
 
@@ -373,6 +375,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_fw8fo")
 
 [node name="Floor_001" type="MeshInstance3D" parent="."]
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_jru27")
 skeleton = NodePath("")
 
@@ -380,6 +383,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_x20ya")
 
 [node name="DoorPath_003" type="MeshInstance3D" parent="."]
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_e0xfw")
 skeleton = NodePath("")
 
@@ -387,6 +391,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_v7xd1")
 
 [node name="DoorPath_002" type="MeshInstance3D" parent="."]
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_dluq4")
 skeleton = NodePath("")
 
@@ -394,6 +399,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_iogd0")
 
 [node name="DoorPath_001" type="MeshInstance3D" parent="."]
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_xwes6")
 skeleton = NodePath("")
 
@@ -401,6 +407,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_cd5rf")
 
 [node name="Ceiling" type="MeshInstance3D" parent="."]
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_3vpge")
 skeleton = NodePath("")
 
@@ -408,6 +415,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_0e2v0")
 
 [node name="LCZWallCurve_001" type="MeshInstance3D" parent="."]
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_hnluc")
 skeleton = NodePath("")
 

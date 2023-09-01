@@ -834,7 +834,7 @@ size = Vector3(6.0234, 5.11136, 6.03273)
 [node name="LC_ckpt1" type="StaticBody3D"]
 
 [node name="LC_ckpt12" type="MeshInstance3D" parent="."]
-visibility_range_end = 48.0
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_lj5tk")
 skeleton = NodePath("")
 

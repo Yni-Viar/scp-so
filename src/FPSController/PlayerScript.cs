@@ -83,10 +83,11 @@ public partial class PlayerScript : CharacterBody3D
             {
                 Input.MouseMode = Input.MouseModeEnum.Captured;
             }
-            FloorMaxAngle = 1.439897f; //82.5 degrees.
+            FloorMaxAngle = 1.48353f; //85 degrees.
         }
         GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("forceclass", new Callable(this, "Forceclass"), "Forceclass the player (1 argument needed)");
         GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("classlist", new Callable(this, "ClassList"), "Returns class names (for forceclass)");
+        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("tp", new Callable(this, "TeleportCmd"), "Teleports you. (1 arguments needed)");
     }
 
     private bool IsLocalAuthority()
@@ -165,7 +166,7 @@ public partial class PlayerScript : CharacterBody3D
             }
             
             //check if we don't stay still and is footstep audio playing;
-            if (!direction.IsZeroApprox() && !walkSounds.Playing && moveSoundsEnabled)
+            /*if (!direction.IsZeroApprox() && !walkSounds.Playing && moveSoundsEnabled) //Deprecated in 0.5.0-dev
             {
                 if (isSprinting)
                 {
@@ -184,7 +185,7 @@ public partial class PlayerScript : CharacterBody3D
                 {
                     walkSounds.Stop();
                 }
-            }
+            }*/
             
 
             //Interacting. (item subsystem will be rewritten)
@@ -215,10 +216,24 @@ public partial class PlayerScript : CharacterBody3D
         UpDirection = Vector3.Up;
         MoveAndSlide();
     }
-    //unused
-    private void OnNpcInteractBodyEntered(Node3D body)
+
+    void FootstepAnimate()
     {
+        if (moveSoundsEnabled)
+        {
+            if (isWalking)
+            {
+                walkSounds.Stream = GD.Load<AudioStream>(footstepSounds[rng.RandiRange(0, footstepSounds.Length - 1)]);
+                walkSounds.Play();
+            }
+            if (isSprinting)
+            {
+                walkSounds.Stream = GD.Load<AudioStream>(sprintSounds[rng.RandiRange(0, footstepSounds.Length - 1)]);
+                walkSounds.Play();
+            }
+        }
     }
+
     /// <summary>
     /// GDSh command. Calls helper CallForceclass() method to change the player class.
     /// </summary>
@@ -235,6 +250,36 @@ public partial class PlayerScript : CharacterBody3D
         {
             return "You need ONLY 1 argument to forceclass. E.g. to spawn as SCP-173, you need to write \"forceclass scp173\"";
         }
+    }
+
+    string TeleportCmd(string[] args)
+    {
+        if (args.Length == 1)
+        {
+            if (PlacesForTeleporting.defaultData.ContainsKey(args[0]))
+            {
+                CallTeleport(args[0]);
+                return "Teleported to: " + args[0];
+            }
+            else
+            {
+                string r = "Wrong place. Available places for teleporting: \n";
+                foreach (string key in PlacesForTeleporting.defaultData.Keys)
+                {
+                    r += key + "\n";
+                }
+                return r;
+            }
+        }
+        else
+        {
+            return "You need ONLY 1 argument to teleport.";
+        }
+    }
+
+    internal void CallTeleport(string placeToTeleport)
+    {
+        GetParent().GetParent().GetNode<FacilityManager>("Game").Rpc("TeleportTo", Name, PlacesForTeleporting.defaultData[placeToTeleport]);
     }
 
     /// <summary>

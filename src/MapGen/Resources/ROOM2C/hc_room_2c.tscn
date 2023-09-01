@@ -6,7 +6,7 @@
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat3.011.tres" id="4_hxner"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat4.008.tres" id="5_aah53"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat5.008.tres" id="6_a4o40"]
-[ext_resource type="PackedScene" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="7_cnlbm"]
+[ext_resource type="PackedScene" uid="uid://cgaomav6767mx" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="7_cnlbm"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_nsptd"]
 _surfaces = [{
@@ -144,7 +144,7 @@ data = PackedVector3Array(-3.36, 0, 5.76, 3.36, 0, 5.76, 3.36, 0, 10.24, -3.36, 
 [node name="HC_room2C" type="StaticBody3D"]
 
 [node name="HC_room2C2" type="MeshInstance3D" parent="."]
-visibility_range_end = 48.0
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_35vkh")
 skeleton = NodePath("")
 

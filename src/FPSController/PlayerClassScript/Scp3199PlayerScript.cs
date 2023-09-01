@@ -20,7 +20,6 @@ public partial class Scp3199PlayerScript : Node3D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        var state = GetNode<AnimationPlayer>("AnimationPlayer").CurrentAnimation;
         if (GetParent().GetParent<PlayerScript>().dir.IsZeroApprox())
         {
             Rpc("SetState", "3199_Idle");

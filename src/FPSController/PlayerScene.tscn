@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://isp3qhbu0mf5"]
+[gd_scene load_steps=7 format=3 uid="uid://isp3qhbu0mf5"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerScript.cs" id="1_tw8h1"]
 [ext_resource type="Script" path="res://FPSController/PlayerSync.cs" id="10_8dn5b"]
@@ -6,9 +6,6 @@
 [sub_resource type="CapsuleShape3D" id="1"]
 radius = 0.371158
 height = 2.64793
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s46hk"]
-height = 2.71688
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_6h10r"]
 properties/0/path = NodePath(".:position")
@@ -32,6 +29,28 @@ properties/4/spawn = true
 properties/4/sync = true
 properties/4/watch = false
 
+[sub_resource type="Animation" id="Animation_i7x7w"]
+resource_name = "Walk"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"FootstepAnimate"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uiy40"]
+_data = {
+"Walk": SubResource("Animation_i7x7w")
+}
+
 [node name="Player" type="CharacterBody3D" groups=["Players"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28033, 0)
 collision_layer = 2
@@ -40,7 +59,7 @@ script = ExtResource("1_tw8h1")
 [node name="PlayerModel" type="Node3D" parent="."]
 
 [node name="PlayerHead" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.968611, -0.409495)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.968611, -0.354734)
 
 [node name="PlayerCamera" type="Camera3D" parent="PlayerHead"]
 
@@ -59,15 +78,12 @@ collision_mask = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0386829, 0)
 shape = SubResource("1")
 
-[node name="NPCInteract" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NPCInteract"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0695751, 0)
-shape = SubResource("CapsuleShape3D_s46hk")
-
 [node name="WalkSounds" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.951681, 0)
 max_distance = 12.0
+
+[node name="BreathSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.390542, 0)
 
 [node name="InteractSound" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.783644, 0)
@@ -84,4 +100,7 @@ grow_vertical = 2
 replication_config = SubResource("SceneReplicationConfig_6h10r")
 script = ExtResource("10_8dn5b")
 
-[connection signal="body_entered" from="NPCInteract" to="." method="OnNpcInteractBodyEntered"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uiy40")
+}

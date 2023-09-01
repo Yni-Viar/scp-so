@@ -193,7 +193,7 @@ shadow_mesh = SubResource("ArrayMesh_lgrmp")
 [node name="HC_room1_endroom" type="StaticBody3D"]
 
 [node name="HC_room1_endroom2" type="MeshInstance3D" parent="."]
-visibility_range_end = 48.0
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_rjgl6")
 skeleton = NodePath("")
 

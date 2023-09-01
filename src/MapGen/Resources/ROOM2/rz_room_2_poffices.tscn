@@ -293,7 +293,7 @@ data = PackedVector3Array(-2.56, -2.88, -3.84, -2.56, -9.92, -3.84, -2.24, -9.92
 
 [node name="RZ_room2_poffices2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
-visibility_range_end = 48.0
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_m2sb1")
 skeleton = NodePath("")
 

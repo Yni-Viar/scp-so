@@ -354,6 +354,7 @@ data = PackedVector3Array(-9.54, -3.82, 9.24, -6.08, -3.82, 9.24, -6.08, -3.82, 
 [node name="RZ_room2_cafeteria" type="StaticBody3D"]
 
 [node name="RZ_room2_cafeteria2" type="MeshInstance3D" parent="."]
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_nmoah")
 skeleton = NodePath("")
 

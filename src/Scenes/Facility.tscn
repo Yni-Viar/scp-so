@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bjcfcpj4q2im4"]
+[gd_scene load_steps=20 format=3 uid="uid://bjcfcpj4q2im4"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/FacilityManager.cs" id="1_p22hh"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorLcz.cs" id="2_tjaxg"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bmw4fxmnmwhov" path="res://Assets/HUD/arrow.png" id="7_bwdaw"]
 [ext_resource type="FontFile" uid="uid://cqaasvtiakcsw" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="8_1slp4"]
 [ext_resource type="PackedScene" uid="uid://bo1bq3rj35a57" path="res://MapGen/Resources/surface_map.tscn" id="9_1te4l"]
+[ext_resource type="PackedScene" uid="uid://byljcjbr7klo" path="res://MapGen/Resources/PD.tscn" id="11_jjunp"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_pw38j"]
 properties/0/path = NodePath("MapGenLcz:seed")
@@ -26,8 +27,12 @@ properties/2/sync = true
 properties/2/watch = false
 properties/3/path = NodePath(".:playersList")
 properties/3/spawn = true
-properties/3/sync = true
-properties/3/watch = false
+properties/3/sync = false
+properties/3/watch = true
+properties/4/path = NodePath(".:isRoundStarted")
+properties/4/spawn = true
+properties/4/sync = true
+properties/4/watch = false
 
 [sub_resource type="BoxMesh" id="BoxMesh_umn33"]
 size = Vector3(5, 0.1, 5)
@@ -203,3 +208,6 @@ offset_right = 40.0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("8_1slp4")
 theme_override_font_sizes/font_size = 64
+
+[node name="PD" parent="." instance=ExtResource("11_jjunp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7000, 512, 128)

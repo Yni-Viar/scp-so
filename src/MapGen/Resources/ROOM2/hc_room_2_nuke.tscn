@@ -649,7 +649,7 @@ properties/1/watch = true
 [node name="HC_room2_nuke" type="StaticBody3D"]
 
 [node name="HC_room2_nuke2" type="MeshInstance3D" parent="."]
-visibility_range_end = 48.0
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_d1fx7")
 skeleton = NodePath("")
 

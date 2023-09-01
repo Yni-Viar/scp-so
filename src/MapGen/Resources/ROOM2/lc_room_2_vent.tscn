@@ -9,7 +9,7 @@
 [ext_resource type="Material" uid="uid://7s5en5fne7qt" path="res://MapGen/Resources/RoomAssets/LCZ/mat6.010.tres" id="7_id3ey"]
 [ext_resource type="Material" uid="uid://p6itpf4cp6v8" path="res://MapGen/Resources/RoomAssets/LCZ/mat7.010.tres" id="8_a1bmt"]
 [ext_resource type="Material" uid="uid://rxeyxienx2qe" path="res://MapGen/Resources/RoomAssets/LCZ/mat8.008.tres" id="9_ysrji"]
-[ext_resource type="PackedScene" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="10_35hrd"]
+[ext_resource type="PackedScene" uid="uid://cgaomav6767mx" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="10_35hrd"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_02mwg"]
 _surfaces = [{
@@ -212,7 +212,7 @@ data = PackedVector3Array(3.04, 7.04, -3.5, 3.04, 7.06, -3.5, 3.04, 7.06, -3.54,
 
 [node name="LC_room2_vent2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
-visibility_range_end = 48.0
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_48dsy")
 skeleton = NodePath("")
 

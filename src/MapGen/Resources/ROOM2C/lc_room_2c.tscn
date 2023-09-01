@@ -272,6 +272,7 @@ data = PackedVector3Array(-10, 6.9961, 10, 10, 6.9961, -10, -10, 6.9961, -10, -1
 [node name="LC_room2C" type="StaticBody3D"]
 
 [node name="LCZWallCurve" type="MeshInstance3D" parent="."]
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_g1m2e")
 skeleton = NodePath("")
 
@@ -279,6 +280,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_r8dmb")
 
 [node name="LCZRoom2CCurve" type="MeshInstance3D" parent="."]
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_euy86")
 skeleton = NodePath("")
 
@@ -286,6 +288,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_bkh3w")
 
 [node name="Floor_002" type="MeshInstance3D" parent="."]
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_dt5ki")
 skeleton = NodePath("")
 
@@ -293,6 +296,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_56slt")
 
 [node name="DoorPath_002" type="MeshInstance3D" parent="."]
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_bfnjm")
 skeleton = NodePath("")
 
@@ -300,6 +304,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_xvqao")
 
 [node name="DoorPath_003" type="MeshInstance3D" parent="."]
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_gqt0g")
 skeleton = NodePath("")
 
@@ -307,6 +312,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_7gkty")
 
 [node name="Ceiling_001" type="MeshInstance3D" parent="."]
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_thfmu")
 skeleton = NodePath("")
 
