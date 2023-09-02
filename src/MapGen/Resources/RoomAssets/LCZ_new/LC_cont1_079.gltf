@@ -51,21 +51,32 @@
 		},
 		{
 			"mesh":7,
-			"name":"LCZWallStraigh.002",
+			"name":"Plane.001",
 			"rotation":[
 				0,
-				-1,
 				0,
-				4.371138828673793e-08
+				-0.7071068286895752,
+				0.7071068286895752
+			],
+			"translation":[
+				-7.737106800079346,
+				3.1894383430480957,
+				0.4148528575897217
 			]
 		},
 		{
 			"mesh":8,
-			"name":"LCZWallStraigh.001",
+			"name":"Plane.002",
+			"rotation":[
+				0.7071068286895752,
+				-0.7071068286895752,
+				0,
+				3.090862321641907e-08
+			],
 			"translation":[
-				0,
-				0,
-				0.1472814828157425
+				7.594907283782959,
+				3.1894383430480957,
+				-0.20372986793518066
 			]
 		}
 	],
@@ -131,34 +142,6 @@
 				"metallicRoughnessTexture":{
 					"index":11
 				}
-			}
-		},
-		{
-			"doubleSided":true,
-			"name":"Material.008",
-			"normalTexture":{
-				"index":12
-			},
-			"pbrMetallicRoughness":{
-				"baseColorTexture":{
-					"index":13
-				},
-				"metallicFactor":0,
-				"roughnessFactor":0.5
-			}
-		},
-		{
-			"doubleSided":true,
-			"name":"Material",
-			"normalTexture":{
-				"index":14
-			},
-			"pbrMetallicRoughness":{
-				"baseColorTexture":{
-					"index":15
-				},
-				"metallicFactor":0,
-				"roughnessFactor":0.5
 			}
 		}
 	],
@@ -262,7 +245,7 @@
 			]
 		},
 		{
-			"name":"Plane.001",
+			"name":"Plane.004",
 			"primitives":[
 				{
 					"attributes":{
@@ -271,12 +254,12 @@
 						"TEXCOORD_0":30
 					},
 					"indices":31,
-					"material":4
+					"material":0
 				}
 			]
 		},
 		{
-			"name":"Plane.016",
+			"name":"Plane.009",
 			"primitives":[
 				{
 					"attributes":{
@@ -285,7 +268,7 @@
 						"TEXCOORD_0":34
 					},
 					"indices":31,
-					"material":5
+					"material":0
 				}
 			]
 		}
@@ -338,22 +321,6 @@
 		{
 			"sampler":0,
 			"source":2
-		},
-		{
-			"sampler":0,
-			"source":0
-		},
-		{
-			"sampler":0,
-			"source":1
-		},
-		{
-			"sampler":0,
-			"source":0
-		},
-		{
-			"sampler":0,
-			"source":1
 		}
 	],
 	"images":[
@@ -657,14 +624,14 @@
 			"componentType":5126,
 			"count":36,
 			"max":[
-				-6.575311660766602,
-				7.02259635925293,
-				9.984357833862305
+				3.311135768890381,
+				4.7608637032681145e-07,
+				9.789629936218262
 			],
 			"min":[
-				-7.3820576667785645,
-				-0.12169742584228516,
-				-9.955974578857422
+				-3.833158016204834,
+				-0.40947702527046204,
+				-0.33771514892578125
 			],
 			"type":"VEC3"
 		},
@@ -691,14 +658,14 @@
 			"componentType":5126,
 			"count":36,
 			"max":[
-				-6.575311660766602,
-				7.02259635925293,
-				9.984357833862305
+				3.311135768890381,
+				4.7608637032681145e-07,
+				9.789629936218262
 			],
 			"min":[
-				-7.3820576667785645,
-				-0.12169742584228516,
-				-0.12493610382080078
+				-3.833158016204834,
+				-0.40947702527046204,
+				-10.371272087097168
 			],
 			"type":"VEC3"
 		},
