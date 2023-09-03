@@ -20,9 +20,6 @@ public partial class Scp106PlayerScript : Node3D
         interactSound = GetParent().GetParent<PlayerScript>().GetNode<AudioStreamPlayer3D>("InteractSound");
         ray = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/RayCast3D");
         emergeSound = GetNode<AudioStreamPlayer3D>("TeleportSound");
-        breathSound = GetParent().GetParent<PlayerScript>().GetNode<AudioStreamPlayer3D>("BreathSound");
-        breathSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/106/Breathing.ogg");
-        breathSound.Play();
         await ToSignal(GetTree().CreateTimer(15.0), "timeout");
         stalkCooldown = false;
     }
@@ -43,7 +40,7 @@ public partial class Scp106PlayerScript : Node3D
             var collidedWith = ray.GetCollider();
             if (collidedWith is PlayerScript player)
             {
-                if (player.scpNumber == -1)
+                if (player.scpNumber == -1 && GetParent().GetParent<PlayerScript>().CanMove)
                 {
                     interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/106/Laugh.ogg");
                     interactSound.Play();
@@ -51,9 +48,9 @@ public partial class Scp106PlayerScript : Node3D
                 }
             }
         }
-        if (Input.IsActionJustPressed("scp106_teleport") && !stalkCooldown)
+        if (Input.IsActionJustPressed("scp106teleport") && !stalkCooldown)
         {
-            Stalk();
+            Rpc("Stalk");
         }
     }
 
@@ -74,6 +71,7 @@ public partial class Scp106PlayerScript : Node3D
     /// <summary>
     /// Teleporting SCP-106.
     /// </summary>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     async void Stalk()
     {
         GetParent().GetParent<PlayerScript>().CanMove = false;

@@ -13,6 +13,8 @@ public class PlacesForTeleporting
         { "lcz_650spawn", "Main/Game/MapGenLcz/LC_cont2_650/entityspawn" },
         { "hcz_3199spawn", "Main/Game/MapGenHcz/HC_cont1_3199/entityspawn" },
         { "surface", "Main/Game/SurfaceMap/entityspawn"},
-        { "pd_start", "Main/Game/PD/PD_startroom/entityspawn" }
+        { "pd_start", "Main/Game/PD/PD_startroom/entityspawn" },
+        { "rz_offices", "Main/Game/MapGenRz/RZ_room2_offices/entityspawn" },
+        { "hcz_106spawn", "Main/Game/MapGenHcz/HC_cont1_106/entityspawn" }
     };
 }

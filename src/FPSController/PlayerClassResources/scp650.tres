@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_gb5of")
 ClassName = "SCP-650 \"Startling Statue\""
-SpawnPoint = "Main/Game/MapGenLcz/LC_cont2_650/entityspawn"
+SpawnPoints = PackedStringArray("Main/Game/MapGenLcz/LC_cont2_650/entityspawn")
 PlayerModelSource = "res://FPSController/PlayerClassPrefab/scp650.tscn"
 PlayerRagdollSource = ""
 Speed = 0.0

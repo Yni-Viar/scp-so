@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_djyhm")
 ClassName = "SCP-3199 \"Humans, Refuted\""
-SpawnPoint = "Main/Game/MapGenHcz/HC_cont1_3199/entityspawn"
+SpawnPoints = PackedStringArray("Main/Game/MapGenHcz/HC_cont1_3199/entityspawn")
 PlayerModelSource = "res://FPSController/PlayerClassPrefab/scp3199.tscn"
 PlayerRagdollSource = ""
 Speed = 4.4

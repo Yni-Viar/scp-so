@@ -1,6 +1,25 @@
 # Changelog
 The current state of the game - Alpha.
 ## Alpha versions
+### v.0.5.0 (2023.09.03)
+
+- Added FPS counter.
+- Settings refactor.
+- Added own UI style.
+- More new rooms in Light Containment Zone.
+- Player Class System refactor.
+- Fixed a bug in Surface Zone, where player couldn't return to the facility, while being off the road.
+- Fixed a bug, where checkpoint rooms couldn't be spawned.
+- Fixed a bug, where SDFGI stuttered the game.
+- Fixed a bug, where elevators were working only once.
+- Fixed SCP-173.
+- Implemented proper round start and escape, also you can connect even if round starts.
+- We are ON-line now, not OFF-line 😉
+- Added SCP-106.
+- Added D-Class containment zone.
+- Added No-UI mode
+- Reworked footstep sound system.
+
 ### v.0.4.1 (2023.08.25)
 
 - Fixed bug when an entity had problem in spawning just because the spawn room was not spawned.

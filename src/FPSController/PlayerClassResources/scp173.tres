@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_cmdht")
 ClassName = "SCP-173 \"Sculpture\""
-SpawnPoint = "Main/Game/MapGenHcz/HC_cont1_173/entityspawn"
+SpawnPoints = PackedStringArray("Main/Game/MapGenHcz/HC_cont1_173/entityspawn")
 PlayerModelSource = "res://FPSController/PlayerClassPrefab/scp173.tscn"
 PlayerRagdollSource = ""
 Speed = 9.0

@@ -15,14 +15,14 @@ public partial class PlayerScript : CharacterBody3D
 
     //Walk sounds and gameover screens.
     // Control blinkImage;
-    // TextureRect gameOverScreen;
-    // Label gameOverText;
     AudioStreamPlayer3D walkSounds;
     AudioStreamPlayer3D interactSound;
 
     //blinking, deprecated in 0.3.0-dev
-    // double blinkTimer = 0d;
-    // float blinkWaiting;
+    // double deltaTimer = 0d;
+    // float deltaWaiting;
+
+    double decayTimer = 0d;
 
     [Export] internal string classKey;
     [Export] internal string className;
@@ -146,6 +146,7 @@ public partial class PlayerScript : CharacterBody3D
                     vel = vel.Lerp(direction * speed * 2, acceleration * (float)delta);
                     isSprinting = true;
                     isWalking = false;
+                    
                 }
                 //walking
                 else
@@ -153,6 +154,7 @@ public partial class PlayerScript : CharacterBody3D
                     vel = vel.Lerp(direction * speed, acceleration * (float)delta);
                     isWalking = true;
                     isSprinting = false;
+                    
                 }
 
                 movement.Z = vel.Z + gravityVector.Z;
@@ -166,26 +168,22 @@ public partial class PlayerScript : CharacterBody3D
             }
             
             //check if we don't stay still and is footstep audio playing;
-            /*if (!direction.IsZeroApprox() && !walkSounds.Playing && moveSoundsEnabled) //Deprecated in 0.5.0-dev
+            if (!direction.IsZeroApprox() && moveSoundsEnabled) //Deprecated in 0.5.0-dev
             {
                 if (isSprinting)
                 {
-                    walkSounds.Stream = GD.Load<AudioStream>(sprintSounds[rng.RandiRange(0, footstepSounds.Length - 1)]);
-                    walkSounds.PitchScale = 2;
-                    walkSounds.Play();
+                    GetNode<AnimationPlayer>("AnimationPlayer").Play("Walk", -1, 2, false);
                 }
                 else if (isWalking)
                 {
-                    walkSounds.Stream = GD.Load<AudioStream>(footstepSounds[rng.RandiRange(0, footstepSounds.Length - 1)]);
-                    walkSounds.PitchScale = 1;
-                    walkSounds.Play();
+                    GetNode<AnimationPlayer>("AnimationPlayer").Play("Walk");
                 }
 
-                else if (direction.IsZeroApprox() && walkSounds.Playing)
+                else if (direction.IsZeroApprox())
                 {
-                    walkSounds.Stop();
+                    GetNode<AnimationPlayer>("AnimationPlayer").Stop();
                 }
-            }*/
+            }
             
 
             //Interacting. (item subsystem will be rewritten)
@@ -211,12 +209,34 @@ public partial class PlayerScript : CharacterBody3D
                 blinkTimer = 0d;
             }*/
 
+            //"Pocket dimension" check
+            if (GlobalPosition.Y < -1500)
+            {
+                decayTimer += delta;
+            }
+            if (decayTimer > 3)
+            {
+                Decay();
+                decayTimer = 0;
+            }
+
             GetParent().GetNode<Label>("PlayerUI/HealthInfo").Text = Mathf.Ceil(health).ToString();
         }
+
+        if (Input.IsActionJustPressed("mode_kinematic"))
+        {
+            GetParent().GetNode<Control>("PlayerUI").Visible = !GetParent().GetNode<Control>("PlayerUI").Visible;
+        }
+
+        
+
         UpDirection = Vector3.Up;
         MoveAndSlide();
     }
 
+    /// <summary>
+    /// Animation-based footstep system.
+    /// </summary>
     void FootstepAnimate()
     {
         if (moveSoundsEnabled)
@@ -252,6 +272,11 @@ public partial class PlayerScript : CharacterBody3D
         }
     }
 
+    /// <summary>
+    /// GDSh command. Calls helper CallTeleport() method to teleport player to the point.
+    /// </summary>
+    /// <param name="args">Place for teleporting</param>
+    /// <returns>If the place exist, and args == 1, teleports player. If is unknown arg, - display all places for teleporting</returns>
     string TeleportCmd(string[] args)
     {
         if (args.Length == 1)
@@ -277,9 +302,13 @@ public partial class PlayerScript : CharacterBody3D
         }
     }
 
+    /// <summary>
+    /// Helper method to teleport.
+    /// </summary>
+    /// <param name="placeToTeleport">Place to teleport</param>
     internal void CallTeleport(string placeToTeleport)
     {
-        GetParent().GetParent().GetNode<FacilityManager>("Game").Rpc("TeleportTo", Name, PlacesForTeleporting.defaultData[placeToTeleport]);
+        GetParent().GetParent().GetNode<FacilityManager>("Game").Rpc("TeleportTo", Multiplayer.GetUniqueId().ToString(), PlacesForTeleporting.defaultData[placeToTeleport]);
     }
 
     /// <summary>
@@ -330,6 +359,17 @@ public partial class PlayerScript : CharacterBody3D
         if (health <= 0)
         {
             CallForceclass("spectator");
+        }
+    }
+
+    /// <summary>
+    /// "Pocket dimension" controller
+    /// </summary>
+    void Decay()
+    {
+        if (scpNumber != 106)
+        {
+            HealthManage(-1);
         }
     }
     /*private async void Blink() //Deprecated in 0.3.0-dev due to blink system rework.

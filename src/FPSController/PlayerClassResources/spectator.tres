@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_cfqey")
 ClassName = "MTF Omega-0 \"Ará Orún\""
-SpawnPoint = "Main/Game/SurfaceMap/entityspawn_sp"
+SpawnPoints = PackedStringArray("Main/Game/SurfaceMap/entityspawn_sp")
 PlayerModelSource = "res://FPSController/PlayerClassPrefab/spectator.tscn"
 PlayerRagdollSource = ""
 Speed = 2.0
@@ -15,6 +15,6 @@ MoveSoundsEnabled = false
 FootstepSounds = PackedStringArray()
 SprintSounds = PackedStringArray()
 ScpNumber = -2
-Team = "SPT"
+Team = 0
 Health = 1.0
 CustomSpawn = true

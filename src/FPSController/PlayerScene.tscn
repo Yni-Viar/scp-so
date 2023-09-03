@@ -82,11 +82,9 @@ shape = SubResource("1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.951681, 0)
 max_distance = 12.0
 
-[node name="BreathSound" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.390542, 0)
-
 [node name="InteractSound" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.783644, 0)
+max_distance = 2.3
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

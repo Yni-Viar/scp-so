@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_7jeaf")
 ClassName = "Security staff"
-SpawnPoint = "Main/Game/MapGenLcz/LC_room2_sl/entityspawn"
+SpawnPoints = PackedStringArray("Main/Game/MapGenRz/RZ_room2_offices/entityspawn")
 PlayerModelSource = "res://FPSController/PlayerClassPrefab/guard.tscn"
 PlayerRagdollSource = ""
 Speed = 4.5

@@ -74,12 +74,10 @@ public partial class TeleportElevator : Node3D
         fromTeleport.GetNode<AudioStreamPlayer3D>("FakeMove").Play();
         toTeleport.GetNode<AudioStreamPlayer3D>("FakeMove").Play();
         await ToSignal(GetTree().CreateTimer(5.0), "timeout");
-        GD.Print(playersToTeleport.Count);
         if (playersToTeleport.Count != 0)
         {
             for (int i = 0; i < playersToTeleport.Count; i++)
             {
-                GD.Print("Yes.");
                 // move player to the next zone.
                 //playersToTeleport[i].Position = toTeleport.GetNode<Marker3D>(destinationPoints[currentFloor + direction]).GlobalPosition;
                 GetTree().Root.GetNode<PlayerScript>("Main/Game/" + playersToTeleport[i]).Position = toTeleport.GetNode<Marker3D>(destinationPoints[currentFloor + direction]).GlobalPosition;
@@ -105,19 +103,20 @@ public partial class TeleportElevator : Node3D
 
     private void OnButtonInteractInteracted(GodotObject player)
     {
-        if (destinationPoints.Length == 3 && canInteract) // call elevator method.
+        if (destinationPoints.Length == 4 && canInteract) // call elevator method.
         {
             if (GetChild<Marker3D>(0).Name == destinationPoints[0])
             {
                 switch (currentFloor)
                 {
                     case 1:
-                        //ElevatorMove(-1);
                         Rpc("ElevatorMove", -1);
                         break;
                     case 2:
-                        //ElevatorMove(-2);
                         Rpc("ElevatorMove", -2);
+                        break;
+                    case 3:
+                        Rpc("ElevatorMove", -3);
                         break;
                     default:
                         GD.PrintErr("Could not determine the floor you are in.");
@@ -129,12 +128,13 @@ public partial class TeleportElevator : Node3D
                 switch (currentFloor)
                 {
                     case 0:
-                        //ElevatorMove(1);
                         Rpc("ElevatorMove", 1);
                         break;
                     case 2:
-                        //ElevatorMove(-1);
                         Rpc("ElevatorMove", -1);
+                        break;
+                    case 3:
+                        Rpc("ElevatorMove", -2);
                         break;
                     default:
                         GD.PrintErr("Could not determine the floor you are in.");
@@ -145,12 +145,31 @@ public partial class TeleportElevator : Node3D
             {
                 switch (currentFloor)
                 {
+                    case 0:
+                        Rpc("ElevatorMove", 2);
+                        break;
                     case 1:
-                        //ElevatorMove(2);
+                        Rpc("ElevatorMove", 1);
+                        break;
+                    case 3:
+                        Rpc("ElevatorMove", -1);
+                        break;
+                    default:
+                        GD.PrintErr("Could not determine the floor you are in.");
+                        break;
+                }
+            }
+            else if (GetChild<Marker3D>(0).Name == destinationPoints[3])
+            {
+                switch (currentFloor)
+                {
+                    case 0:
+                        Rpc("ElevatorMove", 3);
+                        break;
+                    case 1:
                         Rpc("ElevatorMove", 2);
                         break;
                     case 2:
-                        //ElevatorMove(1);
                         Rpc("ElevatorMove", 1);
                         break;
                     default:
@@ -173,7 +192,7 @@ public partial class TeleportElevator : Node3D
 
     private void OnButtonInteractUpInteracted(CharacterBody3D player)
     {
-        if (GetChild<Marker3D>(0).Name != destinationPoints[2] && canInteract)
+        if (GetChild<Marker3D>(0).Name != destinationPoints[3] && canInteract)
         {
             Rpc("ElevatorMove", 1); //move the elevator up.
         }

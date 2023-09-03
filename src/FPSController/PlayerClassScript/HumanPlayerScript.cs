@@ -23,40 +23,37 @@ public partial class HumanPlayerScript : Node3D
 	{
         if (GetParent().GetParent<PlayerScript>().dir.IsZeroApprox())
         {
-            switch (Name)
+            if (Name == "mtf" || Name == "hazmat_scientist")
             {
-                case "mtf":
-                    Rpc("SetState", "MTF_Idle");
-                    break;
-                default:
-                    Rpc("SetState", "Idle");
-                    break;
+                Rpc("SetState", "MTF_Idle");
+            }
+            else
+            {
+                Rpc("SetState", "Idle");
             }
         }
         else
         {
             if (Input.IsActionPressed("move_sprint"))
             {
-                switch (Name)
+                if (Name == "mtf" || Name == "hazmat_scientist")
                 {
-                    case "mtf":
-                        Rpc("SetState", "MTF_Running");
-                        break;
-                    default:
-                        Rpc("SetState", "Running");
-                        break;
+                    Rpc("SetState", "MTF_Running");
+                }
+                else
+                {
+                    Rpc("SetState", "Running");
                 }
             }
             else
             {
-                switch (Name)
+                if (Name == "mtf" || Name == "hazmat_scientist")
                 {
-                    case "mtf":
-                        Rpc("SetState", "MTF_Walking");
-                        break;
-                    default:
-                        Rpc("SetState", "Walking");
-                        break;
+                    Rpc("SetState", "MTF_Walking");
+                }
+                else
+                {
+                    Rpc("SetState", "Walking");
                 }
             }
         }

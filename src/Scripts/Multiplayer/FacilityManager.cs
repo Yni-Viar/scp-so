@@ -152,9 +152,9 @@ public partial class FacilityManager : Node3D
 		{
 			Rpc("LoadModels", playersList);
 		}
-		if (GetTree().Root.GetNodeOrNull(classData.SpawnPoint) != null) //SCP CB Multiplayer moment (:
+		if (GetTree().Root.GetNodeOrNull(classData.SpawnPoints[rng.RandiRange(0, classData.SpawnPoints.Length - 1)]) != null) //SCP CB Multiplayer moment (:
 		{
-			GetNode<PlayerScript>(playerName).Position = GetTree().Root.GetNode<Marker3D>(classData.SpawnPoint).GlobalPosition;
+			GetNode<PlayerScript>(playerName).Position = GetTree().Root.GetNode<Marker3D>(classData.SpawnPoints[rng.RandiRange(0, classData.SpawnPoints.Length - 1)]).GlobalPosition;
 		}
 		else //if simpler, if there is no spawnroom this round - force spawn in HCZ testroom.
 		{

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_o6v3b")
 ClassName = "MTF Epsilon-11 \"Nine-Tailed Fox\""
-SpawnPoint = "Main/Game/SurfaceMap/entityspawn"
+SpawnPoints = PackedStringArray("Main/Game/SurfaceMap/entityspawn")
 PlayerModelSource = "res://FPSController/PlayerClassPrefab/mtf.tscn"
 PlayerRagdollSource = ""
 Speed = 4.51
