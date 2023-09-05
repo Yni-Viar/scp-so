@@ -27,7 +27,7 @@ public partial class ClassParser : Node
         }
         else
         {
-            return SaveJson(placeToSave, DefaultClassList.classData);
+            return SaveJson(placeToSave, Globals.classData);
         }
     }
 

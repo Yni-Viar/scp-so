@@ -290,22 +290,11 @@ public partial class MapGeneratorLcz : Node
                             switch (currRoom1)
                             {
                                 case 0:
-                                    if (rand.RandiRange(0, 9) == 6)
-                                    {
-                                        rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM1/lc_cont_1_079_old.tscn").Instantiate();
-                                        rm.Position = new Vector3(i * 20.48f, 0, j*20.48f);
-                                        rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
-                                        AddChild(rm);
-                                        currRoom1++;
-                                    }
-                                    else
-                                    {
-                                        rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM1/lc_cont_1_079.tscn").Instantiate();
-                                        rm.Position = new Vector3(i * 20.48f, 0, j*20.48f);
-                                        rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
-                                        AddChild(rm);
-                                        currRoom1++;
-                                    }                                
+                                    rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM1/lc_cont_1_079.tscn").Instantiate();
+                                    rm.Position = new Vector3(i * 20.48f, 0, j*20.48f);
+                                    rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
+                                    AddChild(rm);
+                                    currRoom1++;                              
                                     break;
                                 case 1:
                                     rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM1/lc_room_1_archive.tscn").Instantiate();
@@ -336,7 +325,7 @@ public partial class MapGeneratorLcz : Node
                                 currRoom2++;
                                 break;
                             case 1:
-                                rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM2/lc_cont_2_012.tscn").Instantiate();
+                                rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM2/lc_room_2_scps.tscn").Instantiate();
                                 rm.Position = new Vector3(i * 20.48f, 0, j*20.48f);
                                 rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
                                 AddChild(rm);
@@ -350,7 +339,7 @@ public partial class MapGeneratorLcz : Node
                                 currRoom2++;
                                 break;
                             default:
-                                switch (rand.RandiRange(0, 3))
+                                switch (rand.RandiRange(0, 2))
                                 {
                                     case 0:
                                         rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM2/lc_room_2.tscn").Instantiate();
@@ -371,69 +360,30 @@ public partial class MapGeneratorLcz : Node
                                         AddChild(rm);
                                         currRoom2++;
                                         break;
-                                    case 3:
-                                        rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM2/lc_room_2_old.tscn").Instantiate();
-                                        rm.Position = new Vector3(i * 20.48f, 0, j*20.48f);
-                                        rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
-                                        AddChild(rm);
-                                        break;
                                 }
                                 break;
                         }
                         break;
                     case RoomTypes.ROOM2C:
-                        if (rand.RandiRange(0, 4) == 2)
-                        {
-                            rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM2C/lc_room_2c_old.tscn").Instantiate();
-                            rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
-                            rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
-                            AddChild(rm);
-                            currRoom1++;
-                        }
-                        else
-                        {
-                            rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM2C/lc_room_2c.tscn").Instantiate();
-                            rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
-                            rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
-                            AddChild(rm);
-                            currRoom1++;
-                        }
+                        rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM2C/lc_room_2c.tscn").Instantiate();
+                        rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
+                        rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
+                        AddChild(rm);
+                        currRoom1++;
                         break;
                     case RoomTypes.ROOM3:
-                        if (rand.RandiRange(0, 4) == 2)
-                        {
-                            rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM3/lc_room_3_old.tscn").Instantiate();
-                            rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
-                            rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
-                            AddChild(rm);
-                            currRoom1++;
-                        }
-                        else
-                        {
-                            rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM3/lc_room_3.tscn").Instantiate();
-                            rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
-                            rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
-                            AddChild(rm);
-                            currRoom1++;
-                        }
+                        rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM3/lc_room_3.tscn").Instantiate();
+                        rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
+                        rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
+                        AddChild(rm);
+                        currRoom1++;
                         break;
                     case RoomTypes.ROOM4:
-                        if (rand.RandiRange(0, 4) == 2)
-                        {
-                            rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM4/lc_room_4_old.tscn").Instantiate();
-                            rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
-                            rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
-                            AddChild(rm);
-                            currRoom1++;
-                        }
-                        else
-                        {
-                            rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM4/lc_room_4.tscn").Instantiate();
-                            rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
-                            rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
-                            AddChild(rm);
-                            currRoom1++;
-                        }
+                        rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM4/lc_room_4.tscn").Instantiate();
+                        rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
+                        rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
+                        AddChild(rm);
+                        currRoom1++;
                         break;
                 }
             }

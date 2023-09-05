@@ -11,6 +11,7 @@ public partial class PlayerScript : CharacterBody3D
      */
     RandomNumberGenerator rng = new RandomNumberGenerator();
     Node3D playerHead;
+    Settings settings;
     internal RayCast3D ray;
 
     //Walk sounds and gameover screens.
@@ -35,7 +36,7 @@ public partial class PlayerScript : CharacterBody3D
     [Export] internal bool moveSoundsEnabled = false;
     [Export] internal string[] footstepSounds;
     [Export] internal string[] sprintSounds;
-    [Export] internal DefaultClassList.Team team;
+    [Export] internal Globals.Team team;
     float gravity = 9.8f;
     // SCP Number. Set -1 for humans, -2 for spectators.
     [Export] internal int scpNumber = -2;
@@ -47,8 +48,6 @@ public partial class PlayerScript : CharacterBody3D
     float groundAcceleration = 8.0f;
     float airAcceleration = 8.0f;
     float acceleration;
-
-    Vector2 mouseSensivity = new Vector2(0.125f, 2f);
 
     internal Vector3 dir = new Vector3();
     Vector3 vel = new Vector3();
@@ -70,6 +69,7 @@ public partial class PlayerScript : CharacterBody3D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        settings = GetTree().Root.GetNode<Settings>("Settings");
         if (IsMultiplayerAuthority())
         {
             GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = true;
@@ -107,8 +107,8 @@ public partial class PlayerScript : CharacterBody3D
             if (@event is InputEventMouseMotion)
             {
                 InputEventMouseMotion m = (InputEventMouseMotion) @event;
-                this.RotateY(Mathf.DegToRad(-m.Relative.X * mouseSensivity.Y / 10));
-                playerHead.RotateX(Mathf.Clamp(-m.Relative.Y * mouseSensivity.X / 10, -90, 90));
+                this.RotateY(Mathf.DegToRad(-m.Relative.X * settings.MouseSensitivity * 2f)); //pretty magic numbers
+                playerHead.RotateX(Mathf.Clamp(-m.Relative.Y * settings.MouseSensitivity * 0.125f, -90, 90));
     
                 Vector3 cameraRot = playerHead.Rotation;
                 cameraRot.X = Mathf.Clamp(playerHead.Rotation.X, Mathf.DegToRad(-85f), Mathf.DegToRad(85f));
@@ -327,7 +327,7 @@ public partial class PlayerScript : CharacterBody3D
     /// <returns>List of classes, available ingame</returns>
     string ClassList(string[] args)
     {
-        Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classes = ClassParser.ReadJson("user://playerclasses_0.5.0.json");
+        Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classes = ClassParser.ReadJson("user://playerclasses.json");
         string[] groups = new string[] { "spawnableHuman", "arrivingHuman", "spawnableScps" };
         string r = "";
         for (int i = 0; i < groups.Length; i++)

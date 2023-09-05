@@ -146,6 +146,22 @@ theme_override_font_sizes/font_size = 24
 button_pressed = true
 text = "Enable backround music"
 
+[node name="Label4" type="Label" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Input:"
+
+[node name="MouseSens" type="Label" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Mouse sensivity"
+
+[node name="MouseSensSet" type="HSlider" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 2.0
+step = 0.1
+value = 1.0
+
 [connection signal="pressed" from="SettingsPanel/Back" to="SettingsPanel" method="OnBackPressed"]
 [connection signal="pressed" from="SettingsPanel/Save" to="SettingsPanel" method="OnSavePressed"]
 [connection signal="item_selected" from="SettingsPanel/ScrollContainer/VBoxContainer/WindowSizeSet" to="SettingsPanel" method="OnWindowSizeSetItemSelected"]
@@ -156,3 +172,4 @@ text = "Enable backround music"
 [connection signal="toggled" from="SettingsPanel/ScrollContainer/VBoxContainer/SSRSet" to="SettingsPanel" method="OnSsrSetToggled"]
 [connection signal="toggled" from="SettingsPanel/ScrollContainer/VBoxContainer/FogSet" to="SettingsPanel" method="OnFogSetToggled"]
 [connection signal="toggled" from="SettingsPanel/ScrollContainer/VBoxContainer/MusicSet" to="SettingsPanel" method="OnMusicSetToggled"]
+[connection signal="drag_ended" from="SettingsPanel/ScrollContainer/VBoxContainer/MouseSensSet" to="SettingsPanel" method="OnMouseSensSetDragEnded"]

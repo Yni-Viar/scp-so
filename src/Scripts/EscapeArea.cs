@@ -18,7 +18,7 @@ public partial class EscapeArea : Area3D
     {
         if (body is PlayerScript player)
 		{
-			if (player.team == DefaultClassList.Team.CDP || player.team == DefaultClassList.Team.SCI)
+			if (player.team == Globals.Team.CDP || player.team == Globals.Team.SCI)
 			{
 				player.CallForceclass("mtfe11");
 			}

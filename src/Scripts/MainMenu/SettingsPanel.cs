@@ -118,61 +118,71 @@ public partial class SettingsPanel : Panel
 
 	private void OnSdfgiSetToggled(bool button_pressed)
 	{
-        if (button_pressed)
-        {
-            settings.SdfgiSetting = true;
-        }
-        else
-        {
-            settings.SdfgiSetting = false;
-        }
-    }
+		if (button_pressed)
+		{
+			settings.SdfgiSetting = true;
+		}
+		else
+		{
+			settings.SdfgiSetting = false;
+		}
+	}
 
 	private void OnSsaoSetToggled(bool button_pressed)
 	{
-        if (button_pressed)
-        {
-            settings.SsaoSetting = true;
-        }
-        else
-        {
-            settings.SsaoSetting = false;
-        }
-    }
+		if (button_pressed)
+		{
+			settings.SsaoSetting = true;
+		}
+		else
+		{
+			settings.SsaoSetting = false;
+		}
+	}
 
 	private void OnSsilSetToggled(bool button_pressed)
 	{
-        if (button_pressed)
-        {
-            settings.SsilSetting = true;
-        }
-        else
-        {
-            settings.SsilSetting = false;
-        }
-    }
+		if (button_pressed)
+		{
+			settings.SsilSetting = true;
+		}
+		else
+		{
+			settings.SsilSetting = false;
+		}
+	}
 
 	private void OnSsrSetToggled(bool button_pressed)
 	{
-        if (button_pressed)
-        {
-            settings.SsilSetting = true;
-        }
-        else
-        {
-            settings.SsilSetting = false;
-        }
-    }
+		if (button_pressed)
+		{
+			settings.SsilSetting = true;
+		}
+		else
+		{
+			settings.SsilSetting = false;
+		}
+	}
 
 	private void OnFogSetToggled(bool button_pressed)
 	{
-        if (button_pressed)
-        {
-            settings.FogSetting = true;
-        }
-        else
-        {
-            settings.FogSetting = false;
-        }
-    }
+		if (button_pressed)
+		{
+			settings.FogSetting = true;
+		}
+		else
+		{
+			settings.FogSetting = false;
+		}
+	}
+
+	private void OnMouseSensSetDragEnded(bool value_changed)
+	{
+		if (value_changed)
+		{
+			settings.MouseSensitivity = (float)GetNode<HSlider>("ScrollContainer/VBoxContainer/MouseSensSet").Value;
+		}
+	}
 }
+
+

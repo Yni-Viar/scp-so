@@ -119,23 +119,13 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[b]v.0.5.0[/b] [i](Alpha)[/i]
-- Added FPS counter.
-- Settings refactor.
-- Added own UI style.
-- More new rooms in Light Containment Zone.
-- Player Class System refactor.
-- Fixed a bug in Surface Zone, where player couldn't return to the facility, while being off the road.
-- Fixed a bug, where checkpoint rooms couldn't be spawned.
-- Fixed a bug, where SDFGI stuttered the game.
-- Fixed a bug, where elevators were working only once.
-- Fixed SCP-173.
-- Implemented proper round start and escape, also you can connect even if round starts.
-- We are ON-line now,  not OFF-line ;)
-- Added SCP-106.
-- Added D-Class containment zone.
-- Added No-UI mode
-- Reworked footstep sound system.
+text = "[b]v.0.5.1[/b] [i](Alpha)[/i]
+- Re-saved old SCP-CB LCZ rooms (and reduced size of the package). Thus, I removed old empty hallways, SCP-012 room, and old SCP-079 room. (most of these rooms have new analogues).
+- Added item SCP room (currently, from SCP-CB, but eventually it will be modernized)
+- Added abilities message (only SCP-106 and SCP-650 have it).
+- Added blankets in D-class chamber.
+- Added ability to change mouse sensitivity.
+- Changed the ground color in Surface Zone
 
 [b]KNOWN ISSUES:[/b]
 - There is NO loading screen, so you need to wait.

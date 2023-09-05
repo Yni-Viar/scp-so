@@ -15,12 +15,15 @@ public partial class Scp106PlayerScript : Node3D
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
             GetNode<Node3D>("106_Rig").Hide();
+            GetNode<Control>("AbilityUI").Show();
         }
         GetParent().GetParent<PlayerScript>().CanMove = true;
         interactSound = GetParent().GetParent<PlayerScript>().GetNode<AudioStreamPlayer3D>("InteractSound");
         ray = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/RayCast3D");
-        emergeSound = GetNode<AudioStreamPlayer3D>("TeleportSound");
+        emergeSound = GetNode<AudioStreamPlayer3D>("TeleportSound");;
+        GetNode<Label>("AbilityUI/VBoxContainer/Stalk").Text = "Stalk: cooldown...";
         await ToSignal(GetTree().CreateTimer(15.0), "timeout");
+        GetNode<Label>("AbilityUI/VBoxContainer/Stalk").Text = "Stalk: ready! Click [Tab] to teleport to the player.";
         stalkCooldown = false;
     }
 
@@ -86,7 +89,9 @@ public partial class Scp106PlayerScript : Node3D
         await ToSignal(GetTree().CreateTimer(3.0), "timeout");
         GetParent().GetParent<PlayerScript>().CanMove = true;
         stalkCooldown = true;
+        GetNode<Label>("AbilityUI/VBoxContainer/Stalk").Text = "Stalk: cooldown...";
         await ToSignal(GetTree().CreateTimer(30.0), "timeout");
         stalkCooldown = false;
+        GetNode<Label>("AbilityUI/VBoxContainer/Stalk").Text = "Stalk: ready! Click [Tab] to teleport to the player.";
     }
 }

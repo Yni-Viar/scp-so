@@ -37,7 +37,7 @@ public partial class BaseClass : Resource
     public int ScpNumber { get; set; }
 
     [Export]
-    public DefaultClassList.Team Team { get; set; }
+    public Globals.Team Team { get; set; }
 
     [Export]
     public float Health { get; set; }
@@ -50,11 +50,11 @@ public partial class BaseClass : Resource
     // constructor with all default values.
     // Without a parameterless constructor, Godot will have problems
     // creating and editing your resource via the inspector.
-    public BaseClass() : this(null, null, null, null, 0f, 0f, true, true, null, null, -1, DefaultClassList.Team.SPT, 100f, false) { }
+    public BaseClass() : this(null, null, null, null, 0f, 0f, true, true, null, null, -1, Globals.Team.SPT, 100f, false) { }
 
     public BaseClass(string className, string[] spawnPoints, string playerModelSource, string playerRagdollSource, 
         float speed, float jump, bool sprintEnabled, bool moveSoundsEnabled, string[] footstepSounds,
-        string[] sprintSounds, int scpNumber, DefaultClassList.Team team, float health, bool customSpawn)
+        string[] sprintSounds, int scpNumber, Globals.Team team, float health, bool customSpawn)
     {
         ClassName = className;
         SpawnPoints = spawnPoints ?? System.Array.Empty<string>();

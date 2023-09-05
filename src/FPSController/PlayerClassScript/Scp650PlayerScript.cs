@@ -12,6 +12,7 @@ public partial class Scp650PlayerScript : Node3D
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
             GetNode<Node3D>("Armature").Hide();
+            GetNode<Control>("AbilityUI").Show();
         }
         GetParent().GetParent<PlayerScript>().CanMove = false;
 	}

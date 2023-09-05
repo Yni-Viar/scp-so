@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.ComponentModel.Design;
 using System.Formats.Asn1;
 
 public partial class FacilityManager : Node3D
@@ -53,11 +54,27 @@ public partial class FacilityManager : Node3D
 		// For support custom classes.
 		if (Multiplayer.IsServer())
 		{
-			classes = ClassParser.ReadJson("user://playerclasses_0.5.0.json");
+			if (FileAccess.FileExists("user://version.txt"))
+			{
+				if (TxtParser.Load("user://version.txt") == Globals.milestone)
+				{
+					classes = ClassParser.ReadJson("user://playerclasses.json");
+				}
+				else
+				{
+					TxtParser.Save("user://version.txt", Globals.milestone);
+					ClassParser.SaveJson("user://playerclasses.json", Globals.classData);
+				}
+			}
+			else
+			{
+                TxtParser.Save("user://version.txt", Globals.milestone);
+                ClassParser.SaveJson("user://playerclasses.json", Globals.classData);
+            }
 		}
 		else
 		{
-			ClassParser.SaveJson("user://playerclasses_0.5.0.json", classes);
+			ClassParser.SaveJson("user://playerclasses.json", classes);
 		}
 
 		//Start round
