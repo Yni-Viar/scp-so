@@ -1,4 +1,4 @@
-# SCP Site Offline
+# SCP Site Online
 
 A multiplayer game, based on SCP Universe. Currently in *alpha* state of development.
 
