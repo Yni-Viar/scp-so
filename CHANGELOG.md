@@ -1,6 +1,15 @@
 # Changelog
 The current state of the game - Alpha.
 ## Alpha versions
+### v.0.5.1 (2023.09.05)
+
+- Re-saved old SCP-CB LCZ rooms (and reduced size of the package). Thus, I removed old empty hallways, SCP-012 room, and old SCP-079 room. (most of these rooms have new analogues).
+- Added item SCP room (currently, from SCP-CB, but eventually it will be modernized)
+- Added abilities message (only SCP-106 and SCP-650 have it).
+- Added blankets in D-class chamber.
+- Added ability to change mouse sensitivity.
+- Changed the ground color in Surface Zone
+
 ### v.0.5.0 (2023.09.03)
 
 - Added FPS counter.
