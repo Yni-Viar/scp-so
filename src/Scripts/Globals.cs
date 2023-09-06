@@ -3,7 +3,7 @@ using System;
 
 public partial class Globals
 {
-    public static string version = "0.5.1.1";
+    public static string version = "0.5.2";
     public static string milestone = "0.5.1";
     //Milestone has only two digits in version, unlike a normal version. Currently, the game is unstable, and milestone equals version, as for now.
 

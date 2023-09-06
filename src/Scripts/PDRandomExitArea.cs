@@ -1,11 +1,11 @@
 using Godot;
 using System;
+using System.Linq;
 
 public partial class PDRandomExitArea : Area3D
 {
 	RandomNumberGenerator rng = new RandomNumberGenerator();
-	string[] rooms = new string[] { "PD/PD_basement/entityspawn" };
-	string[] exitLocation = new string[] {"MapGenLCZ/LC_room1_archive/entityspawn", "MapGenRZ/RZ_room2_offices/entityspawn", "MapGenHCZ/HC_cont1_173/entityspawn"};
+	string[] pdRooms = new string[] { "PD/PD_basement/entityspawn" };
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -23,11 +23,11 @@ public partial class PDRandomExitArea : Area3D
 			uint i = rng.Randi() % 100;
 			if (i >= 83)
 			{
-				TeleportTo(player, exitLocation[rng.RandiRange(0, 3)]);
+				TeleportTo(player, PlacesForTeleporting.defaultData.Values.ToArray<string>()[rng.RandiRange(0, PlacesForTeleporting.defaultData.Values.ToArray<string>().Length - 1)]);
 			}
 			else if (i >= 67 && i < 83)
 			{
-				TeleportTo(player, rooms[0]); //will be expanded in future
+				TeleportTo(player, pdRooms[0]); //will be expanded in future
 			}
 			else
 			{

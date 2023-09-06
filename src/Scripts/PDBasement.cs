@@ -1,10 +1,10 @@
 using Godot;
 using System;
+using System.Linq;
 
 public partial class PDBasement : StaticBody3D
 {
     RandomNumberGenerator rng = new RandomNumberGenerator();
-    string[] exitLocation = new string[] { "MapGenLCZ/LC_room1_archive/entityspawn", "MapGenRZ/RZ_room2_offices/entityspawn", "MapGenHCZ/HC_cont1_173/entityspawn" };
     
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -28,7 +28,7 @@ public partial class PDBasement : StaticBody3D
     {
         if (body is PlayerScript player)
         {
-            TeleportTo(player, exitLocation[rng.RandiRange(0, 3)]);
+            TeleportTo(player, PlacesForTeleporting.defaultData.Values.ToArray<string>()[rng.RandiRange(0, PlacesForTeleporting.defaultData.Values.ToArray<string>().Length - 1)]);
         }
     }
     /// <summary>
