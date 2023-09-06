@@ -9,7 +9,6 @@ panorama = ExtResource("1_6wqqa")
 sky_material = SubResource("PanoramaSkyMaterial_5ys3a")
 
 [resource]
-background_mode = 2
 sky = SubResource("Sky_tt5t7")
 tonemap_mode = 2
 tonemap_white = 12.0
