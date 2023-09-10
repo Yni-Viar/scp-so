@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b6jw7gaqvvwvw"]
+[gd_scene load_steps=28 format=3 uid="uid://b6jw7gaqvvwvw"]
 
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat0.006.tres" id="1_7i2jh"]
 [ext_resource type="LightmapGIData" uid="uid://dxt46o1hxi13s" path="res://MapGen/Resources/ROOM2/Lm/hc_cont_2_testroom.lmbake" id="1_oxte2"]
@@ -292,6 +292,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lgrmp")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_uqcld"]
+size = Vector3(8.10982, 3.87239, 1.26377)
+
 [node name="HC_cont2_testroom" type="StaticBody3D"]
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
@@ -365,9 +368,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17294, -10.482, 0)
 transform = Transform3D(-3.21537e-08, 0, 1, 0, 0.92025, 0, -0.735591, 0, -4.37114e-08, 8.91337, -12.8866, 0.0145333)
 
 [node name="Cube_001" type="MeshInstance3D" parent="Gate"]
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_sjeho")
 skeleton = NodePath("")
 
 [node name="Frame" type="MeshInstance3D" parent="Gate"]
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_aolhk")
 skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Gate"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gate/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.86265e-09, 2.12435, -0.0224705)
+shape = SubResource("BoxShape3D_uqcld")

@@ -74,12 +74,10 @@ public partial class SurfaceElevator : Node3D
         fromTeleport.GetNode<AudioStreamPlayer3D>("FakeMove").Play();
         toTeleport.GetNode<AudioStreamPlayer3D>("FakeMove").Play();
         await ToSignal(GetTree().CreateTimer(5.0), "timeout");
-        GD.Print(playersToTeleport.Count);
         if (playersToTeleport.Count != 0)
         {
             for (int i = 0; i < playersToTeleport.Count; i++)
             {
-                GD.Print("Yes.");
                 // move player to the next zone.
                 //playersToTeleport[i].Position = toTeleport.GetNode<Marker3D>(destinationPoints[currentFloor + direction]).GlobalPosition;
                 GetTree().Root.GetNode<PlayerScript>("Main/Game/" + playersToTeleport[i]).Position = toTeleport.GetNode<Marker3D>(destinationPoints[currentFloor + direction]).GlobalPosition;
@@ -95,12 +93,13 @@ public partial class SurfaceElevator : Node3D
             }
         }
         await ToSignal(GetTree().CreateTimer(5.0), "timeout");
-        canInteract = true;
         // find second elevator node and open the door
         if (toTeleport is SurfaceElevator liftTo)
         {
             liftTo.DoorOpen();
         }
+        await ToSignal(GetTree().CreateTimer(1.0), "timeout");
+        canInteract = true;
     }
 
     private void OnButtonInteractInteracted(GodotObject player)

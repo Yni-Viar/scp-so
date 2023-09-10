@@ -59,9 +59,10 @@ script = ExtResource("1_tw8h1")
 [node name="PlayerModel" type="Node3D" parent="."]
 
 [node name="PlayerHead" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.968611, -0.354734)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.968611, -0.292869)
 
 [node name="PlayerCamera" type="Camera3D" parent="PlayerHead"]
+near = 0.003
 
 [node name="RayCast3D" type="RayCast3D" parent="PlayerHead"]
 target_position = Vector3(0, 0, -3)

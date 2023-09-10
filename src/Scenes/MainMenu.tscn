@@ -129,10 +129,13 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[b]v.0.5.2[/b] [i](Alpha)[/i]
-- Fixed bug, where skybox were seen in Pocket Dimension.
-- Added proper model to Science personnel.
-- Changed default sensivity to higher value.
+text = "[b]v.0.5.3[/b] [i](Alpha)[/i]
+- Fixed falling bug, due to gravityVector always incrementing...
+- Added missed props and collisions.
+- Changed texture in Class-D chamber.
+- Added a plaque near elevators.
+- Fixed an issue, when player could see behind walls.
+- Fixed an issue, when player could break elevator system.
 
 [b]KNOWN ISSUES:[/b]
 - There is NO loading screen, so you need to wait.
@@ -317,11 +320,14 @@ theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "[b]SCP: Site Offline code is licensed under MIT License[/b]
 
-[i]Authors:[/i]
-- Yni (Yni Viar, the Creator of this game, the programmer)
+[color=#84D9FF][i]Authors:[/i]
+- Yni (Yni Viar, the Creator of this game, the programmer)[/color]
 
-[i]Testers:[/i]
+
+[color=green] Many thanks for testers, which pointed me at bugs:
 - William[]
+- cherniichernish (Гражданин)[/color]
+
 
 "
 fit_content = true

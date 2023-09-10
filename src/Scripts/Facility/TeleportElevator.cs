@@ -12,7 +12,7 @@ public partial class TeleportElevator : Node3D
     [Export] string[] openDoorSounds;
     [Export] string[] closeDoorSounds;
     // bool isOpened = false;
-    bool canInteract = true;
+    [Export] bool canInteract = true;
 
     bool CurrentDest() // check if the elevator is on the right floor at start.
     {
@@ -62,15 +62,13 @@ public partial class TeleportElevator : Node3D
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
     public async void ElevatorMove(int direction)
     {
-        Node3D fromTeleport = (Node3D)(GetTree().Root.GetNode("Main/" + elevators[currentFloor])); 
+
+        TeleportElevator fromTeleport = (TeleportElevator)(GetTree().Root.GetNode("Main/" + elevators[currentFloor])); 
         // find first elevator node and close the door
-        if (fromTeleport is TeleportElevator liftFrom)
-        {
-            liftFrom.DoorClose();
-        }
-        canInteract = false;
-        Node3D toTeleport;
-        toTeleport = (Node3D)(GetTree().Root.GetNode("Main/" + elevators[currentFloor + direction]));
+        fromTeleport.canInteract = false;
+        fromTeleport.DoorClose();
+        TeleportElevator toTeleport = (TeleportElevator)(GetTree().Root.GetNode("Main/" + elevators[currentFloor + direction]));
+        toTeleport.canInteract = false;
         fromTeleport.GetNode<AudioStreamPlayer3D>("FakeMove").Play();
         toTeleport.GetNode<AudioStreamPlayer3D>("FakeMove").Play();
         await ToSignal(GetTree().CreateTimer(5.0), "timeout");
@@ -93,12 +91,11 @@ public partial class TeleportElevator : Node3D
             }
         }
         await ToSignal(GetTree().CreateTimer(5.0), "timeout");
-        canInteract = true;
+        
         // find second elevator node and open the door
-        if (toTeleport is TeleportElevator liftTo)
-        {
-            liftTo.DoorOpen();
-        }
+        fromTeleport.canInteract = true;
+        toTeleport.DoorOpen();
+        toTeleport.canInteract = true;
     }
 
     private void OnButtonInteractInteracted(GodotObject player)

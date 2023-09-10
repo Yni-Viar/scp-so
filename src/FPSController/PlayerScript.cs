@@ -125,10 +125,17 @@ public partial class PlayerScript : CharacterBody3D
             {
                 blinkTimer += delta;
             }*/
-            if (!IsOnFloor())
+
+            //gravity
+            if (IsOnFloor())
+            {
+                gravityVector = Vector3.Zero; //if is on floor, gravity should be 0, not previously summed value!
+            }
+            else
             {
                 gravityVector += Vector3.Down * gravity * (float)delta;
             }
+
             //jumping
             if (GetNode<PlayerSync>("PlayerSync").isJumping && IsOnFloor())
             {

@@ -1,6 +1,22 @@
 # Changelog
 The current state of the game - Alpha.
 ## Alpha versions
+
+### v.0.5.3 (2023.09.10)
+
+- Fixed falling bug, due to gravityVector always incrementing...
+- Added missed props and collisions.
+- Changed texture in Class-D chamber.
+- Added a plaque near elevators.
+- Fixed an issue, when player could see behind walls.
+- Fixed an issue, when player could break elevator system.
+
+### v.0.5.2 (2023.09.06)
+
+- Fixed bug, where skybox were seen in Pocket Dimension.
+- Added proper model to Science personnel.
+- Changed default sensivity to higher value.
+
 ### v.0.5.1 (2023.09.05)
 
 - Re-saved old SCP-CB LCZ rooms (and reduced size of the package). Thus, I removed old empty hallways, SCP-012 room, and old SCP-079 room. (most of these rooms have new analogues).
