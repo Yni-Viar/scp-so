@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://isp3qhbu0mf5"]
+[gd_scene load_steps=8 format=3 uid="uid://isp3qhbu0mf5"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerScript.cs" id="1_tw8h1"]
+[ext_resource type="PackedScene" uid="uid://gom6tjixj21n" path="res://InventorySystem/InventoryContainer.tscn" id="2_6uw7r"]
 [ext_resource type="Script" path="res://FPSController/PlayerSync.cs" id="10_8dn5b"]
 
 [sub_resource type="CapsuleShape3D" id="1"]
@@ -26,8 +27,12 @@ properties/3/sync = true
 properties/3/watch = false
 properties/4/path = NodePath(".:canMove")
 properties/4/spawn = true
-properties/4/sync = true
-properties/4/watch = false
+properties/4/sync = false
+properties/4/watch = true
+properties/5/path = NodePath(".:usingItem")
+properties/5/spawn = true
+properties/5/sync = false
+properties/5/watch = true
 
 [sub_resource type="Animation" id="Animation_i7x7w"]
 resource_name = "Walk"
@@ -68,6 +73,8 @@ near = 0.003
 target_position = Vector3(0, 0, -3)
 collision_mask = 3
 
+[node name="ItemSpawn" type="Marker3D" parent="PlayerHead"]
+
 [node name="PlayerHand" type="Marker3D" parent="PlayerHead"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.472)
 
@@ -87,11 +94,8 @@ max_distance = 12.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.783644, 0)
 max_distance = 2.3
 
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="InventoryContainer" parent="." instance=ExtResource("2_6uw7r")]
+visible = false
 grow_horizontal = 2
 grow_vertical = 2
 

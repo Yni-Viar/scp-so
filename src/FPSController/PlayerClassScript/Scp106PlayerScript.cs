@@ -51,7 +51,7 @@ public partial class Scp106PlayerScript : Node3D
                 }
             }
         }
-        if (Input.IsActionJustPressed("scp106teleport") && !stalkCooldown)
+        if (Input.IsActionJustPressed("scp106_teleport") && !stalkCooldown)
         {
             Rpc("Stalk");
         }

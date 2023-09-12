@@ -68,9 +68,9 @@ public partial class FacilityManager : Node3D
 			}
 			else
 			{
-                TxtParser.Save("user://version.txt", Globals.milestone);
-                ClassParser.SaveJson("user://playerclasses.json", Globals.classData);
-            }
+				TxtParser.Save("user://version.txt", Globals.milestone);
+				ClassParser.SaveJson("user://playerclasses.json", Globals.classData);
+			}
 		}
 		else
 		{
@@ -95,11 +95,11 @@ public partial class FacilityManager : Node3D
 		playerScene = (PlayerScript)ResourceLoader.Load<PackedScene>("res://FPSController/PlayerScene.tscn").Instantiate();
 		playerScene.Name = id.ToString();
 		AddChild(playerScene, true);
-        playersList.Add(playerScene.Name);
-        if (isRoundStarted)
+		playersList.Add(playerScene.Name);
+		if (isRoundStarted)
 		{
-            Rpc("SetPlayerClass", playerScene.Name, "spectator");
-        }
+			Rpc("SetPlayerClass", playerScene.Name, "spectator");
+		}
 		GD.Print("Player " + id.ToString() + " has joined the server!");
 	}
 
@@ -112,8 +112,8 @@ public partial class FacilityManager : Node3D
 		if (GetNodeOrNull(id.ToString()) != null)
 		{
 			GetNode(id.ToString()).QueueFree();
-            playersList.Remove(id.ToString());
-            GD.Print("Player " + id.ToString() + " has left the server!");
+			playersList.Remove(id.ToString());
+			GD.Print("Player " + id.ToString() + " has left the server!");
 		}
 	}
 

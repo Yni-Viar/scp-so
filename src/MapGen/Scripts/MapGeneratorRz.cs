@@ -267,7 +267,7 @@ public partial class MapGeneratorRz : Node
         bool checkpointSpawned = false;
         bool exitSpawned = false;
         int currRoom2 = 0;
-        int currRoom2c = 0;
+        // int currRoom2c = 0;
         
         for (int i = 0; i < 12; i++)
         {

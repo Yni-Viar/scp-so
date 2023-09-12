@@ -9,6 +9,9 @@ public partial class PlayerScript : CharacterBody3D
      * I (Yni) added some parts, such as blinking or game over triggers.
      * Currently the script is a big mess, so it need refactoring :(
      */
+    [Signal]
+    public delegate void ItemInHandChangedEventHandler(string itemToReplace);
+
     RandomNumberGenerator rng = new RandomNumberGenerator();
     Node3D playerHead;
     Settings settings;
@@ -37,6 +40,7 @@ public partial class PlayerScript : CharacterBody3D
     [Export] internal string[] footstepSounds;
     [Export] internal string[] sprintSounds;
     [Export] internal Globals.Team team;
+    
     float gravity = 9.8f;
     // SCP Number. Set -1 for humans, -2 for spectators.
     [Export] internal int scpNumber = -2;
@@ -44,6 +48,17 @@ public partial class PlayerScript : CharacterBody3D
     // beginning with 0.4.0-dev, you cannot move while waiting for match. Instead, every class re-enables the movement toggle.
     [Export] bool canMove = false; 
     internal bool CanMove {get=>canMove; set=>canMove = value;}
+    
+    [Export] private string usingItem;
+    internal string UsingItem
+    {
+        get => usingItem;
+        set
+        {
+            usingItem = value;
+            Rpc("UpdateItemsInHand", usingItem);
+        }
+    }
     
     float groundAcceleration = 8.0f;
     float airAcceleration = 8.0f;
@@ -113,6 +128,11 @@ public partial class PlayerScript : CharacterBody3D
                 Vector3 cameraRot = playerHead.Rotation;
                 cameraRot.X = Mathf.Clamp(playerHead.Rotation.X, Mathf.DegToRad(-85f), Mathf.DegToRad(85f));
                 playerHead.Rotation = cameraRot;
+            }
+
+            if (Input.IsActionJustPressed("mode_kinematic"))
+            {
+                GetParent().GetNode<Control>("PlayerUI").Visible = !GetParent().GetNode<Control>("PlayerUI").Visible;
             }
         }
     }
@@ -209,6 +229,10 @@ public partial class PlayerScript : CharacterBody3D
                 {
                     collidedWith.Call("Interact");
                 }
+                if (collidedWith is Pickable)
+                {
+                    collidedWith.Call("PickUpItem", this);
+                }
             }
             /*if (blinkTimer > blinkWaiting) //deprecated in 0.3.0-dev, because of blink system rework.
             {
@@ -229,16 +253,32 @@ public partial class PlayerScript : CharacterBody3D
 
             GetParent().GetNode<Label>("PlayerUI/HealthInfo").Text = Mathf.Ceil(health).ToString();
         }
-
-        if (Input.IsActionJustPressed("mode_kinematic"))
-        {
-            GetParent().GetNode<Control>("PlayerUI").Visible = !GetParent().GetNode<Control>("PlayerUI").Visible;
-        }
-
-        
-
         UpDirection = Vector3.Up;
         MoveAndSlide();
+    }
+
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    private void UpdateItemsInHand(string itemName)
+    {
+        if (ResourceLoader.Exists("res://InventorySystem/Items/" + itemName + ".tres"))
+        {
+            Node firstPersonHandRoot = GetNode<Marker3D>("PlayerHead/PlayerHand");
+            if (firstPersonHandRoot.GetChild(0) != null)
+            {
+                firstPersonHandRoot.GetChild(0).QueueFree();
+            }
+            Item item = GD.Load<Item>("res://InventorySystem/Items/" + itemName + ".tres");
+            Node tmpModel = ResourceLoader.Load<PackedScene>(item.FirstPersonPrefabPath).Instantiate();
+            firstPersonHandRoot.AddChild(tmpModel, true);
+        }
+        else
+        {
+            Node firstPersonHandRoot = GetNode<Marker3D>("PlayerHead/PlayerHand");
+            if (firstPersonHandRoot.GetChild(0) != null)
+            {
+                firstPersonHandRoot.GetChild(0).QueueFree();
+            }
+        }
     }
 
     /// <summary>
