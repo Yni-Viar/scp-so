@@ -20,7 +20,7 @@ public partial class InventorySlotDisplay : CenterContainer
 		if (GetParent().GetParent().GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
 		{
 			// Use your item
-			if (Input.IsActionJustPressed("inventory_select") && itemHover)
+			if (Input.IsActionJustPressed("interact") && itemHover)
 			{
 				int itemIndex = GetIndex();
 				Resource item = inventory.GetItem(itemIndex);

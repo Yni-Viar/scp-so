@@ -13,8 +13,8 @@ public partial class InventoryDisplay : GridContainer
         GD.Print(inventory.items);
         //First items update
         UpdateInventoryDisplay();
-        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("give_item", new Callable(this, "AddItemAlias"), "Gives an item to inventory");
-        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("item_list", new Callable(this, "ItemList"), "Returns item names");
+        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("give", new Callable(this, "AddItemAlias"), "Gives an item to inventory (experimental)");
+        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("itemlist", new Callable(this, "ItemList"), "Returns item names");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -70,14 +70,18 @@ public partial class InventoryDisplay : GridContainer
 
     void AddItemCmd(string v)
     {
-        if (!Multiplayer.IsServer())
+        if (IsMultiplayerAuthority())
+        {
+            inventory.AddItem(ResourceLoader.Load(v));
+        }
+        /*if (!Multiplayer.IsServer())
         {
             inventory.Rpc("AddItemRpc", v);
         }
         else
         {
-            inventory.AddItem(ResourceLoader.Load(v));
-        }
+            
+        }*/
     }
 
     string ItemList(string[] args)

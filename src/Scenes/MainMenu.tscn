@@ -134,6 +134,7 @@ text = "[b]v.0.6.0-dev[/b] [i](Alpha)[/i]
 - Increased distance between zones for optimization (except Class-D chamber).
 
 [b]KNOWN ISSUES:[/b]
+- The \"give\" command is unstable.
 - It is NOT RECOMMENDED to connect to ongoing game, cause it's laggy (and full of connection errors).
 - There is NO loading screen, so you need to wait.
 - Scientist's hands rig are incorrect. (I am unable to fix this issue, because Mixamo does not support hazmats :( )
