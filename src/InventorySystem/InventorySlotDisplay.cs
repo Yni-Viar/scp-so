@@ -43,7 +43,7 @@ public partial class InventorySlotDisplay : CenterContainer
                     GetParent().GetParent().GetParent().GetParent<PlayerScript>().GetNode<ColorRect>("InventoryContainer").Hide();
                 }
 			}
-			if (Input.IsActionJustPressed("inventory_remove_item"))
+			if (Input.IsActionJustPressed("inventory_remove_item") && itemHover)
 			{
 				int itemIndex = GetIndex();
 				//Resource item = inventory.RemoveItem(itemIndex, true);
