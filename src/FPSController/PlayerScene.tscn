@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://isp3qhbu0mf5"]
+[gd_scene load_steps=9 format=3 uid="uid://isp3qhbu0mf5"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerScript.cs" id="1_tw8h1"]
 [ext_resource type="PackedScene" uid="uid://gom6tjixj21n" path="res://InventorySystem/InventoryContainer.tscn" id="2_6uw7r"]
+[ext_resource type="Script" path="res://FPSController/Commands.cs" id="2_decth"]
 [ext_resource type="Script" path="res://FPSController/PlayerSync.cs" id="10_8dn5b"]
 
 [sub_resource type="CapsuleShape3D" id="1"]
@@ -60,6 +61,9 @@ _data = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28033, 0)
 collision_layer = 2
 script = ExtResource("1_tw8h1")
+
+[node name="Commands" type="Node" parent="."]
+script = ExtResource("2_decth")
 
 [node name="PlayerModel" type="Node3D" parent="."]
 

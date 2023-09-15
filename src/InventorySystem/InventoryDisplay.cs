@@ -13,8 +13,8 @@ public partial class InventoryDisplay : GridContainer
         GD.Print(inventory.items);
         //First items update
         UpdateInventoryDisplay();
-        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("give", new Callable(this, "AddItemAlias"), "Gives an item to inventory (experimental)");
-        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("itemlist", new Callable(this, "ItemList"), "Returns item names");
+        // GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("give", new Callable(this, "AddItemAlias"), "Gives an item to inventory (experimental)");
+        
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,7 +45,7 @@ public partial class InventoryDisplay : GridContainer
         }
     }
 
-    string AddItemAlias(string[] args)
+    /*string AddItemAlias(string[] args) //buggy
     {
         if (args.Length == 1)
         {
@@ -82,15 +82,5 @@ public partial class InventoryDisplay : GridContainer
         {
             
         }*/
-    }
-
-    string ItemList(string[] args)
-    {
-        string r = "";
-        foreach (var val in ItemParser.ReadJson("user://itemlist.json"))
-        {
-            r += val.Key + "\n";
-        }
-        return r;
-    }
+    //}
 }

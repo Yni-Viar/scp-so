@@ -192,14 +192,14 @@ public partial class FacilityManager : Node3D
 			//if class exists, then despawn old model, and change it on a new one.
 			if (ResourceLoader.Exists("res://FPSController/PlayerClassResources/" + playerScript.classKey + ".tres")) 
 			{
-				Node ModelRoot = playerScript.GetNode("PlayerModel");
-				if (ModelRoot.GetChild(0) != null)
-				{
-					ModelRoot.GetChild(0).QueueFree();
-				}
+				Node modelRoot = playerScript.GetNode("PlayerModel");
+				foreach (Node itemUsedBefore in modelRoot.GetChildren())
+                {
+                    itemUsedBefore.QueueFree();
+                }
 				BaseClass classData = GD.Load<BaseClass>("res://FPSController/PlayerClassResources/" + playerScript.classKey + ".tres");
 				Node tmpModel = ResourceLoader.Load<PackedScene>(classData.PlayerModelSource).Instantiate();
-				ModelRoot.AddChild(tmpModel, true);
+				modelRoot.AddChild(tmpModel, true);
 			}
 		}
 	}

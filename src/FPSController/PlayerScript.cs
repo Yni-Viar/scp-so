@@ -100,9 +100,6 @@ public partial class PlayerScript : CharacterBody3D
             }
             FloorMaxAngle = 1.48353f; //85 degrees.
         }
-        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("forceclass", new Callable(this, "Forceclass"), "Forceclass the player (1 argument needed)");
-        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("classlist", new Callable(this, "ClassList"), "Returns class names (for forceclass)");
-        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("tp", new Callable(this, "TeleportCmd"), "Teleports you. (1 arguments needed)");
     }
 
     private bool IsLocalAuthority()
@@ -263,9 +260,9 @@ public partial class PlayerScript : CharacterBody3D
         if (ResourceLoader.Exists("res://InventorySystem/Items/" + itemName + ".tres"))
         {
             Node firstPersonHandRoot = GetNode<Marker3D>("PlayerHead/PlayerHand");
-            if (firstPersonHandRoot.GetChild(0) != null)
+            foreach (Node itemUsedBefore in firstPersonHandRoot.GetChildren())
             {
-                firstPersonHandRoot.GetChild(0).QueueFree();
+                itemUsedBefore.QueueFree();
             }
             Item item = GD.Load<Item>("res://InventorySystem/Items/" + itemName + ".tres");
             Node tmpModel = ResourceLoader.Load<PackedScene>(item.FirstPersonPrefabPath).Instantiate();
@@ -274,9 +271,9 @@ public partial class PlayerScript : CharacterBody3D
         else
         {
             Node firstPersonHandRoot = GetNode<Marker3D>("PlayerHead/PlayerHand");
-            if (firstPersonHandRoot.GetChild(0) != null)
+            foreach (Node itemUsedBefore in firstPersonHandRoot.GetChildren())
             {
-                firstPersonHandRoot.GetChild(0).QueueFree();
+                itemUsedBefore.QueueFree();
             }
         }
     }
@@ -302,54 +299,6 @@ public partial class PlayerScript : CharacterBody3D
     }
 
     /// <summary>
-    /// GDSh command. Calls helper CallForceclass() method to change the player class.
-    /// </summary>
-    /// <param name="args">Player class to become</param>
-    /// <returns>Success or failure for changing the player class</returns>
-    string Forceclass(string[] args)
-    {
-        if (args.Length == 1 && ResourceLoader.Exists("res://FPSController/PlayerClassResources/" + args[0] + ".tres"))
-        {
-            CallForceclass(args[0]);
-            return "Forceclassed to " + args[0];
-        }
-        else
-        {
-            return "You need ONLY 1 argument to forceclass. E.g. to spawn as SCP-173, you need to write \"forceclass scp173\"";
-        }
-    }
-
-    /// <summary>
-    /// GDSh command. Calls helper CallTeleport() method to teleport player to the point.
-    /// </summary>
-    /// <param name="args">Place for teleporting</param>
-    /// <returns>If the place exist, and args == 1, teleports player. If is unknown arg, - display all places for teleporting</returns>
-    string TeleportCmd(string[] args)
-    {
-        if (args.Length == 1)
-        {
-            if (PlacesForTeleporting.defaultData.ContainsKey(args[0]))
-            {
-                CallTeleport(args[0]);
-                return "Teleported to: " + args[0];
-            }
-            else
-            {
-                string r = "Wrong place. Available places for teleporting: \n";
-                foreach (string key in PlacesForTeleporting.defaultData.Keys)
-                {
-                    r += key + "\n";
-                }
-                return r;
-            }
-        }
-        else
-        {
-            return "You need ONLY 1 argument to teleport.";
-        }
-    }
-
-    /// <summary>
     /// Helper method to teleport.
     /// </summary>
     /// <param name="placeToTeleport">Place to teleport</param>
@@ -367,26 +316,6 @@ public partial class PlayerScript : CharacterBody3D
         GetParent().GetParent().GetNode<FacilityManager>("Game").Rpc("SetPlayerClass", Multiplayer.GetUniqueId().ToString(), to);
     }
 
-    /// <summary>
-    /// GDSh command.
-    /// </summary>
-    /// <param name="args">Necessary by GDsh but not used</param>
-    /// <returns>List of classes, available ingame</returns>
-    string ClassList(string[] args)
-    {
-        Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classes = ClassParser.ReadJson("user://playerclasses.json");
-        string[] groups = new string[] { "spawnableHuman", "arrivingHuman", "spawnableScps" };
-        string r = "";
-        for (int i = 0; i < groups.Length; i++)
-        {
-            foreach (var val in classes[groups[i]])
-            {
-                r += val + "\n";
-            }
-        }
-        
-        return r;
-    }
     /// <summary>
     /// Add or depletes health (don't work on spectators). If health is below 0, the players forceclasses as spectator.
     /// </summary>
