@@ -88,7 +88,11 @@ public partial class Commands : Node
         
         return r;
     }
-
+    /// <summary>
+    /// GDSh command.
+    /// </summary>
+    /// <param name="args">Necessary by GDsh but not used</param>
+    /// <returns>Shows all available items</returns>
     string ItemList(string[] args)
     {
         string r = "";
@@ -98,7 +102,11 @@ public partial class Commands : Node
         }
         return r;
     }
-
+    /// <summary>
+    /// GDSh command.
+    /// </summary>
+    /// <param name="args">Name of the item</param>
+    /// <returns>Calls helper class for giving item, if it exists in itemlist.json</returns>
     string GiveItem(string[] args)
     {
         if (itemLimit > itemMax)
@@ -125,7 +133,10 @@ public partial class Commands : Node
             return "Unknown item. Cannot spawn. Did you input the item?";
         }
     }
-
+    /// <summary>
+    /// Gives item
+    /// </summary>
+    /// <param name="itemPath">Path to item resource</param>
     void GiveItemCmd(string itemPath)
     {
         Item item = ResourceLoader.Load<Item>(itemPath);

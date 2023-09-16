@@ -17,13 +17,21 @@ public partial class Inventory : Node
     {
         base._Process(delta);
     }
-
+    /// <summary>
+    /// Gets item from inventory
+    /// </summary>
+    /// <param name="itemIndex">Index of the item</param>
+    /// <returns>Item resource</returns>
     internal Resource GetItem(int itemIndex)
     {
         return items[itemIndex];
     }
-
-    //Sets item in specific slot
+    /// <summary>
+    /// Sets item in specific slot
+    /// </summary>
+    /// <param name="itemIndex">Index to set</param>
+    /// <param name="item">Item to set</param>
+    /// <returns>Previous item resource</returns>
     internal Resource SetItem(int itemIndex, Resource item)
     {
         Resource previousItem = items[itemIndex];
@@ -31,8 +39,11 @@ public partial class Inventory : Node
         EmitSignal(SignalName.ItemsChanged, new Godot.Collections.Array{itemIndex});
         return previousItem;
     }
-
-    //Swaps items
+    /// <summary>
+    /// Swaps items
+    /// </summary>
+    /// <param name="itemIndex">Previous item index</param>
+    /// <param name="targetItemIndex">New item index</param>
     internal void SwapItems(int itemIndex, int targetItemIndex)
     {
         Resource targetItem = items[targetItemIndex];
@@ -41,8 +52,12 @@ public partial class Inventory : Node
         items[itemIndex] = targetItem;
         EmitSignal(SignalName.ItemsChanged, new Godot.Collections.Array{itemIndex, targetItemIndex});
     }
-
-    //Remove items from inventory, itemSpawn means will be the item spawned or not (to prevent dupe)
+    /// <summary>
+    /// Remove items from inventory
+    /// </summary>
+    /// <param name="itemIndex">Which index will be affected</param>
+    /// <param name="itemSpawn">Will be the item spawned or not (to prevent dupe)</param>
+    /// <returns>Removed item resource</returns>
     internal Resource RemoveItem(int itemIndex, bool itemSpawn) 
     {
         Resource previousItem = items[itemIndex];
@@ -56,8 +71,10 @@ public partial class Inventory : Node
         EmitSignal(SignalName.ItemsChanged, new Godot.Collections.Array{itemIndex});
         return previousItem;
     }
-
-    //Add items to inventory, using FOR + SetItem()
+    /// <summary>
+    /// Add items to inventory, using FOR + SetItem()
+    /// </summary>
+    /// <param name="item">Resource to add</param>
     internal void AddItem(Resource item)
     {
         for (int i = 0; i < items.Count; i++)
@@ -71,14 +88,15 @@ public partial class Inventory : Node
     }
 
     //Networking functions are used from https://github.com/expressobits/inventory-system
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    //Currently unused
+    /*[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     private void AddItemRpc(string itemResource)
     {
         /*if (Multiplayer.IsServer())
         {
             GD.Print("IsServer");
             return;
-        }*/
+        }*//*
         Resource item = ResourceLoader.Load<Resource>(itemResource);
         if (item == null)
         {
@@ -95,9 +113,9 @@ public partial class Inventory : Node
         {
             GD.Print("IsServer");
             return;
-        }*/
+        }*//*
         RemoveItem(itemIndex, itemSpawn);
-    }
+    }*/
 
 
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]

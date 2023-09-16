@@ -14,12 +14,16 @@ public partial class scp914gears : AnimatableBody3D
 	public override void _Process(double delta)
 	{
 	}
-
+    /// <summary>
+    /// Interacting method. Calls helper SetMode method via RPC.
+    /// </summary>
     internal void Interact()
     {
         Rpc("SetMode");
     }
-
+    /// <summary>
+    /// Helper method. Sets mode of SCP-914
+    /// </summary>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void SetMode()
     {

@@ -17,6 +17,7 @@ public partial class FacilityManager : Node3D
 	[Export] Godot.Collections.Array<string> playersList = new Godot.Collections.Array<string>();
 	[Export] bool isRoundStarted = false;
 	Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classes;
+	Godot.Collections.Dictionary<string, string> items;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -71,10 +72,12 @@ public partial class FacilityManager : Node3D
 				TxtParser.Save("user://version.txt", Globals.milestone);
 				ClassParser.SaveJson("user://playerclasses.json", Globals.classData);
 			}
+			items = ItemParser.ReadJson("user://itemlist.json");
 		}
 		else
 		{
 			ClassParser.SaveJson("user://playerclasses.json", classes);
+			ItemParser.SaveJson("user://itemlist.json", items);
 		}
 
 		//Start round

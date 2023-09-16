@@ -17,6 +17,11 @@ public partial class ItemParser : Node
 	{
 	}
 
+    /// <summary>
+    /// Reads item JSON
+    /// </summary>
+    /// <param name="placeToSave">Place to read (or save if not exist or version changed) JSON</param>
+    /// <returns></returns>
     public static Godot.Collections.Dictionary<string, string> ReadJson(string placeToSave)
     {
         if (FileAccess.FileExists("user://version.txt"))
@@ -46,7 +51,12 @@ public partial class ItemParser : Node
             return SaveJson(placeToSave, Globals.items);
         }
     }
-
+    /// <summary>
+    /// Saves item JSON
+    /// </summary>
+    /// <param name="placeToSave">Place to save JSON</param>
+    /// <param name="data">item data</param>
+    /// <returns>Default data</returns>
     public static Godot.Collections.Dictionary<string, string> SaveJson(string placeToSave, Godot.Collections.Dictionary<string, string> data)
     {
         GD.Print("The data isn't saved into userdata. Saving...");

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bjcfcpj4q2im4"]
+[gd_scene load_steps=24 format=3 uid="uid://bjcfcpj4q2im4"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/FacilityManager.cs" id="1_p22hh"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorLcz.cs" id="2_tjaxg"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://byljcjbr7klo" path="res://MapGen/Resources/PD.tscn" id="11_jjunp"]
 [ext_resource type="Script" path="res://Scripts/FPSCounter.cs" id="12_xkdk3"]
 [ext_resource type="Script" path="res://Scripts/SkyEnabler.cs" id="13_b3jdh"]
-[ext_resource type="Script" path="res://Scripts/PauseMenu.cs" id="14_6vnqc"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_pw38j"]
 properties/0/path = NodePath("MapGenLcz:seed")
@@ -238,38 +237,5 @@ offset_bottom = 26.0
 text = "FPS"
 script = ExtResource("12_xkdk3")
 
-[node name="PauseMenu" type="Control" parent="PlayerUI"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("14_6vnqc")
-
-[node name="Panel" type="Panel" parent="PlayerUI/PauseMenu"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.237
-anchor_bottom = 1.0
-offset_right = 0.959961
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ExitButton" type="Button" parent="PlayerUI/PauseMenu/Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.491
-anchor_top = 0.089
-anchor_right = 0.491
-anchor_bottom = 0.089
-offset_left = -191.896
-offset_top = -32.12
-offset_right = 192.104
-offset_bottom = 31.88
-text = "Exit"
-
 [connection signal="body_entered" from="SkyEnabler" to="SkyEnabler" method="OnBodyEntered"]
 [connection signal="body_exited" from="SkyEnabler" to="SkyEnabler" method="OnBodyExited"]
-[connection signal="pressed" from="PlayerUI/PauseMenu/Panel/ExitButton" to="PlayerUI/PauseMenu" method="OnExitButtonPressed"]

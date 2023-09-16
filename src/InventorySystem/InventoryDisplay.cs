@@ -21,7 +21,9 @@ public partial class InventoryDisplay : GridContainer
 	public override void _Process(double delta)
 	{
 	}
-
+    /// <summary>
+    /// Refreshes inventory UI.
+    /// </summary>
     void UpdateInventoryDisplay()
     {
         for (int itemIndex = 0; itemIndex < inventory.items.Count; itemIndex++)
@@ -29,7 +31,10 @@ public partial class InventoryDisplay : GridContainer
             UpdateInventorySlotDisplay(itemIndex);
         }
     }
-
+    /// <summary>
+    /// Refreshes single item in UI.
+    /// </summary>
+    /// <param name="itemIndex">Index of the item</param>
     void UpdateInventorySlotDisplay(int itemIndex)
     {
         InventorySlotDisplay inventorySlotDisplay = GetChild<InventorySlotDisplay>(itemIndex);

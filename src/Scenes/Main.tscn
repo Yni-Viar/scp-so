@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhs1iuqg4qex4"]
+[gd_scene load_steps=5 format=3 uid="uid://dhs1iuqg4qex4"]
 
 [ext_resource type="PackedScene" uid="uid://b345bk26jamix" path="res://Scenes/MainMenu.tscn" id="1_5tg38"]
 [ext_resource type="Script" path="res://Scripts/Multiplayer/NetworkManager.cs" id="1_nxheq"]
 [ext_resource type="PackedScene" uid="uid://o6rnnciwmwvn" path="res://GDsh/InGameConsole.tscn" id="3_qd7e1"]
+[ext_resource type="Script" path="res://Scripts/PauseMenu.cs" id="4_7jm2u"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_nxheq")
@@ -17,7 +18,41 @@ visible = false
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="PauseMenu" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_7jm2u")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.237
+anchor_bottom = 1.0
+offset_right = 0.959961
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/PauseMenu/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.491
+anchor_top = 0.089
+anchor_right = 0.491
+anchor_bottom = 0.089
+offset_left = -191.896
+offset_top = -32.12
+offset_right = 192.104
+offset_bottom = 31.88
+text = "Exit"
+
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Scenes/Facility.tscn")
 spawn_path = NodePath("..")
 spawn_limit = 1
+
+[connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/ExitButton" to="CanvasLayer/PauseMenu" method="OnExitButtonPressed"]

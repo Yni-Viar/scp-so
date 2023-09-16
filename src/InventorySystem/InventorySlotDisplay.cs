@@ -52,7 +52,10 @@ public partial class InventorySlotDisplay : CenterContainer
 		}
 		
 	}
-
+	/// <summary>
+	/// Displays item
+	/// </summary>
+	/// <param name="item">An item to display</param>
 	internal void DisplayItem(Resource item)
 	{
 		if (item is Item _item)
