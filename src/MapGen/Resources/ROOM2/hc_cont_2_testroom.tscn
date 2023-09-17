@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b6jw7gaqvvwvw"]
+[gd_scene load_steps=29 format=3 uid="uid://b6jw7gaqvvwvw"]
 
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat0.006.tres" id="1_7i2jh"]
 [ext_resource type="LightmapGIData" uid="uid://dxt46o1hxi13s" path="res://MapGen/Resources/ROOM2/Lm/hc_cont_2_testroom.lmbake" id="1_oxte2"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bhv585dwr87xd" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_NormalGL.png" id="14_p8wi3"]
 [ext_resource type="Texture2D" uid="uid://o5giewh76qkn" path="res://MapGen/Resources/Doors/DoorGate/GateFrame/Metal032_2K_Color.png" id="15_2kg0x"]
 [ext_resource type="Texture2D" uid="uid://q7qhbxch3lsf" path="res://MapGen/Resources/Doors/DoorGate/GateFrame/Metal032_2K_Metalness-Metal032_2K_Roughness.png" id="16_x2dlx"]
+[ext_resource type="PackedScene" uid="uid://c1ywflix3wsbl" path="res://InventorySystem/Items/PickablePrefabs/key2.tscn" id="17_m7qc2"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_b4c73"]
 _surfaces = [{
@@ -382,3 +383,6 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gate/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.86265e-09, 2.12435, -0.0224705)
 shape = SubResource("BoxShape3D_uqcld")
+
+[node name="key2" parent="." instance=ExtResource("17_m7qc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.67851, -12.79, 0.244162)

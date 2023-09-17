@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dlpm2bjbi0xyq"]
+[gd_scene load_steps=32 format=3 uid="uid://dlpm2bjbi0xyq"]
 
 [ext_resource type="Texture2D" uid="uid://d4a1s35jefp5r" path="res://MapGen/Resources/RoomAssets/LCZ/whitewall_2k.jpg" id="1_akmw6"]
 [ext_resource type="Texture2D" uid="uid://b067ykrbqruf0" path="res://MapGen/Resources/RoomAssets/LCZ/dirtymetal.jpg" id="2_ux784"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://b1t4jbtv1pdjy" path="res://MapGen/Resources/RoomAssets/Props/office_desk_with_drawers.tscn" id="13_2fxk7"]
 [ext_resource type="PackedScene" uid="uid://cg3e33d8f3a6n" path="res://MapGen/Resources/RoomAssets/Props/laptop.tscn" id="14_hk8xp"]
 [ext_resource type="PackedScene" uid="uid://bff0n6tx6aq40" path="res://MapGen/Resources/Doors/DoorLCZ.tscn" id="15_keayv"]
+[ext_resource type="PackedScene" uid="uid://c1ywflix3wsbl" path="res://InventorySystem/Items/PickablePrefabs/key2.tscn" id="17_jum5n"]
+[ext_resource type="PackedScene" uid="uid://vpjy5i6gaggm" path="res://MapGen/Resources/Doors/DoorKeycard.tscn" id="17_osd70"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g7iws"]
 resource_name = "mat0"
@@ -365,5 +367,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.14424, 2.16148, 6.41076)
 [node name="Door" parent="." instance=ExtResource("15_keayv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.02029, 0, -3.85857)
 
-[node name="Door2" parent="." instance=ExtResource("15_keayv")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.40312, 0.0986373, -6.53601)
+[node name="KeycardedDoor" parent="." instance=ExtResource("17_osd70")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.42114, 0, -6.39084)
+
+[node name="key2" parent="." instance=ExtResource("17_jum5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.01535, 1.2719, -2.58312)

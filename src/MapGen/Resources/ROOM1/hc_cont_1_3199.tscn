@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bvhkm83yvgfmu"]
+[gd_scene load_steps=19 format=3 uid="uid://c2dsuti3w7oeg"]
 
 [ext_resource type="Texture2D" uid="uid://c6ug2umd27c0w" path="res://MapGen/Resources/RoomAssets/HCZ/dirtymetal.jpg" id="1_x5ut4"]
 [ext_resource type="Texture2D" uid="uid://wvlr2hjykt28" path="res://MapGen/Resources/RoomAssets/HCZ/bricks066_2k_color.png" id="2_766sj"]

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dcuxuhaprqvwl"]
+
+[ext_resource type="Texture2D" uid="uid://bpusp8r2n7sys" path="res://InventorySystem/Items/Keycard3.png" id="1_n4ykq"]
+[ext_resource type="Script" path="res://InventorySystem/Items/Item.cs" id="2_yok8j"]
+
+[resource]
+script = ExtResource("2_yok8j")
+InternalName = "key3"
+Name = "Keycard level 3"
+Texture = ExtResource("1_n4ykq")
+PickablePath = "res://InventorySystem/Items/PickablePrefabs/key3.tscn"
+PickupSoundPath = "res://Sounds/Interact/PickItem1.ogg"
+FirstPersonPrefabPath = "res://InventorySystem/Items/InHandPrefabs/key3.tscn"

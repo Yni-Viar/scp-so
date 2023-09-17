@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://xi3lh5ynrm7d"]
+[gd_scene load_steps=20 format=3 uid="uid://xi3lh5ynrm7d"]
 
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat0.006.tres" id="1_fauoj"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat1.006.tres" id="2_6vok4"]
@@ -13,8 +13,9 @@
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat10.005.tres" id="11_6duvc"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat11.004.tres" id="12_80wn6"]
 [ext_resource type="PackedScene" uid="uid://bratli6m21b8k" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="13_epomk"]
-[ext_resource type="PackedScene" uid="uid://bff0n6tx6aq40" path="res://MapGen/Resources/Doors/DoorLCZ.tscn" id="14_6fgi0"]
+[ext_resource type="PackedScene" uid="uid://vpjy5i6gaggm" path="res://MapGen/Resources/Doors/DoorKeycard.tscn" id="15_4dubn"]
 [ext_resource type="PackedScene" uid="uid://lljv7frh0t0a" path="res://MapGen/Resources/Doors/DoorLCZ/door.gltf" id="15_wn1b7"]
+[ext_resource type="PackedScene" uid="uid://c4jwjb1l3pl1w" path="res://InventorySystem/Items/PickablePrefabs/key4.tscn" id="16_l2jwm"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_skms2"]
 _surfaces = [{
@@ -301,8 +302,12 @@ light_color = Color(0, 0.462745, 0.890196, 1)
 distance_fade_enabled = true
 distance_fade_begin = 24.0
 
-[node name="Door" parent="." instance=ExtResource("14_6fgi0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.12915, -7.68, 3.35772)
-
 [node name="door" parent="." instance=ExtResource("15_wn1b7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.08939, -7.68, 10.2676)
+
+[node name="KeycardedDoor" parent="." instance=ExtResource("15_4dubn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.21519, -7.68, 3.3811)
+requirements = 2
+
+[node name="key4" parent="." instance=ExtResource("16_l2jwm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.45964, -7.68, -3.52683)

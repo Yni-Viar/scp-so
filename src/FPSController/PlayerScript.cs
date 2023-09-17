@@ -226,10 +226,18 @@ public partial class PlayerScript : CharacterBody3D
                 {
                     collidedWith.Call("Interact");
                 }
-                if (collidedWith is Pickable)
+                if (collidedWith is Pickable && scpNumber == 1)
                 {
                     collidedWith.Call("PickUpItem", this);
                 }
+                /*if (collidedWith is Door door)
+                {
+                    door.Rpc("DoorControl");
+                }
+                if (collidedWith is KeycardedDoor kDoor)
+                {
+                    kDoor.Rpc("DoorControl", GetPath());
+                }*/
             }
             /*if (blinkTimer > blinkWaiting) //deprecated in 0.3.0-dev, because of blink system rework.
             {

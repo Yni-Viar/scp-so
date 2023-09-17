@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cagvnau6m2465"]
+[gd_scene load_steps=22 format=3 uid="uid://cagvnau6m2465"]
 
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat0.005.tres" id="1_e88oj"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat1.005.tres" id="2_ex3u6"]
@@ -14,7 +14,10 @@
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat11.003.tres" id="12_57bqw"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat12.001.tres" id="13_apywl"]
 [ext_resource type="PackedScene" uid="uid://bratli6m21b8k" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="14_50w72"]
-[ext_resource type="PackedScene" uid="uid://bff0n6tx6aq40" path="res://MapGen/Resources/Doors/DoorLCZ.tscn" id="15_h36nb"]
+[ext_resource type="PackedScene" uid="uid://vpjy5i6gaggm" path="res://MapGen/Resources/Doors/DoorKeycard.tscn" id="15_hm7hw"]
+[ext_resource type="PackedScene" uid="uid://c1ywflix3wsbl" path="res://InventorySystem/Items/PickablePrefabs/key2.tscn" id="16_ux0ss"]
+[ext_resource type="PackedScene" uid="uid://cbqjadcdwpo8r" path="res://InventorySystem/Items/PickablePrefabs/key3.tscn" id="17_dpcet"]
+[ext_resource type="PackedScene" uid="uid://c4jwjb1l3pl1w" path="res://InventorySystem/Items/PickablePrefabs/key4.tscn" id="18_i1hrg"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_dkyyw"]
 _surfaces = [{
@@ -313,11 +316,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02087, 2.664, -5.29938)
 [node name="modern_ceiling_lamp_01_4k3" parent="." instance=ExtResource("14_50w72")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02087, 2.664, 5.74685)
 
-[node name="Door" parent="." instance=ExtResource("15_h36nb")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.99592, 2.38419e-07, 0.0274839)
+[node name="KeycardedDoor" parent="." instance=ExtResource("15_hm7hw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.95025, -1.19209e-07, -0.0900075)
+requirements = 2
 
-[node name="Door2" parent="." instance=ExtResource("15_h36nb")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.41999, 4.76837e-07, 5.75895)
+[node name="KeycardedDoor2" parent="." instance=ExtResource("15_hm7hw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.41085, 0, 5.8151)
+requirements = 1
 
-[node name="Door3" parent="." instance=ExtResource("15_h36nb")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.39069, 2.38419e-07, -4.42683)
+[node name="KeycardedDoor3" parent="." instance=ExtResource("15_hm7hw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.40047, -2.38419e-07, -4.41133)
+
+[node name="key2" parent="." instance=ExtResource("16_ux0ss")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.85583, 1.2, -5.4339)
+
+[node name="key3" parent="." instance=ExtResource("17_dpcet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.91113, 1.2, 6.99299)
+
+[node name="key4" parent="." instance=ExtResource("18_i1hrg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.06901, 1.2, -2.9854)

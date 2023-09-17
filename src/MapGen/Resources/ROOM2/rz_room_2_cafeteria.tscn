@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://capc0cccfjbhv"]
+[gd_scene load_steps=30 format=3 uid="uid://capc0cccfjbhv"]
 
 [ext_resource type="Texture2D" uid="uid://b84yss2lwoi36" path="res://MapGen/Resources/RoomAssets/RZ/metal.jpg" id="1_i3rf0"]
 [ext_resource type="Texture2D" uid="uid://bdepgdphwfa72" path="res://MapGen/Resources/RoomAssets/RZ/tilefloor.jpg" id="2_cvk38"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://vcyo2coo1147" path="res://MapGen/Resources/RoomAssets/RZ/papertexture.jpg" id="11_hj2p8"]
 [ext_resource type="Texture2D" uid="uid://cj24pjqmvob1l" path="res://MapGen/Resources/RoomAssets/RZ/red.jpg" id="12_ehgvx"]
 [ext_resource type="PackedScene" uid="uid://bratli6m21b8k" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="13_tikae"]
+[ext_resource type="PackedScene" uid="uid://c1ywflix3wsbl" path="res://InventorySystem/Items/PickablePrefabs/key2.tscn" id="14_2fvdf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7wuu"]
 resource_name = "mat0.001"
@@ -378,3 +379,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.186014, -1.48525, -7.2842)
 
 [node name="modern_ceiling_lamp_01_4k6" parent="." instance=ExtResource("13_tikae")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.186014, -1.48525, 5.60352)
+
+[node name="key2" parent="." instance=ExtResource("14_2fvdf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10384, -3.84, -5.08182)

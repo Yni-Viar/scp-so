@@ -43,13 +43,13 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_jee2o")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hyrte"]
-size = Vector3(0.720327, 0.472926, 0.305825)
+size = Vector3(0.353268, 0.472926, 0.29324)
 
 [node name="ButtonInteract" type="StaticBody3D"]
 script = ExtResource("1_kwgc0")
 
 [node name="Button" type="MeshInstance3D" parent="."]
-visibility_range_end = 64.0
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_7d58f")
 skeleton = NodePath("")
 

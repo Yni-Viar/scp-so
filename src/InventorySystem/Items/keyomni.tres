@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://yxtk2lmjd6x3"]
+
+[ext_resource type="Texture2D" uid="uid://dk071p2uf40k3" path="res://InventorySystem/Items/Keycard5.png" id="1_1god7"]
+[ext_resource type="Script" path="res://InventorySystem/Items/Item.cs" id="2_ny8gy"]
+
+[resource]
+script = ExtResource("2_ny8gy")
+InternalName = "keyomni"
+Name = "Keycard Omni"
+Texture = ExtResource("1_1god7")
+PickablePath = "res://InventorySystem/Items/PickablePrefabs/key5.tscn"
+PickupSoundPath = "res://Sounds/Interact/PickItem1.ogg"
+FirstPersonPrefabPath = "res://InventorySystem/Items/InHandPrefabs/key5.tscn"
