@@ -18,3 +18,4 @@ ScpNumber = -1
 Team = 3
 Health = 100.0
 CustomSpawn = false
+PreloadedItems = []

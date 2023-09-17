@@ -4,6 +4,7 @@ using System;
 [Tool]
 public partial class Item : Resource
 {
+    [ExportGroup("Common item properties")]
     [Export]
     public string InternalName { get; set; }
     [Export]
@@ -21,8 +22,21 @@ public partial class Item : Resource
     [Export]
     public string FirstPersonPrefabPath { get; set; }
 
-    public Item() : this(null, null, null, null, null, null) {}
-    public Item(string internalName, string name, Texture2D texture, string pickablePath, string pickupSoundPath, string firstPersonPrefabPath)
+    [ExportGroup("SCP-914 Outputs (path to a PICKABLE, not ITEM)")]
+    [Export]
+    public string[] Rough { get; set; }
+    [Export]
+    public string[] Coarse { get; set; }
+    [Export]
+    public string[] OneToOne { get; set; }
+    [Export]
+    public string[] Fine { get; set; }
+    [Export]
+    public string[] VeryFine { get; set; }
+
+    public Item() : this(null, null, null, null, null, null, null, null, null, null, null) {}
+    public Item(string internalName, string name, Texture2D texture, string pickablePath, string pickupSoundPath, 
+        string firstPersonPrefabPath, string[] rough, string[] coarse, string[] oneToOne, string[] fine, string[] veryFine)
     {
         InternalName = internalName;
         Name = name;
@@ -30,5 +44,10 @@ public partial class Item : Resource
         PickablePath = pickablePath;
         PickupSoundPath = pickupSoundPath;
         FirstPersonPrefabPath = firstPersonPrefabPath;
+        Rough = rough ?? System.Array.Empty<string>(); ;
+        Coarse = coarse ?? System.Array.Empty<string>(); ;
+        OneToOne = oneToOne ?? System.Array.Empty<string>(); ;
+        Fine = fine ?? System.Array.Empty<string>(); ;
+        VeryFine = veryFine ?? System.Array.Empty<string>(); ;
     }
 }
