@@ -23,7 +23,7 @@ public partial class Pickable : RigidBody3D
         Inventory inv = player.GetNode<Inventory>("InventoryContainer/Inventory");
         if (!Multiplayer.IsServer())
         {
-            RpcId(1, "PickUpRpc", inv.GetPath());
+            RpcId(Multiplayer.GetUniqueId(), "PickUpRpc", inv.GetPath());
         }
         else
         {
@@ -43,6 +43,7 @@ public partial class Pickable : RigidBody3D
             //after trimming, we will get an item from json.
             GetNode<Inventory>(invPath).AddItem(ResourceLoader.Load(ItemParser.ReadJson("user://itemlist.json")[SceneFilePath.TrimSuffix(".tscn").TrimPrefix("res://InventorySystem/Items/PickablePrefabs/")]));
             Rpc("DestroyPickedItem");
+
         }
         else
         {
