@@ -42,9 +42,10 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_jaq8v")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jy14a"]
-size = Vector3(0.385649, 0.259655, 0.0072405)
+size = Vector3(0.386, 0.26, 0.05)
 
 [node name="key4" type="RigidBody3D"]
+continuous_cd = true
 script = ExtResource("1_mbw2s")
 itemResource = ExtResource("2_nm2ft")
 
