@@ -35,7 +35,7 @@ public partial class scp914 : AnimatableBody3D
 	}
 
     /// <summary>
-    /// Main refine method. Processes players (and in future - also items) and refines them.
+    /// Main refine method. Processes players and items and refines them.
     /// </summary>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     public async void Refine()
@@ -79,7 +79,7 @@ public partial class scp914 : AnimatableBody3D
                         {
                             Pickable pickable = (Pickable)ResourceLoader.Load<PackedScene>(item.Rough[rnd.Next(0, item.Rough.Length)]).Instantiate();
                             pickable.GlobalPosition = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
-                            GetParent().GetNode<Node3D>("Items").AddChild(pickable);
+                            GetTree().Root.GetNode<Node3D>("Main/Game/Items").AddChild(pickable);
                             GD.Print("Rough");
                         }
                         break;
@@ -93,7 +93,7 @@ public partial class scp914 : AnimatableBody3D
                         {
                             Pickable pickable = (Pickable)ResourceLoader.Load<PackedScene>(item.Coarse[rnd.Next(0, item.Coarse.Length)]).Instantiate();
                             pickable.GlobalPosition = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
-                            GetParent().GetNode<Node3D>("Items").AddChild(pickable);
+                            GetTree().Root.GetNode<Node3D>("Main/Game/Items").AddChild(pickable);
                             GD.Print("Coarse");
                         }
                         break;
@@ -107,7 +107,7 @@ public partial class scp914 : AnimatableBody3D
                         {
                             Pickable pickable = (Pickable)ResourceLoader.Load<PackedScene>(item.OneToOne[rnd.Next(0, item.OneToOne.Length)]).Instantiate();
                             pickable.GlobalPosition = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
-                            GetParent().GetNode<Node3D>("Items").AddChild(pickable);
+                            GetTree().Root.GetNode<Node3D>("Main/Game/Items").AddChild(pickable);
                             GD.Print("1:1");
                         }
                         break;
@@ -121,7 +121,7 @@ public partial class scp914 : AnimatableBody3D
                         {
                             Pickable pickable = (Pickable)ResourceLoader.Load<PackedScene>(item.Fine[rnd.Next(0, item.Fine.Length)]).Instantiate();
                             pickable.GlobalPosition = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
-                            GetParent().GetNode<Node3D>("Items").AddChild(pickable);
+                            GetTree().Root.GetNode<Node3D>("Main/Game/Items").AddChild(pickable);
                             GD.Print("Fine");
                         }
                         break;
@@ -135,7 +135,7 @@ public partial class scp914 : AnimatableBody3D
                         {
                             Pickable pickable = (Pickable)ResourceLoader.Load<PackedScene>(item.VeryFine[rnd.Next(0, item.VeryFine.Length)]).Instantiate();
                             pickable.GlobalPosition = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
-                            GetParent().GetNode<Node3D>("Items").AddChild(pickable);
+                            GetTree().Root.GetNode<Node3D>("Main/Game/Items").AddChild(pickable);
                             GD.Print("VeryFine");
                         }
                         break;
@@ -214,7 +214,7 @@ public partial class scp914 : AnimatableBody3D
     }
 
     /// <summary>
-    /// Adds player to array for all players.
+    /// Adds player to refining queue.
     /// </summary>
     /// <param name="name">Player name</param>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
@@ -223,7 +223,7 @@ public partial class scp914 : AnimatableBody3D
         playersToRefine.Add(name);
     }
     /// <summary>
-    /// Removes player from array for all players.
+    /// Removes player from refining queue.
     /// </summary>
     /// <param name="name">Player name</param>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
@@ -237,13 +237,19 @@ public partial class scp914 : AnimatableBody3D
             }
         }
     }
-
+    /// <summary>
+    /// Adds item to refining queue.
+    /// </summary>
+    /// <param name="name">Item name</param>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void AddItem(string name)
     {
         itemsToRefine.Add(name);
     }
-
+    /// <summary>
+    /// Removes item from refining queue.
+    /// </summary>
+    /// <param name="name">Item name</param>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void RemoveItem(string name)
     {

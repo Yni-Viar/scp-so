@@ -130,8 +130,9 @@ theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "[b]v.0.6.0-dev[/b] [i](Alpha)[/i]
-- Re-added inventory.
+- Re-added inventory with items.
 - Increased distance between zones for optimization (except Class-D chamber).
+- Items can be refined in SCP-914.
 
 [b]KNOWN ISSUES:[/b]
 - It is NOT RECOMMENDED to connect to ongoing game, cause it's laggy (and full of connection errors).

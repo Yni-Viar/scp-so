@@ -226,7 +226,7 @@ public partial class PlayerScript : CharacterBody3D
                 {
                     collidedWith.Call("Interact");
                 }
-                if (collidedWith is Pickable && scpNumber == 1)
+                if (collidedWith is Pickable && scpNumber == -1)
                 {
                     collidedWith.Call("PickUpItem", this);
                 }
@@ -261,7 +261,10 @@ public partial class PlayerScript : CharacterBody3D
         UpDirection = Vector3.Up;
         MoveAndSlide();
     }
-
+    /// <summary>
+    /// Updates items in hand.
+    /// </summary>
+    /// <param name="itemName">Name of the item</param>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     private void UpdateItemsInHand(string itemName)
     {

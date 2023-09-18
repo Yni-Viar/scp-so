@@ -49,10 +49,9 @@ script = ExtResource("1_vimhw")
 itemResource = ExtResource("2_68e3u")
 
 [node name="Scene_Root_007" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
 mesh = SubResource("ArrayMesh_jc77r")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.00312073, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00312073, -0.00236575)
 shape = SubResource("BoxShape3D_jy14a")

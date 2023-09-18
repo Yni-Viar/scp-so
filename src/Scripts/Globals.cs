@@ -17,6 +17,12 @@ public partial class Globals
         };
 
     public static Godot.Collections.Dictionary<string, string> items = new Godot.Collections.Dictionary<string, string>{
-        {"pda", "res://InventorySystem/Items/pda.tres"}
+        { "key1", "res://InventorySystem/Items/key1.tres" },
+        { "key2", "res://InventorySystem/Items/key2.tres" },
+        { "key3", "res://InventorySystem/Items/key3.tres" },
+        { "key4", "res://InventorySystem/Items/key4.tres" },
+        { "key5", "res://InventorySystem/Items/key5.tres" },
+        { "keyomni", "res://InventorySystem/Items/keyomni.tres" },
+        { "pda", "res://InventorySystem/Items/pda.tres" }
     };
 }

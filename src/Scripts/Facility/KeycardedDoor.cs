@@ -20,38 +20,38 @@ public partial class KeycardedDoor : Node3D
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
 	internal void DoorControl(string playerPath)
 	{
-        if (CanOpen) //Regular SCPs can open up doors up to level 3
+        if (CanOpen) //Regular SCPs can open up doors up to level 3, upper levels of keycards can be opened by upcoming SCP-079
         {
-            if (requirements == openRequirements.key1 && 
-                (GetNode(playerPath).GetNode("PlayerHead/PlayerHand").GetNodeOrNull("key1") != null) || (GetNode<PlayerScript>(playerPath).scpNumber > 0))
-			{
-				DoorController();
-			}
-            else if (requirements == openRequirements.key2 &&
-                (GetNode(playerPath).GetNode("PlayerHead/PlayerHand").GetNodeOrNull("key2") != null) || (GetNode<PlayerScript>(playerPath).scpNumber > 0))
-            {
-                DoorController();
-            }
-            else if (requirements == openRequirements.key3 && 
-                (GetNode(playerPath).GetNode("PlayerHead/PlayerHand").GetNodeOrNull("key3") != null) || (GetNode<PlayerScript>(playerPath).scpNumber > 0))
-            {
-                DoorController();
-            }//Upper levels of keycards can be opened by upcoming SCP-079
-            else if (requirements == openRequirements.key4 && 
-                (GetNode(playerPath).GetNode("PlayerHead/PlayerHand").GetNodeOrNull("key4") != null) || (GetNode<PlayerScript>(playerPath).scpNumber == 079))
-            {
-                DoorController();
-            }
-            else if (requirements == openRequirements.key5 && 
-                (GetNode(playerPath).GetNode("PlayerHead/PlayerHand").GetNodeOrNull("key5") != null) || (GetNode<PlayerScript>(playerPath).scpNumber == 079))
-            {
-                DoorController();
-            }
-            else if (requirements == openRequirements.keyomni && 
+            if (requirements <= openRequirements.keyomni && 
                 (GetNode(playerPath).GetNode("PlayerHead/PlayerHand").GetNodeOrNull("keyomni") != null) || (GetNode<PlayerScript>(playerPath).scpNumber == 079))
             {
                 DoorController();
             }
+            else if (requirements <= openRequirements.key5 && 
+                (GetNode(playerPath).GetNode("PlayerHead/PlayerHand").GetNodeOrNull("key5") != null) || (GetNode<PlayerScript>(playerPath).scpNumber == 079))
+            {
+                DoorController();
+            }
+            else if (requirements <= openRequirements.key4 && 
+                (GetNode(playerPath).GetNode("PlayerHead/PlayerHand").GetNodeOrNull("key4") != null) || (GetNode<PlayerScript>(playerPath).scpNumber == 079))
+            {
+                DoorController();
+            }
+            else if (requirements <= openRequirements.key3 && 
+                (GetNode(playerPath).GetNode("PlayerHead/PlayerHand").GetNodeOrNull("key3") != null) || (GetNode<PlayerScript>(playerPath).scpNumber > 0))
+            {
+                DoorController();
+            }
+            else if (requirements <= openRequirements.key2 &&
+                (GetNode(playerPath).GetNode("PlayerHead/PlayerHand").GetNodeOrNull("key2") != null) || (GetNode<PlayerScript>(playerPath).scpNumber > 0))
+            {
+                DoorController();
+            }
+            else if (requirements == openRequirements.key1 && 
+                (GetNode(playerPath).GetNode("PlayerHead/PlayerHand").GetNodeOrNull("key1") != null) || (GetNode<PlayerScript>(playerPath).scpNumber > 0))
+			{
+				DoorController();
+			}
             else
             {
                 AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");

@@ -4,7 +4,7 @@ public partial class Pickable : RigidBody3D
 {
     [Export] internal Item itemResource;
     PlayerScript holder;
-
+    // Note for Yni: if the RigidBody keeps falling, check rotation!
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{

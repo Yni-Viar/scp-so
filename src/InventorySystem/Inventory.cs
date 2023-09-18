@@ -62,7 +62,7 @@ public partial class Inventory : Node
     {
         Resource previousItem = items[itemIndex];
         items[itemIndex] = null;
-
+        GetParent().GetParent<PlayerScript>().Rpc("UpdateItemsInHand", "");
         //Spawn item ingame
         if (previousItem is Item _item && itemSpawn) // anti-dupe
         {
