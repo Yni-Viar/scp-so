@@ -18,4 +18,4 @@ ScpNumber = -1
 Team = 3
 Health = 100.0
 CustomSpawn = false
-PreloadedItems = []
+PreloadedItems = PackedStringArray("res://InventorySystem/Items/key3.tres", "res://InventorySystem/Items/pda.tres")

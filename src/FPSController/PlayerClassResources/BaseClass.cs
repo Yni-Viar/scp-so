@@ -46,7 +46,7 @@ public partial class BaseClass : Resource
     public bool CustomSpawn { get; set; }
 
     [Export] // Godot types NEEDS initialization before use, or you will stuck with Nil.
-    public Godot.Collections.Array<Resource> PreloadedItems { get; set; } = new Godot.Collections.Array<Resource> { };
+    public string[] PreloadedItems { get; set; }
 
     // Make sure you provide a parameterless constructor.
     // In C#, a parameterless constructor is different from a
@@ -57,7 +57,7 @@ public partial class BaseClass : Resource
 
     public BaseClass(string className, string[] spawnPoints, string playerModelSource, string playerRagdollSource, 
         float speed, float jump, bool sprintEnabled, bool moveSoundsEnabled, string[] footstepSounds,
-        string[] sprintSounds, int scpNumber, Globals.Team team, float health, bool customSpawn, Godot.Collections.Array<Resource> preloadedItems)
+        string[] sprintSounds, int scpNumber, Globals.Team team, float health, bool customSpawn, string[] preloadedItems)
     {
         ClassName = className;
         SpawnPoints = spawnPoints ?? System.Array.Empty<string>();
@@ -73,6 +73,6 @@ public partial class BaseClass : Resource
         Team = team;
         Health = health;
         CustomSpawn = customSpawn;
-        PreloadedItems = preloadedItems;
+        PreloadedItems = preloadedItems ?? System.Array.Empty<string>();
     }
 }

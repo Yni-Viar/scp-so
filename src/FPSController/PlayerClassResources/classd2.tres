@@ -18,4 +18,4 @@ ScpNumber = -1
 Team = 1
 Health = 100.0
 CustomSpawn = false
-PreloadedItems = []
+PreloadedItems = PackedStringArray()

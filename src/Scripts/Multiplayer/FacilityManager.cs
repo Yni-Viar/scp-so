@@ -167,6 +167,7 @@ public partial class FacilityManager : Node3D
 		GetNode<PlayerScript>(playerName).jump = classData.Jump;
 		GetNode<PlayerScript>(playerName).health = classData.Health;
 		GetNode<PlayerScript>(playerName).team = classData.Team;
+		RpcId(int.Parse(playerName), "PreloadInventory", playerName, classData.PreloadedItems);
 		// PreloadInventory(playerName, classData.PreloadedItems);
 		RpcId(int.Parse(playerName), "UpdateClassUI", GetNode<PlayerScript>(playerName).className, GetNode<PlayerScript>(playerName).health);
 		if (IsMultiplayerAuthority()) //YESSS!!! IsMultiplayerAuthority() is NECESSARY for NOT duplicating player models!
@@ -208,17 +209,21 @@ public partial class FacilityManager : Node3D
 		}
 	}
 
-	/// <summary>
-	/// Helper method to preload inventory while changing class
-	/// </summary>
-	/// <param name="playerName">Name of the player</param>
-	/// <param name="itemsArray">Preloaded items</param>
-	void PreloadInventory(string playerName, Godot.Collections.Array<Resource> itemsArray)
+    /// <summary>
+    /// Helper method to preload inventory while changing class
+    /// </summary>
+    /// <param name="playerName">Name of the player</param>
+    /// <param name="itemsArray">Preloaded items</param>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    void PreloadInventory(string playerName, string[] itemsArray)
 	{
-		GetNode<Inventory>(playerName + "/InventoryContainer/Inventory").items.Clear();
-		foreach (Resource item in itemsArray)
+		for (int i = 0; i < GetNode<Inventory>(playerName + "/InventoryContainer/Inventory").items.Count; i++)
 		{
-            GetNode<Inventory>(playerName + "/InventoryContainer/Inventory").AddItem(item);
+			GetNode<Inventory>(playerName + "/InventoryContainer/Inventory").items[i] = null;
+        }
+		foreach (string item in itemsArray)
+		{
+            GetNode<Inventory>(playerName + "/InventoryContainer/Inventory").AddItem(ResourceLoader.Load(item));
         }
 	}
 

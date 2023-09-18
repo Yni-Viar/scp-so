@@ -1,8 +1,6 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://b27dcvrr162j7"]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b27dcvrr162j7"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerClassResources/BaseClass.cs" id="1_pgmad"]
-[ext_resource type="Resource" uid="uid://dcuxuhaprqvwl" path="res://InventorySystem/Items/key3.tres" id="1_wkshb"]
-[ext_resource type="Resource" uid="uid://itlfhdutbowo" path="res://InventorySystem/Items/pda.tres" id="2_0rwrk"]
 
 [resource]
 script = ExtResource("1_pgmad")
@@ -20,4 +18,4 @@ ScpNumber = -1
 Team = 1
 Health = 100.0
 CustomSpawn = false
-PreloadedItems = [ExtResource("1_wkshb"), ExtResource("2_0rwrk")]
+PreloadedItems = PackedStringArray()

@@ -77,14 +77,18 @@ public partial class Inventory : Node
     /// <param name="item">Resource to add</param>
     internal void AddItem(Resource item)
     {
-        for (int i = 0; i < items.Count; i++)
+        if (IsMultiplayerAuthority())
         {
-            if (items[i] == null)
+            for (int i = 0; i < items.Count; i++)
             {
-                SetItem(i, item);
-                break;
+                if (items[i] == null)
+                {
+                    SetItem(i, item);
+                    break;
+                }
             }
         }
+        
     }
 
     //Networking functions are used from https://github.com/expressobits/inventory-system
@@ -105,7 +109,7 @@ public partial class Inventory : Node
         }
         AddItem(item);
     }
-
+    
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     private void RemoveItemRpc(int itemIndex, bool itemSpawn)
     {
