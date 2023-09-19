@@ -135,7 +135,6 @@ text = "[b]v.0.6.0-dev[/b] [i](Alpha)[/i]
 - Items can be refined in SCP-914.
 
 [b]KNOWN ISSUES:[/b]
-- It is NOT RECOMMENDED to connect to ongoing game, cause it's laggy (and full of connection errors).
 - There is NO loading screen, so you need to wait.
 - Scientist's hands rig are incorrect. (I am unable to fix this issue, because Mixamo does not support hazmats :( )
 - Background music may play once."
@@ -202,7 +201,7 @@ text = "Connect"
 [node name="Info" type="Label" parent="PlayPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "WARNING! Multiplayer mode is NOT production-ready!"
+text = "WARNING! Multiplayer mode is NOT production-ready! Connecting to ongoing game is an EXPERIMENTAL feature."
 
 [node name="DevWarning" type="Label" parent="."]
 layout_mode = 1
