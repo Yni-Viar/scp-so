@@ -185,7 +185,11 @@ public partial class FacilityManager : Node3D
             GetNode<PlayerScript>(playerName).Position = GetTree().Root.GetNode<Marker3D>("Main/Game/MapGenHcz/HC_cont2_testroom/entityspawn").GlobalPosition;
         }
     }
-
+    /// <summary>
+    /// Recall player classes for player, which got connected to ongoing round.
+    /// </summary>
+    /// <param name="players">Player list to process</param>
+    /// <param name="target">A player connected mid-round</param>
     void PostRoundStart(Godot.Collections.Array<string> players, long target)
     {
         Rpc("SetPlayerClass", playerScene.Name, "spectator");
@@ -193,8 +197,12 @@ public partial class FacilityManager : Node3D
         {
             RpcId(target, "SetPlayerClass", playerName, GetNode<PlayerScript>(playerName).classKey);
         }
+        Rpc("CleanRagdolls");
     }
-
+    /// <summary>
+    /// Loads the models of a player.
+    /// </summary>
+    /// <param name="playerName">Name of a player</param>
     void LoadModels(string playerName)
     {
         PlayerScript playerScript = GetNode<PlayerScript>(playerName);
@@ -295,6 +303,29 @@ public partial class FacilityManager : Node3D
         else //Spawn a human.
         {
             return classes["spawnableHuman"][rng.RandiRange(0, classes["spawnableHuman"].Count - 1)];
+        }
+    }
+    /// <summary>
+    /// Spawns player ragdoll.
+    /// </summary>
+    /// <param name="player">Player name</param>
+    /// <param name="ragdollSrc">source of ragdoll (meaned by class)</param>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    void SpawnRagdoll(string player, string ragdollSrc)
+    {
+        Node3D ragdoll = GD.Load<PackedScene>(ragdollSrc).Instantiate<Node3D>();
+        ragdoll.Position = GetNode<PlayerScript>(player).GlobalPosition;
+        GetNode("Ragdolls").AddChild(ragdoll);
+    }
+    /// <summary>
+    /// Cleans ragdolls (used when a new player connects)
+    /// </summary>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    void CleanRagdolls()
+    {
+        foreach (Node node in GetNode("Ragdolls").GetChildren())
+        {
+            node.QueueFree();
         }
     }
 

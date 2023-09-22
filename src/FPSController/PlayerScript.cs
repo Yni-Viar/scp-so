@@ -21,6 +21,7 @@ public partial class PlayerScript : CharacterBody3D
     // Control blinkImage;
     AudioStreamPlayer3D walkSounds;
     AudioStreamPlayer3D interactSound;
+    internal float currentHealth = 1f;
 
     //blinking, deprecated in 0.3.0-dev
     // double deltaTimer = 0d;
@@ -335,22 +336,20 @@ public partial class PlayerScript : CharacterBody3D
     /// </summary>
     /// <param name="amount">How much health to add/deplete</param>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
-    void HealthManage(int amount)
+    void HealthManage(double amount)
     {
-        if (scpNumber != -2)
+        if (scpNumber != -2 && currentHealth <= health)
         {
-            health += amount;
+            currentHealth += (float)amount;
         }
         else
         {
             GD.Print("You cannot change HP for spectators");
         }
         
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
-            Node3D ragdoll = ResourceLoader.Load<PackedScene>(ragdollSource).Instantiate<Node3D>();
-            ragdoll.Position = GlobalPosition;
-            GetParent().GetNode<Node3D>("Ragdolls").AddChild(ragdoll);
+            GetParent<FacilityManager>().Rpc("SpawnRagdoll", this.Name, ragdollSource);
             CallForceclass("spectator");
         }
     }

@@ -134,8 +134,10 @@ text = "[b]v.0.6.0-dev[/b] [i](Alpha)[/i]
 - Increased distance between zones for optimization (except Class-D chamber).
 - Items can be refined in SCP-914.
 - Added death animations. (initially, there could be ragdolls, but they were not perfect)
+- Fixed the connection to ongoing rounds (through the feature is still experimental)
 
 [b]KNOWN ISSUES:[/b]
+- There may be freezes. Try to restart the game to fix this.
 - There is NO loading screen, so you need to wait.
 - Scientist's hands rig are incorrect. (I am unable to fix this issue, because Mixamo does not support hazmats :( )
 - Background music may play once."
@@ -202,7 +204,8 @@ text = "Connect"
 [node name="Info" type="Label" parent="PlayPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "WARNING! Multiplayer mode is NOT production-ready! Connecting to ongoing game is an EXPERIMENTAL feature."
+text = "WARNING! Multiplayer mode is NOT production-ready!
+Connecting to ongoing game is an EXPERIMENTAL feature."
 
 [node name="DevWarning" type="Label" parent="."]
 layout_mode = 1

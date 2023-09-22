@@ -13,7 +13,8 @@ public partial class Commands : Node
         GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("tp", new Callable(this, "TeleportCmd"), "Teleports you. (1 arguments needed)");
         GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("itemlist", new Callable(this, "ItemList"), "Returns item names");
         GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("give", new Callable(this, "GiveItem"), "Gives an item to inventory (Limit for each player equals 12 items)");
-	}
+        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("sethp", new Callable(this, "SetHealth"), "Sets health on a current player");
+    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -141,5 +142,18 @@ public partial class Commands : Node
     {
         Item item = ResourceLoader.Load<Item>(itemPath);
         GetTree().Root.GetNode<Inventory>("Main/Game/" + Multiplayer.GetUniqueId() + "/InventoryContainer/Inventory").Rpc("DropItemRpc", item.PickablePath);
+    }
+
+    string SetHealth(string[] args)
+    {
+        if (args.Length == 1)
+        {
+            GetParent<PlayerScript>().RpcId(Multiplayer.GetUniqueId(), "HealthManage", Convert.ToDouble(args[0]));
+            return "Given " + args[0] + " health (if is possible).";
+        }
+        else
+        {
+            return "Error. You need only 1 argument, e.g. sethp 100";
+        }
     }
 }
