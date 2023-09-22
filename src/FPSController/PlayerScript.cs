@@ -40,6 +40,9 @@ public partial class PlayerScript : CharacterBody3D
     [Export] internal string[] footstepSounds;
     [Export] internal string[] sprintSounds;
     [Export] internal Globals.Team team;
+
+    //Currently, ragdolls are unstable. (Or give me a sign, that they are working). So these "ragdolls" are just death animations.
+    [Export] internal string ragdollSource;
     
     float gravity = 9.8f;
     // SCP Number. Set -1 for humans, -2 for spectators.
@@ -345,6 +348,9 @@ public partial class PlayerScript : CharacterBody3D
         
         if (health <= 0)
         {
+            Node3D ragdoll = ResourceLoader.Load<PackedScene>(ragdollSource).Instantiate<Node3D>();
+            ragdoll.Position = GlobalPosition;
+            GetParent().GetNode<Node3D>("Ragdolls").AddChild(ragdoll);
             CallForceclass("spectator");
         }
     }

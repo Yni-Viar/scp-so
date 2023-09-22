@@ -86,6 +86,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 512, -1600, -512)
 
 [node name="Items" type="Node3D" parent="."]
 
+[node name="Ragdolls" type="Node3D" parent="."]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("5_u1dtw")
 
