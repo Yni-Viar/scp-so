@@ -137,6 +137,8 @@ text = "[b]v.0.6.0-dev[/b] [i](Alpha)[/i]
 - Fixed the connection to ongoing rounds (through the feature is still experimental)
 - Added custom shader support (currently used on SCP-173)
 - Added custom camera support (will be used in future)
+- Regular doors and gates can be opened without button (keycard equivalents and elevators still need clicking buttons to function)
+- MTF ε-11 \"Nine-Tailed Fox\" can arrive every 5 minutes!
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.
@@ -421,9 +423,9 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[i]Debug console[/i]
+text = "[i]Debug console (License - The Unlicense)[/i]
 
-- Made by USBashka (License - Public Domain)
+- Made by USBashka
 - Ported to C# by Yni.
 
 "
@@ -492,6 +494,7 @@ text = "[i]Models (license - CC-BY-SA 3.0)[/i]
 - Mobile Task Force Trooper - Shadowscale (model, textures), Shakles (rig, animation)
 - Hazmat Scientist - Shadowscale (model, textures)
 - SCP-079 model - Hakkla
+- SCP-106 model - Aruspice (model, textures), Shakles (rig, animation), PixelPuffin (concept art)
 - SCP-173 model - Aruspice (model, textures), Shakles (rig, animation), PixelPuffin (concept art)
 - SCP-650 model - Shadowscale(model, textures)
 - SCP-3199 model - Aruspice (model, textures), Shakles (rig, animation)
