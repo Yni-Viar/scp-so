@@ -45,6 +45,12 @@ public partial class BaseClass : Resource
     [Export]
     public bool CustomSpawn { get; set; }
 
+    [Export]
+    public bool CustomCamera { get; set; }
+
+    [Export]
+    public string CustomView { get; set; }
+
     [Export] // Godot types NEEDS initialization before use, or you will stuck with Nil.
     public string[] PreloadedItems { get; set; }
 
@@ -53,11 +59,11 @@ public partial class BaseClass : Resource
     // constructor with all default values.
     // Without a parameterless constructor, Godot will have problems
     // creating and editing your resource via the inspector.
-    public BaseClass() : this(null, null, null, null, 0f, 0f, true, true, null, null, -1, Globals.Team.SPT, 100f, false, null) { }
+    public BaseClass() : this(null, null, null, null, 0f, 0f, true, true, null, null, -1, Globals.Team.SPT, 100f, false, false, null, null) { }
 
     public BaseClass(string className, string[] spawnPoints, string playerModelSource, string playerRagdollSource, 
         float speed, float jump, bool sprintEnabled, bool moveSoundsEnabled, string[] footstepSounds,
-        string[] sprintSounds, int scpNumber, Globals.Team team, float health, bool customSpawn, string[] preloadedItems)
+        string[] sprintSounds, int scpNumber, Globals.Team team, float health, bool customSpawn, bool customCamera, string customView, string[] preloadedItems)
     {
         ClassName = className;
         SpawnPoints = spawnPoints ?? System.Array.Empty<string>();
@@ -73,6 +79,8 @@ public partial class BaseClass : Resource
         Team = team;
         Health = health;
         CustomSpawn = customSpawn;
+        CustomCamera = customCamera;
+        CustomView = customView;
         PreloadedItems = preloadedItems ?? System.Array.Empty<string>();
     }
 }

@@ -1,9 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://isp3qhbu0mf5"]
+[gd_scene load_steps=11 format=3 uid="uid://isp3qhbu0mf5"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerScript.cs" id="1_tw8h1"]
 [ext_resource type="PackedScene" uid="uid://gom6tjixj21n" path="res://InventorySystem/InventoryContainer.tscn" id="2_6uw7r"]
 [ext_resource type="Script" path="res://FPSController/Commands.cs" id="2_decth"]
+[ext_resource type="Material" uid="uid://drjxh51q0p5wj" path="res://Shaders/Scp173Shade.tres" id="3_apklp"]
 [ext_resource type="Script" path="res://FPSController/PlayerSync.cs" id="10_8dn5b"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_wuaka"]
+flip_faces = true
+size = Vector2(2, 2)
 
 [sub_resource type="CapsuleShape3D" id="1"]
 radius = 0.371158
@@ -71,7 +76,13 @@ script = ExtResource("2_decth")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.968611, -0.292869)
 
 [node name="PlayerCamera" type="Camera3D" parent="PlayerHead"]
-near = 0.003
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.53674e-07, 0)
+
+[node name="ToonShader" type="MeshInstance3D" parent="PlayerHead/PlayerCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.038706)
+visible = false
+mesh = SubResource("QuadMesh_wuaka")
+surface_material_override/0 = ExtResource("3_apklp")
 
 [node name="RayCast3D" type="RayCast3D" parent="PlayerHead"]
 target_position = Vector3(0, 0, -3)

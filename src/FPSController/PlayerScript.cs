@@ -373,4 +373,27 @@ public partial class PlayerScript : CharacterBody3D
         isBlinking = false;
         blinkImage.Hide();
     }*/
+
+    /// <summary>
+    /// Applies player camera shader. Only spatial shaders could be applied due to project structure.
+    /// </summary>
+    /// <param name="res">Child node path</param>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    void ApplyShader(string res)
+    {
+        if (GetNodeOrNull("PlayerHead/PlayerCamera/" + res) != null && res != null && res != "")
+        {
+            GetNode<MeshInstance3D>("PlayerHead/PlayerCamera/" + res).Visible = true;
+        }
+        else
+        {
+            foreach (Node node in GetNode("PlayerHead/PlayerCamera/").GetChildren())
+            {
+                if (node is MeshInstance3D shader)
+                {
+                    shader.Visible = false;
+                }
+            }
+        }
+    }
 }
