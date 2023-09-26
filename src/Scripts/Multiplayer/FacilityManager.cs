@@ -127,6 +127,7 @@ public partial class FacilityManager : Node3D
     {
         await ToSignal(GetTree().CreateTimer(15.0), "timeout");
         BeginGame();
+        RespawnMTF();
     }
 
     /// <summary>
@@ -145,6 +146,22 @@ public partial class FacilityManager : Node3D
             }
         }
         isRoundStarted = true;
+    }
+    /// <summary>
+    /// Respawns MTF e-11 "Nine-Tailed Fox" every 5 minutes.
+    /// </summary>
+    async void RespawnMTF()
+    {
+        await ToSignal(GetTree().CreateTimer(300.0), "timeout");
+        foreach (string item in playersList)
+        {
+            PlayerScript player = GetNode<PlayerScript>(item);
+            if (player.classKey == "spectator")
+            {
+                Rpc("SetPlayerClass", item, "mtfe11");
+            }
+        }
+        RespawnMTF();
     }
 
     /// <summary>
