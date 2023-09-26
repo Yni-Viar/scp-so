@@ -142,10 +142,6 @@ public partial class PlayerScript : CharacterBody3D
     {
         if (IsMultiplayerAuthority())
         {
-            /*if (scpNumber == -1) //deprecated in 0.3.0-dev
-            {
-                blinkTimer += delta;
-            }*/
 
             //gravity
             if (IsOnFloor())
@@ -234,14 +230,10 @@ public partial class PlayerScript : CharacterBody3D
                 {
                     collidedWith.Call("PickUpItem", this);
                 }
-                /*if (collidedWith is Door door)
+                if (collidedWith is DoorStaticOpener)
                 {
-                    door.Rpc("DoorControl");
+                    collidedWith.Call("CallOpen");
                 }
-                if (collidedWith is KeycardedDoor kDoor)
-                {
-                    kDoor.Rpc("DoorControl", GetPath());
-                }*/
             }
             /*if (blinkTimer > blinkWaiting) //deprecated in 0.3.0-dev, because of blink system rework.
             {

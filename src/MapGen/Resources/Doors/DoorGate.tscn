@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c6ga54vkki72d"]
+[gd_scene load_steps=20 format=3 uid="uid://c6ga54vkki72d"]
 
 [ext_resource type="Texture2D" uid="uid://b4mexeiu2kw0e" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_Color.png" id="1_a7mr4"]
 [ext_resource type="Script" path="res://Scripts/Facility/Door.cs" id="1_xhv6f"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://jal6u6cusnv3" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_Metalness-Metal032_2K_Roughness.png" id="2_rhhsh"]
 [ext_resource type="Texture2D" uid="uid://bhv585dwr87xd" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_NormalGL.png" id="3_356p2"]
 [ext_resource type="Texture2D" uid="uid://q7qhbxch3lsf" path="res://MapGen/Resources/Doors/DoorGate/GateFrame/Metal032_2K_Metalness-Metal032_2K_Roughness.png" id="3_c0w4i"]
+[ext_resource type="Script" path="res://Scripts/Facility/DoorStaticOpener.cs" id="5_hlsuf"]
 [ext_resource type="PackedScene" uid="uid://bpx6ko6t0w1o5" path="res://MapGen/Resources/Buttons/button_interact.tscn" id="6_lekwh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r77rk"]
@@ -133,6 +134,7 @@ mesh = SubResource("ArrayMesh_vdru4")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube_001"]
+script = ExtResource("5_hlsuf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_001/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.01449, 0.00306654)
@@ -144,6 +146,7 @@ mesh = SubResource("ArrayMesh_oo2qq")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Frame"]
+script = ExtResource("5_hlsuf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Frame/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ip4rb")
