@@ -628,6 +628,24 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -10.6397, 6.07999, 2
 [node name="cardboard_box_01_4k" parent="." instance=ExtResource("32_snlyg")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -5.87226, -1.6545e-05, 45.4099)
 
+[node name="cardboard_box_01_4k6" parent="." instance=ExtResource("32_snlyg")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -21.3758, -12.3595, -5.64418)
+
+[node name="cardboard_box_01_4k7" parent="." instance=ExtResource("32_snlyg")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -17.837, -12.3595, -4.62946)
+
+[node name="cardboard_box_01_4k8" parent="." instance=ExtResource("32_snlyg")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -16.0992, -12.3595, -8.03289)
+
+[node name="cardboard_box_01_4k9" parent="." instance=ExtResource("32_snlyg")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -17.2272, -10.6703, -6.3604)
+
+[node name="cardboard_box_01_4k4" parent="." instance=ExtResource("32_snlyg")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -15.7208, -1.6545e-05, -5.74848)
+
+[node name="cardboard_box_01_4k5" parent="." instance=ExtResource("32_snlyg")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -17.8292, -1.6545e-05, -2.38302)
+
 [node name="cardboard_box_01_4k2" parent="." instance=ExtResource("32_snlyg")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -2.01393, -1.63002e-05, 44.7252)
 
@@ -636,6 +654,18 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -4.5496, -1.51168e-05, 41.416
 
 [node name="steel_frame_shelves_01_4k4" parent="." instance=ExtResource("31_q3keb")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 7.56727, -9.19073e-06, 26.5525)
+
+[node name="steel_frame_shelves_01_4k6" parent="." instance=ExtResource("31_q3keb")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -3.90841, 4.69789, 14.2402)
+
+[node name="steel_frame_shelves_01_4k7" parent="." instance=ExtResource("31_q3keb")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 2.23705, 4.69789, 14.2402)
+
+[node name="steel_frame_shelves_01_4k8" parent="." instance=ExtResource("31_q3keb")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -9.49487, 4.69789, 14.2402)
+
+[node name="steel_frame_shelves_01_4k9" parent="." instance=ExtResource("31_q3keb")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -16.4413, 4.69789, 14.2402)
 
 [node name="steel_frame_shelves_01_4k5" parent="." instance=ExtResource("31_q3keb")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 2.67389, -9.50198e-06, 26.5695)
