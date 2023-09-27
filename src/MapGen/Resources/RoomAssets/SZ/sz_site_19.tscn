@@ -646,71 +646,71 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.02168, 0.228373, 26.6794)
 [node name="laptop" parent="." instance=ExtResource("34_hb85q")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -8.39648, 1.50027, 26.6005)
 
-[node name="ElevatorSz" type="Node3D" parent="."]
+[node name="ElevatorSz2" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.4658, -12.4353, -2.52298)
 script = ExtResource("37_oyres")
-elevators = PackedStringArray("Game/MapGenRz/RZ_exit1/ElevatorSz", "Game/SurfaceMap/UpperData/SZ_site19/ElevatorSz")
-destinationPoints = PackedStringArray("Sz", "Sz")
+elevators = PackedStringArray("Game/MapGenRz/RZ_exit1/ElevatorSz1", "Game/SurfaceMap/UpperData/SZ_site19/ElevatorSz2")
+destinationPoints = PackedStringArray("Sz1", "Sz2")
 openDoorSounds = PackedStringArray("res://Sounds/Door/ElevatorOpen1.ogg", "res://Sounds/Door/ElevatorOpen2.ogg", "res://Sounds/Door/ElevatorOpen3.ogg")
 closeDoorSounds = PackedStringArray("res://Sounds/Door/ElevatorClose1.ogg", "res://Sounds/Door/ElevatorClose2.ogg", "res://Sounds/Door/ElevatorClose3.ogg")
 
-[node name="Sz2" type="Marker3D" parent="ElevatorSz"]
+[node name="Sz2" type="Marker3D" parent="ElevatorSz2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0198827, 2.53527, -4.5263)
 
-[node name="ElevatorDoor" type="MeshInstance3D" parent="ElevatorSz"]
+[node name="ElevatorDoor" type="MeshInstance3D" parent="ElevatorSz2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59544, 0)
 mesh = SubResource("ArrayMesh_jplkf")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="ElevatorSz/ElevatorDoor"]
+[node name="StaticBody3D" type="StaticBody3D" parent="ElevatorSz2/ElevatorDoor"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ElevatorSz/ElevatorDoor/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ElevatorSz2/ElevatorDoor/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0387383, -0.0440073, -0.00322318)
 shape = SubResource("BoxShape3D_gw7sb")
 
-[node name="Frame" type="MeshInstance3D" parent="ElevatorSz"]
+[node name="Frame" type="MeshInstance3D" parent="ElevatorSz2"]
 transform = Transform3D(0.666655, 0, 0, 0, 0.777826, 0, 0, 0, 0.588282, 0.11642, 2.38419e-07, 0.0636973)
 visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_i1mff")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="ElevatorSz/Frame"]
+[node name="StaticBody3D" type="StaticBody3D" parent="ElevatorSz2/Frame"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ElevatorSz/Frame/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ElevatorSz2/Frame/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_6yr6v")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ElevatorSz"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ElevatorSz2"]
 libraries = {
 "": SubResource("AnimationLibrary_1asd3")
 }
 
-[node name="DoorSound" type="AudioStreamPlayer3D" parent="ElevatorSz"]
+[node name="DoorSound" type="AudioStreamPlayer3D" parent="ElevatorSz2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402887, 1.96653, 0.0803845)
 max_distance = 40.0
 
-[node name="ButtonInteractCall" parent="ElevatorSz" instance=ExtResource("36_i1y7r")]
+[node name="ButtonInteractCall" parent="ElevatorSz2" instance=ExtResource("36_i1y7r")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.70181, 1.76304, 0.366184)
 
-[node name="ButtonInteractUp" parent="ElevatorSz" instance=ExtResource("36_i1y7r")]
+[node name="ButtonInteractUp" parent="ElevatorSz2" instance=ExtResource("36_i1y7r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98132, 1.99339, -0.204788)
 
-[node name="ButtonInteractDown" parent="ElevatorSz" instance=ExtResource("36_i1y7r")]
+[node name="ButtonInteractDown" parent="ElevatorSz2" instance=ExtResource("36_i1y7r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.971, 1.43088, -0.194961)
 
-[node name="FakeMove" type="AudioStreamPlayer3D" parent="ElevatorSz"]
+[node name="FakeMove" type="AudioStreamPlayer3D" parent="ElevatorSz2"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.037385, 2.54004, -4.54428)
 stream = ExtResource("38_jqvf5")
 
-[node name="TeleportArea" type="Area3D" parent="ElevatorSz"]
+[node name="TeleportArea" type="Area3D" parent="ElevatorSz2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02, 2.404, -4.29811)
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ElevatorSz/TeleportArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ElevatorSz2/TeleportArea"]
 shape = SubResource("BoxShape3D_5jklw")
 
-[connection signal="Interacted" from="ElevatorSz/ButtonInteractCall" to="ElevatorSz" method="OnButtonInteractInteracted"]
-[connection signal="Interacted" from="ElevatorSz/ButtonInteractUp" to="ElevatorSz" method="OnButtonInteractUpInteracted"]
-[connection signal="Interacted" from="ElevatorSz/ButtonInteractDown" to="ElevatorSz" method="OnButtonInteractDownInteracted"]
-[connection signal="body_entered" from="ElevatorSz/TeleportArea" to="ElevatorSz" method="OnTeleportAreaBodyEntered"]
-[connection signal="body_exited" from="ElevatorSz/TeleportArea" to="ElevatorSz" method="OnTeleportAreaBodyExited"]
+[connection signal="Interacted" from="ElevatorSz2/ButtonInteractCall" to="ElevatorSz2" method="OnButtonInteractInteracted"]
+[connection signal="Interacted" from="ElevatorSz2/ButtonInteractUp" to="ElevatorSz2" method="OnButtonInteractUpInteracted"]
+[connection signal="Interacted" from="ElevatorSz2/ButtonInteractDown" to="ElevatorSz2" method="OnButtonInteractDownInteracted"]
+[connection signal="body_entered" from="ElevatorSz2/TeleportArea" to="ElevatorSz2" method="OnTeleportAreaBodyEntered"]
+[connection signal="body_exited" from="ElevatorSz2/TeleportArea" to="ElevatorSz2" method="OnTeleportAreaBodyExited"]

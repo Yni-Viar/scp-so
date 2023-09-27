@@ -70,7 +70,7 @@ public partial class SurfaceElevator : Node3D
         }
         canInteract = false;
         Node3D toTeleport;
-        toTeleport = (Node3D)(GetTree().Root.GetNode("Main/" + elevators[currentFloor + direction]));
+        toTeleport = (Node3D)GetTree().Root.GetNode("Main/" + elevators[currentFloor + direction]);
         fromTeleport.GetNode<AudioStreamPlayer3D>("FakeMove").Play();
         toTeleport.GetNode<AudioStreamPlayer3D>("FakeMove").Play();
         await ToSignal(GetTree().CreateTimer(5.0), "timeout");
@@ -112,7 +112,7 @@ public partial class SurfaceElevator : Node3D
                 {
                     case 1:
                         //ElevatorMove(-1);
-                        Rpc("ElevatorMove", 1);
+                        Rpc("ElevatorMove", -1);
                         break;
                     default:
                         GD.PrintErr("Could not determine the floor you are in.");
@@ -125,7 +125,7 @@ public partial class SurfaceElevator : Node3D
                 {
                     case 0:
                         //ElevatorMove(1);
-                        Rpc("ElevatorMove", -1); // increment floor for reaching the player.
+                        Rpc("ElevatorMove", 1); // increment floor for reaching the player.
                         break;
                     default:
                         GD.PrintErr("Could not determine the floor you are in.");

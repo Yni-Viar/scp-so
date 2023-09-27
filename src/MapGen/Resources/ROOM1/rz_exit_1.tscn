@@ -433,69 +433,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.68875, 2.37677, 3.90668)
 [node name="Lamp" parent="." instance=ExtResource("17_r28ge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.467492, 4.46267, -5.96291)
 
-[node name="ElevatorSz" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.402887, -2.38419e-07, -1.37703)
-script = ExtResource("18_dfsxg")
-elevators = PackedStringArray("Game/MapGenRz/RZ_exit1/ElevatorSz", "Game/SurfaceMap/UpperData/SZ_site19/ElevatorSz")
-destinationPoints = PackedStringArray("Sz1", "Sz2")
-openDoorSounds = PackedStringArray("res://Sounds/Door/ElevatorOpen1.ogg", "res://Sounds/Door/ElevatorOpen2.ogg", "res://Sounds/Door/ElevatorOpen3.ogg")
-closeDoorSounds = PackedStringArray("res://Sounds/Door/ElevatorClose1.ogg", "res://Sounds/Door/ElevatorClose2.ogg", "res://Sounds/Door/ElevatorClose3.ogg")
-
-[node name="Sz1" type="Marker3D" parent="ElevatorSz"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0198827, 2.53527, -4.5263)
-
-[node name="ElevatorDoor" type="MeshInstance3D" parent="ElevatorSz"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59544, 0)
-mesh = SubResource("ArrayMesh_m8imj")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="ElevatorSz/ElevatorDoor"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ElevatorSz/ElevatorDoor/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0387383, -0.0440073, -0.00322318)
-shape = SubResource("BoxShape3D_hgh26")
-
-[node name="Frame" type="MeshInstance3D" parent="ElevatorSz"]
-transform = Transform3D(0.666655, 0, 0, 0, 0.777826, 0, 0, 0, 0.588282, 0.11642, 2.38419e-07, 0.0636973)
-visibility_range_end = 128.0
-mesh = SubResource("ArrayMesh_0kapb")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="ElevatorSz/Frame"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ElevatorSz/Frame/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_h8puy")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ElevatorSz"]
-libraries = {
-"": SubResource("AnimationLibrary_1asd3")
-}
-
-[node name="DoorSound" type="AudioStreamPlayer3D" parent="ElevatorSz"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402887, 1.96653, 0.0803845)
-max_distance = 40.0
-
-[node name="ButtonInteractCall" parent="ElevatorSz" instance=ExtResource("24_t687i")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.70181, 1.76304, 0.366184)
-
-[node name="ButtonInteractUp" parent="ElevatorSz" instance=ExtResource("24_t687i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98132, 1.99339, -0.204788)
-
-[node name="ButtonInteractDown" parent="ElevatorSz" instance=ExtResource("24_t687i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.971, 1.43088, -0.194961)
-
-[node name="FakeMove" type="AudioStreamPlayer3D" parent="ElevatorSz"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0373855, 2.54004, -4.54428)
-stream = ExtResource("25_yinq7")
-
-[node name="TeleportArea" type="Area3D" parent="ElevatorSz"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02, 2.404, -4.29811)
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ElevatorSz/TeleportArea"]
-shape = SubResource("BoxShape3D_6hwnp")
-
 [node name="KeycardedGate" parent="." instance=ExtResource("26_pp0yu")]
 transform = Transform3D(1.046, 0, 0, 0, 1.048, 0, 0, 0, 1, 0.073, -0.01, 3.984)
 requirements = 3
@@ -503,8 +440,71 @@ requirements = 3
 [node name="Door" parent="." instance=ExtResource("27_ngd70")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.4639, 0, 6.8474)
 
-[connection signal="Interacted" from="ElevatorSz/ButtonInteractCall" to="ElevatorSz" method="OnButtonInteractInteracted"]
-[connection signal="Interacted" from="ElevatorSz/ButtonInteractUp" to="ElevatorSz" method="OnButtonInteractUpInteracted"]
-[connection signal="Interacted" from="ElevatorSz/ButtonInteractDown" to="ElevatorSz" method="OnButtonInteractDownInteracted"]
-[connection signal="body_entered" from="ElevatorSz/TeleportArea" to="ElevatorSz" method="OnTeleportAreaBodyEntered"]
-[connection signal="body_exited" from="ElevatorSz/TeleportArea" to="ElevatorSz" method="OnTeleportAreaBodyExited"]
+[node name="ElevatorSz1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.402887, -2.38419e-07, -1.37703)
+script = ExtResource("18_dfsxg")
+elevators = PackedStringArray("Game/MapGenRz/RZ_exit1/ElevatorSz1", "Game/SurfaceMap/UpperData/SZ_site19/ElevatorSz2")
+destinationPoints = PackedStringArray("Sz1", "Sz2")
+openDoorSounds = PackedStringArray("res://Sounds/Door/ElevatorOpen1.ogg", "res://Sounds/Door/ElevatorOpen2.ogg", "res://Sounds/Door/ElevatorOpen3.ogg")
+closeDoorSounds = PackedStringArray("res://Sounds/Door/ElevatorClose1.ogg", "res://Sounds/Door/ElevatorClose2.ogg", "res://Sounds/Door/ElevatorClose3.ogg")
+
+[node name="Sz1" type="Marker3D" parent="ElevatorSz1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0198827, 2.53527, -4.5263)
+
+[node name="ElevatorDoor" type="MeshInstance3D" parent="ElevatorSz1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59544, 0)
+mesh = SubResource("ArrayMesh_m8imj")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ElevatorSz1/ElevatorDoor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ElevatorSz1/ElevatorDoor/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0387383, -0.0440073, -0.00322318)
+shape = SubResource("BoxShape3D_hgh26")
+
+[node name="Frame" type="MeshInstance3D" parent="ElevatorSz1"]
+transform = Transform3D(0.666655, 0, 0, 0, 0.777826, 0, 0, 0, 0.588282, 0.11642, 2.38419e-07, 0.0636973)
+visibility_range_end = 128.0
+mesh = SubResource("ArrayMesh_0kapb")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ElevatorSz1/Frame"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ElevatorSz1/Frame/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_h8puy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ElevatorSz1"]
+libraries = {
+"": SubResource("AnimationLibrary_1asd3")
+}
+
+[node name="DoorSound" type="AudioStreamPlayer3D" parent="ElevatorSz1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402887, 1.96653, 0.0803845)
+max_distance = 40.0
+
+[node name="ButtonInteractCall" parent="ElevatorSz1" instance=ExtResource("24_t687i")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.70181, 1.76304, 0.366184)
+
+[node name="ButtonInteractUp" parent="ElevatorSz1" instance=ExtResource("24_t687i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98132, 1.99339, -0.204788)
+
+[node name="ButtonInteractDown" parent="ElevatorSz1" instance=ExtResource("24_t687i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.971, 1.43088, -0.194961)
+
+[node name="FakeMove" type="AudioStreamPlayer3D" parent="ElevatorSz1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0373855, 2.54004, -4.54428)
+stream = ExtResource("25_yinq7")
+
+[node name="TeleportArea" type="Area3D" parent="ElevatorSz1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02, 2.404, -4.29811)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ElevatorSz1/TeleportArea"]
+shape = SubResource("BoxShape3D_6hwnp")
+
+[connection signal="Interacted" from="ElevatorSz1/ButtonInteractCall" to="ElevatorSz1" method="OnButtonInteractInteracted"]
+[connection signal="Interacted" from="ElevatorSz1/ButtonInteractUp" to="ElevatorSz1" method="OnButtonInteractUpInteracted"]
+[connection signal="Interacted" from="ElevatorSz1/ButtonInteractDown" to="ElevatorSz1" method="OnButtonInteractDownInteracted"]
+[connection signal="body_entered" from="ElevatorSz1/TeleportArea" to="ElevatorSz1" method="OnTeleportAreaBodyEntered"]
+[connection signal="body_exited" from="ElevatorSz1/TeleportArea" to="ElevatorSz1" method="OnTeleportAreaBodyExited"]

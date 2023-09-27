@@ -135,6 +135,7 @@ text = "[b]v.0.6.0-dev[/b] [i](Alpha)[/i]
 - Items can be refined in SCP-914.
 - Added death animations. (initially, there could be ragdolls, but they were not perfect)
 - Fixed the connection to ongoing rounds (through the feature is still experimental)
+- Fixed bug, where surface elevators couldn't work.
 - Added custom shader support (currently used on SCP-173)
 - Added custom camera support (will be used in future)
 - Regular doors and gates can be opened without button (keycard equivalents and elevators still need clicking buttons to function)
