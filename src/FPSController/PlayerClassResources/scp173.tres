@@ -18,6 +18,7 @@ ScpNumber = 173
 Team = 4
 Health = 10000.0
 CustomSpawn = false
+DefaultCameraPos = 0.969
 CustomCamera = false
 CustomView = "ToonShader"
 PreloadedItems = PackedStringArray()

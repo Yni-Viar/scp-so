@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dekvjppb8ubf0"]
+
+[ext_resource type="Script" path="res://FPSController/PlayerClassResources/BaseClass.cs" id="1_ywgan"]
+
+[resource]
+script = ExtResource("1_ywgan")
+ClassName = "SCP-131-B The \"Eye Pods\""
+SpawnPoints = PackedStringArray("Main/Game/MapGenRz/RZ_room2_offices/entityspawn", "Main/Game/MapGenRz/RZ_room2_servers/entityspawn")
+PlayerModelSource = "res://FPSController/PlayerClassPrefab/scp131b.tscn"
+PlayerRagdollSource = "res://FPSController/PlayerClassPrefabGameover/hume.tscn"
+Speed = 5.0
+Jump = 1.0
+SprintEnabled = false
+MoveSoundsEnabled = true
+FootstepSounds = PackedStringArray()
+SprintSounds = PackedStringArray()
+ScpNumber = 131
+Team = 3
+Health = 1000.0
+CustomSpawn = false
+DefaultCameraPos = -1.044
+CustomCamera = false
+CustomView = ""
+PreloadedItems = PackedStringArray()

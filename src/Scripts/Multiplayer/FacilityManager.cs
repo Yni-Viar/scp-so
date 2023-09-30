@@ -184,7 +184,11 @@ public partial class FacilityManager : Node3D
         GetNode<PlayerScript>(playerName).jump = classData.Jump;
         GetNode<PlayerScript>(playerName).health = classData.Health;
         GetNode<PlayerScript>(playerName).team = classData.Team;
-        GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "ApplyShader", classData.CustomView);
+        if (Multiplayer.IsServer())
+        {
+            GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "ApplyPlayerHeadPosition", classData.DefaultCameraPos);
+            GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "ApplyShader", classData.CustomView);
+        }
         //Currently, ragdolls are unstable. (Or give me a sign, that they are working). So these "ragdolls" are just death animations.
         GetNode<PlayerScript>(playerName).ragdollSource = classData.PlayerRagdollSource;
 

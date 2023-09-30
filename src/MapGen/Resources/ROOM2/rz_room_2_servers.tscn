@@ -311,3 +311,6 @@ requirements = 2
 
 [node name="key4" parent="." instance=ExtResource("16_l2jwm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.45964, -7.68, -3.52683)
+
+[node name="entityspawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.97441, 0)

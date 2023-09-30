@@ -18,4 +18,7 @@ ScpNumber = -1
 Team = 3
 Health = 100.0
 CustomSpawn = false
+DefaultCameraPos = 0.969
+CustomCamera = false
+CustomView = ""
 PreloadedItems = PackedStringArray("res://InventorySystem/Items/key3.tres", "res://InventorySystem/Items/pda.tres")

@@ -72,7 +72,7 @@ public partial class Scp106PlayerScript : Node3D
     }
 
     /// <summary>
-    /// Teleporting SCP-106.
+    /// Teleporting SCP-106. Deprecated. Will be reworked in future.
     /// </summary>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     async void Stalk()

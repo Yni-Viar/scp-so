@@ -63,6 +63,8 @@ public partial class PlayerScript : CharacterBody3D
             Rpc("UpdateItemsInHand", usingItem);
         }
     }
+
+    [Export] internal float cameraPosition = 0f;
     
     float groundAcceleration = 8.0f;
     float airAcceleration = 8.0f;
@@ -387,5 +389,14 @@ public partial class PlayerScript : CharacterBody3D
                 }
             }
         }
+    }
+    /// <summary>
+    /// Applies player head position.
+    /// </summary>
+    /// <param name="cameraPos"></param>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    internal void ApplyPlayerHeadPosition(float cameraPos)
+    {
+        playerHead.Position = new Vector3(0, cameraPos, 0);
     }
 }

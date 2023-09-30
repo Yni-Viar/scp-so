@@ -22,9 +22,8 @@ public partial class Scp173PlayerScript : Node3D
 	}
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
+    public override async void _Process(double delta)
     {
-
         if (Input.IsActionJustPressed("attack") && ray.IsColliding())
         {
             var collidedWith = ray.GetCollider();
@@ -47,6 +46,19 @@ public partial class Scp173PlayerScript : Node3D
                 if (player.scpNumber == -1 && player.GetNode("PlayerModel").GetChildOrNull<HumanPlayerScript>(0) != null)
                 {
                     if (player.GetNode("PlayerModel").GetChildOrNull<HumanPlayerScript>(0).isWatchingAtScp173)
+                    {
+                        LookingAtScp173(true, delta);
+                        await ToSignal(GetTree().CreateTimer(5.0), "timeout");
+                        LookingAtScp173(false, delta);
+                    }
+                    else
+                    {
+                        LookingAtScp173(false, delta);
+                    }
+                }
+                if (player.scpNumber == 131) //SCP-131 cannot blink, so SCP-173, get trapped.
+                {
+                    if (player.GetNode("PlayerModel").GetChildOrNull<Scp131PlayerScript>(0).isWatchingAtScp173)
                     {
                         LookingAtScp173(true, delta);
                     }

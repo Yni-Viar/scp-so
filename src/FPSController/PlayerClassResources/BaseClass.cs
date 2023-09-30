@@ -45,6 +45,9 @@ public partial class BaseClass : Resource
     [Export]
     public bool CustomSpawn { get; set; }
 
+    [Export] 
+    public float DefaultCameraPos { get; set; }
+
     [Export]
     public bool CustomCamera { get; set; }
 
@@ -59,11 +62,12 @@ public partial class BaseClass : Resource
     // constructor with all default values.
     // Without a parameterless constructor, Godot will have problems
     // creating and editing your resource via the inspector.
-    public BaseClass() : this(null, null, null, null, 0f, 0f, true, true, null, null, -1, Globals.Team.SPT, 100f, false, false, null, null) { }
+    public BaseClass() : this(null, null, null, null, 0f, 0f, true, true, null, null, -1, Globals.Team.SPT, 100f, false, false, null, null, 0.969f) { }
 
-    public BaseClass(string className, string[] spawnPoints, string playerModelSource, string playerRagdollSource, 
+    public BaseClass(string className, string[] spawnPoints, string playerModelSource, string playerRagdollSource,
         float speed, float jump, bool sprintEnabled, bool moveSoundsEnabled, string[] footstepSounds,
-        string[] sprintSounds, int scpNumber, Globals.Team team, float health, bool customSpawn, bool customCamera, string customView, string[] preloadedItems)
+        string[] sprintSounds, int scpNumber, Globals.Team team, float health, bool customSpawn, bool customCamera, string customView,
+        string[] preloadedItems, float defaultCameraPos)
     {
         ClassName = className;
         SpawnPoints = spawnPoints ?? System.Array.Empty<string>();
@@ -82,5 +86,6 @@ public partial class BaseClass : Resource
         CustomCamera = customCamera;
         CustomView = customView;
         PreloadedItems = preloadedItems ?? System.Array.Empty<string>();
+        DefaultCameraPos = defaultCameraPos;
     }
 }

@@ -46,6 +46,7 @@
 - Hazmat Scientist - Shadowscale (model, textures)
 - SCP-079 model - Hakkla
 - SCP-106 model - Aruspice (model, textures), Shakles (rig, animation), PixelPuffin (concept art)
+- SCP-131 model - Aruspice (model, textures), Shakles (rig, animation)
 - SCP-173 model - Aruspice (model, textures), Shakles (rig, animation), PixelPuffin (concept art)
 - SCP-650 model - Shadowscale(model, textures)
 - SCP-3199 model - Aruspice (model, textures), Shakles (rig, animation)

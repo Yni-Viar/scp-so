@@ -18,3 +18,7 @@ ScpNumber = -2
 Team = 0
 Health = 1.0
 CustomSpawn = true
+DefaultCameraPos = 0.969
+CustomCamera = false
+CustomView = ""
+PreloadedItems = PackedStringArray()
