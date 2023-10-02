@@ -1,8 +1,8 @@
 using Godot;
 using System;
 
-
-public partial class ClassParser : Node
+//imported from my game.
+public partial class RoomParser : Node
 {
 
 	// Called when the node enters the scene tree for the first time.
@@ -25,7 +25,7 @@ public partial class ClassParser : Node
         }
         else
         {
-            return SaveJson(placeToSave, Globals.classData);
+            return SaveJson(placeToSave, Globals.roomData);
         }
     }
 

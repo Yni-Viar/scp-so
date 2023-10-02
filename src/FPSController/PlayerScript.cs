@@ -42,7 +42,7 @@ public partial class PlayerScript : CharacterBody3D
     [Export] internal string[] sprintSounds;
     [Export] internal Globals.Team team;
 
-    //Currently, ragdolls are unstable. (Or give me a sign, that they are working). So these "ragdolls" are just death animations.
+    // Currently, ragdolls are unstable. (Or give me a sign, that they are working). So these "ragdolls" are just death animations.
     [Export] internal string ragdollSource;
     
     float gravity = 9.8f;

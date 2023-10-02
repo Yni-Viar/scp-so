@@ -17,6 +17,7 @@ public partial class FacilityManager : Node3D
     [Export] Godot.Collections.Array<string> playersList = new Godot.Collections.Array<string>();
     [Export] bool isRoundStarted = false;
     Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classes;
+    Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> rooms;
     Godot.Collections.Dictionary<string, string> items;
 
     // Called when the node enters the scene tree for the first time.
@@ -59,23 +60,29 @@ public partial class FacilityManager : Node3D
             {
                 if (TxtParser.Load("user://version.txt") == Globals.milestone)
                 {
+                    rooms = RoomParser.ReadJson("user://rooms.json");
                     classes = ClassParser.ReadJson("user://playerclasses.json");
+                    items = ItemParser.ReadJson("user://itemlist.json");
                 }
                 else
                 {
                     TxtParser.Save("user://version.txt", Globals.milestone);
+                    RoomParser.SaveJson("user://rooms.json", Globals.roomData);
                     ClassParser.SaveJson("user://playerclasses.json", Globals.classData);
+                    ItemParser.SaveJson("user://itemlist.json", items);
                 }
             }
             else
             {
                 TxtParser.Save("user://version.txt", Globals.milestone);
+                RoomParser.SaveJson("user://rooms.json", Globals.roomData);
                 ClassParser.SaveJson("user://playerclasses.json", Globals.classData);
+                ItemParser.SaveJson("user://itemlist.json", items);
             }
-            items = ItemParser.ReadJson("user://itemlist.json");
         }
         else
         {
+            RoomParser.SaveJson("user://rooms.json", rooms);
             ClassParser.SaveJson("user://playerclasses.json", classes);
             ItemParser.SaveJson("user://itemlist.json", items);
         }
