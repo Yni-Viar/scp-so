@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c5teilvqol552"]
+[gd_scene load_steps=16 format=3 uid="uid://c5teilvqol552"]
 
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat0.004.tres" id="1_y4sha"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat1.004.tres" id="2_bcf3m"]
@@ -11,6 +11,7 @@
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat8.004.tres" id="9_8kenj"]
 [ext_resource type="PackedScene" uid="uid://bratli6m21b8k" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="10_vju72"]
 [ext_resource type="PackedScene" uid="uid://bd5nhnop4q48y" path="res://InventorySystem/Items/PickablePrefabs/pda.tscn" id="11_ydqjd"]
+[ext_resource type="PackedScene" uid="uid://b2hdvt8y22tsf" path="res://MapGen/Resources/Cameras/cctv_rz.tscn" id="12_c4qg4"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wjdcl"]
 _surfaces = [{
@@ -234,3 +235,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.46762, -0.72, 3.80095)
 
 [node name="entityspawn" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.58806, 0.466778, 0)
+
+[node name="cctv" parent="." instance=ExtResource("12_c4qg4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.16021, 3.84, -0.266046)

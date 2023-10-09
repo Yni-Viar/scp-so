@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bck42hnhduvpp"]
+[gd_scene load_steps=17 format=3 uid="uid://bck42hnhduvpp"]
 
 [ext_resource type="Material" uid="uid://40nbr5uh5xf4" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat0.003.tres" id="1_mcn7q"]
 [ext_resource type="Material" uid="uid://bnjexmu6wfl3" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat1.003.tres" id="2_iu1d5"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c1ywflix3wsbl" path="res://InventorySystem/Items/PickablePrefabs/key2.tscn" id="10_a6luc"]
 [ext_resource type="PackedScene" uid="uid://b1t4jbtv1pdjy" path="res://MapGen/Resources/RoomAssets/Props/office_desk_with_drawers.tscn" id="11_mklfw"]
 [ext_resource type="PackedScene" uid="uid://cg3e33d8f3a6n" path="res://MapGen/Resources/RoomAssets/Props/laptop.tscn" id="12_cdt4q"]
+[ext_resource type="PackedScene" uid="uid://bc5kxvy32glap" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="13_74yh0"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ssgtx"]
 _surfaces = [{
@@ -205,3 +206,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.2083
 
 [node name="laptop" parent="." instance=ExtResource("12_cdt4q")]
 transform = Transform3D(-1.31134e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-08, 6.18952, 1.49949, -2.39308)
+
+[node name="cctv" parent="." instance=ExtResource("13_74yh0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28374, 4.29742, -4.30688)
+
+[node name="cctv2" parent="." instance=ExtResource("13_74yh0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.78801, 4.776, 6.67985)

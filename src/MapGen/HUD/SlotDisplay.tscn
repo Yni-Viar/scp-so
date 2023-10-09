@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://3kjnam4xo6v6"]
+
+[ext_resource type="Script" path="res://MapGen/Scripts/HUD/SlotDisplay.cs" id="1_v7ggv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ug436"]
+size = Vector2(64, 64)
+
+[node name="SlotDisplay" type="CenterContainer"]
+anchors_preset = -1
+anchor_left = 0.483
+anchor_top = 0.47
+anchor_right = 0.517
+anchor_bottom = 0.53
+offset_left = 0.639954
+offset_top = 0.399963
+offset_right = -0.640015
+offset_bottom = -0.400024
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v7ggv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="FakeButton" type="Area2D" parent="."]
+position = Vector2(32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FakeButton"]
+shape = SubResource("RectangleShape2D_ug436")
+
+[connection signal="mouse_entered" from="FakeButton" to="." method="OnFakeButtonMouseEntered"]
+[connection signal="mouse_exited" from="FakeButton" to="." method="OnFakeButtonMouseExited"]

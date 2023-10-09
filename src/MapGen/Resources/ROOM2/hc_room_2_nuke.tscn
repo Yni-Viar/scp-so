@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://c51fk2jf1j02p"]
+[gd_scene load_steps=57 format=3 uid="uid://c51fk2jf1j02p"]
 
 [ext_resource type="Texture2D" uid="uid://bvvfkca4t62cp" path="res://MapGen/Resources/RoomAssets/HCZ/ctwalls2.png" id="1_q0ix3"]
 [ext_resource type="Texture2D" uid="uid://6atirug73xa8" path="res://MapGen/Resources/RoomAssets/HCZ/concretewall.jpg" id="2_hqp1t"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://Scripts/Facility/Door.cs" id="18_2wkcx"]
 [ext_resource type="Texture2D" uid="uid://ben08ytu3hn3q" path="res://MapGen/Resources/Doors/DoorLCZ/Door01.jpg" id="19_wjj88"]
 [ext_resource type="PackedScene" uid="uid://bpx6ko6t0w1o5" path="res://MapGen/Resources/Buttons/button_interact.tscn" id="20_t2hmy"]
+[ext_resource type="PackedScene" uid="uid://bc5kxvy32glap" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="21_frfoc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ij68h"]
 resource_name = "mat0.004"
@@ -735,6 +736,9 @@ transform = Transform3D(-4.37113e-08, 0, 0.999999, 0, 1, 0, -0.999999, 0, -4.371
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Door"]
 replication_interval = 0.25
 replication_config = SubResource("SceneReplicationConfig_mccg3")
+
+[node name="cctv" parent="." instance=ExtResource("21_frfoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36029, 3.84, -1.78655)
 
 [connection signal="Interacted" from="Door/ButtonInteract" to="Door" method="OnButtonInteractInteracted" flags=18]
 [connection signal="Interacted" from="Door/ButtonInteract2" to="Door" method="OnButtonInteractInteracted" flags=18]

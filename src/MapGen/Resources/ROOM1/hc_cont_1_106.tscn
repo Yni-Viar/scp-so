@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bm3o46ljlr1pf"]
+[gd_scene load_steps=49 format=3 uid="uid://bm3o46ljlr1pf"]
 
 [ext_resource type="Texture2D" uid="uid://dsiiqdxk6fc46" path="res://MapGen/Resources/RoomAssets/HCZ/metal3.jpg" id="1_oessh"]
 [ext_resource type="Texture2D" uid="uid://bxtl2tmj6pffc" path="res://MapGen/Resources/RoomAssets/HCZ/concretefloor.jpg" id="2_ayl16"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://bfknvpied440p" path="res://MapGen/Resources/RoomAssets/HCZ/label106.jpg" id="18_657yb"]
 [ext_resource type="PackedScene" uid="uid://cgaomav6767mx" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="19_j2ujn"]
 [ext_resource type="Texture2D" uid="uid://ben08ytu3hn3q" path="res://MapGen/Resources/Doors/DoorLCZ/Door01.jpg" id="20_pmkbb"]
+[ext_resource type="PackedScene" uid="uid://bc5kxvy32glap" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="21_1g7b3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ivtji"]
 resource_name = "mat0"
@@ -590,3 +591,6 @@ skeleton = NodePath("")
 [node name="DoorFrame" type="MeshInstance3D" parent="door"]
 mesh = SubResource("ArrayMesh_j3wn3")
 skeleton = NodePath("")
+
+[node name="cctv" parent="." instance=ExtResource("21_1g7b3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3302, 4.4386, 6.36762)

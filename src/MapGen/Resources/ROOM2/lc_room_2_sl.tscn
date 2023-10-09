@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bjad34gdhyen3"]
+[gd_scene load_steps=36 format=3 uid="uid://bjad34gdhyen3"]
 
 [ext_resource type="Texture2D" uid="uid://14w10x3oqfbv" path="res://MapGen/Resources/RoomAssets/LCZ/concretefloor.jpg" id="1_ldbyp"]
 [ext_resource type="Texture2D" uid="uid://dit7t4ogxcbj" path="res://MapGen/Resources/RoomAssets/LCZ/tilefloor.jpg" id="2_ihtgt"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cg3e33d8f3a6n" path="res://MapGen/Resources/RoomAssets/Props/laptop.tscn" id="16_wsa7y"]
 [ext_resource type="PackedScene" uid="uid://vpjy5i6gaggm" path="res://MapGen/Resources/Doors/DoorKeycard.tscn" id="17_6puno"]
 [ext_resource type="PackedScene" uid="uid://cbqjadcdwpo8r" path="res://InventorySystem/Items/PickablePrefabs/key3.tscn" id="18_u1gka"]
+[ext_resource type="PackedScene" uid="uid://cid430jdkykuv" path="res://MapGen/Resources/Cameras/cctv_lcz.tscn" id="19_1ob0y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spgmh"]
 resource_name = "mat0.001"
@@ -432,3 +433,9 @@ requirements = 1
 
 [node name="key3" parent="." instance=ExtResource("18_u1gka")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.63554, 6.29642, 3.78549)
+
+[node name="cctv" parent="." instance=ExtResource("19_1ob0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0150792, 3.84, 6.49368)
+
+[node name="cctv2" parent="." instance=ExtResource("19_1ob0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3683, 9.04, -3.22384)

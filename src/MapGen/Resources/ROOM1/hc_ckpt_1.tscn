@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dflkol6tnd06o"]
+[gd_scene load_steps=46 format=3 uid="uid://dflkol6tnd06o"]
 
 [ext_resource type="Material" uid="uid://cmc5sqsqcqdw" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat0.002.tres" id="1_l38fk"]
 [ext_resource type="Material" uid="uid://cimhpyr2jsudd" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat1.002.tres" id="2_nojd8"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cgaomav6767mx" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="19_x3et4"]
 [ext_resource type="Script" path="res://Scripts/Facility/TeleportElevator.cs" id="20_44y10"]
 [ext_resource type="Texture2D" uid="uid://ben08ytu3hn3q" path="res://MapGen/Resources/Doors/DoorLCZ/Door01.jpg" id="21_5quvn"]
+[ext_resource type="PackedScene" uid="uid://bc5kxvy32glap" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="21_skpmg"]
 [ext_resource type="PackedScene" uid="uid://bpx6ko6t0w1o5" path="res://MapGen/Resources/Buttons/button_interact.tscn" id="22_c6cs7"]
 [ext_resource type="AudioStream" uid="uid://wqik022lymd8" path="res://Sounds/General/Elevator/Moving.ogg" id="23_sard5"]
 
@@ -600,6 +601,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0122536, 3.22602, 0)
 light_color = Color(1, 0.415686, 0.494118, 1)
 distance_fade_enabled = true
 distance_fade_begin = 24.0
+
+[node name="cctv" parent="." instance=ExtResource("21_skpmg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00423241, 4.76341, -9.09354)
+
+[node name="cctv2" parent="." instance=ExtResource("21_skpmg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.03354, 3.51, 5.53445)
+
+[node name="cctv3" parent="." instance=ExtResource("21_skpmg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33197, 7.03, 8.76479)
 
 [node name="Lamp4" parent="." instance=ExtResource("19_x3et4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1724, 4.57384, -6.88657)

@@ -1,2 +1,2 @@
-Creator: jamesstar
-License: CC-0
+Made by Yni.
+License - CC0.

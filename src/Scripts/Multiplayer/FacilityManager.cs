@@ -193,6 +193,7 @@ public partial class FacilityManager : Node3D
         GetNode<PlayerScript>(playerName).team = classData.Team;
         if (Multiplayer.IsServer())
         {
+            GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "CameraManager", !classData.CustomCamera);
             GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "ApplyPlayerHeadPosition", classData.DefaultCameraPos);
             GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "ApplyShader", classData.CustomView);
         }

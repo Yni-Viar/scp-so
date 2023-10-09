@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://wkgsfomyretc"]
+[gd_scene load_steps=78 format=3 uid="uid://wkgsfomyretc"]
 
 [ext_resource type="Texture2D" uid="uid://bpork62ekk21y" path="res://MapGen/Resources/RoomAssets/RZ/metal3.jpg" id="1_hyxnq"]
 [ext_resource type="Texture2D" uid="uid://bdepgdphwfa72" path="res://MapGen/Resources/RoomAssets/RZ/tilefloor.jpg" id="2_k2qaa"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://ben08ytu3hn3q" path="res://MapGen/Resources/Doors/DoorLCZ/Door01.jpg" id="20_qka6i"]
 [ext_resource type="PackedScene" uid="uid://bpx6ko6t0w1o5" path="res://MapGen/Resources/Buttons/button_interact.tscn" id="21_1bsaw"]
 [ext_resource type="AudioStream" uid="uid://wqik022lymd8" path="res://Sounds/General/Elevator/Moving.ogg" id="22_37btk"]
+[ext_resource type="PackedScene" uid="uid://b2hdvt8y22tsf" path="res://MapGen/Resources/Cameras/cctv_rz.tscn" id="25_mf4q7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58whi"]
 resource_name = "mat0.006"
@@ -987,6 +988,15 @@ collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ElevatorRz2/TeleportArea"]
 shape = SubResource("BoxShape3D_xbn6n")
+
+[node name="cctv" parent="." instance=ExtResource("25_mf4q7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.059206, 4.78, -8.36212)
+
+[node name="cctv2" parent="." instance=ExtResource("25_mf4q7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20726, 7.03, 8.86486)
+
+[node name="cctv3" parent="." instance=ExtResource("25_mf4q7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.22153, 3.51, 5.43462)
 
 [connection signal="Interacted" from="ElevatorRz1/ButtonInteractCall" to="ElevatorRz1" method="OnButtonInteractInteracted" flags=18]
 [connection signal="Interacted" from="ElevatorRz1/ButtonInteractUp" to="ElevatorRz1" method="OnButtonInteractUpInteracted"]

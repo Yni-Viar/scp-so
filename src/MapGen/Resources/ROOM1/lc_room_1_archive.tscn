@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ug4t6al25qvp"]
+[gd_scene load_steps=15 format=3 uid="uid://ug4t6al25qvp"]
 
 [ext_resource type="Texture2D" uid="uid://bkt1gmp7oma23" path="res://MapGen/Resources/RoomAssets/LCZ/metal.jpg" id="1_dm65m"]
 [ext_resource type="Texture2D" uid="uid://dvsk20b8yaygd" path="res://MapGen/Resources/RoomAssets/LCZ/misc.jpg" id="2_aw14e"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b067ykrbqruf0" path="res://MapGen/Resources/RoomAssets/LCZ/dirtymetal.jpg" id="4_lpk2r"]
 [ext_resource type="PackedScene" uid="uid://bratli6m21b8k" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="5_cde2o"]
 [ext_resource type="PackedScene" uid="uid://bff0n6tx6aq40" path="res://MapGen/Resources/Doors/DoorLCZ.tscn" id="6_ycg8j"]
+[ext_resource type="PackedScene" uid="uid://cid430jdkykuv" path="res://MapGen/Resources/Cameras/cctv_lcz.tscn" id="7_hkf7c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cxkxy"]
 resource_name = "mat0.008"
@@ -151,3 +152,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0910698, -2.38419e-07, 5.28
 
 [node name="entityspawn" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.51316, 0)
+
+[node name="cctv" parent="." instance=ExtResource("7_hkf7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26821, 3.84, -0.978822)
+
+[node name="cctv2" parent="." instance=ExtResource("7_hkf7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.777375, 3.84, 6.82972)

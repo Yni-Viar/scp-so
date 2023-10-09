@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://1s05l8y2c6h1"]
+[gd_scene load_steps=21 format=3 uid="uid://1s05l8y2c6h1"]
 
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat0.007.tres" id="1_uhdkg"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat1.007.tres" id="2_8ljrl"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bhv585dwr87xd" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_NormalGL.png" id="8_uq2k0"]
 [ext_resource type="Texture2D" uid="uid://o5giewh76qkn" path="res://MapGen/Resources/Doors/DoorGate/GateFrame/Metal032_2K_Color.png" id="9_f0jm8"]
 [ext_resource type="Texture2D" uid="uid://q7qhbxch3lsf" path="res://MapGen/Resources/Doors/DoorGate/GateFrame/Metal032_2K_Metalness-Metal032_2K_Roughness.png" id="10_jr8gj"]
+[ext_resource type="PackedScene" uid="uid://bc5kxvy32glap" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="11_5t8rk"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_s70ut"]
 _surfaces = [{
@@ -244,3 +245,6 @@ skeleton = NodePath("")
 [node name="Frame" type="MeshInstance3D" parent="Gate"]
 mesh = SubResource("ArrayMesh_c20ja")
 skeleton = NodePath("")
+
+[node name="cctv" parent="." instance=ExtResource("11_5t8rk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0514334, 4.12, 8.15384)

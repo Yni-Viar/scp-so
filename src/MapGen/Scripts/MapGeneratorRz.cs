@@ -28,7 +28,11 @@ public partial class MapGeneratorRz : Node
 		   * 3: means 270° rotation; facing south
 		*/
         internal float angle;
+        internal string roomName;
     };
+
+    TempRoom[,] roomTemp = new TempRoom[12, 12];
+    
     void CreateMap()
     {
         RandomNumberGenerator rand = new RandomNumberGenerator();
@@ -36,8 +40,6 @@ public partial class MapGeneratorRz : Node
         int x, y, temp;
         int x2, y2;
         int width, height;
-
-        TempRoom[,] roomTemp = new TempRoom[12, 12];
 
         for (x = 0; x < 12; x++)
         {
@@ -379,7 +381,8 @@ public partial class MapGeneratorRz : Node
                             rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM1/rz_ckpt_1.tscn").Instantiate();
                             rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
                             rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
-                            AddChild(rm);
+                            AddChild(rm, true);
+                            roomTemp[i, j].roomName = rm.Name;
                             checkpointSpawned = true;
                         }
                         else if (!exitSpawned)
@@ -387,7 +390,8 @@ public partial class MapGeneratorRz : Node
                             rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM1/rz_exit_1.tscn").Instantiate();
                             rm.Position = new Vector3(i * 20.48f, 0, j*20.48f);
                             rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
-                            AddChild(rm);
+                            AddChild(rm, true);
+                            roomTemp[i, j].roomName = rm.Name;
                             exitSpawned = true;
                         }
                         else
@@ -395,7 +399,8 @@ public partial class MapGeneratorRz : Node
                             rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM1/lc_room_1_endroom.tscn").Instantiate();
                             rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
                             rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
-                            AddChild(rm);
+                            AddChild(rm, true);
+                            roomTemp[i, j].roomName = rm.Name;
                         }
                         break;
                     case RoomTypes.ROOM2:
@@ -411,25 +416,29 @@ public partial class MapGeneratorRz : Node
                         rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM2/" + selectedRoom + ".tscn").Instantiate();
                         rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
                         rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
-                        AddChild(rm);
+                        AddChild(rm, true);
+                        roomTemp[i, j].roomName = rm.Name;
                         break;
                     case RoomTypes.ROOM2C:
                         rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM2C/rz_room_2c.tscn").Instantiate();
                         rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
                         rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
-                        AddChild(rm);
+                        AddChild(rm, true);
+                        roomTemp[i, j].roomName = rm.Name;
                         break;
                     case RoomTypes.ROOM3:
                         rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM3/rz_room_3.tscn").Instantiate();
                         rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
                         rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
-                        AddChild(rm);
+                        AddChild(rm, true);
+                        roomTemp[i, j].roomName = rm.Name;
                         break;
                     case RoomTypes.ROOM4:
                         rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM4/rz_room_4.tscn").Instantiate();
                         rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
                         rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
-                        AddChild(rm);
+                        AddChild(rm, true);
+                        roomTemp[i, j].roomName = rm.Name;
                         break;
                 }
             }
@@ -475,5 +484,59 @@ public partial class MapGeneratorRz : Node
             Seed = RandomSeed();
         }
         CreateMap();
+    }
+
+    
+    internal string[][] GetMapData()
+    {
+        string[][] tmp = new string[144][];
+        int i = 0;
+        for (int k = 0; k < 12; k++)
+        {
+            for (int l = 0; l < 12; l++)
+            {
+                tmp[i] = new string[3];
+                switch (roomTemp[k, l].type)
+                {
+                    case RoomTypes.ROOM1:
+                        tmp[i][0] = "0";
+                        break;
+                    case RoomTypes.ROOM2:
+                        tmp[i][0] = "1";
+                        break;
+                    case RoomTypes.ROOM2C:
+                        tmp[i][0] = "2";
+                        break;
+                    case RoomTypes.ROOM3:
+                        tmp[i][0] = "3";
+                        break;
+                    case RoomTypes.ROOM4:
+                        tmp[i][0] = "4";
+                        break;
+                    default:
+                        tmp[i][0] = "empty";
+                        tmp[i][2] = "empty";
+                        break;
+                }
+                switch (roomTemp[k, l].angle)
+                {
+                    case 0f:
+                        tmp[i][1] = "0";
+                        break;
+                    case 90f:
+                        tmp[i][1] = "90";
+                        break;
+                    case 180f:
+                        tmp[i][1] = "180";
+                        break;
+                    case 270f:
+                        tmp[i][1] = "270";
+                        break;
+                }
+                tmp[i][2] = roomTemp[k, l].roomName;
+                i++;
+            }
+        }
+        return tmp;
     }
 }

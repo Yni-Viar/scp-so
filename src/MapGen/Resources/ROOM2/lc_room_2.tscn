@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://baqsrydnth12h"]
+[gd_scene load_steps=35 format=3 uid="uid://baqsrydnth12h"]
 
 [ext_resource type="Texture2D" uid="uid://wsyp75ncs1bj" path="res://MapGen/Resources/RoomAssets/LCZ_new/Tiles107_2K_Color.png" id="1_vutjm"]
 [ext_resource type="Texture2D" uid="uid://bvno5dnuupvfo" path="res://MapGen/Resources/RoomAssets/LCZ_new/Tiles107_2K_Roughness.png" id="2_k2n70"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cf65icxnqw6b4" path="res://MapGen/Resources/RoomAssets/LCZ_new/OfficeCeiling001_2K_NormalGL.png" id="6_yq6ub"]
 [ext_resource type="Texture2D" uid="uid://b7g2ln2uchixo" path="res://MapGen/Resources/RoomAssets/LCZ_new/Plaster001_2K_Color.png" id="10_emsuk"]
 [ext_resource type="Texture2D" uid="uid://clge1ei6o3n3h" path="res://MapGen/Resources/RoomAssets/LCZ_new/Plaster001_2K_Roughness.png" id="11_7nxqr"]
+[ext_resource type="PackedScene" uid="uid://cid430jdkykuv" path="res://MapGen/Resources/Cameras/cctv_lcz.tscn" id="11_s3q7n"]
 [ext_resource type="Texture2D" uid="uid://djwuhdto4xj1x" path="res://MapGen/Resources/RoomAssets/LCZ_new/Plaster001_2K_NormalGL.png" id="12_jiab1"]
 [ext_resource type="PackedScene" uid="uid://bratli6m21b8k" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="13_3xhf1"]
 
@@ -270,7 +271,7 @@ shadow_mesh = SubResource("ArrayMesh_t3ljg")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0tpyj"]
 data = PackedVector3Array(-10.0639, 5.6878, 3.0217, 10.097, 7.0226, 3.0217, -10.0639, 7.0226, 3.0217, -10.0639, 5.6878, 3.0217, 10.097, 5.6878, 3.0217, 10.097, 7.0226, 3.0217, -10.0639, 1.6449, 3.0217, 10.097, 1.7664, 3.0465, -10.0639, 1.7664, 3.0465, -10.0639, 1.6449, 3.0217, 10.097, 1.6449, 3.0217, 10.097, 1.7664, 3.0465, -10.0639, 1.865, 3.1149, 10.097, 2.0463, 3.4091, -10.0639, 2.0463, 3.4091, -10.0639, 1.865, 3.1149, 10.097, 1.865, 3.1149, 10.097, 2.0463, 3.4091, -10.0639, 2.0463, 3.4091, 10.097, 5.2968, 3.4312, -10.0639, 5.2968, 3.4312, -10.0639, 2.0463, 3.4091, 10.097, 2.0463, 3.4091, 10.097, 5.2968, 3.4312, -10.0639, 5.4635, 3.1401, 10.097, 5.5537, 3.0476, -10.0639, 5.5537, 3.0476, -10.0639, 5.4635, 3.1401, 10.097, 5.4635, 3.1401, 10.097, 5.5537, 3.0476, -10.0639, 5.2968, 3.4312, 10.097, 5.4635, 3.1401, -10.0639, 5.4635, 3.1401, -10.0639, 5.2968, 3.4312, 10.097, 5.2968, 3.4312, 10.097, 5.4635, 3.1401, -10.0639, 5.5537, 3.0476, 10.097, 5.6878, 3.0217, -10.0639, 5.6878, 3.0217, -10.0639, 5.5537, 3.0476, 10.097, 5.5537, 3.0476, 10.097, 5.6878, 3.0217, -10.0639, 1.7664, 3.0465, 10.097, 1.865, 3.1149, -10.0639, 1.865, 3.1149, -10.0639, 1.7664, 3.0465, 10.097, 1.7664, 3.0465, 10.097, 1.865, 3.1149, -10.0639, -0.1217, 3.0217, 10.097, 1.6449, 3.0217, -10.0639, 1.6449, 3.0217, -10.0639, -0.1217, 3.0217, 10.097, -0.1217, 3.0217, 10.097, 1.6449, 3.0217)
 
-[node name="LC_room2" type="StaticBody3D"]
+[node name="LC_room2_walkway" type="StaticBody3D"]
 
 [node name="Ceiling" type="MeshInstance3D" parent="."]
 visibility_range_end = 128.0
@@ -331,3 +332,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109981, 5.8297, 3.39209)
 
 [node name="modern_ceiling_lamp_01_4k2" parent="." instance=ExtResource("13_3xhf1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109981, 5.8297, -3.59678)
+
+[node name="cctv" parent="." instance=ExtResource("11_s3q7n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.174072, 6.9961, 0.0813975)

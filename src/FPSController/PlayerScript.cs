@@ -17,15 +17,10 @@ public partial class PlayerScript : CharacterBody3D
     Settings settings;
     internal RayCast3D ray;
 
-    //Walk sounds and gameover screens.
-    // Control blinkImage;
+    //Walk sounds.
     AudioStreamPlayer3D walkSounds;
     AudioStreamPlayer3D interactSound;
     internal float currentHealth = 1f;
-
-    //blinking, deprecated in 0.3.0-dev
-    // double deltaTimer = 0d;
-    // float deltaWaiting;
 
     double decayTimer = 0d;
 
@@ -67,7 +62,6 @@ public partial class PlayerScript : CharacterBody3D
     [Export] internal float cameraPosition = 0f;
     
     float groundAcceleration = 8.0f;
-    float airAcceleration = 8.0f;
     float acceleration;
 
     internal Vector3 dir = new Vector3();
@@ -77,10 +71,6 @@ public partial class PlayerScript : CharacterBody3D
 
     bool isSprinting = false;
     bool isWalking = false;
-    // internal bool gameOver = false;
-
-    //item-specific properties, currently removed.
-    // public Pickable holdingItem = null;
 
     public override void _EnterTree()
     {
@@ -96,14 +86,9 @@ public partial class PlayerScript : CharacterBody3D
             GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = true;
             playerHead = GetNode<Node3D>("PlayerHead");
             ray = GetNode<RayCast3D>("PlayerHead/RayCast3D");
-            // blinkImage = GetNode<Control>("UI/Blink");
             walkSounds = GetNode<AudioStreamPlayer3D>("WalkSounds");
             interactSound = GetNode<AudioStreamPlayer3D>("InteractSound");
             acceleration = groundAcceleration;
-            if (!OS.IsDebugBuild()) //this method checks is this a debug build.
-            {
-                Input.MouseMode = Input.MouseModeEnum.Captured;
-            }
             FloorMaxAngle = 1.48353f; //85 degrees.
         }
     }
@@ -212,7 +197,7 @@ public partial class PlayerScript : CharacterBody3D
             }
             
 
-            //Interacting. (item subsystem will be rewritten)
+            //Interacting.
             if (ray.IsColliding() && Input.IsActionJustPressed("interact"))
             {
                 var collidedWith = ray.GetCollider();
@@ -358,16 +343,6 @@ public partial class PlayerScript : CharacterBody3D
             HealthManage(-1);
         }
     }
-    /*private async void Blink() //Deprecated in 0.3.0-dev due to blink system rework.
-    {
-        //main blinking method
-        blinkImage.Show();
-        isBlinking = true;
-        await ToSignal(GetTree().CreateTimer(0.3), "timeout");
-        isBlinking = false;
-        blinkImage.Hide();
-    }*/
-
     /// <summary>
     /// Applies player camera shader. Only spatial shaders could be applied due to project structure.
     /// </summary>
@@ -398,5 +373,25 @@ public partial class PlayerScript : CharacterBody3D
     internal void ApplyPlayerHeadPosition(float cameraPos)
     {
         playerHead.Position = new Vector3(0, cameraPos, 0);
+    }
+    /// <summary>
+    /// Manages default camera. If custom camera, cursor won't be locked.
+    /// </summary>
+    /// <param name="defaultCamera">Check if is a default camera</param>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    void CameraManager(bool defaultCamera)
+    {
+        if (defaultCamera)
+        {
+            GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = true;
+            if (!OS.IsDebugBuild()) //this method checks is this a debug build and does the current class have custom camera.
+            {
+                Input.MouseMode = Input.MouseModeEnum.Captured;
+            }
+        }
+        else
+        {
+            Input.MouseMode = Input.MouseModeEnum.Visible;
+        }
     }
 }
