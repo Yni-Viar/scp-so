@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cid430jdkykuv"]
+[gd_scene load_steps=8 format=3 uid="uid://cid430jdkykuv"]
 
 [ext_resource type="Script" path="res://Scripts/CctvCamera.cs" id="1_3ousn"]
-[ext_resource type="Material" uid="uid://bydu0asstuobv" path="res://Shaders/Scp079Shade.tres" id="1_u2x4k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dyen4"]
 
@@ -73,8 +72,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_n3ept")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_l3k7g"]
-
 [node name="cctv" type="Node3D" groups=["LCZ_CCTV"]]
 script = ExtResource("1_3ousn")
 
@@ -89,17 +86,14 @@ mesh = SubResource("ArrayMesh_xe1uu")
 skeleton = NodePath("")
 
 [node name="RotatingNode" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.422618, -0.906307, 0, 0.906307, 0.422618, 0, 0, 0)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 0.499999, -0.866025, 0, 0.866025, 0.499999, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="RotatingNode"]
-transform = Transform3D(1, 0, 0, 0, -8.9407e-08, 1, 0, -1, -8.9407e-08, 0, -0.17397, 0)
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, -0.17397, -7.45058e-09)
+visible = false
 current = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RotatingNode/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.1)
-mesh = SubResource("PlaneMesh_l3k7g")
-surface_material_override/0 = ExtResource("1_u2x4k")
-
-[node name="RayCast3D" type="RayCast3D" parent="RotatingNode"]
+[node name="RayCast3D" type="RayCast3D" parent="RotatingNode/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0, -0.999999, 0, 0.999999, 0, 0, -1.49012e-08, 0.17397)
 target_position = Vector3(0, -48, 0)
+collision_mask = 5

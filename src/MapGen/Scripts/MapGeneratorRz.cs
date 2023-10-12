@@ -338,6 +338,24 @@ public partial class MapGeneratorRz : Node
                                     roomTemp[x, y].angle = -1;
                                     break;
                             }
+
+                            
+                            if (roomTemp[x + 1, y].angle >= 0)
+                            {
+                                roomTemp[x + 1,y] = adjRoom;
+                            }
+                            else if (roomTemp[x - 1, y].angle >= 0)
+                            {
+                                roomTemp[x - 1,y] = adjRoom;
+                            }
+                            else if (roomTemp[x, y + 1].angle >= 0)
+                            {
+                                roomTemp[x,y + 1] = adjRoom;
+                            }
+                            else
+                            {
+                                roomTemp[x, y - 1] = adjRoom;
+                            }
                         }
                     }
                 }
@@ -486,7 +504,10 @@ public partial class MapGeneratorRz : Node
         CreateMap();
     }
 
-    
+    /// <summary>
+    /// Get map data.
+    /// </summary>
+    /// <returns>array with all information about map</returns>
     internal string[][] GetMapData()
     {
         string[][] tmp = new string[144][];
@@ -495,45 +516,45 @@ public partial class MapGeneratorRz : Node
         {
             for (int l = 0; l < 12; l++)
             {
-                tmp[i] = new string[3];
+                tmp[i] = new string[2];
                 switch (roomTemp[k, l].type)
                 {
                     case RoomTypes.ROOM1:
-                        tmp[i][0] = "0";
+                        tmp[i][0] = "room1_";
                         break;
                     case RoomTypes.ROOM2:
-                        tmp[i][0] = "1";
+                        tmp[i][0] = "room2_";
                         break;
                     case RoomTypes.ROOM2C:
-                        tmp[i][0] = "2";
+                        tmp[i][0] = "room2c_";
                         break;
                     case RoomTypes.ROOM3:
-                        tmp[i][0] = "3";
+                        tmp[i][0] = "room3_";
                         break;
                     case RoomTypes.ROOM4:
-                        tmp[i][0] = "4";
+                        tmp[i][0] = "room4_";
                         break;
                     default:
                         tmp[i][0] = "empty";
-                        tmp[i][2] = "empty";
+                        tmp[i][1] = "empty";
                         break;
                 }
                 switch (roomTemp[k, l].angle)
                 {
                     case 0f:
-                        tmp[i][1] = "0";
+                        tmp[i][0] += "0";
                         break;
                     case 90f:
-                        tmp[i][1] = "90";
+                        tmp[i][0] += "90";
                         break;
                     case 180f:
-                        tmp[i][1] = "180";
+                        tmp[i][0] += "180";
                         break;
                     case 270f:
-                        tmp[i][1] = "270";
+                        tmp[i][0] += "270";
                         break;
                 }
-                tmp[i][2] = roomTemp[k, l].roomName;
+                tmp[i][1] = roomTemp[k, l].roomName;
                 i++;
             }
         }

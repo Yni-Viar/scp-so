@@ -12,6 +12,8 @@ public partial class Scp079PlayerScript : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+        GetParent().GetParent<PlayerScript>().CanMove = false;
+        GetParent().GetParent<PlayerScript>().SetCollisionMaskValue(3, true);
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
             GetParent().GetParent<PlayerScript>().GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = false;
@@ -32,7 +34,6 @@ public partial class Scp079PlayerScript : Node
             }*/
             SwitchCamera("Lcz", "LC_cont1_079");
         }
-        GetParent().GetParent<PlayerScript>().CanMove = false;
         Input.MouseMode = Input.MouseModeEnum.Visible;
 	}
 
@@ -44,7 +45,11 @@ public partial class Scp079PlayerScript : Node
             GetNode<Control>("UI/MapGenHUD").Visible = !GetNode<Control>("UI/MapGenHUD").Visible;
         }
 	}
-
+    /// <summary>
+    /// Switches camera.
+    /// </summary>
+    /// <param name="zone">Specified zone</param>
+    /// <param name="cam">name of the room (temporary)</param>
     internal void SwitchCamera(string zone, string cam)
     {
         if (currentCam != "")

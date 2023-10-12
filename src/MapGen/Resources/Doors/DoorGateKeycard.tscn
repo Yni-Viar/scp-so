@@ -128,22 +128,28 @@ openDoorSounds = PackedStringArray("res://Sounds/Door/BigDoorOpen.ogg", "res://S
 closeDoorSounds = PackedStringArray("res://Sounds/Door/BigDoorClose.ogg", "res://Sounds/Door/BigDoorClose1.ogg", "res://Sounds/Door/BigDoorClose2.ogg")
 
 [node name="Cube_001" type="MeshInstance3D" parent="."]
+layers = 4
 visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_vdru4")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube_001"]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_001/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.01449, 0.00306654)
 shape = SubResource("BoxShape3D_374he")
 
 [node name="Frame" type="MeshInstance3D" parent="."]
+layers = 4
 visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_oo2qq")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Frame"]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Frame/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ip4rb")

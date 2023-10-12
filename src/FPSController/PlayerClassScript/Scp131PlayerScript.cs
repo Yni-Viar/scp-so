@@ -14,6 +14,7 @@ public partial class Scp131PlayerScript : Node3D
             GetNode<Node3D>("SCP131_skeleton").Hide();
             GetNode<Control>("AbilityUI").Show();
         }
+        GetParent().GetParent<PlayerScript>().SetCollisionMaskValue(3, true);
         GetParent().GetParent<PlayerScript>().CanMove = true;
         vision = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/VisionRadius");
         GetNode<Label>("AbilityUI/VBoxContainer/ScanHostiles").Text = "Scan hostiles: ready! Click [F] to scan.";

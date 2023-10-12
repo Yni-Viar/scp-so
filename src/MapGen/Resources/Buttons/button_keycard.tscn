@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cijqoykl85ljn"]
 
-[ext_resource type="Script" path="res://Scripts/ButtonSystem/ButtonInteract.cs" id="1_7ni31"]
+[ext_resource type="Script" path="res://Scripts/ButtonSystem/ButtonKeycardInteract.cs" id="1_u4q8x"]
 [ext_resource type="Texture2D" uid="uid://clsm8ln8f30na" path="res://MapGen/Resources/Buttons/KeyPad.jpg" id="2_lvxc7"]
 [ext_resource type="AudioStream" uid="uid://dg7p2iunxk0x4" path="res://Sounds/Interact/Button.ogg" id="3_m4wdd"]
 
@@ -44,7 +44,7 @@ shadow_mesh = SubResource("ArrayMesh_xr6dc")
 size = Vector3(0.353268, 0.472926, 0.29324)
 
 [node name="ButtonKeycard" type="StaticBody3D"]
-script = ExtResource("1_7ni31")
+script = ExtResource("1_u4q8x")
 
 [node name="ButtonKeycard" type="MeshInstance3D" parent="."]
 visibility_range_end = 128.0

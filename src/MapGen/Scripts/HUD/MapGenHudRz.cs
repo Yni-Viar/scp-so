@@ -18,13 +18,15 @@ public partial class MapGenHudRz : GridContainer
 	public override void _Process(double delta)
 	{
 	}
-
+    /// <summary>
+    /// Calls DisplayData() with values, retrieved from map generator.
+    /// </summary>
     void UpdateItems()
     {
         MapGeneratorRz rz = GetTree().Root.GetNode<MapGeneratorRz>("Main/Game/MapGenRz");
         for (int i = 0; i < 144; i++)
         {
-            GetChild<SlotDisplay>(i).DisplayData(rz.GetMapData()[i][0], rz.GetMapData()[i][1], rz.GetMapData()[i][2], "Rz");
+            GetChild<SlotDisplay>(i).DisplayData(rz.GetMapData()[i][0], rz.GetMapData()[i][1], "Rz");
         }
     }
 }

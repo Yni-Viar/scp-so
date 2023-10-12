@@ -17,4 +17,9 @@ public partial class DoorStaticOpener : StaticBody3D
 	{
 		GetParent().GetParent<Door>().Rpc("DoorControl");
 	}
+
+    void CallLock()
+    {
+        GetParent().GetParent<Door>().Rpc("DoorLock");
+    }
 }

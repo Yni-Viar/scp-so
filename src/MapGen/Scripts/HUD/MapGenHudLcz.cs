@@ -18,13 +18,15 @@ public partial class MapGenHudLcz : GridContainer
 	public override void _Process(double delta)
 	{
 	}
-
+    /// <summary>
+    /// Calls DisplayData() with values, retrieved from map generator.
+    /// </summary>
     void UpdateItems()
     {
         MapGeneratorLcz lcz = GetTree().Root.GetNode<MapGeneratorLcz>("Main/Game/MapGenLcz");
         for (int i = 0; i < 144; i++)
         {
-            GetChild<SlotDisplay>(i).DisplayData(lcz.GetMapData()[i][0], lcz.GetMapData()[i][1], lcz.GetMapData()[i][2], "Lcz");
+            GetChild<SlotDisplay>(i).DisplayData(lcz.GetMapData()[i][0], lcz.GetMapData()[i][1], "Lcz");
         }
     }
 }

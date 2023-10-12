@@ -156,11 +156,17 @@ public partial class scp914 : AnimatableBody3D
                     {
                         case Modes.ROUGH:
                             player.Position = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
-                            player.RpcId(int.Parse(player.Name), "HealthManage", -16777216);
+                            if (Multiplayer.IsServer())
+                            {
+                                player.RpcId(int.Parse(player.Name), "HealthManage", -16777216);
+                            }
                             break;
                         case Modes.COARSE:
                             player.Position = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
-                            player.RpcId(int.Parse(player.Name), "HealthManage", -30);
+                            if (Multiplayer.IsServer())
+                            {
+                                player.RpcId(int.Parse(player.Name), "HealthManage", -50);
+                            }
                             break;
                         case Modes.ONETOONE:
                             player.Position = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
@@ -169,12 +175,18 @@ public partial class scp914 : AnimatableBody3D
                         case Modes.FINE:
                             GD.Print("To be implemented, need to forceclass to invincible human. Currently is working like ROUGH");
                             player.Position = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
-                            player.RpcId(int.Parse(player.Name), "HealthManage", -16777216);
+                            if (Multiplayer.IsServer())
+                            {
+                                player.RpcId(int.Parse(player.Name), "HealthManage", -16777216);
+                            }
                             break;
                         case Modes.VERYFINE:
                             GD.Print("To be implemented, need to forceclass to invincible human. Currently is working like ROUGH");
                             player.Position = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
-                            player.RpcId(int.Parse(player.Name), "HealthManage", -16777216);
+                            if (Multiplayer.IsServer())
+                            {
+                                player.RpcId(int.Parse(player.Name), "HealthManage", -16777216);
+                            }
                             break;
                     }
                 }

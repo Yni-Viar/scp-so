@@ -15,6 +15,7 @@ public partial class Scp173PlayerScript : Node3D
         {
             GetNode<Node3D>("Merged_PM3D_Sphere3D4").Hide();
         }
+        GetParent().GetParent<PlayerScript>().SetCollisionMaskValue(3, true);
         GetParent().GetParent<PlayerScript>().CanMove = true;
         ray = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/RayCast3D");
         vision = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/VisionRadius");

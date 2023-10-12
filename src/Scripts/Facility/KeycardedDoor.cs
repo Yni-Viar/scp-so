@@ -18,45 +18,13 @@ public partial class KeycardedDoor : Node3D
     /// Main control method, which checks if the door can be opened, or has the player a keycard.
     /// </summary>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
-	internal void DoorControl(string playerPath)
+	internal void DoorControl(string playerPath, int keycard)
 	{
-        if (CanOpen) //Regular SCPs can open up doors up to level 3, upper levels of keycards can be opened by upcoming SCP-079
+        if (CanOpen) //Regular SCPs can open up doors up to level 3, upper levels of keycards can be opened by SCP-079
         {
-            if (requirements <= openRequirements.keyomni && 
-                (GetNode(playerPath).GetNode("PlayerHead/PlayerHand").GetNodeOrNull("keyomni") != null) || (GetNode<PlayerScript>(playerPath).scpNumber == 079))
+            if (keycard >= (int)requirements)
             {
                 DoorController();
-            }
-            else if (requirements <= openRequirements.key5 && 
-                (GetNode(playerPath).GetNode("PlayerHead/PlayerHand").GetNodeOrNull("key5") != null) || (GetNode<PlayerScript>(playerPath).scpNumber == 079))
-            {
-                DoorController();
-            }
-            else if (requirements <= openRequirements.key4 && 
-                (GetNode(playerPath).GetNode("PlayerHead/PlayerHand").GetNodeOrNull("key4") != null) || (GetNode<PlayerScript>(playerPath).scpNumber == 079))
-            {
-                DoorController();
-            }
-            else if (requirements <= openRequirements.key3 && 
-                (GetNode(playerPath).GetNode("PlayerHead/PlayerHand").GetNodeOrNull("key3") != null) || (GetNode<PlayerScript>(playerPath).scpNumber > 0))
-            {
-                DoorController();
-            }
-            else if (requirements <= openRequirements.key2 &&
-                (GetNode(playerPath).GetNode("PlayerHead/PlayerHand").GetNodeOrNull("key2") != null) || (GetNode<PlayerScript>(playerPath).scpNumber > 0))
-            {
-                DoorController();
-            }
-            else if (requirements == openRequirements.key1 && 
-                (GetNode(playerPath).GetNode("PlayerHead/PlayerHand").GetNodeOrNull("key1") != null) || (GetNode<PlayerScript>(playerPath).scpNumber > 0))
-			{
-				DoorController();
-			}
-            else
-            {
-                AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");
-                sfx.Stream = GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse2.ogg");
-                sfx.Play();
             }
         }
 		else
@@ -108,6 +76,16 @@ public partial class KeycardedDoor : Node3D
 		sfx.Play();
         IsOpened = false;
 	}
+    /// <summary>
+    /// Temporary solution - every door currently has 5 second lock cooldown.
+    /// </summary>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
+    async void DoorLock()
+    {
+        canOpen = false;
+        await ToSignal(GetTree().CreateTimer(5.0), "timeout");
+        canOpen = true;
+    }
 
 	
 	// Called when the node enters the scene tree for the first time.
@@ -121,9 +99,9 @@ public partial class KeycardedDoor : Node3D
 	{
     }
 
-    private void OnButtonKeycardInteracted(CharacterBody3D player)
+    private void OnButtonKeycardInteracted(Node3D player, int keycardRequire)
     {
-        Rpc("DoorControl", player.GetPath());
+        Rpc("DoorControl", player.GetPath(), keycardRequire);
     }
 }
 

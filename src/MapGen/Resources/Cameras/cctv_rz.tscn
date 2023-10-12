@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2hdvt8y22tsf"]
+[gd_scene load_steps=8 format=3 uid="uid://b2hdvt8y22tsf"]
 
 [ext_resource type="Script" path="res://Scripts/CctvCamera.cs" id="1_kv4yq"]
-[ext_resource type="Material" uid="uid://bydu0asstuobv" path="res://Shaders/Scp079Shade.tres" id="2_681bv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dyen4"]
 
@@ -73,8 +72,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_n3ept")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_l3k7g"]
-
 [node name="cctv" type="Node3D" groups=["RZ_CCTV"]]
 script = ExtResource("1_kv4yq")
 
@@ -96,10 +93,7 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.17397, 0)
 current = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RotatingNode/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.1)
-mesh = SubResource("PlaneMesh_l3k7g")
-surface_material_override/0 = ExtResource("2_681bv")
-
-[node name="RayCast3D" type="RayCast3D" parent="RotatingNode"]
+[node name="RayCast3D" type="RayCast3D" parent="RotatingNode/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -2.98023e-08, -0.999999, 0, 0.999999, -2.98023e-08, 0, -1.49012e-08, 0.17397)
 target_position = Vector3(0, -48, 0)
+collision_mask = 5

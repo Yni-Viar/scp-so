@@ -205,6 +205,10 @@ public partial class PlayerScript : CharacterBody3D
                 {
                     collidedWith.Call("Interact", this);
                 }
+                if (collidedWith is ButtonKeycardInteract)
+                {
+                    collidedWith.Call("Interact", this);
+                }
                 if (collidedWith is scp914devicekey)
                 {
                     collidedWith.Call("RefineCall");

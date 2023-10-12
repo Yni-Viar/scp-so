@@ -14,6 +14,7 @@ public partial class Scp650PlayerScript : Node3D
             GetNode<Node3D>("Armature").Hide();
             GetNode<Control>("AbilityUI").Show();
         }
+        GetParent().GetParent<PlayerScript>().SetCollisionMaskValue(3, true);
         GetParent().GetParent<PlayerScript>().CanMove = false;
 	}
 

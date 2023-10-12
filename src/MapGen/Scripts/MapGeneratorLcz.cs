@@ -271,7 +271,6 @@ public partial class MapGeneratorLcz : Node
             GD.Print("Forcing some ROOM1s");
             for (y = 2; y < 10 && room1Amount < 5; y++)
             {
-                //if (getZone(y+2) == i && getZone(y-2) == i) {
                 for (x = 2; x < 10 && room1Amount < 5; x++)
                 {
                     if (roomTemp[x,y].angle < 0)
@@ -316,13 +315,13 @@ public partial class MapGeneratorLcz : Node
                                         case 0:
                                             adjRoom.angle = 0;
                                             break;
-                                        case 1:
+                                        case 90:
                                             adjRoom.angle = 90;
                                             break;
-                                        case 2:
+                                        case 180:
                                             adjRoom.angle = 180;
                                             break;
-                                        case 3:
+                                        case 270:
                                             adjRoom.angle = 270;
                                             break;
                                     }
@@ -337,6 +336,23 @@ public partial class MapGeneratorLcz : Node
                                 default:
                                     roomTemp[x, y].angle = -1;
                                     break;
+                            }
+
+                            if (roomTemp[x + 1, y].angle >= 0)
+                            {
+                                roomTemp[x + 1,y] = adjRoom;
+                            }
+                            else if (roomTemp[x - 1, y].angle >= 0)
+                            {
+                                roomTemp[x - 1,y] = adjRoom;
+                            }
+                            else if (roomTemp[x, y + 1].angle >= 0)
+                            {
+                                roomTemp[x,y + 1] = adjRoom;
+                            }
+                            else
+                            {
+                                roomTemp[x, y - 1] = adjRoom;
                             }
                         }
                     }
@@ -382,11 +398,12 @@ public partial class MapGeneratorLcz : Node
                             rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM1/lc_ckpt_1.tscn").Instantiate();
                             rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
                             rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
-                            AddChild(rm);
+                            AddChild(rm, true);
+                            roomTemp[i, j].roomName = rm.Name;
                             checkpointSpawned = true;
                             break;
                         }
-                        if (!scp079ccSpawned)
+                        else if (!scp079ccSpawned)
                         {
                             rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM1/lc_cont_1_079.tscn").Instantiate();
                             rm.Position = new Vector3(i * 20.48f, 0, j*20.48f);
@@ -395,20 +412,24 @@ public partial class MapGeneratorLcz : Node
                             roomTemp[i, j].roomName = rm.Name;
                             scp079ccSpawned = true;
                         }
-                        if (currRoom1 >= RoomParser.ReadJson("user://rooms.json")["LczSingle1"].Count)
-                        {
-                            selectedRoom = RoomParser.ReadJson("user://rooms.json")["LczCommon1"][rand.RandiRange(0, RoomParser.ReadJson("user://rooms.json")["LczCommon1"].Count - 1)];
-                        }
                         else
                         {
-                            selectedRoom = RoomParser.ReadJson("user://rooms.json")["LczSingle1"][currRoom1];
+                            if (currRoom1 >= RoomParser.ReadJson("user://rooms.json")["LczSingle1"].Count)
+                            {
+                                selectedRoom = RoomParser.ReadJson("user://rooms.json")["LczCommon1"][rand.RandiRange(0, RoomParser.ReadJson("user://rooms.json")["LczCommon1"].Count - 1)];
+                            }
+                            else
+                            {
+                                selectedRoom = RoomParser.ReadJson("user://rooms.json")["LczSingle1"][currRoom1];
+                            }
+                            currRoom1++;
+                            rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM1/" + selectedRoom + ".tscn").Instantiate();
+                            rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
+                            rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
+                            AddChild(rm, true);
+                            roomTemp[i, j].roomName = rm.Name;
                         }
-                        currRoom1++;
-                        rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM1/" + selectedRoom + ".tscn").Instantiate();
-                        rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
-                        rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
-                        AddChild(rm, true);
-                        roomTemp[i, j].roomName = rm.Name;
+                        
                         break;
                     case RoomTypes.ROOM2:
                         if (currRoom2 >= RoomParser.ReadJson("user://rooms.json")["LczSingle2"].Count)
@@ -493,6 +514,10 @@ public partial class MapGeneratorLcz : Node
         CreateMap();
     }
 
+    /// <summary>
+    /// Get map data.
+    /// </summary>
+    /// <returns>array with all information about map</returns>
     internal string[][] GetMapData()
     {
         string[][] tmp = new string[144][];
@@ -501,45 +526,45 @@ public partial class MapGeneratorLcz : Node
         {
             for (int l = 0; l < 12; l++)
             {
-                tmp[i] = new string[3];
+                tmp[i] = new string[2];
                 switch (roomTemp[k, l].type)
                 {
                     case RoomTypes.ROOM1:
-                        tmp[i][0] = "0";
+                        tmp[i][0] = "room1_";
                         break;
                     case RoomTypes.ROOM2:
-                        tmp[i][0] = "1";
+                        tmp[i][0] = "room2_";
                         break;
                     case RoomTypes.ROOM2C:
-                        tmp[i][0] = "2";
+                        tmp[i][0] = "room2c_";
                         break;
                     case RoomTypes.ROOM3:
-                        tmp[i][0] = "3";
+                        tmp[i][0] = "room3_";
                         break;
                     case RoomTypes.ROOM4:
-                        tmp[i][0] = "4";
+                        tmp[i][0] = "room4_";
                         break;
                     default:
                         tmp[i][0] = "empty";
-                        tmp[i][2] = "empty";
+                        tmp[i][1] = "empty";
                         break;
                 }
                 switch (roomTemp[k, l].angle)
                 {
                     case 0f:
-                        tmp[i][1] = "0";
+                        tmp[i][0] += "0";
                         break;
                     case 90f:
-                        tmp[i][1] = "90";
+                        tmp[i][0] += "90";
                         break;
                     case 180f:
-                        tmp[i][1] = "180";
+                        tmp[i][0] += "180";
                         break;
                     case 270f:
-                        tmp[i][1] = "270";
+                        tmp[i][0] += "270";
                         break;
                 }
-                tmp[i][2] = roomTemp[k, l].roomName;
+                tmp[i][1] = roomTemp[k, l].roomName;
                 i++;
             }
         }

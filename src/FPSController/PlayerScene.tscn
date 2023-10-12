@@ -64,7 +64,7 @@ _data = {
 
 [node name="Player" type="CharacterBody3D" groups=["Players"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28033, 0)
-collision_layer = 2
+collision_layer = 6
 script = ExtResource("1_tw8h1")
 
 [node name="Commands" type="Node" parent="."]
@@ -86,7 +86,7 @@ surface_material_override/0 = ExtResource("3_apklp")
 
 [node name="RayCast3D" type="RayCast3D" parent="PlayerHead"]
 target_position = Vector3(0, 0, -3)
-collision_mask = 3
+collision_mask = 7
 
 [node name="ItemSpawn" type="Marker3D" parent="PlayerHead"]
 
@@ -95,7 +95,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.788798)
 
 [node name="VisionRadius" type="RayCast3D" parent="PlayerHead"]
 target_position = Vector3(0, 0, -24)
-collision_mask = 3
+collision_mask = 7
 
 [node name="CollisionBodyCapsule" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0386829, 0)
