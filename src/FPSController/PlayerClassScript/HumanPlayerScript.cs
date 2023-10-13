@@ -58,19 +58,22 @@ public partial class HumanPlayerScript : Node3D
                 }
             }
         }
-
-        if (blinkTimer < 5.2d)
+        if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
-            blinkTimer += delta;
+            if (blinkTimer < 5.2d)
+            {
+                blinkTimer += delta;
+            }
+            else
+            {
+                isBlinking = true;
+                await ToSignal(GetTree().CreateTimer(0.3), "timeout");
+                blinkTimer = 0d;
+                isBlinking = false;
+            }
+            WatchAtScp173();
         }
-        else
-        {
-            isBlinking = true;
-            await ToSignal(GetTree().CreateTimer(0.3), "timeout");
-            blinkTimer = 0d;
-            isBlinking = false;
-        }
-        WatchAtScp173();
+        
     }
     /// <summary>
     /// Set animation to an entity.

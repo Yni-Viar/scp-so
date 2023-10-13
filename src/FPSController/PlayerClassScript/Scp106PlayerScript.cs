@@ -40,26 +40,30 @@ public partial class Scp106PlayerScript : Node3D
         {
             Rpc("SetState", "106_Walking");
         }
-        if (Input.IsActionJustPressed("attack") && ray.IsColliding())
+        if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
-            var collidedWith = ray.GetCollider();
-            if (collidedWith is PlayerScript player)
+            if (Input.IsActionJustPressed("attack") && ray.IsColliding())
             {
-                if (player.scpNumber == -1 && GetParent().GetParent<PlayerScript>().CanMove)
+                var collidedWith = ray.GetCollider();
+                if (collidedWith is PlayerScript player)
                 {
-                    interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/106/Laugh.ogg");
-                    interactSound.Play();
-                    if (GlobalPosition.Y < -1500)
+                    if (player.scpNumber == -1 && GetParent().GetParent<PlayerScript>().CanMove)
                     {
-                        player.RpcId(int.Parse(player.Name), "HealthManage", -16777216);
-                    }
-                    else
-                    {
-                        GetParent().GetParent().GetParent().GetParent().GetNode<FacilityManager>("Game").Rpc("TeleportTo", player.Name, PlacesForTeleporting.defaultData["pd_start"]);
+                        interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/106/Laugh.ogg");
+                        interactSound.Play();
+                        if (GlobalPosition.Y < -1500)
+                        {
+                            player.RpcId(int.Parse(player.Name), "HealthManage", -16777216);
+                        }
+                        else
+                        {
+                            GetParent().GetParent().GetParent().GetParent().GetNode<FacilityManager>("Game").Rpc("TeleportTo", player.Name, PlacesForTeleporting.defaultData["pd_start"]);
+                        }
                     }
                 }
             }
         }
+        
         if (Input.IsActionJustPressed("scp106_teleport") && !stalkCooldown)
         {
             if (menuOpen)

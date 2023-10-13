@@ -29,20 +29,24 @@ public partial class Scp3199PlayerScript : Node3D
         {
             Rpc("SetState", "3199_Walk");
         }
-        if (Input.IsActionJustPressed("attack") && ray.IsColliding())
+        if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
-            var collidedWith = ray.GetCollider();
-            if (collidedWith is PlayerScript player)
+            if (Input.IsActionJustPressed("attack") && ray.IsColliding())
             {
-                if (player.scpNumber == -1)
+                var collidedWith = ray.GetCollider();
+                if (collidedWith is PlayerScript player)
                 {
-                    Rpc("SetState", "3199_Hurt");
-                    interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/SCPCommon/SCPAttack.ogg");
-                    interactSound.Play();
-                    player.RpcId(int.Parse(player.Name), "HealthManage", -35);
+                    if (player.scpNumber == -1)
+                    {
+                        Rpc("SetState", "3199_Hurt");
+                        interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/SCPCommon/SCPAttack.ogg");
+                        interactSound.Play();
+                        player.RpcId(int.Parse(player.Name), "HealthManage", -35);
+                    }
                 }
             }
         }
+        
 	}
 
     /// <summary>

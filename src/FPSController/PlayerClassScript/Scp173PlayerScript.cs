@@ -25,43 +25,49 @@ public partial class Scp173PlayerScript : Node3D
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override async void _Process(double delta)
     {
-        if (Input.IsActionJustPressed("attack") && ray.IsColliding())
+        if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
-            var collidedWith = ray.GetCollider();
-            if (collidedWith is PlayerScript player)
+            if (Input.IsActionJustPressed("attack") && ray.IsColliding())
             {
-                if (player.scpNumber == -1)
+                var collidedWith = ray.GetCollider();
+                if (collidedWith is PlayerScript player)
                 {
-                    interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/173/NeckSnap" + rng.RandiRange(1, 3) + ".ogg");
-                    interactSound.Play();
-                    player.RpcId(int.Parse(player.Name), "HealthManage", -16777216);
+                    if (player.scpNumber == -1)
+                    {
+                        interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/173/NeckSnap" + rng.RandiRange(1, 3) + ".ogg");
+                        interactSound.Play();
+                        player.RpcId(int.Parse(player.Name), "HealthManage", -16777216);
+                    }
                 }
             }
-        }
-
-        if (vision.IsColliding())
-        {
-            var collidedWith = vision.GetCollider();
-            if (collidedWith is PlayerScript player)
+            if (vision.IsColliding())
             {
-                if (player.scpNumber == -1 && player.GetNode("PlayerModel").GetChildOrNull<HumanPlayerScript>(0) != null)
+                var collidedWith = vision.GetCollider();
+                if (collidedWith is PlayerScript player)
                 {
-                    if (player.GetNode("PlayerModel").GetChildOrNull<HumanPlayerScript>(0).isWatchingAtScp173)
+                    if (player.scpNumber == -1 && player.GetNode("PlayerModel").GetChildOrNull<HumanPlayerScript>(0) != null)
                     {
-                        LookingAtScp173(true, delta);
-                        await ToSignal(GetTree().CreateTimer(5.0), "timeout");
-                        LookingAtScp173(false, delta);
+                        if (player.GetNode("PlayerModel").GetChildOrNull<HumanPlayerScript>(0).isWatchingAtScp173)
+                        {
+                            LookingAtScp173(true, delta);
+                            await ToSignal(GetTree().CreateTimer(5.0), "timeout");
+                            LookingAtScp173(false, delta);
+                        }
+                        else
+                        {
+                            LookingAtScp173(false, delta);
+                        }
                     }
-                    else
+                    if (player.scpNumber == 131) //SCP-131 cannot blink, so SCP-173, get trapped.
                     {
-                        LookingAtScp173(false, delta);
-                    }
-                }
-                if (player.scpNumber == 131) //SCP-131 cannot blink, so SCP-173, get trapped.
-                {
-                    if (player.GetNode("PlayerModel").GetChildOrNull<Scp131PlayerScript>(0).isWatchingAtScp173)
-                    {
-                        LookingAtScp173(true, delta);
+                        if (player.GetNode("PlayerModel").GetChildOrNull<Scp131PlayerScript>(0).isWatchingAtScp173)
+                        {
+                            LookingAtScp173(true, delta);
+                        }
+                        else
+                        {
+                            LookingAtScp173(false, delta);
+                        }
                     }
                     else
                     {
@@ -72,10 +78,6 @@ public partial class Scp173PlayerScript : Node3D
                 {
                     LookingAtScp173(false, delta);
                 }
-            }
-            else
-            {
-                LookingAtScp173(false, delta);
             }
         }
     }

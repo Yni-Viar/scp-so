@@ -31,10 +31,14 @@ public partial class Scp131PlayerScript : Node3D
         {
             Rpc("SetState", "131_Walk");
         }
-        if (Input.IsActionJustPressed("scp131_scan") && !scanCooldown)
+        if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
-            Scan();
+            if (Input.IsActionJustPressed("scp131_scan") && !scanCooldown)
+            {
+                Scan();
+            }
         }
+        
         WatchAtScp173();
     }
     /// <summary>

@@ -316,13 +316,13 @@ public partial class MapGeneratorLcz : Node
                                             adjRoom.angle = 0;
                                             break;
                                         case 90:
-                                            adjRoom.angle = 90;
+                                            adjRoom.angle = 270;
                                             break;
                                         case 180:
                                             adjRoom.angle = 180;
                                             break;
                                         case 270:
-                                            adjRoom.angle = 270;
+                                            adjRoom.angle = 90;
                                             break;
                                     }
                                     break;

@@ -17,6 +17,7 @@ public partial class Scp079PlayerScript : Node
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
             GetParent().GetParent<PlayerScript>().GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = false;
+            GetNode<Control>("UI").Show();
             //dcczCamList = GetTree().GetNodesInGroup("DCCZ_CCTV");
             /*hczCamList = GetTree().GetNodesInGroup("HCZ_CCTV");
             lczCamList = GetTree().GetNodesInGroup("LCZ_CCTV");
@@ -40,10 +41,14 @@ public partial class Scp079PlayerScript : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        if (Input.IsActionJustPressed("scp079_map"))
+        if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
-            GetNode<Control>("UI/MapGenHUD").Visible = !GetNode<Control>("UI/MapGenHUD").Visible;
+            if (Input.IsActionJustPressed("scp079_map"))
+            {
+                GetNode<Control>("UI/MapGenHUD").Visible = !GetNode<Control>("UI/MapGenHUD").Visible;
+            }
         }
+        
 	}
     /// <summary>
     /// Switches camera.

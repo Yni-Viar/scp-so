@@ -346,6 +346,10 @@ public partial class PlayerScript : CharacterBody3D
         {
             HealthManage(-1);
         }
+        else
+        {
+            HealthManage(1);
+        }
     }
     /// <summary>
     /// Applies player camera shader. Only spatial shaders could be applied due to project structure.
