@@ -313,16 +313,16 @@ public partial class MapGeneratorHcz : Node
                                     switch (roomTemp[x, y].angle)
                                     {
                                         case 0:
+                                            adjRoom.angle = 90;
+                                            break;
+                                        case 90:
                                             adjRoom.angle = 0;
                                             break;
-                                        case 1:
+                                        case 180:
                                             adjRoom.angle = 270;
                                             break;
-                                        case 2:
+                                        case 270:
                                             adjRoom.angle = 180;
-                                            break;
-                                        case 3:
-                                            adjRoom.angle = 90;
                                             break;
                                     }
                                     break;
