@@ -1,7 +1,5 @@
 using Godot;
 using System;
-using System.ComponentModel.Design;
-using System.Formats.Asn1;
 
 public partial class FacilityManager : Node3D
 {
@@ -25,12 +23,6 @@ public partial class FacilityManager : Node3D
     {
         settings = GetTree().Root.GetNode<Settings>("Settings");
         env = GetNode<WorldEnvironment>("WorldEnvironment");
-
-        if (settings.MusicSetting)
-        {
-            AudioStreamPlayer sfx = GetNode<AudioStreamPlayer>("BackgroundMusic");
-            sfx.Playing = true;
-        }
 
         env.Environment.SdfgiEnabled = settings.SdfgiSetting;
         env.Environment.SsaoEnabled = settings.SsaoSetting;
@@ -377,5 +369,18 @@ public partial class FacilityManager : Node3D
     void TeleportTo(string playerToTeleport, string to)
     {
         GetNode<PlayerScript>(playerToTeleport).Position = GetTree().Root.GetNode<Marker3D>(to).GlobalPosition;
+    }
+    /// <summary>
+    /// Sets background music. Before 0.6.0, there was only Light Containment music all over facility.
+    /// </summary>
+    /// <param name="set"></param>
+    internal void SetBackgroundMusic(string set)
+    {
+        AudioStreamPlayer sfx = GetNode<AudioStreamPlayer>("BackgroundMusic");
+        sfx.Stream = ResourceLoader.Load<AudioStream>(set);
+        if (settings.MusicSetting)
+        {
+            sfx.Playing = true;
+        }
     }
 }

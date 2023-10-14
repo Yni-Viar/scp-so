@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bjcfcpj4q2im4"]
+[gd_scene load_steps=23 format=3 uid="uid://bjcfcpj4q2im4"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/FacilityManager.cs" id="1_p22hh"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorLcz.cs" id="2_tjaxg"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorHcz.cs" id="4_rnfjk"]
 [ext_resource type="PackedScene" uid="uid://djlrm3q2y1ahx" path="res://MapGen/Resources/RoomAssets/DCCZ/dc_jail.tscn" id="5_22s8f"]
 [ext_resource type="Environment" uid="uid://cpjkvy5s2l8ae" path="res://FacilityGraphics.tres" id="5_u1dtw"]
-[ext_resource type="AudioStream" uid="uid://tbri732tktfl" path="res://Sounds/Music/LightContainment.ogg" id="5_wyc17"]
 [ext_resource type="Script" path="res://Scripts/PlayerUI.cs" id="6_l6v83"]
 [ext_resource type="Texture2D" uid="uid://bmw4fxmnmwhov" path="res://Assets/HUD/arrow.png" id="7_bwdaw"]
 [ext_resource type="FontFile" uid="uid://cqaasvtiakcsw" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="8_1slp4"]
@@ -92,7 +91,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 512, -1600, -512)
 environment = ExtResource("5_u1dtw")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_wyc17")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://FPSController/PlayerScene.tscn")

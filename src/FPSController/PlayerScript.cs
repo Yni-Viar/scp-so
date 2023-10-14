@@ -60,6 +60,7 @@ public partial class PlayerScript : CharacterBody3D
     }
 
     [Export] internal float cameraPosition = 0f;
+    [Export] internal bool customMusic = false;
     
     float groundAcceleration = 8.0f;
     float acceleration;
@@ -226,11 +227,26 @@ public partial class PlayerScript : CharacterBody3D
                     collidedWith.Call("CallOpen");
                 }
             }
-            /*if (blinkTimer > blinkWaiting) //deprecated in 0.3.0-dev, because of blink system rework.
+            
+            if (!customMusic)
             {
-                Blink();
-                blinkTimer = 0d;
-            }*/
+                if (GlobalPosition.Y < -1500)
+                {
+                    GetParent<FacilityManager>().SetBackgroundMusic("res://Sounds/Music/PDTrench.ogg");
+                }
+                else if (GlobalPosition.Y < -500 && GlobalPosition.Y >= -1500)
+                {
+                    GetParent<FacilityManager>().SetBackgroundMusic("res://Sounds/Music/HeavyContainment.ogg");
+                }
+                else if (GlobalPosition.Y < -256 && GlobalPosition.Y >= -500)
+                {
+                    GetParent<FacilityManager>().SetBackgroundMusic("res://Sounds/Music/LightContainment.ogg");
+                }
+                else
+                {
+                    GetParent<FacilityManager>().SetBackgroundMusic("res://Sounds/Music/ResearchZone.ogg");
+                }
+            }
 
             //"Pocket dimension" check
             if (GlobalPosition.Y < -1500)

@@ -742,6 +742,7 @@ data = PackedVector3Array(3.2658, -0.1064, -7.8514, 3.0861, 6.6102, -7.9135, 3.2
 
 [node name="Ceiling" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.394915, 0)
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_5f7qe")
 skeleton = NodePath("")
 
@@ -751,6 +752,7 @@ shape = SubResource("ConcavePolygonShape3D_0ts1i")
 
 [node name="DoorPath_004" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_4sdih")
 skeleton = NodePath("")
 
@@ -759,6 +761,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 shape = SubResource("ConcavePolygonShape3D_e6ye3")
 
 [node name="Floor_001" type="MeshInstance3D" parent="."]
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_niogq")
 skeleton = NodePath("")
 
@@ -766,6 +769,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_mgei8")
 
 [node name="DoorPath_001" type="MeshInstance3D" parent="."]
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_dd1v1")
 skeleton = NodePath("")
 
@@ -774,6 +778,7 @@ shape = SubResource("ConcavePolygonShape3D_xpfyv")
 
 [node name="LCZWallNeoCB2_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.64901, 0, 0)
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_d3jqj")
 skeleton = NodePath("")
 
@@ -783,6 +788,7 @@ shape = SubResource("ConcavePolygonShape3D_ppmks")
 
 [node name="LCZWallNeoCB2_002" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.07552, 0, 0)
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_xfwen")
 skeleton = NodePath("")
 

@@ -140,6 +140,7 @@ text = "[b]v.0.6.0-RC[/b] [i](Alpha)[/i]
 - Reworked SCP-106 (different Stalk mechanic, ability to go through doors)
 - Improved map generation - more endrooms can be spawned, and it is modifiable now (plugins still not supported)
 - Updated Light Containment Rooms again, now there are better rooms!
+- Now you can hear more background music!
 - Fixed the connection to ongoing rounds (through the feature is still experimental)
 - Fixed bug, where surface elevators couldn't work.
 - Added custom shader support (currently used on SCP-173)
