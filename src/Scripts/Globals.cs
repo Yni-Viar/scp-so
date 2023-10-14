@@ -3,9 +3,11 @@ using System;
 
 public partial class Globals
 {
+    public enum Stages { release, testing, debug };
     public static string version = "0.6.0";
-    public static string milestone = "0.6.0";
     //Milestone is a minimal version, compatible with current release.
+    public static string milestone = "0.6.0";
+    public static Stages currentStage = Stages.testing;
 
 
     public enum Team { SPT, CDP, SCI, MTF, DSE, NSE, CHI }

@@ -7,6 +7,18 @@ public partial class MainMenu : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		if (Globals.currentStage == Globals.Stages.release)
+		{
+			GetNode<TextureRect>("Background").Texture = ResourceLoader.Load<Texture2D>("res://Assets/Menu/MainMenuBackground.png");
+		}
+		else if (Globals.currentStage == Globals.Stages.testing)
+		{
+            GetNode<TextureRect>("Background").Texture = ResourceLoader.Load<Texture2D>("res://Assets/Menu/MainMenuBackgroundTesting.png");
+        }
+		else
+		{
+            GetNode<TextureRect>("Background").Texture = ResourceLoader.Load<Texture2D>("res://Assets/Menu/MainMenuBackgroundIndev.png");
+        }
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

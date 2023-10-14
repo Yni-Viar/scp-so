@@ -377,10 +377,16 @@ public partial class FacilityManager : Node3D
     internal void SetBackgroundMusic(string set)
     {
         AudioStreamPlayer sfx = GetNode<AudioStreamPlayer>("BackgroundMusic");
-        sfx.Stream = ResourceLoader.Load<AudioStream>(set);
-        if (settings.MusicSetting)
+        AudioStream audio = ResourceLoader.Load<AudioStream>(set);
+        if (sfx.Stream != audio)
         {
-            sfx.Playing = true;
+            sfx.Stream = audio;
+            if (settings.MusicSetting)
+            {
+                sfx.Playing = true;
+            }
         }
+        
+        
     }
 }

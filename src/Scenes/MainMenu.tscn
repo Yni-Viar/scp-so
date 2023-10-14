@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://b345bk26jamix"]
+[gd_scene load_steps=10 format=3 uid="uid://b345bk26jamix"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu/MainMenu.cs" id="1_s5ksq"]
 [ext_resource type="Texture2D" uid="uid://boboxmvoqy61t" path="res://Assets/Menu/MainMenuForeground.png" id="2_647vp"]
-[ext_resource type="Texture2D" uid="uid://dw83kgbvfiedd" path="res://Assets/Menu/MainMenuBackgroundIndev.png" id="2_niy75"]
 [ext_resource type="FontFile" uid="uid://bmquuud55yceh" path="res://Assets/Fonts/Righteous/Righteous-Regular.ttf" id="3_gq784"]
 [ext_resource type="Texture2D" uid="uid://bf4keik5l7nsf" path="res://icon_256.png" id="3_hajc0"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/CreditsPanel.cs" id="4_okfnt"]
@@ -27,7 +26,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_niy75")
 
 [node name="Foreground" type="TextureRect" parent="."]
 layout_mode = 1
