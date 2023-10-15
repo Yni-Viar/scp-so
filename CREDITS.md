@@ -52,5 +52,9 @@
 - SCP-3199 model - Aruspice (model, textures), Shakles (rig, animation)
 - PDA model - Model and textures by Shadowscale
 
-### Sounds (license - [CC-BY-SA 3.0](/LICENSE.CCBYSA3))
+### Sounds and music (license - [CC-BY-SA 3.0](/LICENSE.CCBYSA3))
 - Sounds used from SCP - Containment Breach game.
+- PDTrench.ogg - Omniary
+- LightContainment.ogg - Kevin MacLeod
+- HeavyContainment.ogg, EntranceZone.ogg - FireFox, Kevin MacLeod
+- Room079.ogg - Class401
