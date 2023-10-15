@@ -266,7 +266,7 @@ public partial class MapGeneratorLcz : Node
             }
         }
 
-        if (room1Amount < 5)
+        /*if (room1Amount < 5)
         {
             GD.Print("Forcing some ROOM1s");
             for (y = 2; y < 10 && room1Amount < 5; y++)
@@ -359,7 +359,7 @@ public partial class MapGeneratorLcz : Node
                 }
                 //\}
             }
-        }
+        }*/
 
         /*for (x = 0; x < roomTemp.GetLength(0); x++)
         {
@@ -434,11 +434,11 @@ public partial class MapGeneratorLcz : Node
                     case RoomTypes.ROOM2:
                         if (currRoom2 >= RoomParser.ReadJson("user://rooms.json")["LczSingle2"].Count)
                         {
-                            selectedRoom = RoomParser.ReadJson("user://rooms.json")["LczCommon2"][rand.RandiRange(0, RoomParser.ReadJson("user://rooms.json")["LczCommon1"].Count - 1)];
+                            selectedRoom = RoomParser.ReadJson("user://rooms.json")["LczCommon2"][rand.RandiRange(0, RoomParser.ReadJson("user://rooms.json")["LczCommon2"].Count - 1)];
                         }
                         else
                         {
-                            selectedRoom = RoomParser.ReadJson("user://rooms.json")["LczSingle2"][currRoom2];
+                            selectedRoom = RoomParser.ReadJson("user://rooms.json")["LczSingle2"][rand.RandiRange(0, RoomParser.ReadJson("user://rooms.json")["LczSingle2"].Count - 1)];
                         }
                         currRoom2++;
                         rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM2/" + selectedRoom + ".tscn").Instantiate();

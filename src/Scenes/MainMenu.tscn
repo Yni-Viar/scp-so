@@ -127,16 +127,16 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[b]v.0.6.0-RC[/b] [i](Alpha)[/i]
+text = "[b]v.0.6.0[/b] [i](Alpha)[/i]
 - Re-added inventory with items. (Keycard system is also working)
 - Increased distance between zones for optimization (except Class-D chamber).
 - Items can be refined in SCP-914.
 - Added death animations. (initially, there could be ragdolls, but they were not perfect)
 - Added SCP-131.
-- Added SCP-079 (currently disabled by-default, due to being unfinished)
+- Added SCP-079 (currently is unfinished)
 - Disabled SCP-650 due to being unfinished.
 - Reworked SCP-106 (different Stalk mechanic, ability to go through doors)
-- Improved map generation - more endrooms can be spawned, and it is modifiable now (plugins still not supported)
+- Improved map generation - it is modifiable now (plugins still not supported)
 - Updated Light Containment Rooms again, now there are better rooms!
 - Now you can hear more background music!
 - Fixed the connection to ongoing rounds (through the feature is still experimental)
@@ -145,6 +145,7 @@ text = "[b]v.0.6.0-RC[/b] [i](Alpha)[/i]
 - Added custom camera support (used on SCP-079)
 - Regular doors and gates can be opened without button (keycard equivalents and elevators still need clicking buttons to function)
 - MTF ε-11 \"Nine-Tailed Fox\" can arrive every 5 minutes!
+- Some small bugfixes.
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.

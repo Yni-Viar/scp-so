@@ -3,50 +3,17 @@ using System;
 
 public partial class PlayerUI : Control
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+    internal bool SpecialScreen = false;
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
 	{
+        
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        if (GetTree().Root.GetNode<Control>("Main/CanvasLayer/PauseMenu").Visible || GetTree().Root.GetNode<InGameConsole>("Main/CanvasLayer/InGameConsole").Visible ||
-            GetTree().Root.GetNodeOrNull<ColorRect>("Main/Game/" + Multiplayer.GetUniqueId().ToString() + "/InventoryContainer").Visible)
-        {
-            SpecialScreen(true);
-        }
-        else
-        {
-            SpecialScreen(false);
-        }
-	}
-
-    public override void _Input(InputEvent @event)
-    {
-        if (Input.IsActionJustPressed("ui_cancel"))
-        {
-            GetTree().Root.GetNode<Control>("Main/CanvasLayer/PauseMenu").Visible = !GetTree().Root.GetNode<Control>("Main/CanvasLayer/PauseMenu").Visible;
-        }
-
-        if (Input.IsActionJustPressed("human_inventory"))
-        {
-            PlayerScript player = GetTree().Root.GetNodeOrNull<PlayerScript>("Main/Game/" + Multiplayer.GetUniqueId().ToString());
-            if (player != null)
-            {
-                if (player.IsMultiplayerAuthority() && player.scpNumber == -1)
-                {
-                    GetTree().Root.GetNodeOrNull<ColorRect>("Main/Game/" + Multiplayer.GetUniqueId().ToString() + "/InventoryContainer").Visible =
-                        !GetTree().Root.GetNodeOrNull<ColorRect>("Main/Game/" + Multiplayer.GetUniqueId().ToString() + "/InventoryContainer").Visible;
-                }
-            }
-            
-        }
-    }
-
-    internal void SpecialScreen(bool enabled = false)
-    {
-        if (enabled)
+        if (SpecialScreen)
         {
             GetNode<TextureRect>("Cursor").Hide();
             Input.MouseMode = Input.MouseModeEnum.Visible;
@@ -58,6 +25,38 @@ public partial class PlayerUI : Control
             {
                 Input.MouseMode = Input.MouseModeEnum.Captured;
             }
+        }
+	}
+
+    public override void _Input(InputEvent @event)
+    {
+        if (Input.IsActionJustPressed("ui_cancel"))
+        {
+            if (SpecialScreen)
+            {
+                GetTree().Root.GetNode<Control>("Main/CanvasLayer/PauseMenu").Visible = false;
+                SpecialScreen = false;
+            }
+            else
+            {
+                GetTree().Root.GetNode<Control>("Main/CanvasLayer/PauseMenu").Visible = true;
+                SpecialScreen = true;
+            }
+        }
+
+        if (Input.IsActionJustPressed("human_inventory"))
+        {
+            PlayerScript player = GetTree().Root.GetNodeOrNull<PlayerScript>("Main/Game/" + Multiplayer.GetUniqueId().ToString());
+            if (player != null)
+            {
+                if (player.IsMultiplayerAuthority() && player.scpNumber == -1)
+                {
+                    GetTree().Root.GetNodeOrNull<ColorRect>("Main/Game/" + Multiplayer.GetUniqueId().ToString() + "/InventoryContainer").Visible =
+                        !GetTree().Root.GetNodeOrNull<ColorRect>("Main/Game/" + Multiplayer.GetUniqueId().ToString() + "/InventoryContainer").Visible;
+                    SpecialScreen = !SpecialScreen;
+                }
+            }
+            
         }
     }
 }

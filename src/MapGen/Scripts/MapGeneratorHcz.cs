@@ -265,7 +265,7 @@ public partial class MapGeneratorHcz : Node
             }
         }
 
-        if (room1Amount < 5)
+        /*if (room1Amount < 5)
         {
             GD.Print("Forcing some ROOM1s");
             for (y = 2; y < 10 && room1Amount < 5; y++)
@@ -360,7 +360,7 @@ public partial class MapGeneratorHcz : Node
                 }
                 //\}
             }
-        }
+        }*/
 
         /*for (x = 0; x < roomTemp.GetLength(0); x++)
         {

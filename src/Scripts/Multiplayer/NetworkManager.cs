@@ -13,8 +13,8 @@ public partial class NetworkManager : Node
 
 	Node3D game; // replicated map.
 	CharacterBody3D playerScene; // replicated player.
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
 	{
 		//You can change settings ONLY by restarting the game.
 		if (FileAccess.FileExists("user://serverconfig_0.2.0.ini"))
@@ -56,7 +56,11 @@ public partial class NetworkManager : Node
 	{
 		if (Input.IsActionJustPressed("console"))
 		{
-			GetNode<InGameConsole>("CanvasLayer/InGameConsole").Visible = !(GetNode<InGameConsole>("CanvasLayer/InGameConsole").Visible);
+			GetNode<InGameConsole>("CanvasLayer/InGameConsole").Visible = !GetNode<InGameConsole>("CanvasLayer/InGameConsole").Visible;
+			if (GetNodeOrNull<PlayerUI>("Game/PlayerUI") != null)
+			{
+				GetNode<PlayerUI>("Game/PlayerUI").SpecialScreen = GetNode<InGameConsole>("CanvasLayer/InGameConsole").Visible;
+			}
 		}
 	}
 

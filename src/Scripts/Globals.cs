@@ -6,8 +6,8 @@ public partial class Globals
     public enum Stages { release, testing, debug };
     public static string version = "0.6.0";
     //Milestone is a minimal version, compatible with current release.
-    public static string milestone = "0.6.0";
-    public static Stages currentStage = Stages.testing;
+    public static string milestone = "0.6.0-RC2";
+    public static Stages currentStage = Stages.release;
 
 
     public enum Team { SPT, CDP, SCI, MTF, DSE, NSE, CHI }
@@ -15,7 +15,7 @@ public partial class Globals
         new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> {
             { "spawnableHuman", new Godot.Collections.Array<string>{"classd1", "classd2", "scientist", "guard" } },
             { "arrivingHuman", new Godot.Collections.Array<string>{ "mtfe11" } },
-            { "spawnableScps", new Godot.Collections.Array<string> { "scp106", "scp131a", "scp131b", "scp173", "scp3199" } }
+            { "spawnableScps", new Godot.Collections.Array<string> { "scp079", "scp106", "scp131a", "scp131b", "scp173", "scp3199" } }
         };
 
     public static Godot.Collections.Dictionary<string, string> items = new Godot.Collections.Dictionary<string, string>{

@@ -37,8 +37,8 @@ offset_top = -114.88
 offset_right = 163.52
 offset_bottom = 114.12
 text = "Arrows key - rotate camera.
-Left click - open door.
-Right click - lock REGULAR door.
+E - open door.
+R - lock REGULAR door.
 Tab - open map."
 horizontal_alignment = 1
 vertical_alignment = 1

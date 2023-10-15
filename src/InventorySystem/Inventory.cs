@@ -121,7 +121,10 @@ public partial class Inventory : Node
         RemoveItem(itemIndex, itemSpawn);
     }*/
 
-
+    /// <summary>
+    /// Drops item for all players.
+    /// </summary>
+    /// <param name="pickablePath">Path ro a pickable</param>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     private void DropItemRpc(string pickablePath)
     {

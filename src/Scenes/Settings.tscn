@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bibp8fjrbul66"]
+[gd_scene load_steps=4 format=3 uid="uid://bibp8fjrbul66"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu/SettingsPanel.cs" id="2_fv068"]
 [ext_resource type="Theme" uid="uid://4k2un7nm7xc6" path="res://UITheme.tres" id="3_2qins"]
 [ext_resource type="FontFile" uid="uid://bmquuud55yceh" path="res://Assets/Fonts/Righteous/Righteous-Regular.ttf" id="3_boifm"]
-[ext_resource type="Texture2D" uid="uid://ogc8i4ds5be5" path="res://Assets/scp079experimental.png" id="4_n5nub"]
 
 [node name="Settings" type="CanvasLayer"]
 
@@ -162,37 +161,6 @@ layout_mode = 2
 max_value = 4.0
 step = 0.1
 value = 2.0
-
-[node name="Label" type="Label" parent="SettingsPanel"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -746.0
-offset_top = -191.0
-offset_right = -59.0
-offset_bottom = -78.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Tip - how to enable hidden SCPs:
-SCP-079 AND SCP-650 ARE NOT FINISHED, but if you are dare:
-Windows: Go to %APPDATA%/SCPSO folder, and edit playerclasses.json as on the picture.
-Linux: Go to ~/.local/share/SCPSO folder, and edit playerclasses.json as on the picture."
-
-[node name="TextureRect" type="TextureRect" parent="SettingsPanel"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1341.0
-offset_top = -51.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("4_n5nub")
 
 [connection signal="pressed" from="SettingsPanel/Back" to="SettingsPanel" method="OnBackPressed"]
 [connection signal="pressed" from="SettingsPanel/Save" to="SettingsPanel" method="OnSavePressed"]

@@ -45,11 +45,24 @@ public partial class Scp079PlayerScript : Node
         {
             if (Input.IsActionJustPressed("scp079_map"))
             {
-                GetNode<Control>("UI/MapGenHUD").Visible = !GetNode<Control>("UI/MapGenHUD").Visible;
+                if (GetParent().GetParent().GetParent().GetNode<PlayerUI>("PlayerUI").SpecialScreen)
+                {
+                    GetParent().GetParent().GetParent().GetNode<PlayerUI>("PlayerUI").SpecialScreen = false;
+                    GetNode<Control>("UI/MapGenHUD").Visible = false;
+                }
+                else
+                {
+                    GetParent().GetParent().GetParent().GetNode<PlayerUI>("PlayerUI").SpecialScreen = true;
+                    GetNode<Control>("UI/MapGenHUD").Visible = true;
+                }
             }
         }
-        
 	}
+
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+    }
     /// <summary>
     /// Switches camera.
     /// </summary>

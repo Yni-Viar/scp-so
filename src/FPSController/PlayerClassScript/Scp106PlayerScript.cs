@@ -9,7 +9,6 @@ public partial class Scp106PlayerScript : Node3D
     AudioStreamPlayer3D breathSound;
     AudioStreamPlayer3D emergeSound;
     bool stalkCooldown = true;
-    bool menuOpen = false;
     // Called when the node enters the scene tree for the first time.
     public override async void _Ready()
 	{
@@ -66,17 +65,15 @@ public partial class Scp106PlayerScript : Node3D
         
         if (Input.IsActionJustPressed("scp106_teleport") && !stalkCooldown)
         {
-            if (menuOpen)
+            if (GetParent().GetParent().GetParent().GetParent().GetNode<PlayerUI>("Game/PlayerUI").SpecialScreen)
             {
-                GetParent().GetParent().GetParent().GetParent().GetNode<PlayerUI>("Game/PlayerUI").SpecialScreen(false);
+                GetParent().GetParent().GetParent().GetParent().GetNode<PlayerUI>("Game/PlayerUI").SpecialScreen = false;
                 GetNode<StalkPanel>("AbilityUI/StalkPanel").Hide();
-                menuOpen = false;
             }
             else
             {
-                GetParent().GetParent().GetParent().GetParent().GetNode<PlayerUI>("Game/PlayerUI").SpecialScreen(true);
+                GetParent().GetParent().GetParent().GetParent().GetNode<PlayerUI>("Game/PlayerUI").SpecialScreen = true;
                 GetNode<StalkPanel>("AbilityUI/StalkPanel").Show();
-                menuOpen = true;
             }
         }
     }
