@@ -1,6 +1,26 @@
 # Changelog
 The current state of the game - Alpha.
 ## Alpha versions
+### v.0.6.0 (2023.10.15)
+
+- Re-added inventory with items. (Keycard system is also working)
+- Increased distance between zones for optimization (except Class-D chamber).
+- Items can be refined in SCP-914.
+- Added death animations. (initially, there could be ragdolls, but they were not perfect)
+- Added SCP-131.
+- Added SCP-079 (currently is unfinished)
+- Disabled SCP-650 due to being unfinished.
+- Reworked SCP-106 (different Stalk mechanic, ability to go through doors)
+- Improved map generation - it is modifiable now (plugins still not supported)
+- Updated Light Containment Rooms again, now there are better rooms!
+- Now you can hear more background music!
+- Fixed the connection to ongoing rounds (through the feature is still experimental)
+- Fixed bug, where surface elevators couldn't work.
+- Added custom shader support (currently used on SCP-173)
+- Added custom camera support (used on SCP-079)
+- Regular doors and gates can be opened without button (keycard equivalents and elevators still need clicking buttons to function)
+- MTF ε-11 "Nine-Tailed Fox" can arrive every 5 minutes!
+- Some small bugfixes.
 
 ### v.0.5.3 (2023.09.10)
 
