@@ -1,8 +1,7 @@
 using Godot;
 using System;
-using System.Xml.Linq;
 
-public partial class scp914 : AnimatableBody3D
+public partial class Scp914 : AnimatableBody3D
 {
     Random rnd = new Random(); //for items only
 
@@ -19,7 +18,7 @@ public partial class scp914 : AnimatableBody3D
 	}
 
     Godot.Collections.Array<string> itemsToRefine = new Godot.Collections.Array<string>();
-    Godot.Collections.Array<string> playersToRefine = new Godot.Collections.Array<string>();
+    //Godot.Collections.Array<string> playersToRefine = new Godot.Collections.Array<string>();
 
 	[Export] internal bool isRefining = false;
 	[Export] internal Modes currentMode = Modes.ONETOONE;
@@ -142,7 +141,11 @@ public partial class scp914 : AnimatableBody3D
                 }
             }
         }
-        for (int i = 0; i < playersToRefine.Count; i++) //don't forget about layers, Yni...
+        /*
+         * UNUSED DUE TO BUG, 
+         * since v.0.6.1-dev
+         * 
+         * for (int i = 0; i < playersToRefine.Count; i++) //don't forget about layers, Yni...
         {
             if (playersToRefine.Count == 0)
             {
@@ -158,6 +161,7 @@ public partial class scp914 : AnimatableBody3D
                             player.Position = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
                             if (Multiplayer.IsServer())
                             {
+                                GD.Print("Rough");
                                 player.RpcId(int.Parse(player.Name), "HealthManage", -16777216);
                             }
                             break;
@@ -165,7 +169,8 @@ public partial class scp914 : AnimatableBody3D
                             player.Position = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
                             if (Multiplayer.IsServer())
                             {
-                                player.RpcId(int.Parse(player.Name), "HealthManage", -50);
+                                GD.Print("Coarse");
+                                player.RpcId(int.Parse(player.Name), "HealthManage", -30);
                             }
                             break;
                         case Modes.ONETOONE:
@@ -191,10 +196,10 @@ public partial class scp914 : AnimatableBody3D
                     }
                 }
             }
-        }
+        }*/
         await ToSignal(GetTree().CreateTimer(6.0), "timeout");
         itemsToRefine.Clear();
-        playersToRefine.Clear();
+        //playersToRefine.Clear();
 		GetNode<CollisionShape3D>("DoorBlockIn").Disabled = true;
 		GetNode<CollisionShape3D>("DoorBlockOut").Disabled = true;
         isRefining = false;
@@ -206,10 +211,10 @@ public partial class scp914 : AnimatableBody3D
         {
             Rpc("AddItem", pickable.Name);
         }
-        if (body is PlayerScript player)
+        /*if (body is PlayerScript player)
         {
             Rpc("AddPlayer", player.Name);
-        }
+        }*/
     }
 
 
@@ -219,26 +224,26 @@ public partial class scp914 : AnimatableBody3D
         {
             Rpc("RemoveItem", pickable.Name);
         }
-        if (body is PlayerScript player)
+        /*if (body is PlayerScript player)
         {
             Rpc("RemovePlayer", player.Name);
-        }
+        }*/
     }
 
     /// <summary>
-    /// Adds player to refining queue.
+    /// Adds player to refining queue. Is not used on 0.6.1-dev and later due to bug.
     /// </summary>
     /// <param name="name">Player name</param>
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    /*[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void AddPlayer(string name)
     {
         playersToRefine.Add(name);
-    }
+    }*/
     /// <summary>
-    /// Removes player from refining queue.
+    /// Removes player from refining queue. Is not used on 0.6.1-dev and later due to bug.
     /// </summary>
     /// <param name="name">Player name</param>
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    /*[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void RemovePlayer(string name)
     {
         foreach (string item in playersToRefine)
@@ -248,7 +253,7 @@ public partial class scp914 : AnimatableBody3D
                 playersToRefine.Remove(item);
             }
         }
-    }
+    }*/
     /// <summary>
     /// Adds item to refining queue.
     /// </summary>

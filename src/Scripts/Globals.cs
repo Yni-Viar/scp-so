@@ -1,6 +1,8 @@
 using Godot;
 using System;
-
+/// <summary>
+/// Contains default data.
+/// </summary>
 public partial class Globals
 {
     public enum Stages { release, testing, dev };
@@ -15,7 +17,8 @@ public partial class Globals
         new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> {
             { "spawnableHuman", new Godot.Collections.Array<string>{"classd1", "classd2", "scientist", "guard" } },
             { "arrivingHuman", new Godot.Collections.Array<string>{ "mtfe11" } },
-            { "spawnableScps", new Godot.Collections.Array<string> { "scp079", "scp106", "scp131a", "scp131b", "scp173", "scp3199" } }
+            { "spawnableScps", new Godot.Collections.Array<string> { "scp079", "scp106", "scp131a", "scp131b", "scp173", "scp3199" } },
+            { "special", new Godot.Collections.Array<string> {"spectator" } },
         };
 
     public static Godot.Collections.Dictionary<string, string> items = new Godot.Collections.Dictionary<string, string>{
@@ -25,7 +28,8 @@ public partial class Globals
         { "key4", "res://InventorySystem/Items/key4.tres" },
         { "key5", "res://InventorySystem/Items/key5.tres" },
         { "keyomni", "res://InventorySystem/Items/keyomni.tres" },
-        { "pda", "res://InventorySystem/Items/pda.tres" }
+        { "pda", "res://InventorySystem/Items/pda.tres" },
+        { "medkit", "res://InventorySystem/Items/medkit.tres" }
     };
 
     internal static Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> roomData =

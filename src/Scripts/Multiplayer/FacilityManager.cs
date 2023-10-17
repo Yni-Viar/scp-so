@@ -60,17 +60,17 @@ public partial class FacilityManager : Node3D
                 else
                 {
                     TxtParser.Save("user://version.txt", Globals.milestone);
-                    RoomParser.SaveJson("user://rooms.json", Globals.roomData);
-                    ClassParser.SaveJson("user://playerclasses.json", Globals.classData);
-                    ItemParser.SaveJson("user://itemlist.json", items);
+                    rooms = RoomParser.SaveJson("user://rooms.json", Globals.roomData);
+                    classes = ClassParser.SaveJson("user://playerclasses.json", Globals.classData);
+                    items = ItemParser.SaveJson("user://itemlist.json", Globals.items);
                 }
             }
             else
             {
                 TxtParser.Save("user://version.txt", Globals.milestone);
-                RoomParser.SaveJson("user://rooms.json", Globals.roomData);
-                ClassParser.SaveJson("user://playerclasses.json", Globals.classData);
-                ItemParser.SaveJson("user://itemlist.json", items);
+                rooms = RoomParser.SaveJson("user://rooms.json", Globals.roomData);
+                classes = ClassParser.SaveJson("user://playerclasses.json", Globals.classData);
+                items = ItemParser.SaveJson("user://itemlist.json", Globals.items);
             }
         }
         else
@@ -262,32 +262,6 @@ public partial class FacilityManager : Node3D
             modelRoot.AddChild(tmpModel, true);
         }
     }
-    /*
-    /// <summary>
-    /// Loads the models of players. Note, that you must use ISMultiplayerAuthority() before calling, because of duplicated player model problem.
-    /// Deprecated in 0.6.0-dev
-    /// </summary>
-    /// <param name="players">Player list, where each player is getting the model.</param>
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
-    void LoadModels(Godot.Collections.Array<string> players)
-    {
-        foreach (string playerName in players)
-        {
-            PlayerScript playerScript = GetNode<PlayerScript>(playerName);
-            //if class exists, then despawn old model, and change it on a new one.
-            if (ResourceLoader.Exists("res://FPSController/PlayerClassResources/" + playerScript.classKey + ".tres")) 
-            {
-                Node modelRoot = playerScript.GetNode("PlayerModel");
-                foreach (Node itemUsedBefore in modelRoot.GetChildren())
-                {
-                    itemUsedBefore.QueueFree();
-                }
-                BaseClass classData = GD.Load<BaseClass>("res://FPSController/PlayerClassResources/" + playerScript.classKey + ".tres");
-                Node tmpModel = ResourceLoader.Load<PackedScene>(classData.PlayerModelSource).Instantiate();
-                modelRoot.AddChild(tmpModel, true);
-            }
-        }
-    }*/
 
     /// <summary>
     /// Helper method to preload inventory while changing class
@@ -373,7 +347,7 @@ public partial class FacilityManager : Node3D
     }
 
     /// <summary>
-    /// Specific usage. Is only used by SCP-650 and SCP-106 to teleport to another player.
+    /// Specific usage. Is only used by SCP-650 to teleport to another player.
     /// </summary>
     /// <param name="playerName">Name of the teleporting player</param>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
@@ -408,7 +382,5 @@ public partial class FacilityManager : Node3D
                 sfx.Playing = true;
             }
         }
-        
-        
     }
 }

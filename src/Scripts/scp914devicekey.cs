@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class scp914devicekey : StaticBody3D
+public partial class Scp914DeviceKey : StaticBody3D
 {
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -15,7 +15,7 @@ public partial class scp914devicekey : StaticBody3D
 
     internal void RefineCall()
     {
-        scp914 scp = GetParent().GetParent().GetNode<scp914>("scp914");
+        Scp914 scp = GetParent().GetParent().GetNode<Scp914>("scp914");
         if (!scp.isRefining)
         {
             scp.Rpc("Refine");

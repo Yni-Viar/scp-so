@@ -1,13 +1,13 @@
 using Godot;
 using System;
 
-public partial class scp914gears : AnimatableBody3D
+public partial class Scp914Gears : AnimatableBody3D
 {
     int currentModeCount = 2;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-        GetParent().GetParent().GetNode<scp914>("scp914").currentMode = (scp914.Modes)currentModeCount;
+        GetParent().GetParent().GetNode<Scp914>("scp914").currentMode = (Scp914.Modes)currentModeCount;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -51,13 +51,13 @@ public partial class scp914gears : AnimatableBody3D
                     sound.Play();
                     break;
             }
-            GetParent().GetParent().GetNode<scp914>("scp914").currentMode = (scp914.Modes)currentModeCount;
+            GetParent().GetParent().GetNode<Scp914>("scp914").currentMode = (Scp914.Modes)currentModeCount;
         }
         else
         {
             currentModeCount = 0;
             animPlayer.Play("reset");
-            GetParent().GetParent().GetNode<scp914>("scp914").currentMode = (scp914.Modes)currentModeCount;
+            GetParent().GetParent().GetNode<Scp914>("scp914").currentMode = (Scp914.Modes)currentModeCount;
         }
     }
 }

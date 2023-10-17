@@ -198,8 +198,8 @@ public partial class PlayerScript : CharacterBody3D
             }
             
 
-            //Interacting.
-            if (ray.IsColliding() && Input.IsActionJustPressed("interact"))
+            //Interacting. Please, check spectators to not become ghosts ;)
+            if (ray.IsColliding() && Input.IsActionJustPressed("interact") && scpNumber != -2)
             {
                 var collidedWith = ray.GetCollider();
                 if (collidedWith is ButtonInteract)
@@ -210,11 +210,11 @@ public partial class PlayerScript : CharacterBody3D
                 {
                     collidedWith.Call("Interact", this);
                 }
-                if (collidedWith is scp914devicekey)
+                if (collidedWith is Scp914DeviceKey)
                 {
                     collidedWith.Call("RefineCall");
                 }
-                if (collidedWith is scp914gears)
+                if (collidedWith is Scp914Gears)
                 {
                     collidedWith.Call("Interact");
                 }
@@ -225,6 +225,10 @@ public partial class PlayerScript : CharacterBody3D
                 if (collidedWith is DoorStaticOpener)
                 {
                     collidedWith.Call("CallOpen");
+                }
+                if (collidedWith is ItemAction action && GetNodeOrNull<ItemAction>("PlayerHead/PlayerHand/" + action.Name) != null)
+                {
+                    collidedWith.Call("OnUse", this);
                 }
             }
             

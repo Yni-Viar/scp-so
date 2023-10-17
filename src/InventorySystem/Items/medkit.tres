@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cigjp5sl4xe7x"]
+
+[ext_resource type="Texture2D" uid="uid://i70kqlwuqo1g" path="res://InventorySystem/Items/medkit.png" id="1_jmq1g"]
+[ext_resource type="Script" path="res://InventorySystem/Items/Item.cs" id="2_nlbd2"]
+
+[resource]
+script = ExtResource("2_nlbd2")
+InternalName = "medkit"
+Name = "First Aid"
+Texture = ExtResource("1_jmq1g")
+PickablePath = "res://InventorySystem/Items/PickablePrefabs/medkit.tscn"
+PickupSoundPath = "res://Sounds/Interact/PickItem1.ogg"
+FirstPersonPrefabPath = "res://InventorySystem/Items/InHandPrefabs/medkit.tscn"
+Rough = PackedStringArray()
+Coarse = PackedStringArray()
+OneToOne = PackedStringArray("res://InventorySystem/Items/PickablePrefabs/medkit.tscn")
+Fine = PackedStringArray("res://InventorySystem/Items/PickablePrefabs/medkit.tscn")
+VeryFine = PackedStringArray("res://InventorySystem/Items/PickablePrefabs/medkit.tscn")

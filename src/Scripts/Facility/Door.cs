@@ -1,6 +1,8 @@
 using Godot;
 using System;
-
+/// <summary>
+/// Common door manager.
+/// </summary>
 public partial class Door : Node3D
 {
     [Export] bool canOpen = true;
@@ -80,6 +82,10 @@ public partial class Door : Node3D
 	public override void _Ready()
 	{
 		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+        if (isOpened)
+        {
+            DoorOpen();
+        }
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

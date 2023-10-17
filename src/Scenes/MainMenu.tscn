@@ -104,11 +104,11 @@ anchors_preset = -1
 anchor_left = 0.238
 anchor_top = 0.067
 anchor_right = 0.969
-anchor_bottom = 0.956
+anchor_bottom = 0.914
 offset_left = 0.039978
 offset_top = -0.360001
 offset_right = 0.519897
-offset_bottom = -0.47998
+offset_bottom = -0.120056
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MainPanel"]
 layout_mode = 1
@@ -116,9 +116,11 @@ anchors_preset = -1
 anchor_left = 0.02
 anchor_top = 0.025
 anchor_right = 0.98
-anchor_bottom = 0.975
-offset_left = -0.320002
-offset_right = 0.319946
+anchor_bottom = 0.986
+offset_left = -0.0800018
+offset_top = 0.125
+offset_right = 0.0799561
+offset_bottom = -0.190063
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 24
@@ -129,6 +131,14 @@ theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "[b]v.0.6.1-dev[/b] [i](Alpha)[/i]
 - Fixed a flaw in forceclass.
+- Changed SCP-650 room from SCP-CB design, to new design. (Old room is still available, but disabled from spawning)
+- Fixed size of SCP-079 model in their room (previously it was very small).
+- Added medkits.
+- Fixed itemlist not downloading.
+- Fixed ragdoll not spawning.
+- Fixed door not syncing.
+- Disable player refining in SCP-914 (first implemented in v.0.4.1) due to bug.
+- Added interaction sound. (Better, than in 0.0.5 :) )
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.

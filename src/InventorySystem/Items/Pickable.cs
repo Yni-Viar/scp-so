@@ -21,6 +21,9 @@ public partial class Pickable : RigidBody3D
     internal void PickUpItem(PlayerScript player)
     {
         Inventory inv = player.GetNode<Inventory>("InventoryContainer/Inventory");
+        AudioStreamPlayer3D interactSound = player.GetNode<AudioStreamPlayer3D>("InteractSound");
+        interactSound.Stream = ResourceLoader.Load<AudioStream>(itemResource.PickupSoundPath);
+        interactSound.Play();
         if (!Multiplayer.IsServer())
         {
             RpcId(Multiplayer.GetUniqueId(), "PickUpRpc", inv.GetPath());

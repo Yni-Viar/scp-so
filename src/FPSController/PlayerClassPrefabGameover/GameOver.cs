@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class GameOver : Node
+public partial class GameOver : Node3D
 {
     [Export] string state;
 	// Called when the node enters the scene tree for the first time.
