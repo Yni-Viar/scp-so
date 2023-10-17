@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 
 public partial class FacilityManager : Node3D
 {
@@ -14,9 +15,9 @@ public partial class FacilityManager : Node3D
     PlayerScript playerScene;
     [Export] Godot.Collections.Array<string> playersList = new Godot.Collections.Array<string>();
     [Export] bool isRoundStarted = false;
-    Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classes;
-    Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> rooms;
-    Godot.Collections.Dictionary<string, string> items;
+    [Export] Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classes = new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>>();
+    [Export] Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> rooms = new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>>();
+    [Export] Godot.Collections.Dictionary<string, string> items = new Godot.Collections.Dictionary<string, string>();
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -171,6 +172,27 @@ public partial class FacilityManager : Node3D
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
     internal void SetPlayerClass(string playerName, string nameOfClass) //Note: RPC ONLY HANDLES PRIMITIVE TYPES, NOT PLAYERSCRIPT!
     {
+        bool classExist = false;
+        foreach (string item in classes.Keys)
+        {
+            for (int i = 0;i < classes[item].Count;i++)
+            {
+                if (nameOfClass == classes[item][i])
+                {
+                    classExist = true;
+                    break;
+                }
+            }
+            if (classExist)
+            {
+                break;
+            }
+        }
+        if (classExist == false)
+        {
+            GD.PrintErr("For security reasons, you cannot change to class, that is unsupported by this server");
+            return;
+        }
         BaseClass classData = GD.Load<BaseClass>("res://FPSController/PlayerClassResources/" + nameOfClass + ".tres");
         GetNode<PlayerScript>(playerName).classKey = nameOfClass;
         GetNode<PlayerScript>(playerName).className = classData.ClassName;
