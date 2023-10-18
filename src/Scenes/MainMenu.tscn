@@ -137,8 +137,8 @@ text = "[b]v.0.6.1-dev[/b] [i](Alpha)[/i]
 - Fixed itemlist not downloading.
 - Fixed ragdoll not spawning.
 - Fixed door not syncing.
-- Disable player refining in SCP-914 (first implemented in v.0.4.1) due to bug.
 - Added interaction sound. (Better, than in 0.0.5 :) )
+- Fixed a bug, where current health was equal 1 all the time.
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.

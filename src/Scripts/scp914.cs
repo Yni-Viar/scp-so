@@ -18,7 +18,7 @@ public partial class Scp914 : AnimatableBody3D
 	}
 
     Godot.Collections.Array<string> itemsToRefine = new Godot.Collections.Array<string>();
-    //Godot.Collections.Array<string> playersToRefine = new Godot.Collections.Array<string>();
+    Godot.Collections.Array<string> playersToRefine = new Godot.Collections.Array<string>();
 
 	[Export] internal bool isRefining = false;
 	[Export] internal Modes currentMode = Modes.ONETOONE;
@@ -141,11 +141,7 @@ public partial class Scp914 : AnimatableBody3D
                 }
             }
         }
-        /*
-         * UNUSED DUE TO BUG, 
-         * since v.0.6.1-dev
-         * 
-         * for (int i = 0; i < playersToRefine.Count; i++) //don't forget about layers, Yni...
+        for (int i = 0; i < playersToRefine.Count; i++) //don't forget about layers, Yni...
         {
             if (playersToRefine.Count == 0)
             {
@@ -196,7 +192,7 @@ public partial class Scp914 : AnimatableBody3D
                     }
                 }
             }
-        }*/
+        }
         await ToSignal(GetTree().CreateTimer(6.0), "timeout");
         itemsToRefine.Clear();
         //playersToRefine.Clear();
@@ -211,10 +207,10 @@ public partial class Scp914 : AnimatableBody3D
         {
             Rpc("AddItem", pickable.Name);
         }
-        /*if (body is PlayerScript player)
+        if (body is PlayerScript player)
         {
             Rpc("AddPlayer", player.Name);
-        }*/
+        }
     }
 
 
@@ -224,26 +220,26 @@ public partial class Scp914 : AnimatableBody3D
         {
             Rpc("RemoveItem", pickable.Name);
         }
-        /*if (body is PlayerScript player)
+        if (body is PlayerScript player)
         {
             Rpc("RemovePlayer", player.Name);
-        }*/
+        }
     }
 
     /// <summary>
-    /// Adds player to refining queue. Is not used on 0.6.1-dev and later due to bug.
+    /// Adds player to refining queue.
     /// </summary>
     /// <param name="name">Player name</param>
-    /*[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void AddPlayer(string name)
     {
         playersToRefine.Add(name);
-    }*/
+    }
     /// <summary>
-    /// Removes player from refining queue. Is not used on 0.6.1-dev and later due to bug.
+    /// Removes player from refining queue.
     /// </summary>
     /// <param name="name">Player name</param>
-    /*[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void RemovePlayer(string name)
     {
         foreach (string item in playersToRefine)
@@ -253,7 +249,7 @@ public partial class Scp914 : AnimatableBody3D
                 playersToRefine.Remove(item);
             }
         }
-    }*/
+    }
     /// <summary>
     /// Adds item to refining queue.
     /// </summary>

@@ -1,12 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dq8a8mq4544nl"]
+[gd_scene load_steps=5 format=3 uid="uid://dq8a8mq4544nl"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerClassScript/Scp079PlayerScript.cs" id="1_0qnxq"]
 [ext_resource type="Texture2D" uid="uid://dfydm23006k61" path="res://Shaders/crt079.png" id="2_p7dha"]
+[ext_resource type="PackedScene" uid="uid://ccqb0ayjaywxo" path="res://Assets/Models/scp079model.tscn" id="4_bycfg"]
 [ext_resource type="PackedScene" uid="uid://h4vs76oto1c2" path="res://MapGen/HUD/MapGenHUD.tscn" id="7_x4nvj"]
 
 [node name="scp079" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1, 0)
 script = ExtResource("1_0qnxq")
+
+[node name="SCP-079" parent="." instance=ExtResource("4_bycfg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.12538, 0)
 
 [node name="UI" type="Control" parent="."]
 visible = false

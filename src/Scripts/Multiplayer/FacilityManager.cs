@@ -204,6 +204,7 @@ public partial class FacilityManager : Node3D
         GetNode<PlayerScript>(playerName).speed = classData.Speed;
         GetNode<PlayerScript>(playerName).jump = classData.Jump;
         GetNode<PlayerScript>(playerName).health = classData.Health;
+        GetNode<PlayerScript>(playerName).currentHealth = classData.Health;
         GetNode<PlayerScript>(playerName).team = classData.Team;
         if (Multiplayer.IsServer())
         {

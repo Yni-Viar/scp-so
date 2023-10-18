@@ -20,7 +20,7 @@ public partial class PlayerScript : CharacterBody3D
     //Walk sounds.
     AudioStreamPlayer3D walkSounds;
     AudioStreamPlayer3D interactSound;
-    internal float currentHealth = 1f;
+    [Export] internal float currentHealth = 1f;
 
     double decayTimer = 0d;
 
@@ -61,6 +61,7 @@ public partial class PlayerScript : CharacterBody3D
 
     [Export] internal float cameraPosition = 0f;
     [Export] internal bool customMusic = false;
+    [Export] bool customCamera = false;
     
     float groundAcceleration = 8.0f;
     float acceleration;
@@ -111,12 +112,15 @@ public partial class PlayerScript : CharacterBody3D
             if (@event is InputEventMouseMotion)
             {
                 InputEventMouseMotion m = (InputEventMouseMotion) @event;
-                this.RotateY(Mathf.DegToRad(-m.Relative.X * settings.MouseSensitivity * 2f)); //pretty magic numbers
-                playerHead.RotateX(Mathf.Clamp(-m.Relative.Y * settings.MouseSensitivity * 0.125f, -90, 90));
+                if (!customCamera)
+                {
+                    this.RotateY(Mathf.DegToRad(-m.Relative.X * settings.MouseSensitivity * 2f)); //pretty magic numbers
+                    playerHead.RotateX(Mathf.Clamp(-m.Relative.Y * settings.MouseSensitivity * 0.125f, -90, 90));
     
-                Vector3 cameraRot = playerHead.Rotation;
-                cameraRot.X = Mathf.Clamp(playerHead.Rotation.X, Mathf.DegToRad(-85f), Mathf.DegToRad(85f));
-                playerHead.Rotation = cameraRot;
+                    Vector3 cameraRot = playerHead.Rotation;
+                    cameraRot.X = Mathf.Clamp(playerHead.Rotation.X, Mathf.DegToRad(-85f), Mathf.DegToRad(85f));
+                    playerHead.Rotation = cameraRot;
+                }
             }
 
             if (Input.IsActionJustPressed("mode_kinematic"))
@@ -263,7 +267,7 @@ public partial class PlayerScript : CharacterBody3D
                 decayTimer = 0;
             }
 
-            GetParent().GetNode<Label>("PlayerUI/HealthInfo").Text = Mathf.Ceil(health).ToString();
+            GetParent().GetNode<Label>("PlayerUI/HealthInfo").Text = Mathf.Ceil(currentHealth).ToString();
         }
         UpDirection = Vector3.Up;
         MoveAndSlide();
@@ -416,10 +420,12 @@ public partial class PlayerScript : CharacterBody3D
             {
                 Input.MouseMode = Input.MouseModeEnum.Captured;
             }
+            customCamera = false;
         }
         else
         {
             Input.MouseMode = Input.MouseModeEnum.Visible;
+            customCamera = true;
         }
     }
 }

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Scp079PlayerScript : Node
+public partial class Scp079PlayerScript : Node3D
 {
     // to be added in future.
     //Godot.Collections.Array<Node> dcczCamList = new Godot.Collections.Array<Node>();
