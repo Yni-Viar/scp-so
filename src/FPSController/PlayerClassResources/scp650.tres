@@ -20,5 +20,5 @@ Health = 1500.0
 CustomSpawn = false
 DefaultCameraPos = 0.969
 CustomCamera = false
-CustomView = ""
+CustomView = "DitherShader"
 PreloadedItems = PackedStringArray()

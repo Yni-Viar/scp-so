@@ -21,4 +21,4 @@ CustomSpawn = false
 DefaultCameraPos = 0.969
 CustomCamera = false
 CustomView = ""
-PreloadedItems = PackedStringArray("res://InventorySystem/Items/key4.tres", "res://InventorySystem/Items/pda.tres")
+PreloadedItems = PackedStringArray("res://InventorySystem/Items/key4.tres", "res://InventorySystem/Items/pda.tres", "res://InventorySystem/Items/medkit.tres")

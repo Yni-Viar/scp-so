@@ -48,14 +48,14 @@ public partial class PlayerScript : CharacterBody3D
     [Export] bool canMove = false; 
     internal bool CanMove {get=>canMove; set=>canMove = value;}
     
-    [Export] private string usingItem;
-    internal string UsingItem
+    [Export] private string[] usingItem;
+    internal string[] UsingItem
     {
         get => usingItem;
         set
         {
             usingItem = value;
-            Rpc("UpdateItemsInHand", usingItem);
+            Rpc("UpdateItemsInHand", usingItem[0], usingItem[1]);
         }
     }
 
@@ -230,8 +230,9 @@ public partial class PlayerScript : CharacterBody3D
                 {
                     collidedWith.Call("CallOpen");
                 }
-                if (collidedWith is ItemAction action && GetNodeOrNull<ItemAction>("PlayerHead/PlayerHand/" + action.Name) != null)
+                if (collidedWith is ItemAction action && action.GetPath().ToString().Contains(Name))
                 {
+                    GD.Print("!");
                     collidedWith.Call("OnUse", this);
                 }
             }
@@ -277,7 +278,7 @@ public partial class PlayerScript : CharacterBody3D
     /// </summary>
     /// <param name="itemName">Name of the item</param>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
-    private void UpdateItemsInHand(string itemName)
+    private void UpdateItemsInHand(string itemName, string itemIndex)
     {
         if (ResourceLoader.Exists("res://InventorySystem/Items/" + itemName + ".tres"))
         {
@@ -287,7 +288,9 @@ public partial class PlayerScript : CharacterBody3D
                 itemUsedBefore.QueueFree();
             }
             Item item = GD.Load<Item>("res://InventorySystem/Items/" + itemName + ".tres");
-            Node tmpModel = ResourceLoader.Load<PackedScene>(item.FirstPersonPrefabPath).Instantiate();
+            ItemAction tmpModel = ResourceLoader.Load<PackedScene>(item.FirstPersonPrefabPath).Instantiate<ItemAction>();
+            tmpModel.oneTimeUse = item.OneTimeUse;
+            tmpModel.index = int.Parse(itemIndex);
             firstPersonHandRoot.AddChild(tmpModel, true);
         }
         else
@@ -345,9 +348,16 @@ public partial class PlayerScript : CharacterBody3D
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
     void HealthManage(double amount)
     {
-        if (scpNumber != -2 && currentHealth <= health)
+        if (scpNumber != -2)
         {
-            currentHealth += (float)amount;
+            if (currentHealth + amount <= health)
+            {
+                currentHealth += (float)amount;
+            }
+            else
+            {
+                currentHealth = health;
+            }
         }
         else
         {

@@ -31,9 +31,13 @@ public partial class FacilityManager : Node3D
         env.Environment.SsrEnabled = settings.SsrSetting;
         env.Environment.VolumetricFogEnabled = settings.FogSetting;
 
+
         //Multiplayer part.
         if (!Multiplayer.IsServer())
         {
+            RoomParser.SaveJson("user://rooms.json", rooms);
+            ClassParser.SaveJson("user://playerclasses.json", classes);
+            ItemParser.SaveJson("user://itemlist.json", items);
             return;
         }
         Multiplayer.PeerConnected += AddPlayer;
@@ -72,12 +76,6 @@ public partial class FacilityManager : Node3D
                 classes = ClassParser.SaveJson("user://playerclasses.json", Globals.classData);
                 items = ItemParser.SaveJson("user://itemlist.json", Globals.items);
             }
-        }
-        else
-        {
-            RoomParser.SaveJson("user://rooms.json", rooms);
-            ClassParser.SaveJson("user://playerclasses.json", classes);
-            ItemParser.SaveJson("user://itemlist.json", items);
         }
 
         //Start round
@@ -378,10 +376,7 @@ public partial class FacilityManager : Node3D
         if (sfx.Stream != audio)
         {
             sfx.Stream = audio;
-            if (settings.MusicSetting)
-            {
-                sfx.Playing = true;
-            }
+            sfx.Playing = true;
         }
     }
 }

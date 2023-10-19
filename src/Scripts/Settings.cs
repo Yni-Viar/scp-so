@@ -7,8 +7,10 @@ public partial class Settings : Node
     public bool SsaoSetting;
     public bool SsilSetting;
     public bool SsrSetting;
+    public bool GlowSetting;
     public bool FogSetting;
-    public bool MusicSetting;
+    public float MusicSetting;
+    public float SoundSetting;
     public bool FullscreenSetting;
     public float MouseSensitivity; 
     public Vector2I WindowSizeSetting = new Vector2I((int)ProjectSettings.GetSetting("display/window/size/width"), (int)ProjectSettings.GetSetting("display/window/size/height"));
@@ -46,7 +48,7 @@ public partial class Settings : Node
 	{
 	}
 
-    void SaveSettings()
+    public void SaveSettings()
     {
         IniSaver ini = new IniSaver();
         ini.SaveIni("Settings", new Godot.Collections.Array<string>{
@@ -54,21 +56,25 @@ public partial class Settings : Node
             "SsaoSetting",
             "SsilSetting",
             "SsrSetting",
+            "GlowSetting", 
             "FogSetting",
             "MusicSetting",
+            "SoundSetting", 
             "FullscreenSetting",
             "MouseSensitivity",
             "WindowSizeSetting"
         }, new Godot.Collections.Array{
-            true,
-            true,
-            true,
-            false,
-            true,
-            true,
-            false,
-            0.05f,
-            new Vector2(1920, 1080)
+            true, //sdfgi
+            true, //ssao
+            true, //ssil
+            false, //ssr
+            true, //glow
+            true, //fog
+            1f, //music
+            1f, //sound
+            false, //fullscreen
+            0.05f, //sensivity
+            new Vector2(1920, 1080) //resolution
         }, "user://settings.ini");
         LoadIni();
     }
@@ -90,8 +96,10 @@ public partial class Settings : Node
         SsaoSetting = (bool)config.GetValue("Settings", "SsaoSetting");
         SsilSetting = (bool)config.GetValue("Settings", "SsilSetting");
         SsrSetting = (bool)config.GetValue("Settings", "SsrSetting");
+        GlowSetting = (bool)config.GetValue("Settings", "GlowSetting");
         FogSetting = (bool)config.GetValue("Settings", "FogSetting");
-        MusicSetting = (bool)config.GetValue("Settings", "MusicSetting");
+        MusicSetting = (float)config.GetValue("Settings", "MusicSetting");
+        SoundSetting = (float)config.GetValue("Settings", "SoundSetting");
         FullscreenSetting = (bool)config.GetValue("Settings", "FullscreenSetting");
         MouseSensitivity = (float)config.GetValue("Settings", "MouseSensitivity");
         WindowSizeSetting = (Vector2I)config.GetValue("Settings", "WindowSizeSetting");

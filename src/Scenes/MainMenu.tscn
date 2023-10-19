@@ -129,16 +129,21 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[b]v.0.6.1-dev[/b] [i](Alpha)[/i]
+text = "[b]v.0.6.1[/b] [i](Alpha)[/i]
 - Fixed a flaw in forceclass.
 - Changed SCP-650 room from SCP-CB design, to new design. (Old room is still available, but disabled from spawning)
 - Fixed size of SCP-079 model in their room (previously it was very small).
+- Fixed SCP-079 camera going off rotation limits.
 - Added medkits.
 - Fixed itemlist not downloading.
 - Fixed ragdoll not spawning.
 - Fixed door not syncing.
 - Added interaction sound. (Better, than in 0.0.5 :) )
-- Fixed a bug, where current health was equal 1 all the time.
+- Fixed a bug, where LCZ unique rooms could duplicate.
+- Fixed a bug, where current health was equal 1 all the time (+ updated health panel).
+- Added dither shader (used on SCP-650)
+- In-hand items now have collisions.
+- Added advanced music settings + added glow setting.
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.
@@ -461,6 +466,23 @@ text = "[i]Toon shader (MIT License)[/i]
 
 - Made by Hannah \"EMBYR\" Crawford.
 - The shader code and all code snippets in this post are under MIT license and can be used freely.
+
+"
+fit_content = true
+
+[node name="CreditsCode7" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1234, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[i]Dither shader (MIT License)[/i]
+
+Copyright (c) 2021 Sam Bigos
+This shader is under MIT license.
 
 "
 fit_content = true

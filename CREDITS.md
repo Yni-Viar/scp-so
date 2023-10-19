@@ -37,6 +37,11 @@
 - Made by Hannah "EMBYR" Crawford.
 - The shader code and all code snippets in this post are under MIT license and can be used freely.
 
+### Dither shader (MIT License)
+
+- Copyright (c) 2021 Sam Bigos
+- This shader is under MIT license.
+
 ## Assets
 ### Models (license - [CC-BY-SA 3.0](/LICENSE.CCBYSA3))
 - Room models used from SCP - Containment Breach game.

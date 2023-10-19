@@ -1,11 +1,11 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://drjxh51q0p5wj"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ddqoqi34g2du7"]
 
 [ext_resource type="Shader" path="res://Shaders/ToonShader/toon.gdshader" id="1_po2wp"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_po2wp")
-shader_parameter/outlineColor = Color(1, 1, 1, 1)
+shader_parameter/outlineColor = Color(1, 1, 1, 0.780392)
 shader_parameter/depth_threshold = 0.025
 shader_parameter/normal_threshold = 0.5
 shader_parameter/normal_smoothing = 0.25

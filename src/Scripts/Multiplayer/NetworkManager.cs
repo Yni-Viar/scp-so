@@ -62,6 +62,7 @@ public partial class NetworkManager : Node
 				GetNode<PlayerUI>("Game/PlayerUI").SpecialScreen = GetNode<InGameConsole>("CanvasLayer/InGameConsole").Visible;
 			}
 		}
+
 	}
 
 	/// <summary>
@@ -175,6 +176,5 @@ public partial class NetworkManager : Node
 		GD.Print("You are disconnected from the server.");
 		GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Show();
 		GetTree().Root.GetNode<Control>("Main/CanvasLayer/PlayerUI").Hide();
-
 	}
 }

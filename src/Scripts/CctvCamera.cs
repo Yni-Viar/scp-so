@@ -50,14 +50,21 @@ public partial class CctvCamera : Node3D
             {
                 rotatingCamera.RotateY(Input.GetAxis("move_right_alt", "move_left_alt") * 0.025f);
             }
-            else if ((Input.IsActionPressed("move_forward_alt") || Input.IsActionPressed("move_backward_alt"))
-                && rotatingCamera.Rotation.X <= 1.309f && rotatingCamera.Rotation.X >= 0.785398f)
+            else if (Input.IsActionPressed("move_forward_alt") || Input.IsActionPressed("move_backward_alt"))
             {
-                rotatingCamera.GetNode<Camera3D>("Camera3D").RotateX(Input.GetAxis("move_backward_alt", "move_forward_alt") * 0.01f);
+                if (rotatingCamera.GetNode<Camera3D>("Camera3D").RotationDegrees.X < -120.01f)
+                {
+                    rotatingCamera.GetNode<Camera3D>("Camera3D").RotationDegrees = new Vector3(-120f, 0f, 0f);
+                }
+                else if (rotatingCamera.GetNode<Camera3D>("Camera3D").RotationDegrees.X > -74.99f)
+                {
+                    rotatingCamera.GetNode<Camera3D>("Camera3D").RotationDegrees = new Vector3(-75f, 0f, 0f);
+                }
+                else
+                {
+                    rotatingCamera.GetNode<Camera3D>("Camera3D").RotateX(Input.GetAxis("move_backward_alt", "move_forward_alt") * 0.01f);
+                }
             }
-            Vector3 cameraRot = rotatingCamera.RotationDegrees;
-            cameraRot.X = Mathf.Clamp(rotatingCamera.RotationDegrees.X, 45f, 75f);
-            rotatingCamera.RotationDegrees = cameraRot;
 
             //Interacting.
             if (ray.IsColliding() && Input.IsActionJustPressed("interact"))

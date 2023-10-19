@@ -438,7 +438,7 @@ public partial class MapGeneratorLcz : Node
                         }
                         else
                         {
-                            selectedRoom = RoomParser.ReadJson("user://rooms.json")["LczSingle2"][rand.RandiRange(0, RoomParser.ReadJson("user://rooms.json")["LczSingle2"].Count - 1)];
+                            selectedRoom = RoomParser.ReadJson("user://rooms.json")["LczSingle2"][currRoom2];
                         }
                         currRoom2++;
                         rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM2/" + selectedRoom + ".tscn").Instantiate();

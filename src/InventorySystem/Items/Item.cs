@@ -22,6 +22,9 @@ public partial class Item : Resource
     [Export]
     public string FirstPersonPrefabPath { get; set; }
 
+    [Export]
+    public bool OneTimeUse { get; set; }
+
     [ExportGroup("SCP-914 Outputs (path to a PICKABLE, not ITEM)")]
     [Export]
     public string[] Rough { get; set; }
@@ -34,9 +37,9 @@ public partial class Item : Resource
     [Export]
     public string[] VeryFine { get; set; }
 
-    public Item() : this(null, null, null, null, null, null, null, null, null, null, null) {}
+    public Item() : this(null, null, null, null, null, null, true, null, null, null, null, null) {}
     public Item(string internalName, string name, Texture2D texture, string pickablePath, string pickupSoundPath, 
-        string firstPersonPrefabPath, string[] rough, string[] coarse, string[] oneToOne, string[] fine, string[] veryFine)
+        string firstPersonPrefabPath, bool oneTimeUse, string[] rough, string[] coarse, string[] oneToOne, string[] fine, string[] veryFine)
     {
         InternalName = internalName;
         Name = name;
@@ -44,6 +47,7 @@ public partial class Item : Resource
         PickablePath = pickablePath;
         PickupSoundPath = pickupSoundPath;
         FirstPersonPrefabPath = firstPersonPrefabPath;
+        OneTimeUse = oneTimeUse;
         Rough = rough ?? System.Array.Empty<string>(); ;
         Coarse = coarse ?? System.Array.Empty<string>(); ;
         OneToOne = oneToOne ?? System.Array.Empty<string>(); ;

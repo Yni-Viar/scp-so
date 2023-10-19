@@ -1,6 +1,21 @@
 # Changelog
 The current state of the game - Alpha.
 ## Alpha versions
+### v.0.6.1 (2023.10.19)
+- Fixed a flaw in forceclass.
+- Changed SCP-650 room from SCP-CB design, to new design. (Old room is still available, but disabled from spawning)
+- Fixed size of SCP-079 model in their room (previously it was very small).
+- Fixed SCP-079 camera going off rotation limits.
+- Added medkits.
+- Fixed itemlist not downloading.
+- Fixed ragdoll not spawning.
+- Fixed door not syncing.
+- Added interaction sound. (Better, than in 0.0.5 😎 )
+- Fixed a bug, where LCZ unique rooms could duplicate.
+- Fixed a bug, where current health was equal 1 all the time (+ updated health panel).
+- Added dither shader (used on SCP-650)
+- In-hand items now have collisions.
+- Added advanced music settings + added glow setting.
 ### v.0.6.0 (2023.10.15)
 
 - Re-added inventory with items. (Keycard system is also working)

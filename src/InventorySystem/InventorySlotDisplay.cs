@@ -34,12 +34,12 @@ public partial class InventorySlotDisplay : CenterContainer
 					//Node3D firstPersonItem = (Node3D)GD.Load<PackedScene>(_item.FirstPersonPrefabPath).Instantiate();
 					//firstPersonItem.Position = GetParent().GetParent().GetParent().GetParent().GetParent<PlayerScript>().GetNode<Marker3D>("PlayerHead/PlayerHand").GlobalPosition;
 
-					GetParent().GetParent().GetParent().GetParent<PlayerScript>().UsingItem = _item.InternalName;
+					GetParent().GetParent().GetParent().GetParent<PlayerScript>().UsingItem = new string[] { _item.InternalName, itemIndex.ToString() };
                     GetParent().GetParent().GetParent().GetParent<PlayerScript>().GetNode<ColorRect>("InventoryContainer").Hide();
 				}
 				else
 				{
-                    GetParent().GetParent().GetParent().GetParent<PlayerScript>().UsingItem = null;
+                    GetParent().GetParent().GetParent().GetParent<PlayerScript>().UsingItem = new string[] { "", "" };
                     GetParent().GetParent().GetParent().GetParent<PlayerScript>().GetNode<ColorRect>("InventoryContainer").Hide();
                 }
 			}

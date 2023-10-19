@@ -103,6 +103,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 512, -1600, -512)
 environment = ExtResource("5_u1dtw")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://FPSController/PlayerScene.tscn")

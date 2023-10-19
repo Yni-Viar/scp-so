@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=26 format=3 uid="uid://4k2un7nm7xc6"]
+[gd_resource type="Theme" load_steps=32 format=3 uid="uid://4k2un7nm7xc6"]
 
 [ext_resource type="Texture2D" uid="uid://bekswppq1xt0q" path="res://UI/checkbox_checked.png" id="1_87lyl"]
 [ext_resource type="Texture2D" uid="uid://p1j6j64jc3wd" path="res://UI/toggle_on.png" id="1_nhrs4"]
@@ -15,6 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://cwle4l46mdvrk" path="res://UI/toggle_off_mirror_disabled.png" id="7_5m17p"]
 [ext_resource type="Texture2D" uid="uid://dnvi5o1x5y5f1" path="res://UI/checkbox_unchecked.png" id="7_f22mx"]
 [ext_resource type="Texture2D" uid="uid://b1e65pgoqa1rg" path="res://UI/toggle_off_mirror.png" id="8_46kh7"]
+[ext_resource type="Texture2D" uid="uid://i8p5bbr7k3xq" path="res://UI/slider_toggle.png" id="16_kowog"]
+[ext_resource type="Texture2D" uid="uid://bjmlp1vq3373v" path="res://UI/slider_toggle_disabled.png" id="17_yryu7"]
+[ext_resource type="Texture2D" uid="uid://cq5n1u204g70j" path="res://UI/slider_toggle_highlight.png" id="18_8bltl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25ss1"]
 bg_color = Color(0, 0, 0, 0.501961)
@@ -35,6 +38,19 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxdmq"]
 bg_color = Color(0.354, 0.503467, 0.59, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gtt1y"]
+bg_color = Color(0.517647, 0.85098, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kme5"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_405qe"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8g7p"]
 bg_color = Color(0.309804, 0.309804, 0.309804, 0.317647)
@@ -84,6 +100,12 @@ CheckButton/icons/unchecked_disabled = ExtResource("6_nbsop")
 CheckButton/icons/unchecked_disabled_mirrored = ExtResource("7_5m17p")
 CheckButton/icons/unchecked_mirrored = ExtResource("8_46kh7")
 CheckButton/styles/pressed = SubResource("StyleBoxFlat_vxdmq")
+HSlider/icons/grabber = ExtResource("16_kowog")
+HSlider/icons/grabber_disabled = ExtResource("17_yryu7")
+HSlider/icons/grabber_highlight = ExtResource("18_8bltl")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_gtt1y")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_0kme5")
+HSlider/styles/slider = SubResource("StyleBoxFlat_405qe")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_d8g7p")
 LineEdit/styles/read_only = SubResource("StyleBoxFlat_dmk8g")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_5s71f")

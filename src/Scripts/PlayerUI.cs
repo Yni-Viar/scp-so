@@ -51,9 +51,16 @@ public partial class PlayerUI : Control
             {
                 if (player.IsMultiplayerAuthority() && player.scpNumber == -1)
                 {
-                    GetTree().Root.GetNodeOrNull<ColorRect>("Main/Game/" + Multiplayer.GetUniqueId().ToString() + "/InventoryContainer").Visible =
-                        !GetTree().Root.GetNodeOrNull<ColorRect>("Main/Game/" + Multiplayer.GetUniqueId().ToString() + "/InventoryContainer").Visible;
-                    SpecialScreen = !SpecialScreen;
+                    if (SpecialScreen)
+                    {
+                        GetTree().Root.GetNodeOrNull<ColorRect>("Main/Game/" + Multiplayer.GetUniqueId().ToString() + "/InventoryContainer").Visible = false;
+                        SpecialScreen = false;
+                    }
+                    else
+                    {
+                        GetTree().Root.GetNodeOrNull<ColorRect>("Main/Game/" + Multiplayer.GetUniqueId().ToString() + "/InventoryContainer").Visible = true;
+                        SpecialScreen = true;
+                    }
                 }
             }
             
