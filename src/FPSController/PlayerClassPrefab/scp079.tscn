@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq8a8mq4544nl"]
+[gd_scene load_steps=7 format=3 uid="uid://dq8a8mq4544nl"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerClassScript/Scp079PlayerScript.cs" id="1_0qnxq"]
 [ext_resource type="Texture2D" uid="uid://dfydm23006k61" path="res://Shaders/crt079.png" id="2_p7dha"]
 [ext_resource type="PackedScene" uid="uid://ccqb0ayjaywxo" path="res://Assets/Models/scp079model.tscn" id="4_bycfg"]
+[ext_resource type="FontFile" uid="uid://dbcvx5qht5ass" path="res://Assets/Fonts/PixelifySans/PixelifySans-Regular.ttf" id="4_gf0gt"]
+[ext_resource type="Theme" uid="uid://ba6yy8gowrl7j" path="res://Scp079Theme.tres" id="5_ovri6"]
 [ext_resource type="PackedScene" uid="uid://h4vs76oto1c2" path="res://MapGen/HUD/MapGenHUD.tscn" id="7_x4nvj"]
 
 [node name="scp079" type="Node3D"]
@@ -13,7 +15,6 @@ script = ExtResource("1_0qnxq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.507671, 0)
 
 [node name="UI" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,14 +33,16 @@ texture = ExtResource("2_p7dha")
 
 [node name="Info" type="Label" parent="UI"]
 layout_mode = 2
-anchor_left = 0.894
-anchor_top = 0.136
-anchor_right = 0.894
-anchor_bottom = 0.136
-offset_left = -164.48
-offset_top = -114.88
-offset_right = 163.52
-offset_bottom = 114.12
+anchor_left = 0.875
+anchor_top = 0.158
+anchor_right = 0.875
+anchor_bottom = 0.158
+offset_left = -168.0
+offset_top = -114.64
+offset_right = 169.0
+offset_bottom = 114.36
+theme_override_fonts/font = ExtResource("4_gf0gt")
+theme_override_font_sizes/font_size = 24
 text = "Arrows key - rotate camera.
 E - open door.
 R - lock REGULAR door.
@@ -50,3 +53,35 @@ vertical_alignment = 1
 [node name="MapGenHUD" parent="UI" instance=ExtResource("7_x4nvj")]
 visible = false
 layout_mode = 1
+
+[node name="EnergyBar" type="ProgressBar" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.169
+anchor_top = 0.875
+anchor_right = 0.169
+anchor_bottom = 0.875
+offset_left = -243.48
+offset_top = -22.0001
+offset_right = 243.52
+offset_bottom = 20.9999
+grow_vertical = 0
+theme = ExtResource("5_ovri6")
+theme_override_fonts/font = ExtResource("4_gf0gt")
+theme_override_font_sizes/font_size = 24
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.167
+anchor_top = 0.838
+anchor_right = 0.167
+anchor_bottom = 0.838
+offset_left = -40.64
+offset_top = -16.04
+offset_right = 42.36
+offset_bottom = 16.96
+theme_override_fonts/font = ExtResource("4_gf0gt")
+theme_override_font_sizes/font_size = 24
+text = "Energy"
+horizontal_alignment = 1

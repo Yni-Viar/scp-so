@@ -5,6 +5,7 @@ using System;
 /// </summary>
 public partial class CctvCamera : Node3D
 {
+    Scp079PlayerScript computer;
     [Export] bool active = false;
     Node3D rotatingCamera;
     Settings settings;
@@ -59,18 +60,23 @@ public partial class CctvCamera : Node3D
                     collidedWith.Call("CallOpen");
                 }
             }
-            if (ray.IsColliding() && Input.IsActionJustPressed("door_lock"))
+            if (ray.IsColliding() && Input.IsActionJustPressed("door_lock") && computer != null)
             {
                 var collidedWith = ray.GetCollider();
-                if (collidedWith is DoorStaticOpener)
+                if (collidedWith is DoorStaticOpener && computer.energy - 10f >= 0f)
                 {
                     collidedWith.Call("CallLock");
+                    computer.energy -= 10f;
                 }
             }
 
-            if (Input.IsActionJustPressed("scp079_blackout"))
+            if (Input.IsActionJustPressed("scp079_blackout") && computer != null)
             {
-                Rpc("RoomBlackout");
+                if (computer.energy - 50f >= 0f)
+                {
+                    computer.energy -= 50f;
+                    Rpc("RoomBlackout");
+                }
             }
         }
 	}
@@ -78,16 +84,24 @@ public partial class CctvCamera : Node3D
     /// Initialize the camera.
     /// </summary>
     /// <param name="isCurrent">Is the camera current.</param>
-    internal void Initialize(bool isCurrent)
+    internal void Initialize(bool isCurrent, Node3D player)
     {
         if (isCurrent)
         {
+            if (player is Scp079PlayerScript c)
+            {
+                computer = c;
+            }
             rotatingCamera.Visible = true;
             rotatingCamera.GetNode<Camera3D>("Camera3D").Current = true;
             active = true;
         }
         else
         {
+            if (computer != null)
+            {
+                computer = null;
+            }
             rotatingCamera.Visible = false;
             rotatingCamera.GetNode<Camera3D>("Camera3D").Current = false;
             active = false;

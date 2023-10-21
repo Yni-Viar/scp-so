@@ -9,6 +9,7 @@ public partial class Scp079PlayerScript : Node3D
     //Godot.Collections.Array<Node> lczCamList = new Godot.Collections.Array<Node>();
     //Godot.Collections.Array<Node> rzCamList = new Godot.Collections.Array<Node>();
     string currentCam = "";
+    [Export(PropertyHint.Range, "0,100,0.01")] internal float energy = 100f;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -43,6 +44,7 @@ public partial class Scp079PlayerScript : Node3D
 	{
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
+            GetNode<ProgressBar>("UI/EnergyBar").Value = energy;
             if (Input.IsActionJustPressed("scp079_map"))
             {
                 if (GetParent().GetParent().GetParent().GetNode<PlayerUI>("PlayerUI").SpecialScreen)
@@ -56,6 +58,10 @@ public partial class Scp079PlayerScript : Node3D
                     GetNode<Control>("UI/MapGenHUD").Visible = true;
                 }
             }
+            if (energy < 100)
+            {
+                energy += 0.01f;
+            }
         }
 	}
     /// <summary>
@@ -67,17 +73,17 @@ public partial class Scp079PlayerScript : Node3D
     {
         if (currentCam != "")
         {
-            GetTree().Root.GetNode<CctvCamera>(currentCam).Initialize(false);
+            GetTree().Root.GetNode<CctvCamera>(currentCam).Initialize(false, this);
         }
         currentCam = "Main/Game/MapGen" + zone +"/" + cam + "/cctv";
         if (GetTree().Root.GetNodeOrNull<CctvCamera>(currentCam) != null)
         {
-            GetTree().Root.GetNode<CctvCamera>(currentCam).Initialize(true);
+            GetTree().Root.GetNode<CctvCamera>(currentCam).Initialize(true, this);
         }
         else
         {
             currentCam = "Main/Game/MapGenLcz/LC_cont1_079/cctv";
-            GetTree().Root.GetNode<CctvCamera>(currentCam).Initialize(true);
+            GetTree().Root.GetNode<CctvCamera>(currentCam).Initialize(true, this);
         }
     }
 }

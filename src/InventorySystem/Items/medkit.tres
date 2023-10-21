@@ -11,6 +11,7 @@ Texture = ExtResource("1_jmq1g")
 PickablePath = "res://InventorySystem/Items/PickablePrefabs/medkit.tscn"
 PickupSoundPath = "res://Sounds/Interact/PickItem1.ogg"
 FirstPersonPrefabPath = "res://InventorySystem/Items/InHandPrefabs/medkit.tscn"
+OneTimeUse = true
 Rough = PackedStringArray()
 Coarse = PackedStringArray()
 OneToOne = PackedStringArray("res://InventorySystem/Items/PickablePrefabs/medkit.tscn")

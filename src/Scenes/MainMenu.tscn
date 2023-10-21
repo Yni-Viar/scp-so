@@ -131,6 +131,9 @@ theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "[b]v.0.6.2-dev[/b] [i](Alpha)[/i]
 - Added blackout ability to SCP-079.
+- Added new pixel font for SCP-079.
+- Added energy bar for SCP-079
+- Adjusted a size for medkit (in 0.6.1 it was too large)
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.
