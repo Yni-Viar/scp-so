@@ -1,6 +1,8 @@
 using Godot;
 using System;
-
+/// <summary>
+/// CCTV camera system. Is available since 0.6.0.
+/// </summary>
 public partial class CctvCamera : Node3D
 {
     [Export] bool active = false;
@@ -15,36 +17,10 @@ public partial class CctvCamera : Node3D
         settings = GetTree().Root.GetNode<Settings>("Settings");
 	}
 
-    /*public override void _Input(InputEvent @event)
-    {
-        if (IsMultiplayerAuthority() && active)
-        {
-            if (@event is InputEventMouseMotion)
-            {
-                InputEventMouseMotion m = (InputEventMouseMotion) @event;
-                rotatingCamera.Rotate(Vector3.Up, Mathf.DegToRad(m.Relative.X * settings.MouseSensitivity * 2f)); //pretty magic numbers
-                
-                rotatingCamera.RotateObjectLocal(Vector3.Right, Mathf.DegToRad(m.Relative.X * settings.MouseSensitivity * 2f));
-                Vector3 cameraRot = rotatingCamera.RotationDegrees;
-                cameraRot.X = Mathf.Clamp(rotatingCamera.RotationDegrees.X, 45f, 75f);
-                rotatingCamera.RotationDegrees = cameraRot;
-
-                // deprecated values from v.0.6.0-dev.
-                //rotatingCamera.RotateY(Mathf.DegToRad(-m.Relative.X * settings.MouseSensitivity * 2f));
-                //rotatingCamera.RotateX(Mathf.Clamp(-m.Relative.Y * settings.MouseSensitivity * 0.125f, -90, 90));
-                //rotatingCamera.RotateX(Mathf.DegToRad(-m.Relative.X * settings.MouseSensitivity * 2f));
-
-                //rotatingCamera.RotateObjectLocal(Vector3.Right, Mathf.Clamp(m.Relative.Y * settings.MouseSensitivity * 0.125f, 35, 46));
-            }
-            
-
-        }
-    }*/
-
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        if (IsMultiplayerAuthority() && active)
+        if (active)
         {
             if (Input.IsActionPressed("move_left_alt") || Input.IsActionPressed("move_right_alt"))
             {
@@ -91,9 +67,17 @@ public partial class CctvCamera : Node3D
                     collidedWith.Call("CallLock");
                 }
             }
+
+            if (Input.IsActionJustPressed("scp079_blackout"))
+            {
+                Rpc("RoomBlackout");
+            }
         }
 	}
-
+    /// <summary>
+    /// Initialize the camera.
+    /// </summary>
+    /// <param name="isCurrent">Is the camera current.</param>
     internal void Initialize(bool isCurrent)
     {
         if (isCurrent)
@@ -107,6 +91,48 @@ public partial class CctvCamera : Node3D
             rotatingCamera.Visible = false;
             rotatingCamera.GetNode<Camera3D>("Camera3D").Current = false;
             active = false;
+        }
+    }
+    /// <summary>
+    /// Room blackout controller.
+    /// </summary>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    async void RoomBlackout()
+    {
+        foreach (Node item in GetParent().GetChildren())
+        {
+            if (item.IsInGroup("Lamp"))
+            {
+                if (item.GetNodeOrNull<LightSystem>("OmniLight3D") != null)
+                {
+                    item.GetNodeOrNull<LightSystem>("OmniLight3D").TurnLightsOff();
+                }
+            }
+            /*if (item.IsInGroup("Light"))
+            {
+                if (item is OmniLight3D light)
+                {
+                    light.Visible = false;
+                }
+            }*/
+        }
+        await ToSignal(GetTree().CreateTimer(10.0), "timeout");
+        foreach (Node item in GetParent().GetChildren())
+        {
+            if (item.IsInGroup("Lamp"))
+            {
+                if (item.GetNodeOrNull<LightSystem>("OmniLight3D") != null)
+                {
+                    item.GetNodeOrNull<LightSystem>("OmniLight3D").TurnLightsOn();
+                }
+            }
+            /*if (item.IsInGroup("Light"))
+            {
+                if (item is OmniLight3D light)
+                {
+                    light.Visible = true;
+                }
+            }*/
         }
     }
 }

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bratli6m21b8k"]
+[gd_scene load_steps=7 format=3 uid="uid://bi12ev7yropli"]
 
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/materials/modern_ceiling_lamp_01_glass.tres" id="1_gjw6f"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/materials/modern_ceiling_lamp_01.tres" id="2_ah316"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/materials/modern_ceiling_globe.tres" id="3_k7217"]
+[ext_resource type="Script" path="res://Scripts/LightSystem.cs" id="4_wq4hj"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_7u8t7"]
 _surfaces = [{
@@ -80,7 +81,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7u8t7")
 
-[node name="modern_ceiling_lamp_01_4k" type="Node3D"]
+[node name="modern_ceiling_lamp_01_4k" type="Node3D" groups=["Lamp"]]
 
 [node name="modern_ceiling_lamp_01" type="MeshInstance3D" parent="."]
 visibility_range_end = 24.0
@@ -95,3 +96,4 @@ distance_fade_enabled = true
 distance_fade_begin = 24.0
 omni_range = 12.0
 omni_attenuation = 2.0
+script = ExtResource("4_wq4hj")

@@ -58,11 +58,6 @@ public partial class Scp079PlayerScript : Node3D
             }
         }
 	}
-
-    public override void _Input(InputEvent @event)
-    {
-        base._Input(@event);
-    }
     /// <summary>
     /// Switches camera.
     /// </summary>

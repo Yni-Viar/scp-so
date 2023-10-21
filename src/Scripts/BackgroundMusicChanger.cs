@@ -1,6 +1,8 @@
 using Godot;
 using System;
-
+/// <summary>
+/// Used in custom audio in room (such as SCP-079 ambience)
+/// </summary>
 public partial class BackgroundMusicChanger : Area3D
 {
     [Export] string inRoomMusic;
