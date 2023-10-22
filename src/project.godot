@@ -179,6 +179,10 @@ scp079_blackout={
 3d_render/layer_1="generic"
 3d_render/layer_2="players"
 3d_render/layer_3="doors"
+3d_physics/layer_1="World"
+3d_physics/layer_2="Players"
+3d_physics/layer_3="Doors"
+3d_physics/layer_4="Pickables"
 
 [physics]
 

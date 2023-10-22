@@ -6,10 +6,10 @@ using System;
 public partial class Globals
 {
     public enum Stages { release, testing, dev };
-    public static string version = "0.6.2-dev";
+    public static string version = "0.6.2";
     //Milestone is a minimal version, compatible with current release.
-    public static string milestone = "0.6.1";
-    public static Stages currentStage = Stages.dev;
+    public static string milestone = "0.6.2";
+    public static Stages currentStage = Stages.testing;
 
 
     public enum Team { SPT, CDP, SCI, MTF, DSE, NSE, CHI }
@@ -29,7 +29,8 @@ public partial class Globals
         { "key5", "res://InventorySystem/Items/key5.tres" },
         { "keyomni", "res://InventorySystem/Items/keyomni.tres" },
         { "pda", "res://InventorySystem/Items/pda.tres" },
-        { "medkit", "res://InventorySystem/Items/medkit.tres" }
+        { "medkit", "res://InventorySystem/Items/medkit.tres" },
+        { "scp018", "res://InventorySystem/Items/scp018.tres" }
     };
 
     internal static Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> roomData =

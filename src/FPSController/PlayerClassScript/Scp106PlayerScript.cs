@@ -61,19 +61,19 @@ public partial class Scp106PlayerScript : Node3D
                     }
                 }
             }
-        }
-        
-        if (Input.IsActionJustPressed("scp106_teleport") && !stalkCooldown)
-        {
-            if (GetParent().GetParent().GetParent().GetParent().GetNode<PlayerUI>("Game/PlayerUI").SpecialScreen)
+
+            if (Input.IsActionJustPressed("scp106_teleport") && !stalkCooldown)
             {
-                GetParent().GetParent().GetParent().GetParent().GetNode<PlayerUI>("Game/PlayerUI").SpecialScreen = false;
-                GetNode<StalkPanel>("AbilityUI/StalkPanel").Hide();
-            }
-            else
-            {
-                GetParent().GetParent().GetParent().GetParent().GetNode<PlayerUI>("Game/PlayerUI").SpecialScreen = true;
-                GetNode<StalkPanel>("AbilityUI/StalkPanel").Show();
+                if (GetParent().GetParent().GetParent().GetParent().GetNode<PlayerUI>("Game/PlayerUI").SpecialScreen)
+                {
+                    GetParent().GetParent().GetParent().GetParent().GetNode<PlayerUI>("Game/PlayerUI").SpecialScreen = false;
+                    GetNode<StalkPanel>("AbilityUI/StalkPanel").Hide();
+                }
+                else
+                {
+                    GetParent().GetParent().GetParent().GetParent().GetNode<PlayerUI>("Game/PlayerUI").SpecialScreen = true;
+                    GetNode<StalkPanel>("AbilityUI/StalkPanel").Show();
+                }
             }
         }
     }

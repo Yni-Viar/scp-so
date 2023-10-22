@@ -95,7 +95,7 @@ public partial class PlayerScript : CharacterBody3D
         }
     }
 
-    private bool IsLocalAuthority()
+    internal bool IsLocalAuthority()
     {
         return GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() == Multiplayer.GetUniqueId();
     }
@@ -232,7 +232,6 @@ public partial class PlayerScript : CharacterBody3D
                 }
                 if (collidedWith is ItemAction action && action.GetPath().ToString().Contains(Name))
                 {
-                    GD.Print("!");
                     collidedWith.Call("OnUse", this);
                 }
             }

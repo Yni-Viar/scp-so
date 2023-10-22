@@ -47,6 +47,7 @@ shadow_mesh = SubResource("ArrayMesh_gy8w7")
 size = Vector3(0.765801, 0.218289, 0.658428)
 
 [node name="FirstAid" type="RigidBody3D"]
+collision_layer = 8
 script = ExtResource("1_k8o58")
 itemResource = ExtResource("2_c7k2g")
 

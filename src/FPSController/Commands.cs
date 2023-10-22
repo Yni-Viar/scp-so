@@ -8,12 +8,15 @@ public partial class Commands : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("forceclass", new Callable(this, "Forceclass"), "Forceclass the player (1 argument needed)");
-        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("classlist", new Callable(this, "ClassList"), "Returns class names (for forceclass)");
-        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("tp", new Callable(this, "TeleportCmd"), "Teleports you. (1 arguments needed)");
-        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("itemlist", new Callable(this, "ItemList"), "Returns item names");
-        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("give", new Callable(this, "GiveItem"), "Gives an item to inventory (Limit for each player equals 12 items)");
-        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("sethp", new Callable(this, "SetHealth"), "Sets health on a current player");
+        if (GetParent<PlayerScript>().IsMultiplayerAuthority())
+        {
+            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("forceclass", new Callable(this, "Forceclass"), "Forceclass the player (1 argument needed)");
+            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("classlist", new Callable(this, "ClassList"), "Returns class names (for forceclass)");
+            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("tp", new Callable(this, "TeleportCmd"), "Teleports you. (1 arguments needed)");
+            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("itemlist", new Callable(this, "ItemList"), "Returns item names");
+            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("give", new Callable(this, "GiveItem"), "Gives an item to inventory (Limit for each player equals 12 items)");
+            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("givehp", new Callable(this, "SetHealth"), "Sets health on a current player");
+        }
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -143,7 +146,11 @@ public partial class Commands : Node
         Item item = ResourceLoader.Load<Item>(itemPath);
         GetTree().Root.GetNode<Inventory>("Main/Game/" + Multiplayer.GetUniqueId() + "/InventoryContainer/Inventory").Rpc("DropItemRpc", item.PickablePath);
     }
-
+    /// <summary>
+    /// Sets 
+    /// </summary>
+    /// <param name="args"></param>
+    /// <returns></returns>
     string SetHealth(string[] args)
     {
         if (args.Length == 1)

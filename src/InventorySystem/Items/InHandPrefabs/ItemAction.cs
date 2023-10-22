@@ -14,7 +14,10 @@ public partial class ItemAction : Node3D
 	public override void _Process(double delta)
 	{
 	}
-
+	/// <summary>
+	/// Base method, which is default for first-person items.
+	/// </summary>
+	/// <param name="player"></param>
 	internal virtual void OnUse(PlayerScript player)
 	{
 		if (oneTimeUse)

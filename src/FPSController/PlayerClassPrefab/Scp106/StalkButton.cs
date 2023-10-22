@@ -16,7 +16,7 @@ public partial class StalkButton : Button
 
     private void OnPressed()
     {
-        GetParent().GetParent().GetParent<Scp106PlayerScript>().Rpc("Stalk", Text);
+        GetParent().GetParent().GetParent<Scp106PlayerScript>().RpcId(Multiplayer.GetUniqueId(), "Stalk", Text);
     }
 }
 

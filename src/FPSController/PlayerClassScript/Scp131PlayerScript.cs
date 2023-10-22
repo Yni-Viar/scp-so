@@ -6,6 +6,7 @@ public partial class Scp131PlayerScript : Node3D
     [Export] internal bool isWatchingAtScp173 = false;
     RayCast3D vision;
     bool scanCooldown = false;
+    bool danger = false;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -48,27 +49,27 @@ public partial class Scp131PlayerScript : Node3D
     {
         scanCooldown = true;
         GetNode<Label>("AbilityUI/VBoxContainer/ScanHostiles").Text = "Scan hostiles: cooldown...";
-        GetNode<Area3D>("Area3D").BodyEntered += OnBodyEntered;
-        await ToSignal(GetTree().CreateTimer(5.0), "timeout");
-        GetNode<Area3D>("Area3D").BodyEntered -= OnBodyEntered;
-        await ToSignal(GetTree().CreateTimer(15.0), "timeout");
-        scanCooldown = false;
-        GetNode<Label>("AbilityUI/VBoxContainer/ScanHostiles").Text = "Scan hostiles: ready! Click [F] to scan.";
-    }
-
-    private void OnBodyEntered(Node3D body)
-    {
-        if (body is PlayerScript player)
+        foreach (Node3D item in GetNode<Area3D>("Area3D").GetOverlappingBodies())
         {
-            if (player.team == Globals.Team.DSE)
+            if (item is PlayerScript player)
             {
-                Scp131Signal(true);
-            }
-            else
-            {
-                Scp131Signal(false);
+                if (player.team == Globals.Team.DSE)
+                {
+                    GetNode<Label>("AbilityUI/HostilesAroundMe").Text += player.classKey + " is near. \n";
+                    danger = true;
+                }
             }
         }
+        if (danger)
+        {
+            GetNode<Label>("AbilityUI/HostilesAroundMe").Show();
+        }
+        Scp131Signal(danger);
+        await ToSignal(GetTree().CreateTimer(20.0), "timeout");
+        GetNode<Label>("AbilityUI/HostilesAroundMe").Text = "";
+        GetNode<Label>("AbilityUI/HostilesAroundMe").Hide();
+        scanCooldown = false;
+        GetNode<Label>("AbilityUI/VBoxContainer/ScanHostiles").Text = "Scan hostiles: ready! Click [F] to scan.";
     }
     /// <summary>
     /// Helper method for determining state of SCP-131, while scanning.

@@ -129,11 +129,17 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[b]v.0.6.2-dev[/b] [i](Alpha)[/i]
+text = "[b]v.0.6.2[/b] [i](Alpha)[/i]
 - Added blackout ability to SCP-079.
 - Added new pixel font for SCP-079.
 - Added energy bar for SCP-079
 - Adjusted a size for medkit (in 0.6.1 it was too large)
+- Fixed wrong rotation of guard.
+- Added more abilities for both SCP-131 instances.
+- \"sethp\" command renamed to \"givehp\"
+- Fixed bug, where you could not use player commands, while next connected person left the game.
+- Fixed bug, where SCP-106's teleportation caused [i]all[/i] people to teleport to Larry.
+- Re-added SCP-018 (now it causes damage - more speed = more damage).
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.

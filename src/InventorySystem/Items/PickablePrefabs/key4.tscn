@@ -45,6 +45,7 @@ shadow_mesh = SubResource("ArrayMesh_jaq8v")
 size = Vector3(0.386, 0.26, 0.05)
 
 [node name="key4" type="RigidBody3D"]
+collision_layer = 8
 continuous_cd = true
 script = ExtResource("1_mbw2s")
 itemResource = ExtResource("2_nm2ft")
