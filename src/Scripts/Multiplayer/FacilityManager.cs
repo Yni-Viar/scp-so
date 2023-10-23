@@ -272,7 +272,7 @@ public partial class FacilityManager : Node3D
     {
         for (int i = 0; i < GetNode<Inventory>(playerName + "/InventoryContainer/Inventory").items.Count; i++)
         {
-            GetNode<Inventory>(playerName + "/InventoryContainer/Inventory").items[i] = null;
+            GetNode<Inventory>(playerName + "/InventoryContainer/Inventory").RemoveItem(i, true);
         }
         foreach (string item in itemsArray)
         {

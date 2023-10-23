@@ -140,6 +140,7 @@ text = "[b]v.0.6.2[/b] [i](Alpha)[/i]
 - Fixed bug, where you could not use player commands, while next connected person left the game.
 - Fixed bug, where SCP-106's teleportation caused [i]all[/i] people to teleport to Larry.
 - Re-added SCP-018 (now it causes damage - more speed = more damage).
+- Implemented item drop on class change.
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.

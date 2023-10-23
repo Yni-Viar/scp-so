@@ -9,7 +9,7 @@
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat03/mat6.002.tres" id="7_mrv55"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat03/mat7.002.tres" id="8_m2mkt"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat03/mat8.002.tres" id="9_euslu"]
-[ext_resource type="PackedScene" uid="uid://bratli6m21b8k" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="10_3b8a8"]
+[ext_resource type="PackedScene" uid="uid://bi12ev7yropli" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="10_3b8a8"]
 [ext_resource type="PackedScene" uid="uid://bff0n6tx6aq40" path="res://MapGen/Resources/Doors/DoorLCZ.tscn" id="11_aliwl"]
 [ext_resource type="PackedScene" uid="uid://b2hdvt8y22tsf" path="res://MapGen/Resources/Cameras/cctv_rz.tscn" id="12_hl0bv"]
 
@@ -248,3 +248,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.412
 
 [node name="cctv" parent="." instance=ExtResource("12_hl0bv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00697982, 3.84, 0.0258881)
+
+[node name="entityspawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.47256, 0)

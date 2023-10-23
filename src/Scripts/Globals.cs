@@ -9,7 +9,7 @@ public partial class Globals
     public static string version = "0.6.2";
     //Milestone is a minimal version, compatible with current release.
     public static string milestone = "0.6.2";
-    public static Stages currentStage = Stages.testing;
+    public static Stages currentStage = Stages.release;
 
 
     public enum Team { SPT, CDP, SCI, MTF, DSE, NSE, CHI }
@@ -52,7 +52,7 @@ public partial class Globals
             { "LczCommon3", new Godot.Collections.Array<string>{ "lc_room_3" } },
             { "LczCommon4", new Godot.Collections.Array<string>{ "lc_room_4" } },
             { "LczSingle1", new Godot.Collections.Array<string>{ "lc_room_1_archive" } },
-            { "LczSingle2", new Godot.Collections.Array<string>{ "lc_cont_2_650", "lc_room_2_scps", "lc_room_2_sl" } },
+            { "LczSingle2", new Godot.Collections.Array<string>{ "lc_cont_2_650", "lc_cont_2_scps", "lc_room_2_sl" } },
             { "LczSingle2C", new Godot.Collections.Array<string>{ } },
             { "LczSingle3", new Godot.Collections.Array<string>{ } },
             { "LczSingle4", new Godot.Collections.Array<string>{ } },

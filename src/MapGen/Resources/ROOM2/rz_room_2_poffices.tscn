@@ -13,7 +13,7 @@
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat10.004.tres" id="11_b1bo4"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat11.003.tres" id="12_57bqw"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat12.001.tres" id="13_apywl"]
-[ext_resource type="PackedScene" uid="uid://bratli6m21b8k" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="14_50w72"]
+[ext_resource type="PackedScene" uid="uid://bi12ev7yropli" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="14_50w72"]
 [ext_resource type="PackedScene" uid="uid://vpjy5i6gaggm" path="res://MapGen/Resources/Doors/DoorKeycard.tscn" id="15_hm7hw"]
 [ext_resource type="PackedScene" uid="uid://c1ywflix3wsbl" path="res://InventorySystem/Items/PickablePrefabs/key2.tscn" id="16_ux0ss"]
 [ext_resource type="PackedScene" uid="uid://cbqjadcdwpo8r" path="res://InventorySystem/Items/PickablePrefabs/key3.tscn" id="17_dpcet"]
@@ -330,10 +330,10 @@ requirements = 1
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.40047, -2.38419e-07, -4.41133)
 
 [node name="key2" parent="." instance=ExtResource("16_ux0ss")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.85583, 1.2, -5.4339)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.85583, 1.58439, -5.4339)
 
 [node name="key3" parent="." instance=ExtResource("17_dpcet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.91113, 1.2, 6.99299)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.91113, 1.54195, 6.99299)
 
 [node name="key4" parent="." instance=ExtResource("18_i1hrg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.06901, 1.40055, -2.9854)

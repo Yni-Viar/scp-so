@@ -1,6 +1,18 @@
 # Changelog
 The current state of the game - Alpha.
 ## Alpha versions
+### v.0.6.2 (2023.10.23)
+- Added blackout ability to SCP-079.
+- Added new pixel font for SCP-079.
+- Added energy bar for SCP-079
+- Adjusted a size for medkit (in 0.6.1 it was too large)
+- Fixed wrong rotation of guard.
+- Added more abilities for both SCP-131 instances.
+- "sethp\" command renamed to "givehp"
+- Fixed bug, where you could not use player commands, while next connected person left the game.
+- Fixed bug, where SCP-106's teleportation caused *all* people to teleport to Larry.
+- Re-added SCP-018 (now it causes damage - more speed = more damage).
+- Implemented item drop on class change.
 ### v.0.6.1 (2023.10.19)
 - Fixed a flaw in forceclass.
 - Changed SCP-650 room from SCP-CB design, to new design. (Old room is still available, but disabled from spawning)
