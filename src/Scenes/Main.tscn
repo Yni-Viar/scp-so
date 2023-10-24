@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhs1iuqg4qex4"]
+[gd_scene load_steps=6 format=3 uid="uid://dhs1iuqg4qex4"]
 
 [ext_resource type="PackedScene" uid="uid://b345bk26jamix" path="res://Scenes/MainMenu.tscn" id="1_5tg38"]
 [ext_resource type="Script" path="res://Scripts/Multiplayer/NetworkManager.cs" id="1_nxheq"]
 [ext_resource type="PackedScene" uid="uid://o6rnnciwmwvn" path="res://GDsh/InGameConsole.tscn" id="3_qd7e1"]
 [ext_resource type="Script" path="res://Scripts/PauseMenu.cs" id="4_7jm2u"]
+[ext_resource type="PackedScene" uid="uid://cowux4ih7pibk" path="res://Scenes/LoadingScreen.tscn" id="5_vdvwj"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_nxheq")
@@ -49,6 +50,9 @@ offset_top = -32.12
 offset_right = 192.104
 offset_bottom = 31.88
 text = "Exit"
+
+[node name="LoadingScreen" parent="." instance=ExtResource("5_vdvwj")]
+visible = false
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Scenes/Facility.tscn")

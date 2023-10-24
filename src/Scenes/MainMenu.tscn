@@ -131,10 +131,11 @@ theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "[b]v.0.7.0-dev[/b] [i](Alpha)[/i]
 - Changed game logo to nicer one.
+- Finally added loading screen!
+- More dead ends can be spawned.
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.
-- There is NO loading screen, so you need to wait.
 - Scientist's hands rig are incorrect. (I am unable to fix this issue, because Mixamo does not support hazmats :( )"
 
 [node name="PlayPanel" type="Panel" parent="."]

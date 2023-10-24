@@ -128,6 +128,7 @@ public partial class MapGeneratorLcz : Node
 
             y -= height;
         }
+
         room1Amount = room2Amount = room2cAmount = room3Amount = room4Amount = 0;
         for (x = 0; x < 12; x++)
         {
@@ -266,7 +267,7 @@ public partial class MapGeneratorLcz : Node
             }
         }
 
-        /*if (room1Amount < 5)
+        if (room1Amount < 5)
         {
             GD.Print("Forcing some ROOM1s");
             for (y = 2; y < 10 && room1Amount < 5; y++)
@@ -304,7 +305,7 @@ public partial class MapGeneratorLcz : Node
 
                             switch (adjRoom.type)
                             {
-                                case RoomTypes.ROOM2:
+                                /*case RoomTypes.ROOM2:
                                     roomTemp[x, y].type = RoomTypes.ROOM1;
                                     room1Amount++;
                                     room2Amount--;
@@ -325,7 +326,7 @@ public partial class MapGeneratorLcz : Node
                                             adjRoom.angle = 180;
                                             break;
                                     }
-                                    break;
+                                    break;*/
                                 case RoomTypes.ROOM3:
                                     roomTemp[x, y].type = RoomTypes.ROOM1;
                                     adjRoom.type = RoomTypes.ROOM4;
@@ -334,6 +335,7 @@ public partial class MapGeneratorLcz : Node
                                     room4Amount++;
                                     break;
                                 default:
+                                    roomTemp[x, y].type = RoomTypes.EMPTY;
                                     roomTemp[x, y].angle = -1;
                                     break;
                             }
@@ -357,9 +359,8 @@ public partial class MapGeneratorLcz : Node
                         }
                     }
                 }
-                //\}
             }
-        }*/
+        }
 
         /*for (x = 0; x < roomTemp.GetLength(0); x++)
         {
@@ -503,6 +504,7 @@ public partial class MapGeneratorLcz : Node
                 }
             }
         }
+
     }
 
     public override void _Ready()

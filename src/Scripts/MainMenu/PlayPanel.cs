@@ -15,12 +15,12 @@ public partial class PlayPanel : Panel
 
     private void OnHostPressed()
     {
-    	GetTree().Root.GetNode<NetworkManager>("Main").Host();
+        GetTree().Root.GetNode<NetworkManager>("Main").Host();
     }
 
     private void OnConnectPressed()
     {
-    	GetTree().Root.GetNode<NetworkManager>("Main").Join();
+        GetTree().Root.GetNode<NetworkManager>("Main").Join();
     }
 
     private void OnIpAddressTextChanged(string new_text)

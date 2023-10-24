@@ -6,9 +6,9 @@ using System;
 public partial class Globals
 {
     public enum Stages { release, testing, dev };
-    public static string version = "0.6.2";
+    public static string version = "0.7.0-dev";
     //Milestone is a minimal version, compatible with current release.
-    public static string milestone = "0.6.2";
+    public static string milestone = "0.7.0-dev";
     public static Stages currentStage = Stages.release;
 
 

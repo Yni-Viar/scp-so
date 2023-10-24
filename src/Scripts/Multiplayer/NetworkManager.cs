@@ -13,6 +13,7 @@ public partial class NetworkManager : Node
 
 	Node3D game; // replicated map.
 	CharacterBody3D playerScene; // replicated player.
+	bool loading = false;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
@@ -34,8 +35,6 @@ public partial class NetworkManager : Node
 
 			LoadIni();
 		}
-
-		peer = new ENetMultiplayerPeer();
 
 		/* foreach (var argument in OS.GetCmdlineArgs()) // unused as for now.
 		{
@@ -62,7 +61,22 @@ public partial class NetworkManager : Node
 				GetNode<PlayerUI>("Game/PlayerUI").SpecialScreen = GetNode<InGameConsole>("CanvasLayer/InGameConsole").Visible;
 			}
 		}
-
+		if (loading)
+		{
+			Godot.Collections.Array progress = new Godot.Collections.Array();
+			var status = ResourceLoader.LoadThreadedGetStatus("res://Scenes/Facility.tscn", progress);
+			if (status == ResourceLoader.ThreadLoadStatus.InProgress)
+			{
+				//Loading screen.
+				GetTree().Root.GetNode<ProgressBar>("Main/LoadingScreen/MainPanel/ProgressBar").Value = (double)progress[0] * 100;
+            }
+			else if (status == ResourceLoader.ThreadLoadStatus.Loaded)
+			{
+				GetTree().Root.GetNode<ProgressBar>("Main/LoadingScreen/MainPanel/ProgressBar").Value = 100;
+				PrepareLevel(ResourceLoader.LoadThreadedGet("res://Scenes/Facility.tscn") as PackedScene);
+                loading = false;
+			}
+		}
 	}
 
 	/// <summary>
@@ -90,27 +104,27 @@ public partial class NetworkManager : Node
 	/// </summary>
 	internal void Host()
 	{
-		peer.CreateServer(port, maxPlayers);
+        peer = new ENetMultiplayerPeer();
+        peer.CreateServer(port, maxPlayers);
 		Multiplayer.MultiplayerPeer = peer;
 		LoadGame();
 		GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Hide();
-		// GetTree().Root.GetNode<Control>("Main/CanvasLayer/PlayerUI").Show();
-		GD.Print("Ready for connecting!");
-	}
+		GD.Print("Server started. Ready for connecting!");
+    }
 
 	/// <summary>
 	/// General join method.
 	/// </summary>
 	internal void Join()
 	{
-		peer.CreateClient(ipAddress, port);
+        peer = new ENetMultiplayerPeer();
+        peer.CreateClient(ipAddress, port);
 		Multiplayer.MultiplayerPeer = peer;
 		Multiplayer.ConnectedToServer += ConnectedToServer;
 		Multiplayer.ConnectionFailed += ConnectionFailed;
 		Multiplayer.ServerDisconnected += ServerDisconnected;
 		GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Hide();
-		// GetTree().Root.GetNode<Control>("Main/CanvasLayer/PlayerUI").Show();
-	}
+    }
 
 	// NOT to be confused with LoadLevel, LoadGame is a serverside function, while LoadLevel - clientside.
 	// Both needed to spawn a level to every player via Multiplayer Spawner.
@@ -122,7 +136,7 @@ public partial class NetworkManager : Node
 	{
 		if (Multiplayer.IsServer())
 		{
-			CallDeferred("LoadLevel", GD.Load<PackedScene>("res://Scenes/Facility.tscn"));
+			CallDeferred("LoadLevel");
 		}
 	}
 
@@ -130,18 +144,30 @@ public partial class NetworkManager : Node
 	/// Loads the game client-side.
 	/// </summary>
 	/// <param name="scene">Scene to load</param>
-	void LoadLevel(PackedScene scene)
+	void LoadLevel()
 	{
-		if (GetNodeOrNull("Game") != null)
-		{
-			foreach (Node n in GetNode("Game").GetChildren())
-			{
-				GetNode("Game").RemoveChild(n);
-				n.QueueFree();
-			}
-		}
-		AddChild(scene.Instantiate());
+		//Loading screen.
+		GetTree().Root.GetNode<CanvasLayer>("Main/LoadingScreen/").Visible = true;
+
+		ResourceLoader.LoadThreadedRequest("res://Scenes/Facility.tscn");
+		loading = true;
 	}
+
+	void PrepareLevel(PackedScene scene)
+	{
+        if (GetNodeOrNull("Game") != null)
+        {
+            foreach (Node n in GetNode("Game").GetChildren())
+            {
+                GetNode("Game").RemoveChild(n);
+                n.QueueFree();
+            }
+        }
+		AddChild(scene.Instantiate());
+
+        //Loading screen.
+        GetTree().Root.GetNode<CanvasLayer>("Main/LoadingScreen/").Visible = false;
+    }
 
 	/// <summary>
 	/// Emitted when successfully connected to server.
