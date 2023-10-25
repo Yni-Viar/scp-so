@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cq6d3sxyb3vwp"]
+
+[ext_resource type="Texture2D" uid="uid://dcurpqw203c2e" path="res://LoadingScreens/Images/scp173.png" id="1_kefl5"]
+[ext_resource type="Script" path="res://Scripts/LoadingScreenResource.cs" id="2_av2ed"]
+
+[resource]
+script = ExtResource("2_av2ed")
+Name = "SCP-173"
+Description = "SCP-173 is constructed from concrete and rebar with traces of Krylon brand spray paint. It is animate and extremely hostile.
+The object cannot move while within a direct line of sight. Line of sight must not be broken at any time with SCP-173. Personnel assigned to enter container are instructed to alert one another before blinking."
+Texture = ExtResource("1_kefl5")

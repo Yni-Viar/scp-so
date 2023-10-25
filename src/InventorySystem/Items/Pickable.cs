@@ -41,10 +41,10 @@ public partial class Pickable : RigidBody3D
     void PickUpRpc(string invPath)
     {
         // This opens JSON, find item and add it to inventory.
-        if (ItemParser.ReadJson("user://itemlist.json").ContainsKey(itemResource.InternalName))
+        if (ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json").ContainsKey(itemResource.InternalName))
         {
             //after trimming, we will get an item from json.
-            GetNode<Inventory>(invPath).AddItem(ResourceLoader.Load(ItemParser.ReadJson("user://itemlist.json")[SceneFilePath.TrimSuffix(".tscn").TrimPrefix("res://InventorySystem/Items/PickablePrefabs/")]));
+            GetNode<Inventory>(invPath).AddItem(ResourceLoader.Load(ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json")[SceneFilePath.TrimSuffix(".tscn").TrimPrefix("res://InventorySystem/Items/PickablePrefabs/")]));
             Rpc("DestroyPickedItem");
 
         }

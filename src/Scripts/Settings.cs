@@ -3,6 +3,7 @@ using System;
 
 public partial class Settings : Node
 {
+    public int LoadingScreens; //how much is loading screens.
     public bool SdfgiSetting;
     public bool SsaoSetting;
     public bool SsilSetting;
@@ -17,28 +18,12 @@ public partial class Settings : Node
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
-        if (FileAccess.FileExists("user://version.txt"))
+        if (FileAccess.FileExists("user://settings_" + Globals.settingsCompatibility + ".ini"))
         {
-            if (TxtParser.Load("user://version.txt") == Globals.milestone)
-            {
-                if (FileAccess.FileExists("user://settings.ini"))
-                {
-                    LoadIni();
-                }
-                else
-                {
-                    SaveSettings();
-                }
-            }
-            else
-            {
-                TxtParser.Save("user://version.txt", Globals.milestone);
-                SaveSettings();
-            }
+            LoadIni();
         }
         else
         {
-            TxtParser.Save("user://version.txt", Globals.milestone);
             SaveSettings();
         }
     }
@@ -52,6 +37,7 @@ public partial class Settings : Node
     {
         IniSaver ini = new IniSaver();
         ini.SaveIni("Settings", new Godot.Collections.Array<string>{
+            "LoadingScreens", 
             "SdfgiSetting",
             "SsaoSetting",
             "SsilSetting",
@@ -64,6 +50,7 @@ public partial class Settings : Node
             "MouseSensitivity",
             "WindowSizeSetting"
         }, new Godot.Collections.Array{
+            10, //how many default loading screens will be loaded.
             true, //sdfgi
             true, //ssao
             true, //ssil
@@ -75,7 +62,7 @@ public partial class Settings : Node
             false, //fullscreen
             0.05f, //sensivity
             new Vector2(1920, 1080) //resolution
-        }, "user://settings.ini");
+        }, "user://settings_" + Globals.settingsCompatibility + ".ini");
         LoadIni();
     }
 
@@ -84,7 +71,7 @@ public partial class Settings : Node
         var config = new ConfigFile();
 
         // Load data from a file.
-        Error err = config.Load("user://settings.ini");
+        Error err = config.Load("user://settings_" + Globals.settingsCompatibility + ".ini");
 
         // If the file didn't load, ignore it.
         if (err != Error.Ok)
@@ -92,6 +79,7 @@ public partial class Settings : Node
             return;
         }
         // Fetch the data for each section.
+        LoadingScreens = (int)config.GetValue("Settings", "LoadingScreens");
         SdfgiSetting = (bool)config.GetValue("Settings", "SdfgiSetting");
         SsaoSetting = (bool)config.GetValue("Settings", "SsaoSetting");
         SsilSetting = (bool)config.GetValue("Settings", "SsilSetting");

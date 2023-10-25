@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://byn6hros23bba"]
+
+[ext_resource type="Texture2D" uid="uid://olftldacerjt" path="res://LoadingScreens/Images/scp3199.png" id="1_ystiv"]
+[ext_resource type="Script" path="res://Scripts/LoadingScreenResource.cs" id="2_fnhqd"]
+
+[resource]
+script = ExtResource("2_fnhqd")
+Name = "SCP-3199"
+Description = "SCP-3199 denotes a species of sapient Category-5 biological entities of currently indeterminable origin, though tissue samples indicate the presence of Silkie chicken, chimpanzee, stoat, mussel, adder, and human DNA.
+SCP-3199 are opportunistic hunters, engaging with live subjects within a currently unidentified radius within a radius of 0.6 kilometers surrounding hatchlings that have not yet reached full adolescence."
+Texture = ExtResource("1_ystiv")

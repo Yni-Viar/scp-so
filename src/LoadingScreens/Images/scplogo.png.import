@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3628cta0cylj"
-path.s3tc="res://.godot/imported/GameOverCause_173.png-3ffa558f61b690db67b567e848307129.s3tc.ctex"
+uid="uid://c2ue0ut5p00bu"
+path="res://.godot/imported/scplogo.png-cbf8daf8695fbc7e37c3259c0b39f8f7.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/GameOverScreens/GameOverCause_173.png"
-dest_files=["res://.godot/imported/GameOverCause_173.png-3ffa558f61b690db67b567e848307129.s3tc.ctex"]
+source_file="res://LoadingScreens/Images/scplogo.png"
+dest_files=["res://.godot/imported/scplogo.png-cbf8daf8695fbc7e37c3259c0b39f8f7.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

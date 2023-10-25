@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cuglygfhc25fj"]
+
+[ext_resource type="Texture2D" uid="uid://dqbxm30281k2a" path="res://LoadingScreens/Images/scp018.png" id="1_4fd2p"]
+[ext_resource type="Script" path="res://Scripts/LoadingScreenResource.cs" id="2_72803"]
+
+[resource]
+script = ExtResource("2_72803")
+Name = "SCP-018"
+Description = "SCP-018 has the appearance of a ball, made in 1969. It is six (6) centimeters in diameter and coloured red.
+At first thought to be a pleasant child's toy, SCP-018 was able to bounce with over two hundred percent (200%) efficiency."
+Texture = ExtResource("1_4fd2p")

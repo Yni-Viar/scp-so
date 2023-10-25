@@ -8,8 +8,11 @@ public partial class Globals
     public enum Stages { release, testing, dev };
     public static string version = "0.7.0-dev";
     //Milestone is a minimal version, compatible with current release.
-    public static string milestone = "0.7.0-dev";
-    public static Stages currentStage = Stages.release;
+    public static string settingsCompatibility = "0.7.0-dev";
+    public static string classesCompatibility = "0.7.0-dev";
+    public static string itemsCompatibility = "0.7.0-dev";
+    public static string roomsCompatibility = "0.7.0-dev";
+    public static Stages currentStage = Stages.dev;
 
 
     public enum Team { SPT, CDP, SCI, MTF, DSE, NSE, CHI }

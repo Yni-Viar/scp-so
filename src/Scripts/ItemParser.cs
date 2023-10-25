@@ -24,7 +24,7 @@ public partial class ItemParser : Node
     {
         if (FileAccess.FileExists("user://version.txt"))
         {
-            if (TxtParser.Load("user://version.txt") == Globals.milestone)
+            if (TxtParser.Load("user://version.txt") == Globals.version)
             {
                 if (FileAccess.FileExists(placeToSave))
                 {
@@ -39,13 +39,13 @@ public partial class ItemParser : Node
             }
             else
             {
-                TxtParser.Save("user://version.txt", Globals.milestone);
+                TxtParser.Save("user://version.txt", Globals.version);
                 return SaveJson(placeToSave, Globals.items);
             }
         }
         else
         {
-            TxtParser.Save("user://version.txt", Globals.milestone);
+            TxtParser.Save("user://version.txt", Globals.version);
             return SaveJson(placeToSave, Globals.items);
         }
     }

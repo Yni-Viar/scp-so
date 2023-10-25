@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c5hgck3x5avl8"]
+
+[ext_resource type="Texture2D" uid="uid://dvglnrxebtmwa" path="res://LoadingScreens/Images/scp079.png" id="1_gcelq"]
+[ext_resource type="Script" path="res://Scripts/LoadingScreenResource.cs" id="2_76o5t"]
+
+[resource]
+script = ExtResource("2_76o5t")
+Name = "SCP-079"
+Description = "SCP-079 is an old microcomputer built in 1978. 
+text2 = It is not known when SCP-079 gained sentience, but it is known that the software has evolved to a point that its hardware should not be able to handle it, even in the realm of fantasy.
+text3 = It has passed the Turing test, and is quite conversational, though very rude and hateful in tone. It also displays a malevolent desire to escape."
+Texture = ExtResource("1_gcelq")

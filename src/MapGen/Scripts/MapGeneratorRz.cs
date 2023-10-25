@@ -421,13 +421,13 @@ public partial class MapGeneratorRz : Node
                         }
                         break;
                     case RoomTypes.ROOM2:
-                        if (currRoom2 >= RoomParser.ReadJson("user://rooms.json")["RzSingle2"].Count)
+                        if (currRoom2 >= RoomParser.ReadJson("user://rooms_" + Globals.roomsCompatibility + ".json")["RzSingle2"].Count)
                         {
-                            selectedRoom = RoomParser.ReadJson("user://rooms.json")["RzCommon2"][rand.RandiRange(0, RoomParser.ReadJson("user://rooms.json")["LczCommon1"].Count - 1)];
+                            selectedRoom = RoomParser.ReadJson("user://rooms_" + Globals.roomsCompatibility + ".json")["RzCommon2"][rand.RandiRange(0, RoomParser.ReadJson("user://rooms_" + Globals.roomsCompatibility + ".json")["LczCommon1"].Count - 1)];
                         }
                         else
                         {
-                            selectedRoom = RoomParser.ReadJson("user://rooms.json")["RzSingle2"][currRoom2];
+                            selectedRoom = RoomParser.ReadJson("user://rooms_" + Globals.roomsCompatibility + ".json")["RzSingle2"][currRoom2];
                         }
                         currRoom2++;
                         rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM2/" + selectedRoom + ".tscn").Instantiate();

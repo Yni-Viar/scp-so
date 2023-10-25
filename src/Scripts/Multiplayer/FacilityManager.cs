@@ -35,9 +35,9 @@ public partial class FacilityManager : Node3D
         //Multiplayer part.
         if (!Multiplayer.IsServer())
         {
-            RoomParser.SaveJson("user://rooms.json", rooms);
-            ClassParser.SaveJson("user://playerclasses.json", classes);
-            ItemParser.SaveJson("user://itemlist.json", items);
+            RoomParser.SaveJson("user://rooms_" + Globals.roomsCompatibility + ".json", rooms);
+            ClassParser.SaveJson("user://playerclasses_" + Globals.classesCompatibility + ".json", classes);
+            ItemParser.SaveJson("user://itemlist_" + Globals.itemsCompatibility + ".json", items);
             return;
         }
         Multiplayer.PeerConnected += AddPlayer;
@@ -53,28 +53,32 @@ public partial class FacilityManager : Node3D
         // For support custom classes.
         if (Multiplayer.IsServer())
         {
-            if (FileAccess.FileExists("user://version.txt"))
+            if (FileAccess.FileExists("user://rooms_" + Globals.roomsCompatibility + ".json"))
             {
-                if (TxtParser.Load("user://version.txt") == Globals.milestone)
-                {
-                    rooms = RoomParser.ReadJson("user://rooms.json");
-                    classes = ClassParser.ReadJson("user://playerclasses.json");
-                    items = ItemParser.ReadJson("user://itemlist.json");
-                }
-                else
-                {
-                    TxtParser.Save("user://version.txt", Globals.milestone);
-                    rooms = RoomParser.SaveJson("user://rooms.json", Globals.roomData);
-                    classes = ClassParser.SaveJson("user://playerclasses.json", Globals.classData);
-                    items = ItemParser.SaveJson("user://itemlist.json", Globals.items);
-                }
+                rooms = RoomParser.ReadJson("user://rooms_" + Globals.roomsCompatibility + ".json");
             }
             else
             {
-                TxtParser.Save("user://version.txt", Globals.milestone);
-                rooms = RoomParser.SaveJson("user://rooms.json", Globals.roomData);
-                classes = ClassParser.SaveJson("user://playerclasses.json", Globals.classData);
-                items = ItemParser.SaveJson("user://itemlist.json", Globals.items);
+                rooms = RoomParser.SaveJson("user://rooms_" + Globals.roomsCompatibility + ".json", Globals.roomData);
+            }
+
+            if (FileAccess.FileExists("user://playerclasses_" + Globals.classesCompatibility + ".json"))
+            {
+                classes = ClassParser.ReadJson("user://playerclasses_" + Globals.classesCompatibility + ".json");
+            }
+            else
+            {
+                classes = ClassParser.SaveJson("user://playerclasses_" + Globals.classesCompatibility + ".json", Globals.classData);
+            }
+
+
+            if (FileAccess.FileExists("user://itemlist_" + Globals.itemsCompatibility + ".json"))
+            {
+                items = ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json");
+            }
+            else
+            {
+                items = ItemParser.SaveJson("user://itemlist_" + Globals.itemsCompatibility + ".json", Globals.items);
             }
         }
 

@@ -1,9 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://cowux4ih7pibk"]
 
-[ext_resource type="Texture2D" uid="uid://cymko5vnq4vsh" path="res://Assets/HUD/Blink.png" id="1_2dd8c"]
+[ext_resource type="Script" path="res://Scripts/LoadingScreen.cs" id="1_2iio4"]
 [ext_resource type="Theme" uid="uid://4k2un7nm7xc6" path="res://UITheme.tres" id="2_v4mot"]
 
 [node name="LoadingScreen" type="CanvasLayer"]
+script = ExtResource("1_2iio4")
 
 [node name="MainPanel" type="Control" parent="."]
 layout_mode = 3
@@ -13,14 +14,56 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LoadingScreenTexture" type="TextureRect" parent="MainPanel"]
+[node name="Background" type="ColorRect" parent="MainPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_2dd8c")
+color = Color(0, 0, 0, 1)
+
+[node name="LoadingImage" type="TextureRect" parent="MainPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Title" type="Label" parent="MainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.222
+anchor_right = 0.5
+anchor_bottom = 0.222
+offset_left = -392.0
+offset_top = -95.76
+offset_right = 392.0
+offset_bottom = 96.24
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="MainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.356
+anchor_right = 0.7
+anchor_bottom = 0.889
+offset_top = -0.480072
+offset_right = -0.00012207
+offset_bottom = -0.120117
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="MainPanel"]
 layout_mode = 1

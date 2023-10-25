@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ifhxbu1twm6i"]
+
+[ext_resource type="Texture2D" uid="uid://dwegbdjjgbxr4" path="res://LoadingScreens/Images/mtf.png" id="1_5vjkv"]
+[ext_resource type="Script" path="res://Scripts/LoadingScreenResource.cs" id="2_cb0n0"]
+
+[resource]
+script = ExtResource("2_cb0n0")
+Name = "Mobile Task Forces"
+Description = "MTFs are small teams (ten to twenty operatives usually, although groups with more than 50 operatives are not unheard of) that specialize in specific roles or respond to specific situations.
+Mobile Task Force E-11 (\"Nine Tailed Fox\") is an intensively trained Task Force specializing in the protection and recontainment of SCP items kept at Site-[DATA REDACTED].
+Their tasks include handling containment breaches by re-containing all active, hostile SCP instances, rescuing surviving Foundation personnel and terminating any rogue Class-D personnel.
+Mobile Task Force W-0 \"Ará Orún\" is [DATA REDACTED]. They protect their living counterparts from memetic hazards."
+Texture = ExtResource("1_5vjkv")

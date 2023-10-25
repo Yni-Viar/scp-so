@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://b7lsmi6c0p3k3"]
+
+[ext_resource type="Texture2D" uid="uid://c2ue0ut5p00bu" path="res://LoadingScreens/Images/scplogo.png" id="1_g8tsf"]
+[ext_resource type="Script" path="res://Scripts/LoadingScreenResource.cs" id="2_vfv2d"]
+
+[resource]
+script = ExtResource("2_vfv2d")
+Name = "SCP Foundation"
+Description = "The SCP Foundation is an organization dedicated to the containment and research of anomalous artifacts and lifeforms.
+\"SCP\" stands for \"Special Containment Procedures\" (and the official motto of the foundation, \"Secure, Contain, Protect.\") - which sums up both the goals and methods of the Foundation's actions."
+Texture = ExtResource("1_g8tsf")

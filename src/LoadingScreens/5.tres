@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://08j3ndgwrj0l"]
+
+[ext_resource type="Texture2D" uid="uid://w8svo2y2nojq" path="res://LoadingScreens/Images/scp914.png" id="1_0048s"]
+[ext_resource type="Script" path="res://Scripts/LoadingScreenResource.cs" id="2_3wq37"]
+
+[resource]
+script = ExtResource("2_3wq37")
+Name = "SCP-914"
+Description = "SCP-914 is a large clockwork device weighing several tons and covering an area of eighteen square meters, consisting of screw drives, belts, pulleys, gears, springs and other clockwork.
+When an object is placed in the Intake Booth and the key is wound up, SCP-914 will \"refine\" the object. No energy is lost in the process, and the object is refined based on the setting specified on 914's front panel.
+No organic matter is to be entered in to SCP-914 at any time."
+Texture = ExtResource("1_0048s")
