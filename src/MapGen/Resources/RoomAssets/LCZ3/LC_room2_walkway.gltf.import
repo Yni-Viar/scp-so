@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://da2g3p1r1fbef"
-path="res://.godot/imported/LC_cont2_650.gltf-0328db3f909ec6b0c51f6fa460a45c26.scn"
+uid="uid://tguvd8ochyd1"
+path="res://.godot/imported/LC_room2_walkway.gltf-0a62d0520a4597549b5ff6b64005dbe7.scn"
 
 [deps]
 
-source_file="res://MapGen/Resources/RoomAssets/LCZ/LC_cont2_650.gltf"
-dest_files=["res://.godot/imported/LC_cont2_650.gltf-0328db3f909ec6b0c51f6fa460a45c26.scn"]
+source_file="res://MapGen/Resources/RoomAssets/LCZ3/LC_room2_walkway.gltf"
+dest_files=["res://.godot/imported/LC_room2_walkway.gltf-0a62d0520a4597549b5ff6b64005dbe7.scn"]
 
 [params]
 

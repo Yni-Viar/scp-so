@@ -134,6 +134,7 @@ text = "[b]v.0.7.0-dev[/b] [i](Alpha)[/i]
 - Finally added loading screen!
 - More dead ends can be spawned.
 - SCP-018 model now has smooth model.
+- Modernized LCZ.
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.

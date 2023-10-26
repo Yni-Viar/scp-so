@@ -145,17 +145,12 @@
 		},
 		{
 			"doubleSided":true,
-			"emissiveFactor":[
-				1,
-				1,
-				1
-			],
-			"name":"Glow.009",
+			"name":"Glow.001",
 			"pbrMetallicRoughness":{
 				"baseColorFactor":[
-					0.800000011920929,
-					0.800000011920929,
-					0.800000011920929,
+					0,
+					0,
+					0,
 					1
 				],
 				"metallicFactor":0,
@@ -175,44 +170,6 @@
 				"metallicRoughnessTexture":{
 					"index":10
 				}
-			}
-		},
-		{
-			"doubleSided":true,
-			"emissiveFactor":[
-				1,
-				1,
-				1
-			],
-			"name":"Glow.010",
-			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.800000011920929,
-					0.800000011920929,
-					0.800000011920929,
-					1
-				],
-				"metallicFactor":0,
-				"roughnessFactor":0.5
-			}
-		},
-		{
-			"doubleSided":true,
-			"emissiveFactor":[
-				1,
-				1,
-				1
-			],
-			"name":"Glow.002",
-			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.800000011920929,
-					0.800000011920929,
-					0.800000011920929,
-					1
-				],
-				"metallicFactor":0,
-				"roughnessFactor":0.5
 			}
 		},
 		{
@@ -251,44 +208,6 @@
 		},
 		{
 			"doubleSided":true,
-			"emissiveFactor":[
-				1,
-				1,
-				1
-			],
-			"name":"Glow.001",
-			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.800000011920929,
-					0.800000011920929,
-					0.800000011920929,
-					1
-				],
-				"metallicFactor":0,
-				"roughnessFactor":0.5
-			}
-		},
-		{
-			"doubleSided":true,
-			"emissiveFactor":[
-				1,
-				1,
-				1
-			],
-			"name":"Glow.003",
-			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.800000011920929,
-					0.800000011920929,
-					0.800000011920929,
-					1
-				],
-				"metallicFactor":0,
-				"roughnessFactor":0.5
-			}
-		},
-		{
-			"doubleSided":true,
 			"name":"Foreground.003",
 			"normalTexture":{
 				"index":16
@@ -323,44 +242,6 @@
 		},
 		{
 			"doubleSided":true,
-			"emissiveFactor":[
-				1,
-				1,
-				1
-			],
-			"name":"Glow.007",
-			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.800000011920929,
-					0.800000011920929,
-					0.800000011920929,
-					1
-				],
-				"metallicFactor":0,
-				"roughnessFactor":0.5
-			}
-		},
-		{
-			"doubleSided":true,
-			"emissiveFactor":[
-				1,
-				1,
-				1
-			],
-			"name":"Glow.011",
-			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.800000011920929,
-					0.800000011920929,
-					0.800000011920929,
-					1
-				],
-				"metallicFactor":0,
-				"roughnessFactor":0.5
-			}
-		},
-		{
-			"doubleSided":true,
 			"name":"Foreground.004",
 			"normalTexture":{
 				"index":21
@@ -391,25 +272,6 @@
 				"metallicRoughnessTexture":{
 					"index":25
 				}
-			}
-		},
-		{
-			"doubleSided":true,
-			"emissiveFactor":[
-				1,
-				1,
-				1
-			],
-			"name":"Glow.008",
-			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.800000011920929,
-					0.800000011920929,
-					0.800000011920929,
-					1
-				],
-				"metallicFactor":0,
-				"roughnessFactor":0.5
 			}
 		},
 		{
@@ -540,7 +402,7 @@
 						"TEXCOORD_0":34
 					},
 					"indices":23,
-					"material":5
+					"material":3
 				},
 				{
 					"attributes":{
@@ -572,7 +434,7 @@
 						"TEXCOORD_0":44
 					},
 					"indices":23,
-					"material":6
+					"material":3
 				},
 				{
 					"attributes":{
@@ -581,7 +443,7 @@
 						"TEXCOORD_0":47
 					},
 					"indices":27,
-					"material":7
+					"material":5
 				},
 				{
 					"attributes":{
@@ -590,7 +452,7 @@
 						"TEXCOORD_0":50
 					},
 					"indices":31,
-					"material":8
+					"material":6
 				},
 				{
 					"attributes":{
@@ -599,7 +461,7 @@
 						"TEXCOORD_0":53
 					},
 					"indices":23,
-					"material":9
+					"material":3
 				},
 				{
 					"attributes":{
@@ -608,7 +470,7 @@
 						"TEXCOORD_0":56
 					},
 					"indices":27,
-					"material":7
+					"material":5
 				},
 				{
 					"attributes":{
@@ -617,7 +479,7 @@
 						"TEXCOORD_0":59
 					},
 					"indices":41,
-					"material":8
+					"material":6
 				}
 			]
 		},
@@ -631,7 +493,7 @@
 						"TEXCOORD_0":62
 					},
 					"indices":23,
-					"material":10
+					"material":3
 				},
 				{
 					"attributes":{
@@ -640,7 +502,7 @@
 						"TEXCOORD_0":65
 					},
 					"indices":27,
-					"material":11
+					"material":7
 				},
 				{
 					"attributes":{
@@ -649,7 +511,7 @@
 						"TEXCOORD_0":68
 					},
 					"indices":31,
-					"material":12
+					"material":8
 				},
 				{
 					"attributes":{
@@ -658,7 +520,7 @@
 						"TEXCOORD_0":71
 					},
 					"indices":23,
-					"material":13
+					"material":3
 				},
 				{
 					"attributes":{
@@ -667,7 +529,7 @@
 						"TEXCOORD_0":74
 					},
 					"indices":27,
-					"material":11
+					"material":7
 				},
 				{
 					"attributes":{
@@ -676,7 +538,7 @@
 						"TEXCOORD_0":77
 					},
 					"indices":41,
-					"material":12
+					"material":8
 				}
 			]
 		},
@@ -690,7 +552,7 @@
 						"TEXCOORD_0":80
 					},
 					"indices":23,
-					"material":14
+					"material":3
 				},
 				{
 					"attributes":{
@@ -699,7 +561,7 @@
 						"TEXCOORD_0":83
 					},
 					"indices":27,
-					"material":15
+					"material":9
 				},
 				{
 					"attributes":{
@@ -708,7 +570,7 @@
 						"TEXCOORD_0":86
 					},
 					"indices":31,
-					"material":16
+					"material":10
 				},
 				{
 					"attributes":{
@@ -717,7 +579,7 @@
 						"TEXCOORD_0":89
 					},
 					"indices":23,
-					"material":17
+					"material":3
 				},
 				{
 					"attributes":{
@@ -726,7 +588,7 @@
 						"TEXCOORD_0":92
 					},
 					"indices":27,
-					"material":15
+					"material":9
 				},
 				{
 					"attributes":{
@@ -735,7 +597,7 @@
 						"TEXCOORD_0":95
 					},
 					"indices":41,
-					"material":16
+					"material":10
 				}
 			]
 		},
@@ -749,7 +611,7 @@
 						"TEXCOORD_0":98
 					},
 					"indices":15,
-					"material":18
+					"material":11
 				}
 			]
 		}
@@ -2431,7 +2293,7 @@
 	"buffers":[
 		{
 			"byteLength":14084,
-			"uri":"LC_room4.bin"
+			"uri":"LC_room4_cross.bin"
 		}
 	]
 }
