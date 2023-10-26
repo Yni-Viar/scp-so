@@ -15,13 +15,7 @@
 	"nodes":[
 		{
 			"mesh":0,
-			"name":"Sphere",
-			"rotation":[
-				0.70710688829422,
-				0,
-				0,
-				0.7071066498756409
-			]
+			"name":"Sphere.001"
 		}
 	],
 	"materials":[
@@ -33,13 +27,13 @@
 					"index":0
 				},
 				"metallicFactor":0,
-				"roughnessFactor":0.4000000059604645
+				"roughnessFactor":0.19545453786849976
 			}
 		}
 	],
 	"meshes":[
 		{
-			"name":"Sphere",
+			"name":"Sphere.001",
 			"primitives":[
 				{
 					"attributes":{
@@ -70,14 +64,14 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":2572,
+			"count":559,
 			"max":[
+				0.9999997019767761,
 				1,
-				1,
-				1
+				0.9999993443489075
 			],
 			"min":[
-				-1,
+				-0.9999990463256836,
 				-1,
 				-1
 			],
@@ -86,45 +80,45 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":2572,
+			"count":559,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":2572,
+			"count":559,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5123,
-			"count":2856,
+			"count":2880,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":30864,
+			"byteLength":6708,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":30864,
-			"byteOffset":30864,
+			"byteLength":6708,
+			"byteOffset":6708,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":20576,
-			"byteOffset":61728,
+			"byteLength":4472,
+			"byteOffset":13416,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":5712,
-			"byteOffset":82304,
+			"byteLength":5760,
+			"byteOffset":17888,
 			"target":34963
 		}
 	],
@@ -136,7 +130,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":88016,
+			"byteLength":23648,
 			"uri":"scp018.bin"
 		}
 	]
