@@ -191,4 +191,5 @@ scp079_blackout={
 
 [rendering]
 
+global_illumination/sdfgi/frames_to_update_lights=3
 limits/opengl/max_lights_per_object=64
