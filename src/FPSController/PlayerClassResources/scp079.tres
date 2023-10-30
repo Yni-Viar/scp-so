@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_3tb5h")
 ClassName = "SCP-079,\"Old AI\""
+ClassDescription = "You are the sentient AI, you can do, what you want. You may help SCPs, or you may help humans."
 SpawnPoints = PackedStringArray("Main/Game/MapGenLcz/LC_cont1_079/entityspawn")
 PlayerModelSource = "res://FPSController/PlayerClassPrefab/scp079.tscn"
 PlayerRagdollSource = "res://FPSController/PlayerClassPrefabGameover/hume.tscn"
@@ -22,3 +23,4 @@ DefaultCameraPos = -1.044
 CustomCamera = true
 CustomView = ""
 PreloadedItems = PackedStringArray()
+ClassColor = Color(0.498039, 0.498039, 1, 0.847059)

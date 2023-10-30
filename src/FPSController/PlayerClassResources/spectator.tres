@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_cfqey")
 ClassName = "MTF Omega-0 \"Ará Orún\""
+ClassDescription = "[REDACTED]"
 SpawnPoints = PackedStringArray("Main/Game/SurfaceMap/entityspawn_sp")
 PlayerModelSource = "res://FPSController/PlayerClassPrefab/spectator.tscn"
 PlayerRagdollSource = ""
@@ -22,3 +23,4 @@ DefaultCameraPos = 0.969
 CustomCamera = false
 CustomView = ""
 PreloadedItems = PackedStringArray()
+ClassColor = Color(0, 0, 0.247059, 0.847059)

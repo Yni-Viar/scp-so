@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_cmdht")
 ClassName = "SCP-173 \"Sculpture\""
+ClassDescription = "I can't move when they look at me. They blink. I come closer. I snap their neck."
 SpawnPoints = PackedStringArray("Main/Game/MapGenHcz/HC_cont1_173/entityspawn")
 PlayerModelSource = "res://FPSController/PlayerClassPrefab/scp173.tscn"
 PlayerRagdollSource = "res://FPSController/PlayerClassPrefabGameover/scp173.tscn"
@@ -22,3 +23,4 @@ DefaultCameraPos = 0.969
 CustomCamera = false
 CustomView = "ToonShader"
 PreloadedItems = PackedStringArray()
+ClassColor = Color(0.752941, 0, 0, 0.847059)

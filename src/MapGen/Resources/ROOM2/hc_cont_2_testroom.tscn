@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://o5giewh76qkn" path="res://MapGen/Resources/Doors/DoorGate/GateFrame/Metal032_2K_Color.png" id="15_2kg0x"]
 [ext_resource type="Texture2D" uid="uid://q7qhbxch3lsf" path="res://MapGen/Resources/Doors/DoorGate/GateFrame/Metal032_2K_Metalness-Metal032_2K_Roughness.png" id="16_x2dlx"]
 [ext_resource type="PackedScene" uid="uid://c1ywflix3wsbl" path="res://InventorySystem/Items/PickablePrefabs/key2.tscn" id="17_m7qc2"]
-[ext_resource type="PackedScene" uid="uid://bc5kxvy32glap" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="18_hjlf8"]
+[ext_resource type="PackedScene" uid="uid://dwt4g6igxv1hc" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="18_hjlf8"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_b4c73"]
 _surfaces = [{

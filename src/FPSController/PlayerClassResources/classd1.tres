@@ -5,6 +5,8 @@
 [resource]
 script = ExtResource("1_pgmad")
 ClassName = "Class-D Personnel"
+ClassDescription = "You are a disposable material.
+You task is to follow Foundation's orders... or escape (not without risk)."
 SpawnPoints = PackedStringArray("Main/Game/DC_jail/Spawnpoints/entityspawn1", "Main/Game/DC_jail/Spawnpoints/entityspawn2", "Main/Game/DC_jail/Spawnpoints/entityspawn3", "Main/Game/DC_jail/Spawnpoints/entityspawn4", "Main/Game/DC_jail/Spawnpoints/entityspawn5", "Main/Game/DC_jail/Spawnpoints/entityspawn6", "Main/Game/DC_jail/Spawnpoints/entityspawn7", "Main/Game/DC_jail/Spawnpoints/entityspawn8", "Main/Game/DC_jail/Spawnpoints/entityspawn9", "Main/Game/DC_jail/Spawnpoints/entityspawn10", "Main/Game/DC_jail/Spawnpoints/entityspawn11", "Main/Game/DC_jail/Spawnpoints/entityspawn12", "Main/Game/DC_jail/Spawnpoints/entityspawn13", "Main/Game/DC_jail/Spawnpoints/entityspawn14", "Main/Game/DC_jail/Spawnpoints/entityspawn15", "Main/Game/DC_jail/Spawnpoints/entityspawn16", "Main/Game/DC_jail/Spawnpoints/entityspawn17")
 PlayerModelSource = "res://FPSController/PlayerClassPrefab/classd1.tscn"
 PlayerRagdollSource = "res://FPSController/PlayerClassPrefabGameover/classd1.tscn"
@@ -22,3 +24,4 @@ DefaultCameraPos = 0.969
 CustomCamera = false
 CustomView = ""
 PreloadedItems = PackedStringArray()
+ClassColor = Color(0.909804, 0.4, 0, 0.847059)

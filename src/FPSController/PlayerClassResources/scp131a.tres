@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_1fwv3")
 ClassName = "SCP-131-A The \"Eye Pods\""
+ClassDescription = "Your task is to help people, by providing them information about nearby SCPs."
 SpawnPoints = PackedStringArray("Main/Game/MapGenRz/RZ_room2_offices2/entityspawn", "Main/Game/MapGenRz/RZ_room2_offices/entityspawn")
 PlayerModelSource = "res://FPSController/PlayerClassPrefab/scp131a.tscn"
 PlayerRagdollSource = "res://FPSController/PlayerClassPrefabGameover/hume.tscn"
@@ -22,3 +23,4 @@ DefaultCameraPos = -1.044
 CustomCamera = false
 CustomView = ""
 PreloadedItems = PackedStringArray()
+ClassColor = Color(0.498039, 0.498039, 1, 0.847059)

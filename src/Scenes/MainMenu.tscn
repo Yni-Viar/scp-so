@@ -48,6 +48,19 @@ offset_bottom = -28.0
 grow_vertical = 0
 texture = ExtResource("3_hajc0")
 
+[node name="PlayerName" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -280.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 55.0
+grow_horizontal = 0
+theme = ExtResource("5_gi3lh")
+placeholder_text = "Please, set you nickname!"
+
 [node name="Title" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -135,6 +148,9 @@ text = "[b]v.0.7.0-dev[/b] [i](Alpha)[/i]
 - More dead ends can be spawned.
 - SCP-018 model now has smooth model.
 - Modernized LCZ.
+- Improved forceclass and pre-round screens.
+- Added support for player nicknames.
+- Fixed bug, where exiting the server broke the game.
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.
@@ -558,6 +574,7 @@ text = "[i]SCP Articles (All - license - CC-BY-SA 3.0)[/i]
 \"SCP-3199\" by bittermixin"
 fit_content = true
 
+[connection signal="text_changed" from="PlayerName" to="." method="OnPlayerNameTextChanged"]
 [connection signal="pressed" from="Title/Play" to="." method="OnPlayPressed"]
 [connection signal="pressed" from="Title/Settings" to="." method="OnSettingsPressed"]
 [connection signal="pressed" from="Title/Credits" to="." method="OnCreditsPressed"]

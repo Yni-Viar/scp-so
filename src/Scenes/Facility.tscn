@@ -8,6 +8,7 @@
 [ext_resource type="Environment" uid="uid://cpjkvy5s2l8ae" path="res://FacilityGraphics.tres" id="5_u1dtw"]
 [ext_resource type="Script" path="res://Scripts/PlayerUI.cs" id="6_l6v83"]
 [ext_resource type="Texture2D" uid="uid://bmw4fxmnmwhov" path="res://Assets/HUD/arrow.png" id="7_bwdaw"]
+[ext_resource type="PackedScene" uid="uid://bv1ely4btccco" path="res://MapGen/Resources/startroom.tscn" id="8_1kvjl"]
 [ext_resource type="FontFile" uid="uid://cqaasvtiakcsw" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="8_1slp4"]
 [ext_resource type="PackedScene" uid="uid://bo1bq3rj35a57" path="res://MapGen/Resources/surface_map.tscn" id="9_1te4l"]
 [ext_resource type="PackedScene" uid="uid://byljcjbr7klo" path="res://MapGen/Resources/PD.tscn" id="11_jjunp"]
@@ -48,29 +49,80 @@ properties/7/spawn = true
 properties/7/sync = false
 properties/7/watch = true
 
-[sub_resource type="BoxMesh" id="BoxMesh_umn33"]
-size = Vector3(5, 0.1, 5)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jdp8w"]
-data = PackedVector3Array(-2.5, 0.05, 2.5, 2.5, 0.05, 2.5, -2.5, -0.05, 2.5, 2.5, 0.05, 2.5, 2.5, -0.05, 2.5, -2.5, -0.05, 2.5, 2.5, 0.05, -2.5, -2.5, 0.05, -2.5, 2.5, -0.05, -2.5, -2.5, 0.05, -2.5, -2.5, -0.05, -2.5, 2.5, -0.05, -2.5, 2.5, 0.05, 2.5, 2.5, 0.05, -2.5, 2.5, -0.05, 2.5, 2.5, 0.05, -2.5, 2.5, -0.05, -2.5, 2.5, -0.05, 2.5, -2.5, 0.05, -2.5, -2.5, 0.05, 2.5, -2.5, -0.05, -2.5, -2.5, 0.05, 2.5, -2.5, -0.05, 2.5, -2.5, -0.05, -2.5, 2.5, 0.05, 2.5, -2.5, 0.05, 2.5, 2.5, 0.05, -2.5, -2.5, 0.05, 2.5, -2.5, 0.05, -2.5, 2.5, 0.05, -2.5, -2.5, -0.05, 2.5, 2.5, -0.05, 2.5, -2.5, -0.05, -2.5, 2.5, -0.05, 2.5, 2.5, -0.05, -2.5, -2.5, -0.05, -2.5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_h5kin"]
-size = Vector3(0.1, 5, 5)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_fx83l"]
-data = PackedVector3Array(-0.05, 2.5, 2.5, 0.05, 2.5, 2.5, -0.05, -2.5, 2.5, 0.05, 2.5, 2.5, 0.05, -2.5, 2.5, -0.05, -2.5, 2.5, 0.05, 2.5, -2.5, -0.05, 2.5, -2.5, 0.05, -2.5, -2.5, -0.05, 2.5, -2.5, -0.05, -2.5, -2.5, 0.05, -2.5, -2.5, 0.05, 2.5, 2.5, 0.05, 2.5, -2.5, 0.05, -2.5, 2.5, 0.05, 2.5, -2.5, 0.05, -2.5, -2.5, 0.05, -2.5, 2.5, -0.05, 2.5, -2.5, -0.05, 2.5, 2.5, -0.05, -2.5, -2.5, -0.05, 2.5, 2.5, -0.05, -2.5, 2.5, -0.05, -2.5, -2.5, 0.05, 2.5, 2.5, -0.05, 2.5, 2.5, 0.05, 2.5, -2.5, -0.05, 2.5, 2.5, -0.05, 2.5, -2.5, 0.05, 2.5, -2.5, -0.05, -2.5, 2.5, 0.05, -2.5, 2.5, -0.05, -2.5, -2.5, 0.05, -2.5, 2.5, 0.05, -2.5, -2.5, -0.05, -2.5, -2.5)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_q2o6r"]
-data = PackedVector3Array(-0.05, 2.5, 2.5, 0.05, 2.5, 2.5, -0.05, -2.5, 2.5, 0.05, 2.5, 2.5, 0.05, -2.5, 2.5, -0.05, -2.5, 2.5, 0.05, 2.5, -2.5, -0.05, 2.5, -2.5, 0.05, -2.5, -2.5, -0.05, 2.5, -2.5, -0.05, -2.5, -2.5, 0.05, -2.5, -2.5, 0.05, 2.5, 2.5, 0.05, 2.5, -2.5, 0.05, -2.5, 2.5, 0.05, 2.5, -2.5, 0.05, -2.5, -2.5, 0.05, -2.5, 2.5, -0.05, 2.5, -2.5, -0.05, 2.5, 2.5, -0.05, -2.5, -2.5, -0.05, 2.5, 2.5, -0.05, -2.5, 2.5, -0.05, -2.5, -2.5, 0.05, 2.5, 2.5, -0.05, 2.5, 2.5, 0.05, 2.5, -2.5, -0.05, 2.5, 2.5, -0.05, 2.5, -2.5, 0.05, 2.5, -2.5, -0.05, -2.5, 2.5, 0.05, -2.5, 2.5, -0.05, -2.5, -2.5, 0.05, -2.5, 2.5, 0.05, -2.5, -2.5, -0.05, -2.5, -2.5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_8qt81"]
-size = Vector3(5, 5, 0.1)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5i7cn"]
-data = PackedVector3Array(-2.5, 2.5, 0.05, 2.5, 2.5, 0.05, -2.5, -2.5, 0.05, 2.5, 2.5, 0.05, 2.5, -2.5, 0.05, -2.5, -2.5, 0.05, 2.5, 2.5, -0.05, -2.5, 2.5, -0.05, 2.5, -2.5, -0.05, -2.5, 2.5, -0.05, -2.5, -2.5, -0.05, 2.5, -2.5, -0.05, 2.5, 2.5, 0.05, 2.5, 2.5, -0.05, 2.5, -2.5, 0.05, 2.5, 2.5, -0.05, 2.5, -2.5, -0.05, 2.5, -2.5, 0.05, -2.5, 2.5, -0.05, -2.5, 2.5, 0.05, -2.5, -2.5, -0.05, -2.5, 2.5, 0.05, -2.5, -2.5, 0.05, -2.5, -2.5, -0.05, 2.5, 2.5, 0.05, -2.5, 2.5, 0.05, 2.5, 2.5, -0.05, -2.5, 2.5, 0.05, -2.5, 2.5, -0.05, 2.5, 2.5, -0.05, -2.5, -2.5, 0.05, 2.5, -2.5, 0.05, -2.5, -2.5, -0.05, 2.5, -2.5, 0.05, 2.5, -2.5, -0.05, -2.5, -2.5, -0.05)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_ttxax"]
 size = Vector3(6410.33, 1969.08, 6412.47)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5wgsy"]
+bg_color = Color(0, 0, 0, 0.847059)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wo10"]
+
+[sub_resource type="Animation" id="Animation_wnm84"]
+resource_name = "forceclass"
+length = 5.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ClassInfo:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ClassInfo:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-128, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -128, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6, 3.9, 5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ClassDescription:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ClassDescription:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-424, -0.25, 0, 0.25, 0, -424, -0.25, 0, 0.25, 0, 168, -0.25, 0, 0.25, 0, 168, -0.25, 0, 0.25, 0, -424, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.9, 4.1, 5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_icbbs"]
+_data = {
+"forceclass": SubResource("Animation_wnm84")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3wvqa"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4g4w"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_p22hh")
@@ -112,76 +164,9 @@ spawn_path = NodePath("..")
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_pw38j")
 
-[node name="LobbyFloor" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.925359, 0)
-visibility_range_end = 24.0
-mesh = SubResource("BoxMesh_umn33")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="LobbyFloor"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LobbyFloor/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_jdp8w")
-
-[node name="LobbyFloor2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.06653, 0)
-visibility_range_end = 24.0
-mesh = SubResource("BoxMesh_umn33")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="LobbyFloor2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LobbyFloor2/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_jdp8w")
-
-[node name="LobbyWall" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.44245, 1.53995, 0)
-visibility_range_end = 24.0
-mesh = SubResource("BoxMesh_h5kin")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="LobbyWall"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LobbyWall/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_fx83l")
-
-[node name="LobbyWall2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.40803, 1.54022, 0)
-visibility_range_end = 24.0
-mesh = SubResource("BoxMesh_h5kin")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="LobbyWall2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LobbyWall2/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_q2o6r")
-
-[node name="LobbyWall3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53436, -2.44127)
-visibility_range_end = 24.0
-mesh = SubResource("BoxMesh_8qt81")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="LobbyWall3"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LobbyWall3/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_5i7cn")
-
-[node name="LobbyWall4" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53436, 2.45245)
-visibility_range_end = 24.0
-mesh = SubResource("BoxMesh_8qt81")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="LobbyWall4"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LobbyWall4/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_5i7cn")
+[node name="StartRoom" parent="." instance=ExtResource("8_1kvjl")]
 
 [node name="SurfaceMap" parent="." instance=ExtResource("9_1te4l")]
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.36975, 0.0489206)
-distance_fade_enabled = true
-distance_fade_begin = 24.0
-
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70794, -2.38088)
-text = "The match is waiting for start..."
 
 [node name="SkyEnabler" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1534.77, 0)
@@ -218,30 +203,48 @@ texture = ExtResource("7_bwdaw")
 
 [node name="ClassInfo" type="Label" parent="PlayerUI"]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -23.0
-offset_right = 20.0
+offset_left = -832.0
+offset_top = -128.0
+offset_right = 832.0
 grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("8_1slp4")
-theme_override_font_sizes/font_size = 48
-horizontal_alignment = 1
-
-[node name="HealthInfo" type="Label" parent="PlayerUI"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-offset_right = 40.0
-grow_vertical = 0
 theme_override_fonts/font = ExtResource("8_1slp4")
 theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClassDescription" type="Label" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -832.0
+offset_top = -424.0
+offset_right = 832.0
+offset_bottom = -128.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+
+[node name="HealthBar" type="ProgressBar" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.941
+anchor_right = 0.229
+anchor_bottom = 0.985
+offset_left = 0.639999
+offset_top = -0.280029
+offset_right = 0.319946
+offset_bottom = 0.199951
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("8_1slp4")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/background = SubResource("StyleBoxFlat_5wgsy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6wo10")
+allow_greater = true
 
 [node name="Counter" type="Label" parent="PlayerUI"]
 layout_mode = 0
@@ -249,6 +252,109 @@ offset_right = 40.0
 offset_bottom = 26.0
 text = "FPS"
 script = ExtResource("12_xkdk3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerUI"]
+libraries = {
+"": SubResource("AnimationLibrary_icbbs")
+}
+
+[node name="PlayerListPanel" type="Panel" parent="PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -516.0
+offset_top = -448.0
+offset_right = 516.0
+offset_bottom = 448.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3wvqa")
+
+[node name="PlayerList" type="VBoxContainer" parent="PlayerUI/PlayerListPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -488.0
+offset_top = -372.0
+offset_right = 488.0
+offset_bottom = 428.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PlayerUI/PlayerListPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 20.0
+offset_right = 80.0
+offset_bottom = 56.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("8_1slp4")
+theme_override_font_sizes/font_size = 32
+text = "Players list"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PreRoundStartPanel" type="Panel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -124.0
+offset_right = 232.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x4g4w")
+
+[node name="PreRoundStart" type="VBoxContainer" parent="PreRoundStartPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.064
+anchor_top = 0.091
+anchor_right = 0.919
+anchor_bottom = 0.909
+offset_left = -0.184002
+offset_top = -0.0160007
+offset_right = -0.0640259
+offset_bottom = 0.0159912
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Welcome" type="Label" parent="PreRoundStartPanel/PreRoundStart"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_1slp4")
+theme_override_font_sizes/font_size = 32
+text = "The round will start soon...
+"
+horizontal_alignment = 1
+
+[node name="Amount" type="Label" parent="PreRoundStartPanel/PreRoundStart"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_1slp4")
+theme_override_font_sizes/font_size = 64
+text = "
+"
+horizontal_alignment = 1
+
+[node name="Welcome2" type="Label" parent="PreRoundStartPanel/PreRoundStart"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_1slp4")
+theme_override_font_sizes/font_size = 24
+text = "players connected."
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="SkyEnabler" to="SkyEnabler" method="OnBodyEntered"]
 [connection signal="body_exited" from="SkyEnabler" to="SkyEnabler" method="OnBodyExited"]

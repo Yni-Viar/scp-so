@@ -14,8 +14,8 @@ public partial class Globals
     public static string roomsCompatibility = "0.7.0-dev";
     public static Stages currentStage = Stages.dev;
 
-
-    public enum Team { SPT, CDP, SCI, MTF, DSE, NSE, CHI }
+    //Spectators, D-class, Scientists, MTF, Dangerous SCP items, Normal SCP entities, Chaos Insurgency, Serpent's hand.
+    public enum Team { SPT, CDP, SCI, MTF, DSE, NSE, CHI, SEH }
     internal static Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classData =
         new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> {
             { "spawnableHuman", new Godot.Collections.Array<string>{"classd1", "classd2", "scientist", "guard" } },

@@ -53,12 +53,12 @@ content_margin_bottom = 4.0
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8g7p"]
-bg_color = Color(0.309804, 0.309804, 0.309804, 0.317647)
+bg_color = Color(0, 0, 0, 0.12549)
 border_width_bottom = 2
 border_color = Color(0.517647, 0.85098, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmk8g"]
-bg_color = Color(0.278431, 0.278431, 0.278431, 0.270588)
+bg_color = Color(0.278431, 0.278431, 0.278431, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5s71f"]
 bg_color = Color(0, 0, 0, 1)

@@ -11,6 +11,7 @@ public partial class Scp3199PlayerScript : Node3D
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
             GetNode<Node3D>("Armature").Hide();
+            GetNode<Control>("AbilityUI").Show();
         }
         GetParent().GetParent<PlayerScript>().SetCollisionMaskValue(3, true);
         GetParent().GetParent<PlayerScript>().CanMove = true;

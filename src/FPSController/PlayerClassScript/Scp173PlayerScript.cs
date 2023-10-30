@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.ComponentModel.DataAnnotations;
 
 public partial class Scp173PlayerScript : Node3D
 {
@@ -13,7 +12,8 @@ public partial class Scp173PlayerScript : Node3D
 	{
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
-            GetNode<Node3D>("Merged_PM3D_Sphere3D4").Hide();
+            GetNode<Node3D>("SCP173_Rig").Hide();
+            GetNode<Control>("AbilityUI").Show();
         }
         GetParent().GetParent<PlayerScript>().SetCollisionMaskValue(3, true);
         GetParent().GetParent<PlayerScript>().CanMove = true;

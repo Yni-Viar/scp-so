@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_gtiqs")
 ClassName = "SCP-106 \"The Old Man\""
+ClassDescription = "Your task is to take people to your pocket dimension."
 SpawnPoints = PackedStringArray("Main/Game/MapGenHcz/HC_cont1_106/entityspawn")
 PlayerModelSource = "res://FPSController/PlayerClassPrefab/scp106.tscn"
 PlayerRagdollSource = "res://FPSController/PlayerClassPrefabGameover/scp106.tscn"
@@ -22,3 +23,4 @@ DefaultCameraPos = 0.969
 CustomCamera = false
 CustomView = ""
 PreloadedItems = PackedStringArray()
+ClassColor = Color(0.752941, 0, 0, 0.847059)

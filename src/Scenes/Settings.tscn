@@ -126,12 +126,6 @@ theme = ExtResource("3_2qins")
 theme_override_font_sizes/font_size = 24
 text = "SSR"
 
-[node name="GlowSet" type="CheckButton" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("3_2qins")
-theme_override_font_sizes/font_size = 24
-text = "Glow"
-
 [node name="FogSet" type="CheckButton" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_2qins")
@@ -213,7 +207,6 @@ As for now, \"Save\" button is deprecated."
 [connection signal="toggled" from="SettingsPanel/ScrollContainer/VBoxContainer/SSAOSet" to="SettingsPanel" method="OnSsaoSetToggled"]
 [connection signal="toggled" from="SettingsPanel/ScrollContainer/VBoxContainer/SSILSet" to="SettingsPanel" method="OnSsilSetToggled"]
 [connection signal="toggled" from="SettingsPanel/ScrollContainer/VBoxContainer/SSRSet" to="SettingsPanel" method="OnSsrSetToggled"]
-[connection signal="toggled" from="SettingsPanel/ScrollContainer/VBoxContainer/GlowSet" to="SettingsPanel" method="OnGlowSetToggled"]
 [connection signal="toggled" from="SettingsPanel/ScrollContainer/VBoxContainer/FogSet" to="SettingsPanel" method="OnFogSetToggled"]
 [connection signal="drag_ended" from="SettingsPanel/ScrollContainer/VBoxContainer/MusicSet" to="SettingsPanel" method="OnMusicSetDragEnded"]
 [connection signal="drag_ended" from="SettingsPanel/ScrollContainer/VBoxContainer/SoundSet" to="SettingsPanel" method="OnSoundSetDragEnded"]

@@ -8,7 +8,6 @@ public partial class Settings : Node
     public bool SsaoSetting;
     public bool SsilSetting;
     public bool SsrSetting;
-    public bool GlowSetting;
     public bool FogSetting;
     public float MusicSetting;
     public float SoundSetting;
@@ -42,7 +41,6 @@ public partial class Settings : Node
             "SsaoSetting",
             "SsilSetting",
             "SsrSetting",
-            "GlowSetting", 
             "FogSetting",
             "MusicSetting",
             "SoundSetting", 
@@ -55,7 +53,6 @@ public partial class Settings : Node
             true, //ssao
             true, //ssil
             false, //ssr
-            true, //glow
             true, //fog
             1f, //music
             1f, //sound
@@ -84,7 +81,6 @@ public partial class Settings : Node
         SsaoSetting = (bool)config.GetValue("Settings", "SsaoSetting");
         SsilSetting = (bool)config.GetValue("Settings", "SsilSetting");
         SsrSetting = (bool)config.GetValue("Settings", "SsrSetting");
-        GlowSetting = (bool)config.GetValue("Settings", "GlowSetting");
         FogSetting = (bool)config.GetValue("Settings", "FogSetting");
         MusicSetting = (float)config.GetValue("Settings", "MusicSetting");
         SoundSetting = (float)config.GetValue("Settings", "SoundSetting");

@@ -9,13 +9,14 @@ panorama = ExtResource("1_6wqqa")
 sky_material = SubResource("PanoramaSkyMaterial_5ys3a")
 
 [resource]
+background_mode = 1
 sky = SubResource("Sky_tt5t7")
+tonemap_mode = 2
 tonemap_white = 12.0
 ssil_enabled = true
 sdfgi_enabled = true
 sdfgi_use_occlusion = true
 sdfgi_cascades = 1
 sdfgi_min_cell_size = 1.10781
-glow_enabled = true
 glow_bloom = 0.2
 volumetric_fog_density = 0.03

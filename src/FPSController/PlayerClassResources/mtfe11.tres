@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_o6v3b")
 ClassName = "MTF Epsilon-11 \"Nine-Tailed Fox\""
+ClassDescription = "Your task is to protect Foundation and, if there is containment breach, to recontain SCPs."
 SpawnPoints = PackedStringArray("Main/Game/SurfaceMap/entityspawn")
 PlayerModelSource = "res://FPSController/PlayerClassPrefab/mtf.tscn"
 PlayerRagdollSource = "res://FPSController/PlayerClassPrefabGameover/mtf.tscn"
@@ -22,3 +23,4 @@ DefaultCameraPos = 0.969
 CustomCamera = false
 CustomView = ""
 PreloadedItems = PackedStringArray("res://InventorySystem/Items/key4.tres", "res://InventorySystem/Items/pda.tres", "res://InventorySystem/Items/medkit.tres")
+ClassColor = Color(0.188235, 0.392157, 1, 0.847059)

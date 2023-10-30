@@ -982,16 +982,16 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_lfnwx")
 
 [node name="modern_ceiling_lamp_01_4k" parent="." instance=ExtResource("2_ht02l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109981, 5.2623, 3.39209)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.262, 3.392)
 
 [node name="modern_ceiling_lamp_01_4k2" parent="." instance=ExtResource("2_ht02l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109981, 5.26432, -3.59678)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.264, -3.597)
 
 [node name="modern_ceiling_lamp_01_4k3" parent="." instance=ExtResource("2_ht02l")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.48184, 5.26552, 0.00321141)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.482, 5.266, 0)
 
 [node name="modern_ceiling_lamp_01_4k4" parent="." instance=ExtResource("2_ht02l")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.50384, 5.26983, -0.207901)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.504, 5.27, 0)
 
 [node name="cctv" parent="." instance=ExtResource("13_s0alx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00979614, 6.40195, -0.0152373)

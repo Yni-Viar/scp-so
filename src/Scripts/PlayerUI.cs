@@ -65,5 +65,30 @@ public partial class PlayerUI : Control
             }
             
         }
+
+        if (Input.IsActionJustPressed("player_list"))
+        {
+            if (GetNode<Panel>("PlayerListPanel").Visible)
+            {
+                foreach (Node node in GetNode("PlayerListPanel/PlayerList").GetChildren())
+                {
+                    node.QueueFree();
+                }
+                GetNode<Panel>("PlayerListPanel").Visible = false;
+                SpecialScreen = false;
+            }
+            else
+            {
+                foreach (string item in GetParent<FacilityManager>().playersList)
+                {
+                    Label label = new Label();
+                    label.Text = GetParent().GetNode<PlayerScript>(item).playerName;
+                    GetNode("PlayerListPanel/PlayerList").AddChild(label);
+                }
+                GetNode<Panel>("PlayerListPanel").Visible = true;
+                SpecialScreen = true;
+            }
+            
+        }
     }
 }

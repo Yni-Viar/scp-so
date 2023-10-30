@@ -1,11 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://dq8a8mq4544nl"]
+[gd_scene load_steps=8 format=3 uid="uid://dq8a8mq4544nl"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerClassScript/Scp079PlayerScript.cs" id="1_0qnxq"]
 [ext_resource type="Texture2D" uid="uid://dfydm23006k61" path="res://Shaders/crt079.png" id="2_p7dha"]
 [ext_resource type="PackedScene" uid="uid://ccqb0ayjaywxo" path="res://Assets/Models/scp079model.tscn" id="4_bycfg"]
 [ext_resource type="FontFile" uid="uid://dbcvx5qht5ass" path="res://Assets/Fonts/PixelifySans/PixelifySans-Regular.ttf" id="4_gf0gt"]
-[ext_resource type="Theme" uid="uid://ba6yy8gowrl7j" path="res://Scp079Theme.tres" id="5_ovri6"]
 [ext_resource type="PackedScene" uid="uid://h4vs76oto1c2" path="res://MapGen/HUD/MapGenHUD.tscn" id="7_x4nvj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4t5cu"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70njf"]
+bg_color = Color(0, 0.501961, 0, 1)
 
 [node name="scp079" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1, 0)
@@ -67,9 +72,10 @@ offset_top = -22.0001
 offset_right = 243.52
 offset_bottom = 20.9999
 grow_vertical = 0
-theme = ExtResource("5_ovri6")
 theme_override_fonts/font = ExtResource("4_gf0gt")
 theme_override_font_sizes/font_size = 24
+theme_override_styles/background = SubResource("StyleBoxFlat_4t5cu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_70njf")
 
 [node name="Label" type="Label" parent="UI"]
 layout_mode = 1

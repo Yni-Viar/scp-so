@@ -883,13 +883,13 @@ transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_s2f44")
 
 [node name="modern_ceiling_lamp_01_4k" parent="." instance=ExtResource("2_yvwrr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109981, 5.34108, 6.60278)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.341, 6.603)
 
 [node name="modern_ceiling_lamp_01_4k2" parent="." instance=ExtResource("2_yvwrr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.19345, 5.33668, 0.865494)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.193, 5.337, 0)
 
 [node name="modern_ceiling_lamp_01_4k3" parent="." instance=ExtResource("2_yvwrr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5107, 5.34099, 0.865494)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.511, 5.341, 0)
 
 [node name="cctv" parent="." instance=ExtResource("13_owclo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00148642, 6.47068, 0.0728714)

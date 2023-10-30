@@ -65,12 +65,12 @@ public partial class NetworkManager : Node
 		{
 			Godot.Collections.Array progress = new Godot.Collections.Array();
 			var status = ResourceLoader.LoadThreadedGetStatus("res://Scenes/Facility.tscn", progress);
-			if (status == ResourceLoader.ThreadLoadStatus.InProgress)
+			if (status == ResourceLoader.ThreadLoadStatus.InProgress) //change the loading progress value
 			{
 				//Loading screen.
 				GetTree().Root.GetNode<ProgressBar>("Main/LoadingScreen/MainPanel/ProgressBar").Value = (double)progress[0] * 100;
             }
-			else if (status == ResourceLoader.ThreadLoadStatus.Loaded)
+			else if (status == ResourceLoader.ThreadLoadStatus.Loaded) //spawn a loaded scene!
 			{
 				GetTree().Root.GetNode<ProgressBar>("Main/LoadingScreen/MainPanel/ProgressBar").Value = 100;
 				PrepareLevel(ResourceLoader.LoadThreadedGet("res://Scenes/Facility.tscn") as PackedScene);
@@ -141,9 +141,8 @@ public partial class NetworkManager : Node
 	}
 
 	/// <summary>
-	/// Loads the game client-side.
+	/// First part of client-side loading
 	/// </summary>
-	/// <param name="scene">Scene to load</param>
 	void LoadLevel()
 	{
 		//Loading screen.
@@ -152,8 +151,11 @@ public partial class NetworkManager : Node
 		ResourceLoader.LoadThreadedRequest("res://Scenes/Facility.tscn");
 		loading = true;
 	}
-
-	void PrepareLevel(PackedScene scene)
+    /// <summary>
+    /// Second part of client-side loading.
+    /// </summary>
+    /// <param name="scene">Scene to load</param>
+    void PrepareLevel(PackedScene scene)
 	{
         if (GetNodeOrNull("Game") != null)
         {
@@ -164,9 +166,28 @@ public partial class NetworkManager : Node
             }
         }
 		AddChild(scene.Instantiate());
-
         //Loading screen.
         GetTree().Root.GetNode<CanvasLayer>("Main/LoadingScreen/").Visible = false;
+        if (FileAccess.FileExists("user://playername.txt"))
+        {
+            string nick = TxtParser.Load("user://playername.txt");
+            if (!string.IsNullOrEmpty(nick))
+            {
+                GetNode<FacilityManager>("Game").Rpc("SetMyName", nick);
+            }
+            else
+            {
+                RandomNumberGenerator rng = new RandomNumberGenerator();
+                rng.Randomize();
+                GetNode<FacilityManager>("Game").Rpc("SetMyName", "Unknown player " + rng.Randi());
+            }
+        }
+        else
+        {
+            RandomNumberGenerator rng = new RandomNumberGenerator();
+            rng.Randomize();
+            GetNode<FacilityManager>("Game").Rpc("SetMyName", "Unknown player " + rng.Randi());
+        }
     }
 
 	/// <summary>
@@ -174,7 +195,6 @@ public partial class NetworkManager : Node
 	/// </summary>
 	void ConnectedToServer()
 	{
-
 		GD.Print("Connected to the server!");
 	}
 
@@ -186,7 +206,7 @@ public partial class NetworkManager : Node
 		Multiplayer.MultiplayerPeer = null;
 		GD.Print("Connection Failed!");
 		GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Show();
-		GetTree().Root.GetNode<Control>("Main/CanvasLayer/PlayerUI").Hide();
+		GetTree().Root.GetNode<Control>("Main/CanvasLayer/PauseMenu").Hide();
 	}
 
 	/// <summary>
@@ -201,6 +221,6 @@ public partial class NetworkManager : Node
 		}
 		GD.Print("You are disconnected from the server.");
 		GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Show();
-		GetTree().Root.GetNode<Control>("Main/CanvasLayer/PlayerUI").Hide();
+		GetTree().Root.GetNode<Control>("Main/CanvasLayer/PauseMenu").Hide();
 	}
 }

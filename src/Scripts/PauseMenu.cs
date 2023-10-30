@@ -15,9 +15,13 @@ public partial class PauseMenu : Control
     
     private void OnExitButtonPressed()
     {
-        GetTree().ChangeSceneToFile("res://Scenes/MainMenu.tscn");
-        //GetTree().Root.GetNode<CanvasModulate>("Main/CanvasLayer/Shaders").Material = null;
         Multiplayer.MultiplayerPeer = null;
+        if (GetTree().Root.GetNodeOrNull("Main/Game") != null)
+        {
+            GetTree().Root.GetNode("Main/Game").QueueFree();
+        }
+        GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Show();
+        GetTree().Root.GetNode<Control>("Main/CanvasLayer/PauseMenu").Hide();
     }
 }
 

@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_gb5of")
 ClassName = "SCP-650 \"Startling Statue\""
+ClassDescription = "You can't move. Your task is to help hostile SCPs, providing them information about people's position."
 SpawnPoints = PackedStringArray("Main/Game/MapGenLcz/LC_cont2_650/entityspawn")
 PlayerModelSource = "res://FPSController/PlayerClassPrefab/scp650.tscn"
 PlayerRagdollSource = "res://FPSController/PlayerClassPrefabGameover/hume.tscn"
@@ -22,3 +23,4 @@ DefaultCameraPos = 0.969
 CustomCamera = false
 CustomView = "DitherShader"
 PreloadedItems = PackedStringArray()
+ClassColor = Color(0.752941, 0, 0, 0.847059)

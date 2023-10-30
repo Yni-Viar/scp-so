@@ -746,10 +746,10 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 shape = SubResource("ConcavePolygonShape3D_5hpvd")
 
 [node name="modern_ceiling_lamp_01_4k" parent="." instance=ExtResource("13_3xhf1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109981, 5.42925, 3.39209)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.429, 3.392)
 
 [node name="modern_ceiling_lamp_01_4k2" parent="." instance=ExtResource("13_3xhf1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109981, 5.43029, -3.59678)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.43, -3.597)
 
 [node name="cctv" parent="." instance=ExtResource("11_s3q7n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.174072, 6.56493, 0.0813975)

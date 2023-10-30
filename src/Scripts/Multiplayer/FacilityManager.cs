@@ -5,7 +5,7 @@ using System.Linq;
 public partial class FacilityManager : Node3D
 {
     // The facility manager not only manages the facility - it is a player class manager too!
-
+    internal string localNickname;
     //graphics settings field
     Settings settings;
     RandomNumberGenerator rng = new RandomNumberGenerator();
@@ -13,7 +13,7 @@ public partial class FacilityManager : Node3D
 
     //player class manager data
     PlayerScript playerScene;
-    [Export] Godot.Collections.Array<string> playersList = new Godot.Collections.Array<string>();
+    [Export] internal Godot.Collections.Array<string> playersList = new Godot.Collections.Array<string>();
     [Export] bool isRoundStarted = false;
     [Export] Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classes = new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>>();
     [Export] Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> rooms = new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>>();
@@ -89,6 +89,17 @@ public partial class FacilityManager : Node3D
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
+        if (Multiplayer.IsServer())
+        {
+            if (isRoundStarted)
+            {
+                //CheckRoundEnd();
+            }
+            else
+            {
+                GetNode<Label>("PreRoundStartPanel/PreRoundStart/Amount").Text = playersList.Count.ToString();
+            }
+        }
     }
 
     /// <summary>
@@ -100,6 +111,7 @@ public partial class FacilityManager : Node3D
         playerScene = (PlayerScript)ResourceLoader.Load<PackedScene>("res://FPSController/PlayerScene.tscn").Instantiate();
         playerScene.Name = id.ToString();
         AddChild(playerScene, true);
+        GetNode<PlayerScript>(id.ToString()).playerName = localNickname;
         playersList.Add(playerScene.Name);
         if (isRoundStarted)
         {
@@ -127,7 +139,9 @@ public partial class FacilityManager : Node3D
     /// </summary>
     async void WaitForBeginning()
     {
-        await ToSignal(GetTree().CreateTimer(15.0), "timeout");
+        GetNode<Panel>("PreRoundStartPanel").Visible = true;
+        await ToSignal(GetTree().CreateTimer(25.0), "timeout");
+        GetNode<Panel>("PreRoundStartPanel").Visible = false;
         BeginGame();
         RespawnMTF();
     }
@@ -198,6 +212,7 @@ public partial class FacilityManager : Node3D
         BaseClass classData = GD.Load<BaseClass>("res://FPSController/PlayerClassResources/" + nameOfClass + ".tres");
         GetNode<PlayerScript>(playerName).classKey = nameOfClass;
         GetNode<PlayerScript>(playerName).className = classData.ClassName;
+        GetNode<PlayerScript>(playerName).classDescription = classData.ClassDescription;
         GetNode<PlayerScript>(playerName).scpNumber = classData.ScpNumber;
         GetNode<PlayerScript>(playerName).sprintEnabled = classData.SprintEnabled;
         GetNode<PlayerScript>(playerName).moveSoundsEnabled = classData.MoveSoundsEnabled;
@@ -211,6 +226,7 @@ public partial class FacilityManager : Node3D
         if (Multiplayer.IsServer())
         {
             GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "CameraManager", !classData.CustomCamera);
+            GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "UpdateClassUI", classData.ClassColor.ToRgba32());
             GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "ApplyPlayerHeadPosition", classData.DefaultCameraPos);
             GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "ApplyShader", classData.CustomView);
         }
@@ -220,7 +236,7 @@ public partial class FacilityManager : Node3D
         
         RpcId(int.Parse(playerName), "PreloadInventory", playerName, classData.PreloadedItems);
         // PreloadInventory(playerName, classData.PreloadedItems);
-        RpcId(int.Parse(playerName), "UpdateClassUI", GetNode<PlayerScript>(playerName).className, GetNode<PlayerScript>(playerName).health);
+        // RpcId(int.Parse(playerName), "UpdateClassUI", GetNode<PlayerScript>(playerName).className, GetNode<PlayerScript>(playerName).health);
         LoadModels(playerName);
         if (GetTree().Root.GetNodeOrNull(classData.SpawnPoints[rng.RandiRange(0, classData.SpawnPoints.Length - 1)]) != null) //SCP CB Multiplayer moment (:
         {
@@ -283,9 +299,9 @@ public partial class FacilityManager : Node3D
             GetNode<Inventory>(playerName + "/InventoryContainer/Inventory").AddItem(ResourceLoader.Load(item));
         }
     }
-
+/*
     /// <summary>
-    /// Update the class UI, when forceclassing.
+    /// Update the class UI, when forceclassing. Deprecated since 0.7.0-dev
     /// </summary>
     /// <param name="className">Name of the class</param>
     /// <param name="health">Health of the class</param>
@@ -295,7 +311,7 @@ public partial class FacilityManager : Node3D
     {
         GetNode<Label>("PlayerUI/ClassInfo").Text = className;
         GetNode<Label>("PlayerUI/HealthInfo").Text = Mathf.Ceil(health).ToString();
-    }
+    }*/
 
     /// <summary>
     /// Tosses player classes at round start.
@@ -304,7 +320,7 @@ public partial class FacilityManager : Node3D
     /// <returns>A random class</returns>
     string TossPlayerClass(uint i)
     {
-        uint scpLimit = 3; //SCP Limit
+        uint scpLimit = 4; //SCP Limit
         Godot.Collections.Array<int> usedScps = new Godot.Collections.Array<int>(); //Already spawned SCPs
         if (i == 2 || i % 8 == 0)
         {
@@ -325,6 +341,16 @@ public partial class FacilityManager : Node3D
             return classes["spawnableHuman"][rng.RandiRange(0, classes["spawnableHuman"].Count - 1)];
         }
     }
+
+    async void CheckRoundEnd()
+    {
+        await ToSignal(GetTree().CreateTimer(1.5), "timeout");
+        if (playersList.Count > 1)
+        {
+
+        }
+    }
+
     /// <summary>
     /// Spawns player ragdoll.
     /// </summary>
@@ -382,5 +408,11 @@ public partial class FacilityManager : Node3D
             sfx.Stream = audio;
             sfx.Playing = true;
         }
+    }
+
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    void SetMyName(string name)
+    {
+        GetNode<PlayerScript>(Multiplayer.GetUniqueId().ToString()).playerName = name;
     }
 }

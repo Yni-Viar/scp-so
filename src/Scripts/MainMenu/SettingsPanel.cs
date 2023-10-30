@@ -16,7 +16,6 @@ public partial class SettingsPanel : Panel
         GetNode<CheckButton>("ScrollContainer/VBoxContainer/SSILSet").ButtonPressed = settings.SsilSetting;
         GetNode<CheckButton>("ScrollContainer/VBoxContainer/SSRSet").ButtonPressed = settings.SsrSetting;
         GetNode<CheckButton>("ScrollContainer/VBoxContainer/FogSet").ButtonPressed = settings.FogSetting;
-        GetNode<CheckButton>("ScrollContainer/VBoxContainer/GlowSet").ButtonPressed = settings.GlowSetting;
         GetNode<CheckButton>("ScrollContainer/VBoxContainer/FullscreenSet").ButtonPressed = settings.FullscreenSetting;
         GetNode<HSlider>("ScrollContainer/VBoxContainer/MouseSensSet").Value = settings.MouseSensitivity;
         GetNode<HSlider>("ScrollContainer/VBoxContainer/MusicSet").Value = settings.MusicSetting;
@@ -63,11 +62,11 @@ public partial class SettingsPanel : Panel
     {
         IniSaver ini = new IniSaver();
         ini.SaveIni("Settings", new Godot.Collections.Array<string>{
+            "LoadingScreens", 
             "SdfgiSetting",
             "SsaoSetting",
             "SsilSetting",
             "SsrSetting",
-            "GlowSetting", 
             "FogSetting",
             "MusicSetting",
             "SoundSetting", 
@@ -75,18 +74,18 @@ public partial class SettingsPanel : Panel
             "MouseSensitivity", 
             "WindowSizeSetting"
         }, new Godot.Collections.Array{
+            10, 
             settings.SdfgiSetting,
             settings.SsaoSetting,
             settings.SsilSetting,
             settings.SsrSetting,
-            settings.GlowSetting, 
             settings.FogSetting,
             settings.MusicSetting,
             settings.SoundSetting,
             settings.FullscreenSetting,
             settings.MouseSensitivity, 
             settings.WindowSizeSetting
-        }, "user://settings.ini");
+        }, "user://settings_" + Globals.settingsCompatibility + ".ini");
         settings.LoadIni();
     }
 
@@ -206,20 +205,6 @@ public partial class SettingsPanel : Panel
             settings.MouseSensitivity = (float)GetNode<HSlider>("ScrollContainer/VBoxContainer/MouseSensSet").Value;
             SaveCurrentSettings();
         }
-    }
-    
-    
-    private void OnGlowSetToggled(bool button_pressed)
-    {
-        if (button_pressed)
-        {
-            settings.GlowSetting = true;
-        }
-        else
-        {
-            settings.GlowSetting = false;
-        }
-        SaveCurrentSettings();
     }
 
     private void OnMusicSetDragEnded(bool value_changed)

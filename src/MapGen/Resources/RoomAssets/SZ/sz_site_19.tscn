@@ -492,6 +492,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0119, 7.45751, 7.99044)
 distance_fade_enabled = true
 omni_range = 10.7967
 
+[node name="OmniLight3D8" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1646, 7.45751, -7.44965)
+distance_fade_enabled = true
+omni_range = 10.7967
+
 [node name="OmniLight3D9" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0119, 6.10422, 20.1838)
 distance_fade_enabled = true

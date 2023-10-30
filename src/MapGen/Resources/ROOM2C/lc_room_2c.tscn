@@ -526,7 +526,7 @@ transform = Transform3D(0, 0, -1, 1, 0, 0, 0, -1, 0, 6.92585, 0.893586, 2.58291)
 shape = SubResource("ConcavePolygonShape3D_yvix6")
 
 [node name="modern_ceiling_lamp_01_4k" parent="." instance=ExtResource("2_483mp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109981, 5.44343, 6.13715)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.443, 6.137)
 
 [node name="modern_ceiling_lamp_01_4k2" parent="." instance=ExtResource("2_483mp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.34146, 5.43346, 0)

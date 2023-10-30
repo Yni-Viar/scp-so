@@ -24,8 +24,10 @@ public partial class PlayerScript : CharacterBody3D
 
     double decayTimer = 0d;
 
+    [Export] internal string playerName;
     [Export] internal string classKey;
     [Export] internal string className;
+    [Export] internal string classDescription;
     [Export] internal string spawnPoint;
     [Export] internal string playerModelSource;
     [Export] internal float health = 1f;
@@ -267,7 +269,7 @@ public partial class PlayerScript : CharacterBody3D
                 decayTimer = 0;
             }
 
-            GetParent().GetNode<Label>("PlayerUI/HealthInfo").Text = Mathf.Ceil(currentHealth).ToString();
+            GetParent().GetNode<ProgressBar>("PlayerUI/HealthBar").Value = Mathf.Ceil(currentHealth);
         }
         UpDirection = Vector3.Up;
         MoveAndSlide();
@@ -436,5 +438,31 @@ public partial class PlayerScript : CharacterBody3D
             Input.MouseMode = Input.MouseModeEnum.Visible;
             customCamera = true;
         }
+    }
+    /// <summary>
+    /// Sets player class color. Available since 0.7.0-dev
+    /// </summary>
+    /// <param name="color"></param>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    void UpdateClassUI(uint color)
+    {
+        Color classColor = new Color(color);
+        if (GetParent().GetNode<ProgressBar>("PlayerUI/HealthBar").HasThemeStyleboxOverride("fill"))
+        {
+            GetParent().GetNode<ProgressBar>("PlayerUI/HealthBar").RemoveThemeStyleboxOverride("fill");
+        }
+        StyleBoxFlat classRepresent = new StyleBoxFlat();
+        classRepresent.BgColor = classColor;
+        GetParent().GetNode<ProgressBar>("PlayerUI/HealthBar").AddThemeStyleboxOverride("fill", classRepresent);
+        GetParent().GetNode<ProgressBar>("PlayerUI/HealthBar").MaxValue = health;
+        GetParent().GetNode<ProgressBar>("PlayerUI/HealthBar").Value = currentHealth;
+        if (GetParent().GetNode<Label>("PlayerUI/ClassInfo").HasThemeColorOverride("font_color"))
+        {
+            GetParent().GetNode<Label>("PlayerUI/ClassInfo").RemoveThemeColorOverride("font_color");
+        }
+        GetParent().GetNode<Label>("PlayerUI/ClassInfo").AddThemeColorOverride("font_color", classColor);
+        GetParent().GetNode<Label>("PlayerUI/ClassInfo").Text = className;
+        GetParent().GetNode<Label>("PlayerUI/ClassDescription").Text = classDescription;
+        GetParent().GetNode<AnimationPlayer>("PlayerUI/AnimationPlayer").Play("forceclass");
     }
 }

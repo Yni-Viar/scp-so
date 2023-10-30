@@ -7,6 +7,6 @@
 script = ExtResource("2_76o5t")
 Name = "SCP-079"
 Description = "SCP-079 is an old microcomputer built in 1978. 
-text2 = It is not known when SCP-079 gained sentience, but it is known that the software has evolved to a point that its hardware should not be able to handle it, even in the realm of fantasy.
-text3 = It has passed the Turing test, and is quite conversational, though very rude and hateful in tone. It also displays a malevolent desire to escape."
+It is not known when SCP-079 gained sentience, but it is known that the software has evolved to a point that its hardware should not be able to handle it, even in the realm of fantasy.
+It has passed the Turing test, and is quite conversational, though very rude and hateful in tone. It also displays a malevolent desire to escape."
 Texture = ExtResource("1_gcelq")

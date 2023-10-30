@@ -6,6 +6,9 @@ public partial class BaseClass : Resource
     [Export]
     public string ClassName { get; set; }
 
+    [Export(PropertyHint.MultilineText)]
+    public string ClassDescription { get; set; }
+
     [Export]
     public string[] SpawnPoints { get; set; }
 
@@ -57,19 +60,23 @@ public partial class BaseClass : Resource
     [Export] // Godot types NEEDS initialization before use, or you will stuck with Nil.
     public string[] PreloadedItems { get; set; }
 
+    [Export]
+    public Color ClassColor { get; set; }
+
     // Make sure you provide a parameterless constructor.
     // In C#, a parameterless constructor is different from a
     // constructor with all default values.
     // Without a parameterless constructor, Godot will have problems
     // creating and editing your resource via the inspector.
-    public BaseClass() : this(null, null, null, null, 0f, 0f, true, true, null, null, -1, Globals.Team.SPT, 100f, false, false, null, null, 0.969f) { }
+    public BaseClass() : this(null, null, null, null, null, 0f, 0f, true, true, null, null, -1, Globals.Team.SPT, 100f, false, false, null, null, 0.969f, new Color(1, 1, 1)) { }
 
-    public BaseClass(string className, string[] spawnPoints, string playerModelSource, string playerRagdollSource,
+    public BaseClass(string className, string classDescription, string[] spawnPoints, string playerModelSource, string playerRagdollSource,
         float speed, float jump, bool sprintEnabled, bool moveSoundsEnabled, string[] footstepSounds,
         string[] sprintSounds, int scpNumber, Globals.Team team, float health, bool customSpawn, bool customCamera, string customView,
-        string[] preloadedItems, float defaultCameraPos)
+        string[] preloadedItems, float defaultCameraPos, Color classColor)
     {
         ClassName = className;
+        ClassDescription = classDescription;
         SpawnPoints = spawnPoints ?? System.Array.Empty<string>();
         PlayerModelSource = playerModelSource;
         PlayerRagdollSource = playerRagdollSource;
@@ -87,5 +94,6 @@ public partial class BaseClass : Resource
         CustomView = customView;
         PreloadedItems = preloadedItems ?? System.Array.Empty<string>();
         DefaultCameraPos = defaultCameraPos;
+        ClassColor = classColor;
     }
 }

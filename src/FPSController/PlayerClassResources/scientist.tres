@@ -5,6 +5,8 @@
 [resource]
 script = ExtResource("1_hs4qh")
 ClassName = "Science personnel"
+ClassDescription = "You need to do tasks, and test the SCPs.
+If there is a containment breach, you need to escape from the facility."
 SpawnPoints = PackedStringArray("Main/Game/MapGenLcz/LC_room2_sl/entityspawn", "Main/Game/MapGenRz/RZ_room2_offices/entityspawn")
 PlayerModelSource = "res://FPSController/PlayerClassPrefab/scientist.tscn"
 PlayerRagdollSource = "res://FPSController/PlayerClassPrefabGameover/scientist.tscn"
@@ -22,3 +24,4 @@ DefaultCameraPos = 0.969
 CustomCamera = false
 CustomView = ""
 PreloadedItems = PackedStringArray("res://InventorySystem/Items/key2.tres", "res://InventorySystem/Items/pda.tres", "res://InventorySystem/Items/medkit.tres")
+ClassColor = Color(0.52549, 0.694118, 0.823529, 0.847059)
