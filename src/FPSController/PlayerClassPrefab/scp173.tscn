@@ -1,11 +1,11 @@
 [gd_scene load_steps=29 format=3 uid="uid://vouktwqujjrm"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerClassScript/Scp173PlayerScript.cs" id="1_4av21"]
-[ext_resource type="Texture2D" uid="uid://cq03mwmo3ey0c" path="res://Assets/Models/SCP-173-BaseTexture-GLTF/scp173NEO_low_Merged_PM3D_Sphere3D4_AlbedoTransparency.png" id="2_h3yhc"]
-[ext_resource type="Texture2D" uid="uid://bc7a8k1ag20kd" path="res://Assets/Models/SCP-173-BaseTexture-GLTF/scp173NEO_low_Merged_PM3D_Sphere3D4_MetallicSmoothness.png" id="3_y2wk8"]
-[ext_resource type="Texture2D" uid="uid://dhk6piqm87b2n" path="res://Assets/Models/SCP-173-BaseTexture-GLTF/scp173NEO_low_Merged_PM3D_Sphere3D4_Normal.png" id="4_m76d2"]
+[ext_resource type="Texture2D" uid="uid://cq03mwmo3ey0c" path="res://Assets/Models/scp173-BaseTexture/scp173NEO_low_Merged_PM3D_Sphere3D4_AlbedoTransparency.png" id="2_h3yhc"]
+[ext_resource type="Texture2D" uid="uid://bc7a8k1ag20kd" path="res://Assets/Models/scp173-BaseTexture/scp173NEO_low_Merged_PM3D_Sphere3D4_MetallicSmoothness.png" id="3_y2wk8"]
+[ext_resource type="Texture2D" uid="uid://dhk6piqm87b2n" path="res://Assets/Models/scp173-BaseTexture/scp173NEO_low_Merged_PM3D_Sphere3D4_Normal.png" id="4_m76d2"]
 [ext_resource type="Shader" path="res://Shaders/MixShader/mix.gdshader" id="5_wsa7v"]
-[ext_resource type="Texture2D" uid="uid://ip5h0psqi2fr" path="res://Assets/Models/SCP-173-FaceTextures/face_01.png" id="6_p31cr"]
+[ext_resource type="Texture2D" uid="uid://ip5h0psqi2fr" path="res://Assets/Models/scp173-FaceTextures/face_1.png" id="6_cn7o5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g7cr3"]
 resource_name = "phong2"
@@ -158,10 +158,11 @@ bind/37/bone = -1
 bind/37/pose = Transform3D(0.100191, 0.830699, -0.547631, -0.0769981, -0.542276, -0.836664, -0.991984, 0.125993, 0.0096309, -1.0764, 0.759034, 0.273125)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6twfe"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_wsa7v")
 shader_parameter/texture_a = ExtResource("2_h3yhc")
-shader_parameter/texture_b = ExtResource("6_p31cr")
+shader_parameter/texture_b = ExtResource("6_cn7o5")
 
 [sub_resource type="Animation" id="Animation_xlean"]
 resource_name = "173_FunPose1"
@@ -5016,7 +5017,7 @@ _data = {
 script = ExtResource("1_4av21")
 
 [node name="SCP173_Rig" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, -1.43969, 0)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="SCP173_Rig"]
 bones/0/name = "Root"

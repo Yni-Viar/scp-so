@@ -7,16 +7,18 @@ public partial class Scp173PlayerScript : Node3D
     RayCast3D ray;
     RayCast3D vision;
     AudioStreamPlayer3D interactSound;
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+    string[] poseArr = new string[] { "173_Pose1", "173_Pose2", "173_Pose3", "173_Pose4", "173_Pose5", "173_Pose6", "173_Pose7", "173_TPose" };
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
 	{
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
             GetNode<Node3D>("SCP173_Rig").Hide();
             GetNode<Control>("AbilityUI").Show();
+            GetParent().GetParent<PlayerScript>().SetCollisionMaskValue(3, true);
+            GetParent().GetParent<PlayerScript>().CanMove = true;
         }
-        GetParent().GetParent<PlayerScript>().SetCollisionMaskValue(3, true);
-        GetParent().GetParent<PlayerScript>().CanMove = true;
+        Rpc("SetRandomFace");
         ray = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/RayCast3D");
         vision = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/VisionRadius");
         interactSound = GetParent().GetParent<PlayerScript>().GetNode<AudioStreamPlayer3D>("InteractSound");
@@ -37,6 +39,7 @@ public partial class Scp173PlayerScript : Node3D
                         interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/173/NeckSnap" + rng.RandiRange(1, 3) + ".ogg");
                         interactSound.Play();
                         player.RpcId(int.Parse(player.Name), "HealthManage", -16777216);
+                        Rpc("SetState", poseArr[rng.RandiRange(0, poseArr.Length - 1)]);
                     }
                 }
             }
@@ -100,4 +103,30 @@ public partial class Scp173PlayerScript : Node3D
             GetParent().GetParent<PlayerScript>().CanMove = true;
         }
 	}
+
+    /// <summary>
+    /// Set animation to an entity.
+    /// </summary>
+    /// <param name="s">Animation name</param>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    private void SetState(string s)
+    {
+        if (GetNode<AnimationPlayer>("AnimationPlayer").CurrentAnimation != s)
+        {
+            //Change the animation.
+            GetNode<AnimationPlayer>("AnimationPlayer").Play(s);
+        }
+    }
+    /// <summary>
+    /// Sets random 173 face, like skins.
+    /// </summary>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    void SetRandomFace()
+    {
+        ShaderMaterial mat = new ShaderMaterial();
+        mat.Shader = ResourceLoader.Load<Shader>("res://Shaders/MixShader/mix.gdshader");
+        mat.SetShaderParameter("texture_a", ResourceLoader.Load<Texture2D>("res://Assets/Models/scp173-BaseTexture/scp173NEO_low_Merged_PM3D_Sphere3D4_AlbedoTransparency.png"));
+        mat.SetShaderParameter("texture_b", ResourceLoader.Load<Texture2D>("res://Assets/Models/scp173-FaceTextures/face_" + rng.RandiRange(1, 10).ToString() + ".png"));
+        GetNode<MeshInstance3D>("SCP173_Rig/Skeleton3D/scp173_MESH").MaterialOverride = mat;
+    }
 }

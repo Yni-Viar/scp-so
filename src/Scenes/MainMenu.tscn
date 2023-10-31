@@ -151,6 +151,7 @@ text = "[b]v.0.7.0-dev[/b] [i](Alpha)[/i]
 - Improved forceclass and pre-round screens.
 - Added support for player nicknames.
 - Fixed bug, where exiting the server broke the game.
+- Added a shader to SCP-173, so it is possible for changing SCP-173's face.
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.

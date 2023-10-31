@@ -18,6 +18,10 @@ public partial class FacilityManager : Node3D
     [Export] Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classes = new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>>();
     [Export] Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> rooms = new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>>();
     [Export] Godot.Collections.Dictionary<string, string> items = new Godot.Collections.Dictionary<string, string>();
+    internal bool IsRoundStarted
+    { 
+        get=>isRoundStarted; private set=>isRoundStarted = value;
+    }
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -139,9 +143,7 @@ public partial class FacilityManager : Node3D
     /// </summary>
     async void WaitForBeginning()
     {
-        GetNode<Panel>("PreRoundStartPanel").Visible = true;
         await ToSignal(GetTree().CreateTimer(25.0), "timeout");
-        GetNode<Panel>("PreRoundStartPanel").Visible = false;
         BeginGame();
         RespawnMTF();
     }
@@ -153,6 +155,7 @@ public partial class FacilityManager : Node3D
     {
         Godot.Collections.Array<Node> players = GetTree().GetNodesInGroup("Players");
         uint i = 1;
+        isRoundStarted = true;
         foreach (Node player in players)
         {
             if (player is PlayerScript playerScript)
@@ -161,7 +164,6 @@ public partial class FacilityManager : Node3D
                 i++;
             }
         }
-        isRoundStarted = true;
     }
     /// <summary>
     /// Respawns MTF e-11 "Nine-Tailed Fox" every 5 minutes.

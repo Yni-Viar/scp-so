@@ -6,7 +6,9 @@ public partial class MapGeneratorHcz : Node
     //(c) juanjp600. License - CC-BY-SA 3.0.
     [Export] ulong seed;
     ulong Seed { get=> seed; set=>seed=value; }
-    
+    [Export] bool generateMoreR1s = false;
+    [Export] bool generateMoreR4s = false;
+
     [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
     ulong RandomSeed()
     {
@@ -265,11 +267,12 @@ public partial class MapGeneratorHcz : Node
             }
         }
 
-        if (room1Amount < 5)
+        if (room1Amount < 5 && generateMoreR1s)
         {
             GD.Print("Forcing some ROOM1s");
             for (y = 2; y < 10 && room1Amount < 5; y++)
             {
+                //if (getZone(y+2) == i && getZone(y-2) == i) {
                 for (x = 2; x < 10 && room1Amount < 5; x++)
                 {
                     if (roomTemp[x, y].angle < 0)
@@ -312,16 +315,16 @@ public partial class MapGeneratorHcz : Node
                                     switch (roomTemp[x, y].angle)
                                     {
                                         case 0:
-                                            adjRoom.angle = 90;
-                                            break;
-                                        case 90:
                                             adjRoom.angle = 0;
                                             break;
-                                        case 180:
-                                            adjRoom.angle = 270;
+                                        case 1:
+                                            adjRoom.angle = 90;
                                             break;
-                                        case 270:
+                                        case 2:
                                             adjRoom.angle = 180;
+                                            break;
+                                        case 3:
+                                            adjRoom.angle = 270;
                                             break;
                                     }
                                     break;*/
@@ -333,7 +336,81 @@ public partial class MapGeneratorHcz : Node
                                     room4Amount++;
                                     break;
                                 default:
-                                    roomTemp[x, y].type = RoomTypes.EMPTY;
+                                    roomTemp[x, y].angle = -1;
+                                    break;
+                            }
+
+                            if (roomTemp[x + 1, y].angle >= 0)
+                            {
+                                roomTemp[x + 1, y] = adjRoom;
+                            }
+                            else if (roomTemp[x - 1, y].angle >= 0)
+                            {
+                                roomTemp[x - 1, y] = adjRoom;
+                            }
+                            else if (roomTemp[x, y + 1].angle >= 0)
+                            {
+                                roomTemp[x, y + 1] = adjRoom;
+                            }
+                            else
+                            {
+                                roomTemp[x, y - 1] = adjRoom;
+                            }
+                        }
+                    }
+                }
+                //\}
+            }
+        }
+
+        if (room4Amount < 3 && generateMoreR4s)
+        {
+            GD.Print("Forcing some ROOM4s\n");
+            for (y = 2; y < 10 && room4Amount < 3; y++)
+            {
+                //if (getZone(y+2) == i && getZone(y-2) == i) {
+                for (x = 2; x < 10 && room4Amount < 3; x++)
+                {
+                    if (roomTemp[x, y].angle < 0)
+                    {
+                        bool freeSpace = ((roomTemp[x + 1, y].angle >= 0) != (roomTemp[x - 1, y].angle >= 0)) != ((roomTemp[x, y + 1].angle >= 0) != (roomTemp[x, y - 1].angle >= 0));
+                        freeSpace = freeSpace && (((roomTemp[x + 2, y].angle >= 0) != (roomTemp[x - 2, y].angle >= 0)) != ((roomTemp[x, y + 2].angle >= 0) != (roomTemp[x, y - 2].angle >= 0)));
+                        freeSpace = freeSpace && (((roomTemp[x + 1, y + 1].angle >= 0) != (roomTemp[x - 1, y - 1].angle >= 0)) != ((roomTemp[x - 1, y + 1].angle >= 0) != (roomTemp[x + 1, y - 1].angle >= 0)));
+                        if (freeSpace)
+                        {
+                            TempRoom adjRoom;
+
+                            if (roomTemp[x + 1, y].angle >= 0)
+                            {
+                                adjRoom = roomTemp[x + 1, y];
+                                roomTemp[x, y].angle = 3;
+                            }
+                            else if (roomTemp[x - 1, y].angle >= 0)
+                            {
+                                adjRoom = roomTemp[x - 1, y];
+                                roomTemp[x, y].angle = 1;
+                            }
+                            else if (roomTemp[x, y + 1].angle >= 0)
+                            {
+                                adjRoom = roomTemp[x, y + 1];
+                                roomTemp[x, y].angle = 2;
+                            }
+                            else
+                            {
+                                adjRoom = roomTemp[x, y - 1];
+                                roomTemp[x, y].angle = 0;
+                            }
+
+                            switch (adjRoom.type)
+                            {
+                                case RoomTypes.ROOM3:
+                                    roomTemp[x, y].type = RoomTypes.ROOM1;
+                                    adjRoom.type = RoomTypes.ROOM4;
+                                    room1Amount++;
+                                    room3Amount--;
+                                    room4Amount++;
+                                    break;
+                                default:
                                     roomTemp[x, y].angle = -1;
                                     break;
                             }

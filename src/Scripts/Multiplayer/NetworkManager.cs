@@ -207,6 +207,7 @@ public partial class NetworkManager : Node
 		GD.Print("Connection Failed!");
 		GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Show();
 		GetTree().Root.GetNode<Control>("Main/CanvasLayer/PauseMenu").Hide();
+		Input.MouseMode = Input.MouseModeEnum.Visible;
 	}
 
 	/// <summary>
@@ -222,5 +223,6 @@ public partial class NetworkManager : Node
 		GD.Print("You are disconnected from the server.");
 		GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Show();
 		GetTree().Root.GetNode<Control>("Main/CanvasLayer/PauseMenu").Hide();
-	}
+        Input.MouseMode = Input.MouseModeEnum.Visible;
+    }
 }

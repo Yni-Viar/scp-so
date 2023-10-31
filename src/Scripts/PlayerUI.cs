@@ -26,6 +26,15 @@ public partial class PlayerUI : Control
                 Input.MouseMode = Input.MouseModeEnum.Captured;
             }
         }
+
+        if (GetParent<FacilityManager>().IsRoundStarted)
+        {
+            GetParent().GetNode<Panel>("PreRoundStartPanel").Visible = false;
+        }
+        else
+        {
+            GetParent().GetNode<Panel>("PreRoundStartPanel").Visible = true;
+        }
 	}
 
     public override void _Input(InputEvent @event)
