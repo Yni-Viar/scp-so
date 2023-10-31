@@ -168,26 +168,6 @@ public partial class NetworkManager : Node
 		AddChild(scene.Instantiate());
         //Loading screen.
         GetTree().Root.GetNode<CanvasLayer>("Main/LoadingScreen/").Visible = false;
-        if (FileAccess.FileExists("user://playername.txt"))
-        {
-            string nick = TxtParser.Load("user://playername.txt");
-            if (!string.IsNullOrEmpty(nick))
-            {
-                GetNode<FacilityManager>("Game").Rpc("SetMyName", nick);
-            }
-            else
-            {
-                RandomNumberGenerator rng = new RandomNumberGenerator();
-                rng.Randomize();
-                GetNode<FacilityManager>("Game").Rpc("SetMyName", "Unknown player " + rng.Randi());
-            }
-        }
-        else
-        {
-            RandomNumberGenerator rng = new RandomNumberGenerator();
-            rng.Randomize();
-            GetNode<FacilityManager>("Game").Rpc("SetMyName", "Unknown player " + rng.Randi());
-        }
     }
 
 	/// <summary>

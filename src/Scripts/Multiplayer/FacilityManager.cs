@@ -99,10 +99,10 @@ public partial class FacilityManager : Node3D
             {
                 //CheckRoundEnd();
             }
-            else
-            {
-                GetNode<Label>("PreRoundStartPanel/PreRoundStart/Amount").Text = playersList.Count.ToString();
-            }
+        }
+        if (!isRoundStarted)
+        {
+            GetNode<Label>("PreRoundStartPanel/PreRoundStart/Amount").Text = playersList.Count.ToString();
         }
     }
 
@@ -115,7 +115,6 @@ public partial class FacilityManager : Node3D
         playerScene = (PlayerScript)ResourceLoader.Load<PackedScene>("res://FPSController/PlayerScene.tscn").Instantiate();
         playerScene.Name = id.ToString();
         AddChild(playerScene, true);
-        GetNode<PlayerScript>(id.ToString()).playerName = localNickname;
         playersList.Add(playerScene.Name);
         if (isRoundStarted)
         {
@@ -338,6 +337,10 @@ public partial class FacilityManager : Node3D
             usedScps.Add(randomScpClass);
             return classes["spawnableScps"][randomScpClass];
         }
+        /*else if (i == 3)
+        {
+
+        }*/
         else //Spawn a human.
         {
             return classes["spawnableHuman"][rng.RandiRange(0, classes["spawnableHuman"].Count - 1)];
@@ -410,11 +413,5 @@ public partial class FacilityManager : Node3D
             sfx.Stream = audio;
             sfx.Playing = true;
         }
-    }
-
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
-    void SetMyName(string name)
-    {
-        GetNode<PlayerScript>(Multiplayer.GetUniqueId().ToString()).playerName = name;
     }
 }

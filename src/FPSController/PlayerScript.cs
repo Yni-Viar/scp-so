@@ -85,6 +85,26 @@ public partial class PlayerScript : CharacterBody3D
     public override void _Ready()
     {
         settings = GetTree().Root.GetNode<Settings>("Settings");
+        if (FileAccess.FileExists("user://playername.txt"))
+        {
+            string nick = TxtParser.Load("user://playername.txt");
+            if (!string.IsNullOrEmpty(nick))
+            {
+                playerName = nick;
+            }
+            else
+            {
+                RandomNumberGenerator rng = new RandomNumberGenerator();
+                rng.Randomize();
+                playerName = "Unknown player " + rng.Randi();
+            }
+        }
+        else
+        {
+            RandomNumberGenerator rng = new RandomNumberGenerator();
+            rng.Randomize();
+            playerName = "Unknown player " + rng.Randi();
+        }
         if (IsMultiplayerAuthority())
         {
             GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = true;
