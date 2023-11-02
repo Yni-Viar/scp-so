@@ -18,7 +18,7 @@ public partial class Globals
     public enum Team { SPT, CDP, SCI, MTF, DSE, NSE, CHI, SEH }
     internal static Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classData =
         new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> {
-            { "spawnableHuman", new Godot.Collections.Array<string>{"classd1", "classd2", "scientist", "guard" } },
+            { "spawnableHuman", new Godot.Collections.Array<string>{"classd", "scientist", "guard" } },
             { "arrivingHuman", new Godot.Collections.Array<string>{ "mtfe11" } },
             { "spawnableScps", new Godot.Collections.Array<string> { "scp079", "scp106", "scp131a", "scp131b", "scp173", "scp3199" } },
             { "special", new Godot.Collections.Array<string> {"spectator" } },

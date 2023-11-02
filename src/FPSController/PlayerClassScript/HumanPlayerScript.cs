@@ -3,6 +3,7 @@ using System;
 
 public partial class HumanPlayerScript : Node3D
 {
+    [Export] string armatureName;
     [Export] internal bool isWatchingAtScp173 = false;
     bool isBlinking = false;
     RayCast3D vision;
@@ -12,17 +13,24 @@ public partial class HumanPlayerScript : Node3D
 	{
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
-            GetNode<Node3D>("Armature").Hide();
+            GetNode<Node3D>(armatureName).Hide();
         }
         GetParent().GetParent<PlayerScript>().SetCollisionMaskValue(3, true);
         GetParent().GetParent<PlayerScript>().CanMove = true;
         vision = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/VisionRadius");
+        OnStart();
+    }
+
+    internal virtual void OnStart()
+    {
+
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override async void _Process(double delta)
 	{
-        if (GetParent().GetParent<PlayerScript>().dir.IsZeroApprox())
+        /* DEPRECATED, since 0.7.0-dev
+         * if (GetParent().GetParent<PlayerScript>().dir.IsZeroApprox())
         {
             if (Name == "mtf" || Name == "hazmat_scientist")
             {
@@ -57,7 +65,7 @@ public partial class HumanPlayerScript : Node3D
                     Rpc("SetState", "Walking");
                 }
             }
-        }
+        }*/
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
             if (blinkTimer < 5.2d)
@@ -74,6 +82,11 @@ public partial class HumanPlayerScript : Node3D
             WatchAtScp173();
         }
         
+    }
+
+    internal virtual void AnimationCycle()
+    {
+
     }
     /// <summary>
     /// Set animation to an entity.

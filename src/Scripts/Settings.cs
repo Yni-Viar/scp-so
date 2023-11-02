@@ -87,5 +87,29 @@ public partial class Settings : Node
         FullscreenSetting = (bool)config.GetValue("Settings", "FullscreenSetting");
         MouseSensitivity = (float)config.GetValue("Settings", "MouseSensitivity");
         WindowSizeSetting = (Vector2I)config.GetValue("Settings", "WindowSizeSetting");
+
+        DisplayServer.WindowSetSize(WindowSizeSetting);
+
+        AudioServer.SetBusVolumeDb(0, Mathf.LinearToDb(SoundSetting));
+        if (SoundSetting < 0.01)
+        {
+            AudioServer.SetBusMute(0, true);
+        }
+        else
+        {
+            AudioServer.SetBusMute(0, false);
+        }
+
+        AudioServer.SetBusVolumeDb(1, Mathf.LinearToDb(MusicSetting));
+        if (MusicSetting < 0.01)
+        {
+            AudioServer.SetBusMute(1, true);
+        }
+        else
+        {
+            AudioServer.SetBusMute(1, false);
+        }
+
+        DisplayServer.WindowSetMode(FullscreenSetting ? DisplayServer.WindowMode.Fullscreen : DisplayServer.WindowMode.Windowed);
     }
 }
