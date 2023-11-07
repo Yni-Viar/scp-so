@@ -3,15 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dmppkpa47jkbg"
-path="res://.godot/imported/OfficeCeiling002_2K_Color.png-9dc0acebfc25a1ecb415550dd71c40c7.ctex"
+path.s3tc="res://.godot/imported/OfficeCeiling002_2K_Color.png-9dc0acebfc25a1ecb415550dd71c40c7.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://MapGen/Resources/RoomAssets/SZ/OfficeCeiling002_2K_Color.png"
-dest_files=["res://.godot/imported/OfficeCeiling002_2K_Color.png-9dc0acebfc25a1ecb415550dd71c40c7.ctex"]
+dest_files=["res://.godot/imported/OfficeCeiling002_2K_Color.png-9dc0acebfc25a1ecb415550dd71c40c7.s3tc.ctex"]
 
 [params]
 

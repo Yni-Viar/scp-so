@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dhx4bo3a3rn0s"]
+
+[ext_resource type="Script" path="res://FPSController/PlayerClassResources/BaseClass.cs" id="1_gg5q4"]
+
+[resource]
+script = ExtResource("1_gg5q4")
+ClassName = "SCP-2522,\"hatbot.aic\""
+ClassDescription = "You are the sentient AI. Help SCPs by using your abilities against humans."
+SpawnPoints = PackedStringArray("Main/Game/MapGenLcz/LC_cont1_079/entityspawn")
+PlayerModelSource = "res://FPSController/PlayerClassPrefab/scp2522.tscn"
+PlayerRagdollSource = "res://FPSController/PlayerClassPrefabGameover/hume.tscn"
+Speed = 0.0
+Jump = 0.0
+SprintEnabled = false
+MoveSoundsEnabled = false
+FootstepSounds = PackedStringArray()
+SprintSounds = PackedStringArray()
+ScpNumber = 2522
+Team = 4
+Health = 999.0
+CustomSpawn = false
+DefaultCameraPos = -1.044
+CustomCamera = true
+CustomView = ""
+PreloadedItems = PackedStringArray()
+ClassColor = Color(0.752941, 0, 0, 0.847059)

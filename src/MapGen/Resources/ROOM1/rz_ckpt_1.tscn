@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://wkgsfomyretc"]
+[gd_scene load_steps=79 format=3 uid="uid://wkgsfomyretc"]
 
 [ext_resource type="Texture2D" uid="uid://bpork62ekk21y" path="res://MapGen/Resources/RoomAssets/RZ/metal3.jpg" id="1_hyxnq"]
 [ext_resource type="Texture2D" uid="uid://bdepgdphwfa72" path="res://MapGen/Resources/RoomAssets/RZ/tilefloor.jpg" id="2_k2qaa"]
@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bb33n0ejfxfuq" path="res://MapGen/Resources/RoomAssets/RZElevator.png" id="17_lb3av"]
 [ext_resource type="PackedScene" uid="uid://cgaomav6767mx" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="17_qi6j1"]
 [ext_resource type="Texture2D" uid="uid://8ry0qrau1dwb" path="res://MapGen/Resources/RoomAssets/HCZElevator.png" id="18_llp8s"]
-[ext_resource type="PackedScene" uid="uid://bratli6m21b8k" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="18_u733h"]
+[ext_resource type="PackedScene" uid="uid://bi12ev7yropli" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="18_u733h"]
 [ext_resource type="Script" path="res://Scripts/Facility/TeleportElevator.cs" id="19_f40x1"]
 [ext_resource type="Texture2D" uid="uid://ben08ytu3hn3q" path="res://MapGen/Resources/Doors/DoorLCZ/Door01.jpg" id="20_qka6i"]
 [ext_resource type="PackedScene" uid="uid://bpx6ko6t0w1o5" path="res://MapGen/Resources/Buttons/button_interact.tscn" id="21_1bsaw"]
@@ -815,6 +815,9 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_xbn6n"]
 size = Vector3(6.0234, 5.04272, 6.03273)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_icdq7"]
+size = Vector3(19.6761, 9.08363, 20.2893)
+
 [node name="RZ_ckpt1" type="StaticBody3D"]
 
 [node name="RZ_ckpt12" type="MeshInstance3D" parent="."]
@@ -997,6 +1000,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20726, 7.03, 8.86486)
 
 [node name="cctv3" parent="." instance=ExtResource("25_mf4q7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.22153, 3.51, 5.43462)
+
+[node name="CheckArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.92772, 0)
+collision_layer = 3
+collision_mask = 3
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CheckArea"]
+shape = SubResource("BoxShape3D_icdq7")
 
 [connection signal="Interacted" from="ElevatorRz1/ButtonInteractCall" to="ElevatorRz1" method="OnButtonInteractInteracted" flags=18]
 [connection signal="Interacted" from="ElevatorRz1/ButtonInteractUp" to="ElevatorRz1" method="OnButtonInteractUpInteracted"]

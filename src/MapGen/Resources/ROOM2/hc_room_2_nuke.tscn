@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://c51fk2jf1j02p"]
+[gd_scene load_steps=58 format=3 uid="uid://c51fk2jf1j02p"]
 
 [ext_resource type="Texture2D" uid="uid://bvvfkca4t62cp" path="res://MapGen/Resources/RoomAssets/HCZ/ctwalls2.png" id="1_q0ix3"]
 [ext_resource type="Texture2D" uid="uid://6atirug73xa8" path="res://MapGen/Resources/RoomAssets/HCZ/concretewall.jpg" id="2_hqp1t"]
@@ -20,7 +20,7 @@
 [ext_resource type="Script" path="res://Scripts/Facility/Door.cs" id="18_2wkcx"]
 [ext_resource type="Texture2D" uid="uid://ben08ytu3hn3q" path="res://MapGen/Resources/Doors/DoorLCZ/Door01.jpg" id="19_wjj88"]
 [ext_resource type="PackedScene" uid="uid://bpx6ko6t0w1o5" path="res://MapGen/Resources/Buttons/button_interact.tscn" id="20_t2hmy"]
-[ext_resource type="PackedScene" uid="uid://bc5kxvy32glap" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="21_frfoc"]
+[ext_resource type="PackedScene" uid="uid://dwt4g6igxv1hc" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="21_frfoc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ij68h"]
 resource_name = "mat0.004"
@@ -647,6 +647,9 @@ properties/1/spawn = true
 properties/1/sync = false
 properties/1/watch = true
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_41nqb"]
+size = Vector3(25.9786, 41.5249, 20.2893)
+
 [node name="HC_room2_nuke" type="StaticBody3D"]
 
 [node name="HC_room2_nuke2" type="MeshInstance3D" parent="."]
@@ -739,6 +742,17 @@ replication_config = SubResource("SceneReplicationConfig_mccg3")
 
 [node name="cctv" parent="." instance=ExtResource("21_frfoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36029, 3.84, -1.78655)
+
+[node name="CheckArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.1201, 0)
+collision_layer = 3
+collision_mask = 3
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CheckArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.51253, 0, 0)
+shape = SubResource("BoxShape3D_41nqb")
 
 [connection signal="Interacted" from="Door/ButtonInteract" to="Door" method="OnButtonInteractInteracted" flags=18]
 [connection signal="Interacted" from="Door/ButtonInteract2" to="Door" method="OnButtonInteractInteracted" flags=18]

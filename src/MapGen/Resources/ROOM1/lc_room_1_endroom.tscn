@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d4p1f7a46xnt"]
+[gd_scene load_steps=24 format=3 uid="uid://d4p1f7a46xnt"]
 
 [ext_resource type="Texture2D" uid="uid://d4a1s35jefp5r" path="res://MapGen/Resources/RoomAssets/LCZ/whitewall_2k.jpg" id="1_6ujl4"]
 [ext_resource type="Texture2D" uid="uid://b067ykrbqruf0" path="res://MapGen/Resources/RoomAssets/LCZ/dirtymetal.jpg" id="2_xignr"]
@@ -235,6 +235,9 @@ shadow_mesh = SubResource("ArrayMesh_fgevl")
 [sub_resource type="BoxShape3D" id="BoxShape3D_8abqc"]
 size = Vector3(7.64227, 4.06593, 0.735124)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_um1mb"]
+size = Vector3(19.6761, 9.08363, 20.2893)
+
 [node name="LC_room1_endroom" type="StaticBody3D"]
 
 [node name="LC_room1_endroom2" type="MeshInstance3D" parent="."]
@@ -278,3 +281,13 @@ omni_range = 11.4038
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.715, 2.56107)
 light_color = Color(1, 0, 0, 1)
 omni_range = 11.4038
+
+[node name="CheckArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.92772, 0)
+collision_layer = 3
+collision_mask = 3
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CheckArea"]
+shape = SubResource("BoxShape3D_um1mb")

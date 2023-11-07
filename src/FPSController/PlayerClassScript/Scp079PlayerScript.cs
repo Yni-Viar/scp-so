@@ -3,45 +3,25 @@ using System;
 
 public partial class Scp079PlayerScript : Node3D
 {
-    // to be added in future.
-    //Godot.Collections.Array<Node> dcczCamList = new Godot.Collections.Array<Node>();
-    //Godot.Collections.Array<Node> hczCamList = new Godot.Collections.Array<Node>();
-    //Godot.Collections.Array<Node> lczCamList = new Godot.Collections.Array<Node>();
-    //Godot.Collections.Array<Node> rzCamList = new Godot.Collections.Array<Node>();
     string currentCam = "";
+    short counterPeople = 0;
+    short counterScps = 0;
     [Export(PropertyHint.Range, "0,100,0.01")] internal float energy = 100f;
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
+    public override void _Ready()
+    {
         GetParent().GetParent<PlayerScript>().CanMove = false;
         GetParent().GetParent<PlayerScript>().SetCollisionMaskValue(3, true);
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
             GetParent().GetParent<PlayerScript>().GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = false;
             GetNode<Control>("UI").Show();
-            //dcczCamList = GetTree().GetNodesInGroup("DCCZ_CCTV");
-            /*hczCamList = GetTree().GetNodesInGroup("HCZ_CCTV");
-            lczCamList = GetTree().GetNodesInGroup("LCZ_CCTV");
-            rzCamList = GetTree().GetNodesInGroup("RZ_CCTV");
-            
-            if (currentCam == "")
-            {
-                foreach (Node cam in lczCamList)
-                {
-                    if (cam.Name.Equals("cctv079"))
-                    {
-                        SwitchCamera()
-                    }
-                }
-            }*/
-            SwitchCamera("Lcz", "LC_cont1_079");
         }
         Input.MouseMode = Input.MouseModeEnum.Visible;
-	}
+    }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
+    {
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
             GetNode<ProgressBar>("UI/EnergyBar").Value = energy;
@@ -62,8 +42,19 @@ public partial class Scp079PlayerScript : Node3D
             {
                 energy += 0.01f;
             }
+            if (Input.IsActionJustPressed("scp079_door_lock"))
+            {
+                foreach (Node item in GetTree().Root.GetNode<Area3D>(currentCam).GetChildren())
+                {
+                    if (item is Door door)
+                    {
+                        door.Rpc("DoorLock");
+                        energy -= 50f;
+                    }
+                }
+            }
         }
-	}
+    }
     /// <summary>
     /// Switches camera.
     /// </summary>
@@ -73,17 +64,45 @@ public partial class Scp079PlayerScript : Node3D
     {
         if (currentCam != "")
         {
-            GetTree().Root.GetNode<CctvCamera>(currentCam).Initialize(false, this);
+            //GetTree().Root.GetNode<CctvCamera>(currentCam).Initialize(false, this);
+            GetTree().Root.GetNode<Area3D>(currentCam + "/CheckArea").Monitoring = false;
+            GetTree().Root.GetNode<Area3D>(currentCam + "/CheckArea").BodyEntered -= OnBodyEntered;
+            counterPeople = 0;
+            counterScps = 0;
         }
-        currentCam = "Main/Game/MapGen" + zone +"/" + cam + "/cctv";
-        if (GetTree().Root.GetNodeOrNull<CctvCamera>(currentCam) != null)
+        currentCam = "Main/Game/MapGen" + zone + "/" + cam;
+        if (GetTree().Root.GetNodeOrNull(currentCam) != null)
         {
-            GetTree().Root.GetNode<CctvCamera>(currentCam).Initialize(true, this);
+            GetTree().Root.GetNode<Area3D>(currentCam + "/CheckArea").Monitoring = true;
+            GetTree().Root.GetNode<Area3D>(currentCam + "/CheckArea").BodyEntered += OnBodyEntered;
         }
         else
         {
-            currentCam = "Main/Game/MapGenLcz/LC_cont1_079/cctv";
-            GetTree().Root.GetNode<CctvCamera>(currentCam).Initialize(true, this);
+            currentCam = "Main/Game/MapGenLcz/LC_cont1_079";
+            GetTree().Root.GetNode<Area3D>(currentCam + "/CheckArea").Monitoring = true;
+            GetTree().Root.GetNode<Area3D>(currentCam + "/CheckArea").BodyEntered += OnBodyEntered;
         }
+        ShowInfo(cam, counterPeople, counterScps);
+    }
+
+    void OnBodyEntered(Node3D body)
+    {
+        if (body is PlayerScript player)
+        {
+            if (player.scpNumber == -1)
+            {
+                counterPeople++;
+            }
+            else if (player.scpNumber >= 0)
+            {
+                counterScps++;
+            }
+        }
+    }
+
+    void ShowInfo(string roomName, short peopleQuantity, short scpQuantity)
+    {
+        Label label = GetNode<Label>("UI/Info");
+        label.Text = "Room name: " + roomName + "\nQuantity of people: " + peopleQuantity + "\nQuantity of SCPs: " + scpQuantity + "\nClick [L] to lock all doors";
     }
 }

@@ -20,7 +20,7 @@ public partial class EscapeArea : Area3D
 		{
 			if (player.team == Globals.Team.CDP || player.team == Globals.Team.SCI)
 			{
-				player.CallForceclass("mtfe11");
+				player.CallForceclass("mtfe11", "Evacuated.");
 			}
 		}
     }

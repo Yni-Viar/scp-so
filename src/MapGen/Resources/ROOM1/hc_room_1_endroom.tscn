@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://1s05l8y2c6h1"]
+[gd_scene load_steps=22 format=3 uid="uid://1s05l8y2c6h1"]
 
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat0.007.tres" id="1_uhdkg"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat1.007.tres" id="2_8ljrl"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bhv585dwr87xd" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_NormalGL.png" id="8_uq2k0"]
 [ext_resource type="Texture2D" uid="uid://o5giewh76qkn" path="res://MapGen/Resources/Doors/DoorGate/GateFrame/Metal032_2K_Color.png" id="9_f0jm8"]
 [ext_resource type="Texture2D" uid="uid://q7qhbxch3lsf" path="res://MapGen/Resources/Doors/DoorGate/GateFrame/Metal032_2K_Metalness-Metal032_2K_Roughness.png" id="10_jr8gj"]
-[ext_resource type="PackedScene" uid="uid://bc5kxvy32glap" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="11_5t8rk"]
+[ext_resource type="PackedScene" uid="uid://dwt4g6igxv1hc" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="11_5t8rk"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_s70ut"]
 _surfaces = [{
@@ -191,6 +191,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lgrmp")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_j5156"]
+size = Vector3(19.6761, 9.08363, 20.2893)
+
 [node name="HC_room1_endroom" type="StaticBody3D"]
 
 [node name="HC_room1_endroom2" type="MeshInstance3D" parent="."]
@@ -248,3 +251,13 @@ skeleton = NodePath("")
 
 [node name="cctv" parent="." instance=ExtResource("11_5t8rk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0514334, 4.12, 8.15384)
+
+[node name="CheckArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.92772, 0)
+collision_layer = 3
+collision_mask = 3
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CheckArea"]
+shape = SubResource("BoxShape3D_j5156")

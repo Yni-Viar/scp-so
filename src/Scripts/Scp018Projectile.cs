@@ -31,7 +31,7 @@ public partial class Scp018Projectile : RigidBody3D
     {
         if (body is PlayerScript player)
         {
-            player.RpcId(int.Parse(player.Name), "HealthManage", vel.Y * -25);
+            player.RpcId(int.Parse(player.Name), "HealthManage", vel.Y * -25, "Hit by SCP-018");
         }
     }
 }

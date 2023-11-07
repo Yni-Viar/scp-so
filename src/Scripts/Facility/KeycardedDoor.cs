@@ -1,102 +1,39 @@
 using Godot;
 using System;
-
-public partial class KeycardedDoor : Node3D
+/// <summary>
+/// Keycarded door manager. Available since v.0.6.0
+/// </summary>
+public partial class KeycardedDoor : Door
 {
 	enum openRequirements { key1, key2, key3, key4, key5, keyomni }
 	[Export] openRequirements requirements = openRequirements.key1;
-    [Export] bool canOpen = true;
-	[Export] bool isOpened = false;
-    [Export] string[] openDoorSounds;
-    [Export] string[] closeDoorSounds;
 
-    bool CanOpen { get=>canOpen; set=>canOpen = value; }
-    bool IsOpened { get=>isOpened; set=>isOpened = value; }
-    AnimationPlayer animPlayer;
-
-    /// <summary>
-    /// Main control method, which checks if the door can be opened, or has the player a keycard.
-    /// </summary>
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
-	internal void DoorControl(string playerPath, int keycard)
-	{
-        if (CanOpen) //Regular SCPs can open up doors up to level 3, upper levels of keycards can be opened by SCP-079
-        {
-            if (keycard >= (int)requirements)
-            {
-                DoorController();
-            }
-        }
-		else
-        {
-            AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");
-            sfx.Stream = GD.Load<AudioStream>("res://Sounds/Interact/Button2.ogg");
-            sfx.Play();
-        }
-	}
-	/// <summary>
-	/// If DoorControl check is successful, open the door (or close)
-	/// </summary>
-	void DoorController()
-	{
-        /*AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");
-        sfx.Stream = GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse1.ogg");
-        sfx.Play();*/
-        if (IsOpened && !animPlayer.IsPlaying())
-        {
-            DoorClose();
-        }
-        else if (!animPlayer.IsPlaying())
-        {
-            DoorOpen();
-        }
-    }
-	/// <summary>
-	/// Helper method, opens the door.
-	/// </summary>
-	void DoorOpen()
-	{
-		RandomNumberGenerator rng = new RandomNumberGenerator();
-		animPlayer.Play("door_open");
-		AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");
-		sfx.Stream = GD.Load<AudioStream>(openDoorSounds[rng.RandiRange(0, openDoorSounds.Length - 1)]);
-		sfx.Play();
-        IsOpened = true;
-	}
-	/// <summary>
-	/// Helper method, close the door.
-	/// </summary>
-	void DoorClose()
-	{
-		RandomNumberGenerator rng = new RandomNumberGenerator();
-		AnimationPlayer animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-		animPlayer.Play("door_open", -1, -1, true);
-		AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");
-		sfx.Stream = GD.Load<AudioStream>(closeDoorSounds[rng.RandiRange(0, closeDoorSounds.Length - 1)]);
-		sfx.Play();
-        IsOpened = false;
-	}
-    /// <summary>
-    /// Temporary solution - every door currently has 5 second lock cooldown.
-    /// </summary>
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
-    async void DoorLock()
-    {
-        canOpen = false;
-        await ToSignal(GetTree().CreateTimer(5.0), "timeout");
-        canOpen = true;
-    }
-
-	
+    /*
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+    }
+	*/
+
+    internal override void DoorController(int keycard)
+    {
+        base.DoorController(keycard);
+        if (keycard >= (int)requirements)
+        {
+            if (IsOpened && !animPlayer.IsPlaying())
+            {
+                base.DoorClose();
+            }
+            else if (!animPlayer.IsPlaying())
+            {
+                DoorOpen();
+            }
+        }
     }
 
     private void OnButtonKeycardInteracted(Node3D player, int keycardRequire)

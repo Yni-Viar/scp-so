@@ -135,7 +135,7 @@ mesh = SubResource("ArrayMesh_685jg")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="fracture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0859342, 1.93927, 0.0674217)
+transform = Transform3D(0.999563, -0.0295615, -3.82059e-11, 0.0295615, 0.999563, 2.58435e-09, -3.81988e-11, -2.58435e-09, 1, -0.162808, 1.93927, 0.0674217)
 shape = SubResource("CapsuleShape3D_fueoc")
 
 [node name="scp173_MESH_cell_001" type="MeshInstance3D" parent="fracture"]

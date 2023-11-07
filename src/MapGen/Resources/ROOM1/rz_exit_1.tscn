@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://byshi52q3wg4x"]
+[gd_scene load_steps=53 format=3 uid="uid://byshi52q3wg4x"]
 
 [ext_resource type="Texture2D" uid="uid://b84yss2lwoi36" path="res://MapGen/Resources/RoomAssets/RZ/metal.jpg" id="1_j4m1p"]
 [ext_resource type="Texture2D" uid="uid://7o4a42bl2o55" path="res://MapGen/Resources/RoomAssets/RZ/concretefloor.jpg" id="2_sjpfy"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://d6wm4qx5hryl" path="res://MapGen/Resources/RoomAssets/RZ/Wallpaper001A_2K_Roughness.png" id="13_b4vm5"]
 [ext_resource type="Texture2D" uid="uid://q5oa412g2uy5" path="res://MapGen/Resources/RoomAssets/RZ/Wallpaper001A_2K_NormalGL.png" id="14_8npo8"]
 [ext_resource type="Texture2D" uid="uid://b6uak211o0ufw" path="res://MapGen/Resources/RoomAssets/RZ/misc.jpg" id="15_wcltk"]
-[ext_resource type="PackedScene" uid="uid://bratli6m21b8k" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="16_kbw27"]
+[ext_resource type="PackedScene" uid="uid://bi12ev7yropli" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="16_kbw27"]
 [ext_resource type="PackedScene" uid="uid://cgaomav6767mx" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="17_r28ge"]
 [ext_resource type="Script" path="res://Scripts/Facility/SurfaceElevator.cs" id="18_dfsxg"]
 [ext_resource type="Texture2D" uid="uid://uykaia1s64e5" path="res://MapGen/Resources/Doors/Elevator/Metal032_2K_Color.png" id="19_llb3u"]
@@ -410,6 +410,9 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_6hwnp"]
 size = Vector3(8.30128, 5.10324, 8.25571)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_kaivp"]
+size = Vector3(19.6761, 9.08363, 20.2893)
+
 [node name="RZ_exit1" type="StaticBody3D"]
 
 [node name="RZ_exit12" type="MeshInstance3D" parent="."]
@@ -509,6 +512,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.116333, 7.04, 6.30758)
 
 [node name="cctv2" parent="." instance=ExtResource("28_u8fh1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.79426, 3.52, 0.444516)
+
+[node name="CheckArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.92772, 0)
+collision_layer = 3
+collision_mask = 3
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CheckArea"]
+shape = SubResource("BoxShape3D_kaivp")
 
 [connection signal="Interacted" from="ElevatorSz1/ButtonInteractCall" to="ElevatorSz1" method="OnButtonInteractInteracted"]
 [connection signal="Interacted" from="ElevatorSz1/ButtonInteractUp" to="ElevatorSz1" method="OnButtonInteractUpInteracted"]

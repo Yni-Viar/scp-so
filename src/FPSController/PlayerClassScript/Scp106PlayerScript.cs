@@ -52,7 +52,7 @@ public partial class Scp106PlayerScript : Node3D
                         interactSound.Play();
                         if (GlobalPosition.Y < -1500)
                         {
-                            player.RpcId(int.Parse(player.Name), "HealthManage", -16777216);
+                            player.RpcId(int.Parse(player.Name), "HealthManage", -16777216, "Decayed at SCP-106's pocket dimension");
                         }
                         else
                         {

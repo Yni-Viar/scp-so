@@ -1,7 +1,7 @@
 using Godot;
 using System;
 /// <summary>
-/// Common door manager.
+/// Door manager.
 /// </summary>
 public partial class Door : Node3D
 {
@@ -12,25 +12,18 @@ public partial class Door : Node3D
     [Export] string lockDoorSound;
 
     bool CanOpen { get=>canOpen; set=>canOpen = value; }
-    bool IsOpened { get=>isOpened; set=>isOpened = value; }
-    AnimationPlayer animPlayer;
+    internal bool IsOpened { get=>isOpened; private set=>isOpened = value; }
+    internal AnimationPlayer animPlayer;
 
     /// <summary>
     /// Main control method, which checks - is the door opened.
     /// </summary>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
-	internal void DoorControl()
-	{
+    internal void DoorControl(string playerPath, int keycard)
+    {
         if (CanOpen)
         {
-            if (IsOpened && !animPlayer.IsPlaying())
-            {
-                DoorClose();
-            }
-            else if (!animPlayer.IsPlaying())
-			{
-				DoorOpen();
-			}
+            DoorController(keycard);
         }
 		else
         {
@@ -39,10 +32,21 @@ public partial class Door : Node3D
             sfx.Play();
         }
 	}
-	/// <summary>
-	/// Helper method, opens the door.
-	/// </summary>
-	void DoorOpen()
+    /// <summary>
+    /// If DoorControl check is successful, open the door (or close)
+    /// </summary>
+    internal virtual void DoorController(int keycard)
+    {
+        /*AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");
+        sfx.Stream = GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse1.ogg");
+        sfx.Play();*/
+        
+    }
+
+    /// <summary>
+    /// Helper method, opens the door.
+    /// </summary>
+    internal void DoorOpen()
     {
         RandomNumberGenerator rng = new RandomNumberGenerator();
         animPlayer.Play("door_open");
@@ -54,7 +58,7 @@ public partial class Door : Node3D
     /// <summary>
     /// Helper method, close the door.
     /// </summary>
-    void DoorClose()
+    internal void DoorClose()
     {
         RandomNumberGenerator rng = new RandomNumberGenerator();
         AnimationPlayer animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
@@ -91,11 +95,6 @@ public partial class Door : Node3D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-    }
-
-    private void OnButtonInteractInteracted(GodotObject player)
-    {
-        Rpc("DoorControl");
     }
 }
 

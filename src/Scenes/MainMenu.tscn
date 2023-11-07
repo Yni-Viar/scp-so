@@ -151,8 +151,11 @@ text = "[b]v.0.7.0-dev[/b] [i](Alpha)[/i]
 - Improved forceclass and pre-round screens.
 - Added support for player nicknames.
 - Fixed bug, where exiting the server broke the game.
-- Added a shader to SCP-173, so it is possible for changing SCP-173's face.
-
+- Added a shader to SCP-173, so it is possible for changing SCP-173's face without changing the main concrete texture.
+- Class-Ds now have face randomization.
+- Fixed bug, where screen settings were not applied, when restarting.
+- Switched to Jolt physics, allowing to support ragdolls.
+- Current SCP-079 implementation changed to SCP-2522 \"hatbot.aic\". This does not mean that SCP-079 will be removed from the game.
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.
 - Scientist's hands rig are incorrect. (I am unable to fix this issue, because Mixamo does not support hazmats :( )"

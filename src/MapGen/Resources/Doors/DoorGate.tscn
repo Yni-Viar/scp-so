@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://c6ga54vkki72d"]
 
 [ext_resource type="Texture2D" uid="uid://b4mexeiu2kw0e" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_Color.png" id="1_a7mr4"]
-[ext_resource type="Script" path="res://Scripts/Facility/Door.cs" id="1_xhv6f"]
+[ext_resource type="Script" path="res://Scripts/Facility/CommonDoor.cs" id="1_ai6k1"]
 [ext_resource type="Texture2D" uid="uid://o5giewh76qkn" path="res://MapGen/Resources/Doors/DoorGate/GateFrame/Metal032_2K_Color.png" id="2_ecx43"]
 [ext_resource type="Texture2D" uid="uid://jal6u6cusnv3" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_Metalness-Metal032_2K_Roughness.png" id="2_rhhsh"]
 [ext_resource type="Texture2D" uid="uid://bhv585dwr87xd" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_NormalGL.png" id="3_356p2"]
@@ -128,7 +128,7 @@ properties/1/sync = false
 properties/1/watch = true
 
 [node name="Gate" type="Node3D"]
-script = ExtResource("1_xhv6f")
+script = ExtResource("1_ai6k1")
 openDoorSounds = PackedStringArray("res://Sounds/Door/BigDoorOpen.ogg", "res://Sounds/Door/BigDoorOpen1.ogg", "res://Sounds/Door/BigDoorOpen2.ogg")
 closeDoorSounds = PackedStringArray("res://Sounds/Door/BigDoorClose.ogg", "res://Sounds/Door/BigDoorClose1.ogg", "res://Sounds/Door/BigDoorClose2.ogg")
 lockDoorSound = "res://Sounds/Door/BigDoor079.ogg"

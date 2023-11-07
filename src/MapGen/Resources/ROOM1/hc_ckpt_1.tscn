@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dflkol6tnd06o"]
+[gd_scene load_steps=47 format=3 uid="uid://dflkol6tnd06o"]
 
 [ext_resource type="Material" uid="uid://cmc5sqsqcqdw" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat0.002.tres" id="1_l38fk"]
 [ext_resource type="Material" uid="uid://cimhpyr2jsudd" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat1.002.tres" id="2_nojd8"]
@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cgaomav6767mx" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="19_x3et4"]
 [ext_resource type="Script" path="res://Scripts/Facility/TeleportElevator.cs" id="20_44y10"]
 [ext_resource type="Texture2D" uid="uid://ben08ytu3hn3q" path="res://MapGen/Resources/Doors/DoorLCZ/Door01.jpg" id="21_5quvn"]
-[ext_resource type="PackedScene" uid="uid://bc5kxvy32glap" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="21_skpmg"]
+[ext_resource type="PackedScene" uid="uid://dwt4g6igxv1hc" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="21_skpmg"]
 [ext_resource type="PackedScene" uid="uid://bpx6ko6t0w1o5" path="res://MapGen/Resources/Buttons/button_interact.tscn" id="22_c6cs7"]
 [ext_resource type="AudioStream" uid="uid://wqik022lymd8" path="res://Sounds/General/Elevator/Moving.ogg" id="23_sard5"]
 
@@ -572,6 +572,9 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_tpsul"]
 size = Vector3(6.0234, 4.87858, 6.03273)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1l1n5"]
+size = Vector3(19.6761, 9.08363, 20.2893)
+
 [node name="HC_ckpt1" type="StaticBody3D"]
 
 [node name="HC_ckpt1001" type="MeshInstance3D" parent="."]
@@ -752,6 +755,16 @@ collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ElevatorHc2/TeleportArea"]
 shape = SubResource("BoxShape3D_tpsul")
+
+[node name="CheckArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.92772, 0)
+collision_layer = 3
+collision_mask = 3
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CheckArea"]
+shape = SubResource("BoxShape3D_1l1n5")
 
 [connection signal="Interacted" from="ElevatorHc1/ButtonInteractCall" to="ElevatorHc1" method="OnButtonInteractInteracted" flags=18]
 [connection signal="Interacted" from="ElevatorHc1/ButtonInteractUp" to="ElevatorHc1" method="OnButtonInteractUpInteracted"]

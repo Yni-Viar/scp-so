@@ -33,7 +33,7 @@ public partial class Commands : Node
     {
         if (args.Length == 1 && ResourceLoader.Exists("res://FPSController/PlayerClassResources/" + args[0] + ".tres"))
         {
-            GetParent<PlayerScript>().CallForceclass(args[0]);
+            GetParent<PlayerScript>().CallForceclass(args[0], "Forceclass.");
             return "Forceclassed to " + args[0];
         }
         else
@@ -155,7 +155,7 @@ public partial class Commands : Node
     {
         if (args.Length == 1)
         {
-            GetParent<PlayerScript>().RpcId(Multiplayer.GetUniqueId(), "HealthManage", Convert.ToDouble(args[0]));
+            GetParent<PlayerScript>().RpcId(Multiplayer.GetUniqueId(), "HealthManage", Convert.ToDouble(args[0]), "Forced health change.");
             return "Given " + args[0] + " health (if is possible).";
         }
         else

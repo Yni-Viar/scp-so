@@ -31,7 +31,7 @@ public partial class PDRandomExitArea : Area3D
 			}
 			else
 			{
-				player.RpcId(int.Parse(player.Name), "HealthManage", -16777216);
+				player.RpcId(int.Parse(player.Name), "HealthManage", -16777216, "Decayed at SCP-106's pocket dimension.");
 			}
         }
     }

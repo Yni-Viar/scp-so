@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b6jw7gaqvvwvw"]
+[gd_scene load_steps=31 format=3 uid="uid://b6jw7gaqvvwvw"]
 
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat0.006.tres" id="1_7i2jh"]
 [ext_resource type="LightmapGIData" uid="uid://dxt46o1hxi13s" path="res://MapGen/Resources/ROOM2/Lm/hc_cont_2_testroom.lmbake" id="1_oxte2"]
@@ -297,6 +297,9 @@ shadow_mesh = SubResource("ArrayMesh_lgrmp")
 [sub_resource type="BoxShape3D" id="BoxShape3D_uqcld"]
 size = Vector3(8.10982, 3.87239, 1.26377)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_guf4f"]
+size = Vector3(19.6761, 20.536, 20.2893)
+
 [node name="HC_cont2_testroom" type="StaticBody3D"]
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
@@ -393,3 +396,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22431, 7.36, -1.17912)
 
 [node name="cctv2" parent="." instance=ExtResource("18_hjlf8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.93527, 3.84, -5.92211)
+
+[node name="CheckArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.73198, 0)
+collision_layer = 3
+collision_mask = 3
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CheckArea"]
+shape = SubResource("BoxShape3D_guf4f")

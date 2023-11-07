@@ -18,9 +18,14 @@ public partial class FacilityManager : Node3D
     [Export] Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classes = new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>>();
     [Export] Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> rooms = new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>>();
     [Export] Godot.Collections.Dictionary<string, string> items = new Godot.Collections.Dictionary<string, string>();
+    [Export] bool isContainmentBreach = false;
     internal bool IsRoundStarted
     { 
         get=>isRoundStarted; private set=>isRoundStarted = value;
+    }
+    internal bool IsContainmentBreach
+    {
+        get => isContainmentBreach; private set=>isContainmentBreach = value;
     }
 
     // Called when the node enters the scene tree for the first time.
@@ -159,7 +164,7 @@ public partial class FacilityManager : Node3D
         {
             if (player is PlayerScript playerScript)
             {
-                Rpc("SetPlayerClass", playerScript.Name, TossPlayerClass(i));
+                Rpc("SetPlayerClass", playerScript.Name, TossPlayerClass(i), "Round start.");
                 i++;
             }
         }
@@ -175,7 +180,7 @@ public partial class FacilityManager : Node3D
             PlayerScript player = GetNode<PlayerScript>(item);
             if (player.classKey == "spectator")
             {
-                Rpc("SetPlayerClass", item, "mtfe11");
+                Rpc("SetPlayerClass", item, "mtfe11", "MTF arrive.");
             }
         }
         RespawnMTF();
@@ -187,7 +192,7 @@ public partial class FacilityManager : Node3D
     /// <param name="playerName">Player ID, contained in name</param>
     /// <param name="nameOfClass">Class, that will be granted</param>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
-    internal void SetPlayerClass(string playerName, string nameOfClass) //Note: RPC ONLY HANDLES PRIMITIVE TYPES, NOT PLAYERSCRIPT!
+    internal void SetPlayerClass(string playerName, string nameOfClass, string reason) //Note: RPC ONLY HANDLES PRIMITIVE TYPES, NOT PLAYERSCRIPT!
     {
         bool classExist = false;
         foreach (string item in classes.Keys)
@@ -255,10 +260,10 @@ public partial class FacilityManager : Node3D
     /// <param name="target">A player connected mid-round</param>
     void PostRoundStart(Godot.Collections.Array<string> players, long target)
     {
-        Rpc("SetPlayerClass", playerScene.Name, "spectator");
+        Rpc("SetPlayerClass", playerScene.Name, "spectator", "Post-round arriving.");
         foreach (string playerName in players)
         {
-            RpcId(target, "SetPlayerClass", playerName, GetNode<PlayerScript>(playerName).classKey);
+            RpcId(target, "SetPlayerClass", playerName, GetNode<PlayerScript>(playerName).classKey, "Previous player");
         }
         Rpc("CleanRagdolls");
     }

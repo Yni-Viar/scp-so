@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c6v1bx70lwp5r"]
+
+[ext_resource type="Texture2D" uid="uid://b6ikhevo04vl6" path="res://InventorySystem/Items/JumpyBall.png" id="1_l1ox8"]
+[ext_resource type="Script" path="res://InventorySystem/Items/Item.cs" id="2_vdy7r"]
+
+[resource]
+script = ExtResource("2_vdy7r")
+InternalName = "jumpyball"
+Name = "An ordinary ball with label \"Jumpy\""
+Texture = ExtResource("1_l1ox8")
+PickablePath = "res://InventorySystem/Items/PickablePrefabs/jumpyball.tscn"
+PickupSoundPath = "res://Sounds/Interact/PickItem2.ogg"
+FirstPersonPrefabPath = "res://InventorySystem/Items/InHandPrefabs/scp018.tscn"
+OneTimeUse = true
+Rough = PackedStringArray()
+Coarse = PackedStringArray()
+OneToOne = PackedStringArray("res://InventorySystem/Items/PickablePrefabs/scp018.tscn")
+Fine = PackedStringArray("res://InventorySystem/Items/PickablePrefabs/scp018.tscn")
+VeryFine = PackedStringArray()

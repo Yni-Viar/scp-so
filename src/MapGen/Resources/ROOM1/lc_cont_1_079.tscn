@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://7dpjrsfqmkob"]
+[gd_scene load_steps=55 format=3 uid="uid://7dpjrsfqmkob"]
 
 [ext_resource type="Texture2D" uid="uid://kv7bsowre53y" path="res://MapGen/Resources/RoomAssets/LCZ3/beige_wall_001_rough_2k.png" id="1_30evp"]
 [ext_resource type="Texture2D" uid="uid://bfrk7gej70rqe" path="res://MapGen/Resources/RoomAssets/LCZ3/beige_wall_001_nor_gl_2k.png" id="2_kddq1"]
@@ -633,6 +633,9 @@ data = PackedVector3Array(3.2658, -0.1064, -7.8514, 3.0861, 6.6102, -7.9135, 3.2
 [sub_resource type="BoxShape3D" id="BoxShape3D_pmhea"]
 size = Vector3(16.4376, 7.18135, 20.0141)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_fi5e6"]
+size = Vector3(19.6761, 9.08363, 20.2893)
+
 [node name="LC_cont1_079" type="StaticBody3D"]
 
 [node name="Plane_003" type="MeshInstance3D" parent="."]
@@ -755,6 +758,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.76325, 5.36562, -5.87791)
 
 [node name="modern_ceiling_lamp_01_4k3" parent="." instance=ExtResource("17_dirye")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.29171, 5.36562, -3.51693)
+
+[node name="CheckArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.92772, 0)
+collision_layer = 3
+collision_mask = 3
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CheckArea"]
+shape = SubResource("BoxShape3D_fi5e6")
 
 [connection signal="body_entered" from="BackgroundMusicChanger" to="BackgroundMusicChanger" method="OnBodyEntered"]
 [connection signal="body_exited" from="BackgroundMusicChanger" to="BackgroundMusicChanger" method="OnBodyExited"]

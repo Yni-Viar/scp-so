@@ -357,9 +357,9 @@ public partial class PlayerScript : CharacterBody3D
     /// Helper method to call FacilityManager for changing player class.
     /// </summary>
     /// <param name="to">Player class to become</param>
-    internal void CallForceclass(string to)
+    internal void CallForceclass(string to, string reason)
     {
-        GetParent().GetParent().GetNode<FacilityManager>("Game").Rpc("SetPlayerClass", Multiplayer.GetUniqueId().ToString(), to);
+        GetParent().GetParent().GetNode<FacilityManager>("Game").Rpc("SetPlayerClass", Multiplayer.GetUniqueId().ToString(), to, reason);
     }
 
     /// <summary>
@@ -367,7 +367,7 @@ public partial class PlayerScript : CharacterBody3D
     /// </summary>
     /// <param name="amount">How much health to add/deplete</param>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
-    void HealthManage(double amount)
+    void HealthManage(double amount, string depleteReason)
     {
         if (scpNumber != -2)
         {
@@ -388,7 +388,7 @@ public partial class PlayerScript : CharacterBody3D
         if (currentHealth <= 0)
         {
             GetParent<FacilityManager>().Rpc("SpawnRagdoll", this.Name, ragdollSource);
-            CallForceclass("spectator");
+            CallForceclass("spectator", depleteReason);
         }
     }
 
@@ -399,11 +399,11 @@ public partial class PlayerScript : CharacterBody3D
     {
         if (scpNumber != 106)
         {
-            HealthManage(-1);
+            HealthManage(-1, "Decayed at SCP-106's pocket dimension");
         }
         else
         {
-            HealthManage(1);
+            HealthManage(1, "Decayed at SCP-106's pocket dimension");
         }
     }
     /// <summary>

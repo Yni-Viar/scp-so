@@ -20,8 +20,8 @@ public partial class Globals
         new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> {
             { "spawnableHuman", new Godot.Collections.Array<string>{"classd", "scientist", "guard" } },
             { "arrivingHuman", new Godot.Collections.Array<string>{ "mtfe11" } },
-            { "spawnableScps", new Godot.Collections.Array<string> { "scp079", "scp106", "scp131a", "scp131b", "scp173", "scp3199" } },
-            { "special", new Godot.Collections.Array<string> {"spectator" } },
+            { "spawnableScps", new Godot.Collections.Array<string> { "scp106", "scp131a", "scp131b", "scp173", "scp2522", "scp3199" } },
+            { "special", new Godot.Collections.Array<string> {"spectator", "scp079" } }, //SCP-079 is an SCP, but did not spawn by default, son beginning with 0.7.0 did not spawn by-default...
         };
 
     public static Godot.Collections.Dictionary<string, string> items = new Godot.Collections.Dictionary<string, string>{

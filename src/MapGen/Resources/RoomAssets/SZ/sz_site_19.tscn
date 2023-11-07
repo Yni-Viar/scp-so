@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bq3hqcji5thrp"]
+[gd_scene load_steps=54 format=3 uid="uid://bq3hqcji5thrp"]
 
 [ext_resource type="Material" uid="uid://b1mnwqs638dd0" path="res://MapGen/Resources/RoomAssets/SZ/Mat/mat0.002.tres" id="1_0l73q"]
 [ext_resource type="Material" uid="uid://d0dt81pmyxakl" path="res://MapGen/Resources/RoomAssets/SZ/Mat/mat1.002.tres" id="2_k5pd1"]
@@ -25,7 +25,6 @@
 [ext_resource type="PackedScene" uid="uid://c6ga54vkki72d" path="res://MapGen/Resources/Doors/DoorGate.tscn" id="30_66eb4"]
 [ext_resource type="Texture2D" uid="uid://d384q75mq0ujj" path="res://MapGen/Resources/Doors/Elevator/Metal032_2K_NormalGL.png" id="30_daibl"]
 [ext_resource type="PackedScene" uid="uid://qlmv2oyv5hk" path="res://MapGen/Resources/RoomAssets/Props/steel_frame_shelves_01_4k.tscn" id="31_q3keb"]
-[ext_resource type="PackedScene" uid="uid://bc4jibrl5dao2" path="res://MapGen/Resources/RoomAssets/Props/cardboard_box_01_4k.tscn" id="32_snlyg"]
 [ext_resource type="PackedScene" uid="uid://bdwsatbnl15f3" path="res://InventorySystem/Items/PickablePrefabs/medkit.tscn" id="32_xkwjl"]
 [ext_resource type="PackedScene" uid="uid://b1t4jbtv1pdjy" path="res://MapGen/Resources/RoomAssets/Props/office_desk_with_drawers.tscn" id="33_3swtm"]
 [ext_resource type="PackedScene" uid="uid://cg3e33d8f3a6n" path="res://MapGen/Resources/RoomAssets/Props/laptop.tscn" id="34_hb85q"]
@@ -647,33 +646,6 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -16.0084, 6.07999, 2
 
 [node name="steel_frame_shelves_01_4k3" parent="." instance=ExtResource("31_q3keb")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -10.6397, 6.07999, 26.4688)
-
-[node name="cardboard_box_01_4k" parent="." instance=ExtResource("32_snlyg")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -5.87226, -1.6545e-05, 45.4099)
-
-[node name="cardboard_box_01_4k6" parent="." instance=ExtResource("32_snlyg")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -21.3758, -12.3595, -5.64418)
-
-[node name="cardboard_box_01_4k7" parent="." instance=ExtResource("32_snlyg")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -17.837, -12.3595, -4.62946)
-
-[node name="cardboard_box_01_4k8" parent="." instance=ExtResource("32_snlyg")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -16.0992, -12.3595, -8.03289)
-
-[node name="cardboard_box_01_4k9" parent="." instance=ExtResource("32_snlyg")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -17.2272, -10.6703, -6.3604)
-
-[node name="cardboard_box_01_4k4" parent="." instance=ExtResource("32_snlyg")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -15.7208, -1.6545e-05, -5.74848)
-
-[node name="cardboard_box_01_4k5" parent="." instance=ExtResource("32_snlyg")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -17.8292, -1.6545e-05, -2.38302)
-
-[node name="cardboard_box_01_4k2" parent="." instance=ExtResource("32_snlyg")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -2.01393, -1.63002e-05, 44.7252)
-
-[node name="cardboard_box_01_4k3" parent="." instance=ExtResource("32_snlyg")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -4.5496, -1.51168e-05, 41.4163)
 
 [node name="steel_frame_shelves_01_4k4" parent="." instance=ExtResource("31_q3keb")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 7.56727, -9.19073e-06, 26.5525)

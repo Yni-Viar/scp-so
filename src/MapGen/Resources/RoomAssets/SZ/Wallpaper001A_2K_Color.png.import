@@ -3,15 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://sqx7sft5ef0j"
-path="res://.godot/imported/Wallpaper001A_2K_Color.png-61d1f483c64411abec0102e6b4ca4b0b.ctex"
+path.s3tc="res://.godot/imported/Wallpaper001A_2K_Color.png-61d1f483c64411abec0102e6b4ca4b0b.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://MapGen/Resources/RoomAssets/SZ/Wallpaper001A_2K_Color.png"
-dest_files=["res://.godot/imported/Wallpaper001A_2K_Color.png-61d1f483c64411abec0102e6b4ca4b0b.ctex"]
+dest_files=["res://.godot/imported/Wallpaper001A_2K_Color.png-61d1f483c64411abec0102e6b4ca4b0b.s3tc.ctex"]
 
 [params]
 

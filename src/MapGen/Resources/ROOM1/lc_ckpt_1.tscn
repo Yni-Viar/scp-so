@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://dlpl05t3et1dj"]
+[gd_scene load_steps=78 format=3 uid="uid://dlpl05t3et1dj"]
 
 [ext_resource type="Texture2D" uid="uid://dwim6bwvcuor3" path="res://MapGen/Resources/RoomAssets/LCZ/metal3.jpg" id="1_alf64"]
 [ext_resource type="Texture2D" uid="uid://dit7t4ogxcbj" path="res://MapGen/Resources/RoomAssets/LCZ/tilefloor.jpg" id="2_a1ebk"]
@@ -838,6 +838,9 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_jyh56"]
 size = Vector3(6.0234, 5.11136, 6.03273)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_jyke1"]
+size = Vector3(19.6761, 9.08363, 20.2893)
+
 [node name="LC_ckpt1" type="StaticBody3D"]
 
 [node name="LC_ckpt12" type="MeshInstance3D" parent="."]
@@ -1017,6 +1020,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.227, 3.51, 5.45435)
 
 [node name="cctv3" parent="." instance=ExtResource("24_hka43")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3593, 7.03, 8.97072)
+
+[node name="CheckArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.92772, 0)
+collision_layer = 3
+collision_mask = 3
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CheckArea"]
+shape = SubResource("BoxShape3D_jyke1")
 
 [connection signal="Interacted" from="ElevatorLc1/ButtonInteractCall" to="ElevatorLc1" method="OnButtonInteractInteracted" flags=18]
 [connection signal="Interacted" from="ElevatorLc1/ButtonInteractUp" to="ElevatorLc1" method="OnButtonInteractUpInteracted"]

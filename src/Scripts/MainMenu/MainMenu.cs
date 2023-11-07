@@ -7,6 +7,7 @@ public partial class MainMenu : Control
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        Settings settings = GetTree().Root.GetNode<Settings>("Settings");
         if (Globals.currentStage == Globals.Stages.release)
         {
             GetNode<TextureRect>("Background").Texture = ResourceLoader.Load<Texture2D>("res://Assets/Menu/MainMenuBackground.png");
@@ -19,6 +20,30 @@ public partial class MainMenu : Control
         {
             GetNode<TextureRect>("Background").Texture = ResourceLoader.Load<Texture2D>("res://Assets/Menu/MainMenuBackgroundIndev.png");
         }
+
+        GetWindow().Size = settings.WindowSizeSetting;
+
+        AudioServer.SetBusVolumeDb(0, Mathf.LinearToDb(settings.SoundSetting));
+        if (settings.SoundSetting < 0.01)
+        {
+            AudioServer.SetBusMute(0, true);
+        }
+        else
+        {
+            AudioServer.SetBusMute(0, false);
+        }
+
+        AudioServer.SetBusVolumeDb(1, Mathf.LinearToDb(settings.MusicSetting));
+        if (settings.MusicSetting < 0.01)
+        {
+            AudioServer.SetBusMute(1, true);
+        }
+        else
+        {
+            AudioServer.SetBusMute(1, false);
+        }
+
+        DisplayServer.WindowSetMode(settings.FullscreenSetting ? DisplayServer.WindowMode.Fullscreen : DisplayServer.WindowMode.Windowed);
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
