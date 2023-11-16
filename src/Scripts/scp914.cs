@@ -195,7 +195,7 @@ public partial class Scp914 : AnimatableBody3D
         }
         await ToSignal(GetTree().CreateTimer(6.0), "timeout");
         itemsToRefine.Clear();
-        //playersToRefine.Clear();
+        playersToRefine.Clear();
 		GetNode<CollisionShape3D>("DoorBlockIn").Disabled = true;
 		GetNode<CollisionShape3D>("DoorBlockOut").Disabled = true;
         isRefining = false;

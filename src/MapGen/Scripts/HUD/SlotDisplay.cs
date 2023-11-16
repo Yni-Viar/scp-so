@@ -41,18 +41,11 @@ public partial class SlotDisplay : CenterContainer
 	{
         if (Input.IsActionJustPressed("fire") && itemHover && mapData.Name != "empty" && mapData.Name != "LC_room1_endroom")
 		{
-            if (GetParent().GetParent().GetParent().GetParentOrNull<Scp2522PlayerScript>() != null)
+            if (GetParent().GetParent().GetParent().GetParentOrNull<ComputerPlayerScript>() != null)
             {
                 if (GetParent().GetParent().GetParent().GetParent().GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
                 {
-                    GetParent().GetParent().GetParent().GetParent<Scp2522PlayerScript>().SwitchCamera(whichZone, mapData.Name);
-                }
-            }
-            if (GetParent().GetParent().GetParent().GetParentOrNull<Scp079PlayerScript>() != null)
-            {
-                if (GetParent().GetParent().GetParent().GetParent().GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
-                {
-                    GetParent().GetParent().GetParent().GetParent<Scp079PlayerScript>().SwitchCamera(whichZone, mapData.Name);
+                    GetParent().GetParent().GetParent().GetParent<ComputerPlayerScript>().SwitchCamera(whichZone, mapData.Name);
                 }
             }
         }

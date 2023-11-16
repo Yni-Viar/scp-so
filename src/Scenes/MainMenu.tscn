@@ -155,7 +155,8 @@ text = "[b]v.0.7.0-dev[/b] [i](Alpha)[/i]
 - Class-Ds now have face randomization.
 - Fixed bug, where screen settings were not applied, when restarting.
 - Switched to Jolt physics, allowing to support ragdolls.
-- Current SCP-079 implementation changed to SCP-2522 \"hatbot.aic\". This does not mean that SCP-079 will be removed from the game.
+- Current SCP-079 implementation changed to SCP-2522 \"hatbot.aic\". This does [b]not[/b] mean that SCP-079 will be removed from the game.
+- Revamped door system (again), to make it more flexible.
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.
 - Scientist's hands rig are incorrect. (I am unable to fix this issue, because Mixamo does not support hazmats :( )"
@@ -493,6 +494,22 @@ text = "[i]Dither shader (MIT License)[/i]
 
 Copyright (c) 2021 Sam Bigos
 This shader is under MIT license.
+
+"
+fit_content = true
+
+[node name="CreditsCode8" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1234, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[i]Sketchy shader (MIT License)[/i]
+
+Made by Leo Peltola
 
 "
 fit_content = true

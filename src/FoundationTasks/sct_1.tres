@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://0gvmkikiekd3"]
-
-[ext_resource type="Script" path="res://FoundationTasks/TaskResource.cs" id="1_dm4rd"]
-
-[resource]
-script = ExtResource("1_dm4rd")
-TaskName = "SCP-173 testing"
-TaskDescription = "Go to Heavy Containment Zone, and let the Class-D inside."
-Keywords = PackedStringArray("HC", "SCP-173")

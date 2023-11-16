@@ -12,6 +12,7 @@ public partial class Globals
     public static string classesCompatibility = "0.7.0-dev";
     public static string itemsCompatibility = "0.7.0-dev";
     public static string roomsCompatibility = "0.7.0-dev";
+    public static string tasksCompatibility = "0.7.0-dev";
     public static Stages currentStage = Stages.dev;
 
     //Spectators, D-class, Scientists, MTF, Dangerous SCP items, Normal SCP entities, Chaos Insurgency, Serpent's hand.
@@ -21,7 +22,7 @@ public partial class Globals
             { "spawnableHuman", new Godot.Collections.Array<string>{"classd", "scientist", "guard" } },
             { "arrivingHuman", new Godot.Collections.Array<string>{ "mtfe11" } },
             { "spawnableScps", new Godot.Collections.Array<string> { "scp106", "scp131a", "scp131b", "scp173", "scp2522", "scp3199" } },
-            { "special", new Godot.Collections.Array<string> {"spectator", "scp079" } }, //SCP-079 is an SCP, but did not spawn by default, son beginning with 0.7.0 did not spawn by-default...
+            { "special", new Godot.Collections.Array<string> {"spectator" } },
         };
 
     public static Godot.Collections.Dictionary<string, string> items = new Godot.Collections.Dictionary<string, string>{
@@ -70,4 +71,9 @@ public partial class Globals
             { "HczSingle3", new Godot.Collections.Array<string>{ } },
             { "HczSingle4", new Godot.Collections.Array<string>{ } },
         };
+
+    internal static Godot.Collections.Array<string> FoundationTasks = new Godot.Collections.Array<string> 
+    {
+        "sct_scp914", "sct_serverschk", "sct_scp173"
+    };
 }

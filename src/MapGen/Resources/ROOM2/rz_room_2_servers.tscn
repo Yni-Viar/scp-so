@@ -319,6 +319,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.45964, -7.68, -3.52683)
 [node name="entityspawn" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.97441, 0)
 
+[node name="entityspawn2" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4435, -2.40304, -3.37417)
+
 [node name="cctv" parent="." instance=ExtResource("17_wkccs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0378013, 3.84, 1.22347)
 

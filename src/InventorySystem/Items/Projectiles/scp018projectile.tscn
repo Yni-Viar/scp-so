@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c06aq36yac6wa"]
+[gd_scene load_steps=9 format=3 uid="uid://b350507axsxuf"]
 
-[ext_resource type="Script" path="res://Scripts/Scp018Projectile.cs" id="1_tt455"]
+[ext_resource type="Script" path="res://InventorySystem/Items/Projectiles/BallProjectile.cs" id="1_4e3mt"]
+[ext_resource type="Resource" uid="uid://cik2wjse27nig" path="res://InventorySystem/Items/scp018.tres" id="2_2ksh4"]
 [ext_resource type="Texture2D" uid="uid://da3wl6hjpuqpl" path="res://Assets/Models/Items-scp018/scp018_base.png" id="3_s484a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_87d45"]
@@ -52,7 +53,9 @@ radius = 0.202479
 collision_layer = 5
 collision_mask = 5
 continuous_cd = true
-script = ExtResource("1_tt455")
+script = ExtResource("1_4e3mt")
+scp018 = true
+itemResource = ExtResource("2_2ksh4")
 
 [node name="Sphere" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)

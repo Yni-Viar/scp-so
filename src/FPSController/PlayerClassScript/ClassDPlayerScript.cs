@@ -7,7 +7,7 @@ public partial class ClassDPlayerScript : HumanPlayerScript
     {
         Rpc("SetRandomSkin");
     }
-    internal override void AnimationCycle()
+    internal override void OnUpdate()
 	{
         if (GetParent().GetParent<PlayerScript>().dir.IsZeroApprox())
         {
@@ -27,7 +27,7 @@ public partial class ClassDPlayerScript : HumanPlayerScript
     }
 
     /// <summary>
-    /// Sets random Class-D face, like skins.
+    /// Sets random Class-D face, like skins. Available since 0.7.0-dev.
     /// </summary>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void SetRandomFace()

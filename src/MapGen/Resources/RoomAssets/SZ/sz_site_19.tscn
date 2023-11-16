@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://bq3hqcji5thrp"]
+[gd_scene load_steps=55 format=3 uid="uid://bq3hqcji5thrp"]
 
 [ext_resource type="Material" uid="uid://b1mnwqs638dd0" path="res://MapGen/Resources/RoomAssets/SZ/Mat/mat0.002.tres" id="1_0l73q"]
 [ext_resource type="Material" uid="uid://d0dt81pmyxakl" path="res://MapGen/Resources/RoomAssets/SZ/Mat/mat1.002.tres" id="2_k5pd1"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://c6ga54vkki72d" path="res://MapGen/Resources/Doors/DoorGate.tscn" id="30_66eb4"]
 [ext_resource type="Texture2D" uid="uid://d384q75mq0ujj" path="res://MapGen/Resources/Doors/Elevator/Metal032_2K_NormalGL.png" id="30_daibl"]
 [ext_resource type="PackedScene" uid="uid://qlmv2oyv5hk" path="res://MapGen/Resources/RoomAssets/Props/steel_frame_shelves_01_4k.tscn" id="31_q3keb"]
+[ext_resource type="PackedScene" uid="uid://bs4rbmb0n46p4" path="res://InventorySystem/Items/PickablePrefabs/jumpyball.tscn" id="32_wh0pa"]
 [ext_resource type="PackedScene" uid="uid://bdwsatbnl15f3" path="res://InventorySystem/Items/PickablePrefabs/medkit.tscn" id="32_xkwjl"]
 [ext_resource type="PackedScene" uid="uid://b1t4jbtv1pdjy" path="res://MapGen/Resources/RoomAssets/Props/office_desk_with_drawers.tscn" id="33_3swtm"]
 [ext_resource type="PackedScene" uid="uid://cg3e33d8f3a6n" path="res://MapGen/Resources/RoomAssets/Props/laptop.tscn" id="34_hb85q"]
@@ -736,6 +737,15 @@ shape = SubResource("BoxShape3D_5jklw")
 
 [node name="FirstAid" parent="." instance=ExtResource("32_xkwjl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.52046, 6.70493, 14.0587)
+
+[node name="jumpyball" parent="." instance=ExtResource("32_wh0pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.46881, 6.5544, 14.0553)
+
+[node name="jumpyball2" parent="." instance=ExtResource("32_wh0pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.76297, 6.50791, 14.1354)
+
+[node name="jumpyball3" parent="." instance=ExtResource("32_wh0pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1458, 6.48537, 14.4801)
 
 [connection signal="Interacted" from="ElevatorSz2/ButtonInteractCall" to="ElevatorSz2" method="OnButtonInteractInteracted"]
 [connection signal="Interacted" from="ElevatorSz2/ButtonInteractUp" to="ElevatorSz2" method="OnButtonInteractUpInteracted"]

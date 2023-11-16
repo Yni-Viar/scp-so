@@ -42,6 +42,10 @@
 - Copyright (c) 2021 Sam Bigos
 - This shader is under MIT license.
 
+### Sketchy shader (MIT License)
+
+- Made by Leo Peltola
+
 ## Assets
 ### Models (license - [CC-BY-SA 3.0](/LICENSE.CCBYSA3))
 - Room models used from SCP - Containment Breach game.

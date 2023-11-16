@@ -81,10 +81,10 @@ public partial class HumanPlayerScript : Node3D
             }
             WatchAtScp173();
         }
-        
+        OnUpdate();
     }
 
-    internal virtual void AnimationCycle()
+    internal virtual void OnUpdate()
     {
 
     }

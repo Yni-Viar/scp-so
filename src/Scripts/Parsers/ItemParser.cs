@@ -22,30 +22,14 @@ public partial class ItemParser : Node
     /// <returns></returns>
     public static Godot.Collections.Dictionary<string, string> ReadJson(string placeToSave)
     {
-        if (FileAccess.FileExists("user://version.txt"))
+        if (FileAccess.FileExists(placeToSave))
         {
-            if (TxtParser.Load("user://version.txt") == Globals.version)
-            {
-                if (FileAccess.FileExists(placeToSave))
-                {
-                    FileAccess file = FileAccess.Open(placeToSave, FileAccess.ModeFlags.Read);
-                    Variant parsedResult = Json.ParseString(file.GetAsText());
-                    return (Godot.Collections.Dictionary<string, string>)parsedResult;
-                }
-                else
-                {
-                    return SaveJson(placeToSave, Globals.items);
-                }
-            }
-            else
-            {
-                TxtParser.Save("user://version.txt", Globals.version);
-                return SaveJson(placeToSave, Globals.items);
-            }
+            FileAccess file = FileAccess.Open(placeToSave, FileAccess.ModeFlags.Read);
+            Variant parsedResult = Json.ParseString(file.GetAsText());
+            return (Godot.Collections.Dictionary<string, string>)parsedResult;
         }
         else
         {
-            TxtParser.Save("user://version.txt", Globals.version);
             return SaveJson(placeToSave, Globals.items);
         }
     }

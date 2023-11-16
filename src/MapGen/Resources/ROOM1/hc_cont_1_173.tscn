@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bck42hnhduvpp"]
+[gd_scene load_steps=20 format=3 uid="uid://bck42hnhduvpp"]
 
 [ext_resource type="Material" uid="uid://40nbr5uh5xf4" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat0.003.tres" id="1_mcn7q"]
 [ext_resource type="Material" uid="uid://bnjexmu6wfl3" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat1.003.tres" id="2_iu1d5"]
@@ -170,6 +170,12 @@ data = PackedVector3Array(10.24, -0.64, 10.24, 10.24, -0.64, 2.56, -8.32, -0.64,
 [sub_resource type="BoxShape3D" id="BoxShape3D_bk85f"]
 size = Vector3(19.6761, 9.08363, 20.2893)
 
+[sub_resource type="BoxMesh" id="BoxMesh_ds6bi"]
+size = Vector3(2.31, 0.52, 0.355)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ag154"]
+size = Vector3(1, 1, 12.025)
+
 [node name="HC_cont1_173" type="StaticBody3D"]
 
 [node name="HC_cont1_1732" type="MeshInstance3D" parent="."]
@@ -199,7 +205,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.116309, 2.26711, -5.44584)
 transform = Transform3D(1.03305, 0, 0, 0, 1, 0, 0, 0, 1, -1.28497, 0, 2.66398)
 
 [node name="key2" parent="." instance=ExtResource("10_a6luc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4948, 0, -9.60803)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4948, 0.175633, -9.60803)
 
 [node name="office-desk-with-drawers" parent="." instance=ExtResource("11_mklfw")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.2083, 0.227593, -3.047)
@@ -225,3 +231,13 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CheckArea"]
 shape = SubResource("BoxShape3D_bk85f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.03946, 0.0756743, 1.28352)
+visibility_range_end = 128.0
+mesh = SubResource("BoxMesh_ds6bi")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.52467, 4.58146, -4.21607)
+visibility_range_end = 128.0
+mesh = SubResource("BoxMesh_ag154")

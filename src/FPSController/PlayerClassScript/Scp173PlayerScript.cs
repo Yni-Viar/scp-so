@@ -118,7 +118,7 @@ public partial class Scp173PlayerScript : Node3D
         }
     }
     /// <summary>
-    /// Sets random 173 face, like skins.
+    /// Sets random 173 face, like skins. Available since 0.7.0-dev
     /// </summary>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void SetRandomFace()

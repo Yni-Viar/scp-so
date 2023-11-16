@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Scp2522PlayerScript : Node3D
+public partial class Scp2522PlayerScript : ComputerPlayerScript
 {
     // to be added in future.
     //Godot.Collections.Array<Node> dcczCamList = new Godot.Collections.Array<Node>();
@@ -11,7 +11,7 @@ public partial class Scp2522PlayerScript : Node3D
     string currentCam = "";
     [Export(PropertyHint.Range, "0,100,0.01")] internal float energy = 100f;
 	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	internal override void OnStart()
 	{
         GetParent().GetParent<PlayerScript>().CanMove = false;
         GetParent().GetParent<PlayerScript>().SetCollisionMaskValue(3, true);
@@ -40,7 +40,7 @@ public partial class Scp2522PlayerScript : Node3D
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	internal override void OnUpdate(double delta)
 	{
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
@@ -69,7 +69,7 @@ public partial class Scp2522PlayerScript : Node3D
     /// </summary>
     /// <param name="zone">Specified zone</param>
     /// <param name="cam">name of the room (temporary)</param>
-    internal void SwitchCamera(string zone, string cam)
+    internal override void SwitchCamera(string zone, string cam)
     {
         if (currentCam != "")
         {

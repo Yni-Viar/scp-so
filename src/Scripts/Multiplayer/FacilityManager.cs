@@ -18,15 +18,11 @@ public partial class FacilityManager : Node3D
     [Export] Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classes = new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>>();
     [Export] Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> rooms = new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>>();
     [Export] Godot.Collections.Dictionary<string, string> items = new Godot.Collections.Dictionary<string, string>();
-    [Export] bool isContainmentBreach = false;
     internal bool IsRoundStarted
     { 
         get=>isRoundStarted; private set=>isRoundStarted = value;
     }
-    internal bool IsContainmentBreach
-    {
-        get => isContainmentBreach; private set=>isContainmentBreach = value;
-    }
+    [Export] internal int targets = 0;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -102,6 +98,7 @@ public partial class FacilityManager : Node3D
         {
             if (isRoundStarted)
             {
+                RespawnMTF();
                 //CheckRoundEnd();
             }
         }
@@ -149,7 +146,6 @@ public partial class FacilityManager : Node3D
     {
         await ToSignal(GetTree().CreateTimer(25.0), "timeout");
         BeginGame();
-        RespawnMTF();
     }
 
     /// <summary>
@@ -183,7 +179,6 @@ public partial class FacilityManager : Node3D
                 Rpc("SetPlayerClass", item, "mtfe11", "MTF arrive.");
             }
         }
-        RespawnMTF();
     }
 
     /// <summary>
@@ -235,12 +230,10 @@ public partial class FacilityManager : Node3D
             GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "UpdateClassUI", classData.ClassColor.ToRgba32());
             GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "ApplyPlayerHeadPosition", classData.DefaultCameraPos);
             GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "ApplyShader", classData.CustomView);
+            RpcId(int.Parse(playerName), "PreloadInventory", playerName, classData.PreloadedItems);
         }
-        //Currently, ragdolls are unstable. (Or give me a sign, that they are working). So these "ragdolls" are just death animations.
         GetNode<PlayerScript>(playerName).ragdollSource = classData.PlayerRagdollSource;
 
-        
-        RpcId(int.Parse(playerName), "PreloadInventory", playerName, classData.PreloadedItems);
         // PreloadInventory(playerName, classData.PreloadedItems);
         // RpcId(int.Parse(playerName), "UpdateClassUI", GetNode<PlayerScript>(playerName).className, GetNode<PlayerScript>(playerName).health);
         LoadModels(playerName);
@@ -287,7 +280,6 @@ public partial class FacilityManager : Node3D
             modelRoot.AddChild(tmpModel, true);
         }
     }
-
     /// <summary>
     /// Helper method to preload inventory while changing class
     /// </summary>
@@ -298,7 +290,7 @@ public partial class FacilityManager : Node3D
     {
         for (int i = 0; i < GetNode<Inventory>(playerName + "/InventoryContainer/Inventory").items.Count; i++)
         {
-            GetNode<Inventory>(playerName + "/InventoryContainer/Inventory").RemoveItem(i, true);
+            GetNode<Inventory>(playerName + "/InventoryContainer/Inventory").RemoveItem(i, false);
         }
         foreach (string item in itemsArray)
         {
