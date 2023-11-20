@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dvsk20b8yaygd" path="res://MapGen/Resources/RoomAssets/LCZ/misc.jpg" id="2_aw14e"]
 [ext_resource type="Texture2D" uid="uid://d4a1s35jefp5r" path="res://MapGen/Resources/RoomAssets/LCZ/whitewall_2k.jpg" id="3_ydbee"]
 [ext_resource type="Texture2D" uid="uid://b067ykrbqruf0" path="res://MapGen/Resources/RoomAssets/LCZ/dirtymetal.jpg" id="4_lpk2r"]
-[ext_resource type="PackedScene" uid="uid://bi12ev7yropli" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="5_cde2o"]
 [ext_resource type="PackedScene" uid="uid://bff0n6tx6aq40" path="res://MapGen/Resources/Doors/DoorLCZ.tscn" id="6_ycg8j"]
+[ext_resource type="PackedScene" uid="uid://dm7mdwvtll4ha" path="res://MapGen/Resources/RoomAssets/Props/ceiling_lamp.tscn" id="7_5cwih"]
 [ext_resource type="PackedScene" uid="uid://cid430jdkykuv" path="res://MapGen/Resources/Cameras/cctv_lcz.tscn" id="7_hkf7c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cxkxy"]
@@ -144,12 +144,6 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_gdb3x")
 
-[node name="modern_ceiling_lamp_01_4k" parent="." instance=ExtResource("5_cde2o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45675, 2.67677, 0)
-
-[node name="modern_ceiling_lamp_01_4k2" parent="." instance=ExtResource("5_cde2o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45675, 2.68323, 8.26693)
-
 [node name="Door" parent="." instance=ExtResource("6_ycg8j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0910698, -2.38419e-07, 5.28587)
 
@@ -171,3 +165,9 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CheckArea"]
 shape = SubResource("BoxShape3D_4f0nh")
+
+[node name="CeilingLamp" parent="." instance=ExtResource("7_5cwih")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10891, 3.76936, 7.71918)
+
+[node name="CeilingLamp2" parent="." instance=ExtResource("7_5cwih")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.52572, 3.76936, -1.28997)

@@ -13,12 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://bkt1gmp7oma23" path="res://MapGen/Resources/RoomAssets/LCZ/metal.jpg" id="11_ok5lj"]
 [ext_resource type="Texture2D" uid="uid://dsbqupr5wsvdm" path="res://MapGen/Resources/RoomAssets/LCZ/miscsigns3.jpg" id="12_l6svl"]
 [ext_resource type="Texture2D" uid="uid://cfp7ltqfnw2qx" path="res://MapGen/Resources/RoomAssets/LCZ/metalpanels2.jpg" id="13_1f1gw"]
-[ext_resource type="PackedScene" uid="uid://bi12ev7yropli" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="14_uy7ai"]
 [ext_resource type="PackedScene" uid="uid://b1t4jbtv1pdjy" path="res://MapGen/Resources/RoomAssets/Props/office_desk_with_drawers.tscn" id="15_jorto"]
 [ext_resource type="PackedScene" uid="uid://cg3e33d8f3a6n" path="res://MapGen/Resources/RoomAssets/Props/laptop.tscn" id="16_wsa7y"]
 [ext_resource type="PackedScene" uid="uid://vpjy5i6gaggm" path="res://MapGen/Resources/Doors/DoorKeycard.tscn" id="17_6puno"]
 [ext_resource type="PackedScene" uid="uid://cbqjadcdwpo8r" path="res://InventorySystem/Items/PickablePrefabs/key3.tscn" id="18_u1gka"]
 [ext_resource type="PackedScene" uid="uid://cid430jdkykuv" path="res://MapGen/Resources/Cameras/cctv_lcz.tscn" id="19_1ob0y"]
+[ext_resource type="PackedScene" uid="uid://dm7mdwvtll4ha" path="res://MapGen/Resources/RoomAssets/Props/ceiling_lamp.tscn" id="19_7xce3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spgmh"]
 resource_name = "mat0.001"
@@ -403,24 +403,6 @@ skeleton = NodePath("")
 transform = Transform3D(0.01, 0, 0, 0, 0, -0.01, 0, 0.01, 0, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_ubc4q")
 
-[node name="modern_ceiling_lamp_01_4k" parent="." instance=ExtResource("14_uy7ai")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0643758, 2.68024, -3.8667)
-
-[node name="modern_ceiling_lamp_01_4k2" parent="." instance=ExtResource("14_uy7ai")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0643758, 2.68024, 4.5155)
-
-[node name="modern_ceiling_lamp_01_4k3" parent="." instance=ExtResource("14_uy7ai")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8279, 8.35576, 5.8914)
-
-[node name="modern_ceiling_lamp_01_4k4" parent="." instance=ExtResource("14_uy7ai")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8279, 8.35576, -2.79643)
-
-[node name="modern_ceiling_lamp_01_4k5" parent="." instance=ExtResource("14_uy7ai")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.39109, 8.35576, -2.79643)
-
-[node name="modern_ceiling_lamp_01_4k6" parent="." instance=ExtResource("14_uy7ai")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.342415, 8.35576, -2.79643)
-
 [node name="entityspawn" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.12769, 0)
 
@@ -452,3 +434,21 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CheckArea"]
 shape = SubResource("BoxShape3D_3jc4m")
+
+[node name="CeilingLamp" parent="." instance=ExtResource("19_7xce3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05723, 9.43355, -2.05085)
+
+[node name="CeilingLamp5" parent="." instance=ExtResource("19_7xce3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0735055, 3.77393, -4.4276)
+
+[node name="CeilingLamp6" parent="." instance=ExtResource("19_7xce3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0735055, 3.77393, 3.22996)
+
+[node name="CeilingLamp2" parent="." instance=ExtResource("19_7xce3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0885, 9.43355, 4.74683)
+
+[node name="CeilingLamp3" parent="." instance=ExtResource("19_7xce3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5132, 9.43355, -2.39024)
+
+[node name="CeilingLamp4" parent="." instance=ExtResource("19_7xce3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.09255, 9.43355, -2.39024)

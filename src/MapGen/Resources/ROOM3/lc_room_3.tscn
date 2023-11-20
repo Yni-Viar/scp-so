@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://c1lt34yrqs3yu" path="res://MapGen/Resources/RoomAssets/LCZ3/Tiles107_2K_Color.png" id="1_tn853"]
 [ext_resource type="Texture2D" uid="uid://bsnprh1ss6v5e" path="res://MapGen/Resources/RoomAssets/LCZ3/Tiles107_2K_Roughness.png" id="2_krow1"]
-[ext_resource type="PackedScene" uid="uid://bi12ev7yropli" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="2_yvwrr"]
 [ext_resource type="Texture2D" uid="uid://byu5aljbwe1ao" path="res://MapGen/Resources/RoomAssets/LCZ3/Tiles107_2K_NormalGL.png" id="3_f7sby"]
 [ext_resource type="Texture2D" uid="uid://gpporcbf82rj" path="res://MapGen/Resources/RoomAssets/LCZ3/Plaster001_2K_Color.png" id="4_purtr"]
 [ext_resource type="Texture2D" uid="uid://mvko3mr6qknm" path="res://MapGen/Resources/RoomAssets/LCZ3/Plaster001_2K_Roughness.png" id="5_20yl6"]
@@ -17,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cid430jdkykuv" path="res://MapGen/Resources/Cameras/cctv_lcz.tscn" id="13_owclo"]
 [ext_resource type="Texture2D" uid="uid://bfrk7gej70rqe" path="res://MapGen/Resources/RoomAssets/LCZ3/beige_wall_001_nor_gl_2k.png" id="14_my6tv"]
 [ext_resource type="Texture2D" uid="uid://pvjdvo6ndiw4" path="res://MapGen/Resources/RoomAssets/LCZ3/SheetMetal001_2K-PNG_Metalness_png-SheetMetal001_2K-PNG_Roughness_png.png" id="15_76h6i"]
+[ext_resource type="PackedScene" uid="uid://dm7mdwvtll4ha" path="res://MapGen/Resources/RoomAssets/Props/ceiling_lamp.tscn" id="17_1jata"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ap04e"]
 resource_name = "Material.013"
@@ -885,15 +885,6 @@ skeleton = NodePath("")
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_s2f44")
 
-[node name="modern_ceiling_lamp_01_4k" parent="." instance=ExtResource("2_yvwrr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.341, 6.603)
-
-[node name="modern_ceiling_lamp_01_4k2" parent="." instance=ExtResource("2_yvwrr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.193, 5.337, 0)
-
-[node name="modern_ceiling_lamp_01_4k3" parent="." instance=ExtResource("2_yvwrr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.511, 5.341, 0)
-
 [node name="cctv" parent="." instance=ExtResource("13_owclo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00148642, 6.47068, 0.0728714)
 
@@ -906,3 +897,12 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CheckArea"]
 shape = SubResource("BoxShape3D_4jq5t")
+
+[node name="CeilingLamp" parent="." instance=ExtResource("17_1jata")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.3953, 6.4194)
+
+[node name="CeilingLamp2" parent="." instance=ExtResource("17_1jata")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.05514, 6.3953, -0.409485)
+
+[node name="CeilingLamp3" parent="." instance=ExtResource("17_1jata")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.22559, 6.3953, -0.0889835)

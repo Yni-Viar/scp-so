@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dtbtt8qi1w5nd"]
+[gd_scene load_steps=31 format=3 uid="uid://dtbtt8qi1w5nd"]
 
 [ext_resource type="Texture2D" uid="uid://14w10x3oqfbv" path="res://MapGen/Resources/RoomAssets/LCZ/concretefloor.jpg" id="1_e2und"]
 [ext_resource type="Texture2D" uid="uid://d4a1s35jefp5r" path="res://MapGen/Resources/RoomAssets/LCZ/whitewall_2k.jpg" id="2_3g8cr"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bi12ev7yropli" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="12_em3sr"]
 [ext_resource type="PackedScene" uid="uid://cid430jdkykuv" path="res://MapGen/Resources/Cameras/cctv_lcz.tscn" id="13_m0tsc"]
 [ext_resource type="PackedScene" uid="uid://c7ku8ii32i87x" path="res://InventorySystem/Items/PickablePrefabs/scp018.tscn" id="15_g38xq"]
+[ext_resource type="PackedScene" uid="uid://dm7mdwvtll4ha" path="res://MapGen/Resources/RoomAssets/Props/ceiling_lamp.tscn" id="16_2wdui"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_648n0"]
 resource_name = "mat0.004"
@@ -331,12 +332,6 @@ canOpen = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.52953, 0, -3.04803)
 canOpen = false
 
-[node name="modern_ceiling_lamp_01_4k" parent="." instance=ExtResource("12_em3sr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0133132, 5.88602, 3.69511)
-
-[node name="modern_ceiling_lamp_01_4k2" parent="." instance=ExtResource("12_em3sr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0133132, 5.88602, -3.26272)
-
 [node name="modern_ceiling_lamp_01_4k3" parent="." instance=ExtResource("12_em3sr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.53336, 2.67575, -5.26534)
 visible = false
@@ -385,3 +380,9 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CheckArea"]
 shape = SubResource("BoxShape3D_xv8wq")
+
+[node name="CeilingLamp" parent="." instance=ExtResource("16_2wdui")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.96869, 5.22306)
+
+[node name="CeilingLamp2" parent="." instance=ExtResource("16_2wdui")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.96869, -3.61702)
