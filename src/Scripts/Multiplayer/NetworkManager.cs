@@ -6,6 +6,10 @@ public partial class NetworkManager : Node
 	internal static string ipAddress;
 	internal static int port;
 	internal static int maxPlayers;
+	internal static bool friendlyFire;
+    //True breach simulation - if enabled, second SCP will be 2522 and if currentPlayerCounter % 8 equals 4 - then a new SCP is present in round.
+	//Else, players becomes SCP only if is second player or multiple of 8.
+    internal static bool tBrSim; 
 
 	ENetMultiplayerPeer peer;
 
@@ -18,7 +22,7 @@ public partial class NetworkManager : Node
     public override void _Ready()
 	{
 		//You can change settings ONLY by restarting the game.
-		if (FileAccess.FileExists("user://serverconfig_0.2.0.ini"))
+		if (FileAccess.FileExists("user://serverconfig_" + Globals.serverConfigCompatibility + ".ini"))
 		{
 			LoadIni();
 		}
@@ -27,11 +31,15 @@ public partial class NetworkManager : Node
 			IniSaver ini = new IniSaver();
 			ini.SaveIni("ServerConfig", new Godot.Collections.Array<string>{
 				"Port",
-				"MaxPlayers"
+				"MaxPlayers",
+				"FriendlyFire", 
+				"TrueBreachSimulation"
 			}, new Godot.Collections.Array{
 				7877,
-				20
-			}, "user://serverconfig_0.2.0.ini");
+				20,
+				false, 
+				false
+			}, "user://serverconfig_" + Globals.serverConfigCompatibility + ".ini");
 
 			LoadIni();
 		}
@@ -87,7 +95,7 @@ public partial class NetworkManager : Node
 		var config = new ConfigFile();
 
 		// Load data from a file.
-		Error err = config.Load("user://serverconfig_0.2.0.ini");
+		Error err = config.Load("user://serverconfig_" + Globals.serverConfigCompatibility + ".ini");
 
 		// If the file didn't load, ignore it.
 		if (err != Error.Ok)
@@ -97,6 +105,8 @@ public partial class NetworkManager : Node
 		// Fetch the data for each section.
 		port = (int)config.GetValue("ServerConfig", "Port");
 		maxPlayers = (int)config.GetValue("ServerConfig", "MaxPlayers");
+		friendlyFire = (bool)config.GetValue("ServerConfig", "FriendlyFire");
+		tBrSim = (bool)config.GetValue("ServerConfig", "TrueBreachSimulation");
 	}
 
 	/// <summary>

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://du44ij11tsce5"]
+[gd_scene load_steps=6 format=3 uid="uid://du44ij11tsce5"]
 
 [ext_resource type="Texture2D" uid="uid://nisq3p05nsgx" path="res://Assets/Models/Items-Keycards/keycard4.png" id="1_kskfg"]
 [ext_resource type="Script" path="res://InventorySystem/Items/InHandPrefabs/ItemAction.cs" id="1_xnppo"]
@@ -40,19 +40,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_jaq8v")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jjvdd"]
-size = Vector3(0.440074, 0.272025, 0.0626981)
-
-[node name="key4" type="StaticBody3D"]
-collision_layer = 2
-collision_mask = 2
+[node name="key4" type="Node3D"]
 script = ExtResource("1_xnppo")
 
 [node name="Scene_Root_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.927163, 0.340282, -0.156767, 0.367323, 0.743221, -0.559193, -0.0737709, -0.576047, -0.81408, 0, 0, 0)
 mesh = SubResource("ArrayMesh_o8vhl")
 skeleton = NodePath("")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-0.927163, 0.340283, -0.156767, 0.367323, 0.743221, -0.559193, -0.0737709, -0.576048, -0.814081, 0, 0, 0)
-shape = SubResource("BoxShape3D_jjvdd")

@@ -3,10 +3,6 @@ using System;
 
 public partial class ScientistPlayerScript : HumanPlayerScript
 {
-    internal override void OnStart()
-    {
-        GetNode<Control>("UI").Visible = true;
-    }
     internal override void OnUpdate()
     {
         if (GetParent().GetParent<PlayerScript>().dir.IsZeroApprox())

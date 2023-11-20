@@ -48,6 +48,10 @@ properties/7/path = NodePath(".:items")
 properties/7/spawn = true
 properties/7/sync = false
 properties/7/watch = true
+properties/8/path = NodePath(".:friendlyFireFm")
+properties/8/spawn = true
+properties/8/sync = false
+properties/8/watch = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ttxax"]
 size = Vector3(6410.33, 1969.08, 6412.47)
@@ -154,6 +158,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 512, -1600, -512)
 [node name="Items" type="Node3D" parent="."]
 
 [node name="Ragdolls" type="Node3D" parent="."]
+
+[node name="Decals" type="Node3D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("5_u1dtw")

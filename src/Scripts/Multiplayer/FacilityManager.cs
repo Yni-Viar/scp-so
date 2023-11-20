@@ -18,10 +18,18 @@ public partial class FacilityManager : Node3D
     [Export] Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classes = new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>>();
     [Export] Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> rooms = new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>>();
     [Export] Godot.Collections.Dictionary<string, string> items = new Godot.Collections.Dictionary<string, string>();
+    [Export] bool friendlyFireFm;
+    bool trueBreach;
     internal bool IsRoundStarted
     { 
         get=>isRoundStarted; private set=>isRoundStarted = value;
     }
+    internal bool FriendlyFire
+    {
+        get => friendlyFireFm; private set => friendlyFireFm = value;
+    }
+    uint scpLimit = 4; //SCP Limit
+    Godot.Collections.Array<int> usedScps = new Godot.Collections.Array<int>(); //Already spawned SCPs
     [Export] internal int targets = 0;
 
     // Called when the node enters the scene tree for the first time.
@@ -40,6 +48,8 @@ public partial class FacilityManager : Node3D
         //Multiplayer part.
         if (!Multiplayer.IsServer())
         {
+            friendlyFireFm = NetworkManager.friendlyFire;
+            trueBreach = NetworkManager.tBrSim;
             RoomParser.SaveJson("user://rooms_" + Globals.roomsCompatibility + ".json", rooms);
             ClassParser.SaveJson("user://playerclasses_" + Globals.classesCompatibility + ".json", classes);
             ItemParser.SaveJson("user://itemlist_" + Globals.itemsCompatibility + ".json", items);
@@ -55,36 +65,14 @@ public partial class FacilityManager : Node3D
         AddPlayer(1);
 
 
-        // For support custom classes.
+        // For custom classes, rooms, items support.
         if (Multiplayer.IsServer())
         {
-            if (FileAccess.FileExists("user://rooms_" + Globals.roomsCompatibility + ".json"))
-            {
-                rooms = RoomParser.ReadJson("user://rooms_" + Globals.roomsCompatibility + ".json");
-            }
-            else
-            {
-                rooms = RoomParser.SaveJson("user://rooms_" + Globals.roomsCompatibility + ".json", Globals.roomData);
-            }
+            rooms = RoomParser.ReadJson("user://rooms_" + Globals.roomsCompatibility + ".json");
 
-            if (FileAccess.FileExists("user://playerclasses_" + Globals.classesCompatibility + ".json"))
-            {
-                classes = ClassParser.ReadJson("user://playerclasses_" + Globals.classesCompatibility + ".json");
-            }
-            else
-            {
-                classes = ClassParser.SaveJson("user://playerclasses_" + Globals.classesCompatibility + ".json", Globals.classData);
-            }
+            classes = ClassParser.ReadJson("user://playerclasses_" + Globals.classesCompatibility + ".json");
 
-
-            if (FileAccess.FileExists("user://itemlist_" + Globals.itemsCompatibility + ".json"))
-            {
-                items = ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json");
-            }
-            else
-            {
-                items = ItemParser.SaveJson("user://itemlist_" + Globals.itemsCompatibility + ".json", Globals.items);
-            }
+            items = ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json");
         }
 
         //Start round
@@ -297,19 +285,19 @@ public partial class FacilityManager : Node3D
             GetNode<Inventory>(playerName + "/InventoryContainer/Inventory").AddItem(ResourceLoader.Load(item));
         }
     }
-/*
-    /// <summary>
-    /// Update the class UI, when forceclassing. Deprecated since 0.7.0-dev
-    /// </summary>
-    /// <param name="className">Name of the class</param>
-    /// <param name="health">Health of the class</param>
+    /*
+        /// <summary>
+        /// Update the class UI, when forceclassing. Deprecated since 0.7.0-dev
+        /// </summary>
+        /// <param name="className">Name of the class</param>
+        /// <param name="health">Health of the class</param>
 
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
-    void UpdateClassUI(string className, float health)
-    {
-        GetNode<Label>("PlayerUI/ClassInfo").Text = className;
-        GetNode<Label>("PlayerUI/HealthInfo").Text = Mathf.Ceil(health).ToString();
-    }*/
+        [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
+        void UpdateClassUI(string className, float health)
+        {
+            GetNode<Label>("PlayerUI/ClassInfo").Text = className;
+            GetNode<Label>("PlayerUI/HealthInfo").Text = Mathf.Ceil(health).ToString();
+        }*/
 
     /// <summary>
     /// Tosses player classes at round start.
@@ -318,9 +306,13 @@ public partial class FacilityManager : Node3D
     /// <returns>A random class</returns>
     string TossPlayerClass(uint i)
     {
-        uint scpLimit = 4; //SCP Limit
-        Godot.Collections.Array<int> usedScps = new Godot.Collections.Array<int>(); //Already spawned SCPs
-        if (i == 2 || i % 8 == 0)
+        if (i == 2 && trueBreach) //Since 0.7.0, SCP-2522 is ALWAYS the second player.
+        {
+            int scp2522 = 0;
+            usedScps.Add(scp2522);
+            return classes["spawnableScps"][scp2522];
+        }
+        if (trueBreach ? (i % 8 == 4) : (i == 2 || i % 8 == 0)) // check method of SCP spawning, based on TrueBreach value.
         {
             if (usedScps.Count > scpLimit) //if there are more SCPs than exist - spawn a human instead.
             {
@@ -334,10 +326,6 @@ public partial class FacilityManager : Node3D
             usedScps.Add(randomScpClass);
             return classes["spawnableScps"][randomScpClass];
         }
-        /*else if (i == 3)
-        {
-
-        }*/
         else //Spawn a human.
         {
             return classes["spawnableHuman"][rng.RandiRange(0, classes["spawnableHuman"].Count - 1)];
@@ -378,14 +366,14 @@ public partial class FacilityManager : Node3D
     }
 
     /// <summary>
-    /// Specific usage. Is only used by SCP-650 to teleport to another player.
+    /// Specific usage. Was used by SCP-650 to teleport to another player. This method is deprecated.
     /// </summary>
     /// <param name="playerName">Name of the teleporting player</param>
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
+    /*[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
     void RandomTeleport(string playerName)
     {
         GetNode<PlayerScript>(playerName).Position = GetNode<PlayerScript>(playersList[rng.RandiRange(0, playersList.Count - 1)]).GlobalPosition;
-    }
+    }*/
 
     /// <summary>
     /// Teleport-to-room method. Used for administration and for testing.

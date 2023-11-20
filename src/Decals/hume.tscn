@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://jgh285bboeqd"]
+[gd_scene load_steps=6 format=3 uid="uid://vqy0huawb7gl"]
 
 [ext_resource type="Texture2D" uid="uid://dcrf81txc263c" path="res://Assets/Particles/smokeHume.png" id="1_rovs0"]
-[ext_resource type="Script" path="res://FPSController/PlayerClassPrefabGameover/Hume.cs" id="1_v5up8"]
+[ext_resource type="Script" path="res://Decals/Particle.cs" id="2_74scn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3o307"]
 transparency = 1
@@ -14,10 +14,7 @@ material = SubResource("StandardMaterial3D_3o307")
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Hume" type="Node3D"]
-script = ExtResource("1_v5up8")
-
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+[node name="Hume" type="CPUParticles3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.41236, 0)
 amount = 16
 mesh = SubResource("QuadMesh_utsvq")
@@ -29,3 +26,4 @@ damping_min = 0.05
 damping_max = 0.05
 angle_max = 360.0
 scale_amount_curve = SubResource("Curve_vbt03")
+script = ExtResource("2_74scn")

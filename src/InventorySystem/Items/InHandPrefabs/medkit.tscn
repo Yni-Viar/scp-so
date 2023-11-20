@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://2p1yijrll3vi"]
+[gd_scene load_steps=6 format=3 uid="uid://2p1yijrll3vi"]
 
 [ext_resource type="Texture2D" uid="uid://cm28ww741bu5g" path="res://Assets/Models/Items-FirstAid/FirstAid.png" id="1_5dssq"]
 [ext_resource type="Script" path="res://InventorySystem/Items/InHandPrefabs/ItemMedkit.cs" id="1_j2q8j"]
@@ -42,19 +42,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_gy8w7")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_w8qbp"]
-size = Vector3(0.756422, 0.648677, 0.2256)
-
-[node name="FirstAid" type="StaticBody3D"]
-collision_layer = 2
-collision_mask = 2
+[node name="FirstAid" type="Node3D"]
 script = ExtResource("1_j2q8j")
 
 [node name="FirstAid2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, -0.6, 0, 0.6, -2.62268e-08, 0, -0.367244, 0)
 mesh = SubResource("ArrayMesh_m3b3e")
 skeleton = NodePath("")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03128, 0)
-shape = SubResource("BoxShape3D_w8qbp")

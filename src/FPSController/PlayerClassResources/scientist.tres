@@ -9,7 +9,7 @@ ClassDescription = "You need to do tasks, and test the SCPs.
 If there is a containment breach, you need to escape from the facility."
 SpawnPoints = PackedStringArray("Main/Game/MapGenLcz/LC_room2_sl/entityspawn", "Main/Game/MapGenRz/RZ_room2_offices/entityspawn")
 PlayerModelSource = "res://FPSController/PlayerClassPrefab/scientist.tscn"
-PlayerRagdollSource = "res://FPSController/PlayerClassPrefabGameover/hume.tscn"
+PlayerRagdollSource = "res://Decals/hume.tscn"
 Speed = 4.5
 Jump = 4.25
 SprintEnabled = true

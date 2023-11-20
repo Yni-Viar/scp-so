@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d18i1wbbiixld"]
+
+[ext_resource type="Script" path="res://InventorySystem/Items/Item.cs" id="1_jap66"]
+[ext_resource type="Texture2D" uid="uid://we4mrwet4xub" path="res://InventorySystem/Items/Com16.png" id="1_nlf7t"]
+
+[resource]
+script = ExtResource("1_jap66")
+InternalName = "com16"
+Name = "Pistol COM-16"
+Texture = ExtResource("1_nlf7t")
+PickablePath = "res://InventorySystem/Items/PickablePrefabs/com16.tscn"
+PickupSoundPath = "res://Sounds/Interact/PickItem1.ogg"
+FirstPersonPrefabPath = "res://InventorySystem/Items/InHandPrefabs/com16.tscn"
+OneTimeUse = false
+Rough = PackedStringArray()
+Coarse = PackedStringArray()
+OneToOne = PackedStringArray("res://InventorySystem/Items/PickablePrefabs/com16.tscn")
+Fine = PackedStringArray("res://InventorySystem/Items/PickablePrefabs/com16.tscn")
+VeryFine = PackedStringArray("res://InventorySystem/Items/PickablePrefabs/com16.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1aa4o1sirv6d"]
+[gd_scene load_steps=6 format=3 uid="uid://c1aa4o1sirv6d"]
 
 [ext_resource type="Texture2D" uid="uid://da3wl6hjpuqpl" path="res://Assets/Models/Items-scp018/scp018_base.png" id="1_fsqok"]
 [ext_resource type="Script" path="res://InventorySystem/Items/InHandPrefabs/ItemScp018.cs" id="1_wglmd"]
@@ -42,18 +42,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xu1yj")
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_qfd8h"]
-radius = 0.1
-
-[node name="scp018" type="StaticBody3D"]
-collision_layer = 2
-collision_mask = 2
+[node name="scp018" type="Node3D"]
 script = ExtResource("1_wglmd")
 
 [node name="Sphere_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_uvbxp")
 skeleton = NodePath("")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_qfd8h")

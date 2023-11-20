@@ -100,7 +100,7 @@ public partial class Commands : Node
     string ItemList(string[] args)
     {
         string r = "";
-        foreach (var val in ItemParser.ReadJson("user://itemlist.json"))
+        foreach (var val in ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json"))
         {
             r += val.Key + "\n";
         }
@@ -119,11 +119,11 @@ public partial class Commands : Node
         }
         if (args.Length == 1)
         {
-            if (ItemParser.ReadJson("user://itemlist.json").ContainsKey(args[0]))
+            if (ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json").ContainsKey(args[0]))
             {
-                //inventory.AddItem(ResourceLoader.Load(JsonParser.ReadJson("user://itemlist.json")[args[0]]));
+                //inventory.AddItem(ResourceLoader.Load(JsonParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json")[args[0]]));
                 //gives the string for adding an item, rpc will convert this in resource
-                GiveItemCmd(ItemParser.ReadJson("user://itemlist.json")[args[0]]);
+                GiveItemCmd(ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json")[args[0]]);
                 itemLimit++;
                 return "Item " + args[0] + " spawned next to you";
             }

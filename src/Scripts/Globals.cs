@@ -13,6 +13,7 @@ public partial class Globals
     public static string itemsCompatibility = "0.7.0-dev";
     public static string roomsCompatibility = "0.7.0-dev";
     public static string tasksCompatibility = "0.7.0-dev";
+    public static string serverConfigCompatibility = "0.7.0-dev";
     public static Stages currentStage = Stages.dev;
 
     //Spectators, D-class, Scientists, MTF, Dangerous SCP items, Normal SCP entities, Chaos Insurgency, Serpent's hand.
@@ -21,7 +22,7 @@ public partial class Globals
         new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> {
             { "spawnableHuman", new Godot.Collections.Array<string>{"classd", "scientist", "guard" } },
             { "arrivingHuman", new Godot.Collections.Array<string>{ "mtfe11" } },
-            { "spawnableScps", new Godot.Collections.Array<string> { "scp106", "scp131a", "scp131b", "scp173", "scp2522", "scp3199" } },
+            { "spawnableScps", new Godot.Collections.Array<string> { "scp2522", "scp106", "scp131a", "scp131b", "scp173", "scp3199" } },
             { "special", new Godot.Collections.Array<string> {"spectator" } },
         };
 
@@ -34,7 +35,8 @@ public partial class Globals
         { "keyomni", "res://InventorySystem/Items/keyomni.tres" },
         { "pda", "res://InventorySystem/Items/pda.tres" },
         { "medkit", "res://InventorySystem/Items/medkit.tres" },
-        { "scp018", "res://InventorySystem/Items/scp018.tres" }
+        { "scp018", "res://InventorySystem/Items/scp018.tres" },
+        { "com16", "res://InventorySystem/Items/com16.tres" }
     };
 
     internal static Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> roomData =
