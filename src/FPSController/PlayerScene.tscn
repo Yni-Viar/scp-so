@@ -85,7 +85,8 @@ _data = {
 
 [node name="Player" type="CharacterBody3D" groups=["Players"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28033, 0)
-collision_layer = 6
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_tw8h1")
 
 [node name="Commands" type="Node" parent="."]
@@ -118,8 +119,9 @@ mesh = SubResource("QuadMesh_wuaka")
 surface_material_override/0 = ExtResource("5_du4vi")
 
 [node name="RayCast3D" type="RayCast3D" parent="PlayerHead"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
 target_position = Vector3(0, 0, -3)
-collision_mask = 15
+collision_mask = 13
 
 [node name="ItemSpawn" type="Marker3D" parent="PlayerHead"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.197413, -0.0797351)
@@ -128,8 +130,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.197413, -0.0797351)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.788798)
 
 [node name="VisionRadius" type="RayCast3D" parent="PlayerHead"]
-target_position = Vector3(0, 0, -24)
-collision_mask = 15
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+target_position = Vector3(0, 0, -48)
+collision_mask = 29
 
 [node name="CollisionBodyCapsule" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0386829, 0)

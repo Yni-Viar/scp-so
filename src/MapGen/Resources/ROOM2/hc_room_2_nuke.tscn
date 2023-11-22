@@ -17,9 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://d2pe11cjbrt86" path="res://MapGen/Resources/RoomAssets/HCZ/scplogo.jpg" id="15_kgebf"]
 [ext_resource type="Texture2D" uid="uid://b2phwm4y42p7a" path="res://MapGen/Resources/RoomAssets/HCZ/glass.png" id="16_8m3h4"]
 [ext_resource type="PackedScene" uid="uid://cgaomav6767mx" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="17_tg1f2"]
-[ext_resource type="Script" path="res://Scripts/Facility/Door.cs" id="18_2wkcx"]
+[ext_resource type="Script" path="res://Scripts/DoorsSystem/KeycardedDoor.cs" id="19_35p8c"]
 [ext_resource type="Texture2D" uid="uid://ben08ytu3hn3q" path="res://MapGen/Resources/Doors/DoorLCZ/Door01.jpg" id="19_wjj88"]
-[ext_resource type="PackedScene" uid="uid://bpx6ko6t0w1o5" path="res://MapGen/Resources/Buttons/button_interact.tscn" id="20_t2hmy"]
+[ext_resource type="PackedScene" uid="uid://cijqoykl85ljn" path="res://MapGen/Resources/Buttons/button_keycard.tscn" id="21_782c7"]
 [ext_resource type="PackedScene" uid="uid://dwt4g6igxv1hc" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="21_frfoc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ij68h"]
@@ -472,6 +472,9 @@ data = PackedVector3Array(10.24, 8.64, -3.36, 2.72, 8.64, -3.36, 2.72, -40, -3.3
 [sub_resource type="FogMaterial" id="FogMaterial_wdxxt"]
 albedo = Color(1, 0, 0, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_41nqb"]
+size = Vector3(25.9786, 41.5249, 20.2893)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76br2"]
 resource_name = "material0.001"
 cull_mode = 2
@@ -647,9 +650,6 @@ properties/1/spawn = true
 properties/1/sync = false
 properties/1/watch = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_41nqb"]
-size = Vector3(25.9786, 41.5249, 20.2893)
-
 [node name="HC_room2_nuke" type="StaticBody3D"]
 
 [node name="HC_room2_nuke2" type="MeshInstance3D" parent="."]
@@ -688,58 +688,6 @@ visible = false
 size = Vector3(11.6268, 7.80385, 13.8412)
 material = SubResource("FogMaterial_wdxxt")
 
-[node name="Door" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.324145, 0, -1.64372)
-script = ExtResource("18_2wkcx")
-canOpen = false
-openDoorSounds = PackedStringArray("res://Sounds/Door/DoorOpen1.ogg", "res://Sounds/Door/DoorOpen2.ogg", "res://Sounds/Door/DoorOpen3.ogg")
-closeDoorSounds = PackedStringArray("res://Sounds/Door/DoorClose1.ogg", "res://Sounds/Door/DoorClose2.ogg", "res://Sounds/Door/DoorClose3.ogg")
-
-[node name="Scene_Root" type="MeshInstance3D" parent="Door"]
-visibility_range_end = 64.0
-mesh = SubResource("ArrayMesh_mvb1h")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Door/Scene_Root"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Door/Scene_Root/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_yksq8")
-
-[node name="Scene_Root001" type="MeshInstance3D" parent="Door"]
-visibility_range_end = 64.0
-mesh = SubResource("ArrayMesh_cvxq2")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Door/Scene_Root001"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Door/Scene_Root001/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_wvxko")
-
-[node name="DoorFrame" type="MeshInstance3D" parent="Door"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.904876, 0, 0, 0)
-visibility_range_end = 48.0
-mesh = SubResource("ArrayMesh_55nvr")
-skeleton = NodePath("")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Door"]
-libraries = {
-"": SubResource("AnimationLibrary_32jea")
-}
-
-[node name="DoorSound" type="AudioStreamPlayer3D" parent="Door"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96653, 0)
-max_distance = 40.0
-
-[node name="ButtonInteract" parent="Door" instance=ExtResource("20_t2hmy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71255, 1.75841, -0.227053)
-
-[node name="ButtonInteract2" parent="Door" instance=ExtResource("20_t2hmy")]
-transform = Transform3D(-4.37113e-08, 0, 0.999999, 0, 1, 0, -0.999999, 0, -4.37113e-08, 1.26012, 1.76304, 0.948821)
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Door"]
-replication_interval = 0.25
-replication_config = SubResource("SceneReplicationConfig_mccg3")
-
 [node name="cctv" parent="." instance=ExtResource("21_frfoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36029, 3.84, -1.78655)
 
@@ -754,5 +702,64 @@ monitorable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.51253, 0, 0)
 shape = SubResource("BoxShape3D_41nqb")
 
-[connection signal="Interacted" from="Door/ButtonInteract" to="Door" method="OnButtonInteractInteracted" flags=18]
-[connection signal="Interacted" from="Door/ButtonInteract2" to="Door" method="OnButtonInteractInteracted" flags=18]
+[node name="KeycardedDoor" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.340653, 0.090099, -1.58395)
+script = ExtResource("19_35p8c")
+requirements = 6
+canOpen = false
+openDoorSounds = PackedStringArray("res://Sounds/Door/DoorOpen1.ogg", "res://Sounds/Door/DoorOpen2.ogg", "res://Sounds/Door/DoorOpen3.ogg")
+closeDoorSounds = PackedStringArray("res://Sounds/Door/DoorClose1.ogg", "res://Sounds/Door/DoorClose2.ogg", "res://Sounds/Door/DoorClose3.ogg")
+
+[node name="Scene_Root" type="MeshInstance3D" parent="KeycardedDoor"]
+layers = 4
+visibility_range_end = 128.0
+mesh = SubResource("ArrayMesh_mvb1h")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="KeycardedDoor/Scene_Root"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KeycardedDoor/Scene_Root/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_yksq8")
+
+[node name="Scene_Root001" type="MeshInstance3D" parent="KeycardedDoor"]
+layers = 4
+visibility_range_end = 128.0
+mesh = SubResource("ArrayMesh_cvxq2")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="KeycardedDoor/Scene_Root001"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KeycardedDoor/Scene_Root001/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_wvxko")
+
+[node name="DoorFrame" type="MeshInstance3D" parent="KeycardedDoor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.904876, 0, 0, 0)
+visibility_range_end = 128.0
+mesh = SubResource("ArrayMesh_55nvr")
+skeleton = NodePath("")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="KeycardedDoor"]
+libraries = {
+"": SubResource("AnimationLibrary_32jea")
+}
+
+[node name="DoorSound" type="AudioStreamPlayer3D" parent="KeycardedDoor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96653, 0)
+max_distance = 40.0
+
+[node name="ButtonKeycard" parent="KeycardedDoor" instance=ExtResource("21_782c7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71255, 1.75841, -0.256299)
+
+[node name="ButtonKeycard2" parent="KeycardedDoor" instance=ExtResource("21_782c7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94712, 1.76304, 2.37993)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="KeycardedDoor"]
+replication_interval = 0.25
+replication_config = SubResource("SceneReplicationConfig_mccg3")
+
+[connection signal="Interacted" from="KeycardedDoor/ButtonKeycard" to="KeycardedDoor" method="OnButtonKeycardInteracted" flags=18]
+[connection signal="Interacted" from="KeycardedDoor/ButtonKeycard2" to="KeycardedDoor" method="OnButtonKeycardInteracted" flags=18]

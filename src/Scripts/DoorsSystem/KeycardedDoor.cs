@@ -5,7 +5,7 @@ using System;
 /// </summary>
 public partial class KeycardedDoor : Door
 {
-	enum openRequirements { key1, key2, key3, key4, key5, keyomni }
+	enum openRequirements { key1, key2, key3, key4, key5, keyomni, scp005 }
 	[Export] openRequirements requirements = openRequirements.key1;
 
     /*
@@ -27,7 +27,7 @@ public partial class KeycardedDoor : Door
         {
             if (IsOpened && !animPlayer.IsPlaying())
             {
-                base.DoorClose();
+                DoorClose();
             }
             else if (!animPlayer.IsPlaying())
             {

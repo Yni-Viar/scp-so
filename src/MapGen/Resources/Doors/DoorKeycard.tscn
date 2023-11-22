@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://vpjy5i6gaggm"]
 
-[ext_resource type="Script" path="res://Scripts/Facility/KeycardedDoor.cs" id="1_ds058"]
+[ext_resource type="Script" path="res://Scripts/DoorsSystem/KeycardedDoor.cs" id="1_ds058"]
 [ext_resource type="Texture2D" uid="uid://ben08ytu3hn3q" path="res://MapGen/Resources/Doors/DoorLCZ/Door01.jpg" id="2_2k6bh"]
 [ext_resource type="PackedScene" uid="uid://cijqoykl85ljn" path="res://MapGen/Resources/Buttons/button_keycard.tscn" id="3_jdxpk"]
 
@@ -228,12 +228,12 @@ max_distance = 40.0
 [node name="ButtonKeycard" parent="." instance=ExtResource("3_jdxpk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71255, 1.75841, -0.256299)
 
+[node name="ButtonKeycard2" parent="." instance=ExtResource("3_jdxpk")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.67449, 1.76304, 0.24583)
+
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_interval = 0.25
 replication_config = SubResource("SceneReplicationConfig_mccg3")
-
-[node name="ButtonKeycard2" parent="." instance=ExtResource("3_jdxpk")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.67449, 1.76304, 0.24583)
 
 [connection signal="Interacted" from="ButtonKeycard" to="." method="OnButtonKeycardInteracted"]
 [connection signal="Interacted" from="ButtonKeycard2" to="." method="OnButtonKeycardInteracted"]

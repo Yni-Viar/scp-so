@@ -250,7 +250,7 @@ public partial class PlayerScript : CharacterBody3D
                 }
                 if (collidedWith is DoorStaticOpener)
                 {
-                    collidedWith.Call("CallOpen");
+                    collidedWith.Call("CallOpen", this);
                 }
                 if (collidedWith is ItemAction action && action.GetPath().ToString().Contains(Name))
                 {

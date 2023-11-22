@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://owwgqprmlywn"]
 
-[ext_resource type="Script" path="res://Scripts/Facility/KeycardedDoor.cs" id="1_5qydv"]
+[ext_resource type="Script" path="res://Scripts/DoorsSystem/KeycardedDoor.cs" id="1_5qydv"]
 [ext_resource type="Texture2D" uid="uid://b4mexeiu2kw0e" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_Color.png" id="2_jxird"]
 [ext_resource type="Texture2D" uid="uid://jal6u6cusnv3" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_Metalness-Metal032_2K_Roughness.png" id="3_fkvh6"]
 [ext_resource type="Texture2D" uid="uid://bhv585dwr87xd" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_NormalGL.png" id="4_sh5wh"]

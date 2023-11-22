@@ -16,6 +16,7 @@ public partial class Scp173PlayerScript : Node3D
             GetNode<Node3D>("SCP173_Rig").Hide();
             GetNode<Control>("AbilityUI").Show();
             GetParent().GetParent<PlayerScript>().SetCollisionMaskValue(3, true);
+            GetParent().GetParent<PlayerScript>().SetCollisionLayerValue(5, true);
             GetParent().GetParent<PlayerScript>().CanMove = true;
         }
         Rpc("SetRandomFace");

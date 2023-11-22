@@ -159,7 +159,8 @@ text = "[b]v.0.7.0-dev[/b] [i](Alpha)[/i]
 - Revamped door system (again), to make it more flexible.
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.
-- Scientist's hands rig are incorrect. (I am unable to fix this issue, because Mixamo does not support hazmats :( )"
+- Scientist's hands rig are incorrect. (I am unable to fix this issue, because Mixamo does not support hazmats :( )
+- Keycarded door still produce \"allow\" sound, even if keycard is lower than needed. \"Deny\" sound plays only if player don't hold a keycard."
 
 [node name="PlayPanel" type="Panel" parent="."]
 visible = false
