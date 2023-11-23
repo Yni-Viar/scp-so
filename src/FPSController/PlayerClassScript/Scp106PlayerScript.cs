@@ -18,10 +18,9 @@ public partial class Scp106PlayerScript : Node3D
             GetNode<Control>("AbilityUI").Show();
         }
         GetParent().GetParent<PlayerScript>().SetCollisionMaskValue(3, false);
-        GetParent().GetParent<PlayerScript>().SetCollisionLayerValue(5, false);
         GetParent().GetParent<PlayerScript>().CanMove = true;
         interactSound = GetParent().GetParent<PlayerScript>().GetNode<AudioStreamPlayer3D>("InteractSound");
-        ray = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/RayCast3D");
+        ray = GetParent().GetParent<PlayerScript>().ray;
         emergeSound = GetNode<AudioStreamPlayer3D>("TeleportSound");;
         GetNode<Label>("AbilityUI/VBoxContainer/Stalk").Text = "Stalk: cooldown...";
         await ToSignal(GetTree().CreateTimer(15.0), "timeout");

@@ -15,7 +15,6 @@ public partial class Scp2522PlayerScript : ComputerPlayerScript
 	{
         GetParent().GetParent<PlayerScript>().CanMove = false;
         GetParent().GetParent<PlayerScript>().SetCollisionMaskValue(3, true);
-        GetParent().GetParent<PlayerScript>().SetCollisionLayerValue(5, false);
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
             GetParent().GetParent<PlayerScript>().GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = false;

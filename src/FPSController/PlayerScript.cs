@@ -16,6 +16,7 @@ public partial class PlayerScript : CharacterBody3D
     Node3D playerHead;
     Settings settings;
     internal RayCast3D ray;
+    internal RayCast3D watchRay;
 
     //Walk sounds.
     AudioStreamPlayer3D walkSounds;
@@ -84,6 +85,7 @@ public partial class PlayerScript : CharacterBody3D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        //Loading settings and player nickname
         settings = GetTree().Root.GetNode<Settings>("Settings");
         if (FileAccess.FileExists("user://playername.txt"))
         {
@@ -109,12 +111,15 @@ public partial class PlayerScript : CharacterBody3D
         {
             GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = true;
             playerHead = GetNode<Node3D>("PlayerHead");
-            ray = GetNode<RayCast3D>("PlayerHead/RayCast3D");
             walkSounds = GetNode<AudioStreamPlayer3D>("WalkSounds");
             interactSound = GetNode<AudioStreamPlayer3D>("InteractSound");
             acceleration = groundAcceleration;
             FloorMaxAngle = 1.48353f; //85 degrees.
         }
+        ray = GetNode<RayCast3D>("PlayerHead/RayCast3D");
+        ray.AddException(this);
+        watchRay = GetNode<RayCast3D>("PlayerHead/VisionRadius");
+        watchRay.AddException(this);
     }
 
     internal bool IsLocalAuthority()

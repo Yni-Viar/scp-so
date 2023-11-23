@@ -1,11 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxr0p8cc8k8ud"]
+[gd_scene load_steps=16 format=3 uid="uid://bxr0p8cc8k8ud"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerScript.cs" id="1_tw8h1"]
 [ext_resource type="PackedScene" uid="uid://gom6tjixj21n" path="res://InventorySystem/InventoryContainer.tscn" id="2_6uw7r"]
 [ext_resource type="Script" path="res://FPSController/Commands.cs" id="2_decth"]
 [ext_resource type="Shader" path="res://Shaders/ToonShader/toon.gdshader" id="3_kc8a4"]
+[ext_resource type="Material" uid="uid://ci0m68xlui2q5" path="res://Shaders/EdgeDetectShade.tres" id="4_fjjm1"]
 [ext_resource type="Material" uid="uid://ckvs50m51c56c" path="res://Shaders/DitherShade.tres" id="4_kaaud"]
-[ext_resource type="Material" uid="uid://dglctm1kgv0v7" path="res://Shaders/SketchyShader.tres" id="5_du4vi"]
 [ext_resource type="Script" path="res://FPSController/PlayerSync.cs" id="10_8dn5b"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_wuaka"]
@@ -26,6 +26,13 @@ shader_parameter/min_distance = 2.0
 shader_parameter/grazing_fresnel_power = 5.0
 shader_parameter/grazing_angle_mask_power = 1.0
 shader_parameter/grazing_angle_modulation_factor = 50.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3c6ve"]
+flip_faces = true
+orientation = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xm0hl"]
+orientation = 2
 
 [sub_resource type="CapsuleShape3D" id="1"]
 radius = 0.371158
@@ -106,33 +113,31 @@ visible = false
 mesh = SubResource("QuadMesh_wuaka")
 surface_material_override/0 = SubResource("ShaderMaterial_qaxjx")
 
+[node name="EdgeDetectShader" type="MeshInstance3D" parent="PlayerHead/PlayerCamera"]
+visible = false
+extra_cull_margin = 4096.0
+mesh = SubResource("PlaneMesh_3c6ve")
+surface_material_override/0 = ExtResource("4_fjjm1")
+
 [node name="DitherShader" type="MeshInstance3D" parent="PlayerHead/PlayerCamera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.038706)
 visible = false
-mesh = SubResource("QuadMesh_wuaka")
+mesh = SubResource("PlaneMesh_xm0hl")
 surface_material_override/0 = ExtResource("4_kaaud")
 
-[node name="SketchyShader" type="MeshInstance3D" parent="PlayerHead/PlayerCamera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.038706)
-visible = false
-mesh = SubResource("QuadMesh_wuaka")
-surface_material_override/0 = ExtResource("5_du4vi")
-
 [node name="RayCast3D" type="RayCast3D" parent="PlayerHead"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
 target_position = Vector3(0, 0, -3)
-collision_mask = 13
+collision_mask = 15
 
 [node name="ItemSpawn" type="Marker3D" parent="PlayerHead"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.197413, -0.0797351)
 
+[node name="VisionRadius" type="RayCast3D" parent="PlayerHead"]
+target_position = Vector3(0, 0, -48)
+collision_mask = 15
+
 [node name="PlayerHand" type="Marker3D" parent="PlayerHead"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.788798)
-
-[node name="VisionRadius" type="RayCast3D" parent="PlayerHead"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
-target_position = Vector3(0, 0, -48)
-collision_mask = 29
 
 [node name="CollisionBodyCapsule" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0386829, 0)

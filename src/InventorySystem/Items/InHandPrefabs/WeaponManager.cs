@@ -18,17 +18,19 @@ public partial class WeaponManager : ItemAction
     Camera3D camera;
     [Export] float shotsPerSecond;
     float fireCooldown;
+    RayCast3D rayCast;
     internal override void OnStart()
     {
-        if (IsMultiplayerAuthority())
+        if (GetParent().GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
             camera = GetParent().GetParent().GetNode<Camera3D>("PlayerCamera");
+            rayCast = GetNode<RayCast3D>("ShootingRange");
         }
     }
 
     internal override void OnUpdate(double delta)
     {
-        if (IsMultiplayerAuthority())
+        if (GetParent().GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
             if (isAuto ? Input.IsActionPressed("weapon_shoot") : Input.IsActionJustPressed("weapon_shoot"))
             {
@@ -77,19 +79,19 @@ public partial class WeaponManager : ItemAction
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void Shoot()
     {
-        RayCast3D rayCast = GetNode<RayCast3D>("ShootingRange");
         if (rayCast.IsColliding())
         {
             var collider = rayCast.GetCollider();
+            GD.Print(rayCast.GetCollider());
             if (collider is PlayerScript playerScript)
             {
                 if (playerScript.classKey == "scp106")
                 {
-                    playerScript.RpcId(Convert.ToInt32(playerScript.Name), "HealthManage", damage / GlobalPosition.DistanceTo(playerScript.GlobalPosition) / 10, "Shot by " + Name);
+                    playerScript.RpcId(int.Parse(playerScript.Name), "HealthManage", -damage / GlobalPosition.DistanceTo(playerScript.GlobalPosition) / 10, "Shot by " + Name);
                 }
                 else
                 {
-                    playerScript.RpcId(Convert.ToInt32(playerScript.Name), "HealthManage", damage / GlobalPosition.DistanceTo(playerScript.GlobalPosition), "Shot by " + Name);
+                    playerScript.RpcId(int.Parse(playerScript.Name), "HealthManage", -damage / GlobalPosition.DistanceTo(playerScript.GlobalPosition), "Shot by " + Name);
                 }
             }
             else

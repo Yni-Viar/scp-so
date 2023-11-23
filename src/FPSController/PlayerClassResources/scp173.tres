@@ -21,6 +21,6 @@ Health = 10000.0
 CustomSpawn = false
 DefaultCameraPos = 0.969
 CustomCamera = false
-CustomView = "ToonShader"
+CustomView = "EdgeDetectShader"
 PreloadedItems = PackedStringArray()
 ClassColor = Color(0.752941, 0, 0, 0.847059)

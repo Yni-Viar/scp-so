@@ -14,9 +14,8 @@ public partial class Scp3199PlayerScript : Node3D
             GetNode<Control>("AbilityUI").Show();
         }
         GetParent().GetParent<PlayerScript>().SetCollisionMaskValue(3, true);
-        GetParent().GetParent<PlayerScript>().SetCollisionLayerValue(5, false);
         GetParent().GetParent<PlayerScript>().CanMove = true;
-        ray = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/RayCast3D");
+        ray = GetParent().GetParent<PlayerScript>().ray;
         interactSound = GetParent().GetParent<PlayerScript>().GetNode<AudioStreamPlayer3D>("InteractSound");
 	}
 

@@ -118,23 +118,23 @@ shadow_mesh = SubResource("ArrayMesh_rae21")
 script = ExtResource("1_smc47")
 recoilScale = 2.0
 maxAmmo = 35
-damage = 50.0
+damage = 12.0
 reloadingTime = 2.0
 fovAjustingSpeed = 2.0
 shotsPerSecond = 1.0
 
 [node name="1911_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.95303e-08, 8.94023e-09, 1, -0.333568, 0.942726, -2.49499e-08, -0.942726, -0.333568, -4.37114e-08, 0.576087, -0.692429, 0.257351)
+transform = Transform3D(-2.77287e-08, 5.00504e-09, 0.559834, -0.186743, 0.52777, -1.39678e-08, -0.52777, -0.186743, -2.44711e-08, 0.576087, -0.692429, 0.121377)
 mesh = SubResource("ArrayMesh_j4g05")
 skeleton = NodePath("")
 
 [node name="1911" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.95303e-08, 8.94023e-09, 1, -0.333568, 0.942726, -2.49499e-08, -0.942726, -0.333568, -4.37114e-08, 0.576087, -0.692429, 0.257351)
+transform = Transform3D(-2.77287e-08, 5.00504e-09, 0.559834, -0.186743, 0.52777, -1.39678e-08, -0.52777, -0.186743, -2.44711e-08, 0.576087, -0.692429, 0.121377)
 mesh = SubResource("ArrayMesh_ond6l")
 skeleton = NodePath("")
 
 [node name="1911_003" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.95303e-08, 8.94023e-09, 1, -0.333568, 0.942726, -2.49499e-08, -0.942726, -0.333568, -4.37114e-08, 0.576087, -0.692429, 0.257351)
+transform = Transform3D(-2.77287e-08, 5.00504e-09, 0.559834, -0.186743, 0.52777, -1.39678e-08, -0.52777, -0.186743, -2.44711e-08, 0.576087, -0.692429, 0.121377)
 mesh = SubResource("ArrayMesh_2s3dt")
 skeleton = NodePath("")
 
