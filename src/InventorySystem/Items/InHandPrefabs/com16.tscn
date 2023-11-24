@@ -124,20 +124,21 @@ fovAjustingSpeed = 2.0
 shotsPerSecond = 1.0
 
 [node name="1911_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2.77287e-08, 5.00504e-09, 0.559834, -0.186743, 0.52777, -1.39678e-08, -0.52777, -0.186743, -2.44711e-08, 0.576087, -0.692429, 0.121377)
+transform = Transform3D(-1.48591e-08, 2.68205e-09, 0.3, -0.100071, 0.282818, -7.48497e-09, -0.282818, -0.100071, -1.31134e-08, 0, -0.150556, 0)
 mesh = SubResource("ArrayMesh_j4g05")
 skeleton = NodePath("")
 
 [node name="1911" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2.77287e-08, 5.00504e-09, 0.559834, -0.186743, 0.52777, -1.39678e-08, -0.52777, -0.186743, -2.44711e-08, 0.576087, -0.692429, 0.121377)
+transform = Transform3D(-1.48591e-08, 2.68205e-09, 0.3, -0.100071, 0.282818, -7.48497e-09, -0.282818, -0.100071, -1.31134e-08, 0, -0.150556, 0)
 mesh = SubResource("ArrayMesh_ond6l")
 skeleton = NodePath("")
 
 [node name="1911_003" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2.77287e-08, 5.00504e-09, 0.559834, -0.186743, 0.52777, -1.39678e-08, -0.52777, -0.186743, -2.44711e-08, 0.576087, -0.692429, 0.121377)
+transform = Transform3D(-1.48591e-08, 2.68205e-09, 0.3, -0.100071, 0.282818, -7.48497e-09, -0.282818, -0.100071, -1.31134e-08, 0, -0.150556, 0)
 mesh = SubResource("ArrayMesh_2s3dt")
 skeleton = NodePath("")
 
 [node name="ShootingRange" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.307984)
 target_position = Vector3(0, 0, -1024)
 collision_mask = 3

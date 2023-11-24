@@ -3,7 +3,7 @@ using System;
 
 public partial class ScientistPlayerScript : HumanPlayerScript
 {
-    internal override void OnUpdate()
+    internal override void OnUpdate(double delta)
     {
         if (GetParent().GetParent<PlayerScript>().dir.IsZeroApprox())
         {

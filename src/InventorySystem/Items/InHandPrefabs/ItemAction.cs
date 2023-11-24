@@ -35,6 +35,7 @@ public partial class ItemAction : Node3D
 		if (oneTimeUse)
 		{
             player.GetNode<Inventory>("InventoryContainer/Inventory").RemoveItem(index, false);
+			QueueFree();
         }
 	}
 }

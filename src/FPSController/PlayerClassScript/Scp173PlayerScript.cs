@@ -19,8 +19,8 @@ public partial class Scp173PlayerScript : Node3D
             GetParent().GetParent<PlayerScript>().CanMove = true;
         }
         Rpc("SetRandomFace");
-        ray = GetParent().GetParent<PlayerScript>().ray;
-        vision = GetParent().GetParent<PlayerScript>().watchRay;
+        ray = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/RayCast3D");
+        vision = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/VisionRadius");
         interactSound = GetParent().GetParent<PlayerScript>().GetNode<AudioStreamPlayer3D>("InteractSound");
 	}
 

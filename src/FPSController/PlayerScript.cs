@@ -257,10 +257,11 @@ public partial class PlayerScript : CharacterBody3D
                 {
                     collidedWith.Call("CallOpen", this);
                 }
-                if (collidedWith is ItemAction action && action.GetPath().ToString().Contains(Name))
+                /* LEGACY 0.6.x code
+                 * if (collidedWith is ItemAction action && action.GetPath().ToString().Contains(Name))
                 {
                     collidedWith.Call("OnUse", this);
-                }
+                }*/
             }
             
             if (!customMusic)
@@ -308,19 +309,48 @@ public partial class PlayerScript : CharacterBody3D
     {
         if (ResourceLoader.Exists("res://InventorySystem/Items/" + itemName + ".tres"))
         {
+            Item item = GD.Load<Item>("res://InventorySystem/Items/" + itemName + ".tres");
+            // If third person view exists, else will be used first person view.
+            if (GetNode<Node3D>("PlayerModel").GetChild(0).GetNodeOrNull<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand") != null)
+            {
+                if (!IsMultiplayerAuthority())
+                {
+                    GetNode<Marker3D>("PlayerHead/PlayerHand").Hide();
+                }
+                Node thirdPersonHandRoot = GetNode<Node3D>("PlayerModel").GetChild(0).GetNode<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand");
+                foreach (Node itemUsedBefore in thirdPersonHandRoot.GetChildren())
+                {
+                    itemUsedBefore.QueueFree();
+                }
+                ItemAction tpsModel = ResourceLoader.Load<PackedScene>(item.FirstPersonPrefabPath).Instantiate<ItemAction>();
+                tpsModel.oneTimeUse = item.OneTimeUse;
+                tpsModel.index = int.Parse(itemIndex);
+                thirdPersonHandRoot.AddChild(tpsModel, true);
+            }
+            else
+            {
+                GetNode<Marker3D>("PlayerHead/PlayerHand").Show();
+            }
             Node firstPersonHandRoot = GetNode<Marker3D>("PlayerHead/PlayerHand");
             foreach (Node itemUsedBefore in firstPersonHandRoot.GetChildren())
             {
                 itemUsedBefore.QueueFree();
             }
-            Item item = GD.Load<Item>("res://InventorySystem/Items/" + itemName + ".tres");
-            ItemAction tmpModel = ResourceLoader.Load<PackedScene>(item.FirstPersonPrefabPath).Instantiate<ItemAction>();
-            tmpModel.oneTimeUse = item.OneTimeUse;
-            tmpModel.index = int.Parse(itemIndex);
-            firstPersonHandRoot.AddChild(tmpModel, true);
+            ItemAction fpsModel = ResourceLoader.Load<PackedScene>(item.FirstPersonPrefabPath).Instantiate<ItemAction>();
+            fpsModel.oneTimeUse = item.OneTimeUse;
+            fpsModel.index = int.Parse(itemIndex);
+            firstPersonHandRoot.AddChild(fpsModel, true);
         }
         else
         {
+            if (GetNode<Node3D>("PlayerModel").GetChild(0).GetNodeOrNull<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand") != null)
+            {
+                Node thirdPersonHandRoot = GetNode<Node3D>("PlayerModel").GetChild(0).GetNode<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand");
+                foreach (Node itemUsedBefore in thirdPersonHandRoot.GetChildren())
+                {
+                    itemUsedBefore.QueueFree();
+                }
+            }
             Node firstPersonHandRoot = GetNode<Marker3D>("PlayerHead/PlayerHand");
             foreach (Node itemUsedBefore in firstPersonHandRoot.GetChildren())
             {

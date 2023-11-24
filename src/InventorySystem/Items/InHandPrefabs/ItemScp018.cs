@@ -3,6 +3,13 @@ using System;
 
 public partial class ItemScp018 : ItemAction
 {
+    internal override void OnUpdate(double delta)
+    {
+        if (Input.IsActionJustPressed("fire"))
+        {
+            OnUse(GetParent().GetParent().GetParent<PlayerScript>());
+        }
+    }
     internal override void OnUse(PlayerScript player)
     {
         Rpc("SpawnProjectile", player.GetPath());

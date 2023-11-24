@@ -17,7 +17,7 @@ public partial class Scp131PlayerScript : Node3D
         }
         GetParent().GetParent<PlayerScript>().SetCollisionMaskValue(3, true);
         GetParent().GetParent<PlayerScript>().CanMove = true;
-        vision = GetParent().GetParent<PlayerScript>().watchRay;
+        vision = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/VisionRadius");
         GetNode<Label>("AbilityUI/VBoxContainer/ScanHostiles").Text = "Scan hostiles: ready! Click [F] to scan.";
     }
 
