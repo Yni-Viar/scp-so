@@ -159,6 +159,7 @@ text = "[b]v.0.7.0-dev[/b] [i](Alpha)[/i]
 - Revamped door system (again), to make it more flexible.
 - Added weapon system.
 - Changed the shader for SCP-173, also removed useless Sketchy Shader.
+- Fixed sky being used even if player was outside of SZ.
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.
 - Scientist's hands rig are incorrect. (I am unable to fix this issue, because Mixamo does not support hazmats :( )

@@ -17,7 +17,10 @@ public partial class SkyEnabler : Area3D
 	{
         if (body is PlayerScript player)
         {
-			GetParent().GetNode<WorldEnvironment>("WorldEnvironment").Environment.BackgroundMode = Godot.Environment.BGMode.Sky;
+			if (player.IsMultiplayerAuthority())
+			{
+				GetParent().GetNode<WorldEnvironment>("WorldEnvironment").Environment.BackgroundMode = Godot.Environment.BGMode.Sky;
+			}
         }
     }
 
@@ -25,7 +28,10 @@ public partial class SkyEnabler : Area3D
 	{
         if (body is PlayerScript player)
         {
-            GetParent().GetNode<WorldEnvironment>("WorldEnvironment").Environment.BackgroundMode = Godot.Environment.BGMode.Color;
+			if (player.IsMultiplayerAuthority())
+			{
+				GetParent().GetNode<WorldEnvironment>("WorldEnvironment").Environment.BackgroundMode = Godot.Environment.BGMode.Color;
+			}
         }
     }
 }
