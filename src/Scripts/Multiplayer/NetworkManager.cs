@@ -7,6 +7,12 @@ public partial class NetworkManager : Node
 	internal static int port;
 	internal static int maxPlayers;
 	internal static bool friendlyFire;
+	string moderatorPassword = "";
+	//string adminPassword = "";
+	internal int GetModerator
+	{
+		get => moderatorPassword.GetHashCode();
+	}
     //True breach simulation - if enabled, second SCP will be 2522 and if currentPlayerCounter % 8 equals 4 - then a new SCP is present in round.
 	//Else, players becomes SCP only if is second player or multiple of 8.
     internal static bool tBrSim; 
@@ -33,18 +39,21 @@ public partial class NetworkManager : Node
 				"Port",
 				"MaxPlayers",
 				"FriendlyFire", 
-				"TrueBreachSimulation"
+				"TrueBreachSimulation",
+				"AdminPassword",
+				"ModeratorPassword"
 			}, new Godot.Collections.Array{
 				7877,
 				20,
 				false, 
-				false
+				false,
+				"changeitplease",
+				""
 			}, "user://serverconfig_" + Globals.serverConfigCompatibility + ".ini");
-
-			LoadIni();
+            LoadIni();
 		}
 
-		/* foreach (var argument in OS.GetCmdlineArgs()) // unused as for now.
+        /* foreach (var argument in OS.GetCmdlineArgs()) // unused as for now.
 		{
 			if (argument == "--server")
 			{
@@ -56,19 +65,11 @@ public partial class NetworkManager : Node
 			}
 		}
 		*/
-	}
+    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionJustPressed("console"))
-		{
-			GetNode<InGameConsole>("CanvasLayer/InGameConsole").Visible = !GetNode<InGameConsole>("CanvasLayer/InGameConsole").Visible;
-			if (GetNodeOrNull<PlayerUI>("Game/PlayerUI") != null)
-			{
-				GetNode<PlayerUI>("Game/PlayerUI").SpecialScreen = GetNode<InGameConsole>("CanvasLayer/InGameConsole").Visible;
-			}
-		}
 		if (loading)
 		{
 			Godot.Collections.Array progress = new Godot.Collections.Array();
@@ -90,7 +91,7 @@ public partial class NetworkManager : Node
 	/// <summary>
 	/// Loads INI File.
 	/// </summary>
-	public static void LoadIni()
+	public void LoadIni()
 	{
 		var config = new ConfigFile();
 
@@ -107,7 +108,9 @@ public partial class NetworkManager : Node
 		maxPlayers = (int)config.GetValue("ServerConfig", "MaxPlayers");
 		friendlyFire = (bool)config.GetValue("ServerConfig", "FriendlyFire");
 		tBrSim = (bool)config.GetValue("ServerConfig", "TrueBreachSimulation");
-	}
+		//adminPassword = (string)config.GetValue("ServerConfig", "AdminPassword");
+		moderatorPassword = (string)config.GetValue("ServerConfig", "ModeratorPassword");
+    }
 
 	/// <summary>
 	/// General host method.
@@ -119,7 +122,11 @@ public partial class NetworkManager : Node
 		Multiplayer.MultiplayerPeer = peer;
 		LoadGame();
 		GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Hide();
-		GD.Print("Server started. Ready for connecting!");
+        if (!FileAccess.FileExists("user://ipbans.txt"))
+        {
+            TxtParser.Save("user://ipbans.txt", "");
+        }
+        GD.Print("Server started. Ready for connecting!");
     }
 
 	/// <summary>
@@ -167,6 +174,10 @@ public partial class NetworkManager : Node
     /// <param name="scene">Scene to load</param>
     void PrepareLevel(PackedScene scene)
 	{
+		if (!Multiplayer.IsServer())
+		{
+			RpcId(1, "CheckIfBanned", Multiplayer.GetUniqueId());
+		}
         if (GetNodeOrNull("Game") != null)
         {
             foreach (Node n in GetNode("Game").GetChildren())
@@ -203,7 +214,7 @@ public partial class NetworkManager : Node
 	/// <summary>
 	/// Emitted when server is disconnected.
 	/// </summary>
-	void ServerDisconnected()
+	internal void ServerDisconnected()
 	{
 		Multiplayer.MultiplayerPeer = null;
 		if (GetNodeOrNull("Game") != null)
@@ -214,5 +225,36 @@ public partial class NetworkManager : Node
 		GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Show();
 		GetTree().Root.GetNode<Control>("Main/CanvasLayer/PauseMenu").Hide();
         Input.MouseMode = Input.MouseModeEnum.Visible;
+    }
+	/// <summary>
+	/// Gets player's IP-address. PLEASE, CHECK CONSOLE FOR UNAUTHORIZED ACCESS
+	/// </summary>
+	/// <param name="id">Peer id</param>
+	/// <returns>Player's IP address</returns>
+    internal string GetPeer(int id)
+	{
+		GD.Print("SECURITY WARNING!!! SOMEONE GOT IP-ADDRESS");
+		return peer.GetPeer(id).GetRemoteAddress();
+	}
+    /// <summary>
+    /// Kicks a player. PLEASE, CHECK CONSOLE FOR UNAUTHORIZED ACCESS
+    /// </summary>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+	void Kick()
+	{
+        GD.Print("SECURITY WARNING!!! SOMEONE TRIED TO KICK A PLAYER");
+        ServerDisconnected();
+	}
+	/// <summary>
+	/// Server-side method, that checks if this IP banned
+	/// </summary>
+	/// <param name="id">Player's peer</param>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+	void CheckIfBanned(int id)
+	{
+        if (TxtParser.Load("user://ipbans.txt").Contains(GetPeer(id)))
+        {
+			RpcId(id, "Kick");
+        }
     }
 }

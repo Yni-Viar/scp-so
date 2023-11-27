@@ -25,6 +25,16 @@ public partial class PlayerScript : CharacterBody3D
 
     double decayTimer = 0d;
 
+    [Export] bool isModerator = false;
+    internal bool IsModerator 
+    {
+        get => isModerator;
+    }
+    /*internal bool IsAdmin
+    {
+        get => isAdmin;
+    }*/
+    //[Export] bool isAdmin = false;
     [Export] internal string playerName;
     [Export] internal string classKey;
     [Export] internal string className;
@@ -39,8 +49,6 @@ public partial class PlayerScript : CharacterBody3D
     [Export] internal string[] footstepSounds;
     [Export] internal string[] sprintSounds;
     [Export] internal Globals.Team team;
-
-    // Currently, ragdolls are unstable. (Or give me a sign, that they are working). So these "ragdolls" are just death animations.
     [Export] internal string ragdollSource;
     
     float gravity = 9.8f;
@@ -106,6 +114,11 @@ public partial class PlayerScript : CharacterBody3D
             RandomNumberGenerator rng = new RandomNumberGenerator();
             rng.Randomize();
             playerName = "Unknown player " + rng.Randi();
+        }
+
+        if (Multiplayer.IsServer())
+        {
+            isModerator = true;
         }
         if (IsMultiplayerAuthority())
         {
@@ -343,12 +356,15 @@ public partial class PlayerScript : CharacterBody3D
         }
         else
         {
-            if (GetNode<Node3D>("PlayerModel").GetChild(0).GetNodeOrNull<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand") != null)
+            if (GetNode<Node3D>("PlayerModel").GetChildOrNull<Node3D>(0) != null)
             {
-                Node thirdPersonHandRoot = GetNode<Node3D>("PlayerModel").GetChild(0).GetNode<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand");
-                foreach (Node itemUsedBefore in thirdPersonHandRoot.GetChildren())
+                if (GetNode<Node3D>("PlayerModel").GetChild(0).GetChild(0).GetNodeOrNull<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand") != null)
                 {
-                    itemUsedBefore.QueueFree();
+                    Node thirdPersonHandRoot = GetNode<Node3D>("PlayerModel").GetChild(0).GetNode<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand");
+                    foreach (Node itemUsedBefore in thirdPersonHandRoot.GetChildren())
+                    {
+                        itemUsedBefore.QueueFree();
+                    }
                 }
             }
             Node firstPersonHandRoot = GetNode<Marker3D>("PlayerHead/PlayerHand");
@@ -519,5 +535,12 @@ public partial class PlayerScript : CharacterBody3D
         GetParent().GetNode<Label>("PlayerUI/ClassInfo").Text = className;
         GetParent().GetNode<Label>("PlayerUI/ClassDescription").Text = classDescription;
         GetParent().GetNode<AnimationPlayer>("PlayerUI/AnimationPlayer").Play("forceclass");
+    }
+
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+    void GrantModeratorPrivilegies()
+    {
+        isModerator = !isModerator;
+        GD.Print("You " + (isModerator ? "log on into" : "log off from") + " into moderator's console");
     }
 }

@@ -55,10 +55,10 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 script = ExtResource("1_goxqf")
 
 [node name="PDA2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00720377, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.265485, 0)
 mesh = SubResource("ArrayMesh_o23sy")
 skeleton = NodePath("")
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(0.00112384, 0, 0.0974105, 0, 0.097417, 0, -0.0974105, 0, 0.00112384, 0.03008, 0.169122, -1.31484e-09)
+transform = Transform3D(0.00112384, 0, 0.0974105, 0, 0.097417, 0, -0.0974105, 0, 0.00112384, 0.03008, -0.0891595, -1.31484e-09)
 text = "Coming soon..."

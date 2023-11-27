@@ -155,7 +155,7 @@ text = "[b]v.0.7.0-dev[/b] [i](Alpha)[/i]
 - Class-Ds now have face randomization.
 - Fixed bug, where screen settings were not applied, when restarting.
 - Switched to Jolt physics, allowing to support ragdolls.
-- Current SCP-079 implementation changed to SCP-2522 \"hatbot.aic\". This does [b]not[/b] mean that SCP-079 will be removed from the game.
+- Current SCP-079 implementation changed to SCP-2522 \"hatbot.aic\".
 - Revamped door system (again), to make it more flexible.
 - Added weapon system.
 - Changed the shader for SCP-173, also removed useless Sketchy Shader.

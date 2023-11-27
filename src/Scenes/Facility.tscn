@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://bjcfcpj4q2im4"]
+[gd_scene load_steps=26 format=3 uid="uid://bjcfcpj4q2im4"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/FacilityManager.cs" id="1_p22hh"]
+[ext_resource type="Script" path="res://Scripts/Multiplayer/AdminCommands.cs" id="2_m73g2"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorLcz.cs" id="2_tjaxg"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorRz.cs" id="2_ya4qo"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorHcz.cs" id="4_rnfjk"]
@@ -14,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://byljcjbr7klo" path="res://MapGen/Resources/PD.tscn" id="11_jjunp"]
 [ext_resource type="Script" path="res://Scripts/FPSCounter.cs" id="12_xkdk3"]
 [ext_resource type="Script" path="res://Scripts/SkyEnabler.cs" id="13_b3jdh"]
+[ext_resource type="Theme" uid="uid://4k2un7nm7xc6" path="res://UITheme.tres" id="15_g2wd3"]
+[ext_resource type="Script" path="res://Scripts/AdminConsole.cs" id="15_y3cek"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_pw38j"]
 properties/0/path = NodePath("MapGenLcz:seed")
@@ -130,6 +133,9 @@ border_width_bottom = 2
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_p22hh")
+
+[node name="AdminCommands" type="Node" parent="."]
+script = ExtResource("2_m73g2")
 
 [node name="MapGenRz" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -240, 0)
@@ -268,6 +274,87 @@ libraries = {
 "": SubResource("AnimationLibrary_icbbs")
 }
 
+[node name="AdminConsole" type="Panel" parent="PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -344.0
+offset_top = -130.0
+offset_right = 344.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3wvqa")
+script = ExtResource("15_y3cek")
+
+[node name="Label" type="Label" parent="PlayerUI/AdminConsole"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 20.0
+offset_right = 80.0
+offset_bottom = 56.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("8_1slp4")
+theme_override_font_sizes/font_size = 32
+text = "Admin Console"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="PlayerUI/AdminConsole"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.338
+anchor_right = 0.5
+anchor_bottom = 0.338
+offset_left = -104.5
+offset_top = -17.88
+offset_right = 104.5
+offset_bottom = 18.12
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 16
+text = "Please, enter Password"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Password" type="LineEdit" parent="PlayerUI/AdminConsole"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -12.0
+offset_right = 216.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("15_g2wd3")
+
+[node name="ContinueBtn" type="Button" parent="PlayerUI/AdminConsole"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.79
+anchor_right = 0.5
+anchor_bottom = 0.79
+offset_left = -128.0
+offset_top = -15.4
+offset_right = 128.0
+offset_bottom = 15.6
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("15_g2wd3")
+text = "OK"
+
 [node name="PlayerListPanel" type="Panel" parent="PlayerUI"]
 visible = false
 layout_mode = 1
@@ -368,3 +455,4 @@ horizontal_alignment = 1
 
 [connection signal="body_entered" from="SkyEnabler" to="SkyEnabler" method="OnBodyEntered"]
 [connection signal="body_exited" from="SkyEnabler" to="SkyEnabler" method="OnBodyExited"]
+[connection signal="pressed" from="PlayerUI/AdminConsole/ContinueBtn" to="PlayerUI/AdminConsole" method="OnContinueBtnPressed"]

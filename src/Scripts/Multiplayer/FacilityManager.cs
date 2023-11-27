@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 public partial class FacilityManager : Node3D
 {
@@ -397,6 +398,15 @@ public partial class FacilityManager : Node3D
         {
             sfx.Stream = audio;
             sfx.Playing = true;
+        }
+    }
+
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+    void AskForModeratorPrivilegies(int id, string password)
+    {
+        if (password.GetHashCode() == GetTree().Root.GetNode<NetworkManager>("Main").GetModerator)
+        {
+            GetNode<PlayerScript>(id.ToString()).RpcId(id, "GrantModeratorPrivilegies");
         }
     }
 }
