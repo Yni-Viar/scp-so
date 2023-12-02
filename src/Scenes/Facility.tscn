@@ -1,18 +1,18 @@
-[gd_scene load_steps=26 format=3 uid="uid://bjcfcpj4q2im4"]
+[gd_scene load_steps=26 format=3 uid="uid://mu7j26by23js"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/FacilityManager.cs" id="1_p22hh"]
 [ext_resource type="Script" path="res://Scripts/Multiplayer/AdminCommands.cs" id="2_m73g2"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorLcz.cs" id="2_tjaxg"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorRz.cs" id="2_ya4qo"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorHcz.cs" id="4_rnfjk"]
-[ext_resource type="PackedScene" uid="uid://djlrm3q2y1ahx" path="res://MapGen/Resources/RoomAssets/DCCZ/dc_jail.tscn" id="5_22s8f"]
+[ext_resource type="PackedScene" uid="uid://30rp3hyln2b4" path="res://MapGen/Resources/RoomAssets/DCCZ/dc_jail.tscn" id="5_22s8f"]
 [ext_resource type="Environment" uid="uid://cpjkvy5s2l8ae" path="res://FacilityGraphics.tres" id="5_u1dtw"]
 [ext_resource type="Script" path="res://Scripts/PlayerUI.cs" id="6_l6v83"]
 [ext_resource type="Texture2D" uid="uid://bmw4fxmnmwhov" path="res://Assets/HUD/arrow.png" id="7_bwdaw"]
-[ext_resource type="PackedScene" uid="uid://bv1ely4btccco" path="res://MapGen/Resources/startroom.tscn" id="8_1kvjl"]
+[ext_resource type="PackedScene" uid="uid://dxk8akb87bv4u" path="res://MapGen/Resources/startroom.tscn" id="8_1kvjl"]
 [ext_resource type="FontFile" uid="uid://cqaasvtiakcsw" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="8_1slp4"]
-[ext_resource type="PackedScene" uid="uid://bo1bq3rj35a57" path="res://MapGen/Resources/surface_map.tscn" id="9_1te4l"]
-[ext_resource type="PackedScene" uid="uid://byljcjbr7klo" path="res://MapGen/Resources/PD.tscn" id="11_jjunp"]
+[ext_resource type="PackedScene" uid="uid://cn6ghiygcjiq3" path="res://MapGen/Resources/surface_map.tscn" id="9_1te4l"]
+[ext_resource type="PackedScene" uid="uid://cy72pcjf5uj72" path="res://MapGen/Resources/PD.tscn" id="11_jjunp"]
 [ext_resource type="Script" path="res://Scripts/FPSCounter.cs" id="12_xkdk3"]
 [ext_resource type="Script" path="res://Scripts/SkyEnabler.cs" id="13_b3jdh"]
 [ext_resource type="Theme" uid="uid://4k2un7nm7xc6" path="res://UITheme.tres" id="15_g2wd3"]
@@ -21,40 +21,31 @@
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_pw38j"]
 properties/0/path = NodePath("MapGenLcz:seed")
 properties/0/spawn = true
-properties/0/sync = false
-properties/0/watch = true
+properties/0/replication_mode = 2
 properties/1/path = NodePath("MapGenHcz:seed")
 properties/1/spawn = true
-properties/1/sync = false
-properties/1/watch = true
+properties/1/replication_mode = 2
 properties/2/path = NodePath("MapGenRz:seed")
 properties/2/spawn = true
-properties/2/sync = false
-properties/2/watch = true
+properties/2/replication_mode = 2
 properties/3/path = NodePath(".:playersList")
 properties/3/spawn = true
-properties/3/sync = false
-properties/3/watch = true
+properties/3/replication_mode = 2
 properties/4/path = NodePath(".:isRoundStarted")
 properties/4/spawn = true
-properties/4/sync = true
-properties/4/watch = false
+properties/4/replication_mode = 1
 properties/5/path = NodePath(".:classes")
 properties/5/spawn = true
-properties/5/sync = false
-properties/5/watch = true
+properties/5/replication_mode = 2
 properties/6/path = NodePath(".:rooms")
 properties/6/spawn = true
-properties/6/sync = false
-properties/6/watch = true
+properties/6/replication_mode = 2
 properties/7/path = NodePath(".:items")
 properties/7/spawn = true
-properties/7/sync = false
-properties/7/watch = true
+properties/7/replication_mode = 2
 properties/8/path = NodePath(".:friendlyFireFm")
 properties/8/spawn = true
-properties/8/sync = false
-properties/8/watch = true
+properties/8/replication_mode = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ttxax"]
 size = Vector3(6410.33, 1969.08, 6412.47)

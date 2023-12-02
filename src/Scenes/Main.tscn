@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhs1iuqg4qex4"]
+[gd_scene load_steps=6 format=3 uid="uid://dudoqqr06mig7"]
 
 [ext_resource type="PackedScene" uid="uid://b345bk26jamix" path="res://Scenes/MainMenu.tscn" id="1_5tg38"]
 [ext_resource type="Script" path="res://Scripts/Multiplayer/NetworkManager.cs" id="1_nxheq"]
-[ext_resource type="PackedScene" uid="uid://o6rnnciwmwvn" path="res://GDsh/InGameConsole.tscn" id="3_qd7e1"]
+[ext_resource type="PackedScene" uid="uid://cbu35skj5ws6e" path="res://GDsh/InGameConsole.tscn" id="3_qd7e1"]
 [ext_resource type="Script" path="res://Scripts/PauseMenu.cs" id="4_7jm2u"]
-[ext_resource type="PackedScene" uid="uid://cowux4ih7pibk" path="res://Scenes/LoadingScreen.tscn" id="5_vdvwj"]
+[ext_resource type="PackedScene" uid="uid://cspahtxouvnr2" path="res://Scenes/LoadingScreen.tscn" id="5_vdvwj"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_nxheq")

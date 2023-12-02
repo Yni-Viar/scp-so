@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cowux4ih7pibk"]
+[gd_scene load_steps=3 format=3 uid="uid://cspahtxouvnr2"]
 
 [ext_resource type="Script" path="res://Scripts/LoadingScreen.cs" id="1_2iio4"]
 [ext_resource type="Theme" uid="uid://4k2un7nm7xc6" path="res://UITheme.tres" id="2_v4mot"]

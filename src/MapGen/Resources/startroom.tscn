@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bv1ely4btccco"]
+[gd_scene load_steps=8 format=3 uid="uid://dxk8akb87bv4u"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_p1oib"]
 size = Vector3(5, 0.1, 5)

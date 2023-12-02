@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://vqy0huawb7gl"]
+[gd_scene load_steps=6 format=3 uid="uid://dfvbgk0kgnddw"]
 
 [ext_resource type="Texture2D" uid="uid://dcrf81txc263c" path="res://Assets/Particles/smokeHume.png" id="1_rovs0"]
 [ext_resource type="Script" path="res://Decals/Particle.cs" id="2_74scn"]

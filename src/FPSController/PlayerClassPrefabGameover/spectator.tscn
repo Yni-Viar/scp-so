@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdb0mppco53f"]
+[gd_scene load_steps=2 format=3 uid="uid://bqutagr4mhmu2"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerClassScript/SpectatorPlayerScript.cs" id="1_ljwkm"]
 

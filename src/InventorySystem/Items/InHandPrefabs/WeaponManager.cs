@@ -18,7 +18,7 @@ public partial class WeaponManager : ItemAction
     [Export] float damage;
     [Export] float reloadingTime;
     [Export] bool isAuto;
-    [Export] float shotsPerSecond;
+    [Export] float weaponCooldown;
     float fireCooldown;
 
     //Zooming
@@ -34,7 +34,6 @@ public partial class WeaponManager : ItemAction
     Vector3 recoilTarget;
 
     //Godot-specific variables
-    [Export] string bulletDecalPath = "res://Decals/shot.tscn";
     [Export] Godot.Collections.Array<AudioStream> poofSounds = new Godot.Collections.Array<AudioStream>();
     [Export] AudioStream reloadSound;
     Camera3D camera;
@@ -94,17 +93,6 @@ public partial class WeaponManager : ItemAction
     /// <param name="normal">Normal of the point (for rotating the bullet to player)</param>
     void SpawnDecal(Vector3 point, Vector3 normal)
     {
-        CpuParticles3D decal = ResourceLoader.Load<PackedScene>(bulletDecalPath).Instantiate<CpuParticles3D>();
-        GetTree().Root.GetNode<Node3D>("Main/Game/Decals/").AddChild(decal);
-        decal.GlobalPosition = point;
-        if (normal == Vector3.Down)
-        {
-            decal.LookAt(normal, Vector3.Down);
-        }
-        else
-        {
-            decal.LookAt(normal);
-        }
         CpuParticles3D smokeDecal = ResourceLoader.Load<PackedScene>("res://Decals/smoke.tscn").Instantiate<CpuParticles3D>();
         GetTree().Root.GetNode<Node3D>("Main/Game/Decals/").AddChild(smokeDecal);
         smokeDecal.GlobalPosition = point;
@@ -126,8 +114,7 @@ public partial class WeaponManager : ItemAction
         if (rayCast.IsColliding() && GetParent().GetParent().GetParent<PlayerScript>().GetNode<AmmoSystem>("AmmoSystem").CurrentAmmo[ammoType] > 0)
         {
             var collider = rayCast.GetCollider();
-            GD.Print(rayCast.GetCollider());
-            if (collider is PlayerScript playerScript)
+            if (collider is PlayerScript playerScript && playerScript.Name != Multiplayer.GetUniqueId().ToString())
             {
                 //Deplete HP
                 if (playerScript.classKey == "scp106")
@@ -148,6 +135,7 @@ public partial class WeaponManager : ItemAction
             //Play animation and audio
             audio.Stream = poofSounds[rng.RandiRange(0, poofSounds.Count - 1)];
             audio.Play();
+            fireCooldown = weaponCooldown;
         }
         Vector3 recoilVector = Vector3.Zero.Lerp(recoilTarget, recoilScale);
         GetParent().GetParent().GetParent<PlayerScript>().GetNode<Node3D>("PlayerHead").Rotation.Lerp(recoilVector, recoilSpeed);
