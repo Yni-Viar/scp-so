@@ -8,13 +8,17 @@ public partial class NetworkManager : Node
 	internal static int maxPlayers;
 	internal static bool friendlyFire;
 	string moderatorPassword = "";
-	//string adminPassword = "";
+	string adminPassword;
 	internal int GetModerator
 	{
 		get => moderatorPassword.GetHashCode();
 	}
+    internal int GetAdmin
+    {
+        get => adminPassword.GetHashCode();
+    }
     //True breach simulation - if enabled, second SCP will be 2522 and if currentPlayerCounter % 8 equals 4 - then a new SCP is present in round.
-	//Else, players becomes SCP only if is second player or multiple of 8.
+    //Else, players becomes SCP only if is second player or multiple of 8.
     internal static bool tBrSim; 
 
 	ENetMultiplayerPeer peer;
@@ -108,7 +112,7 @@ public partial class NetworkManager : Node
 		maxPlayers = (int)config.GetValue("ServerConfig", "MaxPlayers");
 		friendlyFire = (bool)config.GetValue("ServerConfig", "FriendlyFire");
 		tBrSim = (bool)config.GetValue("ServerConfig", "TrueBreachSimulation");
-		//adminPassword = (string)config.GetValue("ServerConfig", "AdminPassword");
+		adminPassword = (string)config.GetValue("ServerConfig", "AdminPassword");
 		moderatorPassword = (string)config.GetValue("ServerConfig", "ModeratorPassword");
     }
 

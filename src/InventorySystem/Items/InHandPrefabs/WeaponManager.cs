@@ -40,41 +40,58 @@ public partial class WeaponManager : ItemAction
     Camera3D camera;
     AudioStreamPlayer3D audio;
     RayCast3D rayCast;
+    AnimationPlayer anim;
+    bool isPlayerScript = false; //checks if this is first-person model.
     
 
     internal override void OnStart()
     {
         recoilTarget = new Vector3 { X = rng.RandiRange(-20, 20), Y = rng.RandiRange(0, 70), Z = rng.RandiRange(-20, 20)};
         audio = GetNode<AudioStreamPlayer3D>("WeaponSound");
-        if (GetParent().GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
+        isPlayerScript = GetParent().GetParent().GetParentOrNull<PlayerScript>() != null;
+        if (isPlayerScript)
         {
-            camera = GetParent().GetParent().GetNode<Camera3D>("PlayerCamera");
-            rayCast = GetNode<RayCast3D>("ShootingRange");
+            if (GetParent().GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
+            {
+                camera = GetParent().GetParent().GetNode<Camera3D>("PlayerCamera");
+                rayCast = GetNode<RayCast3D>("ShootingRange");
+            }
         }
     }
 
     internal override void OnUpdate(double delta)
     {
-        if (GetParent().GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
+        if (isPlayerScript)
         {
-            if (isAuto ? Input.IsActionPressed("weapon_shoot") : Input.IsActionJustPressed("weapon_shoot"))
+            if (GetParent().GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
             {
-                if (IsDeductCooldownEnded())
+                if (isAuto ? Input.IsActionPressed("weapon_shoot") : Input.IsActionJustPressed("weapon_shoot"))
                 {
-                    Rpc("Shoot");
+                    if (IsDeductCooldownEnded())
+                    {
+                        Rpc("Shoot");
+                    }
                 }
-            }
-            if (Input.IsActionJustPressed("weapon_zoom") && allowZoom)
-            {
-                UpdateFov();
-            }
-            if (fireCooldown > 0)
-            {
-                fireCooldown -= (float)delta;
+                if (Input.IsActionJustPressed("weapon_zoom") && allowZoom)
+                {
+                    UpdateFov();
+                }
+                if (Input.IsActionJustPressed("weapon_reload") && GetParent().GetParent().GetParent<PlayerScript>().GetNode<AmmoSystem>("AmmoSystem").ammo[ammoType] > 0)
+                {
+                    Rpc("Reload");
+                }
+                if (fireCooldown > 0)
+                {
+                    fireCooldown -= (float)delta;
+                }
             }
         }
     }
-
+    /// <summary>
+    /// Spawn bullet shot (if is not a player)
+    /// </summary>
+    /// <param name="point">Point, where bullet collided</param>
+    /// <param name="normal">Normal of the point (for rotating the bullet to player)</param>
     void SpawnDecal(Vector3 point, Vector3 normal)
     {
         CpuParticles3D decal = ResourceLoader.Load<PackedScene>(bulletDecalPath).Instantiate<CpuParticles3D>();
@@ -100,45 +117,64 @@ public partial class WeaponManager : ItemAction
             smokeDecal.LookAt(normal);
         }
     }
-
+    /// <summary>
+    /// The main shooting mechanic
+    /// </summary>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void Shoot()
     {
-        if (rayCast.IsColliding())
+        if (rayCast.IsColliding() && GetParent().GetParent().GetParent<PlayerScript>().GetNode<AmmoSystem>("AmmoSystem").CurrentAmmo[ammoType] > 0)
         {
             var collider = rayCast.GetCollider();
             GD.Print(rayCast.GetCollider());
             if (collider is PlayerScript playerScript)
             {
-                
+                //Deplete HP
                 if (playerScript.classKey == "scp106")
                 {
-                    playerScript.RpcId(int.Parse(playerScript.Name), "HealthManage", -damage / GlobalPosition.DistanceTo(playerScript.GlobalPosition) / 10, "Shot by " + Name);
+                    playerScript.RpcId(int.Parse(playerScript.Name), "HealthManage", -damage / GlobalPosition.DistanceTo(playerScript.GlobalPosition) / 100, "Shot by " + Name);
                 }
                 else
                 {
                     playerScript.RpcId(int.Parse(playerScript.Name), "HealthManage", -damage / GlobalPosition.DistanceTo(playerScript.GlobalPosition), "Shot by " + Name);
                 }
-                audio.Stream = poofSounds[rng.RandiRange(0, poofSounds.Count)];
-                audio.Play();
-                // do animation (in future)
             }
             else
             {
                 SpawnDecal(rayCast.GetCollisionPoint() + rayCast.GetCollisionNormal() * 0.9f, rayCast.GetCollisionNormal()); //Hit point
             }
+            //Minus one bullet
+            GetParent().GetParent().GetParent<PlayerScript>().GetNode<AmmoSystem>("AmmoSystem").CurrentAmmo[ammoType]--;
+            //Play animation and audio
+            audio.Stream = poofSounds[rng.RandiRange(0, poofSounds.Count - 1)];
+            audio.Play();
         }
         Vector3 recoilVector = Vector3.Zero.Lerp(recoilTarget, recoilScale);
-        Vector3 recoilResult = GetParent().GetParent().GetParent<PlayerScript>().GetNode<Node3D>("PlayerHead").Rotation.Lerp(recoilVector, recoilSpeed);
+        GetParent().GetParent().GetParent<PlayerScript>().GetNode<Node3D>("PlayerHead").Rotation.Lerp(recoilVector, recoilSpeed);
     }
-
-    //[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    /// <summary>
+    /// Reloading mechanic.
+    /// </summary>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void Reload()
     {
-        audio.Stream = reloadSound;
-        audio.Play();
+        //The main reloading system.
+        GetParent().GetParent().GetParent<PlayerScript>().GetNode<AmmoSystem>("AmmoSystem").ReloadAmmo(ammoType, maxAmmo);
+        //Sounds
+        if (GetParent().GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
+        {
+            SetState("reload");
+        }
+        if (reloadSound != null)
+        {
+            audio.Stream = reloadSound;
+            audio.Play();
+        }
     }
-
+    /// <summary>
+    /// Check fire cooldown
+    /// </summary>
+    /// <returns>If is cooldown - then false, else true</returns>
     bool IsDeductCooldownEnded()
     {
         if (fireCooldown > 0)
@@ -155,10 +191,24 @@ public partial class WeaponManager : ItemAction
     {
         base.OnUse(player);
     }
-
+    /// <summary>
+    /// Changes player FOV
+    /// </summary>
     void UpdateFov()
     {
         camera.Fov = Mathf.Lerp(zoomed ? zoomFov : camera.Fov, zoomed ? camera.Fov : zoomFov, fovAjustingSpeed);
         zoomed = !zoomed;
+    }
+    /// <summary>
+    /// Set animation to a weapon.
+    /// </summary>
+    /// <param name="s">Animation name</param>
+    private void SetState(string s)
+    {
+        if (GetNode<AnimationPlayer>("AnimationPlayer").CurrentAnimation != s || !GetNode<AnimationPlayer>("AnimationPlayer").IsPlaying())
+        {
+            //Change the animation.
+            GetNode<AnimationPlayer>("AnimationPlayer").Play(s);
+        }
     }
 }

@@ -213,6 +213,9 @@ public partial class FacilityManager : Node3D
         GetNode<PlayerScript>(playerName).health = classData.Health;
         GetNode<PlayerScript>(playerName).currentHealth = classData.Health;
         GetNode<PlayerScript>(playerName).team = classData.Team;
+
+        GetNode<AmmoSystem>(playerName + "/AmmoSystem").ammo = classData.Ammo;
+
         if (Multiplayer.IsServer())
         {
             GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "CameraManager", !classData.CustomCamera);

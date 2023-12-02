@@ -48,7 +48,6 @@ public partial class GuardPlayerScript : HumanPlayerScript
             //item in hand animation
             if (GetNode<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand").GetChildCount() > 0)
             {
-                GD.Print(GetNode<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand").GetChildCount());
                 Rpc("SetState", "items_blend", "blend_amount", 1.0f);
             }
             else

@@ -6,7 +6,7 @@ using System;
 public partial class Door : Node3D
 {
     [Export] bool canOpen = true;
-	[Export] bool isOpened = false;
+    [Export] bool isOpened = false;
     [Export] string[] openDoorSounds;
     [Export] string[] closeDoorSounds;
     [Export] string lockDoorSound;
@@ -25,13 +25,13 @@ public partial class Door : Node3D
         {
             DoorController(keycard);
         }
-		else
+        else
         {
             AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");
             sfx.Stream = GD.Load<AudioStream>("res://Sounds/Interact/Button2.ogg");
             sfx.Play();
         }
-	}
+    }
     /// <summary>
     /// If DoorControl check is successful, open the door (or close)
     /// </summary>
@@ -81,20 +81,20 @@ public partial class Door : Node3D
         await ToSignal(GetTree().CreateTimer(5.0), "timeout");
         canOpen = true;
     }
-	
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-        if (isOpened)
+    
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
+        animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+        if (IsOpened)
         {
             DoorOpen();
         }
     }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
+    {
     }
 }
 

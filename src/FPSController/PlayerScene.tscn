@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bxr0p8cc8k8ud"]
+[gd_scene load_steps=17 format=3 uid="uid://bxr0p8cc8k8ud"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerScript.cs" id="1_tw8h1"]
 [ext_resource type="PackedScene" uid="uid://gom6tjixj21n" path="res://InventorySystem/InventoryContainer.tscn" id="2_6uw7r"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" path="res://Shaders/ToonShader/toon.gdshader" id="3_kc8a4"]
 [ext_resource type="Material" uid="uid://ci0m68xlui2q5" path="res://Shaders/EdgeDetectShade.tres" id="4_fjjm1"]
 [ext_resource type="Material" uid="uid://ckvs50m51c56c" path="res://Shaders/DitherShade.tres" id="4_kaaud"]
+[ext_resource type="Script" path="res://FPSController/AmmoSystem.cs" id="7_5f3gu"]
 [ext_resource type="Script" path="res://FPSController/PlayerSync.cs" id="10_8dn5b"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_wuaka"]
@@ -69,8 +70,12 @@ properties/6/sync = false
 properties/6/watch = true
 properties/7/path = NodePath(".:isModerator")
 properties/7/spawn = true
-properties/7/sync = true
-properties/7/watch = false
+properties/7/sync = false
+properties/7/watch = true
+properties/8/path = NodePath(".:isAdmin")
+properties/8/spawn = true
+properties/8/sync = false
+properties/8/watch = true
 
 [sub_resource type="Animation" id="Animation_i7x7w"]
 resource_name = "Walk"
@@ -160,6 +165,10 @@ max_distance = 2.3
 visible = false
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="AmmoSystem" type="Node" parent="."]
+script = ExtResource("7_5f3gu")
+currentAmmoLength = 3
 
 [node name="PlayerSync" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_6h10r")

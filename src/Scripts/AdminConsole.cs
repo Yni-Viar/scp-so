@@ -50,7 +50,7 @@ public partial class AdminConsole : Panel
             GetTree().Root.GetNode<InGameConsole>("Main/CanvasLayer/InGameConsole").Visible = true;
             if (GetParentOrNull<PlayerUI>() != null)
             {
-                GetParent<PlayerUI>().SpecialScreen = GetTree().Root.GetNode<InGameConsole>("CanvasLayer/InGameConsole").Visible;
+                GetParent<PlayerUI>().SpecialScreen = GetTree().Root.GetNode<InGameConsole>("Main/CanvasLayer/InGameConsole").Visible;
             }
         }
     }

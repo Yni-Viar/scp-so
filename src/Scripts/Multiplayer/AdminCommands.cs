@@ -7,7 +7,7 @@ public partial class AdminCommands : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-        //GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("admin", new Callable(this, "AdminGrant"), "Grants admin privilegies (1 argument - password)");
+        GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("admin_logon", new Callable(this, "AdminGrant"), "Grants admin privilegies (1 argument - password)");
         GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("admin_ban", new Callable(this, "AdminBan"), "Bans a player (1 argument - peer id)");
         GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("admin_kick", new Callable(this, "AdminKick"), "Kick a player (1 argument - peer id)");
         GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("get_player_peers", new Callable(this, "GetPeers"), "Gets players peers");
@@ -18,7 +18,7 @@ public partial class AdminCommands : Node
 	{
 	}
     // Bugged admin grant.
-    /*string AdminGrant(string[] args)
+    string AdminGrant(string[] args)
     {
         if (string.IsNullOrEmpty(args[0]))
         {
@@ -26,10 +26,10 @@ public partial class AdminCommands : Node
         }
         else
         {
-            GetTree().Root.GetNode<PlayerScript>("Main/Game/" + Multiplayer.GetUniqueId()).RpcId(1, "GrantAdminPrivilegies", true, args[0]);
+            AskForAdminConnector(args[0]);
             return "...";
         }
-    }*/
+    }
     /// <summary>
     /// GDSh command, which bans a player.
     /// </summary>
@@ -37,7 +37,7 @@ public partial class AdminCommands : Node
     /// <returns>Success</returns>
     string AdminBan(string[] args)
     {
-        if (/*GetTree().Root.GetNode<PlayerScript>("Main/Game/" + Multiplayer.GetUniqueId()).IsAdmin*/ Multiplayer.IsServer())
+        if (GetTree().Root.GetNode<PlayerScript>("Main/Game/" + Multiplayer.GetUniqueId()).IsAdmin)
         {
             if (string.IsNullOrEmpty(args[0]))
             {
@@ -64,7 +64,7 @@ public partial class AdminCommands : Node
     /// <returns>Success</returns>
     string AdminKick(string[] args)
     {
-        if (/*GetTree().Root.GetNode<PlayerScript>("Main/Game/" + Multiplayer.GetUniqueId()).IsAdmin*/ Multiplayer.IsServer())
+        if (GetTree().Root.GetNode<PlayerScript>("Main/Game/" + Multiplayer.GetUniqueId()).IsAdmin)
         {
             if (string.IsNullOrEmpty(args[0]))
             {
@@ -110,5 +110,23 @@ public partial class AdminCommands : Node
         string s = TxtParser.Load("user://ipbans.txt");
         s += "\n" + ip;
         TxtParser.Save("user://ipbans.txt", s);
+    }
+    /// <summary>
+    /// Server-side RPC method, checks admin password.
+    /// </summary>
+    /// <param name="peerId">Id of peer, who called</param>
+    /// <param name="password">Admin password</param>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+    void AskForAdmin(int peerId, string password)
+    {
+        if (password.GetHashCode() == GetTree().Root.GetNode<NetworkManager>("Main").GetAdmin)
+        {
+            GetNode<PlayerScript>(peerId.ToString()).RpcId(peerId, "GrantAdminPrivilegies");
+        }
+    }
+
+    void AskForAdminConnector(string password)
+    {
+        RpcId(1, "AskForAdmin", Multiplayer.GetUniqueId(), password);
     }
 }

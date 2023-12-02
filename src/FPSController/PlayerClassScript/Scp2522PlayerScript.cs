@@ -82,7 +82,7 @@ public partial class Scp2522PlayerScript : ComputerPlayerScript
         }
         else
         {
-            currentCam = "Main/Game/MapGenLcz/LC_cont1_079/cctv";
+            currentCam = "Main/Game/MapGenRz/RZ_room2_servers/cctv2";
             GetTree().Root.GetNode<CctvCamera>(currentCam).Initialize(true, this);
         }
     }

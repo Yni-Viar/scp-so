@@ -30,11 +30,12 @@ public partial class PlayerScript : CharacterBody3D
     {
         get => isModerator;
     }
-    /*internal bool IsAdmin
+    [Export] bool isAdmin = false;
+    internal bool IsAdmin
     {
         get => isAdmin;
-    }*/
-    //[Export] bool isAdmin = false;
+    }
+    
     [Export] internal string playerName;
     [Export] internal string classKey;
     [Export] internal string className;
@@ -115,11 +116,12 @@ public partial class PlayerScript : CharacterBody3D
             rng.Randomize();
             playerName = "Unknown player " + rng.Randi();
         }
-
+        // Grant admin and moderator privilegies
         if (Multiplayer.IsServer())
         {
-            isModerator = true;
+            isAdmin = isModerator = true;
         }
+        // Player initialization.
         if (IsMultiplayerAuthority())
         {
             GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = true;
@@ -541,6 +543,13 @@ public partial class PlayerScript : CharacterBody3D
     void GrantModeratorPrivilegies()
     {
         isModerator = !isModerator;
+        GD.Print("You " + (isModerator ? "log on into" : "log off from") + " into moderator's console");
+    }
+
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+    void GrantAdminPrivilegies()
+    {
+        isAdmin = !isAdmin;
         GD.Print("You " + (isModerator ? "log on into" : "log off from") + " into moderator's console");
     }
 }

@@ -5,7 +5,7 @@ public partial class ClassDPlayerScript : HumanPlayerScript
 {
     internal override void OnStart()
     {
-        Rpc("SetRandomSkin");
+        Rpc("SetRandomFace");
     }
     internal override void OnUpdate(double delta)
 	{

@@ -126,7 +126,15 @@ public partial class Scp173PlayerScript : Node3D
         ShaderMaterial mat = new ShaderMaterial();
         mat.Shader = ResourceLoader.Load<Shader>("res://Shaders/MixShader/mix.gdshader");
         mat.SetShaderParameter("texture_a", ResourceLoader.Load<Texture2D>("res://Assets/Models/scp173-BaseTexture/scp173NEO_low_Merged_PM3D_Sphere3D4_AlbedoTransparency.png"));
-        mat.SetShaderParameter("texture_b", ResourceLoader.Load<Texture2D>("res://Assets/Models/scp173-FaceTextures/face_" + rng.RandiRange(1, 10).ToString() + ".png"));
+        if (((int)Time.GetDateDictFromSystem(true)["month"]) == (int)Time.Month.December)
+        {
+            mat.SetShaderParameter("texture_b", ResourceLoader.Load<Texture2D>("res://Assets/Models/scp173-FaceTextures/face_festive_" + rng.RandiRange(1, 3).ToString() + ".png"));
+        }
+        //else if (((int)Time.GetDateDictFromSystem(true)["month"]) == (int)Time.Month.October) //to be implemented
+        else
+        {
+            mat.SetShaderParameter("texture_b", ResourceLoader.Load<Texture2D>("res://Assets/Models/scp173-FaceTextures/face_" + rng.RandiRange(1, 10).ToString() + ".png"));
+        }
         GetNode<MeshInstance3D>("SCP173_Rig/Skeleton3D/scp173_MESH").MaterialOverride = mat;
     }
 }

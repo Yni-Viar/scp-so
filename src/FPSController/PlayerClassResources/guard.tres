@@ -22,5 +22,6 @@ CustomSpawn = false
 DefaultCameraPos = 0.969
 CustomCamera = false
 CustomView = ""
-PreloadedItems = PackedStringArray("res://InventorySystem/Items/key3.tres", "res://InventorySystem/Items/pda.tres", "res://InventorySystem/Items/medkit.tres")
+PreloadedItems = PackedStringArray("res://InventorySystem/Items/key3.tres", "res://InventorySystem/Items/pda.tres", "res://InventorySystem/Items/medkit.tres", "res://InventorySystem/Items/com16.tres")
+Ammo = PackedInt32Array(45, 0, 0)
 ClassColor = Color(0.498039, 0.498039, 0.498039, 0.847059)

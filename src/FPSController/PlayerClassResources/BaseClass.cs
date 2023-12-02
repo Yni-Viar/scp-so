@@ -61,6 +61,9 @@ public partial class BaseClass : Resource
     public string[] PreloadedItems { get; set; }
 
     [Export]
+    public int[] Ammo {  get; set; }
+
+    [Export]
     public Color ClassColor { get; set; }
 
     // Make sure you provide a parameterless constructor.
@@ -68,12 +71,12 @@ public partial class BaseClass : Resource
     // constructor with all default values.
     // Without a parameterless constructor, Godot will have problems
     // creating and editing your resource via the inspector.
-    public BaseClass() : this(null, null, null, null, null, 0f, 0f, true, true, null, null, -1, Globals.Team.SPT, 100f, false, false, null, null, 0.969f, new Color(1, 1, 1)) { }
+    public BaseClass() : this(null, null, null, null, null, 0f, 0f, true, true, null, null, -1, Globals.Team.SPT, 100f, false, false, null, null, 0.969f, null, new Color(1, 1, 1)) { }
 
     public BaseClass(string className, string classDescription, string[] spawnPoints, string playerModelSource, string playerRagdollSource,
         float speed, float jump, bool sprintEnabled, bool moveSoundsEnabled, string[] footstepSounds,
         string[] sprintSounds, int scpNumber, Globals.Team team, float health, bool customSpawn, bool customCamera, string customView,
-        string[] preloadedItems, float defaultCameraPos, Color classColor)
+        string[] preloadedItems, float defaultCameraPos, int[] ammo, Color classColor)
     {
         ClassName = className;
         ClassDescription = classDescription;
@@ -94,6 +97,7 @@ public partial class BaseClass : Resource
         CustomView = customView;
         PreloadedItems = preloadedItems ?? System.Array.Empty<string>();
         DefaultCameraPos = defaultCameraPos;
+        Ammo = ammo ?? System.Array.Empty<int>();
         ClassColor = classColor;
     }
 }

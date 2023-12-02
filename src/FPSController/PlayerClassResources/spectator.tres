@@ -23,4 +23,5 @@ DefaultCameraPos = 0.969
 CustomCamera = false
 CustomView = ""
 PreloadedItems = PackedStringArray()
+Ammo = PackedInt32Array(0, 0, 0)
 ClassColor = Color(0, 0, 0.247059, 0.847059)

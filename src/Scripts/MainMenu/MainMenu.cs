@@ -8,17 +8,26 @@ public partial class MainMenu : Control
     public override void _Ready()
     {
         Settings settings = GetTree().Root.GetNode<Settings>("Settings");
-        if (Globals.currentStage == Globals.Stages.release)
+        switch (Globals.currentStage)
         {
-            GetNode<TextureRect>("Background").Texture = ResourceLoader.Load<Texture2D>("res://Assets/Menu/MainMenuBackground.png");
+            case Globals.Stages.release:
+                GetNode<TextureRect>("Background").Texture = ResourceLoader.Load<Texture2D>("res://Assets/Menu/MainMenuBackground.png");
+                break;
+            case Globals.Stages.testing:
+                GetNode<TextureRect>("Background").Texture = ResourceLoader.Load<Texture2D>("res://Assets/Menu/MainMenuBackgroundTesting.png");
+                break;
+            default:
+                GetNode<TextureRect>("Background").Texture = ResourceLoader.Load<Texture2D>("res://Assets/Menu/MainMenuBackgroundIndev.png");
+                break;
         }
-        else if (Globals.currentStage == Globals.Stages.testing)
+
+        if (((int)Time.GetDateDictFromSystem(true)["month"]) == (int)Time.Month.December)
         {
-            GetNode<TextureRect>("Background").Texture = ResourceLoader.Load<Texture2D>("res://Assets/Menu/MainMenuBackgroundTesting.png");
+            GetNode<TextureRect>("Logo").Texture = ResourceLoader.Load<Texture2D>("res://icon_festive_256.png");
         }
         else
         {
-            GetNode<TextureRect>("Background").Texture = ResourceLoader.Load<Texture2D>("res://Assets/Menu/MainMenuBackgroundIndev.png");
+            GetNode<TextureRect>("Logo").Texture = ResourceLoader.Load<Texture2D>("res://icon_256.png");
         }
 
         GetWindow().Size = settings.WindowSizeSetting;
