@@ -277,20 +277,21 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2mgh3")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4m1sd"]
-size = Vector3(0.142148, 0.492321, 0.410024)
+size = Vector3(0.142148, 0.588168, 0.410024)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ku8xv"]
-size = Vector3(0.0709954, 0.203291, 0.798557)
+size = Vector3(0.0709954, 0.317588, 1.05846)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eftq0"]
-size = Vector3(0.0725498, 0.212732, 0.339018)
+size = Vector3(0.0725498, 0.448142, 0.667556)
 
 [node name="mtfrifle" type="RigidBody3D"]
+collision_layer = 8
 script = ExtResource("1_ove0h")
 itemResource = ExtResource("2_5s3dv")
 
 [node name="Mesh" type="Node3D" parent="."]
-transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 0, 0)
+transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0, 0)
 
 [node name="M4BoltCharge" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(0.167242, 0, 0, 0, 0.167241, 0, 0, 0, 0.167241, 0, 0, -2.68495)
@@ -328,13 +329,13 @@ mesh = SubResource("ArrayMesh_1adev")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0497512, -0.21085)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0247101, -0.21085)
 shape = SubResource("BoxShape3D_4m1sd")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011811, 0.199005, 0.329305)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011811, 0.283645, 0.516988)
 shape = SubResource("BoxShape3D_ku8xv")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0122264, 0.101871, -0.578062)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0122264, 0.0866626, -0.742331)
 shape = SubResource("BoxShape3D_eftq0")

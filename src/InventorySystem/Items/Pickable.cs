@@ -5,6 +5,7 @@ public partial class Pickable : RigidBody3D
     [Export] internal Item itemResource;
     PlayerScript holder;
     // Note for Yni: if the RigidBody keeps falling, check rotation!
+    // December 2023 edit: idk, is this Godot Physics issue... Because I switched to Godot Jolt!
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -41,10 +42,10 @@ public partial class Pickable : RigidBody3D
     void PickUpRpc(string invPath)
     {
         // This opens JSON, find item and add it to inventory.
-        if (ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json").ContainsKey(itemResource.InternalName))
+        if (ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json", Globals.ItemType.item).ContainsKey(itemResource.InternalName))
         {
             //after trimming, we will get an item from json.
-            GetNode<Inventory>(invPath).AddItem(ResourceLoader.Load(ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json")[SceneFilePath.TrimSuffix(".tscn").TrimPrefix("res://InventorySystem/Items/PickablePrefabs/")]));
+            GetNode<Inventory>(invPath).AddItem(ResourceLoader.Load(ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json", Globals.ItemType.item)[SceneFilePath.TrimSuffix(".tscn").TrimPrefix("res://InventorySystem/Items/PickablePrefabs/")]));
             Rpc("DestroyPickedItem");
 
         }

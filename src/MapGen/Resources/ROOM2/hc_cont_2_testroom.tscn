@@ -10,7 +10,7 @@
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat6.006.tres" id="7_b1wju"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat7.003.tres" id="8_qbvi8"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat8.003.tres" id="9_ljbe1"]
-[ext_resource type="PackedScene" uid="uid://cgaomav6767mx" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="11_qnlhu"]
+[ext_resource type="PackedScene" uid="uid://dn7xcp8e6o86h" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="11_qnlhu"]
 [ext_resource type="Texture2D" uid="uid://b4mexeiu2kw0e" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_Color.png" id="12_oc6jb"]
 [ext_resource type="Texture2D" uid="uid://jal6u6cusnv3" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_Metalness-Metal032_2K_Roughness.png" id="13_5b8gg"]
 [ext_resource type="Texture2D" uid="uid://bhv585dwr87xd" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_NormalGL.png" id="14_p8wi3"]
@@ -411,7 +411,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.86265e-09, 2.12435, -0.022
 shape = SubResource("BoxShape3D_uqcld")
 
 [node name="key2" parent="." instance=ExtResource("17_m7qc2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.67851, -12.79, 0.244162)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.67851, -12.4833, 0.244162)
 
 [node name="cctv" parent="." instance=ExtResource("18_hjlf8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22431, 7.36, -1.17912)

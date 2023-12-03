@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://biunyxukq3csc"]
+[gd_scene load_steps=18 format=3 uid="uid://biunyxukq3csc"]
 
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat03/mat0.002.tres" id="1_bifxl"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat03/mat1.002.tres" id="2_n23el"]
@@ -9,9 +9,10 @@
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat03/mat6.002.tres" id="7_mrv55"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat03/mat7.002.tres" id="8_m2mkt"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat03/mat8.002.tres" id="9_euslu"]
-[ext_resource type="PackedScene" uid="uid://bi12ev7yropli" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="10_3b8a8"]
+[ext_resource type="PackedScene" uid="uid://b7xwwuyi26i62" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="10_3b8a8"]
 [ext_resource type="PackedScene" uid="uid://crhayrvdwdo1q" path="res://MapGen/Resources/Doors/DoorLCZ.tscn" id="11_aliwl"]
 [ext_resource type="PackedScene" uid="uid://c8brqgry3c6r2" path="res://MapGen/Resources/Cameras/cctv_rz.tscn" id="12_hl0bv"]
+[ext_resource type="PackedScene" uid="uid://b0wia77m5lgkk" path="res://Assets/Ammo/9_mm.tscn" id="13_kt68i"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_rjygh"]
 _surfaces = [{
@@ -282,3 +283,9 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CheckArea"]
 shape = SubResource("BoxShape3D_gsmqj")
+
+[node name="Ammo_9mm" parent="." instance=ExtResource("13_kt68i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8024, 0.136994, -3.16042)
+
+[node name="Ammo_9mm2" parent="." instance=ExtResource("13_kt68i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8092, 0.125503, -3.6936)

@@ -119,7 +119,7 @@ public partial class WeaponManager : ItemAction
                 //Deplete HP
                 if (playerScript.classKey == "scp106")
                 {
-                    playerScript.RpcId(int.Parse(playerScript.Name), "HealthManage", -damage / GlobalPosition.DistanceTo(playerScript.GlobalPosition) / 100, "Shot by " + Name);
+                    playerScript.RpcId(int.Parse(playerScript.Name), "HealthManage", -damage / GlobalPosition.DistanceTo(playerScript.GlobalPosition) / 10, "Shot by " + Name);
                 }
                 else
                 {

@@ -14,7 +14,8 @@ public partial class Commands : Node
             GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("classlist", new Callable(this, "ClassList"), "Returns class names (for forceclass)");
             GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("tp", new Callable(this, "TeleportCmd"), "Teleports you. (1 arguments needed)");
             GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("itemlist", new Callable(this, "ItemList"), "Returns item names");
-            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("give", new Callable(this, "GiveItem"), "Gives an item to inventory (Limit for each player equals 12 items)");
+            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("give", new Callable(this, "GiveItem"), "Gives an item to inventory");
+            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("giveammo", new Callable(this, "GiveAmmo"), "Gives an item to inventory (Limit for each player equals 12 items)");
             GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("givehp", new Callable(this, "SetHealth"), "Sets health on a current player");
         }
     }
@@ -100,7 +101,7 @@ public partial class Commands : Node
     string ItemList(string[] args)
     {
         string r = "";
-        foreach (var val in ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json"))
+        foreach (var val in ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json", Globals.ItemType.item))
         {
             r += val.Key + "\n";
         }
@@ -119,11 +120,11 @@ public partial class Commands : Node
         }
         if (args.Length == 1)
         {
-            if (ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json").ContainsKey(args[0]))
+            if (ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json", Globals.ItemType.item).ContainsKey(args[0]))
             {
                 //inventory.AddItem(ResourceLoader.Load(JsonParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json")[args[0]]));
                 //gives the string for adding an item, rpc will convert this in resource
-                GiveItemCmd(ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json")[args[0]]);
+                GiveItemCmd(ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json", Globals.ItemType.item)[args[0]], 0);
                 itemLimit++;
                 return "Item " + args[0] + " spawned next to you";
             }
@@ -141,10 +142,12 @@ public partial class Commands : Node
     /// Gives item
     /// </summary>
     /// <param name="itemPath">Path to item resource</param>
-    void GiveItemCmd(string itemPath)
+    void GiveItemCmd(string itemPath, int type)
     {
-        Item item = ResourceLoader.Load<Item>(itemPath);
-        GetTree().Root.GetNode<Inventory>("Main/Game/" + Multiplayer.GetUniqueId() + "/InventoryContainer/Inventory").Rpc("DropItemRpc", item.PickablePath);
+        //Item item = ResourceLoader.Load<Item>(itemPath);
+        //Used in pre-0.7.0-dev versions.
+        //GetTree().Root.GetNode<Inventory>("Main/Game/" + Multiplayer.GetUniqueId() + "/InventoryContainer/Inventory").Rpc("DropItemRpc", item.PickablePath);
+        GetTree().Root.GetNode<PlayerAction>("Main/Game/" + Multiplayer.GetUniqueId() + "/PlayerHead").Rpc("SpawnObject", itemPath, type);
     }
     /// <summary>
     /// Sets 
@@ -161,6 +164,33 @@ public partial class Commands : Node
         else
         {
             return "Error. You need only 1 argument, e.g. sethp 100";
+        }
+    }
+
+    string GiveAmmo(string[] args)
+    {
+        if (itemLimit > itemMax)
+        {
+            return "Error! You exceeded limit for a single player";
+        }
+        if (args.Length == 1)
+        {
+            if (ItemParser.ReadJson("user://ammotype_" + Globals.itemsCompatibility + ".json", Globals.ItemType.ammo).ContainsKey(args[0]))
+            {
+                //inventory.AddItem(ResourceLoader.Load(JsonParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json")[args[0]]));
+                //gives the string for adding an item, rpc will convert this in resource
+                GiveItemCmd(ItemParser.ReadJson("user://ammotype_" + Globals.itemsCompatibility + ".json", Globals.ItemType.ammo)[args[0]], 1);
+                itemLimit++;
+                return "Ammo " + args[0] + " spawned next to you";
+            }
+            else
+            {
+                return "Unknown item. Cannot spawn.";
+            }
+        }
+        else
+        {
+            return "Unknown item. Cannot spawn. Did you input the item?";
         }
     }
 }

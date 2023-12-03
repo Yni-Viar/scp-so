@@ -46,6 +46,9 @@ properties/7/replication_mode = 2
 properties/8/path = NodePath(".:friendlyFireFm")
 properties/8/spawn = true
 properties/8/replication_mode = 2
+properties/9/path = NodePath(".:ammo")
+properties/9/spawn = true
+properties/9/replication_mode = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ttxax"]
 size = Vector3(6410.33, 1969.08, 6412.47)

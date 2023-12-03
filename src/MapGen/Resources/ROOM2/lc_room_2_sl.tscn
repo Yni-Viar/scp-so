@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dqf61v6lps4ji"]
+[gd_scene load_steps=39 format=3 uid="uid://dqf61v6lps4ji"]
 
 [ext_resource type="Texture2D" uid="uid://14w10x3oqfbv" path="res://MapGen/Resources/RoomAssets/LCZ/concretefloor.jpg" id="1_ldbyp"]
 [ext_resource type="Texture2D" uid="uid://dit7t4ogxcbj" path="res://MapGen/Resources/RoomAssets/LCZ/tilefloor.jpg" id="2_ihtgt"]
@@ -13,12 +13,14 @@
 [ext_resource type="Texture2D" uid="uid://bkt1gmp7oma23" path="res://MapGen/Resources/RoomAssets/LCZ/metal.jpg" id="11_ok5lj"]
 [ext_resource type="Texture2D" uid="uid://dsbqupr5wsvdm" path="res://MapGen/Resources/RoomAssets/LCZ/miscsigns3.jpg" id="12_l6svl"]
 [ext_resource type="Texture2D" uid="uid://cfp7ltqfnw2qx" path="res://MapGen/Resources/RoomAssets/LCZ/metalpanels2.jpg" id="13_1f1gw"]
-[ext_resource type="PackedScene" uid="uid://b1t4jbtv1pdjy" path="res://MapGen/Resources/RoomAssets/Props/office_desk_with_drawers.tscn" id="15_jorto"]
-[ext_resource type="PackedScene" uid="uid://cg3e33d8f3a6n" path="res://MapGen/Resources/RoomAssets/Props/laptop.tscn" id="16_wsa7y"]
+[ext_resource type="PackedScene" uid="uid://dk6afsf7jh72a" path="res://MapGen/Resources/RoomAssets/Props/office_desk_with_drawers.tscn" id="15_jorto"]
+[ext_resource type="PackedScene" uid="uid://bsv4bn1kgu5pm" path="res://MapGen/Resources/RoomAssets/Props/laptop.tscn" id="16_wsa7y"]
 [ext_resource type="PackedScene" uid="uid://dvjl4o6hjxwmq" path="res://MapGen/Resources/Doors/DoorKeycard.tscn" id="17_6puno"]
 [ext_resource type="PackedScene" uid="uid://mtaiulg3une7" path="res://InventorySystem/Items/PickablePrefabs/key3.tscn" id="18_u1gka"]
 [ext_resource type="PackedScene" uid="uid://ggkfnlch55w4" path="res://MapGen/Resources/Cameras/cctv_lcz.tscn" id="19_1ob0y"]
-[ext_resource type="PackedScene" uid="uid://dm7mdwvtll4ha" path="res://MapGen/Resources/RoomAssets/Props/ceiling_lamp.tscn" id="19_7xce3"]
+[ext_resource type="PackedScene" uid="uid://bmacptdhvw6h7" path="res://MapGen/Resources/RoomAssets/Props/ceiling_lamp.tscn" id="19_7xce3"]
+[ext_resource type="PackedScene" uid="uid://qkwar6d6wrkx" path="res://InventorySystem/Items/PickablePrefabs/com16.tscn" id="20_4yqgi"]
+[ext_resource type="PackedScene" uid="uid://b0wia77m5lgkk" path="res://Assets/Ammo/9_mm.tscn" id="21_8lm7p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spgmh"]
 resource_name = "mat0.001"
@@ -443,7 +445,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.7847
 requirements = 1
 
 [node name="key3" parent="." instance=ExtResource("18_u1gka")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.63554, 6.29642, 3.78549)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.63554, 6.50834, 4.08849)
 
 [node name="cctv" parent="." instance=ExtResource("19_1ob0y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0150792, 3.84, 6.49368)
@@ -478,3 +480,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5132, 9.43355, -2.39024)
 
 [node name="CeilingLamp4" parent="." instance=ExtResource("19_7xce3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.09255, 9.43355, -2.39024)
+
+[node name="com16" parent="." instance=ExtResource("20_4yqgi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.69836, 6.47012, 3.46539)
+
+[node name="Ammo_9mm" parent="." instance=ExtResource("21_8lm7p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6174, 6.18307, -4.83099)
+
+[node name="Ammo_9mm2" parent="." instance=ExtResource("21_8lm7p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.63396, 6.18889, -5.44809)
+
+[node name="Ammo_9mm3" parent="." instance=ExtResource("21_8lm7p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.58784, 6.19824, -5.91173)
+
+[node name="Ammo_9mm4" parent="." instance=ExtResource("21_8lm7p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.59706, 6.20362, -8.05277)

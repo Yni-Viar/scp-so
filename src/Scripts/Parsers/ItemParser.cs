@@ -20,7 +20,7 @@ public partial class ItemParser : Node
     /// </summary>
     /// <param name="placeToSave">Place to read (or save if not exist or version changed) JSON</param>
     /// <returns></returns>
-    public static Godot.Collections.Dictionary<string, string> ReadJson(string placeToSave)
+    public static Godot.Collections.Dictionary<string, string> ReadJson(string placeToSave, Globals.ItemType type)
     {
         if (FileAccess.FileExists(placeToSave))
         {
@@ -30,7 +30,14 @@ public partial class ItemParser : Node
         }
         else
         {
-            return SaveJson(placeToSave, Globals.items);
+            if (type == Globals.ItemType.ammo)
+            {
+                return SaveJson(placeToSave, Globals.ammo);
+            }
+            else
+            {
+                return SaveJson(placeToSave, Globals.items);
+            }
         }
     }
     /// <summary>

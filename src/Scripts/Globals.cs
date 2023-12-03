@@ -16,6 +16,9 @@ public partial class Globals
     public static string serverConfigCompatibility = "0.7.0-dev";
     public static Stages currentStage = Stages.dev;
 
+    //Types of spawnable objects
+    public enum ItemType { item, ammo };
+
     //Spectators, D-class, Scientists, MTF, Dangerous SCP items, Normal SCP entities, Chaos Insurgency, Serpent's hand.
     public enum Team { SPT, CDP, SCI, MTF, DSE, NSE, CHI, SEH }
     internal static Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classData =
@@ -47,7 +50,7 @@ public partial class Globals
             { "RzCommon3", new Godot.Collections.Array<string>{ "rz_room_3" } },
             { "RzCommon4", new Godot.Collections.Array<string>{ "rz_room_4" } },
             { "RzSingle1", new Godot.Collections.Array<string>{ } },
-            { "RzSingle2", new Godot.Collections.Array<string>{ "rz_room_2_offices", "rz_room_2_offices_2", "rz_room_2_poffices", "rz_room_2_toilets", 
+            { "RzSingle2", new Godot.Collections.Array<string>{ "rz_room_2_offices", "rz_room_2_offices_2", "rz_room_2_poffices", "rz_room_2_toilets",
                 "rz_room_2_cafeteria", "rz_room_2_servers" } },
             { "RzSingle2C", new Godot.Collections.Array<string>{ } },
             { "RzSingle3", new Godot.Collections.Array<string>{ } },
@@ -74,8 +77,9 @@ public partial class Globals
             { "HczSingle4", new Godot.Collections.Array<string>{ } },
         };
 
-    internal static Godot.Collections.Array<string> FoundationTasks = new Godot.Collections.Array<string> 
+    public static Godot.Collections.Dictionary<string, string> ammo = new Godot.Collections.Dictionary<string, string>
     {
-        "sct_scp914", "sct_serverschk", "sct_scp173"
+        { "9mm", "res://Assets/Ammo/9_mm.tscn" },
+        { "mtf", "res://Assets/Ammo/mtf_ammo.tscn" }
     };
 }

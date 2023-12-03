@@ -19,6 +19,7 @@ public partial class FacilityManager : Node3D
     [Export] Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classes = new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>>();
     [Export] Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> rooms = new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>>();
     [Export] Godot.Collections.Dictionary<string, string> items = new Godot.Collections.Dictionary<string, string>();
+    [Export] Godot.Collections.Dictionary<string, string> ammo = new Godot.Collections.Dictionary<string, string>();
     [Export] bool friendlyFireFm;
     bool trueBreach;
     internal bool IsRoundStarted
@@ -54,6 +55,7 @@ public partial class FacilityManager : Node3D
             RoomParser.SaveJson("user://rooms_" + Globals.roomsCompatibility + ".json", rooms);
             ClassParser.SaveJson("user://playerclasses_" + Globals.classesCompatibility + ".json", classes);
             ItemParser.SaveJson("user://itemlist_" + Globals.itemsCompatibility + ".json", items);
+            ItemParser.SaveJson("user://ammotype_" + Globals.itemsCompatibility + ".json", ammo);
             return;
         }
         Multiplayer.PeerConnected += AddPlayer;
@@ -73,7 +75,9 @@ public partial class FacilityManager : Node3D
 
             classes = ClassParser.ReadJson("user://playerclasses_" + Globals.classesCompatibility + ".json");
 
-            items = ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json");
+            items = ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json", Globals.ItemType.item);
+
+            ammo = ItemParser.ReadJson("user://ammotype_" + Globals.itemsCompatibility + ".json", Globals.ItemType.ammo);
         }
 
         //Start round

@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bqaktbd34noa6"]
+[gd_scene load_steps=58 format=3 uid="uid://bqaktbd34noa6"]
 
 [ext_resource type="Material" uid="uid://b1mnwqs638dd0" path="res://MapGen/Resources/RoomAssets/SZ/Mat/mat0.002.tres" id="1_0l73q"]
 [ext_resource type="Material" uid="uid://d0dt81pmyxakl" path="res://MapGen/Resources/RoomAssets/SZ/Mat/mat1.002.tres" id="2_k5pd1"]
@@ -28,7 +28,10 @@
 [ext_resource type="PackedScene" uid="uid://budfear2sjgca" path="res://InventorySystem/Items/PickablePrefabs/jumpyball.tscn" id="32_wh0pa"]
 [ext_resource type="PackedScene" uid="uid://cvk3py60of4fm" path="res://InventorySystem/Items/PickablePrefabs/medkit.tscn" id="32_xkwjl"]
 [ext_resource type="PackedScene" uid="uid://dk6afsf7jh72a" path="res://MapGen/Resources/RoomAssets/Props/office_desk_with_drawers.tscn" id="33_3swtm"]
+[ext_resource type="PackedScene" uid="uid://b0wia77m5lgkk" path="res://Assets/Ammo/9_mm.tscn" id="33_tqo1s"]
+[ext_resource type="PackedScene" uid="uid://bvccstchbatcr" path="res://Assets/Ammo/mtf_ammo.tscn" id="34_77c6s"]
 [ext_resource type="PackedScene" uid="uid://bsv4bn1kgu5pm" path="res://MapGen/Resources/RoomAssets/Props/laptop.tscn" id="34_hb85q"]
+[ext_resource type="PackedScene" uid="uid://dk80o4q00bb7i" path="res://InventorySystem/Items/PickablePrefabs/mtfrifle.tscn" id="35_b1wqo"]
 [ext_resource type="PackedScene" uid="uid://duvebkaj518ex" path="res://MapGen/Resources/Buttons/button_interact.tscn" id="36_i1y7r"]
 [ext_resource type="Script" path="res://Scripts/Facility/SurfaceElevator.cs" id="37_oyres"]
 [ext_resource type="AudioStream" uid="uid://wqik022lymd8" path="res://Sounds/General/Elevator/Moving.ogg" id="38_jqvf5"]
@@ -776,6 +779,63 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.76297, 6.50791, 14.1354)
 
 [node name="jumpyball3" parent="." instance=ExtResource("32_wh0pa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1458, 6.48537, 14.4801)
+
+[node name="Ammo_9mm" parent="." instance=ExtResource("33_tqo1s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90926, 0.332216, 26.6317)
+
+[node name="Ammo_9mm2" parent="." instance=ExtResource("33_tqo1s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.92455, 0.332215, 26.8965)
+
+[node name="Ammo_9mm3" parent="." instance=ExtResource("33_tqo1s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22934, 0.332215, 26.5593)
+
+[node name="Ammo_9mm4" parent="." instance=ExtResource("33_tqo1s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79244, 0.332215, 26.8928)
+
+[node name="Ammo_9mm5" parent="." instance=ExtResource("33_tqo1s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09499, 0.332215, 26.5325)
+
+[node name="Ammo_9mm6" parent="." instance=ExtResource("33_tqo1s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.08664, 0.332215, 26.8972)
+
+[node name="mtf_ammo" parent="." instance=ExtResource("34_77c6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6414, 2.00189, 26.3323)
+
+[node name="mtf_ammo2" parent="." instance=ExtResource("34_77c6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04773, 2.01085, 26.4748)
+
+[node name="mtf_ammo3" parent="." instance=ExtResource("34_77c6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38699, 2.01085, 26.3899)
+
+[node name="mtf_ammo4" parent="." instance=ExtResource("34_77c6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07053, 2.01085, 26.3535)
+
+[node name="mtf_ammo5" parent="." instance=ExtResource("34_77c6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.50566, 2.01085, 26.6238)
+
+[node name="mtf_ammo6" parent="." instance=ExtResource("34_77c6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75123, 2.01085, 26.7523)
+
+[node name="mtf_ammo7" parent="." instance=ExtResource("34_77c6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.97933, 2.01085, 26.4726)
+
+[node name="mtf_ammo8" parent="." instance=ExtResource("34_77c6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3125, 2.01085, 26.8123)
+
+[node name="mtf_ammo9" parent="." instance=ExtResource("34_77c6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.53552, 2.01085, 26.4888)
+
+[node name="mtf_ammo10" parent="." instance=ExtResource("34_77c6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.82183, 2.01085, 26.5592)
+
+[node name="mtf_ammo11" parent="." instance=ExtResource("34_77c6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.22433, 2.01085, 26.6793)
+
+[node name="mtfrifle" parent="." instance=ExtResource("35_b1wqo")]
+transform = Transform3D(0.0430789, 0, -0.999072, 0, 1, 0, 0.999072, 0, 0.0430789, 7.59663, 0.578446, 26.7808)
+
+[node name="mtfrifle2" parent="." instance=ExtResource("35_b1wqo")]
+transform = Transform3D(-0.106455, 0, -0.994318, 0, 1, 0, 0.994318, 0, -0.106455, 7.45031, 3.06694, 26.7129)
 
 [connection signal="Interacted" from="ElevatorSz2/ButtonInteractCall" to="ElevatorSz2" method="OnButtonInteractInteracted"]
 [connection signal="Interacted" from="ElevatorSz2/ButtonInteractUp" to="ElevatorSz2" method="OnButtonInteractUpInteracted"]

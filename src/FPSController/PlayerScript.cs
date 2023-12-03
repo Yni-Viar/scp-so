@@ -272,6 +272,10 @@ public partial class PlayerScript : CharacterBody3D
                 {
                     collidedWith.Call("CallOpen", this);
                 }
+                if (collidedWith is LootableAmmo)
+                {
+                    collidedWith.Call("AddAmmo", this);
+                }
                 /* LEGACY 0.6.x code
                  * if (collidedWith is ItemAction action && action.GetPath().ToString().Contains(Name))
                 {
@@ -398,7 +402,7 @@ public partial class PlayerScript : CharacterBody3D
     }
 
     /// <summary>
-    /// Helper method to teleport.
+    /// Helper method to teleport. Will be moved to PlayerAction in future versions.
     /// </summary>
     /// <param name="placeToTeleport">Place to teleport</param>
     internal void CallTeleport(string placeToTeleport)
@@ -407,7 +411,7 @@ public partial class PlayerScript : CharacterBody3D
     }
 
     /// <summary>
-    /// Helper method to call FacilityManager for changing player class.
+    /// Helper method to call FacilityManager for changing player class. Will be moved to PlayerAction in future versions.
     /// </summary>
     /// <param name="to">Player class to become</param>
     internal void CallForceclass(string to, string reason)
