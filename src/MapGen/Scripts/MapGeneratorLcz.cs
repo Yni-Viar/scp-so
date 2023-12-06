@@ -457,7 +457,6 @@ public partial class MapGeneratorLcz : Node
             Console.WriteLine();
         }*/
         bool checkpointSpawned = false;
-        bool scp079ccSpawned = false;
         string selectedRoom;
         int currRoom1 = 0;
         int currRoom2 = 0;
@@ -480,15 +479,6 @@ public partial class MapGeneratorLcz : Node
                             roomTemp[i, j].roomName = rm.Name;
                             checkpointSpawned = true;
                             break;
-                        }
-                        else if (!scp079ccSpawned)
-                        {
-                            rm = (StaticBody3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/ROOM1/lc_cont_1_079.tscn").Instantiate();
-                            rm.Position = new Vector3(i * 20.48f, 0, j*20.48f);
-                            rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
-                            AddChild(rm, true);
-                            roomTemp[i, j].roomName = rm.Name;
-                            scp079ccSpawned = true;
                         }
                         else
                         {

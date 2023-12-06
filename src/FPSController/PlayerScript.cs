@@ -43,6 +43,7 @@ public partial class PlayerScript : CharacterBody3D
     [Export] internal string spawnPoint;
     [Export] internal string playerModelSource;
     [Export] internal float health = 1f;
+    [Export] internal float containCoundown = 0f;
     [Export] internal float speed = 0f;
     [Export] internal float jump = 0f;
     [Export] internal bool sprintEnabled = false;
@@ -420,7 +421,7 @@ public partial class PlayerScript : CharacterBody3D
     }
 
     /// <summary>
-    /// Add or depletes health (don't work on spectators). If health is below 0, the players forceclasses as spectator.
+    /// Add or depletes health (don't work on spectators). If health is below 0, the players forceclasses as spectator. Will be reworked in future update.
     /// </summary>
     /// <param name="amount">How much health to add/deplete</param>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
@@ -441,8 +442,8 @@ public partial class PlayerScript : CharacterBody3D
         {
             GD.Print("You cannot change HP for spectators");
         }
-        
-        if (currentHealth <= 0)
+        // Temporary feature, will be reworked in future...
+        if (currentHealth <= 0 || containCoundown == 10f)
         {
             GetParent<FacilityManager>().Rpc("SpawnRagdoll", this.Name, ragdollSource);
             CallForceclass("spectator", depleteReason);

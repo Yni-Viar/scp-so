@@ -6,7 +6,7 @@
 script = ExtResource("1_1fwv3")
 ClassName = "SCP-131-A The \"Eye Pods\""
 ClassDescription = "Your task is to help people, by providing them information about nearby SCPs."
-SpawnPoints = PackedStringArray("Main/Game/MapGenRz/RZ_room2_offices2/entityspawn", "Main/Game/MapGenRz/RZ_room2_offices/entityspawn")
+SpawnPoints = PackedStringArray("Main/Game/MapGenLcz/LC_cont1_131/entityspawn")
 PlayerModelSource = "res://FPSController/PlayerClassPrefab/scp131a.tscn"
 PlayerRagdollSource = "res://Decals/hume.tscn"
 Speed = 5.0

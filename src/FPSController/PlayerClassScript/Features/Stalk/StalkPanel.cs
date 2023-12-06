@@ -10,7 +10,7 @@ public partial class StalkPanel : GridContainer
         string[] allStalkingPos = PlacesForTeleporting.defaultData.Keys.ToArray<string>();
         for (int i = 0; i < PlacesForTeleporting.defaultData.Count; i++)
         {
-            StalkButton button = ResourceLoader.Load<PackedScene>("res://FPSController/PlayerClassPrefab/Scp106/StalkButton.tscn").Instantiate<StalkButton>();
+            StalkButton button = ResourceLoader.Load<PackedScene>("res://FPSController/PlayerClassScript/Features/Stalk/StalkButton.tscn").Instantiate<StalkButton>();
             button.Text = allStalkingPos[i];
             AddChild(button);
         }

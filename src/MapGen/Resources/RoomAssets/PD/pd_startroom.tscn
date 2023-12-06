@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bkb5biqrjm5x1" path="res://MapGen/Resources/RoomAssets/PD/Rock046S_2K_Roughness.png" id="2_nkj2j"]
 [ext_resource type="Texture2D" uid="uid://c4ftmxx6huuxb" path="res://MapGen/Resources/RoomAssets/PD/Rock046S_2K_NormalGL.png" id="3_s84qu"]
 [ext_resource type="Texture2D" uid="uid://4pu5t1ddnvhu" path="res://MapGen/Resources/RoomAssets/PD/rockmoss.jpg" id="4_nwt1f"]
-[ext_resource type="Script" path="res://Scripts/PDRandomExitArea.cs" id="5_bwjsw"]
+[ext_resource type="Script" path="res://Scripts/PocketDimension/PDRandomExitArea.cs" id="5_bwjsw"]
 [ext_resource type="Script" path="res://Scripts/DeadlyArea.cs" id="6_7opl1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43hfw"]

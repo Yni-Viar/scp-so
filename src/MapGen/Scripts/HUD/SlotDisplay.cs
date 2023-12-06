@@ -39,7 +39,7 @@ public partial class SlotDisplay : CenterContainer
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        if (Input.IsActionJustPressed("fire") && itemHover && mapData.Name != "empty" && mapData.Name != "LC_room1_endroom")
+        if (Input.IsActionJustPressed("fire") && itemHover && mapData.Name != "empty")
 		{
             if (GetParent().GetParent().GetParent().GetParentOrNull<ComputerPlayerScript>() != null)
             {

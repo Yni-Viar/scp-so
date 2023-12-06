@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bqgf6wgbcnloq"]
+[gd_scene load_steps=30 format=3 uid="uid://bqgf6wgbcnloq"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerClassScript/Scp173PlayerScript.cs" id="1_4av21"]
 [ext_resource type="Texture2D" uid="uid://cq03mwmo3ey0c" path="res://Assets/Models/scp173-BaseTexture/scp173NEO_low_Merged_PM3D_Sphere3D4_AlbedoTransparency.png" id="2_h3yhc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dhk6piqm87b2n" path="res://Assets/Models/scp173-BaseTexture/scp173NEO_low_Merged_PM3D_Sphere3D4_Normal.png" id="4_m76d2"]
 [ext_resource type="Shader" path="res://Shaders/MixShader/mix.gdshader" id="5_wsa7v"]
 [ext_resource type="Texture2D" uid="uid://ip5h0psqi2fr" path="res://Assets/Models/scp173-FaceTextures/face_1.png" id="6_cn7o5"]
+[ext_resource type="Script" path="res://FPSController/PlayerClassScript/Features/LightDetector/LightDetector.cs" id="7_awpdv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g7cr3"]
 resource_name = "phong2"
@@ -5294,10 +5295,10 @@ skin = SubResource("Skin_0xw2i")
 surface_material_override/0 = SubResource("ShaderMaterial_6twfe")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "173_TPose"
 libraries = {
 "": SubResource("AnimationLibrary_43aw2")
 }
+autoplay = "173_TPose"
 
 [node name="AbilityUI" type="Control" parent="."]
 visible = false
@@ -5308,3 +5309,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="LightDetector" type="Node3D" parent="."]
+script = ExtResource("7_awpdv")
+
+[node name="SubViewport" type="SubViewport" parent="LightDetector"]
+render_target_update_mode = 4
+
+[node name="DetectorCam" type="Camera3D" parent="LightDetector/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.13765, 0)
+fov = 40.0
+far = 20.0

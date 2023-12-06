@@ -60,7 +60,7 @@ public partial class Globals
             { "LczCommon2C", new Godot.Collections.Array<string>{ "lc_room_2c" } },
             { "LczCommon3", new Godot.Collections.Array<string>{ "lc_room_3" } },
             { "LczCommon4", new Godot.Collections.Array<string>{ "lc_room_4" } },
-            { "LczSingle1", new Godot.Collections.Array<string>{ "lc_room_1_archive" } },
+            { "LczSingle1", new Godot.Collections.Array<string>{ "lc_cont_1_131", "lc_cont_1_079", "lc_room_1_archive" } },
             { "LczSingle2", new Godot.Collections.Array<string>{ "lc_cont_2_650", "lc_cont_2_scps", "lc_room_2_sl" } },
             { "LczSingle2C", new Godot.Collections.Array<string>{ } },
             { "LczSingle3", new Godot.Collections.Array<string>{ } },

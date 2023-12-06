@@ -90,7 +90,7 @@ public partial class Scp173PlayerScript : Node3D
     /// </summary>
     void LookingAtScp173(bool isWatching, double delta)
     {
-        if (isWatching)
+        if (isWatching && GetNode<LightDetector>("LightDetector").LightnessDetect() > 0.2)
         {
             //If SCP-173 is not moving, it should stand still!
             if (GetParent().GetParent<PlayerScript>().CanMove)

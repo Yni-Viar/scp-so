@@ -42,13 +42,17 @@
 - Copyright (c) 2021 Sam Bigos
 - This shader is under MIT license.
 
-### Sketchy shader (MIT License)
+### Lightness Detector (MIT License)
 
-- Made by Leo Peltola
+- Copyright (c) 2022 Reun Media Partnership
+
+### Button Interaction (MIT License)
+
+- Copyright (c) 2022 Nagi
 
 ## Assets
 ### Models (license - [CC-BY-SA 3.0](/LICENSE.CCBYSA3))
-- Room models used from SCP - Containment Breach game.
+- Room models (except some rooms from Light Containment Zone and Heavy Containment Zone) used from SCP - Containment Breach game.
 - D-Class model - Shadowscale (model, textures), PixelPuffin (concept art), Shakles (rig, animation)
 - SCP Security Guard - Shadowscale (model, textures), Shakles (rig, animation)
 - Mobile Task Force Trooper - Shadowscale (model, textures), Shakles (rig, animation)
