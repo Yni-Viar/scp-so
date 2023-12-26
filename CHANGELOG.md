@@ -1,6 +1,33 @@
 # Changelog
 The current state of the game - Alpha.
 ## Alpha versions
+### v.0.7.0 (2023.12.26)
+- Changed game logo to nicer one.
+- Finally added loading screen!
+- More dead ends can be spawned.
+- SCP-018 model now has smooth model.
+- Modernized LCZ.
+- Improved forceclass and pre-round screens.
+- Added support for player nicknames.
+- Fixed bug, where exiting the server broke the game.
+- Added a shader to SCP-173, so it is possible for changing SCP-173's face without changing the main concrete texture.
+- Class-Ds now have face randomization.
+- Fixed bug, where screen settings were not applied, when restarting.
+- Switched to Jolt physics, allowing to support ragdolls.
+- Current SCP-079 implementation changed to SCP-2522 "hatbot.aic".
+- Removed SCP-650 as player class.
+- Revamped door system (again), to make it more flexible.
+- Added weapon system.
+- Added recontainment system for SCP-173 and SCP-3199.
+- Changed the shader for SCP-173, also removed useless Sketchy Shader.
+- Fixed sky being used even if player was outside of SZ.
+- Reworked movement system (animation-side)
+- Fixed Scientist's hands.
+- Added primitive admin panel.
+- Every December, the Main Menu and SCP-173 face will change to Christmas one.
+- New rooms in LCZ + new spawn for SCP-018
+- Optimized game by reducing the room visibility range (and reducing the fog range).
+- Added win conditions - the game is playable, so the next version will be labeled as "Beta" (I hope)
 ### v.0.6.2 (2023.10.23)
 - Added blackout ability to SCP-079.
 - Added new pixel font for SCP-079.

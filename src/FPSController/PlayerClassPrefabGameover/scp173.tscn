@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://cnm52nawkjos4"]
+[gd_scene load_steps=16 format=3 uid="uid://cnm52nawkjos4"]
 
 [ext_resource type="Texture2D" uid="uid://rm687b6qqdcm" path="res://Assets/Models/scp173-Fracture/scp173NEO_low_Merged_PM3D_Sphere3D4_AlbedoTransparency.png" id="1_oio7w"]
+[ext_resource type="Script" path="res://FPSController/PlayerClassPrefabGameover/GameOver.cs" id="1_v8poa"]
 [ext_resource type="Texture2D" uid="uid://ckx2wd7wx8igf" path="res://Assets/Models/scp173-Fracture/scp173NEO_low_Merged_PM3D_Sphere3D4_MetallicSmoothness.png" id="2_wqbut"]
 [ext_resource type="Texture2D" uid="uid://ugdrrl34oia7" path="res://Assets/Models/scp173-Fracture/scp173NEO_low_Merged_PM3D_Sphere3D4_Normal.png" id="3_upv1h"]
 
@@ -130,10 +131,18 @@ shadow_mesh = SubResource("ArrayMesh_38jgn")
 radius = 0.10221
 height = 0.968024
 
-[node name="scp173" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_fgiiw"]
+size = Vector3(3, 3, 3)
+
+[node name="scp173" type="Area3D"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_v8poa")
 
 [node name="fracture" type="RigidBody3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1.52408, 0)
+collision_layer = 3
+collision_mask = 3
 
 [node name="scp173_MESH_cell" type="MeshInstance3D" parent="fracture"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0859342, 1.93927, 0.0674217)
@@ -144,20 +153,32 @@ skeleton = NodePath("")
 transform = Transform3D(0.999563, -0.0295615, -3.82059e-11, 0.0295615, 0.999563, 2.58435e-09, -3.81988e-11, -2.58435e-09, 1, -0.162808, 1.93927, 0.0674217)
 shape = SubResource("CapsuleShape3D_fueoc")
 
-[node name="scp173_MESH_cell_001" type="MeshInstance3D" parent="fracture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0305508, 0.628936, -0.0272507)
+[node name="fracture1" type="RigidBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="scp173_MESH_cell_001" type="MeshInstance3D" parent="fracture1"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0305508, -0.895144, 0.0272507)
 mesh = SubResource("ArrayMesh_5ed17")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="fracture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0526053, 0.463528, -0.0272507)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="fracture1"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0526053, -1.06055, 0.0272507)
 shape = SubResource("CapsuleShape3D_xsy1v")
 
-[node name="scp173_MESH_cell_002" type="MeshInstance3D" parent="fracture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.357532, 1.8749, 0.0302244)
+[node name="fracture2" type="RigidBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="scp173_MESH_cell_002" type="MeshInstance3D" parent="fracture2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.357532, 0.35082, -0.0302244)
 mesh = SubResource("ArrayMesh_nv0nv")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="fracture"]
-transform = Transform3D(0.993242, -0.116064, 0, 0.116064, 0.993242, 0, 0, 0, 1, 0.357532, 1.69635, 0.0302244)
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="fracture2"]
+transform = Transform3D(-0.993242, 0.116064, -8.74228e-08, 0.116064, 0.993242, 0, 8.6832e-08, -1.01466e-08, -1, -0.357532, 0.17227, -0.0302244)
 shape = SubResource("CapsuleShape3D_wmws8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00413513, -0.0986089, -0.061157)
+shape = SubResource("BoxShape3D_fgiiw")

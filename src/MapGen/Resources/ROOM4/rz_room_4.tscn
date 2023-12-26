@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cxftat62183me" path="res://MapGen/Resources/RoomAssets/RZ/officewall.jpg" id="6_mj05b"]
 [ext_resource type="Texture2D" uid="uid://b6uak211o0ufw" path="res://MapGen/Resources/RoomAssets/RZ/misc.jpg" id="7_jsavf"]
 [ext_resource type="Texture2D" uid="uid://dgocffdh4cq02" path="res://MapGen/Resources/RoomAssets/RZ/metalpanels.jpg" id="8_7vnqt"]
-[ext_resource type="PackedScene" uid="uid://cgaomav6767mx" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="9_sydkh"]
+[ext_resource type="PackedScene" uid="uid://dn7xcp8e6o86h" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="9_sydkh"]
 [ext_resource type="PackedScene" uid="uid://c8brqgry3c6r2" path="res://MapGen/Resources/Cameras/cctv_rz.tscn" id="10_co2bi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvosm"]
@@ -262,7 +262,7 @@ size = Vector3(19.6761, 9.08363, 20.2893)
 [node name="RZ_room4_cross" type="StaticBody3D"]
 
 [node name="RZ_room42" type="MeshInstance3D" parent="."]
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_33svc")
 skeleton = NodePath("")
 

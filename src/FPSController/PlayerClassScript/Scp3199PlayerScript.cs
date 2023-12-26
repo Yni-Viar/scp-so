@@ -24,11 +24,17 @@ public partial class Scp3199PlayerScript : Node3D
 	{
         if (GetParent().GetParent<PlayerScript>().dir.IsZeroApprox())
         {
-            Rpc("SetState", "3199_Idle");
+            if (GetNode<AnimationPlayer>("AnimationPlayer").CurrentAnimation != "3199_Idle")
+            {
+                Rpc("SetState", "3199_Idle");
+            }
         }
         else
         {
-            Rpc("SetState", "3199_Walk");
+            if (GetNode<AnimationPlayer>("AnimationPlayer").CurrentAnimation != "3199_Walk")
+            {
+                Rpc("SetState", "3199_Walk");
+            }
         }
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {

@@ -16,8 +16,6 @@ metadata/_edit_vertical_guides_ = []
 
 [node name="InGameConsole" parent="CanvasLayer" instance=ExtResource("3_qd7e1")]
 visible = false
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer"]
 visible = false

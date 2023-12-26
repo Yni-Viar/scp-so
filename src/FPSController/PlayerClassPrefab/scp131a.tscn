@@ -6314,3 +6314,14 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("6_licwj")
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
+
+[node name="TargetCount" type="Label" parent="AbilityUI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -280.0
+offset_bottom = 33.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("6_licwj")
+theme_override_font_sizes/font_size = 32

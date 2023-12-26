@@ -256,7 +256,7 @@ size = Vector3(19.6761, 9.08363, 20.2893)
 
 [node name="LC_room1_endroom2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_epy1t")
 skeleton = NodePath("")
 

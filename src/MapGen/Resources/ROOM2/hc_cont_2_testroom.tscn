@@ -328,7 +328,7 @@ size = Vector3(19.6761, 20.536, 20.2893)
 light_data = ExtResource("1_oxte2")
 
 [node name="HC_cont2_testroom2" type="MeshInstance3D" parent="."]
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_iegxd")
 skeleton = NodePath("")
 

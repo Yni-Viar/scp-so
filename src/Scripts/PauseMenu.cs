@@ -15,13 +15,7 @@ public partial class PauseMenu : Control
     
     private void OnExitButtonPressed()
     {
-        Multiplayer.MultiplayerPeer = null;
-        if (GetTree().Root.GetNodeOrNull("Main/Game") != null)
-        {
-            GetTree().Root.GetNode("Main/Game").QueueFree();
-        }
-        GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Show();
-        GetTree().Root.GetNode<Control>("Main/CanvasLayer/PauseMenu").Hide();
+		GetTree().Root.GetNode<NetworkManager>("Main").ServerDisconnected();
     }
 }
 

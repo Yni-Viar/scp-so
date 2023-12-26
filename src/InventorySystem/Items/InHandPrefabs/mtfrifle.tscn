@@ -338,13 +338,13 @@ isAuto = true
 weaponCooldown = 0.1
 allowZoom = true
 fovAjustingSpeed = 1.0
-recoilScale = 2.0
-recoilSpeed = 1.0
+recoilScale = 4.0
+recoilSpeed = 4.0
 poofSounds = [ExtResource("2_ndqqj")]
 reloadSound = ExtResource("3_vfgku")
 
 [node name="Mesh" type="Node3D" parent="."]
-transform = Transform3D(-0.124632, 0, -0.00957901, 0, 0.125, 0, 0.00957901, 0, -0.124632, 0.411825, -0.480187, 0)
+transform = Transform3D(-0.124632, 0, -0.00957901, 0, 0.125, 0, 0.00957901, 0, -0.124632, 0, -0.282041, 0)
 
 [node name="M4BoltCharge" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(0.167242, 0, 0, 0, 0.167241, 0, 0, 0, 0.167241, 0, 0, -2.68495)
@@ -396,7 +396,7 @@ skeleton = NodePath("")
 [node name="ShootingRange" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.738438)
 target_position = Vector3(0, 0, -1024)
-collision_mask = 3
+collision_mask = 7
 
 [node name="WeaponSound" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0112275, -0.180959)

@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dsqdicflhvon0" path="res://MapGen/Resources/RoomAssets/HCZ/miscsigns.jpg" id="14_mg8r7"]
 [ext_resource type="Texture2D" uid="uid://d2pe11cjbrt86" path="res://MapGen/Resources/RoomAssets/HCZ/scplogo.jpg" id="15_kgebf"]
 [ext_resource type="Texture2D" uid="uid://b2phwm4y42p7a" path="res://MapGen/Resources/RoomAssets/HCZ/glass.png" id="16_8m3h4"]
-[ext_resource type="PackedScene" uid="uid://cgaomav6767mx" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="17_tg1f2"]
+[ext_resource type="PackedScene" uid="uid://dn7xcp8e6o86h" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="17_tg1f2"]
 [ext_resource type="Script" path="res://Scripts/DoorsSystem/KeycardedDoor.cs" id="19_35p8c"]
 [ext_resource type="Texture2D" uid="uid://ben08ytu3hn3q" path="res://MapGen/Resources/Doors/DoorLCZ/Door01.jpg" id="19_wjj88"]
 [ext_resource type="PackedScene" uid="uid://cksy6yj1cwku7" path="res://MapGen/Resources/Buttons/button_keycard.tscn" id="21_782c7"]
@@ -691,7 +691,7 @@ properties/1/replication_mode = 2
 [node name="HC_room2_nuke" type="StaticBody3D"]
 
 [node name="HC_room2_nuke2" type="MeshInstance3D" parent="."]
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_d1fx7")
 skeleton = NodePath("")
 
@@ -799,5 +799,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94712, 1.76304, 2.37993)
 replication_interval = 0.25
 replication_config = SubResource("SceneReplicationConfig_mccg3")
 
-[connection signal="Interacted" from="KeycardedDoor/ButtonKeycard" to="KeycardedDoor" method="OnButtonKeycardInteracted" flags=18]
-[connection signal="Interacted" from="KeycardedDoor/ButtonKeycard2" to="KeycardedDoor" method="OnButtonKeycardInteracted" flags=18]
+[connection signal="Interacted" from="KeycardedDoor/ButtonKeycard" to="KeycardedDoor" method="OnButtonKeycardInteracted"]
+[connection signal="Interacted" from="KeycardedDoor/ButtonKeycard2" to="KeycardedDoor" method="OnButtonKeycardInteracted"]

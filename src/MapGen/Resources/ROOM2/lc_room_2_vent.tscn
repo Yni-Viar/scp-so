@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b067ykrbqruf0" path="res://MapGen/Resources/RoomAssets/LCZ/dirtymetal.jpg" id="7_xcu30"]
 [ext_resource type="Texture2D" uid="uid://dq67hp140qp6n" path="res://MapGen/Resources/RoomAssets/LCZ/controlpanel.jpg" id="8_xmwje"]
 [ext_resource type="Texture2D" uid="uid://cc733ewggosrb" path="res://MapGen/Resources/RoomAssets/LCZ/metalpanels.jpg" id="9_1fved"]
-[ext_resource type="PackedScene" uid="uid://dm7mdwvtll4ha" path="res://MapGen/Resources/RoomAssets/Props/ceiling_lamp.tscn" id="11_4gb10"]
+[ext_resource type="PackedScene" uid="uid://bmacptdhvw6h7" path="res://MapGen/Resources/RoomAssets/Props/ceiling_lamp.tscn" id="11_4gb10"]
 [ext_resource type="PackedScene" uid="uid://ggkfnlch55w4" path="res://MapGen/Resources/Cameras/cctv_lcz.tscn" id="11_eoonk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oo2fd"]
@@ -295,7 +295,7 @@ size = Vector3(19.6761, 9.08363, 20.2893)
 
 [node name="LC_room2_vent2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_h7jln")
 skeleton = NodePath("")
 

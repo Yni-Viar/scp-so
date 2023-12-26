@@ -4,7 +4,7 @@
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat1.009.tres" id="2_aiup7"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat2.009.tres" id="3_ue707"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat3.009.tres" id="4_vxkwl"]
-[ext_resource type="PackedScene" uid="uid://cgaomav6767mx" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="5_jodhf"]
+[ext_resource type="PackedScene" uid="uid://dn7xcp8e6o86h" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="5_jodhf"]
 [ext_resource type="PackedScene" uid="uid://dme4cvlaar7xi" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="6_ibmco"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_xb7g8"]
@@ -114,7 +114,7 @@ size = Vector3(19.6761, 9.08363, 20.2893)
 [node name="HC_room2_walkway" type="StaticBody3D"]
 
 [node name="HC_room2001" type="MeshInstance3D" parent="."]
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_evmld")
 skeleton = NodePath("")
 

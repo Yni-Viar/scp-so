@@ -3,11 +3,20 @@ using System;
 
 public partial class ItemMedkit : ItemAction
 {
+    bool isPlayerScript = false;
+    internal override void OnStart()
+    {
+        isPlayerScript = GetParent().GetParent().GetParentOrNull<PlayerScript>() != null;
+    }
+
     internal override void OnUpdate(double delta)
     {
-        if (Input.IsActionJustPressed("fire"))
+        if (isPlayerScript)
         {
-            OnUse(GetParent().GetParent().GetParent<PlayerScript>());
+            if (Input.IsActionJustPressed("fire"))
+            {
+                OnUse(GetParent().GetParent().GetParent<PlayerScript>());
+            }
         }
     }
     internal override void OnUse(PlayerScript player)

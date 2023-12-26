@@ -22,6 +22,7 @@ public partial class PlayerScript : CharacterBody3D
     AudioStreamPlayer3D walkSounds;
     AudioStreamPlayer3D interactSound;
     [Export] internal float currentHealth = 1f;
+    [Export] internal float currentSanity = 50f;
 
     double decayTimer = 0d;
 
@@ -43,7 +44,7 @@ public partial class PlayerScript : CharacterBody3D
     [Export] internal string spawnPoint;
     [Export] internal string playerModelSource;
     [Export] internal float health = 1f;
-    [Export] internal float containCoundown = 0f;
+    [Export] internal float sanity = 50f;
     [Export] internal float speed = 0f;
     [Export] internal float jump = 0f;
     [Export] internal bool sprintEnabled = false;
@@ -132,12 +133,16 @@ public partial class PlayerScript : CharacterBody3D
             acceleration = groundAcceleration;
             FloorMaxAngle = 1.48353f; //85 degrees.
         }
+        else
+        {
+            GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = false;
+        }
         ray = GetNode<RayCast3D>("PlayerHead/RayCast3D");
         ray.AddException(this);
         watchRay = GetNode<RayCast3D>("PlayerHead/VisionRadius");
         watchRay.AddException(this);
     }
-
+    //unused
     internal bool IsLocalAuthority()
     {
         return GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() == Multiplayer.GetUniqueId();
@@ -158,7 +163,7 @@ public partial class PlayerScript : CharacterBody3D
                 if (!customCamera)
                 {
                     this.RotateY(Mathf.DegToRad(-m.Relative.X * settings.MouseSensitivity * 2f)); //pretty magic numbers
-                    playerHead.RotateX(Mathf.Clamp(-m.Relative.Y * settings.MouseSensitivity * 0.125f, -90, 90));
+                    playerHead.RotateX(Mathf.Clamp(-m.Relative.Y * settings.MouseSensitivity * 0.1225f, -90, 90));
     
                     Vector3 cameraRot = playerHead.Rotation;
                     cameraRot.X = Mathf.Clamp(playerHead.Rotation.X, Mathf.DegToRad(-85f), Mathf.DegToRad(85f));
@@ -314,8 +319,17 @@ public partial class PlayerScript : CharacterBody3D
                 Decay();
                 decayTimer = 0;
             }
+            if (currentSanity < sanity)
+            {
+                currentSanity += (float)delta / 10;
+            }
+            if (currentHealth < health && scpNumber >= 0 && direction.IsZeroApprox())
+            {
+                currentHealth += (float)delta;
+            }
 
             GetParent().GetNode<ProgressBar>("PlayerUI/HealthBar").Value = Mathf.Ceil(currentHealth);
+            GetParent().GetNode<ProgressBar>("PlayerUI/SanityBar").Value = Mathf.Ceil(currentSanity);
         }
         UpDirection = Vector3.Up;
         MoveAndSlide();
@@ -365,7 +379,7 @@ public partial class PlayerScript : CharacterBody3D
         {
             if (GetNode<Node3D>("PlayerModel").GetChildOrNull<Node3D>(0) != null)
             {
-                if (GetNode<Node3D>("PlayerModel").GetChild(0).GetChild(0).GetNodeOrNull<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand") != null)
+                if (GetNode<Node3D>("PlayerModel").GetChild(0).GetNodeOrNull<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand") != null)
                 {
                     Node thirdPersonHandRoot = GetNode<Node3D>("PlayerModel").GetChild(0).GetNode<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand");
                     foreach (Node itemUsedBefore in thirdPersonHandRoot.GetChildren())
@@ -424,7 +438,7 @@ public partial class PlayerScript : CharacterBody3D
     /// Add or depletes health (don't work on spectators). If health is below 0, the players forceclasses as spectator. Will be reworked in future update.
     /// </summary>
     /// <param name="amount">How much health to add/deplete</param>
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void HealthManage(double amount, string depleteReason)
     {
         if (scpNumber != -2)
@@ -440,12 +454,41 @@ public partial class PlayerScript : CharacterBody3D
         }
         else
         {
-            GD.Print("You cannot change HP for spectators");
+            GD.Print("You cannot change HP for dead");
         }
         // Temporary feature, will be reworked in future...
-        if (currentHealth <= 0 || containCoundown == 10f)
+        if (currentHealth <= 0)
         {
-            GetParent<FacilityManager>().Rpc("SpawnRagdoll", this.Name, ragdollSource);
+            GetParent<FacilityManager>().Rpc("SpawnRagdoll", this.Name, ragdollSource, false);
+            CallForceclass("spectator", depleteReason);
+        }
+    }
+    /// <summary>
+    /// Temporary method. Manages sanity.
+    /// </summary>
+    /// <param name="amount">How much sanity to add/deplete</param>
+    /// <param name="depleteReason">Reason to deplete</param>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    void SanityManage(double amount, string depleteReason)
+    {
+        if (scpNumber != -2)
+        {
+            if (currentSanity + amount <= sanity)
+            {
+                currentSanity += (float)amount;
+            }
+            else
+            {
+                currentSanity = sanity;
+            }
+        }
+        else
+        {
+            GD.Print("You can't change sanity for dead");
+        }
+        if (currentSanity <= 0)
+        {
+            GetParent<FacilityManager>().Rpc("SpawnRagdoll", this.Name, ragdollSource, true);
             CallForceclass("spectator", depleteReason);
         }
     }
@@ -534,6 +577,8 @@ public partial class PlayerScript : CharacterBody3D
         GetParent().GetNode<ProgressBar>("PlayerUI/HealthBar").AddThemeStyleboxOverride("fill", classRepresent);
         GetParent().GetNode<ProgressBar>("PlayerUI/HealthBar").MaxValue = health;
         GetParent().GetNode<ProgressBar>("PlayerUI/HealthBar").Value = currentHealth;
+        GetParent().GetNode<ProgressBar>("PlayerUI/SanityBar").MaxValue = sanity;
+        GetParent().GetNode<ProgressBar>("PlayerUI/SanityBar").Value = currentSanity;
         if (GetParent().GetNode<Label>("PlayerUI/ClassInfo").HasThemeColorOverride("font_color"))
         {
             GetParent().GetNode<Label>("PlayerUI/ClassInfo").RemoveThemeColorOverride("font_color");

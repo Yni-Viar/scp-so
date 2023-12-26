@@ -12,7 +12,7 @@
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat9.005.tres" id="10_mu5jc"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat10.005.tres" id="11_6duvc"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat11.004.tres" id="12_80wn6"]
-[ext_resource type="PackedScene" uid="uid://bi12ev7yropli" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="13_epomk"]
+[ext_resource type="PackedScene" uid="uid://b7xwwuyi26i62" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="13_epomk"]
 [ext_resource type="PackedScene" uid="uid://dvjl4o6hjxwmq" path="res://MapGen/Resources/Doors/DoorKeycard.tscn" id="15_4dubn"]
 [ext_resource type="PackedScene" uid="uid://lljv7frh0t0a" path="res://MapGen/Resources/Doors/DoorLCZ/door.gltf" id="15_wn1b7"]
 [ext_resource type="PackedScene" uid="uid://dtycbwx1gobbl" path="res://InventorySystem/Items/PickablePrefabs/key4.tscn" id="16_l2jwm"]
@@ -304,7 +304,7 @@ size = Vector3(19.6761, 11.281, 20.2893)
 
 [node name="RZ_room2_servers2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_6glgb")
 skeleton = NodePath("")
 

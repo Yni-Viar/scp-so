@@ -4,24 +4,24 @@ render_mode unshaded;
 	Made by nuzcraft
 	The shader code and all code snippets in this post are under CC0 license
 	and can be used freely without the author's permission.
+	
+	Edited by Yni for simplifying the shader.
 */
 uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, filter_linear_mipmap;
-uniform sampler2D NORMAL_TEXTURE : hint_normal_roughness_texture, filter_linear_mipmap;
+//uniform sampler2D NORMAL_TEXTURE : hint_normal_roughness_texture, filter_linear_mipmap;
 
-uniform float edge_threshold = 0.2;
-uniform vec3 line_color: source_color = vec3(0.043, 0.282, 0.467);
-uniform vec3 background_color: source_color = vec3(0.408, 0.969, 0.694);
+//uniform float edge_threshold = 0.2;
+//uniform vec3 line_color: source_color = vec3(0.043, 0.282, 0.467);
+//uniform vec3 background_color: source_color = vec3(0.408, 0.969, 0.694);
 
-const mat3 sobel_y = mat3(
-	vec3(1.0, 0.0, -1.0),
-	vec3(2.0, 0.0, -2.0),
-	vec3(1.0, 0.0, -1.0)
+const mat2 robert_y = mat2(
+	vec2(0.0, 1.0),
+	vec2(-1.0, 0.0)
 );
 
-const mat3 sobel_x = mat3(
-	vec3(1.0, 2.0, 1.0),
-	vec3(0.0, 0.0, 0.0),
-	vec3(-1.0, -2.0, -1.0)
+const mat2 robert_x = mat2(
+	vec2(1.0, 0.0),
+	vec2(0.0, -1.0)
 );
 
 void vertex(){
@@ -31,33 +31,24 @@ void vertex(){
 void fragment() {
 	vec2 uv = SCREEN_UV;
 	vec4 screen_color = texture(SCREEN_TEXTURE, uv);
-	vec3 normal = texture(NORMAL_TEXTURE, uv).rgb;
-	normal = normal * 2.0 - 1.0;
+	//vec3 normal = texture(NORMAL_TEXTURE, uv).rgb;
+	//normal = normal * 2.0 - 1.0;
 	vec2 offset = 1.0 / VIEWPORT_SIZE;
 
-	vec3 n = texture(NORMAL_TEXTURE, uv + vec2(0.0, -offset.y)).rgb;
-	vec3 s = texture(NORMAL_TEXTURE, uv + vec2(0.0, offset.y)).rgb;
-	vec3 e = texture(NORMAL_TEXTURE, uv + vec2(offset.x, 0.0)).rgb;
-	vec3 w = texture(NORMAL_TEXTURE, uv + vec2(-offset.x, 0.0)).rgb;
-	vec3 nw = texture(NORMAL_TEXTURE, uv + vec2(-offset.x, -offset.y)).rgb;
-	vec3 ne = texture(NORMAL_TEXTURE, uv + vec2(offset.x, -offset.y)).rgb;
-	vec3 sw = texture(NORMAL_TEXTURE, uv + vec2(-offset.x, offset.y)).rgb;
-	vec3 se = texture(NORMAL_TEXTURE, uv + vec2(offset.x, offset.y)).rgb;
+	vec3 nw = texture(SCREEN_TEXTURE, uv + vec2(-offset.x, -offset.y)).rgb;
+	vec3 ne = texture(SCREEN_TEXTURE, uv + vec2(offset.x, -offset.y)).rgb;
+	vec3 sw = texture(SCREEN_TEXTURE, uv + vec2(-offset.x, offset.y)).rgb;
+	vec3 se = texture(SCREEN_TEXTURE, uv + vec2(offset.x, offset.y)).rgb;
 
-	mat3 surrounding_pixels = mat3(
-		vec3(length(nw-normal), length(n-normal), length(ne-normal)),
-		vec3(length(w-normal), length(normal-normal), length(e-normal)),
-		vec3(length(sw-normal), length(s-normal), length(se-normal))
+	mat2 surrounding_pixels = mat2(
+		vec2(length(nw), length(ne)),
+		vec2(length(sw), length(se))
 	);
 
-	float edge_x = dot(sobel_x[0], surrounding_pixels[0]) + dot(sobel_x[1], surrounding_pixels[1]) + dot(sobel_x[2], surrounding_pixels[2]);
-	float edge_y = dot(sobel_y[0], surrounding_pixels[0]) + dot(sobel_y[1], surrounding_pixels[1]) + dot(sobel_y[2], surrounding_pixels[2]);
+	float edge_x = dot(robert_x[0], surrounding_pixels[0]) + dot(robert_x[1], surrounding_pixels[1]);
+	float edge_y = dot(robert_y[0], surrounding_pixels[0]) + dot(robert_y[1], surrounding_pixels[1]);
 
 	float edge = sqrt(pow(edge_x, 2.0)+pow(edge_y, 2.0));
 
-	if (edge > edge_threshold) {
-		ALBEDO = line_color;
-	} else {
-		ALBEDO = background_color;
-	}
+	ALBEDO = vec3(edge);
 }

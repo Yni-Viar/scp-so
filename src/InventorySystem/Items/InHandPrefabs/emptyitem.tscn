@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2we38ujlms1y"]
+
+[ext_resource type="Script" path="res://InventorySystem/Items/InHandPrefabs/ItemAction.cs" id="1_a7yxd"]
+
+[node name="Emptyitem" type="Node3D"]
+script = ExtResource("1_a7yxd")

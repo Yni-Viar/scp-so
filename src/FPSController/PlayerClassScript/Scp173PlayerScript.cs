@@ -18,7 +18,7 @@ public partial class Scp173PlayerScript : Node3D
             GetParent().GetParent<PlayerScript>().SetCollisionMaskValue(3, true);
             GetParent().GetParent<PlayerScript>().CanMove = true;
         }
-        Rpc("SetRandomFace");
+        SetRandomFace();
         ray = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/RayCast3D");
         vision = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/VisionRadius");
         interactSound = GetParent().GetParent<PlayerScript>().GetNode<AudioStreamPlayer3D>("InteractSound");
@@ -120,7 +120,7 @@ public partial class Scp173PlayerScript : Node3D
     /// <summary>
     /// Sets random 173 face, like skins. Available since 0.7.0-dev
     /// </summary>
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    //[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void SetRandomFace()
     {
         ShaderMaterial mat = new ShaderMaterial();

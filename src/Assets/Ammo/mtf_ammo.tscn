@@ -51,6 +51,7 @@ size = Vector3(0.200684, 0.664627, 0.296883)
 [node name="mtf_ammo" type="RigidBody3D"]
 collision_layer = 8
 script = ExtResource("1_8wf40")
+type = 1
 amount = 50
 
 [node name="M4Mag" type="MeshInstance3D" parent="."]

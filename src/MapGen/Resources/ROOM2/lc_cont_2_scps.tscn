@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://bb68x1f7rj18j"]
+[gd_scene load_steps=61 format=3 uid="uid://bb68x1f7rj18j"]
 
 [ext_resource type="Texture2D" uid="uid://bu6g2m2vgheb6" path="res://MapGen/Resources/RoomAssets/LCZ3/OfficeCeiling001_2K_Color.png" id="1_nkhnp"]
 [ext_resource type="Texture2D" uid="uid://c4a72sb0ussc8" path="res://MapGen/Resources/RoomAssets/LCZ3/OfficeCeiling001_2K_Metalness-OfficeCeiling001_2K_Roughness.png" id="2_4ldq6"]
@@ -13,14 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://dvjl4o6hjxwmq" path="res://MapGen/Resources/Doors/DoorKeycard.tscn" id="11_koehk"]
 [ext_resource type="Texture2D" uid="uid://dq70ehwygf3u7" path="res://MapGen/Resources/RoomAssets/LCZ3/SheetMetal001_2K-PNG_NormalGL.png" id="11_nrl1n"]
 [ext_resource type="Texture2D" uid="uid://pvjdvo6ndiw4" path="res://MapGen/Resources/RoomAssets/LCZ3/SheetMetal001_2K-PNG_Metalness_png-SheetMetal001_2K-PNG_Roughness_png.png" id="12_7uk6u"]
-[ext_resource type="PackedScene" uid="uid://lljv7frh0t0a" path="res://MapGen/Resources/Doors/DoorLCZ/door.gltf" id="14_wih20"]
 [ext_resource type="PackedScene" uid="uid://bmacptdhvw6h7" path="res://MapGen/Resources/RoomAssets/Props/ceiling_lamp.tscn" id="16_2wdui"]
 [ext_resource type="Shader" path="res://Shaders/WaterShader/water.gdshader" id="16_casgg"]
 [ext_resource type="Texture2D" uid="uid://cp7ao5dot5m1x" path="res://Shaders/WaterShader/caust_001.png" id="17_qqi3m"]
 [ext_resource type="PackedScene" uid="uid://b12fg2a4x7oeg" path="res://InventorySystem/Items/PickablePrefabs/scp018.tscn" id="18_4vi1r"]
 [ext_resource type="PackedScene" uid="uid://dk6afsf7jh72a" path="res://MapGen/Resources/RoomAssets/Props/office_desk_with_drawers.tscn" id="19_s7puo"]
 [ext_resource type="PackedScene" uid="uid://ggkfnlch55w4" path="res://MapGen/Resources/Cameras/cctv_lcz.tscn" id="20_3mftk"]
-[ext_resource type="PackedScene" uid="uid://bspw27h2s2p84" path="res://MapGen/Resources/Buttons/KeycardButton.gltf" id="21_qumpr"]
 [ext_resource type="PackedScene" uid="uid://5dvdvnwsudc6" path="res://MapGen/Resources/RoomAssets/Props/steel_frame_shelves_01_4k.tscn" id="22_fqwap"]
 [ext_resource type="PackedScene" uid="uid://mtaiulg3une7" path="res://InventorySystem/Items/PickablePrefabs/key3.tscn" id="23_tosyh"]
 [ext_resource type="PackedScene" uid="uid://qkwar6d6wrkx" path="res://InventorySystem/Items/PickablePrefabs/com16.tscn" id="24_ybonx"]
@@ -633,7 +631,7 @@ shader_parameter/caustics = ExtResource("17_qqi3m")
 
 [node name="Ceiling" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.394915, 0)
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_fg76v")
 skeleton = NodePath("")
 
@@ -643,7 +641,7 @@ shape = SubResource("ConcavePolygonShape3D_1wm1k")
 
 [node name="DoorPath_004" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_a2qsw")
 skeleton = NodePath("")
 
@@ -652,7 +650,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 shape = SubResource("ConcavePolygonShape3D_n0bqd")
 
 [node name="Floor_001" type="MeshInstance3D" parent="."]
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_sq8d8")
 skeleton = NodePath("")
 
@@ -660,7 +658,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_kxod2")
 
 [node name="DoorPath_001" type="MeshInstance3D" parent="."]
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_jclnq")
 skeleton = NodePath("")
 
@@ -668,7 +666,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_j03m0")
 
 [node name="LCZWallNeoCB2_002" type="MeshInstance3D" parent="."]
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_i7ak0")
 skeleton = NodePath("")
 
@@ -677,7 +675,7 @@ shape = SubResource("ConcavePolygonShape3D_bk2mp")
 
 [node name="LCZWallNeoCB2_016" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_7ewvr")
 skeleton = NodePath("")
 
@@ -704,9 +702,6 @@ visible = false
 [node name="CeilingLamp6" parent="." instance=ExtResource("16_2wdui")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.31841, 6.51179, -3.61702)
 visible = false
-
-[node name="door" parent="." instance=ExtResource("14_wih20")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.1562, 2.38419e-07, -0.010689)
 
 [node name="KeycardedDoor" parent="." instance=ExtResource("11_koehk")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.16863, -2.38419e-07, -0.00581607)
@@ -783,9 +778,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00725286, 6.60118, 0.01865
 [node name="cctv2" parent="." instance=ExtResource("20_3mftk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.57692, 6.60118, 0.0186504)
 
-[node name="KeycardButton" parent="." instance=ExtResource("21_qumpr")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.99411, 1.74509, -1.55546)
-
 [node name="steel_frame_shelves_01_4k" parent="." instance=ExtResource("22_fqwap")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 7.89502, 0, 8.57269)
 
@@ -803,3 +795,8 @@ transform = Transform3D(1, 0, 0, 0, 0.246509, -0.969141, 0, 0.969141, 0.246509, 
 
 [node name="Ammo_9mm" parent="." instance=ExtResource("25_fclds")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.50828, 0.469455, 8.47398)
+
+[node name="KeycardedDoor2" parent="." instance=ExtResource("11_koehk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.17376, 2.38419e-07, -0.0905437)
+requirements = 1
+canOpen = false

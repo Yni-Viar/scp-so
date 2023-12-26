@@ -174,10 +174,10 @@ replication_interval = 0.25
 replication_config = SubResource("SceneReplicationConfig_dsm0d")
 
 [node name="ButtonKeycard" parent="." instance=ExtResource("7_2n1cc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.81885, 1.75841, -0.557503)
+transform = Transform3D(0.904207, 0, 0, 0, 0.904207, 0, 0, 0, 0.904207, -3.8558, 1.75841, -0.557503)
 
 [node name="ButtonKeycard2" parent="." instance=ExtResource("7_2n1cc")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.86486, 1.76304, 0.570877)
+transform = Transform3D(-0.879124, 0, 7.68554e-08, 0, 0.879124, 0, -7.68554e-08, 0, -0.879124, 3.87681, 1.76304, 0.570877)
 
 [connection signal="Interacted" from="ButtonKeycard" to="." method="OnButtonKeycardInteracted"]
 [connection signal="Interacted" from="ButtonKeycard2" to="." method="OnButtonKeycardInteracted"]

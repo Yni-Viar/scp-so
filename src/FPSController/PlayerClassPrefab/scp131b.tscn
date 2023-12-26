@@ -98,6 +98,7 @@ bind/15/pose = Transform3D(-2.30314, 99.9735, 7.52973e-06, -2.50214e-06, -1.3905
 resource_name = "lambert8.001"
 transparency = 4
 vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_m3qrq")
 metallic = 1.0
 metallic_texture = ExtResource("3_aqk7h")
 metallic_texture_channel = 2
@@ -6431,14 +6432,17 @@ bones/15/rotation = Quaternion(0.0019799, -0.011345, 0.171909, 0.985046)
 bones/15/scale = Vector3(1, 1, 1)
 
 [node name="scp131_body_low" type="MeshInstance3D" parent="SCP131_skeleton/Skeleton3D"]
+transform = Transform3D(1, 7.10543e-15, -4.23516e-22, -7.10543e-15, 1, -3.55271e-15, 0, 3.55271e-15, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_g42en")
 skin = SubResource("Skin_3ywfl")
 
 [node name="scp131_eye_camera_low" type="MeshInstance3D" parent="SCP131_skeleton/Skeleton3D"]
+transform = Transform3D(1, 7.10543e-15, -4.23516e-22, -7.10543e-15, 1, -3.55271e-15, 0, 3.55271e-15, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_5twmo")
 skin = SubResource("Skin_3ywfl")
 
 [node name="scp131_eye_focus_low" type="MeshInstance3D" parent="SCP131_skeleton/Skeleton3D"]
+transform = Transform3D(1, 7.10543e-15, -4.23516e-22, -7.10543e-15, 1, -3.55271e-15, 0, 3.55271e-15, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_w55to")
 skin = SubResource("Skin_3ywfl")
 
@@ -6447,6 +6451,7 @@ mesh = SubResource("ArrayMesh_ikglf")
 skin = SubResource("Skin_3ywfl")
 
 [node name="scp131_wheel_low" type="MeshInstance3D" parent="SCP131_skeleton/Skeleton3D"]
+transform = Transform3D(1, 7.10543e-15, -4.23516e-22, -7.10543e-15, 1, -3.55271e-15, 0, 3.55271e-15, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_acqmg")
 skin = SubResource("Skin_3ywfl")
 
@@ -6517,3 +6522,14 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("6_n6xjx")
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
+
+[node name="TargetCount" type="Label" parent="AbilityUI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -280.0
+offset_bottom = 33.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("6_n6xjx")
+theme_override_font_sizes/font_size = 32

@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://ggkfnlch55w4" path="res://MapGen/Resources/Cameras/cctv_lcz.tscn" id="13_owclo"]
 [ext_resource type="Texture2D" uid="uid://bfrk7gej70rqe" path="res://MapGen/Resources/RoomAssets/LCZ3/beige_wall_001_nor_gl_2k.png" id="14_my6tv"]
 [ext_resource type="Texture2D" uid="uid://pvjdvo6ndiw4" path="res://MapGen/Resources/RoomAssets/LCZ3/SheetMetal001_2K-PNG_Metalness_png-SheetMetal001_2K-PNG_Roughness_png.png" id="15_76h6i"]
-[ext_resource type="PackedScene" uid="uid://dm7mdwvtll4ha" path="res://MapGen/Resources/RoomAssets/Props/ceiling_lamp.tscn" id="17_1jata"]
+[ext_resource type="PackedScene" uid="uid://bmacptdhvw6h7" path="res://MapGen/Resources/RoomAssets/Props/ceiling_lamp.tscn" id="17_1jata"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ap04e"]
 resource_name = "Material.013"
@@ -868,7 +868,7 @@ size = Vector3(19.6761, 9.08363, 20.2893)
 [node name="LC_room3_tway" type="StaticBody3D"]
 
 [node name="Floor_001" type="MeshInstance3D" parent="."]
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_c7pla")
 skeleton = NodePath("")
 
@@ -876,7 +876,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_uyvso")
 
 [node name="DoorPath_003" type="MeshInstance3D" parent="."]
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_f4wh2")
 skeleton = NodePath("")
 
@@ -884,7 +884,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_adyu4")
 
 [node name="DoorPath_002" type="MeshInstance3D" parent="."]
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_1j0rn")
 skeleton = NodePath("")
 
@@ -892,7 +892,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_lq77n")
 
 [node name="DoorPath_001" type="MeshInstance3D" parent="."]
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_m6ymk")
 skeleton = NodePath("")
 
@@ -901,7 +901,7 @@ shape = SubResource("ConcavePolygonShape3D_nghpu")
 
 [node name="Ceiling" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.487635, 0)
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_v5jm1")
 skeleton = NodePath("")
 
@@ -911,7 +911,7 @@ shape = SubResource("ConcavePolygonShape3D_m6bsc")
 
 [node name="LCZWallNeoCB2_005" type="MeshInstance3D" parent="."]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 0, 0)
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_ejtbi")
 skeleton = NodePath("")
 
@@ -920,7 +920,7 @@ transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_6xian")
 
 [node name="LCZWallNeoCB2_001" type="MeshInstance3D" parent="."]
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_v8q4q")
 skeleton = NodePath("")
 
@@ -929,7 +929,7 @@ shape = SubResource("ConcavePolygonShape3D_2io63")
 
 [node name="LCZWallNeoCB2_002" type="MeshInstance3D" parent="."]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0, 0)
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_a0hfl")
 skeleton = NodePath("")
 

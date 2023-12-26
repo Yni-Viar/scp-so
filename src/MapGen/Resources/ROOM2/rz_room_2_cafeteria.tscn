@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://7o4a42bl2o55" path="res://MapGen/Resources/RoomAssets/RZ/concretefloor.jpg" id="10_xktyb"]
 [ext_resource type="Texture2D" uid="uid://vcyo2coo1147" path="res://MapGen/Resources/RoomAssets/RZ/papertexture.jpg" id="11_hj2p8"]
 [ext_resource type="Texture2D" uid="uid://cj24pjqmvob1l" path="res://MapGen/Resources/RoomAssets/RZ/red.jpg" id="12_ehgvx"]
-[ext_resource type="PackedScene" uid="uid://bi12ev7yropli" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="13_tikae"]
+[ext_resource type="PackedScene" uid="uid://b7xwwuyi26i62" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="13_tikae"]
 [ext_resource type="PackedScene" uid="uid://bxj3dd8r00p7v" path="res://InventorySystem/Items/PickablePrefabs/key2.tscn" id="14_2fvdf"]
 [ext_resource type="PackedScene" uid="uid://c8brqgry3c6r2" path="res://MapGen/Resources/Cameras/cctv_rz.tscn" id="15_5ub8t"]
 
@@ -383,7 +383,7 @@ size = Vector3(19.6761, 9.08363, 20.2893)
 [node name="RZ_room2_cafeteria" type="StaticBody3D"]
 
 [node name="RZ_room2_cafeteria2" type="MeshInstance3D" parent="."]
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_nmoah")
 skeleton = NodePath("")
 

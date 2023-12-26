@@ -20,6 +20,7 @@ public partial class WeaponManager : ItemAction
     [Export] bool isAuto;
     [Export] float weaponCooldown;
     float fireCooldown;
+    [Export] bool isTranquilizer = false;
 
     //Zooming
     [Export] bool allowZoom;
@@ -68,7 +69,7 @@ public partial class WeaponManager : ItemAction
                 {
                     if (IsDeductCooldownEnded())
                     {
-                        Rpc("Shoot");
+                        Shoot();
                     }
                 }
                 if (Input.IsActionJustPressed("weapon_zoom") && allowZoom)
@@ -106,39 +107,62 @@ public partial class WeaponManager : ItemAction
         }
     }
     /// <summary>
-    /// The main shooting mechanic
+    /// The main shooting mechanic (singleplayer)
     /// </summary>
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void Shoot()
     {
         if (rayCast.IsColliding() && GetParent().GetParent().GetParent<PlayerScript>().GetNode<AmmoSystem>("AmmoSystem").CurrentAmmo[ammoType] > 0)
         {
+            Rpc("ShootRpc");
             var collider = rayCast.GetCollider();
             if (collider is PlayerScript playerScript && playerScript.Name != Multiplayer.GetUniqueId().ToString())
             {
-                //Deplete HP
-                if (playerScript.classKey == "scp106")
+                if (isTranquilizer)
                 {
-                    playerScript.RpcId(int.Parse(playerScript.Name), "HealthManage", -damage / GlobalPosition.DistanceTo(playerScript.GlobalPosition) / 10, "Shot by " + Name);
+                    //Stun
+                    playerScript.RpcId(int.Parse(playerScript.Name), "SanityManage", -damage / 2, "Recontained by " + Name);
                 }
                 else
                 {
-                    playerScript.RpcId(int.Parse(playerScript.Name), "HealthManage", -damage / GlobalPosition.DistanceTo(playerScript.GlobalPosition), "Shot by " + Name);
+                    //Deplete HP
+                    if (playerScript.classKey == "scp106")
+                    {
+                        playerScript.RpcId(int.Parse(playerScript.Name), "HealthManage", -damage / 24, "Shot by " + Name);
+                    }
+                    else
+                    {
+                        playerScript.RpcId(int.Parse(playerScript.Name), "HealthManage", -damage / 4 /*GlobalPosition.DistanceTo(playerScript.GlobalPosition)*/, "Shot by " + Name);
+                    }
                 }
             }
             else
             {
                 SpawnDecal(rayCast.GetCollisionPoint() + rayCast.GetCollisionNormal() * 0.9f, rayCast.GetCollisionNormal()); //Hit point
             }
-            //Minus one bullet
-            GetParent().GetParent().GetParent<PlayerScript>().GetNode<AmmoSystem>("AmmoSystem").CurrentAmmo[ammoType]--;
-            //Play animation and audio
-            audio.Stream = poofSounds[rng.RandiRange(0, poofSounds.Count - 1)];
-            audio.Play();
-            fireCooldown = weaponCooldown;
         }
-        Vector3 recoilVector = Vector3.Zero.Lerp(recoilTarget, recoilScale);
-        GetParent().GetParent().GetParent<PlayerScript>().GetNode<Node3D>("PlayerHead").Rotation.Lerp(recoilVector, recoilSpeed);
+        
+    }
+    /// <summary>
+    /// Networked part of shooting. Available since 0.7.0
+    /// </summary>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    void ShootRpc()
+    {
+        //Minus one bullet
+        GetParent().GetParent().GetParent<PlayerScript>().GetNode<AmmoSystem>("AmmoSystem").CurrentAmmo[ammoType]--;
+        //Play animation and audio
+        audio.Stream = poofSounds[rng.RandiRange(0, poofSounds.Count - 1)];
+        audio.Play();
+
+        //fire cooldown
+        fireCooldown = weaponCooldown;
+
+        //Recoil
+        recoilTarget = new Vector3 { X = rng.RandiRange(-20, 0), Y = 0, Z = 0 };
+        Vector3 recoilVector = recoilTarget.Lerp(Vector3.Zero, recoilScale);
+        Vector3 finalizeRecoil = GetParent().GetParent().GetParent<PlayerScript>().GetNode<Node3D>("PlayerHead").RotationDegrees.Lerp(recoilVector, recoilSpeed);
+        GetParent().GetParent().GetParent<PlayerScript>().GetNode<Node3D>("PlayerHead").RotationDegrees += new Vector3(Mathf.Clamp(finalizeRecoil.X, Mathf.DegToRad(-85f), Mathf.DegToRad(85f)), 0, 0);
+        rayCast.RotationDegrees = recoilTarget;
     }
     /// <summary>
     /// Reloading mechanic.

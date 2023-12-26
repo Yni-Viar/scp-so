@@ -30,29 +30,43 @@ public partial class GuardPlayerScript : HumanPlayerScript
             {
                 if (Input.IsActionPressed("move_sprint"))
                 {
-                    //Rpc("SetState", "state_machine", "blend_amount", 1.0f);
-                    Rpc("SetState", "state_machine", "blend_amount",
+                    if (!(GetNode<AnimationTree>("AnimationTree").Get("parameters/state_machine/blend_amount").AsDouble() == 1))
+                    {
+                        Rpc("SetState", "state_machine", "blend_amount",
                         Mathf.Lerp(GetNode<AnimationTree>("AnimationTree").Get("parameters/state_machine/blend_amount").AsDouble(), 1, delta * GetParent().GetParent<PlayerScript>().speed * 2));
+                    }
                 }
                 else
                 {
-                    Rpc("SetState", "state_machine", "blend_amount",
-                        Mathf.Lerp(GetNode<AnimationTree>("AnimationTree").Get("parameters/state_machine/blend_amount").AsDouble(), 0, delta * GetParent().GetParent<PlayerScript>().speed * 2));
+                    if (!(GetNode<AnimationTree>("AnimationTree").Get("parameters/state_machine/blend_amount").AsDouble() == 0))
+                    {
+                        Rpc("SetState", "state_machine", "blend_amount",
+                            Mathf.Lerp(GetNode<AnimationTree>("AnimationTree").Get("parameters/state_machine/blend_amount").AsDouble(), 0, delta * GetParent().GetParent<PlayerScript>().speed * 2));
+                    }
                 }
             }
             else
             {
-                Rpc("SetState", "state_machine", "blend_amount",
-                    Mathf.Lerp(GetNode<AnimationTree>("AnimationTree").Get("parameters/state_machine/blend_amount").AsDouble(), -1, delta * GetParent().GetParent<PlayerScript>().speed * 2));
+                if (!(GetNode<AnimationTree>("AnimationTree").Get("parameters/state_machine/blend_amount").AsDouble() == -1))
+                {
+                    Rpc("SetState", "state_machine", "blend_amount",
+                        Mathf.Lerp(GetNode<AnimationTree>("AnimationTree").Get("parameters/state_machine/blend_amount").AsDouble(), -1, delta * GetParent().GetParent<PlayerScript>().speed * 2));
+                }
             }
             //item in hand animation
             if (GetNode<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand").GetChildCount() > 0)
             {
-                Rpc("SetState", "items_blend", "blend_amount", 1.0f);
+                if (!(GetNode<AnimationTree>("AnimationTree").Get("parameters/items_blend/blend_amount").AsDouble() == 1))
+                {
+                    Rpc("SetState", "items_blend", "blend_amount", 1.0f);
+                }
             }
             else
             {
-                Rpc("SetState", "items_blend", "blend_amount", 0.0f);
+                if (!(GetNode<AnimationTree>("AnimationTree").Get("parameters/items_blend/blend_amount").AsDouble() == 0))
+                {
+                    Rpc("SetState", "items_blend", "blend_amount", 0.0f);
+                }
             }
         }
     }

@@ -8,10 +8,10 @@
 [ext_resource type="Material" uid="uid://ck66ddwc23a1w" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat5.003.tres" id="6_ctl5x"]
 [ext_resource type="Material" uid="uid://n0w5itmdsnq4" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat6.003.tres" id="7_mpdlf"]
 [ext_resource type="PackedScene" uid="uid://bskf2ruxmf76r" path="res://MapGen/Resources/Doors/DoorGateKeycard.tscn" id="9_x04sk"]
-[ext_resource type="PackedScene" uid="uid://cgaomav6767mx" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="10_51h1x"]
+[ext_resource type="PackedScene" uid="uid://dn7xcp8e6o86h" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="10_51h1x"]
 [ext_resource type="PackedScene" uid="uid://bxj3dd8r00p7v" path="res://InventorySystem/Items/PickablePrefabs/key2.tscn" id="10_a6luc"]
-[ext_resource type="PackedScene" uid="uid://b1t4jbtv1pdjy" path="res://MapGen/Resources/RoomAssets/Props/office_desk_with_drawers.tscn" id="11_mklfw"]
-[ext_resource type="PackedScene" uid="uid://cg3e33d8f3a6n" path="res://MapGen/Resources/RoomAssets/Props/laptop.tscn" id="12_cdt4q"]
+[ext_resource type="PackedScene" uid="uid://dk6afsf7jh72a" path="res://MapGen/Resources/RoomAssets/Props/office_desk_with_drawers.tscn" id="11_mklfw"]
+[ext_resource type="PackedScene" uid="uid://bsv4bn1kgu5pm" path="res://MapGen/Resources/RoomAssets/Props/laptop.tscn" id="12_cdt4q"]
 [ext_resource type="PackedScene" uid="uid://dme4cvlaar7xi" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="13_74yh0"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ssgtx"]
@@ -193,7 +193,7 @@ size = Vector3(1, 1, 12.025)
 [node name="HC_cont1_173" type="StaticBody3D"]
 
 [node name="HC_cont1_1732" type="MeshInstance3D" parent="."]
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_j8tpx")
 skeleton = NodePath("")
 

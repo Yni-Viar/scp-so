@@ -140,7 +140,7 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[b]v.0.7.0-dev[/b] [i](Alpha)[/i]
+text = "[b]v.0.7.0[/b] [i](Alpha)[/i]
 - Changed game logo to nicer one.
 - Finally added loading screen!
 - More dead ends can be spawned.
@@ -157,16 +157,20 @@ text = "[b]v.0.7.0-dev[/b] [i](Alpha)[/i]
 - Removed SCP-650 as player class.
 - Revamped door system (again), to make it more flexible.
 - Added weapon system.
+- Added recontainment system for SCP-173 and SCP-3199.
 - Changed the shader for SCP-173, also removed useless Sketchy Shader.
 - Fixed sky being used even if player was outside of SZ.
 - Reworked movement system (animation-side)
+- Fixed Scientist's hands.
 - Added primitive admin panel.
 - Every December, the Main Menu and SCP-173 face will change to Christmas one.
 - New rooms in LCZ + new spawn for SCP-018
+- Optimized game by reducing the room visibility range (and reducing the fog range).
+- Added win conditions - the game is playable, so the next version will be labeled as \"Beta\" (I hope)
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.
-- Scientist's hands rig are incorrect. (I am unable to fix this issue, because Mixamo does not support hazmats :( )
-- Keycarded door still produce \"allow\" sound, even if keycard is lower than needed. \"Deny\" sound plays only if player don't hold a keycard."
+- Keycarded door still produce \"allow\" sound, even if keycard is lower than needed. \"Deny\" sound plays only if player don't hold a keycard.
+- SCP-173 mechanic and connecting to ongoing game may be unstable."
 
 [node name="PlayPanel" type="Panel" parent="."]
 visible = false
@@ -232,8 +236,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "WARNING! Multiplayer mode is NOT production-ready!
 Connecting to ongoing game is an EXPERIMENTAL
-feature.
-Round end sequence is currently NOT IMPLEMENTED."
+feature."
 
 [node name="DevWarning" type="Label" parent="."]
 layout_mode = 1

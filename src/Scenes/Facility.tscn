@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://mu7j26by23js"]
+[gd_scene load_steps=29 format=3 uid="uid://mu7j26by23js"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/FacilityManager.cs" id="1_p22hh"]
 [ext_resource type="Script" path="res://Scripts/Multiplayer/AdminCommands.cs" id="2_m73g2"]
@@ -43,12 +43,18 @@ properties/6/replication_mode = 2
 properties/7/path = NodePath(".:items")
 properties/7/spawn = true
 properties/7/replication_mode = 2
-properties/8/path = NodePath(".:friendlyFireFm")
+properties/8/path = NodePath(".:ammo")
 properties/8/spawn = true
 properties/8/replication_mode = 2
-properties/9/path = NodePath(".:ammo")
+properties/9/path = NodePath(".:tickets")
 properties/9/spawn = true
 properties/9/replication_mode = 2
+properties/10/path = NodePath(".:targets")
+properties/10/spawn = true
+properties/10/replication_mode = 2
+properties/11/path = NodePath(".:maxSpawnableObjects")
+properties/11/spawn = true
+properties/11/replication_mode = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ttxax"]
 size = Vector3(6410.33, 1969.08, 6412.47)
@@ -57,6 +63,12 @@ size = Vector3(6410.33, 1969.08, 6412.47)
 bg_color = Color(0, 0, 0, 0.847059)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wo10"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ld0ka"]
+bg_color = Color(0, 0, 0, 0.25098)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ryfe2"]
+bg_color = Color(0.188235, 0.458824, 1, 0.376471)
 
 [sub_resource type="Animation" id="Animation_wnm84"]
 resource_name = "forceclass"
@@ -106,9 +118,35 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.9, 4.1, 5)
 }
 
+[sub_resource type="Animation" id="Animation_0y8ye"]
+resource_name = "roundend"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameEnd:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameEnd:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-328, -0.25, 0, 0.25, 0, 96, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_icbbs"]
 _data = {
-"forceclass": SubResource("Animation_wnm84")
+"forceclass": SubResource("Animation_wnm84"),
+"roundend": SubResource("Animation_0y8ye")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3wvqa"]
@@ -216,9 +254,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -832.0
+offset_left = -960.0
 offset_top = -128.0
-offset_right = 832.0
+offset_right = 704.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("8_1slp4")
 theme_override_font_sizes/font_size = 64
@@ -230,13 +268,28 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -832.0
+offset_left = -960.0
 offset_top = -424.0
-offset_right = 832.0
+offset_right = 704.0
 offset_bottom = -128.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
+
+[node name="GameEnd" type="RichTextLabel" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+offset_top = -328.0
+offset_right = 896.0
+offset_bottom = -192.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("8_1slp4")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+bbcode_enabled = true
 
 [node name="HealthBar" type="ProgressBar" parent="PlayerUI"]
 layout_mode = 1
@@ -255,6 +308,22 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/background = SubResource("StyleBoxFlat_5wgsy")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6wo10")
 allow_greater = true
+
+[node name="SanityBar" type="ProgressBar" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.911
+anchor_right = 0.229
+anchor_bottom = 0.933
+offset_left = 0.639999
+offset_top = 0.119934
+offset_right = 0.319977
+offset_bottom = 0.359985
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_ld0ka")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ryfe2")
+show_percentage = false
 
 [node name="Counter" type="Label" parent="PlayerUI"]
 layout_mode = 0

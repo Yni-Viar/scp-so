@@ -46,6 +46,9 @@ public partial class BaseClass : Resource
     public float Health { get; set; }
 
     [Export]
+    public float Sanity { get; set; }
+
+    [Export]
     public bool CustomSpawn { get; set; }
 
     [Export] 
@@ -71,11 +74,11 @@ public partial class BaseClass : Resource
     // constructor with all default values.
     // Without a parameterless constructor, Godot will have problems
     // creating and editing your resource via the inspector.
-    public BaseClass() : this(null, null, null, null, null, 0f, 0f, true, true, null, null, -1, Globals.Team.SPT, 100f, false, false, null, null, 0.969f, null, new Color(1, 1, 1)) { }
+    public BaseClass() : this(null, null, null, null, null, 0f, 0f, true, true, null, null, -1, Globals.Team.SPT, 100f, 50f, false, false, null, null, 0.969f, null, new Color(1, 1, 1)) { }
 
     public BaseClass(string className, string classDescription, string[] spawnPoints, string playerModelSource, string playerRagdollSource,
         float speed, float jump, bool sprintEnabled, bool moveSoundsEnabled, string[] footstepSounds,
-        string[] sprintSounds, int scpNumber, Globals.Team team, float health, bool customSpawn, bool customCamera, string customView,
+        string[] sprintSounds, int scpNumber, Globals.Team team, float health, float sanity, bool customSpawn, bool customCamera, string customView,
         string[] preloadedItems, float defaultCameraPos, int[] ammo, Color classColor)
     {
         ClassName = className;
@@ -92,6 +95,7 @@ public partial class BaseClass : Resource
         ScpNumber = scpNumber;
         Team = team;
         Health = health;
+        Sanity = sanity;
         CustomSpawn = customSpawn;
         CustomCamera = customCamera;
         CustomView = customView;

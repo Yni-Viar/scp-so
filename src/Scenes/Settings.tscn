@@ -177,8 +177,9 @@ text = "Mouse sensivity"
 [node name="MouseSensSet" type="HSlider" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_2qins")
+min_value = 0.001
 max_value = 5.0
-step = 0.1
+step = 0.001
 value = 2.0
 
 [node name="SoundTest" type="AudioStreamPlayer" parent="SettingsPanel"]

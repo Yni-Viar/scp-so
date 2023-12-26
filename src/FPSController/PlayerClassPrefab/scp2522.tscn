@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ekckj1irrths"]
+[gd_scene load_steps=7 format=3 uid="uid://ekckj1irrths"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerClassScript/Scp2522PlayerScript.cs" id="1_rd54c"]
+[ext_resource type="FontFile" uid="uid://cqaasvtiakcsw" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="4_bycpf"]
 [ext_resource type="FontFile" uid="uid://dbcvx5qht5ass" path="res://Assets/Fonts/PixelifySans/PixelifySans-Regular.ttf" id="8_7eus5"]
-[ext_resource type="PackedScene" uid="uid://h4vs76oto1c2" path="res://MapGen/HUD/MapGenHUD.tscn" id="9_dp7s1"]
+[ext_resource type="PackedScene" uid="uid://181xd3hx0uq" path="res://MapGen/HUD/MapGenHUD.tscn" id="9_dp7s1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4t5cu"]
 bg_color = Color(0, 0, 0, 1)
@@ -22,6 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Info" type="Label" parent="UI"]
 layout_mode = 2
@@ -78,3 +80,14 @@ theme_override_fonts/font = ExtResource("8_7eus5")
 theme_override_font_sizes/font_size = 24
 text = "Energy"
 horizontal_alignment = 1
+
+[node name="TargetCount" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -280.0
+offset_bottom = 33.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("4_bycpf")
+theme_override_font_sizes/font_size = 32

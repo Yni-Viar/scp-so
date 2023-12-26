@@ -209,7 +209,7 @@ size = Vector3(19.6761, 9.08363, 20.2893)
 [node name="HC_room1_endroom" type="StaticBody3D"]
 
 [node name="HC_room1_endroom2" type="MeshInstance3D" parent="."]
-visibility_range_end = 128.0
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_rjgl6")
 skeleton = NodePath("")
 
@@ -254,10 +254,12 @@ max_distance = 40.0
 transform = Transform3D(1.11776, 0, 0, 0, 1.01119, 0, 0, 0, 1, -0.0408412, 1.4556e-06, -1.64698)
 
 [node name="Cube_001" type="MeshInstance3D" parent="Gate"]
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_irarx")
 skeleton = NodePath("")
 
 [node name="Frame" type="MeshInstance3D" parent="Gate"]
+visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_c20ja")
 skeleton = NodePath("")
 

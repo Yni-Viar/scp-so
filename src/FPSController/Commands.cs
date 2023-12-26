@@ -3,8 +3,7 @@ using System;
 
 public partial class Commands : Node
 {
-    static byte itemLimit = 0;
-    byte itemMax = 12; //it will be configurable in future.
+    static uint itemLimit = 0;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -17,6 +16,7 @@ public partial class Commands : Node
             GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("give", new Callable(this, "GiveItem"), "Gives an item to inventory");
             GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("giveammo", new Callable(this, "GiveAmmo"), "Gives an item to inventory (Limit for each player equals 12 items)");
             GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("givehp", new Callable(this, "SetHealth"), "Sets health on a current player");
+            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("givesanity", new Callable(this, "GiveSanity"), "Sets sanity on a current player");
         }
     }
 
@@ -114,7 +114,7 @@ public partial class Commands : Node
     /// <returns>Calls helper class for giving item, if it exists in itemlist.json</returns>
     string GiveItem(string[] args)
     {
-        if (itemLimit > itemMax)
+        if (itemLimit > GetTree().Root.GetNode<FacilityManager>("Main/Game/").maxSpawnableObjects)
         {
             return "Error! You exceeded limit for a single player";
         }
@@ -124,7 +124,7 @@ public partial class Commands : Node
             {
                 //inventory.AddItem(ResourceLoader.Load(JsonParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json")[args[0]]));
                 //gives the string for adding an item, rpc will convert this in resource
-                GiveItemCmd(ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json", Globals.ItemType.item)[args[0]], 0);
+                GiveItemCmd(args[0], 0);
                 itemLimit++;
                 return "Item " + args[0] + " spawned next to you";
             }
@@ -150,10 +150,10 @@ public partial class Commands : Node
         GetTree().Root.GetNode<PlayerAction>("Main/Game/" + Multiplayer.GetUniqueId() + "/PlayerHead").Rpc("SpawnObject", itemPath, type);
     }
     /// <summary>
-    /// Sets 
+    /// Sets health on a current player
     /// </summary>
-    /// <param name="args"></param>
-    /// <returns></returns>
+    /// <param name="args">How much HP is given</param>
+    /// <returns>Result</returns>
     string SetHealth(string[] args)
     {
         if (args.Length == 1)
@@ -163,13 +163,17 @@ public partial class Commands : Node
         }
         else
         {
-            return "Error. You need only 1 argument, e.g. sethp 100";
+            return "Error. You need only 1 argument, e.g. givehp 100";
         }
     }
-
+    /// <summary>
+    /// Gives ammo for the player.
+    /// </summary>
+    /// <param name="args">Ammo name, as in ammotype_[currentversion].json or as in Globals.ammo, if settings are default. Available, since 0.7.0-dev.</param>
+    /// <returns>Result</returns>
     string GiveAmmo(string[] args)
     {
-        if (itemLimit > itemMax)
+        if (itemLimit > GetTree().Root.GetNode<FacilityManager>("Main/Game/").maxSpawnableObjects)
         {
             return "Error! You exceeded limit for a single player";
         }
@@ -179,7 +183,7 @@ public partial class Commands : Node
             {
                 //inventory.AddItem(ResourceLoader.Load(JsonParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json")[args[0]]));
                 //gives the string for adding an item, rpc will convert this in resource
-                GiveItemCmd(ItemParser.ReadJson("user://ammotype_" + Globals.itemsCompatibility + ".json", Globals.ItemType.ammo)[args[0]], 1);
+                GiveItemCmd(args[0], 1);
                 itemLimit++;
                 return "Ammo " + args[0] + " spawned next to you";
             }
@@ -191,6 +195,23 @@ public partial class Commands : Node
         else
         {
             return "Unknown item. Cannot spawn. Did you input the item?";
+        }
+    }
+    /// <summary>
+    /// Gives sanity to the player. Available since 0.7.0-RC.
+    /// </summary>
+    /// <param name="args">How much Sanity is given</param>
+    /// <returns>Result</returns>
+    string GiveSanity(string[] args)
+    {
+        if (args.Length == 1)
+        {
+            GetParent<PlayerScript>().RpcId(Multiplayer.GetUniqueId(), "SanityManage", Convert.ToDouble(args[0]), "Forced sanity change.");
+            return "Given " + args[0] + " sanity (if is possible).";
+        }
+        else
+        {
+            return "Error. You need only 1 argument, e.g. givesanity 100";
         }
     }
 }

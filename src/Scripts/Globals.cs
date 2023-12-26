@@ -6,26 +6,28 @@ using System;
 public partial class Globals
 {
     public enum Stages { release, testing, dev };
-    public static string version = "0.7.0-dev";
-    //Milestone is a minimal version, compatible with current release.
-    public static string settingsCompatibility = "0.7.0-dev";
-    public static string classesCompatibility = "0.7.0-dev";
-    public static string itemsCompatibility = "0.7.0-dev";
-    public static string roomsCompatibility = "0.7.0-dev";
-    public static string tasksCompatibility = "0.7.0-dev";
-    public static string serverConfigCompatibility = "0.7.0-dev";
-    public static Stages currentStage = Stages.dev;
+    public enum HealthType { health, sanity }
+
+    public static string version = "0.7.0";
+    public static string settingsCompatibility = "0.7.0";
+    public static string classesCompatibility = "0.7.0";
+    public static string itemsCompatibility = "0.7.0";
+    public static string roomsCompatibility = "0.7.0";
+    //public static string tasksCompatibility = "0.7.0"; //unused
+    public static string serverConfigCompatibility = "0.7.0";
+    public static Stages currentStage = Stages.release;
 
     //Types of spawnable objects
     public enum ItemType { item, ammo };
 
-    //Spectators, D-class, Scientists, MTF, Dangerous SCP items, Normal SCP entities, Chaos Insurgency, Serpent's hand.
+    //Spectators, D-class, Scientists, MTF, Dangerous SCP entities, Normal SCP entities, Chaos Insurgency, Serpent's hand.
     public enum Team { SPT, CDP, SCI, MTF, DSE, NSE, CHI, SEH }
     internal static Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classData =
         new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> {
             { "spawnableHuman", new Godot.Collections.Array<string>{"classd", "scientist", "guard" } },
             { "arrivingHuman", new Godot.Collections.Array<string>{ "mtfe11" } },
-            { "spawnableScps", new Godot.Collections.Array<string> { "scp2522", "scp106", "scp131a", "scp131b", "scp173", "scp3199" } },
+            { "spawnableScps", new Godot.Collections.Array<string> { "scp106", "scp173", "scp3199" } },
+            { "friendlyScps", new Godot.Collections.Array<string> { "scp131a", "scp131b" } },
             { "special", new Godot.Collections.Array<string> {"spectator" } },
         };
 
@@ -39,7 +41,11 @@ public partial class Globals
         { "pda", "res://InventorySystem/Items/pda.tres" },
         { "medkit", "res://InventorySystem/Items/medkit.tres" },
         { "scp018", "res://InventorySystem/Items/scp018.tres" },
-        { "com16", "res://InventorySystem/Items/com16.tres" }
+        { "com16", "res://InventorySystem/Items/com16.tres" },
+        { "mtfrifle", "res://InventorySystem/Items/mtfrifle.tres" },
+        { "cage", "res://InventorySystem/Items/cage.tres" },
+        { "cage_contained", "res://InventorySystem/Items/cage_contained.tres" },
+        { "tranquilizer", "res://InventorySystem/Items/tranquilizer.tres" }
     };
 
     internal static Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> roomData =
@@ -60,7 +66,7 @@ public partial class Globals
             { "LczCommon2C", new Godot.Collections.Array<string>{ "lc_room_2c" } },
             { "LczCommon3", new Godot.Collections.Array<string>{ "lc_room_3" } },
             { "LczCommon4", new Godot.Collections.Array<string>{ "lc_room_4" } },
-            { "LczSingle1", new Godot.Collections.Array<string>{ "lc_cont_1_131", "lc_cont_1_079", "lc_room_1_archive" } },
+            { "LczSingle1", new Godot.Collections.Array<string>{ "lc_cont_1_testroom", "lc_cont_1_079", "lc_room_1_archive" } },
             { "LczSingle2", new Godot.Collections.Array<string>{ "lc_cont_2_650", "lc_cont_2_scps", "lc_room_2_sl" } },
             { "LczSingle2C", new Godot.Collections.Array<string>{ } },
             { "LczSingle3", new Godot.Collections.Array<string>{ } },

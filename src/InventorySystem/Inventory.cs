@@ -53,7 +53,7 @@ public partial class Inventory : Node
         EmitSignal(SignalName.ItemsChanged, new Godot.Collections.Array{itemIndex, targetItemIndex});
     }
     /// <summary>
-    /// Remove items from inventory
+    /// Remove items from inventory. Please use PlayerAction.SpawnObject for spawning items, this method is for removing items from inventory ONLY!
     /// </summary>
     /// <param name="itemIndex">Which index will be affected</param>
     /// <param name="itemSpawn">Will be the item spawned or not (to prevent dupe)</param>
@@ -62,6 +62,7 @@ public partial class Inventory : Node
     {
         Resource previousItem = items[itemIndex];
         items[itemIndex] = null;
+        //do not dupe the item
         GetParent().GetParent<PlayerScript>().Rpc("UpdateItemsInHand", "", "");
         //Spawn item ingame
         if (previousItem is Item _item && itemSpawn) // anti-dupe

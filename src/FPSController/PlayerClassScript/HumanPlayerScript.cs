@@ -103,7 +103,7 @@ public partial class HumanPlayerScript : Node3D
         }
     }
     /// <summary>
-    /// Set animation to an entity via Animation Tree.
+    /// Set animation to an entity via Animation Tree. Available since 0.7.0-dev
     /// </summary>
     /// <param name="anim">Name of animation tree node</param>
     /// <param name="action">AnimationTree node parameters</param>

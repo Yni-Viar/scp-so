@@ -174,10 +174,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96653, 0)
 max_distance = 40.0
 
 [node name="ButtonInteract" parent="." instance=ExtResource("6_lekwh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.81885, 1.75841, -0.557503)
+transform = Transform3D(-0.83624, 0, -7.31064e-08, 0, 0.83624, 0, 7.31064e-08, 0, -0.83624, -3.85392, 1.75841, -0.704021)
 
 [node name="ButtonInteract2" parent="." instance=ExtResource("6_lekwh")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.86486, 1.76304, 0.570877)
+transform = Transform3D(0.796119, 0, 0, 0, 0.796119, 0, 0, 0, 0.796119, 3.87643, 1.76304, 0.702234)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_interval = 0.25

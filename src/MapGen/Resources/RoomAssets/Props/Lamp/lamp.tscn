@@ -99,6 +99,7 @@ mesh = SubResource("ArrayMesh_fcyct")
 skeleton = NodePath("")
 
 [node name="Cube_001" type="MeshInstance3D" parent="."]
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_l6f33")
 skeleton = NodePath("")
 
