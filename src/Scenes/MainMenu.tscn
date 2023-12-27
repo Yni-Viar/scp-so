@@ -140,33 +140,12 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[b]v.0.7.0[/b] [i](Alpha)[/i]
-- Changed game logo to nicer one.
-- Finally added loading screen!
-- More dead ends can be spawned.
-- SCP-018 model now has smooth model.
-- Modernized LCZ.
-- Improved forceclass and pre-round screens.
-- Added support for player nicknames.
-- Fixed bug, where exiting the server broke the game.
-- Added a shader to SCP-173, so it is possible for changing SCP-173's face without changing the main concrete texture.
-- Class-Ds now have face randomization.
-- Fixed bug, where screen settings were not applied, when restarting.
-- Switched to Jolt physics, allowing to support ragdolls.
-- Current SCP-079 implementation changed to SCP-2522 \"hatbot.aic\".
-- Removed SCP-650 as player class.
-- Revamped door system (again), to make it more flexible.
-- Added weapon system.
-- Added recontainment system for SCP-173 and SCP-3199.
-- Changed the shader for SCP-173, also removed useless Sketchy Shader.
-- Fixed sky being used even if player was outside of SZ.
-- Reworked movement system (animation-side)
-- Fixed Scientist's hands.
-- Added primitive admin panel.
-- Every December, the Main Menu and SCP-173 face will change to Christmas one.
-- New rooms in LCZ + new spawn for SCP-018
-- Optimized game by reducing the room visibility range (and reducing the fog range).
-- Added win conditions - the game is playable, so the next version will be labeled as \"Beta\" (I hope)
+text = "[b]v.0.7.1-dev[/b] [i](Alpha)[/i]
+(BIG thanks for testers, who pointed at bugs)
+- Fixed mouse sensivity.
+- Fixed mouse input when SpecialScreen is enabled.
+- Added outline to arrow.
+
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.
 - Keycarded door still produce \"allow\" sound, even if keycard is lower than needed. \"Deny\" sound plays only if player don't hold a keycard.
@@ -357,7 +336,8 @@ text = "[color=#84D9FF][i]Authors:[/i]
 
 [color=green] Many thanks for testers, which pointed me at bugs:
 - William[]
-- cherniichernish (Гражданин)[/color]
+- cherniichernish (Гражданин)
+- The1Wolfcast [/color]
 
 
 "

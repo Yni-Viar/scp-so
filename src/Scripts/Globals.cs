@@ -8,14 +8,14 @@ public partial class Globals
     public enum Stages { release, testing, dev };
     public enum HealthType { health, sanity }
 
-    public static string version = "0.7.0";
+    public static string version = "0.7.1-dev";
     public static string settingsCompatibility = "0.7.0";
     public static string classesCompatibility = "0.7.0";
     public static string itemsCompatibility = "0.7.0";
     public static string roomsCompatibility = "0.7.0";
     //public static string tasksCompatibility = "0.7.0"; //unused
     public static string serverConfigCompatibility = "0.7.0";
-    public static Stages currentStage = Stages.release;
+    public static Stages currentStage = Stages.dev;
 
     //Types of spawnable objects
     public enum ItemType { item, ammo };

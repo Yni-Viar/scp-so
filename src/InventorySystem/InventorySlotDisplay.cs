@@ -34,6 +34,7 @@ public partial class InventorySlotDisplay : CenterContainer
                     GetParent().GetParent().GetParent().GetParent<PlayerScript>().UsingItem = new string[] { "", "" };
                     GetParent().GetParent().GetParent().GetParent<PlayerScript>().GetNode<ColorRect>("InventoryContainer").Hide();
                 }
+				GetTree().Root.GetNode<PlayerUI>("Main/Game/PlayerUI").SpecialScreen = false;
 			}
 			if (Input.IsActionJustPressed("inventory_remove_item") && itemHover)
 			{

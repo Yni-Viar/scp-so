@@ -155,15 +155,15 @@ public partial class PlayerScript : CharacterBody3D
 
     public override void _Input(InputEvent @event)
     {
-        if (IsMultiplayerAuthority())
+        if (IsMultiplayerAuthority() && !GetParent().GetNode<PlayerUI>("PlayerUI").SpecialScreen)
         {
             if (@event is InputEventMouseMotion)
             {
                 InputEventMouseMotion m = (InputEventMouseMotion) @event;
                 if (!customCamera)
                 {
-                    this.RotateY(Mathf.DegToRad(-m.Relative.X * settings.MouseSensitivity * 2f)); //pretty magic numbers
-                    playerHead.RotateX(Mathf.Clamp(-m.Relative.Y * settings.MouseSensitivity * 0.1225f, -90, 90));
+                    this.RotateY(-m.Relative.X * settings.MouseSensitivity * 0.05f); //pretty magic numbers
+                    playerHead.RotateX(Mathf.Clamp(-m.Relative.Y * settings.MouseSensitivity * 0.05f, -90, 90));
     
                     Vector3 cameraRot = playerHead.Rotation;
                     cameraRot.X = Mathf.Clamp(playerHead.Rotation.X, Mathf.DegToRad(-85f), Mathf.DegToRad(85f));
@@ -173,7 +173,7 @@ public partial class PlayerScript : CharacterBody3D
 
             if (Input.IsActionJustPressed("mode_kinematic"))
             {
-                GetParent().GetNode<Control>("PlayerUI").Visible = !GetParent().GetNode<Control>("PlayerUI").Visible;
+                GetParent().GetNode<PlayerUI>("PlayerUI").Visible = !GetParent().GetNode<PlayerUI>("PlayerUI").Visible;
             }
         }
     }
