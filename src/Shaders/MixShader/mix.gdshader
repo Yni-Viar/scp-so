@@ -1,5 +1,7 @@
 shader_type spatial;
 
+//Made by Yni. License - CC0.
+
 uniform sampler2D texture_a: source_color;
 uniform sampler2D texture_b: source_color;
 

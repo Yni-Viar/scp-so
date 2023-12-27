@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://3kjnam4xo6v6"]
+[gd_scene load_steps=3 format=3 uid="uid://gd2wk73e0uxv"]
 
 [ext_resource type="Script" path="res://MapGen/Scripts/HUD/SlotDisplay.cs" id="1_v7ggv"]
 

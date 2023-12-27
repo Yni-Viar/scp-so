@@ -1,53 +1,60 @@
-[gd_scene load_steps=23 format=3 uid="uid://bjcfcpj4q2im4"]
+[gd_scene load_steps=29 format=3 uid="uid://mu7j26by23js"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/FacilityManager.cs" id="1_p22hh"]
+[ext_resource type="Script" path="res://Scripts/Multiplayer/AdminCommands.cs" id="2_m73g2"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorLcz.cs" id="2_tjaxg"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorRz.cs" id="2_ya4qo"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorHcz.cs" id="4_rnfjk"]
-[ext_resource type="PackedScene" uid="uid://djlrm3q2y1ahx" path="res://MapGen/Resources/RoomAssets/DCCZ/dc_jail.tscn" id="5_22s8f"]
+[ext_resource type="PackedScene" uid="uid://30rp3hyln2b4" path="res://MapGen/Resources/RoomAssets/DCCZ/dc_jail.tscn" id="5_22s8f"]
 [ext_resource type="Environment" uid="uid://cpjkvy5s2l8ae" path="res://FacilityGraphics.tres" id="5_u1dtw"]
 [ext_resource type="Script" path="res://Scripts/PlayerUI.cs" id="6_l6v83"]
 [ext_resource type="Texture2D" uid="uid://bmw4fxmnmwhov" path="res://Assets/HUD/arrow.png" id="7_bwdaw"]
-[ext_resource type="PackedScene" uid="uid://bv1ely4btccco" path="res://MapGen/Resources/startroom.tscn" id="8_1kvjl"]
+[ext_resource type="PackedScene" uid="uid://dxk8akb87bv4u" path="res://MapGen/Resources/startroom.tscn" id="8_1kvjl"]
 [ext_resource type="FontFile" uid="uid://cqaasvtiakcsw" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="8_1slp4"]
-[ext_resource type="PackedScene" uid="uid://bo1bq3rj35a57" path="res://MapGen/Resources/surface_map.tscn" id="9_1te4l"]
-[ext_resource type="PackedScene" uid="uid://byljcjbr7klo" path="res://MapGen/Resources/PD.tscn" id="11_jjunp"]
+[ext_resource type="PackedScene" uid="uid://cn6ghiygcjiq3" path="res://MapGen/Resources/surface_map.tscn" id="9_1te4l"]
+[ext_resource type="PackedScene" uid="uid://cy72pcjf5uj72" path="res://MapGen/Resources/PD.tscn" id="11_jjunp"]
 [ext_resource type="Script" path="res://Scripts/FPSCounter.cs" id="12_xkdk3"]
 [ext_resource type="Script" path="res://Scripts/SkyEnabler.cs" id="13_b3jdh"]
+[ext_resource type="Theme" uid="uid://4k2un7nm7xc6" path="res://UITheme.tres" id="15_g2wd3"]
+[ext_resource type="Script" path="res://Scripts/AdminConsole.cs" id="15_y3cek"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_pw38j"]
 properties/0/path = NodePath("MapGenLcz:seed")
 properties/0/spawn = true
-properties/0/sync = true
-properties/0/watch = false
+properties/0/replication_mode = 2
 properties/1/path = NodePath("MapGenHcz:seed")
 properties/1/spawn = true
-properties/1/sync = true
-properties/1/watch = false
+properties/1/replication_mode = 2
 properties/2/path = NodePath("MapGenRz:seed")
 properties/2/spawn = true
-properties/2/sync = true
-properties/2/watch = false
+properties/2/replication_mode = 2
 properties/3/path = NodePath(".:playersList")
 properties/3/spawn = true
-properties/3/sync = false
-properties/3/watch = true
+properties/3/replication_mode = 2
 properties/4/path = NodePath(".:isRoundStarted")
 properties/4/spawn = true
-properties/4/sync = true
-properties/4/watch = false
+properties/4/replication_mode = 1
 properties/5/path = NodePath(".:classes")
 properties/5/spawn = true
-properties/5/sync = false
-properties/5/watch = true
+properties/5/replication_mode = 2
 properties/6/path = NodePath(".:rooms")
 properties/6/spawn = true
-properties/6/sync = false
-properties/6/watch = true
+properties/6/replication_mode = 2
 properties/7/path = NodePath(".:items")
 properties/7/spawn = true
-properties/7/sync = false
-properties/7/watch = true
+properties/7/replication_mode = 2
+properties/8/path = NodePath(".:ammo")
+properties/8/spawn = true
+properties/8/replication_mode = 2
+properties/9/path = NodePath(".:tickets")
+properties/9/spawn = true
+properties/9/replication_mode = 2
+properties/10/path = NodePath(".:targets")
+properties/10/spawn = true
+properties/10/replication_mode = 2
+properties/11/path = NodePath(".:maxSpawnableObjects")
+properties/11/spawn = true
+properties/11/replication_mode = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ttxax"]
 size = Vector3(6410.33, 1969.08, 6412.47)
@@ -56,6 +63,12 @@ size = Vector3(6410.33, 1969.08, 6412.47)
 bg_color = Color(0, 0, 0, 0.847059)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wo10"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ld0ka"]
+bg_color = Color(0, 0, 0, 0.25098)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ryfe2"]
+bg_color = Color(0.188235, 0.458824, 1, 0.376471)
 
 [sub_resource type="Animation" id="Animation_wnm84"]
 resource_name = "forceclass"
@@ -105,9 +118,35 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.9, 4.1, 5)
 }
 
+[sub_resource type="Animation" id="Animation_0y8ye"]
+resource_name = "roundend"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameEnd:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameEnd:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-328, -0.25, 0, 0.25, 0, 96, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_icbbs"]
 _data = {
-"forceclass": SubResource("Animation_wnm84")
+"forceclass": SubResource("Animation_wnm84"),
+"roundend": SubResource("Animation_0y8ye")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3wvqa"]
@@ -126,6 +165,9 @@ border_width_bottom = 2
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_p22hh")
+
+[node name="AdminCommands" type="Node" parent="."]
+script = ExtResource("2_m73g2")
 
 [node name="MapGenRz" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -240, 0)
@@ -154,6 +196,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 512, -1600, -512)
 [node name="Items" type="Node3D" parent="."]
 
 [node name="Ragdolls" type="Node3D" parent="."]
+
+[node name="Decals" type="Node3D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("5_u1dtw")
@@ -210,9 +254,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -832.0
+offset_left = -960.0
 offset_top = -128.0
-offset_right = 832.0
+offset_right = 704.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("8_1slp4")
 theme_override_font_sizes/font_size = 64
@@ -224,13 +268,28 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -832.0
+offset_left = -960.0
 offset_top = -424.0
-offset_right = 832.0
+offset_right = 704.0
 offset_bottom = -128.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
+
+[node name="GameEnd" type="RichTextLabel" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+offset_top = -328.0
+offset_right = 896.0
+offset_bottom = -192.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("8_1slp4")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+bbcode_enabled = true
 
 [node name="HealthBar" type="ProgressBar" parent="PlayerUI"]
 layout_mode = 1
@@ -250,6 +309,22 @@ theme_override_styles/background = SubResource("StyleBoxFlat_5wgsy")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6wo10")
 allow_greater = true
 
+[node name="SanityBar" type="ProgressBar" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.911
+anchor_right = 0.229
+anchor_bottom = 0.933
+offset_left = 0.639999
+offset_top = 0.119934
+offset_right = 0.319977
+offset_bottom = 0.359985
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_ld0ka")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ryfe2")
+show_percentage = false
+
 [node name="Counter" type="Label" parent="PlayerUI"]
 layout_mode = 0
 offset_right = 40.0
@@ -261,6 +336,87 @@ script = ExtResource("12_xkdk3")
 libraries = {
 "": SubResource("AnimationLibrary_icbbs")
 }
+
+[node name="AdminConsole" type="Panel" parent="PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -344.0
+offset_top = -130.0
+offset_right = 344.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3wvqa")
+script = ExtResource("15_y3cek")
+
+[node name="Label" type="Label" parent="PlayerUI/AdminConsole"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 20.0
+offset_right = 80.0
+offset_bottom = 56.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("8_1slp4")
+theme_override_font_sizes/font_size = 32
+text = "Admin Console"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="PlayerUI/AdminConsole"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.338
+anchor_right = 0.5
+anchor_bottom = 0.338
+offset_left = -104.5
+offset_top = -17.88
+offset_right = 104.5
+offset_bottom = 18.12
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 16
+text = "Please, enter Password"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Password" type="LineEdit" parent="PlayerUI/AdminConsole"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -12.0
+offset_right = 216.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("15_g2wd3")
+
+[node name="ContinueBtn" type="Button" parent="PlayerUI/AdminConsole"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.79
+anchor_right = 0.5
+anchor_bottom = 0.79
+offset_left = -128.0
+offset_top = -15.4
+offset_right = 128.0
+offset_bottom = 15.6
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("15_g2wd3")
+text = "OK"
 
 [node name="PlayerListPanel" type="Panel" parent="PlayerUI"]
 visible = false
@@ -362,3 +518,4 @@ horizontal_alignment = 1
 
 [connection signal="body_entered" from="SkyEnabler" to="SkyEnabler" method="OnBodyEntered"]
 [connection signal="body_exited" from="SkyEnabler" to="SkyEnabler" method="OnBodyExited"]
+[connection signal="pressed" from="PlayerUI/AdminConsole/ContinueBtn" to="PlayerUI/AdminConsole" method="OnContinueBtnPressed"]

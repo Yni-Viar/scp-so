@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bibp8fjrbul66"]
+[gd_scene load_steps=5 format=3 uid="uid://bjbe75eis8tu6"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu/SettingsPanel.cs" id="2_fv068"]
 [ext_resource type="Theme" uid="uid://4k2un7nm7xc6" path="res://UITheme.tres" id="3_2qins"]
@@ -177,8 +177,9 @@ text = "Mouse sensivity"
 [node name="MouseSensSet" type="HSlider" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_2qins")
+min_value = 0.001
 max_value = 5.0
-step = 0.1
+step = 0.001
 value = 2.0
 
 [node name="SoundTest" type="AudioStreamPlayer" parent="SettingsPanel"]

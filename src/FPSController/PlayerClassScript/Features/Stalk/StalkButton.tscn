@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3uj0jdwqep6b"]
+
+[ext_resource type="Script" path="res://FPSController/PlayerClassScript/Features/Stalk/StalkButton.cs" id="1_scu2t"]
+
+[node name="StalkButton" type="Button"]
+offset_right = 277.0
+offset_bottom = 31.0
+script = ExtResource("1_scu2t")
+
+[connection signal="pressed" from="." to="." method="OnPressed"]

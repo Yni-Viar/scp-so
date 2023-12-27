@@ -5,7 +5,7 @@ using System;
 /// </summary>
 public partial class CctvCamera : Node3D
 {
-    Scp079PlayerScript computer;
+    Scp2522PlayerScript computer;
     [Export] bool active = false;
     Node3D rotatingCamera;
     Settings settings;
@@ -70,7 +70,7 @@ public partial class CctvCamera : Node3D
                 }
             }
 
-            if (Input.IsActionJustPressed("scp079_blackout") && computer != null)
+            if (Input.IsActionJustPressed("scp2522_blackout") && computer != null)
             {
                 if (computer.energy - 50f >= 0f)
                 {
@@ -88,7 +88,7 @@ public partial class CctvCamera : Node3D
     {
         if (isCurrent)
         {
-            if (player is Scp079PlayerScript c)
+            if (player is Scp2522PlayerScript c)
             {
                 computer = c;
             }

@@ -7,18 +7,52 @@ public partial class MainMenu : Control
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        if (Globals.currentStage == Globals.Stages.release)
+        Settings settings = GetTree().Root.GetNode<Settings>("Settings");
+        switch (Globals.currentStage)
         {
-            GetNode<TextureRect>("Background").Texture = ResourceLoader.Load<Texture2D>("res://Assets/Menu/MainMenuBackground.png");
+            case Globals.Stages.release:
+                GetNode<TextureRect>("Background").Texture = ResourceLoader.Load<Texture2D>("res://Assets/Menu/MainMenuBackground.png");
+                break;
+            case Globals.Stages.testing:
+                GetNode<TextureRect>("Background").Texture = ResourceLoader.Load<Texture2D>("res://Assets/Menu/MainMenuBackgroundTesting.png");
+                break;
+            default:
+                GetNode<TextureRect>("Background").Texture = ResourceLoader.Load<Texture2D>("res://Assets/Menu/MainMenuBackgroundIndev.png");
+                break;
         }
-        else if (Globals.currentStage == Globals.Stages.testing)
+
+        if (((int)Time.GetDateDictFromSystem(true)["month"]) == (int)Time.Month.December)
         {
-            GetNode<TextureRect>("Background").Texture = ResourceLoader.Load<Texture2D>("res://Assets/Menu/MainMenuBackgroundTesting.png");
+            GetNode<TextureRect>("Logo").Texture = ResourceLoader.Load<Texture2D>("res://icon_festive_256.png");
         }
         else
         {
-            GetNode<TextureRect>("Background").Texture = ResourceLoader.Load<Texture2D>("res://Assets/Menu/MainMenuBackgroundIndev.png");
+            GetNode<TextureRect>("Logo").Texture = ResourceLoader.Load<Texture2D>("res://icon_256.png");
         }
+
+        GetWindow().Size = settings.WindowSizeSetting;
+
+        AudioServer.SetBusVolumeDb(0, Mathf.LinearToDb(settings.SoundSetting));
+        if (settings.SoundSetting < 0.01)
+        {
+            AudioServer.SetBusMute(0, true);
+        }
+        else
+        {
+            AudioServer.SetBusMute(0, false);
+        }
+
+        AudioServer.SetBusVolumeDb(1, Mathf.LinearToDb(settings.MusicSetting));
+        if (settings.MusicSetting < 0.01)
+        {
+            AudioServer.SetBusMute(1, true);
+        }
+        else
+        {
+            AudioServer.SetBusMute(1, false);
+        }
+
+        DisplayServer.WindowSetMode(settings.FullscreenSetting ? DisplayServer.WindowMode.Fullscreen : DisplayServer.WindowMode.Windowed);
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.

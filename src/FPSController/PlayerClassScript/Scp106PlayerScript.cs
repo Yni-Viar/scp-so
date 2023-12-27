@@ -33,11 +33,17 @@ public partial class Scp106PlayerScript : Node3D
 	{
         if (GetParent().GetParent<PlayerScript>().dir.IsZeroApprox())
         {
-            Rpc("SetState", "106_Idle");
+            if (GetNode<AnimationPlayer>("AnimationPlayer").CurrentAnimation != "106_Idle")
+            {
+                Rpc("SetState", "106_Idle");
+            }
         }
         else
         {
-            Rpc("SetState", "106_Walking");
+            if (GetNode<AnimationPlayer>("AnimationPlayer").CurrentAnimation != "106_Walking")
+            {
+                Rpc("SetState", "106_Walking");
+            }
         }
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
@@ -52,7 +58,7 @@ public partial class Scp106PlayerScript : Node3D
                         interactSound.Play();
                         if (GlobalPosition.Y < -1500)
                         {
-                            player.RpcId(int.Parse(player.Name), "HealthManage", -16777216);
+                            player.RpcId(int.Parse(player.Name), "HealthManage", -16777216, "Decayed at SCP-106's pocket dimension");
                         }
                         else
                         {

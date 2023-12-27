@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfvbgk0kgnddw"]
+
+[ext_resource type="Texture2D" uid="uid://dcrf81txc263c" path="res://Assets/Particles/smokeHume.png" id="1_rovs0"]
+[ext_resource type="Script" path="res://Decals/Particle.cs" id="2_74scn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3o307"]
+transparency = 1
+albedo_texture = ExtResource("1_rovs0")
+
+[sub_resource type="QuadMesh" id="QuadMesh_utsvq"]
+material = SubResource("StandardMaterial3D_3o307")
+
+[sub_resource type="Curve" id="Curve_vbt03"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Hume" type="CPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.41236, 0)
+amount = 16
+mesh = SubResource("QuadMesh_utsvq")
+direction = Vector3(0, 1, -0.5)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+damping_min = 0.05
+damping_max = 0.05
+angle_max = 360.0
+scale_amount_curve = SubResource("Curve_vbt03")
+script = ExtResource("2_74scn")

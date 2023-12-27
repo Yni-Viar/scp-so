@@ -1,14 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://b345bk26jamix"]
+[gd_scene load_steps=9 format=3 uid="uid://b6010fhhdn46b"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu/MainMenu.cs" id="1_s5ksq"]
 [ext_resource type="Texture2D" uid="uid://boboxmvoqy61t" path="res://Assets/Menu/MainMenuForeground.png" id="2_647vp"]
 [ext_resource type="FontFile" uid="uid://bmquuud55yceh" path="res://Assets/Fonts/Righteous/Righteous-Regular.ttf" id="3_gq784"]
-[ext_resource type="Texture2D" uid="uid://bf4keik5l7nsf" path="res://icon_256.png" id="3_hajc0"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/CreditsPanel.cs" id="4_okfnt"]
 [ext_resource type="FontFile" uid="uid://cqaasvtiakcsw" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="4_yqqir"]
 [ext_resource type="Theme" uid="uid://4k2un7nm7xc6" path="res://UITheme.tres" id="5_gi3lh"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/PlayPanel.cs" id="5_yqbst"]
-[ext_resource type="PackedScene" uid="uid://bibp8fjrbul66" path="res://Scenes/Settings.tscn" id="6_0nqn5"]
+[ext_resource type="PackedScene" uid="uid://bjbe75eis8tu6" path="res://Scenes/Settings.tscn" id="6_0nqn5"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -46,7 +45,6 @@ offset_top = -284.0
 offset_right = 334.0
 offset_bottom = -28.0
 grow_vertical = 0
-texture = ExtResource("3_hajc0")
 
 [node name="PlayerName" type="LineEdit" parent="."]
 layout_mode = 1
@@ -142,7 +140,7 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[b]v.0.7.0-dev[/b] [i](Alpha)[/i]
+text = "[b]v.0.7.0[/b] [i](Alpha)[/i]
 - Changed game logo to nicer one.
 - Finally added loading screen!
 - More dead ends can be spawned.
@@ -151,11 +149,28 @@ text = "[b]v.0.7.0-dev[/b] [i](Alpha)[/i]
 - Improved forceclass and pre-round screens.
 - Added support for player nicknames.
 - Fixed bug, where exiting the server broke the game.
-- Added a shader to SCP-173, so it is possible for changing SCP-173's face.
-
+- Added a shader to SCP-173, so it is possible for changing SCP-173's face without changing the main concrete texture.
+- Class-Ds now have face randomization.
+- Fixed bug, where screen settings were not applied, when restarting.
+- Switched to Jolt physics, allowing to support ragdolls.
+- Current SCP-079 implementation changed to SCP-2522 \"hatbot.aic\".
+- Removed SCP-650 as player class.
+- Revamped door system (again), to make it more flexible.
+- Added weapon system.
+- Added recontainment system for SCP-173 and SCP-3199.
+- Changed the shader for SCP-173, also removed useless Sketchy Shader.
+- Fixed sky being used even if player was outside of SZ.
+- Reworked movement system (animation-side)
+- Fixed Scientist's hands.
+- Added primitive admin panel.
+- Every December, the Main Menu and SCP-173 face will change to Christmas one.
+- New rooms in LCZ + new spawn for SCP-018
+- Optimized game by reducing the room visibility range (and reducing the fog range).
+- Added win conditions - the game is playable, so the next version will be labeled as \"Beta\" (I hope)
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.
-- Scientist's hands rig are incorrect. (I am unable to fix this issue, because Mixamo does not support hazmats :( )"
+- Keycarded door still produce \"allow\" sound, even if keycard is lower than needed. \"Deny\" sound plays only if player don't hold a keycard.
+- SCP-173 mechanic and connecting to ongoing game may be unstable."
 
 [node name="PlayPanel" type="Panel" parent="."]
 visible = false
@@ -221,8 +236,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "WARNING! Multiplayer mode is NOT production-ready!
 Connecting to ongoing game is an EXPERIMENTAL
-feature.
-Round end sequence is currently NOT IMPLEMENTED."
+feature."
 
 [node name="DevWarning" type="Label" parent="."]
 layout_mode = 1
@@ -490,6 +504,39 @@ text = "[i]Dither shader (MIT License)[/i]
 
 Copyright (c) 2021 Sam Bigos
 This shader is under MIT license.
+
+"
+fit_content = true
+
+[node name="CreditsCode8" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1234, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[i]Lightness Detector (MIT License) [/i]
+
+- Copyright (c) 2022 Reun Media Partnership
+
+
+"
+fit_content = true
+
+[node name="CreditsCode9" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1234, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[i]Button Interaction (MIT License)[/i]
+
+- Copyright (c) 2022 Nagi
 
 "
 fit_content = true

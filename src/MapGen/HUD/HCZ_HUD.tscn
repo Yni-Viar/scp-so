@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://barsgdmrt781d"]
+[gd_scene load_steps=2 format=3 uid="uid://mxkkr1nvap8g"]
 
 [ext_resource type="Script" path="res://MapGen/Scripts/HUD/MapGenHudHcz.cs" id="1_e2vox"]
 

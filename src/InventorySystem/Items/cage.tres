@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c78yddd3t5763"]
+
+[ext_resource type="Texture2D" uid="uid://dreyn55bbmu1r" path="res://InventorySystem/Items/cage.png" id="1_15r8e"]
+[ext_resource type="Script" path="res://InventorySystem/Items/Item.cs" id="2_ernur"]
+
+[resource]
+script = ExtResource("2_ernur")
+InternalName = "cage"
+Name = "Cage for containing"
+Texture = ExtResource("1_15r8e")
+PickablePath = "res://InventorySystem/Items/PickablePrefabs/cage.tscn"
+PickupSoundPath = "res://Sounds/Interact/PickItem1.ogg"
+FirstPersonPrefabPath = "res://InventorySystem/Items/InHandPrefabs/cage.tscn"
+OneTimeUse = true
+Rough = PackedStringArray()
+Coarse = PackedStringArray()
+OneToOne = PackedStringArray("res://InventorySystem/Items/PickablePrefabs/cage.tscn")
+Fine = PackedStringArray("res://InventorySystem/Items/PickablePrefabs/cage.tscn", "res://InventorySystem/Items/PickablePrefabs/cage_contained.tscn")
+VeryFine = PackedStringArray("res://InventorySystem/Items/PickablePrefabs/cage_contained.tscn")

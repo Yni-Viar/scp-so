@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://t2wutxm5ihci"]
+
+[ext_resource type="Texture2D" uid="uid://bxkm0mlv5wika" path="res://InventorySystem/Items/SCP079.png" id="1_h2oid"]
+[ext_resource type="Script" path="res://InventorySystem/Items/Item.cs" id="2_l6wrn"]
+
+[resource]
+script = ExtResource("2_l6wrn")
+InternalName = "scp079item"
+Name = "SCP-079"
+Texture = ExtResource("1_h2oid")
+PickablePath = "res://InventorySystem/Items/PickablePrefabs/scp079.tscn"
+PickupSoundPath = "res://Sounds/Interact/PickItem2.ogg"
+FirstPersonPrefabPath = "res://InventorySystem/Items/InHandPrefabs/scp079item.tscn"
+OneTimeUse = false
+Rough = PackedStringArray()
+Coarse = PackedStringArray()
+OneToOne = PackedStringArray("res://InventorySystem/Items/PickablePrefabs/scp018.tscn")
+Fine = PackedStringArray("res://InventorySystem/Items/PickablePrefabs/scp018.tscn")
+VeryFine = PackedStringArray()

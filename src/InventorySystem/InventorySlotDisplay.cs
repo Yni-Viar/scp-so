@@ -26,14 +26,6 @@ public partial class InventorySlotDisplay : CenterContainer
 				Resource item = inventory.GetItem(itemIndex);
 				if (item is Item _item)
 				{
-					/*if (_item.OneTimeUse == true) //old code from v0.2.0 development... But I will use Hubert's method of using items.
-					{
-						inventory.RemoveItem(itemIndex, false);
-					}
-					_item.OnUsed((PlayerScript)(GetTree().GetNodesInGroup("Players")[0]));*/
-					//Node3D firstPersonItem = (Node3D)GD.Load<PackedScene>(_item.FirstPersonPrefabPath).Instantiate();
-					//firstPersonItem.Position = GetParent().GetParent().GetParent().GetParent().GetParent<PlayerScript>().GetNode<Marker3D>("PlayerHead/PlayerHand").GlobalPosition;
-
 					GetParent().GetParent().GetParent().GetParent<PlayerScript>().UsingItem = new string[] { _item.InternalName, itemIndex.ToString() };
                     GetParent().GetParent().GetParent().GetParent<PlayerScript>().GetNode<ColorRect>("InventoryContainer").Hide();
 				}

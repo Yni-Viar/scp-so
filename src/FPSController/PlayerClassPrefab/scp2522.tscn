@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=3 uid="uid://ekckj1irrths"]
+
+[ext_resource type="Script" path="res://FPSController/PlayerClassScript/Scp2522PlayerScript.cs" id="1_rd54c"]
+[ext_resource type="FontFile" uid="uid://cqaasvtiakcsw" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="4_bycpf"]
+[ext_resource type="FontFile" uid="uid://dbcvx5qht5ass" path="res://Assets/Fonts/PixelifySans/PixelifySans-Regular.ttf" id="8_7eus5"]
+[ext_resource type="PackedScene" uid="uid://181xd3hx0uq" path="res://MapGen/HUD/MapGenHUD.tscn" id="9_dp7s1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4t5cu"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70njf"]
+bg_color = Color(0, 0.501961, 0, 1)
+
+[node name="scp2522" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1, 0)
+script = ExtResource("1_rd54c")
+
+[node name="UI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Info" type="Label" parent="UI"]
+layout_mode = 2
+anchor_left = 0.875
+anchor_top = 0.158
+anchor_right = 0.875
+anchor_bottom = 0.158
+offset_left = -168.0
+offset_top = -114.64
+offset_right = 169.0
+offset_bottom = 114.36
+theme_override_fonts/font = ExtResource("8_7eus5")
+theme_override_font_sizes/font_size = 24
+text = "Arrows key - rotate camera.
+E - open door.
+R - lock REGULAR door.
+Tab - open map."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MapGenHUD" parent="UI" instance=ExtResource("9_dp7s1")]
+visible = false
+layout_mode = 1
+
+[node name="EnergyBar" type="ProgressBar" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.169
+anchor_top = 0.875
+anchor_right = 0.169
+anchor_bottom = 0.875
+offset_left = -243.48
+offset_top = -22.0001
+offset_right = 243.52
+offset_bottom = 20.9999
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("8_7eus5")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/background = SubResource("StyleBoxFlat_4t5cu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_70njf")
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.167
+anchor_top = 0.838
+anchor_right = 0.167
+anchor_bottom = 0.838
+offset_left = -40.64
+offset_top = -16.04
+offset_right = 42.36
+offset_bottom = 16.96
+theme_override_fonts/font = ExtResource("8_7eus5")
+theme_override_font_sizes/font_size = 24
+text = "Energy"
+horizontal_alignment = 1
+
+[node name="TargetCount" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -280.0
+offset_bottom = 33.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("4_bycpf")
+theme_override_font_sizes/font_size = 32

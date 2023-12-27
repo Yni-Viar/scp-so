@@ -5,10 +5,10 @@
 [resource]
 script = ExtResource("1_djyhm")
 ClassName = "SCP-3199 \"Humans, Refuted\""
-ClassDescription = "You are a anomalus hostile mutant. Bite, chomp people!"
+ClassDescription = "You are a anomalous hostile mutant. Bite, chomp people!"
 SpawnPoints = PackedStringArray("Main/Game/MapGenHcz/HC_cont1_3199/entityspawn")
 PlayerModelSource = "res://FPSController/PlayerClassPrefab/scp3199.tscn"
-PlayerRagdollSource = "res://FPSController/PlayerClassPrefabGameover/scp3199.tscn"
+PlayerRagdollSource = "res://FPSController/PlayerClassPrefabGameover/scp3199_ragdoll.tscn"
 Speed = 4.4
 Jump = 4.48
 SprintEnabled = false
@@ -18,9 +18,11 @@ SprintSounds = PackedStringArray("res://Sounds/Character/SCPCommon/StepSCP1.ogg"
 ScpNumber = 3199
 Team = 4
 Health = 2000.0
+Sanity = 600.0
 CustomSpawn = false
 DefaultCameraPos = 0.969
 CustomCamera = false
 CustomView = ""
 PreloadedItems = PackedStringArray()
+Ammo = PackedInt32Array(0, 0, 0)
 ClassColor = Color(0.752941, 0, 0, 0.847059)

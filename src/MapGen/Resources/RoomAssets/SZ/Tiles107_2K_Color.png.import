@@ -3,15 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://tmid7chg7py7"
-path="res://.godot/imported/Tiles107_2K_Color.png-6cc5d001e4e5677f226efed8d80535a3.ctex"
+path.s3tc="res://.godot/imported/Tiles107_2K_Color.png-6cc5d001e4e5677f226efed8d80535a3.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://MapGen/Resources/RoomAssets/SZ/Tiles107_2K_Color.png"
-dest_files=["res://.godot/imported/Tiles107_2K_Color.png-6cc5d001e4e5677f226efed8d80535a3.ctex"]
+dest_files=["res://.godot/imported/Tiles107_2K_Color.png-6cc5d001e4e5677f226efed8d80535a3.s3tc.ctex"]
 
 [params]
 

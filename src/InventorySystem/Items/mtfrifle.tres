@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cwja0eq2d3qxj"]
+
+[ext_resource type="Texture2D" uid="uid://bxc6vu681htr8" path="res://InventorySystem/Items/mtf_rifle.png" id="1_3nv6d"]
+[ext_resource type="Script" path="res://InventorySystem/Items/Item.cs" id="2_u64iv"]
+
+[resource]
+script = ExtResource("2_u64iv")
+InternalName = "mtfrifle"
+Name = "MTF Rifle"
+Texture = ExtResource("1_3nv6d")
+PickablePath = "res://InventorySystem/Items/PickablePrefabs/mtfrifle.tscn"
+PickupSoundPath = "res://Sounds/Interact/PickItem1.ogg"
+FirstPersonPrefabPath = "res://InventorySystem/Items/InHandPrefabs/mtfrifle.tscn"
+OneTimeUse = false
+Rough = PackedStringArray()
+Coarse = PackedStringArray()
+OneToOne = PackedStringArray()
+Fine = PackedStringArray()
+VeryFine = PackedStringArray()

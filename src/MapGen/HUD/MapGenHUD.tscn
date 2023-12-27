@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://h4vs76oto1c2"]
+[gd_scene load_steps=8 format=3 uid="uid://181xd3hx0uq"]
 
 [ext_resource type="PackedScene" uid="uid://bahjqh55ki6ko" path="res://MapGen/HUD/RZ_HUD.tscn" id="1_74e5d"]
 [ext_resource type="Script" path="res://MapGen/Scripts/HUD/MapGenHud.cs" id="1_c5und"]
-[ext_resource type="PackedScene" uid="uid://cfgrskjlnvcja" path="res://MapGen/HUD/LCZ_HUD.tscn" id="1_r38o6"]
-[ext_resource type="PackedScene" uid="uid://barsgdmrt781d" path="res://MapGen/HUD/HCZ_HUD.tscn" id="3_bbbyk"]
+[ext_resource type="PackedScene" uid="uid://gr0sk21idpvd" path="res://MapGen/HUD/LCZ_HUD.tscn" id="1_r38o6"]
+[ext_resource type="PackedScene" uid="uid://mxkkr1nvap8g" path="res://MapGen/HUD/HCZ_HUD.tscn" id="3_bbbyk"]
 [ext_resource type="Texture2D" uid="uid://duop1vatkurhq" path="res://Assets/HUD/MapGen/rz_icon.png" id="5_4j3h3"]
 [ext_resource type="Texture2D" uid="uid://bm6g0bvcqeden" path="res://Assets/HUD/MapGen/lcz_icon.png" id="6_l1e35"]
 [ext_resource type="Texture2D" uid="uid://bthaluuqitcnt" path="res://Assets/HUD/MapGen/hcz_icon.png" id="7_tauhp"]
@@ -24,7 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.196078)
+color = Color(0, 0, 0, 0.0941176)
 
 [node name="GridContainerRz" parent="." instance=ExtResource("1_74e5d")]
 visible = false

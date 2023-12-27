@@ -24,11 +24,17 @@ public partial class Scp3199PlayerScript : Node3D
 	{
         if (GetParent().GetParent<PlayerScript>().dir.IsZeroApprox())
         {
-            Rpc("SetState", "3199_Idle");
+            if (GetNode<AnimationPlayer>("AnimationPlayer").CurrentAnimation != "3199_Idle")
+            {
+                Rpc("SetState", "3199_Idle");
+            }
         }
         else
         {
-            Rpc("SetState", "3199_Walk");
+            if (GetNode<AnimationPlayer>("AnimationPlayer").CurrentAnimation != "3199_Walk")
+            {
+                Rpc("SetState", "3199_Walk");
+            }
         }
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
@@ -42,7 +48,7 @@ public partial class Scp3199PlayerScript : Node3D
                         Rpc("SetState", "3199_Hurt");
                         interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/SCPCommon/SCPAttack.ogg");
                         interactSound.Play();
-                        player.RpcId(int.Parse(player.Name), "HealthManage", -35);
+                        player.RpcId(int.Parse(player.Name), "HealthManage", -35, "Hit by SCP-3199");
                     }
                 }
             }

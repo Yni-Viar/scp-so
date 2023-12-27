@@ -1,11 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxr0p8cc8k8ud"]
+[gd_scene load_steps=18 format=3 uid="uid://cu440emlhve1m"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerScript.cs" id="1_tw8h1"]
-[ext_resource type="PackedScene" uid="uid://gom6tjixj21n" path="res://InventorySystem/InventoryContainer.tscn" id="2_6uw7r"]
+[ext_resource type="PackedScene" uid="uid://hw0aruclawku" path="res://InventorySystem/InventoryContainer.tscn" id="2_6uw7r"]
 [ext_resource type="Script" path="res://FPSController/Commands.cs" id="2_decth"]
 [ext_resource type="Shader" path="res://Shaders/ToonShader/toon.gdshader" id="3_kc8a4"]
+[ext_resource type="Script" path="res://FPSController/PlayerAction.cs" id="3_w47lq"]
+[ext_resource type="Material" uid="uid://ci0m68xlui2q5" path="res://Shaders/EdgeDetectShade.tres" id="4_fjjm1"]
 [ext_resource type="Material" uid="uid://ckvs50m51c56c" path="res://Shaders/DitherShade.tres" id="4_kaaud"]
-[ext_resource type="Material" uid="uid://dglctm1kgv0v7" path="res://Shaders/SketchyShader.tres" id="5_du4vi"]
+[ext_resource type="Script" path="res://FPSController/AmmoSystem.cs" id="7_5f3gu"]
 [ext_resource type="Script" path="res://FPSController/PlayerSync.cs" id="10_8dn5b"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_wuaka"]
@@ -27,6 +29,13 @@ shader_parameter/grazing_fresnel_power = 5.0
 shader_parameter/grazing_angle_mask_power = 1.0
 shader_parameter/grazing_angle_modulation_factor = 50.0
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_3c6ve"]
+flip_faces = true
+orientation = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xm0hl"]
+orientation = 2
+
 [sub_resource type="CapsuleShape3D" id="1"]
 radius = 0.371158
 height = 2.64793
@@ -34,32 +43,31 @@ height = 2.64793
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_6h10r"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
-properties/0/sync = true
-properties/0/watch = false
+properties/0/replication_mode = 1
 properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
-properties/1/sync = true
-properties/1/watch = false
+properties/1/replication_mode = 1
 properties/2/path = NodePath(".:scale")
 properties/2/spawn = true
-properties/2/sync = true
-properties/2/watch = false
+properties/2/replication_mode = 1
 properties/3/path = NodePath("PlayerHead/PlayerCamera:rotation")
 properties/3/spawn = true
-properties/3/sync = true
-properties/3/watch = false
+properties/3/replication_mode = 1
 properties/4/path = NodePath(".:canMove")
 properties/4/spawn = true
-properties/4/sync = false
-properties/4/watch = true
+properties/4/replication_mode = 2
 properties/5/path = NodePath(".:usingItem")
 properties/5/spawn = true
-properties/5/sync = false
-properties/5/watch = true
+properties/5/replication_mode = 2
 properties/6/path = NodePath(".:playerName")
 properties/6/spawn = true
-properties/6/sync = false
-properties/6/watch = true
+properties/6/replication_mode = 2
+properties/7/path = NodePath(".:isModerator")
+properties/7/spawn = true
+properties/7/replication_mode = 2
+properties/8/path = NodePath(".:isAdmin")
+properties/8/spawn = true
+properties/8/replication_mode = 2
 
 [sub_resource type="Animation" id="Animation_i7x7w"]
 resource_name = "Walk"
@@ -85,7 +93,8 @@ _data = {
 
 [node name="Player" type="CharacterBody3D" groups=["Players"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28033, 0)
-collision_layer = 6
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_tw8h1")
 
 [node name="Commands" type="Node" parent="."]
@@ -95,6 +104,7 @@ script = ExtResource("2_decth")
 
 [node name="PlayerHead" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.968611, -0.292869)
+script = ExtResource("3_w47lq")
 
 [node name="PlayerCamera" type="Camera3D" parent="PlayerHead"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.53674e-07, 0)
@@ -105,17 +115,17 @@ visible = false
 mesh = SubResource("QuadMesh_wuaka")
 surface_material_override/0 = SubResource("ShaderMaterial_qaxjx")
 
+[node name="EdgeDetectShader" type="MeshInstance3D" parent="PlayerHead/PlayerCamera"]
+visible = false
+extra_cull_margin = 4096.0
+mesh = SubResource("PlaneMesh_3c6ve")
+surface_material_override/0 = ExtResource("4_fjjm1")
+
 [node name="DitherShader" type="MeshInstance3D" parent="PlayerHead/PlayerCamera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.038706)
 visible = false
-mesh = SubResource("QuadMesh_wuaka")
+mesh = SubResource("PlaneMesh_xm0hl")
 surface_material_override/0 = ExtResource("4_kaaud")
-
-[node name="SketchyShader" type="MeshInstance3D" parent="PlayerHead/PlayerCamera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.038706)
-visible = false
-mesh = SubResource("QuadMesh_wuaka")
-surface_material_override/0 = ExtResource("5_du4vi")
 
 [node name="RayCast3D" type="RayCast3D" parent="PlayerHead"]
 target_position = Vector3(0, 0, -3)
@@ -124,12 +134,13 @@ collision_mask = 15
 [node name="ItemSpawn" type="Marker3D" parent="PlayerHead"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.197413, -0.0797351)
 
-[node name="PlayerHand" type="Marker3D" parent="PlayerHead"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.788798)
-
 [node name="VisionRadius" type="RayCast3D" parent="PlayerHead"]
-target_position = Vector3(0, 0, -24)
+target_position = Vector3(0, 0, -48)
 collision_mask = 15
+
+[node name="PlayerHand" type="Marker3D" parent="PlayerHead"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.33)
+visible = false
 
 [node name="CollisionBodyCapsule" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0386829, 0)
@@ -147,6 +158,10 @@ max_distance = 2.3
 visible = false
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="AmmoSystem" type="Node" parent="."]
+script = ExtResource("7_5f3gu")
+currentAmmoLength = 3
 
 [node name="PlayerSync" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_6h10r")

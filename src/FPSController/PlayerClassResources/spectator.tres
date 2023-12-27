@@ -1,11 +1,11 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b300h2igeddqp"]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cohe4hksaldgl"]
 
-[ext_resource type="Script" path="res://FPSController/PlayerClassResources/BaseClass.cs" id="1_cfqey"]
+[ext_resource type="Script" path="res://FPSController/PlayerClassResources/BaseClass.cs" id="1_kf85j"]
 
 [resource]
-script = ExtResource("1_cfqey")
-ClassName = "MTF Omega-0 \"Ará Orún\""
-ClassDescription = "[REDACTED]"
+script = ExtResource("1_kf85j")
+ClassName = "[REDACTED]"
+ClassDescription = "Just... watch other players..."
 SpawnPoints = PackedStringArray("Main/Game/SurfaceMap/entityspawn_sp")
 PlayerModelSource = "res://FPSController/PlayerClassPrefab/spectator.tscn"
 PlayerRagdollSource = ""
@@ -18,9 +18,11 @@ SprintSounds = PackedStringArray()
 ScpNumber = -2
 Team = 0
 Health = 1.0
+Sanity = 0.0
 CustomSpawn = true
 DefaultCameraPos = 0.969
 CustomCamera = false
 CustomView = ""
 PreloadedItems = PackedStringArray()
+Ammo = PackedInt32Array(0, 0, 0)
 ClassColor = Color(0, 0, 0.247059, 0.847059)

@@ -129,7 +129,7 @@ public partial class SettingsPanel : Panel
                 settings.WindowSizeSetting = new Vector2I(800, 600);
                 break;
         }
-        DisplayServer.WindowSetSize(settings.WindowSizeSetting);
+        GetWindow().Size = settings.WindowSizeSetting;
         SaveCurrentSettings();
     }
 

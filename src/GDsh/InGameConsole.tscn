@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://o6rnnciwmwvn"]
+[gd_scene load_steps=9 format=3 uid="uid://cbu35skj5ws6e"]
 
 [ext_resource type="Script" path="res://GDsh/InGameConsole.cs" id="1_ubxc0"]
 [ext_resource type="FontFile" uid="uid://b55prglyvfn00" path="res://Assets/Fonts/JetBrainsMono/JetBrainsMono-Regular.ttf" id="2_f3q0f"]
@@ -45,6 +45,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_ubxc0")
 
 [node name="Background" type="TextureRect" parent="."]
@@ -124,10 +126,10 @@ theme_override_styles/read_only = SubResource("StyleBoxEmpty_6vouv")
 theme_override_styles/completion = SubResource("StyleBoxEmpty_6vouv")
 placeholder_text = "Type command"
 wrap_mode = 1
-draw_control_chars = true
-syntax_highlighter = SubResource("CodeHighlighter_qh1b1")
 scroll_fit_content_height = true
 caret_blink = true
+syntax_highlighter = SubResource("CodeHighlighter_qh1b1")
+draw_control_chars = true
 
 [node name="Submit" type="Button" parent="VBox/HBox"]
 custom_minimum_size = Vector2(128, 0)

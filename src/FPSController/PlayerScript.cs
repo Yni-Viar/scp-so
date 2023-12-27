@@ -16,14 +16,27 @@ public partial class PlayerScript : CharacterBody3D
     Node3D playerHead;
     Settings settings;
     internal RayCast3D ray;
+    internal RayCast3D watchRay;
 
     //Walk sounds.
     AudioStreamPlayer3D walkSounds;
     AudioStreamPlayer3D interactSound;
     [Export] internal float currentHealth = 1f;
+    [Export] internal float currentSanity = 50f;
 
     double decayTimer = 0d;
 
+    [Export] bool isModerator = false;
+    internal bool IsModerator 
+    {
+        get => isModerator;
+    }
+    [Export] bool isAdmin = false;
+    internal bool IsAdmin
+    {
+        get => isAdmin;
+    }
+    
     [Export] internal string playerName;
     [Export] internal string classKey;
     [Export] internal string className;
@@ -31,6 +44,7 @@ public partial class PlayerScript : CharacterBody3D
     [Export] internal string spawnPoint;
     [Export] internal string playerModelSource;
     [Export] internal float health = 1f;
+    [Export] internal float sanity = 50f;
     [Export] internal float speed = 0f;
     [Export] internal float jump = 0f;
     [Export] internal bool sprintEnabled = false;
@@ -38,8 +52,6 @@ public partial class PlayerScript : CharacterBody3D
     [Export] internal string[] footstepSounds;
     [Export] internal string[] sprintSounds;
     [Export] internal Globals.Team team;
-
-    // Currently, ragdolls are unstable. (Or give me a sign, that they are working). So these "ragdolls" are just death animations.
     [Export] internal string ragdollSource;
     
     float gravity = 9.8f;
@@ -84,6 +96,7 @@ public partial class PlayerScript : CharacterBody3D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        //Loading settings and player nickname
         settings = GetTree().Root.GetNode<Settings>("Settings");
         if (FileAccess.FileExists("user://playername.txt"))
         {
@@ -105,18 +118,31 @@ public partial class PlayerScript : CharacterBody3D
             rng.Randomize();
             playerName = "Unknown player " + rng.Randi();
         }
+        // Grant admin and moderator privilegies
+        if (Multiplayer.IsServer())
+        {
+            isAdmin = isModerator = true;
+        }
+        // Player initialization.
         if (IsMultiplayerAuthority())
         {
             GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = true;
             playerHead = GetNode<Node3D>("PlayerHead");
-            ray = GetNode<RayCast3D>("PlayerHead/RayCast3D");
             walkSounds = GetNode<AudioStreamPlayer3D>("WalkSounds");
             interactSound = GetNode<AudioStreamPlayer3D>("InteractSound");
             acceleration = groundAcceleration;
             FloorMaxAngle = 1.48353f; //85 degrees.
         }
+        else
+        {
+            GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = false;
+        }
+        ray = GetNode<RayCast3D>("PlayerHead/RayCast3D");
+        ray.AddException(this);
+        watchRay = GetNode<RayCast3D>("PlayerHead/VisionRadius");
+        watchRay.AddException(this);
     }
-
+    //unused
     internal bool IsLocalAuthority()
     {
         return GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() == Multiplayer.GetUniqueId();
@@ -137,7 +163,7 @@ public partial class PlayerScript : CharacterBody3D
                 if (!customCamera)
                 {
                     this.RotateY(Mathf.DegToRad(-m.Relative.X * settings.MouseSensitivity * 2f)); //pretty magic numbers
-                    playerHead.RotateX(Mathf.Clamp(-m.Relative.Y * settings.MouseSensitivity * 0.125f, -90, 90));
+                    playerHead.RotateX(Mathf.Clamp(-m.Relative.Y * settings.MouseSensitivity * 0.1225f, -90, 90));
     
                     Vector3 cameraRot = playerHead.Rotation;
                     cameraRot.X = Mathf.Clamp(playerHead.Rotation.X, Mathf.DegToRad(-85f), Mathf.DegToRad(85f));
@@ -250,12 +276,17 @@ public partial class PlayerScript : CharacterBody3D
                 }
                 if (collidedWith is DoorStaticOpener)
                 {
-                    collidedWith.Call("CallOpen");
+                    collidedWith.Call("CallOpen", this);
                 }
-                if (collidedWith is ItemAction action && action.GetPath().ToString().Contains(Name))
+                if (collidedWith is LootableAmmo)
+                {
+                    collidedWith.Call("AddAmmo", this);
+                }
+                /* LEGACY 0.6.x code
+                 * if (collidedWith is ItemAction action && action.GetPath().ToString().Contains(Name))
                 {
                     collidedWith.Call("OnUse", this);
-                }
+                }*/
             }
             
             if (!customMusic)
@@ -288,8 +319,17 @@ public partial class PlayerScript : CharacterBody3D
                 Decay();
                 decayTimer = 0;
             }
+            if (currentSanity < sanity)
+            {
+                currentSanity += (float)delta / 10;
+            }
+            if (currentHealth < health && scpNumber >= 0 && direction.IsZeroApprox())
+            {
+                currentHealth += (float)delta;
+            }
 
             GetParent().GetNode<ProgressBar>("PlayerUI/HealthBar").Value = Mathf.Ceil(currentHealth);
+            GetParent().GetNode<ProgressBar>("PlayerUI/SanityBar").Value = Mathf.Ceil(currentSanity);
         }
         UpDirection = Vector3.Up;
         MoveAndSlide();
@@ -303,19 +343,51 @@ public partial class PlayerScript : CharacterBody3D
     {
         if (ResourceLoader.Exists("res://InventorySystem/Items/" + itemName + ".tres"))
         {
+            Item item = GD.Load<Item>("res://InventorySystem/Items/" + itemName + ".tres");
+            // If third person view exists, else will be used first person view.
+            if (GetNode<Node3D>("PlayerModel").GetChild(0).GetNodeOrNull<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand") != null)
+            {
+                if (!IsMultiplayerAuthority())
+                {
+                    GetNode<Marker3D>("PlayerHead/PlayerHand").Hide();
+                }
+                Node thirdPersonHandRoot = GetNode<Node3D>("PlayerModel").GetChild(0).GetNode<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand");
+                foreach (Node itemUsedBefore in thirdPersonHandRoot.GetChildren())
+                {
+                    itemUsedBefore.QueueFree();
+                }
+                ItemAction tpsModel = ResourceLoader.Load<PackedScene>(item.FirstPersonPrefabPath).Instantiate<ItemAction>();
+                tpsModel.oneTimeUse = item.OneTimeUse;
+                tpsModel.index = int.Parse(itemIndex);
+                thirdPersonHandRoot.AddChild(tpsModel, true);
+            }
+            else
+            {
+                GetNode<Marker3D>("PlayerHead/PlayerHand").Show();
+            }
             Node firstPersonHandRoot = GetNode<Marker3D>("PlayerHead/PlayerHand");
             foreach (Node itemUsedBefore in firstPersonHandRoot.GetChildren())
             {
                 itemUsedBefore.QueueFree();
             }
-            Item item = GD.Load<Item>("res://InventorySystem/Items/" + itemName + ".tres");
-            ItemAction tmpModel = ResourceLoader.Load<PackedScene>(item.FirstPersonPrefabPath).Instantiate<ItemAction>();
-            tmpModel.oneTimeUse = item.OneTimeUse;
-            tmpModel.index = int.Parse(itemIndex);
-            firstPersonHandRoot.AddChild(tmpModel, true);
+            ItemAction fpsModel = ResourceLoader.Load<PackedScene>(item.FirstPersonPrefabPath).Instantiate<ItemAction>();
+            fpsModel.oneTimeUse = item.OneTimeUse;
+            fpsModel.index = int.Parse(itemIndex);
+            firstPersonHandRoot.AddChild(fpsModel, true);
         }
         else
         {
+            if (GetNode<Node3D>("PlayerModel").GetChildOrNull<Node3D>(0) != null)
+            {
+                if (GetNode<Node3D>("PlayerModel").GetChild(0).GetNodeOrNull<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand") != null)
+                {
+                    Node thirdPersonHandRoot = GetNode<Node3D>("PlayerModel").GetChild(0).GetNode<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand");
+                    foreach (Node itemUsedBefore in thirdPersonHandRoot.GetChildren())
+                    {
+                        itemUsedBefore.QueueFree();
+                    }
+                }
+            }
             Node firstPersonHandRoot = GetNode<Marker3D>("PlayerHead/PlayerHand");
             foreach (Node itemUsedBefore in firstPersonHandRoot.GetChildren())
             {
@@ -345,7 +417,7 @@ public partial class PlayerScript : CharacterBody3D
     }
 
     /// <summary>
-    /// Helper method to teleport.
+    /// Helper method to teleport. Will be moved to PlayerAction in future versions.
     /// </summary>
     /// <param name="placeToTeleport">Place to teleport</param>
     internal void CallTeleport(string placeToTeleport)
@@ -354,20 +426,20 @@ public partial class PlayerScript : CharacterBody3D
     }
 
     /// <summary>
-    /// Helper method to call FacilityManager for changing player class.
+    /// Helper method to call FacilityManager for changing player class. Will be moved to PlayerAction in future versions.
     /// </summary>
     /// <param name="to">Player class to become</param>
-    internal void CallForceclass(string to)
+    internal void CallForceclass(string to, string reason)
     {
-        GetParent().GetParent().GetNode<FacilityManager>("Game").Rpc("SetPlayerClass", Multiplayer.GetUniqueId().ToString(), to);
+        GetParent().GetParent().GetNode<FacilityManager>("Game").Rpc("SetPlayerClass", Multiplayer.GetUniqueId().ToString(), to, reason);
     }
 
     /// <summary>
-    /// Add or depletes health (don't work on spectators). If health is below 0, the players forceclasses as spectator.
+    /// Add or depletes health (don't work on spectators). If health is below 0, the players forceclasses as spectator. Will be reworked in future update.
     /// </summary>
     /// <param name="amount">How much health to add/deplete</param>
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
-    void HealthManage(double amount)
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    void HealthManage(double amount, string depleteReason)
     {
         if (scpNumber != -2)
         {
@@ -382,13 +454,42 @@ public partial class PlayerScript : CharacterBody3D
         }
         else
         {
-            GD.Print("You cannot change HP for spectators");
+            GD.Print("You cannot change HP for dead");
         }
-        
+        // Temporary feature, will be reworked in future...
         if (currentHealth <= 0)
         {
-            GetParent<FacilityManager>().Rpc("SpawnRagdoll", this.Name, ragdollSource);
-            CallForceclass("spectator");
+            GetParent<FacilityManager>().Rpc("SpawnRagdoll", this.Name, ragdollSource, false);
+            CallForceclass("spectator", depleteReason);
+        }
+    }
+    /// <summary>
+    /// Temporary method. Manages sanity.
+    /// </summary>
+    /// <param name="amount">How much sanity to add/deplete</param>
+    /// <param name="depleteReason">Reason to deplete</param>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    void SanityManage(double amount, string depleteReason)
+    {
+        if (scpNumber != -2)
+        {
+            if (currentSanity + amount <= sanity)
+            {
+                currentSanity += (float)amount;
+            }
+            else
+            {
+                currentSanity = sanity;
+            }
+        }
+        else
+        {
+            GD.Print("You can't change sanity for dead");
+        }
+        if (currentSanity <= 0)
+        {
+            GetParent<FacilityManager>().Rpc("SpawnRagdoll", this.Name, ragdollSource, true);
+            CallForceclass("spectator", depleteReason);
         }
     }
 
@@ -399,11 +500,11 @@ public partial class PlayerScript : CharacterBody3D
     {
         if (scpNumber != 106)
         {
-            HealthManage(-1);
+            HealthManage(-1, "Decayed at SCP-106's pocket dimension");
         }
         else
         {
-            HealthManage(1);
+            HealthManage(1, "Decayed at SCP-106's pocket dimension");
         }
     }
     /// <summary>
@@ -476,6 +577,8 @@ public partial class PlayerScript : CharacterBody3D
         GetParent().GetNode<ProgressBar>("PlayerUI/HealthBar").AddThemeStyleboxOverride("fill", classRepresent);
         GetParent().GetNode<ProgressBar>("PlayerUI/HealthBar").MaxValue = health;
         GetParent().GetNode<ProgressBar>("PlayerUI/HealthBar").Value = currentHealth;
+        GetParent().GetNode<ProgressBar>("PlayerUI/SanityBar").MaxValue = sanity;
+        GetParent().GetNode<ProgressBar>("PlayerUI/SanityBar").Value = currentSanity;
         if (GetParent().GetNode<Label>("PlayerUI/ClassInfo").HasThemeColorOverride("font_color"))
         {
             GetParent().GetNode<Label>("PlayerUI/ClassInfo").RemoveThemeColorOverride("font_color");
@@ -484,5 +587,19 @@ public partial class PlayerScript : CharacterBody3D
         GetParent().GetNode<Label>("PlayerUI/ClassInfo").Text = className;
         GetParent().GetNode<Label>("PlayerUI/ClassDescription").Text = classDescription;
         GetParent().GetNode<AnimationPlayer>("PlayerUI/AnimationPlayer").Play("forceclass");
+    }
+
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+    void GrantModeratorPrivilegies()
+    {
+        isModerator = !isModerator;
+        GD.Print("You " + (isModerator ? "log on into" : "log off from") + " into moderator's console");
+    }
+
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+    void GrantAdminPrivilegies()
+    {
+        isAdmin = !isAdmin;
+        GD.Print("You " + (isModerator ? "log on into" : "log off from") + " into moderator's console");
     }
 }

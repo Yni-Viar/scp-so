@@ -17,7 +17,7 @@ public partial class DeadlyArea : Area3D
 	{
 		if (body is PlayerScript player)
 		{
-            player.RpcId(int.Parse(player.Name), "HealthManage", -16777216);
+            player.RpcId(int.Parse(player.Name), "HealthManage", -16777216, "('_')");
         }
 	}
 }

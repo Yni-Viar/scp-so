@@ -158,7 +158,7 @@ public partial class Scp914 : AnimatableBody3D
                             if (Multiplayer.IsServer())
                             {
                                 GD.Print("Rough");
-                                player.RpcId(int.Parse(player.Name), "HealthManage", -16777216);
+                                player.RpcId(int.Parse(player.Name), "HealthManage", -16777216, "Died at Rough setting at SCP-914");
                             }
                             break;
                         case Modes.COARSE:
@@ -171,23 +171,23 @@ public partial class Scp914 : AnimatableBody3D
                             break;
                         case Modes.ONETOONE:
                             player.Position = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
-                            GD.Print("To be implemented, need to forceclass to another human");
+                            GD.Print("To be implemented, need to forceclass to another class");
                             break;
                         case Modes.FINE:
-                            GD.Print("To be implemented, need to forceclass to invincible human. Currently is working like ROUGH");
+                            GD.Print("To be implemented, need to forceclass to invincible.");
                             player.Position = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
-                            if (Multiplayer.IsServer())
+                            /*if (Multiplayer.IsServer())
                             {
-                                player.RpcId(int.Parse(player.Name), "HealthManage", -16777216);
-                            }
+                                player.RpcId(int.Parse(player.Name), "HealthManage", -16777216, "Not implemented.");
+                            }*/
                             break;
                         case Modes.VERYFINE:
-                            GD.Print("To be implemented, need to forceclass to invincible human. Currently is working like ROUGH");
+                            GD.Print("To be implemented, need to forceclass to invincible.");
                             player.Position = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
-                            if (Multiplayer.IsServer())
+                            /*if (Multiplayer.IsServer())
                             {
-                                player.RpcId(int.Parse(player.Name), "HealthManage", -16777216);
-                            }
+                                player.RpcId(int.Parse(player.Name), "HealthManage", -16777216, "Not implemented.");
+                            }*/
                             break;
                     }
                 }
@@ -195,7 +195,7 @@ public partial class Scp914 : AnimatableBody3D
         }
         await ToSignal(GetTree().CreateTimer(6.0), "timeout");
         itemsToRefine.Clear();
-        //playersToRefine.Clear();
+        playersToRefine.Clear();
 		GetNode<CollisionShape3D>("DoorBlockIn").Disabled = true;
 		GetNode<CollisionShape3D>("DoorBlockOut").Disabled = true;
         isRefining = false;

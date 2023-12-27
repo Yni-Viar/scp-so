@@ -72,7 +72,7 @@ public partial class PlayerUI : Control
                     }
                 }
             }
-            
+
         }
 
         if (Input.IsActionJustPressed("player_list"))
@@ -97,7 +97,21 @@ public partial class PlayerUI : Control
                 GetNode<Panel>("PlayerListPanel").Visible = true;
                 SpecialScreen = true;
             }
-            
+
+        }
+        if (Input.IsActionJustPressed("console"))
+        {
+            if (SpecialScreen)
+            {
+                GetNode<Control>("AdminConsole").Visible = false;
+                GetTree().Root.GetNode<InGameConsole>("Main/CanvasLayer/InGameConsole").Visible = false;
+                SpecialScreen = false;
+            }
+            else
+            {
+                GetNode<Control>("AdminConsole").Visible = true;
+                SpecialScreen = true;
+            }
         }
     }
 }
