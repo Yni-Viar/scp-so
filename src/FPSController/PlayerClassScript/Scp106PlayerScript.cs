@@ -1,6 +1,8 @@
 using Godot;
 using System;
-
+/// <summary>
+/// SCP-106 main script.
+/// </summary>
 public partial class Scp106PlayerScript : Node3D
 {
     RandomNumberGenerator rng = new RandomNumberGenerator();

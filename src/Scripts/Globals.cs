@@ -5,23 +5,61 @@ using System;
 /// </summary>
 public partial class Globals
 {
+    /// <summary>
+    /// Development stages. Main menu default background is dependent on this enum.
+    /// </summary>
     public enum Stages { release, testing, dev };
+    /// <summary>
+    /// Health type. Available since 0.7.0.
+    /// </summary>
     public enum HealthType { health, sanity }
 
-    public static string version = "0.7.1-dev";
+    /// <summary>
+    /// Version string. In 0.7.1, the value is changed to development stage, because Godot already has this feature.
+    /// </summary>
+    public static string version = "0.7.1-release";
+    /// <summary>
+    /// Compatibility of settings file. In later versions will be changed to a new format, similar to SCPSL one.
+    /// </summary>
     public static string settingsCompatibility = "0.7.0";
+    /// <summary>
+    /// Classes compatibility. Available since 0.7.0.
+    /// </summary>
     public static string classesCompatibility = "0.7.0";
+    /// <summary>
+    /// Items compatibility. Available since 0.7.0.
+    /// </summary>
     public static string itemsCompatibility = "0.7.0";
+    /// <summary>
+    /// Rooms compatibility. Available since 0.7.0.
+    /// </summary>
     public static string roomsCompatibility = "0.7.0";
-    //public static string tasksCompatibility = "0.7.0"; //unused
+    /*
+    /// <summary>
+    /// May be availiable from 0.8.0. Quests compatibility.
+    /// </summary>
+    public static string tasksCompatibility = "0.7.0"; //unused*/
+    /// <summary>
+    /// Server config compatibility. Available since 0.7.0.
+    /// </summary>
     public static string serverConfigCompatibility = "0.7.0";
-    public static Stages currentStage = Stages.dev;
+    /// <summary>
+    /// Current stage. Used by main menu.
+    /// </summary>
+    public static Stages currentStage = Stages.release;
 
-    //Types of spawnable objects
+    /// <summary>
+    /// Types of spawnable objects. Available since 0.7.0.
+    /// </summary>
     public enum ItemType { item, ammo };
 
-    //Spectators, D-class, Scientists, MTF, Dangerous SCP entities, Normal SCP entities, Chaos Insurgency, Serpent's hand.
+    /// <summary>
+    /// Teams. Spectators, D-class, Scientists, MTF, Dangerous SCP entities, Normal SCP entities, Chaos Insurgency, Serpent's hand.
+    /// </summary>
     public enum Team { SPT, CDP, SCI, MTF, DSE, NSE, CHI, SEH }
+    /// <summary>
+    /// Default class presets.
+    /// </summary>
     internal static Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classData =
         new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> {
             { "spawnableHuman", new Godot.Collections.Array<string>{"classd", "scientist", "guard" } },
@@ -30,8 +68,10 @@ public partial class Globals
             { "friendlyScps", new Godot.Collections.Array<string> { "scp131a", "scp131b" } },
             { "special", new Godot.Collections.Array<string> {"spectator" } },
         };
-
-    public static Godot.Collections.Dictionary<string, string> items = new Godot.Collections.Dictionary<string, string>{
+    /// <summary>
+    /// Default item presets.
+    /// </summary>
+    internal static Godot.Collections.Dictionary<string, string> items = new Godot.Collections.Dictionary<string, string>{
         { "key1", "res://InventorySystem/Items/key1.tres" },
         { "key2", "res://InventorySystem/Items/key2.tres" },
         { "key3", "res://InventorySystem/Items/key3.tres" },
@@ -47,7 +87,10 @@ public partial class Globals
         { "cage_contained", "res://InventorySystem/Items/cage_contained.tres" },
         { "tranquilizer", "res://InventorySystem/Items/tranquilizer.tres" }
     };
-
+    
+    /// <summary>
+    /// Default room presets.
+    /// </summary>
     internal static Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> roomData =
         new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> {
             { "RzCommon1", new Godot.Collections.Array<string>{ "lc_room_1_endroom" } },
@@ -82,8 +125,10 @@ public partial class Globals
             { "HczSingle3", new Godot.Collections.Array<string>{ } },
             { "HczSingle4", new Godot.Collections.Array<string>{ } },
         };
-
-    public static Godot.Collections.Dictionary<string, string> ammo = new Godot.Collections.Dictionary<string, string>
+    /// <summary>
+    /// Ammo presets.
+    /// </summary>
+    internal static Godot.Collections.Dictionary<string, string> ammo = new Godot.Collections.Dictionary<string, string>
     {
         { "9mm", "res://Assets/Ammo/9_mm.tscn" },
         { "mtf", "res://Assets/Ammo/mtf_ammo.tscn" }

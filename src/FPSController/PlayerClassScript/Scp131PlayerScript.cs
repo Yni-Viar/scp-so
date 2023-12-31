@@ -1,9 +1,11 @@
 using Godot;
 using System;
-
+/// <summary>
+/// SCP-131 (both -A and -B) main script.
+/// </summary>
 public partial class Scp131PlayerScript : Node3D
 {
-    [Export] internal bool isWatchingAtScp173 = false;
+    //[Export] internal bool isWatchingAtScp173 = false;
     RayCast3D vision;
     bool scanCooldown = false;
     bool danger = false;
@@ -45,8 +47,6 @@ public partial class Scp131PlayerScript : Node3D
                 Scan();
             }
         }
-        
-        WatchAtScp173();
     }
     /// <summary>
     /// Scans for enemies in a radius.
@@ -105,6 +105,7 @@ public partial class Scp131PlayerScript : Node3D
             GetNode<AnimationPlayer>("AnimationPlayer").Play(s);
         }
     }
+    /*
     /// <summary>
     /// Method, that holds watching at SCP-173.
     /// </summary>
@@ -130,4 +131,5 @@ public partial class Scp131PlayerScript : Node3D
             }
         }
     }
+    */
 }

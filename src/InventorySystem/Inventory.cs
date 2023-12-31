@@ -1,10 +1,15 @@
 using Godot;
 using System;
-
+/// <summary>
+/// Inventory core.
+/// </summary>
 public partial class Inventory : Node
 {
     internal Godot.Collections.Dictionary dragData;
-
+    /// <summary>
+    /// Item changed signal.
+    /// </summary>
+    /// <param name="indexes">Item's index</param>
     [Signal]
     public delegate void ItemsChangedEventHandler(Godot.Collections.Array indexes);
 

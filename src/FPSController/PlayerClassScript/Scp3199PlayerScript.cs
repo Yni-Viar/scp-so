@@ -1,6 +1,8 @@
 using Godot;
 using System;
-
+/// <summary>
+/// SCP-3199 main script.
+/// </summary>
 public partial class Scp3199PlayerScript : Node3D
 {
     RayCast3D ray;

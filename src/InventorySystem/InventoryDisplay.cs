@@ -1,6 +1,8 @@
 using Godot;
 using System;
-
+/// <summary>
+/// Inventory screen script.
+/// </summary>
 public partial class InventoryDisplay : GridContainer
 {
     Inventory inventory = new Inventory();

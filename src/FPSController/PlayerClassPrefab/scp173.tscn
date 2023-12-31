@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bqgf6wgbcnloq"]
+[gd_scene load_steps=32 format=3 uid="uid://bqgf6wgbcnloq"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerClassScript/Scp173PlayerScript.cs" id="1_4av21"]
 [ext_resource type="Texture2D" uid="uid://cq03mwmo3ey0c" path="res://Assets/Models/scp173-BaseTexture/scp173NEO_low_Merged_PM3D_Sphere3D4_AlbedoTransparency.png" id="2_h3yhc"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dhk6piqm87b2n" path="res://Assets/Models/scp173-BaseTexture/scp173NEO_low_Merged_PM3D_Sphere3D4_Normal.png" id="4_m76d2"]
 [ext_resource type="Shader" path="res://Shaders/MixShader/mix.gdshader" id="5_wsa7v"]
 [ext_resource type="Texture2D" uid="uid://ip5h0psqi2fr" path="res://Assets/Models/scp173-FaceTextures/face_1.png" id="6_cn7o5"]
-[ext_resource type="Script" path="res://FPSController/PlayerClassScript/Features/LightDetector/LightDetector.cs" id="7_awpdv"]
 [ext_resource type="FontFile" uid="uid://cqaasvtiakcsw" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="7_pwjc2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g7cr3"]
@@ -5016,6 +5015,18 @@ _data = {
 "173_TPose": SubResource("Animation_pahml")
 }
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wduqq"]
+height = 23.4395
+radius = 32.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lqfrv"]
+properties/0/path = NodePath(".:isWatching")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:stareCounter")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+
 [node name="scp173" type="Node3D"]
 script = ExtResource("1_4av21")
 
@@ -5322,13 +5333,22 @@ grow_horizontal = 0
 theme_override_fonts/font = ExtResource("7_pwjc2")
 theme_override_font_sizes/font_size = 32
 
-[node name="LightDetector" type="Node3D" parent="."]
-script = ExtResource("7_awpdv")
+[node name="StareTrigger" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0329571, 0.118076)
+layers = 7
+aabb = AABB(-0.495073, -1.45011, -0.496674, 0.990148, 2.90022, 0.993351)
 
-[node name="SubViewport" type="SubViewport" parent="LightDetector"]
-render_target_update_mode = 4
+[node name="StareArea" type="Area3D" parent="."]
+collision_layer = 7
+collision_mask = 7
 
-[node name="DetectorCam" type="Camera3D" parent="LightDetector/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.13765, 0)
-fov = 40.0
-far = 20.0
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StareArea"]
+shape = SubResource("CylinderShape3D_wduqq")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_lqfrv")
+
+[connection signal="screen_entered" from="StareTrigger" to="." method="OnStareTriggerScreenEntered"]
+[connection signal="screen_exited" from="StareTrigger" to="." method="OnStareTriggerScreenExited"]
+[connection signal="body_entered" from="StareArea" to="." method="OnStareAreaBodyEntered"]
+[connection signal="body_exited" from="StareArea" to="." method="OnStareAreaBodyExited"]

@@ -1,6 +1,8 @@
 using Godot;
 using System;
-
+/// <summary>
+/// Human classes main script.
+/// </summary>
 public partial class HumanPlayerScript : Node3D
 {
     [Export] string armatureName;
@@ -10,7 +12,7 @@ public partial class HumanPlayerScript : Node3D
     double blinkTimer = 0d;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
-	{
+    {
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
             GetNode<Node3D>(armatureName).Hide();
@@ -27,46 +29,9 @@ public partial class HumanPlayerScript : Node3D
 
     }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override async void _Process(double delta)
-	{
-        /* DEPRECATED, since 0.7.0-dev
-         * if (GetParent().GetParent<PlayerScript>().dir.IsZeroApprox())
-        {
-            if (Name == "mtf" || Name == "hazmat_scientist")
-            {
-                Rpc("SetState", "MTF_Idle");
-            }
-            else
-            {
-                Rpc("SetState", "Idle");
-            }
-        }
-        else
-        {
-            if (Input.IsActionPressed("move_sprint"))
-            {
-                if (Name == "mtf" || Name == "hazmat_scientist")
-                {
-                    Rpc("SetState", "MTF_Running");
-                }
-                else
-                {
-                    Rpc("SetState", "Running");
-                }
-            }
-            else
-            {
-                if (Name == "mtf" || Name == "hazmat_scientist")
-                {
-                    Rpc("SetState", "MTF_Walking");
-                }
-                else
-                {
-                    Rpc("SetState", "Walking");
-                }
-            }
-        }*/
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override async void _Process(double delta)
+    {
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
             if (blinkTimer < 5.2d)
@@ -80,7 +45,6 @@ public partial class HumanPlayerScript : Node3D
                 blinkTimer = 0d;
                 isBlinking = false;
             }
-            WatchAtScp173();
         }
         OnUpdate(delta);
     }
@@ -89,6 +53,7 @@ public partial class HumanPlayerScript : Node3D
     {
 
     }
+    /*
     /// <summary>
     /// Set animation to an entity. Deprecated as for 0.7.0-dev.
     /// </summary>
@@ -102,6 +67,7 @@ public partial class HumanPlayerScript : Node3D
             GetNode<AnimationPlayer>("AnimationPlayer").Play(s);
         }
     }
+    */
     /// <summary>
     /// Set animation to an entity via Animation Tree. Available since 0.7.0-dev
     /// </summary>
@@ -120,9 +86,9 @@ public partial class HumanPlayerScript : Node3D
             animation.Set("parameters/" + anim + "/" + action, amount);
         //}
     }
-
+    /*
     /// <summary>
-    /// Method, that holds watching at SCP-173.
+    /// Method, that holds watching at SCP-173. Deprecated since 0.7.1-dev.
     /// </summary>
     void WatchAtScp173()
     {
@@ -146,6 +112,5 @@ public partial class HumanPlayerScript : Node3D
             }
         }
     }
-
-
+    */
 }

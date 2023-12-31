@@ -6,7 +6,7 @@ using System;
 /// Author's commentary:
 /// This stream is licensed under the CC-BY-SA 3.0 license
 /// 
-/// If stream is licensed under this license, so the code is also lice3nsed by this license (I think...)
+/// If stream is licensed under this license, so the code is also licensed by this license (I think...)
 /// </summary>
 public partial class WeaponManager : ItemAction
 {
@@ -158,7 +158,7 @@ public partial class WeaponManager : ItemAction
         fireCooldown = weaponCooldown;
 
         //Recoil
-        recoilTarget = new Vector3 { X = rng.RandiRange(-20, 0), Y = 0, Z = 0 };
+        recoilTarget = new Vector3 { X = rng.RandiRange(-20, 20), Y = 0, Z = 0 };
         Vector3 recoilVector = recoilTarget.Lerp(Vector3.Zero, recoilScale);
         Vector3 finalizeRecoil = GetParent().GetParent().GetParent<PlayerScript>().GetNode<Node3D>("PlayerHead").RotationDegrees.Lerp(recoilVector, recoilSpeed);
         GetParent().GetParent().GetParent<PlayerScript>().GetNode<Node3D>("PlayerHead").RotationDegrees += new Vector3(Mathf.Clamp(finalizeRecoil.X, Mathf.DegToRad(-85f), Mathf.DegToRad(85f)), 0, 0);

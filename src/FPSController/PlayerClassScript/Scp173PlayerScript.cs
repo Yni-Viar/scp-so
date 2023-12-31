@@ -1,6 +1,8 @@
 using Godot;
 using System;
-
+/// <summary>
+/// SCP-173 main script.
+/// </summary>
 public partial class Scp173PlayerScript : Node3D
 {
     RandomNumberGenerator rng = new RandomNumberGenerator();
@@ -8,9 +10,22 @@ public partial class Scp173PlayerScript : Node3D
     RayCast3D vision;
     AudioStreamPlayer3D interactSound;
     string[] poseArr = new string[] { "173_Pose1", "173_Pose2", "173_Pose3", "173_Pose4", "173_Pose5", "173_Pose6", "173_Pose7", "173_TPose" };
+    [Export] bool isWatching = false;
+    internal bool IsWatching
+    {
+        get => isWatching;
+        set => isWatching = value;
+    }
+    [Export] int stareCounter = 0;
+    internal int StareCounter
+    {
+        get => stareCounter;
+        set => stareCounter = value;
+    }
+    float blinkTimer = 0f;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
-	{
+    {
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
             GetNode<Node3D>("SCP173_Rig").Hide();
@@ -20,12 +35,12 @@ public partial class Scp173PlayerScript : Node3D
         }
         SetRandomFace();
         ray = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/RayCast3D");
-        vision = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/VisionRadius");
+        //vision = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/VisionRadius");
         interactSound = GetParent().GetParent<PlayerScript>().GetNode<AudioStreamPlayer3D>("InteractSound");
-	}
+    }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override async void _Process(double delta)
+    public override void _Process(double delta)
     {
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
@@ -43,6 +58,8 @@ public partial class Scp173PlayerScript : Node3D
                     }
                 }
             }
+            Scp173Stare((float)delta);
+            /* Legacy 0.7.0 and earlier code.
             if (vision.IsColliding())
             {
                 var collidedWith = vision.GetCollider();
@@ -82,14 +99,19 @@ public partial class Scp173PlayerScript : Node3D
                     LookingAtScp173(false, delta);
                 }
             }
+            */
+            
+
         }
     }
-
+    /*
     /// <summary>
-    /// Method, that holds blinking.
+    /// Method, that holds blinking. Deprecated since 0.7.1-dev
     /// </summary>
+    [Obsolete("LookingAtScp173 is deprecated since 0.7.1. Use Scp173Stare instead.")]
     void LookingAtScp173(bool isWatching, double delta)
     {
+        
         if (isWatching && GetNode<LightDetector>("LightDetector").LightnessDetect() > 0.2)
         {
             //If SCP-173 is not moving, it should stand still!
@@ -102,7 +124,35 @@ public partial class Scp173PlayerScript : Node3D
         { //move freely
             GetParent().GetParent<PlayerScript>().CanMove = true;
         }
-	}
+    }*/
+
+    /// <summary>
+    /// Method, that holds blinking. Available since 0.7.1-dev.
+    /// </summary>
+    /// <param name="delta">Used for timeout</param>
+    async void Scp173Stare(float delta)
+    {
+        if (isWatching && stareCounter > 0 /*&& GetNode<LightDetector>("LightDetector").LightnessDetect() > 0.2*/) //Light detector is broken
+        {
+            //If SCP-173 is not moving, it should stand still!
+            if (GetParent().GetParent<PlayerScript>().CanMove && blinkTimer > 0f)
+            {
+                GetParent().GetParent<PlayerScript>().CanMove = false;
+            }
+            else if (blinkTimer < 0f)//blink
+            {
+                GetParent().GetParent<PlayerScript>().CanMove = true;
+                await ToSignal(GetTree().CreateTimer(0.5), "timeout");
+                blinkTimer = 4.7f;
+            }
+            blinkTimer -= delta;
+        }
+        else
+        { 
+            //move freely
+            GetParent().GetParent<PlayerScript>().CanMove = true;
+        }
+    }
 
     /// <summary>
     /// Set animation to an entity.
@@ -120,7 +170,6 @@ public partial class Scp173PlayerScript : Node3D
     /// <summary>
     /// Sets random 173 face, like skins. Available since 0.7.0-dev
     /// </summary>
-    //[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void SetRandomFace()
     {
         ShaderMaterial mat = new ShaderMaterial();
@@ -136,5 +185,39 @@ public partial class Scp173PlayerScript : Node3D
             mat.SetShaderParameter("texture_b", ResourceLoader.Load<Texture2D>("res://Assets/Models/scp173-FaceTextures/face_" + rng.RandiRange(1, 10).ToString() + ".png"));
         }
         GetNode<MeshInstance3D>("SCP173_Rig/Skeleton3D/scp173_MESH").MaterialOverride = mat;
+    }
+
+    private void OnStareTriggerScreenEntered()
+    {
+        IsWatching = true;
+    }
+
+    private void OnStareTriggerScreenExited()
+    {
+        IsWatching = false;
+    }
+
+    private void OnStareAreaBodyEntered(Node3D body)
+    {
+        if (body is PlayerScript player && player.scpNumber == -1)
+        {
+            StareCounter++;
+        }
+        if (stareCounter > 0)
+        {
+            GetNode<VisibleOnScreenNotifier3D>("StareTrigger").Visible = true;
+        }
+    }
+
+    private void OnStareAreaBodyExited(Node3D body)
+    {
+        if (body is PlayerScript player && player.scpNumber == -1)
+        {
+            StareCounter--;
+        }
+        if (stareCounter <= 0)
+        {
+            GetNode<VisibleOnScreenNotifier3D>("StareTrigger").Visible = false;
+        }
     }
 }

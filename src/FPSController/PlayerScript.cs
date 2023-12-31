@@ -276,17 +276,12 @@ public partial class PlayerScript : CharacterBody3D
                 }
                 if (collidedWith is DoorStaticOpener)
                 {
-                    collidedWith.Call("CallOpen", this);
+                    collidedWith.Call("CallOpen");
                 }
                 if (collidedWith is LootableAmmo)
                 {
                     collidedWith.Call("AddAmmo", this);
                 }
-                /* LEGACY 0.6.x code
-                 * if (collidedWith is ItemAction action && action.GetPath().ToString().Contains(Name))
-                {
-                    collidedWith.Call("OnUse", this);
-                }*/
             }
             
             if (!customMusic)

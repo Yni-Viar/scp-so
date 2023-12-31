@@ -1,6 +1,8 @@
 using Godot;
 using System;
-
+/// <summary>
+/// Player UI script.
+/// </summary>
 public partial class PlayerUI : Control
 {
     internal bool SpecialScreen = false;
@@ -41,77 +43,94 @@ public partial class PlayerUI : Control
     {
         if (Input.IsActionJustPressed("ui_cancel"))
         {
-            if (SpecialScreen)
-            {
-                GetTree().Root.GetNode<Control>("Main/CanvasLayer/PauseMenu").Visible = false;
-                SpecialScreen = false;
-            }
-            else
-            {
-                GetTree().Root.GetNode<Control>("Main/CanvasLayer/PauseMenu").Visible = true;
-                SpecialScreen = true;
-            }
+            InputValues("exitgame");
         }
 
         if (Input.IsActionJustPressed("human_inventory"))
         {
-            PlayerScript player = GetTree().Root.GetNodeOrNull<PlayerScript>("Main/Game/" + Multiplayer.GetUniqueId().ToString());
-            if (player != null)
-            {
-                if (player.IsMultiplayerAuthority() && player.scpNumber == -1)
-                {
-                    if (SpecialScreen)
-                    {
-                        GetTree().Root.GetNodeOrNull<ColorRect>("Main/Game/" + Multiplayer.GetUniqueId().ToString() + "/InventoryContainer").Visible = false;
-                        SpecialScreen = false;
-                    }
-                    else
-                    {
-                        GetTree().Root.GetNodeOrNull<ColorRect>("Main/Game/" + Multiplayer.GetUniqueId().ToString() + "/InventoryContainer").Visible = true;
-                        SpecialScreen = true;
-                    }
-                }
-            }
-
+            InputValues("inventory");
         }
 
         if (Input.IsActionJustPressed("player_list"))
         {
-            if (GetNode<Panel>("PlayerListPanel").Visible)
-            {
-                foreach (Node node in GetNode("PlayerListPanel/PlayerList").GetChildren())
-                {
-                    node.QueueFree();
-                }
-                GetNode<Panel>("PlayerListPanel").Visible = false;
-                SpecialScreen = false;
-            }
-            else
-            {
-                foreach (string item in GetParent<FacilityManager>().playersList)
-                {
-                    Label label = new Label();
-                    label.Text = GetParent().GetNode<PlayerScript>(item).playerName;
-                    GetNode("PlayerListPanel/PlayerList").AddChild(label);
-                }
-                GetNode<Panel>("PlayerListPanel").Visible = true;
-                SpecialScreen = true;
-            }
-
+            InputValues("playerslist");
         }
         if (Input.IsActionJustPressed("console"))
         {
-            if (SpecialScreen)
-            {
-                GetNode<Control>("AdminConsole").Visible = false;
-                GetTree().Root.GetNode<InGameConsole>("Main/CanvasLayer/InGameConsole").Visible = false;
-                SpecialScreen = false;
-            }
-            else
-            {
-                GetNode<Control>("AdminConsole").Visible = true;
-                SpecialScreen = true;
-            }
+            InputValues("console");
+        }
+    }
+
+    void InputValues(string state)
+    {
+        switch (state)
+        {
+            case "console":
+                if (!SpecialScreen)
+                {
+                    GetNode<Control>("AdminConsole").Visible = true;
+                    SpecialScreen = true;
+                }
+                else
+                {
+                    GetNode<Control>("AdminConsole").Visible = false;
+                    GetTree().Root.GetNode<InGameConsole>("Main/CanvasLayer/InGameConsole").Visible = false;
+                    SpecialScreen = false;
+                }
+                break;
+            case "playerlist":
+                if (GetNode<Panel>("PlayerListPanel").Visible)
+                {
+                    foreach (Node node in GetNode("PlayerListPanel/PlayerList").GetChildren())
+                    {
+                        node.QueueFree();
+                    }
+                    GetNode<Panel>("PlayerListPanel").Visible = false;
+                    SpecialScreen = false;
+                }
+                else if (!SpecialScreen)
+                {
+                    foreach (string item in GetParent<FacilityManager>().playersList)
+                    {
+                        Label label = new Label();
+                        label.Text = GetParent().GetNode<PlayerScript>(item).playerName;
+                        GetNode("PlayerListPanel/PlayerList").AddChild(label);
+                    }
+                    GetNode<Panel>("PlayerListPanel").Visible = true;
+                    SpecialScreen = true;
+                }
+                break;
+            case "inventory":
+                PlayerScript player = GetTree().Root.GetNodeOrNull<PlayerScript>("Main/Game/" + Multiplayer.GetUniqueId().ToString());
+                if (player != null)
+                {
+                    if (player.IsMultiplayerAuthority() && player.scpNumber == -1)
+                    {
+                        if (!SpecialScreen)
+                        {
+                            GetTree().Root.GetNodeOrNull<ColorRect>("Main/Game/" + Multiplayer.GetUniqueId().ToString() + "/InventoryContainer").Visible = true;
+                            SpecialScreen = true;
+                        }
+                        else
+                        {
+                            GetTree().Root.GetNodeOrNull<ColorRect>("Main/Game/" + Multiplayer.GetUniqueId().ToString() + "/InventoryContainer").Visible = false;
+                            SpecialScreen = false;
+                        }
+                    }
+                }
+                break;
+            case "exitgame":
+                if (!SpecialScreen)
+                {
+                    GetTree().Root.GetNode<Control>("Main/CanvasLayer/PauseMenu").Visible = true;
+                    SpecialScreen = true;
+                }
+                else
+                {
+                    GetTree().Root.GetNode<Control>("Main/CanvasLayer/PauseMenu").Visible = false;
+                    SpecialScreen = false;
+                }
+                break;
         }
     }
 }

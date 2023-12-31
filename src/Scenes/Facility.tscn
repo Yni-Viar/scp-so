@@ -176,14 +176,10 @@ script = ExtResource("2_ya4qo")
 [node name="MapGenLcz" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -384, 0)
 script = ExtResource("2_tjaxg")
-generateMoreR1s = true
-generateMoreR4s = true
 
 [node name="MapGenHcz" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -672, 0)
 script = ExtResource("4_rnfjk")
-generateMoreR1s = true
-generateMoreR4s = true
 
 [node name="DC_jail" parent="." instance=ExtResource("5_22s8f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1000, 0)

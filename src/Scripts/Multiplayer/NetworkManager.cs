@@ -28,7 +28,7 @@ public partial class NetworkManager : Node
     internal static Godot.Collections.Array<string> playersList = new Godot.Collections.Array<string>();
 
     Node3D game; // replicated map.
-    CharacterBody3D playerScene; // replicated player.
+    //CharacterBody3D playerScene; // replicated player.
     bool loading = false;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -61,6 +61,11 @@ public partial class NetworkManager : Node
                 3
             }, "user://serverconfig_" + Globals.serverConfigCompatibility + ".ini");
             LoadIni();
+        }
+
+        if (!FileAccess.FileExists("user://ipbans.txt"))
+        {
+            TxtParser.Save("user://ipbans.txt", "");
         }
 
         /* foreach (var argument in OS.GetCmdlineArgs()) // unused as for now.
@@ -134,10 +139,6 @@ public partial class NetworkManager : Node
         Multiplayer.MultiplayerPeer = peer;
         LoadGame();
         GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Hide();
-        if (!FileAccess.FileExists("user://ipbans.txt"))
-        {
-            TxtParser.Save("user://ipbans.txt", "");
-        }
         GD.Print("Server started. Ready for connecting!");
     }
 

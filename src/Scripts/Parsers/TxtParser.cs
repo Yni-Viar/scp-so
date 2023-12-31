@@ -12,6 +12,7 @@ public partial class TxtParser : Node
     {
         FileAccess file = FileAccess.Open(path, FileAccess.ModeFlags.Write);
         file.StoreString(content);
+        file.Close();
     }
     /// <summary>
     /// Loads TXT file
@@ -22,6 +23,7 @@ public partial class TxtParser : Node
     {
         FileAccess file = FileAccess.Open(path, FileAccess.ModeFlags.Read);
         string content = file.GetAsText();
+        file.Close();
         return content;
     }
 }

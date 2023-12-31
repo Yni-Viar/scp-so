@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://b26y2po80wqtw"]
+[gd_scene load_steps=43 format=3 uid="uid://b26y2po80wqtw"]
 
 [ext_resource type="Texture2D" uid="uid://dnmm0onwt1lkg" path="res://Assets/Models/scp131/SCP-131-Orange/scp131_low_1001_AlbedoTransparency_orange.png" id="1_1re2a"]
 [ext_resource type="Script" path="res://FPSController/PlayerClassScript/Scp131PlayerScript.cs" id="1_gy8dj"]
@@ -5990,11 +5990,6 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_1dk7f"]
 radius = 64.0
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_geefu"]
-properties/0/path = NodePath(".:isWatchingAtScp173")
-properties/0/spawn = true
-properties/0/replication_mode = 2
-
 [node name="scp131a" type="Node3D"]
 script = ExtResource("1_gy8dj")
 
@@ -6258,9 +6253,6 @@ collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_1dk7f")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_geefu")
 
 [node name="AbilityUI" type="Control" parent="."]
 visible = false

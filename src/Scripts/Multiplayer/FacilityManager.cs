@@ -29,10 +29,13 @@ public partial class FacilityManager : Node3D
     {
         get => friendlyFireFm; private set => friendlyFireFm = value;
     }
+
     [Export] uint scpLimit = 4; //SCP Limit
     Godot.Collections.Array<int> usedScps = new Godot.Collections.Array<int>(); //Already spawned SCPs
     [Export] internal int targets = 0;
     [Export] internal int[] tickets = new int[] { 0, 0, 0 };
+
+    string currentAmbient = string.Empty;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -511,12 +514,13 @@ public partial class FacilityManager : Node3D
     /// <param name="set"></param>
     internal void SetBackgroundMusic(string set)
     {
-        AudioStreamPlayer sfx = GetNode<AudioStreamPlayer>("BackgroundMusic");
-        AudioStream audio = ResourceLoader.Load<AudioStream>(set);
-        if (sfx.Stream != audio)
+        if (currentAmbient != set)
         {
+            AudioStreamPlayer sfx = GetNode<AudioStreamPlayer>("BackgroundMusic");
+            AudioStream audio = ResourceLoader.Load<AudioStream>(set);
             sfx.Stream = audio;
             sfx.Playing = true;
+            currentAmbient = set;
         }
     }
     /// <summary>

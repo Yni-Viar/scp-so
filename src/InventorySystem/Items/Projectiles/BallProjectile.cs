@@ -4,7 +4,7 @@ using System;
 public partial class BallProjectile : Pickable
 {
     [Export] bool scp018 = false;
-    Vector3 vel = new Vector3(0.08f, 0.08f, 0.08f);
+    Vector3 vel = new Vector3(0.02f, 0.02f, 0.02f);
     // Called when the node enters the scene tree for the first time.
     public override async void _Ready()
     {
@@ -18,7 +18,7 @@ public partial class BallProjectile : Pickable
         if (collision != null)
         {
             vel = vel.Bounce(collision.GetNormal());
-            if (vel.X < 0.32f && vel.Y < 0.32f && vel.Z < 0.32f && scp018)
+            if (vel.X < 0.16f && vel.Y < 0.16f && vel.Z < 0.16f && scp018)
             {
                 vel.X *= 2f;
                 vel.Y *= 2f;

@@ -1,6 +1,8 @@
 using Godot;
 using System;
-
+/// <summary>
+/// Main SCP-914 script.
+/// </summary>
 public partial class Scp914 : AnimatableBody3D
 {
     Random rnd = new Random(); //for items only

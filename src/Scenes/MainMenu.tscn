@@ -140,16 +140,22 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[b]v.0.7.1-dev[/b] [i](Alpha)[/i]
-(BIG thanks for testers, who pointed at bugs)
+text = "[b]v.0.7.1[/b] [i](Alpha)[/i]
+(BIG thanks for testers, who pointed me at bugs)
 - Fixed mouse sensivity.
+- Reworked UI code.
 - Fixed mouse input when SpecialScreen is enabled.
 - Added outline to arrow.
+- Reworked SCP-173 mechanic, so it should not move while not blinking...
+- Temporarily removed SCP-173 light detector, because of being unstable.
+- Fixed \"restart-server-bug\" (if you host and exit the server 3 times, the game could not load)
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.
 - Keycarded door still produce \"allow\" sound, even if keycard is lower than needed. \"Deny\" sound plays only if player don't hold a keycard.
-- SCP-173 mechanic and connecting to ongoing game may be unstable."
+- Connecting to ongoing game may be unstable.
+- Standing in front of SCP-173 through wall still thiggers the sculpture.
+- Hand rigs are just... meh..."
 
 [node name="PlayPanel" type="Panel" parent="."]
 visible = false
@@ -484,23 +490,6 @@ text = "[i]Dither shader (MIT License)[/i]
 
 Copyright (c) 2021 Sam Bigos
 This shader is under MIT license.
-
-"
-fit_content = true
-
-[node name="CreditsCode8" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1234, 0)
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 24
-theme_override_font_sizes/bold_font_size = 24
-theme_override_font_sizes/italics_font_size = 24
-theme_override_font_sizes/bold_italics_font_size = 24
-theme_override_font_sizes/mono_font_size = 24
-bbcode_enabled = true
-text = "[i]Lightness Detector (MIT License) [/i]
-
-- Copyright (c) 2022 Reun Media Partnership
-
 
 "
 fit_content = true

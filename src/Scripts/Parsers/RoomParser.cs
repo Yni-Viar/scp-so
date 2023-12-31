@@ -21,6 +21,7 @@ public partial class RoomParser : Node
         {
             FileAccess file = FileAccess.Open(placeToSave, FileAccess.ModeFlags.Read);
             Variant parsedResult = Json.ParseString(file.GetAsText());
+            file.Close();
             return (Godot.Collections.Dictionary<string, Godot.Collections.Array<string>>)parsedResult;
         }
         else

@@ -1,6 +1,8 @@
 using Godot;
 using System;
-
+/// <summary>
+/// Inventory slot script. Handles item selecting.
+/// </summary>
 public partial class InventorySlotDisplay : CenterContainer
 {
 	Inventory inventory = new Inventory();

@@ -1,6 +1,14 @@
 # Changelog
 The current state of the game - Alpha.
 ## Alpha versions
+### v.0.7.1 (2023.12.31)
+- Fixed mouse sensivity.
+- Reworked UI code.
+- Fixed mouse input when SpecialScreen is enabled.
+- Added outline to arrow.
+- Reworked SCP-173 mechanic, so it should not move while not blinking...
+- Temporarily removed SCP-173 light detector, because of being unstable.
+- Fixed "restart-server-bug" (if you host and exit the server 3 times, the game could not load)
 ### v.0.7.0 (2023.12.26)
 - Changed game logo to nicer one.
 - Finally added loading screen!

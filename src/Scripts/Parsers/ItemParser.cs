@@ -26,6 +26,7 @@ public partial class ItemParser : Node
         {
             FileAccess file = FileAccess.Open(placeToSave, FileAccess.ModeFlags.Read);
             Variant parsedResult = Json.ParseString(file.GetAsText());
+            file.Close();
             return (Godot.Collections.Dictionary<string, string>)parsedResult;
         }
         else
