@@ -42,10 +42,6 @@
 - Copyright (c) 2021 Sam Bigos
 - This shader is under MIT license.
 
-### Lightness Detector (MIT License)
-
-- Copyright (c) 2022 Reun Media Partnership
-
 ### Button Interaction (MIT License)
 
 - Copyright (c) 2022 Nagi
