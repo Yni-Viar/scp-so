@@ -46,7 +46,7 @@ public partial class ItemCage : ItemAction
             {
                 if (stunned.Name.ToString().Contains("scp"))
                 {
-                    GetParent().GetParent<PlayerAction>().Rpc("SpawnObject", "cage_contained", 0);
+                    GetTree().Root.GetNode<PlayerAction>("Main/Game/PlayerAction").Rpc("SpawnObject", "cage_contained", 0, Multiplayer.GetUniqueId());
                     stunned.Rpc("Despawn");
                     GetParent().GetParent().GetParent().GetParent<FacilityManager>().tickets[isFoundation ? 1 : 2]++;
                     base.OnUse(player);

@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://mu7j26by23js"]
+[gd_scene load_steps=30 format=3 uid="uid://mu7j26by23js"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/FacilityManager.cs" id="1_p22hh"]
 [ext_resource type="Script" path="res://Scripts/Multiplayer/AdminCommands.cs" id="2_m73g2"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorLcz.cs" id="2_tjaxg"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorRz.cs" id="2_ya4qo"]
+[ext_resource type="Script" path="res://Scripts/PlayerAction.cs" id="3_rlxog"]
 [ext_resource type="Script" path="res://MapGen/Scripts/MapGeneratorHcz.cs" id="4_rnfjk"]
 [ext_resource type="PackedScene" uid="uid://30rp3hyln2b4" path="res://MapGen/Resources/RoomAssets/DCCZ/dc_jail.tscn" id="5_22s8f"]
 [ext_resource type="Environment" uid="uid://cpjkvy5s2l8ae" path="res://FacilityGraphics.tres" id="5_u1dtw"]
@@ -55,6 +56,9 @@ properties/10/replication_mode = 2
 properties/11/path = NodePath(".:maxSpawnableObjects")
 properties/11/spawn = true
 properties/11/replication_mode = 2
+properties/12/path = NodePath(".:npcs")
+properties/12/spawn = true
+properties/12/replication_mode = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ttxax"]
 size = Vector3(6410.33, 1969.08, 6412.47)
@@ -169,6 +173,9 @@ script = ExtResource("1_p22hh")
 [node name="AdminCommands" type="Node" parent="."]
 script = ExtResource("2_m73g2")
 
+[node name="PlayerAction" type="Node3D" parent="."]
+script = ExtResource("3_rlxog")
+
 [node name="MapGenRz" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -240, 0)
 script = ExtResource("2_ya4qo")
@@ -192,6 +199,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 512, -1600, -512)
 [node name="Items" type="Node3D" parent="."]
 
 [node name="Ragdolls" type="Node3D" parent="."]
+
+[node name="NPCs" type="Node3D" parent="."]
 
 [node name="Decals" type="Node3D" parent="."]
 

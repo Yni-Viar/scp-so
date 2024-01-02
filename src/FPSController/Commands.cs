@@ -17,6 +17,9 @@ public partial class Commands : Node
             GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("giveammo", new Callable(this, "GiveAmmo"), "Gives an item to inventory (Limit for each player equals 12 items)");
             GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("givehp", new Callable(this, "SetHealth"), "Sets health on a current player");
             GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("givesanity", new Callable(this, "GiveSanity"), "Sets sanity on a current player");
+            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("roundstart", new Callable(this, "RoundStart"), "Starts round immediately");
+            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("npclist", new Callable(this, "NpcList"), "Available NPCs");
+            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("ammotypes", new Callable(this, "AmmoType"), "Available ammo types");
         }
     }
 
@@ -144,10 +147,7 @@ public partial class Commands : Node
     /// <param name="itemPath">Path to item resource</param>
     void GiveItemCmd(string itemPath, int type)
     {
-        //Item item = ResourceLoader.Load<Item>(itemPath);
-        //Used in pre-0.7.0-dev versions.
-        //GetTree().Root.GetNode<Inventory>("Main/Game/" + Multiplayer.GetUniqueId() + "/InventoryContainer/Inventory").Rpc("DropItemRpc", item.PickablePath);
-        GetTree().Root.GetNode<PlayerAction>("Main/Game/" + Multiplayer.GetUniqueId() + "/PlayerHead").Rpc("SpawnObject", itemPath, type);
+        GetTree().Root.GetNode<PlayerAction>("Main/Game/PlayerAction").Rpc("SpawnObject", itemPath, type, Multiplayer.GetUniqueId());
     }
     /// <summary>
     /// Sets health on a current player
@@ -167,9 +167,9 @@ public partial class Commands : Node
         }
     }
     /// <summary>
-    /// Gives ammo for the player.
+    /// Gives ammo for the player. Available, since 0.7.0-dev.
     /// </summary>
-    /// <param name="args">Ammo name, as in ammotype_[currentversion].json or as in Globals.ammo, if settings are default. Available, since 0.7.0-dev.</param>
+    /// <param name="args">Ammo name, as in ammotype_[currentversion].json or as in Globals.ammo, if settings are default.</param>
     /// <returns>Result</returns>
     string GiveAmmo(string[] args)
     {
@@ -213,5 +213,43 @@ public partial class Commands : Node
         {
             return "Error. You need only 1 argument, e.g. givesanity 100";
         }
+    }
+    /// <summary>
+    /// Forces round start. Available since 0.7.2-dev
+    /// </summary>
+    /// <param name="args">Necessary by GDsh but not used</param>
+    /// <returns>A result message</returns>
+    string RoundStart(string[] args)
+    {
+        GetTree().Root.GetNode<FacilityManager>("Main/Game").Call("ForceRoundStart");
+        return "Starting the round... (If round is already started, nothing happens)";
+    }
+    /// <summary>
+    /// GDSh command.
+    /// </summary>
+    /// <param name="args">Necessary by GDsh but not used</param>
+    /// <returns>All available ammo types</returns>
+    string AmmoType(string[] args)
+    {
+        string r = "";
+        foreach (var val in ItemParser.ReadJson("user://ammotype_" + Globals.itemsCompatibility + ".json", Globals.ItemType.item))
+        {
+            r += val.Key + "\n";
+        }
+        return r;
+    }
+    /// <summary>
+    /// GDSh command.
+    /// </summary>
+    /// <param name="args">Necessary by GDsh but not used</param>
+    /// <returns>All available NPCs</returns>
+    string NpcList(string[] args)
+    {
+        string r = "";
+        foreach (var val in ItemParser.ReadJson("user://ammotype_" + Globals.itemsCompatibility + ".json", Globals.ItemType.item))
+        {
+            r += val.Key + "\n";
+        }
+        return r;
     }
 }

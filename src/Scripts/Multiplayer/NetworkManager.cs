@@ -6,7 +6,8 @@ public partial class NetworkManager : Node
     internal static string ipAddress;
     internal static int port;
     internal static int maxPlayers;
-    internal static bool friendlyFire;
+    internal bool friendlyFire;
+    internal bool spawnNpcs;
     internal int maxObjects;
     internal uint maxScps;
     string moderatorPassword = "";
@@ -20,7 +21,7 @@ public partial class NetworkManager : Node
         get => adminPassword.GetHashCode();
     }
     //True breach simulation - if enabled, second SCP will be 2522 and if currentPlayerCounter % 8 equals 4 - then a new SCP is present in round.
-    //Else, players becomes SCP only if is second player or multiple of 8.
+    //Else, players becomes SCP only if is second player or multiple of 8. Will be changed in future updates.
     internal static bool tBrSim; 
 
     ENetMultiplayerPeer peer;
@@ -49,7 +50,8 @@ public partial class NetworkManager : Node
                 "AdminPassword",
                 "ModeratorPassword",
                 "MaxSpawnableObjects",
-                "MaxScps"
+                "MaxScps",
+                "SpawnNpcs"
             }, new Godot.Collections.Array{
                 7877,
                 20,
@@ -58,7 +60,8 @@ public partial class NetworkManager : Node
                 "changeitplease",
                 "",
                 12,
-                3
+                3,
+                true
             }, "user://serverconfig_" + Globals.serverConfigCompatibility + ".ini");
             LoadIni();
         }
@@ -127,6 +130,7 @@ public partial class NetworkManager : Node
         moderatorPassword = (string)config.GetValue("ServerConfig", "ModeratorPassword");
         maxObjects = (int)config.GetValue("ServerConfig", "MaxSpawnableObjects");
         maxScps = (uint)config.GetValue("ServerConfig", "MaxScps");
+        spawnNpcs = (bool)config.GetValue("ServerConfig", "SpawnNpcs");
     }
 
     /// <summary>

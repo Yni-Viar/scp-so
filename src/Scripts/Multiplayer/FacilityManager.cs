@@ -1,9 +1,11 @@
- using Godot;
+using Godot;
 using System;
-
+using System.Collections.Generic;
+/// <summary>
+/// The facility manager not only manages the facility - it is a player class manager too!
+/// </summary>
 public partial class FacilityManager : Node3D
 {
-    // The facility manager not only manages the facility - it is a player class manager too!
     internal string localNickname;
     //graphics settings field
     Settings settings;
@@ -18,6 +20,7 @@ public partial class FacilityManager : Node3D
     [Export] Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> rooms = new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>>();
     [Export] Godot.Collections.Dictionary<string, string> items = new Godot.Collections.Dictionary<string, string>();
     [Export] Godot.Collections.Dictionary<string, string> ammo = new Godot.Collections.Dictionary<string, string>();
+    [Export] Godot.Collections.Dictionary<string, string> npcs = new Godot.Collections.Dictionary<string, string>();
     [Export] bool friendlyFireFm;
     [Export] internal int maxSpawnableObjects;
     bool trueBreach;
@@ -50,11 +53,37 @@ public partial class FacilityManager : Node3D
         env.Environment.VolumetricFogEnabled = settings.FogSetting;
         env.Environment.FogEnabled = !settings.FogSetting;
 
-
-        //Multiplayer part.
-        if (!Multiplayer.IsServer())
+        // Multiplayer part.
+        // For custom classes, rooms, items support.
+        if (Multiplayer.IsServer())
         {
-            friendlyFireFm = NetworkManager.friendlyFire;
+            rooms = RoomParser.ReadJson("user://rooms_" + Globals.roomsCompatibility + ".json");
+
+            classes = ClassParser.ReadJson("user://playerclasses_" + Globals.classesCompatibility + ".json");
+
+            items = ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json", Globals.ItemType.item);
+
+            ammo = ItemParser.ReadJson("user://ammotype_" + Globals.itemsCompatibility + ".json", Globals.ItemType.ammo);
+
+            npcs = ItemParser.ReadJson("user://npcs_" + Globals.itemsCompatibility + ".json", Globals.ItemType.npc);
+
+            maxSpawnableObjects = GetParent<NetworkManager>().maxObjects;
+            scpLimit = GetParent<NetworkManager>().maxScps;
+
+            if (GetParent<NetworkManager>().spawnNpcs)
+            {
+                string[] temp = new string[npcs.Keys.Count];
+                npcs.Keys.CopyTo(temp, 0);
+                //Spawn NPC with 67% chance
+                if (rng.RandiRange(0, 100) <= 67)
+                {
+                    GetTree().Root.GetNode<PlayerAction>("Main/Game/PlayerAction").Rpc("SpawnObject", temp[rng.RandiRange(0, temp.Length - 1)], 2, 1);
+                }
+            }
+        }
+        else
+        {
+            friendlyFireFm = GetParent<NetworkManager>().friendlyFire;
             trueBreach = false; //NetworkManager.tBrSim;
             RoomParser.SaveJson("user://rooms_" + Globals.roomsCompatibility + ".json", rooms);
             ClassParser.SaveJson("user://playerclasses_" + Globals.classesCompatibility + ".json", classes);
@@ -70,22 +99,6 @@ public partial class FacilityManager : Node3D
             AddPlayer(id);
         }
         AddPlayer(1);
-
-
-        // For custom classes, rooms, items support.
-        if (Multiplayer.IsServer())
-        {
-            rooms = RoomParser.ReadJson("user://rooms_" + Globals.roomsCompatibility + ".json");
-
-            classes = ClassParser.ReadJson("user://playerclasses_" + Globals.classesCompatibility + ".json");
-
-            items = ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json", Globals.ItemType.item);
-
-            ammo = ItemParser.ReadJson("user://ammotype_" + Globals.itemsCompatibility + ".json", Globals.ItemType.ammo);
-
-            maxSpawnableObjects = GetParent<NetworkManager>().maxObjects;
-            scpLimit = GetParent<NetworkManager>().maxScps;
-        }
 
         //Start round
         WaitForBeginning();
@@ -145,12 +158,16 @@ public partial class FacilityManager : Node3D
     async void WaitForBeginning()
     {
         await ToSignal(GetTree().CreateTimer(25.0), "timeout");
-        BeginGame();
+        if (!IsRoundStarted)
+        {
+            BeginGame();
+        }
     }
 
     /// <summary>
     /// Round start. Adds the players in the list and tosses their classes.
     /// </summary>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
     void BeginGame()
     {
         Godot.Collections.Array<Node> players = GetTree().GetNodesInGroup("Players");
@@ -455,15 +472,11 @@ public partial class FacilityManager : Node3D
         GetNode<AnimationPlayer>("PlayerUI/AnimationPlayer").Play("roundend");
         SetProcess(false);
         await ToSignal(GetTree().CreateTimer(15.0), "timeout");
-        if (Multiplayer.IsServer())
-        {
-
-        }
         GetParent<NetworkManager>().ServerDisconnected();
     }
 
     /// <summary>
-    /// Spawns player ragdoll
+    /// Spawns player ragdoll. Will be moved to PlayerAction in later versions.
     /// </summary>
     /// <param name="player">Player name</param>
     /// <param name="ragdollSrc">Source of ragdoll (meaned by class)</param>
@@ -487,16 +500,24 @@ public partial class FacilityManager : Node3D
             node.QueueFree();
         }
     }
-    /*
     /// <summary>
-    /// Specific usage. Was used by SCP-650 to teleport to another player. This method is deprecated.
+    /// Teleports object to player. Currently used by SCP-650 NPC.
     /// </summary>
-    /// <param name="playerName">Name of the teleporting player</param>
+    /// <param name="from">Object to teleport</param>
+    /// <param name="destination">Bring the object to player</param>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
-    void RandomTeleport(string playerName)
+    void TeleportToPlayer(string from, string destination)
     {
-        GetNode<PlayerScript>(playerName).Position = GetNode<PlayerScript>(playersList[rng.RandiRange(0, playersList.Count - 1)]).GlobalPosition;
-    }*/
+        switch (destination)
+        {
+            case "random":
+                GetNode<Node3D>(from).Position = GetNode<PlayerScript>(playersList[rng.RandiRange(0, playersList.Count - 1)]).GlobalPosition;
+                break;
+            default:
+                GetNode<Node3D>(from).Position = GetNode<PlayerScript>(destination).GlobalPosition;
+                break;
+        }
+    }
 
     /// <summary>
     /// Teleport-to-room method. Used for administration and for testing. Will be moved in separate script in future.
@@ -534,6 +555,24 @@ public partial class FacilityManager : Node3D
         if (password.GetHashCode() == GetTree().Root.GetNode<NetworkManager>("Main").GetModerator)
         {
             GetNode<PlayerScript>(id.ToString()).RpcId(id, "GrantModeratorPrivilegies");
+        }
+    }
+    /// <summary>
+    /// Forces round start. Available since 0.7.2
+    /// </summary>
+    void ForceRoundStart()
+    {
+        if (!IsRoundStarted)
+        {
+            IsRoundStarted = true;
+            if (Multiplayer.IsServer())
+            {
+                BeginGame();
+            }
+            else
+            {
+                RpcId(1, "BeginGame");
+            }
         }
     }
 }

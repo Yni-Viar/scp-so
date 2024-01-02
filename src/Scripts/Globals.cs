@@ -15,9 +15,9 @@ public partial class Globals
     public enum HealthType { health, sanity }
 
     /// <summary>
-    /// Version string. In 0.7.1, the value is changed to development stage, because Godot already has this feature.
+    /// Version string. In 0.7.1, the value is changed to development stage, because Godot already has version setter feature.
     /// </summary>
-    public static string version = "0.7.1-release";
+    public static string version = "0.7.2-dev";
     /// <summary>
     /// Compatibility of settings file. In later versions will be changed to a new format, similar to SCPSL one.
     /// </summary>
@@ -29,7 +29,7 @@ public partial class Globals
     /// <summary>
     /// Items compatibility. Available since 0.7.0.
     /// </summary>
-    public static string itemsCompatibility = "0.7.0";
+    public static string itemsCompatibility = "0.7.2";
     /// <summary>
     /// Rooms compatibility. Available since 0.7.0.
     /// </summary>
@@ -42,7 +42,7 @@ public partial class Globals
     /// <summary>
     /// Server config compatibility. Available since 0.7.0.
     /// </summary>
-    public static string serverConfigCompatibility = "0.7.0";
+    public static string serverConfigCompatibility = "0.7.2";
     /// <summary>
     /// Current stage. Used by main menu.
     /// </summary>
@@ -51,7 +51,7 @@ public partial class Globals
     /// <summary>
     /// Types of spawnable objects. Available since 0.7.0.
     /// </summary>
-    public enum ItemType { item, ammo };
+    public enum ItemType { item, ammo, npc };
 
     /// <summary>
     /// Teams. Spectators, D-class, Scientists, MTF, Dangerous SCP entities, Normal SCP entities, Chaos Insurgency, Serpent's hand.
@@ -132,5 +132,10 @@ public partial class Globals
     {
         { "9mm", "res://Assets/Ammo/9_mm.tscn" },
         { "mtf", "res://Assets/Ammo/mtf_ammo.tscn" }
+    };
+
+    internal static Godot.Collections.Dictionary<string, string> npcs = new Godot.Collections.Dictionary<string, string>
+    {
+        { "scp650", "res://Assets/NPC/scp650npc.tscn" }
     };
 }

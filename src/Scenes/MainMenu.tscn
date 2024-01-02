@@ -140,21 +140,17 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[b]v.0.7.1[/b] [i](Alpha)[/i]
+text = "[b]v.0.7.2[/b] [i](Alpha)[/i]
 (BIG thanks for testers, who pointed me at bugs)
-- Fixed mouse sensivity.
-- Reworked UI code.
-- Fixed mouse input when SpecialScreen is enabled.
-- Added outline to arrow.
-- Reworked SCP-173 mechanic, so it should not move while not blinking...
-- Temporarily removed SCP-173 light detector, because of being unstable.
-- Fixed \"restart-server-bug\" (if you host and exit the server 3 times, the game could not load)
+- Added force start command (requested by users)
+- Added NPC subsystem (SCP-650 included). (There is a chance for a NPC spawning)
+- Added roundstart command.
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.
 - Keycarded door still produce \"allow\" sound, even if keycard is lower than needed. \"Deny\" sound plays only if player don't hold a keycard.
 - Connecting to ongoing game may be unstable.
-- Standing in front of SCP-173 through wall still thiggers the sculpture.
+- Standing in front of SCP-173 through wall still thiggers the sculpture (maybe).
 - Hand rigs are just... meh..."
 
 [node name="PlayPanel" type="Panel" parent="."]

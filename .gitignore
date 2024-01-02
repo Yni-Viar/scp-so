@@ -13,3 +13,6 @@ data_*/
 
 # Visual Studio ignores
 .vs/
+
+# Raw docs
+scpso.xml

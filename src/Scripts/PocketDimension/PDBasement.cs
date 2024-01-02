@@ -1,11 +1,13 @@
 using Godot;
 using System;
-using System.Linq;
-
+/// <summary>
+/// Basement code
+/// </summary>
 public partial class PDBasement : StaticBody3D
 {
     [Export] string answerCode;
     [Export] string playerInputCode = "";
+    string[] exitValues = new string[PlacesForTeleporting.defaultData.Values.Count];
 
     RandomNumberGenerator rng = new RandomNumberGenerator();
     
@@ -14,6 +16,7 @@ public partial class PDBasement : StaticBody3D
     {
         answerCode = rng.RandiRange(1, 4).ToString() + rng.RandiRange(1, 4).ToString() + rng.RandiRange(1, 4).ToString() + rng.RandiRange(1, 4).ToString();
         GetNode<Label3D>("EscapeCode").Text = answerCode;
+        PlacesForTeleporting.defaultData.Values.CopyTo(exitValues, 0);
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,7 +45,7 @@ public partial class PDBasement : StaticBody3D
     {
         if (body is PlayerScript player)
         {
-            TeleportTo(player, PlacesForTeleporting.defaultData.Values.ToArray<string>()[rng.RandiRange(0, PlacesForTeleporting.defaultData.Values.ToArray<string>().Length - 1)]);
+            TeleportTo(player, exitValues[rng.RandiRange(0, exitValues.Length - 1)]);
         }
     }
     /// <summary>

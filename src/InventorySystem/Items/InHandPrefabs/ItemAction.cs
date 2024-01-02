@@ -1,6 +1,8 @@
 using Godot;
 using System;
-
+/// <summary>
+/// First person base item action. Is parent for Weapon Manager.
+/// </summary>
 public partial class ItemAction : Node3D
 {
 	[Export] internal bool oneTimeUse;
@@ -29,13 +31,17 @@ public partial class ItemAction : Node3D
 	/// <summary>
 	/// Base method, which is default for first-person items.
 	/// </summary>
-	/// <param name="player"></param>
+	/// <param name="player">Who uses item?</param>
 	internal virtual void OnUse(PlayerScript player)
 	{
 		if (oneTimeUse)
 		{
             player.GetNode<Inventory>("InventoryContainer/Inventory").RemoveItem(index, false);
 			QueueFree();
+			if (GetTree().Root.GetNode<PlayerUI>("Main/Game/PlayerUI").SpecialScreen)
+			{
+				GetTree().Root.GetNode<PlayerUI>("Main/Game/PlayerUI").SpecialScreen = false;
+            }
         }
 	}
 }

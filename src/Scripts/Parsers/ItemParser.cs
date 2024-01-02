@@ -19,7 +19,7 @@ public partial class ItemParser : Node
     /// Reads item JSON
     /// </summary>
     /// <param name="placeToSave">Place to read (or save if not exist or version changed) JSON</param>
-    /// <returns></returns>
+    /// <returns>Result</returns>
     public static Godot.Collections.Dictionary<string, string> ReadJson(string placeToSave, Globals.ItemType type)
     {
         if (FileAccess.FileExists(placeToSave))
@@ -31,13 +31,17 @@ public partial class ItemParser : Node
         }
         else
         {
-            if (type == Globals.ItemType.ammo)
+            switch (type)
             {
-                return SaveJson(placeToSave, Globals.ammo);
-            }
-            else
-            {
-                return SaveJson(placeToSave, Globals.items);
+                case Globals.ItemType.item:
+                    return SaveJson(placeToSave, Globals.items);
+                case Globals.ItemType.ammo:
+                    return SaveJson(placeToSave, Globals.ammo);
+                case Globals.ItemType.npc:
+                    return SaveJson(placeToSave, Globals.npcs);
+                default:
+                    GD.Print("Error! Type of object is unknown. Returning null...");
+                    return null;
             }
         }
     }
