@@ -33,7 +33,7 @@ public partial class PlayerAction : Node3D
 
                     Item item = ResourceLoader.Load<Item>(path);
                     Pickable pickable = ResourceLoader.Load<PackedScene>(item.PickablePath).Instantiate<Pickable>();
-                    pickable.Position = GetNode<Marker3D>(playerId + "/PlayerHead/ItemSpawn").GlobalPosition;
+                    pickable.Position = GetParent().GetNode<Marker3D>(playerId + "/PlayerHead/ItemSpawn").GlobalPosition;
                     GetParent().GetNode<Node3D>("Items").AddChild(pickable);
                 }
                 else
@@ -47,7 +47,7 @@ public partial class PlayerAction : Node3D
                     string path = ItemParser.ReadJson("user://ammotype_" + Globals.itemsCompatibility + ".json", (Globals.ItemType)type)[key];
 
                     LootableAmmo ammo = ResourceLoader.Load<PackedScene>(path).Instantiate<LootableAmmo>();
-                    ammo.Position = GetNode<Marker3D>(playerId + "/PlayerHead/ItemSpawn").GlobalPosition;
+                    ammo.Position = GetParent().GetNode<Marker3D>(playerId + "/PlayerHead/ItemSpawn").GlobalPosition;
                     GetParent().GetNode<Node3D>("Items").AddChild(ammo);
                 }
                 else

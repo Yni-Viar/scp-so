@@ -158,13 +158,14 @@ public partial class NetworkManager : Node
         Multiplayer.ConnectionFailed += ConnectionFailed;
         Multiplayer.ServerDisconnected += ServerDisconnected;
         GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Hide();
+        GetTree().Root.GetNode<CanvasLayer>("Main/LoadingScreen/").Visible = true;
+        loading = true;
     }
-
-    // NOT to be confused with LoadLevel, LoadGame is a serverside function, while LoadLevel - clientside.
-    // Both needed to spawn a level to every player via Multiplayer Spawner.
 
     /// <summary>
     /// Loads the game server-side.
+    /// NOT to be confused with LoadLevel, LoadGame is a serverside function, while LoadLevel - clientside.
+    /// Both needed to spawn a level to every player via Multiplayer Spawner.
     /// </summary>
     void LoadGame()
     {
@@ -239,6 +240,7 @@ public partial class NetworkManager : Node
         {
             GetNode("Game").QueueFree();
         }
+        loading = false;
         GD.Print("You are disconnected from the server.");
         GetTree().Root.GetNode<Control>("Main/CanvasLayer/MainMenu").Show();
         GetTree().Root.GetNode<Control>("Main/CanvasLayer/PauseMenu").Hide();

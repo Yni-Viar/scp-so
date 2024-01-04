@@ -157,8 +157,7 @@ maxAmmo = 15
 damage = 20.0
 reloadingTime = 2.0
 fovAjustingSpeed = 2.0
-recoilScale = 0.5
-recoilSpeed = 0.5
+recoilAmount = 2.0
 poofSounds = [ExtResource("2_30jn0"), ExtResource("3_x87l7")]
 reloadSound = ExtResource("4_uefem")
 

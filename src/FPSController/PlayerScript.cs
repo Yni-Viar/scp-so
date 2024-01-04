@@ -1,14 +1,14 @@
 using Godot;
 using System;
-
+/// <summary>
+/// This script was originally created by dzejpi. License - The Unlicense.
+/// Some parts used from elmarcoh (this script is also public domain).
+/// 
+/// This is base script for a player.
+/// Currently the script is a big mess, so it need refactoring :(
+/// </summary>
 public partial class PlayerScript : CharacterBody3D
 {
-    /* This script was created by dzejpi. License - The Unlicense. 
-     * Some parts used from elmarcoh (this script is also public domain).
-     * 
-     * I (Yni) added some parts, such as blinking or game over triggers.
-     * Currently the script is a big mess, so it need refactoring :(
-     */
     [Signal]
     public delegate void ItemInHandChangedEventHandler(string itemToReplace);
 

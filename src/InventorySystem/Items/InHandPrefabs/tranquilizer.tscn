@@ -255,6 +255,7 @@ damage = 10.0
 reloadingTime = 1.0
 isTranquilizer = true
 fovAjustingSpeed = 2.0
+recoilAmount = 1.0
 poofSounds = [ExtResource("2_ap1lb")]
 
 [node name="Mesh" type="Node3D" parent="."]

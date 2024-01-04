@@ -3,7 +3,7 @@ using System;
 /// <summary>
 /// SCP-650 NPC code
 /// </summary>
-public partial class Scp650Npc : AnimatableBody3D
+public partial class Scp650Npc : Node3D
 {
     RandomNumberGenerator rng = new RandomNumberGenerator();
     [Export] bool stare = false;
@@ -60,11 +60,11 @@ public partial class Scp650Npc : AnimatableBody3D
 
     private void OnStareAreaBodyEntered(Node3D body)
     {
-        if (body is PlayerScript player && player.scpNumber == -1)
+        if (body is PlayerScript)
         {
             StareCounter++;
         }
-        if (stareCounter > 0)
+        if (StareCounter > 0)
         {
             GetNode<VisibleOnScreenNotifier3D>("CanSee").Visible = true;
         }
@@ -72,11 +72,11 @@ public partial class Scp650Npc : AnimatableBody3D
 
     private void OnStareAreaBodyExited(Node3D body)
     {
-        if (body is PlayerScript player && player.scpNumber == -1)
+        if (body is PlayerScript)
         {
             StareCounter--;
         }
-        if (stareCounter <= 0)
+        if (StareCounter <= 0)
         {
             GetNode<VisibleOnScreenNotifier3D>("CanSee").Visible = false;
         }

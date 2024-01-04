@@ -338,8 +338,7 @@ isAuto = true
 weaponCooldown = 0.1
 allowZoom = true
 fovAjustingSpeed = 1.0
-recoilScale = 4.0
-recoilSpeed = 4.0
+recoilAmount = 1.0
 poofSounds = [ExtResource("2_ndqqj")]
 reloadSound = ExtResource("3_vfgku")
 

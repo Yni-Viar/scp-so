@@ -145,6 +145,7 @@ text = "[b]v.0.7.2[/b] [i](Alpha)[/i]
 - Added force start command (requested by users)
 - Added NPC subsystem (SCP-650 included). (There is a chance for a NPC spawning)
 - Added roundstart command.
+- Improved weapon system.
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.

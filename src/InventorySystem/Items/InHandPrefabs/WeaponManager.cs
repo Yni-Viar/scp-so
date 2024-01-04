@@ -30,14 +30,19 @@ public partial class WeaponManager : ItemAction
     bool zoomed = false;
 
     //Recoil
-    [Export] float recoilScale;
-    [Export] float recoilSpeed;
+    float recoil;
+    [Export] float recoilAmount;
+    float restoreSpeed = 1.5f;
+    float recoilSpeed = 3;
+    float recoilMultiply = 0.25f;
     Vector3 recoilTarget;
 
     //Godot-specific variables
     [Export] Godot.Collections.Array<AudioStream> poofSounds = new Godot.Collections.Array<AudioStream>();
     [Export] AudioStream reloadSound;
+    PlayerScript player;
     Camera3D camera;
+    Node3D head;
     AudioStreamPlayer3D audio;
     RayCast3D rayCast;
     AnimationPlayer anim;
@@ -46,13 +51,14 @@ public partial class WeaponManager : ItemAction
 
     internal override void OnStart()
     {
-        recoilTarget = new Vector3 { X = rng.RandiRange(-20, 20), Y = rng.RandiRange(0, 70), Z = rng.RandiRange(-20, 20)};
         audio = GetNode<AudioStreamPlayer3D>("WeaponSound");
         isPlayerScript = GetParent().GetParent().GetParentOrNull<PlayerScript>() != null;
         if (isPlayerScript)
         {
             if (GetParent().GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
             {
+                player = GetParent().GetParent().GetParent<PlayerScript>();
+                head = GetParent().GetParent<Node3D>();
                 camera = GetParent().GetParent().GetNode<Camera3D>("PlayerCamera");
                 rayCast = GetNode<RayCast3D>("ShootingRange");
             }
@@ -85,6 +91,7 @@ public partial class WeaponManager : ItemAction
                     fireCooldown -= (float)delta;
                 }
             }
+            recoil -= restoreSpeed / 50;
         }
     }
     /// <summary>
@@ -156,13 +163,7 @@ public partial class WeaponManager : ItemAction
 
         //fire cooldown
         fireCooldown = weaponCooldown;
-
-        //Recoil
-        recoilTarget = new Vector3 { X = rng.RandiRange(-20, 20), Y = 0, Z = 0 };
-        Vector3 recoilVector = recoilTarget.Lerp(Vector3.Zero, recoilScale);
-        Vector3 finalizeRecoil = GetParent().GetParent().GetParent<PlayerScript>().GetNode<Node3D>("PlayerHead").RotationDegrees.Lerp(recoilVector, recoilSpeed);
-        GetParent().GetParent().GetParent<PlayerScript>().GetNode<Node3D>("PlayerHead").RotationDegrees += new Vector3(Mathf.Clamp(finalizeRecoil.X, Mathf.DegToRad(-85f), Mathf.DegToRad(85f)), 0, 0);
-        rayCast.RotationDegrees = recoilTarget;
+        Recoil(recoilAmount);
     }
     /// <summary>
     /// Reloading mechanic.
@@ -182,6 +183,22 @@ public partial class WeaponManager : ItemAction
             audio.Stream = reloadSound;
             audio.Play();
         }
+    }
+    /// <summary>
+    /// Recoil main method. Available since 0.7.2.
+    /// </summary>
+    /// <param name="amount">Recoil amount.</param>
+    void Recoil(float amount)
+    {
+        recoil += amount * recoilMultiply;
+        recoil = Mathf.Clamp(recoil, 0, 1);
+        rng.Randomize();
+        recoilTarget = new Vector3 { X = rng.RandiRange(50, 70), Y = rng.RandiRange(-2, 2), Z = 0/*rng.RandiRange(-20, 20)*/ };
+        Vector3 recoilVector = recoilTarget.Lerp(Vector3.Zero, recoil);
+        Vector3 headRecoil = head.RotationDegrees.Lerp(recoilVector, (recoilSpeed * recoil + 1) / 10);
+        Vector3 playerRecoil = player.RotationDegrees.Lerp(recoilVector, (recoilSpeed * recoil + 1) / 10);
+        head.RotationDegrees += new Vector3(Mathf.Clamp(headRecoil.X, -85f, 85f), 0, 0);
+        player.RotationDegrees += new Vector3(0, playerRecoil.Y, 0);
     }
     /// <summary>
     /// Check fire cooldown

@@ -30,6 +30,8 @@ public partial class ButtonKeycardInteract : StaticBody3D
     [Signal]
     public delegate void InteractedEventHandler(Node3D player, int keycardRequire);
 
+    [Export] bool enableSounds;
+
     void Interact(Node3D _player)
     {
         if (_player is PlayerScript player)
@@ -39,64 +41,58 @@ public partial class ButtonKeycardInteract : StaticBody3D
             if (GetNode<PlayerScript>(player.GetPath()).scpNumber > 0)
             {
                 EmitSignal("Interacted", player, 2);
-                AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("ButtonSound");
-                sfx.Stream = GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse1.ogg");
-                sfx.Play();
+                PlayTheSound(true);
             }
             if (GetNode(player.GetPath()).GetNode("PlayerHead/PlayerHand").GetNodeOrNull("keyomni") != null)
             {
                 EmitSignal("Interacted", player, 5);
-                AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("ButtonSound");
-                sfx.Stream = GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse1.ogg");
-                sfx.Play();
+                PlayTheSound(true);
             }
             else if (GetNode(player.GetPath()).GetNode("PlayerHead/PlayerHand").GetNodeOrNull("key5") != null)
             {
                 EmitSignal("Interacted", player, 4);
-                AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("ButtonSound");
-                sfx.Stream = GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse1.ogg");
-                sfx.Play();
+                PlayTheSound(true);
             }
             else if (GetNode(player.GetPath()).GetNode("PlayerHead/PlayerHand").GetNodeOrNull("key4") != null)
             {
                 EmitSignal("Interacted", player, 3);
-                AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("ButtonSound");
-                sfx.Stream = GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse1.ogg");
-                sfx.Play();
+                PlayTheSound(true);
             }
             else if (GetNode(player.GetPath()).GetNode("PlayerHead/PlayerHand").GetNodeOrNull("key3") != null)
             {
                 EmitSignal("Interacted", player, 2);
-                AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("ButtonSound");
-                sfx.Stream = GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse1.ogg");
-                sfx.Play();
+                PlayTheSound(true);
             }
             else if (GetNode(player.GetPath()).GetNode("PlayerHead/PlayerHand").GetNodeOrNull("key2") != null)
             {
                 EmitSignal("Interacted", player, 1);
-                AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("ButtonSound");
-                sfx.Stream = GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse1.ogg");
-                sfx.Play();
+                PlayTheSound(true);
             }
             else if (GetNode(player.GetPath()).GetNode("PlayerHead/PlayerHand").GetNodeOrNull("key1") != null)
 		    {
 		    	EmitSignal("Interacted", player, 0);
-                AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("ButtonSound");
-                sfx.Stream = GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse1.ogg");
-                sfx.Play();
-		    }
+                PlayTheSound(true);
+            }
             else
             {
-                AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("ButtonSound");
-                sfx.Stream = GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse2.ogg");
-                sfx.Play();
+                PlayTheSound(false);
             }
         }
         if (_player is CctvCamera cam)
         {
             EmitSignal("Interacted", cam, 5);
+        }
+    }
+    /// <summary>
+    /// Plays the door sound if enableSound is on.
+    /// </summary>
+    /// <param name="enable">Confirm or deny sound</param>
+    void PlayTheSound(bool enable)
+    {
+        if (enableSounds)
+        {
             AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("ButtonSound");
-            sfx.Stream = GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse1.ogg");
+            sfx.Stream = enable ? GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse1.ogg") : sfx.Stream = GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse2.ogg"); ;
             sfx.Play();
         }
     }

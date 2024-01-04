@@ -70,16 +70,6 @@ public partial class FacilityManager : Node3D
             maxSpawnableObjects = GetParent<NetworkManager>().maxObjects;
             scpLimit = GetParent<NetworkManager>().maxScps;
 
-            if (GetParent<NetworkManager>().spawnNpcs)
-            {
-                string[] temp = new string[npcs.Keys.Count];
-                npcs.Keys.CopyTo(temp, 0);
-                //Spawn NPC with 67% chance
-                if (rng.RandiRange(0, 100) <= 67)
-                {
-                    GetTree().Root.GetNode<PlayerAction>("Main/Game/PlayerAction").Rpc("SpawnObject", temp[rng.RandiRange(0, temp.Length - 1)], 2, 1);
-                }
-            }
         }
         else
         {
@@ -161,6 +151,17 @@ public partial class FacilityManager : Node3D
         if (!IsRoundStarted)
         {
             BeginGame();
+        }
+
+        if (GetParent<NetworkManager>().spawnNpcs)
+        {
+            string[] temp = new string[npcs.Keys.Count];
+            npcs.Keys.CopyTo(temp, 0);
+            //Spawn NPC with 67% chance
+            if (rng.RandiRange(0, 100) <= 67 && playersList.Count > 1)
+            {
+                GetTree().Root.GetNode<PlayerAction>("Main/Game/PlayerAction").Rpc("SpawnObject", temp[rng.RandiRange(0, temp.Length - 1)], 2, 1);
+            }
         }
     }
 
