@@ -43,6 +43,7 @@ public partial class FacilityManager : Node3D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        GetTree().Root.GetNode<CanvasLayer>("Main/LoadingScreen/").Visible = false;
         settings = GetTree().Root.GetNode<Settings>("Settings");
         env = GetNode<WorldEnvironment>("WorldEnvironment");
 
@@ -73,14 +74,31 @@ public partial class FacilityManager : Node3D
         }
         else
         {
-            friendlyFireFm = GetParent<NetworkManager>().friendlyFire;
-            trueBreach = false; //NetworkManager.tBrSim;
-            RoomParser.SaveJson("user://rooms_" + Globals.roomsCompatibility + ".json", rooms);
-            ClassParser.SaveJson("user://playerclasses_" + Globals.classesCompatibility + ".json", classes);
-            ItemParser.SaveJson("user://itemlist_" + Globals.itemsCompatibility + ".json", items);
-            ItemParser.SaveJson("user://ammotype_" + Globals.itemsCompatibility + ".json", ammo);
+            if (GD.Hash(RoomParser.ReadJson("user://rooms_" + Globals.roomsCompatibility + ".json")) != GD.Hash(rooms) && rooms.Count > 0)
+            {
+                RoomParser.SaveJson("user://rooms_" + Globals.roomsCompatibility + ".json", rooms);
+            }
+            if (GD.Hash(ClassParser.ReadJson("user://playerclasses_" + Globals.classesCompatibility + ".json")) != GD.Hash(classes) && classes.Count > 0)
+            {
+                ClassParser.SaveJson("user://playerclasses_" + Globals.classesCompatibility + ".json", classes);
+            }
+            if (GD.Hash(ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json", Globals.ItemType.item)) != GD.Hash(items) && items.Count > 0)
+            {
+                ItemParser.SaveJson("user://itemlist_" + Globals.itemsCompatibility + ".json", items);
+            }
+            if (GD.Hash(ItemParser.ReadJson("user://ammotype_" + Globals.itemsCompatibility + ".json", Globals.ItemType.ammo)) != GD.Hash(ammo) && ammo.Count > 0)
+            {
+                ItemParser.SaveJson("user://ammotype_" + Globals.itemsCompatibility + ".json", ammo);
+            }
+            if (GD.Hash(ItemParser.ReadJson("user://npcs_" + Globals.itemsCompatibility + ".json", Globals.ItemType.npc)) != GD.Hash(npcs) && npcs.Count > 0)
+            {
+                ItemParser.SaveJson("user://npcs_" + Globals.itemsCompatibility + ".json", npcs);
+            }
             return;
         }
+        friendlyFireFm = GetParent<NetworkManager>().friendlyFire;
+        trueBreach = false; //NetworkManager.tBrSim;
+
         Multiplayer.PeerConnected += AddPlayer;
         Multiplayer.PeerDisconnected += RemovePlayer;
 

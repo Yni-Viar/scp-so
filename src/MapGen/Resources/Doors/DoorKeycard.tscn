@@ -233,9 +233,11 @@ max_distance = 40.0
 
 [node name="ButtonKeycard" parent="." instance=ExtResource("3_jdxpk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71255, 1.75841, -0.256299)
+enableSounds = false
 
 [node name="ButtonKeycard2" parent="." instance=ExtResource("3_jdxpk")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.67449, 1.76304, 0.24583)
+enableSounds = false
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_interval = 0.25

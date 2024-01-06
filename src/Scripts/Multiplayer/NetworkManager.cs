@@ -192,10 +192,6 @@ public partial class NetworkManager : Node
     /// <param name="scene">Scene to load</param>
     void PrepareLevel(PackedScene scene)
     {
-        if (!Multiplayer.IsServer())
-        {
-            RpcId(1, "CheckIfBanned", Multiplayer.GetUniqueId());
-        }
         if (GetNodeOrNull("Game") != null)
         {
             foreach (Node n in GetNode("Game").GetChildren())
@@ -214,6 +210,8 @@ public partial class NetworkManager : Node
     /// </summary>
     void ConnectedToServer()
     {
+        RpcId(1, "CheckIfBanned", Multiplayer.GetUniqueId());
+        RpcId(1, "GetVersion", Globals.version);
         GD.Print("Connected to the server!");
     }
 
@@ -276,5 +274,38 @@ public partial class NetworkManager : Node
         {
             RpcId(id, "Kick");
         }
+    }
+    /// <summary>
+    /// Checks, if the version of client and server is equal. Available since 0.7.2.
+    /// </summary>
+    /// <param name="version">Client's version</param>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+    void GetVersion(string version)
+    {
+        if (version != Globals.version)
+        {
+            RpcId(Multiplayer.GetRemoteSenderId(), "Kick");
+        }
+    }
+    /// <summary>
+    /// Ban functionality. Available since 0.7.2.
+    /// </summary>
+    /// <param name="id"></param>
+    void Ban(int id)
+    {
+        RpcId(1, "AddDetentionNote", GetPeer(id));
+        RpcId(id, "Kick");
+    }
+
+    /// <summary>
+    /// Ban helper method, adds banned IP to the list.
+    /// </summary>
+    /// <param name="ip"></param>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+    void AddDetentionNote(string ip)
+    {
+        string s = TxtParser.Load("user://ipbans.txt");
+        s += "\n" + ip;
+        TxtParser.Save("user://ipbans.txt", s);
     }
 }

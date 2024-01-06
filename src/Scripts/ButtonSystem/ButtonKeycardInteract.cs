@@ -30,7 +30,7 @@ public partial class ButtonKeycardInteract : StaticBody3D
     [Signal]
     public delegate void InteractedEventHandler(Node3D player, int keycardRequire);
 
-    [Export] bool enableSounds;
+    [Export] bool enableSounds = true;
 
     void Interact(Node3D _player)
     {
@@ -92,7 +92,7 @@ public partial class ButtonKeycardInteract : StaticBody3D
         if (enableSounds)
         {
             AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("ButtonSound");
-            sfx.Stream = enable ? GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse1.ogg") : sfx.Stream = GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse2.ogg"); ;
+            sfx.Stream = enable ? GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse1.ogg") : sfx.Stream = GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse2.ogg");
             sfx.Play();
         }
     }

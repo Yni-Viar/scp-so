@@ -246,7 +246,7 @@ public partial class Commands : Node
     string NpcList(string[] args)
     {
         string r = "";
-        foreach (var val in ItemParser.ReadJson("user://ammotype_" + Globals.itemsCompatibility + ".json", Globals.ItemType.item))
+        foreach (var val in ItemParser.ReadJson("user://npcs_" + Globals.itemsCompatibility + ".json", Globals.ItemType.item))
         {
             r += val.Key + "\n";
         }

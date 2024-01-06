@@ -46,9 +46,7 @@ public partial class AdminCommands : Node
             {
                 return "You cannot ban the server";
             }
-            string peerIp = GetTree().Root.GetNode<NetworkManager>("Main").GetPeer(int.Parse(args[0]));
-            GetTree().Root.GetNode<NetworkManager>("Main").RpcId(int.Parse(args[0]), "Kick");
-            RpcId(1, "AddDetentionNote", peerIp);
+            GetTree().Root.GetNode<NetworkManager>("Main").Call("Ban", args[0]);
             return "Successfully banned!";
         }
         else
@@ -73,8 +71,7 @@ public partial class AdminCommands : Node
             {
                 return "You cannot kick the server";
             }
-            string peerIp = GetTree().Root.GetNode<NetworkManager>("Main").GetPeer(int.Parse(args[0]));
-            GetTree().Root.GetNode<NetworkManager>("Main").RpcId(int.Parse(args[1]), "Kick");
+            GetTree().Root.GetNode<NetworkManager>("Main").RpcId(int.Parse(args[0]), "Kick");
             return "Successfully kicked!";
         }
         else
@@ -98,17 +95,6 @@ public partial class AdminCommands : Node
             }
         }
         return s;
-    }
-    /// <summary>
-    /// Ban helper method, adds banned IP to the list.
-    /// </summary>
-    /// <param name="ip"></param>
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
-    void AddDetentionNote(string ip)
-    {
-        string s = TxtParser.Load("user://ipbans.txt");
-        s += "\n" + ip;
-        TxtParser.Save("user://ipbans.txt", s);
     }
     /// <summary>
     /// Server-side RPC method, checks admin password.

@@ -1,6 +1,14 @@
 # Changelog
 The current state of the game - Alpha.
 ## Alpha versions
+### v.0.7.2 (2024.01.06)
+- Added force start command (requested by users)
+- Added NPC subsystem (SCP-650 included). (There is a chance for a NPC spawning)
+- Added roundstart command.
+- Improved weapon system.
+- Implemented version checker (currently effective for new versions)
+- Fix keycarded door still produce "allow" sound, even if keycard is lower than needed. 
+- Now loading screen is also working client-side!
 ### v.0.7.1 (2023.12.31)
 - Fixed mouse sensivity.
 - Reworked UI code.

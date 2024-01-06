@@ -46,6 +46,11 @@
 
 - Copyright (c) 2022 Nagi
 
+### Weapon manager (CC-BY-SA 3.0)
+
+- Copyright (c) Hubert Moszka.
+- The stream ( https://youtu.be/pRhDdg6uU5c ) is licensed under CC-BY-SA 3.0. The code perhaps too...
+
 ## Assets
 ### Models (license - [CC-BY-SA 3.0](/LICENSE.CCBYSA3))
 - Room models (except some rooms from Light Containment Zone and Heavy Containment Zone) used from SCP - Containment Breach game.
