@@ -755,7 +755,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90009, 0, -0.0196838)
 requirements = 1
 
 [node name="KeycardedDoor" parent="." instance=ExtResource("16_hpvr6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.456499, 5.01461, 0, 0.336217)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.456499, 5.06822, 0, 0.366315)
 requirements = 1
 
 [node name="cctv" parent="." instance=ExtResource("17_hmuoi")]

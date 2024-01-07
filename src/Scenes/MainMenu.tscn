@@ -140,14 +140,8 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[b]v.0.7.2[/b] [i](Alpha)[/i]
-- Added force start command (requested by users)
-- Added NPC subsystem (SCP-650 included). (There is a chance for a NPC spawning)
-- Added roundstart command.
-- Improved weapon system.
-- Implemented version checker (currently effective for new versions)
-- Fix keycarded door still produce \"allow\" sound, even if keycard is lower than needed. 
-- Now loading screen is also working client-side!
+text = "[b]v.0.8.0-dev[/b] [i](Alpha)[/i]
+- Added new Light Containment Zone doors.
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.

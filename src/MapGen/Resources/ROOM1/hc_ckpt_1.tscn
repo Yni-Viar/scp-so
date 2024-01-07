@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://8ry0qrau1dwb" path="res://MapGen/Resources/RoomAssets/HCZElevator.png" id="19_ipxuv"]
 [ext_resource type="PackedScene" uid="uid://dn7xcp8e6o86h" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="19_x3et4"]
 [ext_resource type="Script" path="res://Scripts/Facility/TeleportElevator.cs" id="20_44y10"]
-[ext_resource type="Texture2D" uid="uid://ben08ytu3hn3q" path="res://MapGen/Resources/Doors/DoorLCZ/Door01.jpg" id="21_5quvn"]
+[ext_resource type="Texture2D" uid="uid://ben08ytu3hn3q" path="res://MapGen/Resources/Doors/DoorLCZOld/Door01.jpg" id="21_5quvn"]
 [ext_resource type="PackedScene" uid="uid://dme4cvlaar7xi" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="21_skpmg"]
 [ext_resource type="AudioStream" uid="uid://wqik022lymd8" path="res://Sounds/General/Elevator/Moving.ogg" id="23_sard5"]
 [ext_resource type="Script" path="res://Scripts/ButtonSystem/ButtonInteract.cs" id="26_lxrxp"]
@@ -29,6 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://dg7p2iunxk0x4" path="res://Sounds/Interact/Button.ogg" id="28_mwr2j"]
 [ext_resource type="Texture2D" uid="uid://bmto8wevabtro" path="res://MapGen/Resources/Buttons/ButtonPrefab/button_texture_elevator_down.png" id="29_0pkik"]
 [ext_resource type="Texture2D" uid="uid://bq3maa8fmwyub" path="res://MapGen/Resources/Buttons/ButtonPrefab/button_texture_elevator_up.png" id="29_aj2ct"]
+
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_7cnlx"]
 _surfaces = [{

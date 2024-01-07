@@ -557,14 +557,14 @@ public partial class MapGeneratorLcz : Node
                 Node3D d; //doors
                 if (eastC)
                 {
-                    d = (Node3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/Doors/DoorLCZ.tscn").Instantiate();
+                    d = (Node3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/Doors/DoorLCZ2.tscn").Instantiate();
                     d.Position = new Vector3(k * 20.48f + 10.24f, 0, l*20.48f);
                     d.RotationDegrees = new Vector3(0, 90, 0);
                     AddChild(d, true);
                 }
                 if (southC)
                 {
-                    d = (Node3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/Doors/DoorLCZ.tscn").Instantiate();
+                    d = (Node3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/Doors/DoorLCZ2.tscn").Instantiate();
                     d.Position = new Vector3(k * 20.48f, 0, l*20.48f + 10.24f);
                     d.RotationDegrees = new Vector3(0, 0, 0);
                     AddChild(d, true);

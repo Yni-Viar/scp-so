@@ -14,7 +14,7 @@
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat11.004.tres" id="12_80wn6"]
 [ext_resource type="PackedScene" uid="uid://b7xwwuyi26i62" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="13_epomk"]
 [ext_resource type="PackedScene" uid="uid://dvjl4o6hjxwmq" path="res://MapGen/Resources/Doors/DoorKeycard.tscn" id="15_4dubn"]
-[ext_resource type="PackedScene" uid="uid://lljv7frh0t0a" path="res://MapGen/Resources/Doors/DoorLCZ/door.gltf" id="15_wn1b7"]
+[ext_resource type="PackedScene" uid="uid://lljv7frh0t0a" path="res://MapGen/Resources/Doors/DoorLCZOld/door.gltf" id="15_wn1b7"]
 [ext_resource type="PackedScene" uid="uid://dtycbwx1gobbl" path="res://InventorySystem/Items/PickablePrefabs/key4.tscn" id="16_l2jwm"]
 [ext_resource type="PackedScene" uid="uid://c8brqgry3c6r2" path="res://MapGen/Resources/Cameras/cctv_rz.tscn" id="17_wkccs"]
 
@@ -334,7 +334,7 @@ distance_fade_begin = 24.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.08939, -7.68, 10.2676)
 
 [node name="KeycardedDoor" parent="." instance=ExtResource("15_4dubn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.21519, -7.68, 3.3811)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.12655, -7.68, 3.3811)
 requirements = 2
 
 [node name="key4" parent="." instance=ExtResource("16_l2jwm")]

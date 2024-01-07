@@ -348,15 +348,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02087, 2.664, -5.29938)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02087, 2.664, 5.74685)
 
 [node name="KeycardedDoor" parent="." instance=ExtResource("15_hm7hw")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.95025, -1.19209e-07, -0.0900075)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.95025, -1.19209e-07, -0.00899322)
 requirements = 2
 
 [node name="KeycardedDoor2" parent="." instance=ExtResource("15_hm7hw")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.41085, 0, 5.8151)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.41085, 0, 5.75691)
 requirements = 1
 
 [node name="KeycardedDoor3" parent="." instance=ExtResource("15_hm7hw")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.40047, -2.38419e-07, -4.41133)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.40047, -2.38419e-07, -4.48239)
 
 [node name="key2" parent="." instance=ExtResource("16_ux0ss")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.85583, 1.58439, -5.4339)

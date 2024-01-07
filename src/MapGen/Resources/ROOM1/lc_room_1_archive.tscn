@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://dvsk20b8yaygd" path="res://MapGen/Resources/RoomAssets/LCZ/misc.jpg" id="2_aw14e"]
 [ext_resource type="Texture2D" uid="uid://d4a1s35jefp5r" path="res://MapGen/Resources/RoomAssets/LCZ/whitewall_2k.jpg" id="3_ydbee"]
 [ext_resource type="Texture2D" uid="uid://b067ykrbqruf0" path="res://MapGen/Resources/RoomAssets/LCZ/dirtymetal.jpg" id="4_lpk2r"]
-[ext_resource type="PackedScene" uid="uid://crhayrvdwdo1q" path="res://MapGen/Resources/Doors/DoorLCZ.tscn" id="6_ycg8j"]
 [ext_resource type="PackedScene" uid="uid://bmacptdhvw6h7" path="res://MapGen/Resources/RoomAssets/Props/ceiling_lamp.tscn" id="7_5cwih"]
 [ext_resource type="PackedScene" uid="uid://ggkfnlch55w4" path="res://MapGen/Resources/Cameras/cctv_lcz.tscn" id="7_hkf7c"]
+[ext_resource type="PackedScene" uid="uid://d16x8u00dwy8k" path="res://MapGen/Resources/Doors/DoorLCZ2.tscn" id="7_hse22"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cxkxy"]
 resource_name = "mat0.008"
@@ -152,9 +152,6 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_gdb3x")
 
-[node name="Door" parent="." instance=ExtResource("6_ycg8j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0910698, -2.38419e-07, 5.28587)
-
 [node name="entityspawn" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.51316, 0)
 
@@ -179,3 +176,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10891, 3.76936, 7.71918)
 
 [node name="CeilingLamp2" parent="." instance=ExtResource("7_5cwih")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.52572, 3.76936, -1.28997)
+
+[node name="Door" parent="." instance=ExtResource("7_hse22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0136778, 0, 5.29428)

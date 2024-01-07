@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dn7xcp8e6o86h" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="17_r28ge"]
 [ext_resource type="Script" path="res://Scripts/Facility/SurfaceElevator.cs" id="18_dfsxg"]
 [ext_resource type="Texture2D" uid="uid://uykaia1s64e5" path="res://MapGen/Resources/Doors/Elevator/Metal032_2K_Color.png" id="19_llb3u"]
+[ext_resource type="PackedScene" uid="uid://dvjl4o6hjxwmq" path="res://MapGen/Resources/Doors/DoorKeycard.tscn" id="19_mdoba"]
 [ext_resource type="Texture2D" uid="uid://c08nx1s431oop" path="res://MapGen/Resources/Doors/Elevator/Metal032_2K_Metalness-Metal032_2K_Roughness.png" id="20_0oxmx"]
 [ext_resource type="Texture2D" uid="uid://d384q75mq0ujj" path="res://MapGen/Resources/Doors/Elevator/Metal032_2K_NormalGL.png" id="21_lscqf"]
 [ext_resource type="Texture2D" uid="uid://o5giewh76qkn" path="res://MapGen/Resources/Doors/DoorGate/GateFrame/Metal032_2K_Color.png" id="22_psnqf"]
@@ -26,7 +27,6 @@
 [ext_resource type="AudioStream" uid="uid://wqik022lymd8" path="res://Sounds/General/Elevator/Moving.ogg" id="25_yinq7"]
 [ext_resource type="PackedScene" uid="uid://bskf2ruxmf76r" path="res://MapGen/Resources/Doors/DoorGateKeycard.tscn" id="26_pp0yu"]
 [ext_resource type="Script" path="res://Scripts/ButtonSystem/ButtonInteract.cs" id="27_k3unj"]
-[ext_resource type="PackedScene" uid="uid://crhayrvdwdo1q" path="res://MapGen/Resources/Doors/DoorLCZ.tscn" id="27_ngd70"]
 [ext_resource type="Texture2D" uid="uid://t3e0eywk6cth" path="res://MapGen/Resources/Buttons/ButtonPrefab/button_texture_elevator.png" id="28_e4gnx"]
 [ext_resource type="PackedScene" uid="uid://c8brqgry3c6r2" path="res://MapGen/Resources/Cameras/cctv_rz.tscn" id="28_u8fh1"]
 [ext_resource type="AudioStream" uid="uid://dg7p2iunxk0x4" path="res://Sounds/Interact/Button.ogg" id="29_abe7s"]
@@ -590,8 +590,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.467492, 4.46267, -5.96291)
 transform = Transform3D(1.046, 0, 0, 0, 1.048, 0, 0, 0, 1, 0.073, -0.01, 3.984)
 requirements = 3
 
-[node name="Door" parent="." instance=ExtResource("27_ngd70")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.4639, 0, 6.8474)
+[node name="KeycardedDoor" parent="." instance=ExtResource("19_mdoba")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.5171, -1.43051e-06, 6.88121)
+requirements = 2
 
 [node name="ElevatorSz1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.402887, -2.38419e-07, -1.37703)
