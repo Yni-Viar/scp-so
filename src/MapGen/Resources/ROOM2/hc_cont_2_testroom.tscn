@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bxj3dd8r00p7v" path="res://InventorySystem/Items/PickablePrefabs/key2.tscn" id="17_m7qc2"]
 [ext_resource type="PackedScene" uid="uid://dme4cvlaar7xi" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="18_hjlf8"]
 
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_b4c73"]
 _surfaces = [{
 "aabb": AABB(-10.24, -12.8, -10.24, 20.48, 20.8, 20.48),

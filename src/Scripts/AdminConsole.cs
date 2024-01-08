@@ -20,7 +20,7 @@ public partial class AdminConsole : Panel
         CheckModerator();
         if (!Multiplayer.IsServer() && !GetTree().Root.GetNode<PlayerScript>("Main/Game/" + Multiplayer.GetUniqueId()).IsModerator)
         {
-            GetTree().Root.GetNode<FacilityManager>("Main/Game/").RpcId(1, "AskForModeratorPrivilegies", Multiplayer.GetUniqueId(), password.Text);
+            GetTree().Root.GetNode<AdminCommands>("Main/Game/AdminCommands").RpcId(1, "AskForModeratorPrivilegies", Multiplayer.GetUniqueId(), password.Text);
             CheckModerator();
         }
         Hide();

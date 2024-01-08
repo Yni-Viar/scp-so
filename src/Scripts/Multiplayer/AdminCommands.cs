@@ -104,14 +104,28 @@ public partial class AdminCommands : Node
     [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
     void AskForAdmin(int peerId, string password)
     {
-        if (password.GetHashCode() == GetTree().Root.GetNode<NetworkManager>("Main").GetAdmin)
+        if (GD.Hash(password) == GetTree().Root.GetNode<NetworkManager>("Main").GetAdmin)
         {
-            GetNode<PlayerScript>(peerId.ToString()).RpcId(peerId, "GrantAdminPrivilegies");
+            GetParent().GetNode<PlayerScript>(peerId.ToString()).RpcId(peerId, "GrantAdminPrivilegies");
         }
     }
 
     void AskForAdminConnector(string password)
     {
         RpcId(1, "AskForAdmin", Multiplayer.GetUniqueId(), password);
+    }
+
+    /// <summary>
+    /// Asks for moderator privilegies.
+    /// </summary>
+    /// <param name="id">Player ID</param>
+    /// <param name="password">Given password</param>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
+    void AskForModeratorPrivilegies(int id, string password)
+    {
+        if (GD.Hash(password) == GetTree().Root.GetNode<NetworkManager>("Main").GetModerator)
+        {
+            GetParent().GetNode<PlayerScript>(id.ToString()).RpcId(id, "GrantModeratorPrivilegies");
+        }
     }
 }

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://cwja0eq2d3qxj"]
 
-[ext_resource type="Texture2D" uid="uid://bxc6vu681htr8" path="res://InventorySystem/Items/mtf_rifle.png" id="1_3nv6d"]
+[ext_resource type="Texture2D" uid="uid://bxc6vu681htr8" path="res://InventorySystem/Items/InventoryIcons/mtf_rifle.png" id="1_3nv6d"]
 [ext_resource type="Script" path="res://InventorySystem/Items/Item.cs" id="2_u64iv"]
 
 [resource]

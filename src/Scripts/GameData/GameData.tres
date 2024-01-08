@@ -1,0 +1,36 @@
+[gd_resource type="Resource" load_steps=27 format=3 uid="uid://b318ay34qqdko"]
+
+[ext_resource type="Resource" uid="uid://f2kqasrj2c78" path="res://FPSController/PlayerClassResources/scientist.tres" id="1_1b0nf"]
+[ext_resource type="Resource" uid="uid://ovoggp1knask" path="res://FPSController/PlayerClassResources/guard.tres" id="2_n3l7r"]
+[ext_resource type="Resource" uid="uid://b27dcvrr162j7" path="res://FPSController/PlayerClassResources/classd.tres" id="3_kqvae"]
+[ext_resource type="Resource" uid="uid://cjfmrr53vopmv" path="res://FPSController/PlayerClassResources/scp173.tres" id="4_yllwh"]
+[ext_resource type="Resource" uid="uid://dwsi1kcleoxmg" path="res://FPSController/PlayerClassResources/mtfe11.tres" id="5_wynrg"]
+[ext_resource type="Resource" uid="uid://cohe4hksaldgl" path="res://FPSController/PlayerClassResources/spectator.tres" id="6_18hdw"]
+[ext_resource type="Resource" uid="uid://c4dafeko78tgy" path="res://FPSController/PlayerClassResources/scp131a.tres" id="7_6s173"]
+[ext_resource type="Resource" uid="uid://dekvjppb8ubf0" path="res://FPSController/PlayerClassResources/scp131b.tres" id="8_vw85j"]
+[ext_resource type="Resource" uid="uid://d3u4uryrk7hxc" path="res://FPSController/PlayerClassResources/scp106.tres" id="9_rnj3d"]
+[ext_resource type="Resource" uid="uid://clvow8gad8h0b" path="res://FPSController/PlayerClassResources/scp3199.tres" id="10_cb6kq"]
+[ext_resource type="Resource" uid="uid://ce2qyvw5cy0ul" path="res://InventorySystem/Items/key1.tres" id="11_rflxo"]
+[ext_resource type="Resource" uid="uid://c8qvrpfwg367g" path="res://InventorySystem/Items/key2.tres" id="12_wcpby"]
+[ext_resource type="Resource" uid="uid://dcuxuhaprqvwl" path="res://InventorySystem/Items/key3.tres" id="13_vpgtt"]
+[ext_resource type="Resource" uid="uid://qyweqdwnyu5v" path="res://InventorySystem/Items/key4.tres" id="14_x18oy"]
+[ext_resource type="Resource" uid="uid://lubq7b1s5e4p" path="res://InventorySystem/Items/key5.tres" id="15_opj5t"]
+[ext_resource type="Resource" uid="uid://yxtk2lmjd6x3" path="res://InventorySystem/Items/keyomni.tres" id="16_4bwr8"]
+[ext_resource type="Resource" uid="uid://cigjp5sl4xe7x" path="res://InventorySystem/Items/medkit.tres" id="17_8xqqj"]
+[ext_resource type="Resource" uid="uid://itlfhdutbowo" path="res://InventorySystem/Items/pda.tres" id="18_2bghb"]
+[ext_resource type="Resource" uid="uid://c78yddd3t5763" path="res://InventorySystem/Items/cage.tres" id="19_d4tlt"]
+[ext_resource type="Resource" uid="uid://d3ayictart6ws" path="res://InventorySystem/Items/cage_contained.tres" id="20_x022k"]
+[ext_resource type="Resource" uid="uid://d18i1wbbiixld" path="res://InventorySystem/Items/com16.tres" id="21_yctq3"]
+[ext_resource type="Resource" uid="uid://cik2wjse27nig" path="res://InventorySystem/Items/scp018.tres" id="22_l586h"]
+[ext_resource type="Resource" uid="uid://t2wutxm5ihci" path="res://InventorySystem/Items/scp079item.tres" id="23_12fu7"]
+[ext_resource type="Resource" uid="uid://cwja0eq2d3qxj" path="res://InventorySystem/Items/mtfrifle.tres" id="24_o3jtn"]
+[ext_resource type="Resource" uid="uid://dod32q1ljd0nv" path="res://InventorySystem/Items/tranquilizer.tres" id="25_w6267"]
+[ext_resource type="Script" path="res://Scripts/GameData/GameData.cs" id="26_weu8l"]
+
+[resource]
+script = ExtResource("26_weu8l")
+Classes = [ExtResource("6_18hdw"), ExtResource("1_1b0nf"), ExtResource("2_n3l7r"), ExtResource("3_kqvae"), ExtResource("4_yllwh"), ExtResource("5_wynrg"), ExtResource("7_6s173"), ExtResource("8_vw85j"), ExtResource("9_rnj3d"), ExtResource("10_cb6kq")]
+Items = [ExtResource("11_rflxo"), ExtResource("12_wcpby"), ExtResource("13_vpgtt"), ExtResource("14_x18oy"), ExtResource("15_opj5t"), ExtResource("16_4bwr8"), ExtResource("17_8xqqj"), ExtResource("18_2bghb"), ExtResource("19_d4tlt"), ExtResource("20_x022k"), ExtResource("21_yctq3"), ExtResource("22_l586h"), ExtResource("23_12fu7"), ExtResource("24_o3jtn"), ExtResource("25_w6267")]
+RoomsRz = PackedStringArray("")
+RoomsLcz = PackedStringArray()
+RoomsHcz = PackedStringArray()

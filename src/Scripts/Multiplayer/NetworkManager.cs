@@ -6,6 +6,7 @@ public partial class NetworkManager : Node
     internal static string ipAddress;
     internal static int port;
     internal static int maxPlayers;
+    internal string gamemode;
     internal bool friendlyFire;
     internal bool spawnNpcs;
     internal int maxObjects;
@@ -14,11 +15,11 @@ public partial class NetworkManager : Node
     string adminPassword;
     internal int GetModerator
     {
-        get => moderatorPassword.GetHashCode();
+        get => GD.Hash(moderatorPassword);
     }
     internal int GetAdmin
     {
-        get => adminPassword.GetHashCode();
+        get => GD.Hash(adminPassword);
     }
     //True breach simulation - if enabled, second SCP will be 2522 and if currentPlayerCounter % 8 equals 4 - then a new SCP is present in round.
     //Else, players becomes SCP only if is second player or multiple of 8. Will be changed in future updates.
@@ -29,7 +30,6 @@ public partial class NetworkManager : Node
     internal static Godot.Collections.Array<string> playersList = new Godot.Collections.Array<string>();
 
     Node3D game; // replicated map.
-    //CharacterBody3D playerScene; // replicated player.
     bool loading = false;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -51,7 +51,8 @@ public partial class NetworkManager : Node
                 "ModeratorPassword",
                 "MaxSpawnableObjects",
                 "MaxScps",
-                "SpawnNpcs"
+                "SpawnNpcs",
+                "GameMode"
             }, new Godot.Collections.Array{
                 7877,
                 20,
@@ -61,7 +62,8 @@ public partial class NetworkManager : Node
                 "",
                 12,
                 3,
-                true
+                true,
+                "Breach"
             }, "user://serverconfig_" + Globals.serverConfigCompatibility + ".ini");
             LoadIni();
         }

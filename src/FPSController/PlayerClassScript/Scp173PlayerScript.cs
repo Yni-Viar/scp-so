@@ -59,72 +59,8 @@ public partial class Scp173PlayerScript : Node3D
                 }
             }
             Scp173Stare((float)delta);
-            /* Legacy 0.7.0 and earlier code.
-            if (vision.IsColliding())
-            {
-                var collidedWith = vision.GetCollider();
-                if (collidedWith is PlayerScript player)
-                {
-                    if (player.scpNumber == -1 && player.GetNode("PlayerModel").GetChildOrNull<HumanPlayerScript>(0) != null)
-                    {
-                        if (player.GetNode("PlayerModel").GetChildOrNull<HumanPlayerScript>(0).isWatchingAtScp173)
-                        {
-                            LookingAtScp173(true, delta);
-                            await ToSignal(GetTree().CreateTimer(5.0), "timeout");
-                            LookingAtScp173(false, delta);
-                        }
-                        else
-                        {
-                            LookingAtScp173(false, delta);
-                        }
-                    }
-                    if (player.scpNumber == 131) //SCP-131 cannot blink, so SCP-173, get trapped.
-                    {
-                        if (player.GetNode("PlayerModel").GetChildOrNull<Scp131PlayerScript>(0).isWatchingAtScp173)
-                        {
-                            LookingAtScp173(true, delta);
-                        }
-                        else
-                        {
-                            LookingAtScp173(false, delta);
-                        }
-                    }
-                    else
-                    {
-                        LookingAtScp173(false, delta);
-                    }
-                }
-                else
-                {
-                    LookingAtScp173(false, delta);
-                }
-            }
-            */
-            
-
         }
     }
-    /*
-    /// <summary>
-    /// Method, that holds blinking. Deprecated since 0.7.1-dev
-    /// </summary>
-    [Obsolete("LookingAtScp173 is deprecated since 0.7.1. Use Scp173Stare instead.")]
-    void LookingAtScp173(bool isWatching, double delta)
-    {
-        
-        if (isWatching && GetNode<LightDetector>("LightDetector").LightnessDetect() > 0.2)
-        {
-            //If SCP-173 is not moving, it should stand still!
-            if (GetParent().GetParent<PlayerScript>().CanMove)
-            {
-                GetParent().GetParent<PlayerScript>().CanMove = false;
-            }
-        }
-        else
-        { //move freely
-            GetParent().GetParent<PlayerScript>().CanMove = true;
-        }
-    }*/
 
     /// <summary>
     /// Method, that holds blinking. Available since 0.7.1-dev.

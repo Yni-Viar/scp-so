@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://i70kqlwuqo1g"
-path="res://.godot/imported/medkit.png-825b84bfa09778f2496ee11cb3db2eb3.ctex"
+uid="uid://c4noc4t1o1wn3"
+path="res://.godot/imported/Keycard1.png-ac75d5b4e7dc3b33705276dd38c25813.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://InventorySystem/Items/medkit.png"
-dest_files=["res://.godot/imported/medkit.png-825b84bfa09778f2496ee11cb3db2eb3.ctex"]
+source_file="res://InventorySystem/Items/InventoryIcons/Keycard1.png"
+dest_files=["res://.godot/imported/Keycard1.png-ac75d5b4e7dc3b33705276dd38c25813.ctex"]
 
 [params]
 

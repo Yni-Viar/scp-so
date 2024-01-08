@@ -17,15 +17,15 @@ public partial class Globals
     /// <summary>
     /// Version string. In 0.7.1, the value is changed to development stage, because Godot already has version setter feature.
     /// </summary>
-    public static string version = "0.7.2-dev";
+    public static string version = "0.8.0-dev";
     /// <summary>
     /// Compatibility of settings file. In later versions will be changed to a new format, similar to SCPSL one.
     /// </summary>
     public static string settingsCompatibility = "0.7.0";
     /// <summary>
-    /// Classes compatibility. Available since 0.7.0.
+    /// Game data compatibility. Available since 0.8.0.
     /// </summary>
-    public static string classesCompatibility = "0.7.0";
+    public static string gameDataCompatibility = "0.8.0-dev";
     /// <summary>
     /// Items compatibility. Available since 0.7.0.
     /// </summary>
@@ -34,11 +34,6 @@ public partial class Globals
     /// Rooms compatibility. Available since 0.7.0.
     /// </summary>
     public static string roomsCompatibility = "0.7.0";
-    /*
-    /// <summary>
-    /// May be availiable from 0.8.0. Quests compatibility.
-    /// </summary>
-    public static string tasksCompatibility = "0.7.0"; //unused*/
     /// <summary>
     /// Server config compatibility. Available since 0.7.0.
     /// </summary>
@@ -46,7 +41,12 @@ public partial class Globals
     /// <summary>
     /// Current stage. Used by main menu.
     /// </summary>
-    public static Stages currentStage = Stages.release;
+    public static Stages currentStage = Stages.dev;
+    /// <summary>
+    /// Type of class. singleSpawnClasses - SCP. multiSpawnClasses - Human, arrivingClasses - MTF, 
+    /// SpecialClasses - spectator, bonusSpawnClasses - neutral SCPs, such as 131-A and -B. Available since 0.8.0-dev.
+    /// </summary>
+    public enum ClassType { singleSpawnClasses, multiSpawnClasses, arrivingClasses, specialClasses, bonusSpawnClasses}
 
     /// <summary>
     /// Types of spawnable objects. Available since 0.7.0.

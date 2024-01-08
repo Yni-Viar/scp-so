@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj4jiiinbt58v"
-path.s3tc="res://.godot/imported/KeycardOmni.png-6681f31f6dd6506f7ddf7bc3ac309833.s3tc.ctex"
+uid="uid://b6ikhevo04vl6"
+path.s3tc="res://.godot/imported/JumpyBall.png-f603f6c9ed69f6361036e64c7313a189.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://InventorySystem/Items/KeycardOmni.png"
-dest_files=["res://.godot/imported/KeycardOmni.png-6681f31f6dd6506f7ddf7bc3ac309833.s3tc.ctex"]
+source_file="res://InventorySystem/Items/InventoryIcons/JumpyBall.png"
+dest_files=["res://.godot/imported/JumpyBall.png-f603f6c9ed69f6361036e64c7313a189.s3tc.ctex"]
 
 [params]
 

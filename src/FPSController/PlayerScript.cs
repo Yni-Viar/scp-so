@@ -38,7 +38,7 @@ public partial class PlayerScript : CharacterBody3D
     }
     
     [Export] internal string playerName;
-    [Export] internal string classKey;
+    [Export] internal int classKey;
     [Export] internal string className;
     [Export] internal string classDescription;
     [Export] internal string spawnPoint;

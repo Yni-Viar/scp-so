@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgj42af7iab20"
-path.s3tc="res://.godot/imported/Keycard2.png-2b8a147762d1c44093c7e876a560cfe9.s3tc.ctex"
+uid="uid://dreyn55bbmu1r"
+path.s3tc="res://.godot/imported/cage.png-65167344c2f13a3a41bb84d0da54b642.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://InventorySystem/Items/Keycard2.png"
-dest_files=["res://.godot/imported/Keycard2.png-2b8a147762d1c44093c7e876a560cfe9.s3tc.ctex"]
+source_file="res://InventorySystem/Items/InventoryIcons/cage.png"
+dest_files=["res://.godot/imported/cage.png-65167344c2f13a3a41bb84d0da54b642.s3tc.ctex"]
 
 [params]
 

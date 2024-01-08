@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://itlfhdutbowo"]
 
-[ext_resource type="Texture2D" uid="uid://b7c22iqx0lc7a" path="res://InventorySystem/Items/PDA.png" id="2_2rvge"]
+[ext_resource type="Texture2D" uid="uid://b7c22iqx0lc7a" path="res://InventorySystem/Items/InventoryIcons/PDA.png" id="2_2rvge"]
 [ext_resource type="Script" path="res://InventorySystem/Items/Item.cs" id="2_8tk5c"]
 
 [resource]

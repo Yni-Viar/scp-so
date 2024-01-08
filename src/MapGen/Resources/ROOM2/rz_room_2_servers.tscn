@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ck84sc5gtcx67"]
+[gd_scene load_steps=24 format=3 uid="uid://ck84sc5gtcx67"]
 
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat0.006.tres" id="1_fauoj"]
 [ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/RZ/Mat02/mat1.006.tres" id="2_6vok4"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://lljv7frh0t0a" path="res://MapGen/Resources/Doors/DoorLCZOld/door.gltf" id="15_wn1b7"]
 [ext_resource type="PackedScene" uid="uid://dtycbwx1gobbl" path="res://InventorySystem/Items/PickablePrefabs/key4.tscn" id="16_l2jwm"]
 [ext_resource type="PackedScene" uid="uid://c8brqgry3c6r2" path="res://MapGen/Resources/Cameras/cctv_rz.tscn" id="17_wkccs"]
+[ext_resource type="Script" path="res://FPSController/PlayerClassScript/Features/HatbotAicRecontainment/Scp2522Recontain.cs" id="18_5km3b"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_skms2"]
 _surfaces = [{
@@ -300,6 +301,9 @@ data = PackedVector3Array(-10.24, 10.24, 0, -10.24, -10.24, 0, 3.04, -10.24, 0, 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eo03l"]
 size = Vector3(19.6761, 11.281, 20.2893)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_uski0"]
+size = Vector3(12.7225, 4.49829, 9.92902)
+
 [node name="RZ_room2_servers" type="StaticBody3D"]
 
 [node name="RZ_room2_servers2" type="MeshInstance3D" parent="."]
@@ -338,7 +342,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.12655, -7.68, 3.3811)
 requirements = 2
 
 [node name="key4" parent="." instance=ExtResource("16_l2jwm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.45964, -7.68, -3.52683)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1169, -7.42158, 1.61953)
 
 [node name="entityspawn" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.97441, 0)
@@ -364,3 +368,13 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CheckArea"]
 shape = SubResource("BoxShape3D_eo03l")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.71648, 0)
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("18_5km3b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.03668, -1.61584, -3.64389)
+shape = SubResource("BoxShape3D_uski0")

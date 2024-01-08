@@ -1,6 +1,8 @@
 using Godot;
 using System;
-
+/// <summary>
+/// Base for compurer-based player.
+/// </summary>
 public partial class ComputerPlayerScript : Node3D
 {
 	// Called when the node enters the scene tree for the first time.
