@@ -61,7 +61,7 @@ public partial class Scp914 : AnimatableBody3D
             }
             if (GetTree().Root.GetNodeOrNull("Main/Game/Items/" + itemsToRefine[i]) is Pickable inputPickable)
             {
-                Item item = inputPickable.itemResource;
+                Item item = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Items[inputPickable.itemNumber];
                 GD.Print("IS an item");
                 GD.Print(item.Rough.Length);
                 GD.Print(item.Coarse.Length);

@@ -27,13 +27,14 @@ public partial class Globals
     /// </summary>
     public static string gameDataCompatibility = "0.8.0-dev";
     /// <summary>
-    /// Items compatibility. Available since 0.7.0.
+    /// Items compatibility. Available since 0.7.0. Deprecated at 0.8.0
     /// </summary>
+    [Obsolete("Since SCP: Site Online has moved from JSONs to Resources, this parameter is deprecated since 0.8.0-dev.")]
     public static string itemsCompatibility = "0.7.2";
     /// <summary>
     /// Rooms compatibility. Available since 0.7.0.
     /// </summary>
-    public static string roomsCompatibility = "0.7.0";
+    public static string roomsCompatibility = "0.8.0";
     /// <summary>
     /// Server config compatibility. Available since 0.7.0.
     /// </summary>
@@ -60,6 +61,7 @@ public partial class Globals
     /// <summary>
     /// Default class presets.
     /// </summary>
+    [Obsolete("Since SCP: Site Online has moved from JSONs to Resources, this parameter is deprecated since 0.8.0-dev.")]
     internal static Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classData =
         new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> {
             { "spawnableHuman", new Godot.Collections.Array<string>{"classd", "scientist", "guard" } },
@@ -71,6 +73,7 @@ public partial class Globals
     /// <summary>
     /// Default item presets.
     /// </summary>
+    [Obsolete("Since SCP: Site Online has moved from JSONs to Resources, this parameter is deprecated since 0.8.0-dev.")]
     internal static Godot.Collections.Dictionary<string, string> items = new Godot.Collections.Dictionary<string, string>{
         { "key1", "res://InventorySystem/Items/key1.tres" },
         { "key2", "res://InventorySystem/Items/key2.tres" },
@@ -87,10 +90,11 @@ public partial class Globals
         { "cage_contained", "res://InventorySystem/Items/cage_contained.tres" },
         { "tranquilizer", "res://InventorySystem/Items/tranquilizer.tres" }
     };
-    
+
     /// <summary>
     /// Default room presets.
     /// </summary>
+    [Obsolete("Since SCP: Site Online has moved from JSONs to Resources, this parameter is deprecated since 0.8.0-dev.")]
     internal static Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> roomData =
         new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> {
             { "RzCommon1", new Godot.Collections.Array<string>{ "lc_room_1_endroom" } },
@@ -128,12 +132,13 @@ public partial class Globals
     /// <summary>
     /// Ammo presets.
     /// </summary>
+    [Obsolete("Since SCP: Site Online has moved from JSONs to Resources, this parameter is deprecated since 0.8.0-dev.")]
     internal static Godot.Collections.Dictionary<string, string> ammo = new Godot.Collections.Dictionary<string, string>
     {
         { "9mm", "res://Assets/Ammo/9_mm.tscn" },
         { "mtf", "res://Assets/Ammo/mtf_ammo.tscn" }
     };
-
+    [Obsolete("Since SCP: Site Online has moved from JSONs to Resources, this parameter is deprecated since 0.8.0-dev.")]
     internal static Godot.Collections.Dictionary<string, string> npcs = new Godot.Collections.Dictionary<string, string>
     {
         { "scp650", "res://Assets/NPC/scp650npc.tscn" }

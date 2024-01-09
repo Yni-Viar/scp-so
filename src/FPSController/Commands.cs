@@ -9,17 +9,17 @@ public partial class Commands : Node
 	{
         if (GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
-            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("forceclass", new Callable(this, "Forceclass"), "Forceclass the player (1 argument needed)");
-            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("classlist", new Callable(this, "ClassList"), "Returns class names (for forceclass)");
+            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("forceclass", new Callable(this, "Forceclass"), "Forceclass the player (needed the number of class, unlike previous versions)");
+            //GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("classlist", new Callable(this, "ClassList"), "Returns class names (for forceclass)");
             GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("tp", new Callable(this, "TeleportCmd"), "Teleports you. (1 arguments needed)");
-            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("itemlist", new Callable(this, "ItemList"), "Returns item names");
-            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("give", new Callable(this, "GiveItem"), "Gives an item to inventory");
-            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("giveammo", new Callable(this, "GiveAmmo"), "Gives an item to inventory (Limit for each player equals 12 items)");
+            //GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("itemlist", new Callable(this, "ItemList"), "Returns item names");
+            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("give", new Callable(this, "GiveItem"), "Gives an item to inventory (needed the number of item, unlike previous versions)");
+            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("giveammo", new Callable(this, "GiveAmmo"), "Gives an ammo to inventory (needed the number of ammo, unlike previous versions)");
             GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("givehp", new Callable(this, "SetHealth"), "Sets health on a current player");
             GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("givesanity", new Callable(this, "GiveSanity"), "Sets sanity on a current player");
             GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("roundstart", new Callable(this, "RoundStart"), "Starts round immediately");
-            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("npclist", new Callable(this, "NpcList"), "Available NPCs");
-            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("ammotypes", new Callable(this, "AmmoType"), "Available ammo types");
+            //GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("npclist", new Callable(this, "NpcList"), "Available NPCs");
+            //GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("ammotypes", new Callable(this, "AmmoType"), "Available ammo types");
         }
     }
 
@@ -35,14 +35,21 @@ public partial class Commands : Node
     /// <returns>Success or failure for changing the player class</returns>
     string Forceclass(string[] args)
     {
-        if (args.Length == 1 && ResourceLoader.Exists("res://FPSController/PlayerClassResources/" + args[0] + ".tres"))
+        if (args.Length == 1 && int.TryParse(args[0], out int classId))
         {
-            GetParent<PlayerScript>().CallForceclass(args[0], "Forceclass.");
-            return "Forceclassed to " + args[0];
+            if (classId < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Classes.Count && classId >= 0)
+            {
+                GetParent<PlayerScript>().CallForceclass(args[0], "Forceclass.");
+                return "Forceclassed to " + args[0];
+            }
+            else
+            {
+                return "Wrong number. E.g. to spawn as Scientist, you need to write \"forceclass 1\""
+            }
         }
         else
         {
-            return "You need ONLY 1 argument to forceclass. E.g. to spawn as SCP-173, you need to write \"forceclass scp173\"";
+            return "You need ONLY 1 argument (number) to forceclass.";
         }
     }
 
@@ -75,7 +82,7 @@ public partial class Commands : Node
             return "You need ONLY 1 argument to teleport.";
         }
     }
-
+    /*
     /// <summary>
     /// GDSh command.
     /// </summary>
@@ -96,6 +103,7 @@ public partial class Commands : Node
         
         return r;
     }
+    
     /// <summary>
     /// GDSh command.
     /// </summary>
@@ -110,6 +118,7 @@ public partial class Commands : Node
         }
         return r;
     }
+    */
     /// <summary>
     /// GDSh command.
     /// </summary>
@@ -121,24 +130,22 @@ public partial class Commands : Node
         {
             return "Error! You exceeded limit for a single player";
         }
-        if (args.Length == 1)
+        if (args.Length == 1 && int.TryParse(args[0], out int itemId))
         {
-            if (ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json", Globals.ItemType.item).ContainsKey(args[0]))
+            if (itemId < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Items.Count && itemId >= 0)
             {
-                //inventory.AddItem(ResourceLoader.Load(JsonParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json")[args[0]]));
-                //gives the string for adding an item, rpc will convert this in resource
                 GiveItemCmd(args[0], 0);
                 itemLimit++;
                 return "Item " + args[0] + " spawned next to you";
             }
             else
             {
-                return "Unknown item. Cannot spawn.";
+                return "Unknown item. Cannot spawn. E.g. to spawn Keycard Omni, you need to write \"give 5\"";
             }
         }
         else
         {
-            return "Unknown item. Cannot spawn. Did you input the item?";
+            return "Unknown item. Cannot spawn. Did you input the number of item?";
         }
     }
     /// <summary>
@@ -177,24 +184,22 @@ public partial class Commands : Node
         {
             return "Error! You exceeded limit for a single player";
         }
-        if (args.Length == 1)
+        if (args.Length == 1 && int.TryParse(args[0], out int itemId))
         {
-            if (ItemParser.ReadJson("user://ammotype_" + Globals.itemsCompatibility + ".json", Globals.ItemType.ammo).ContainsKey(args[0]))
+            if (itemId < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Ammo.Count && itemId >= 0)
             {
-                //inventory.AddItem(ResourceLoader.Load(JsonParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json")[args[0]]));
-                //gives the string for adding an item, rpc will convert this in resource
                 GiveItemCmd(args[0], 1);
                 itemLimit++;
                 return "Ammo " + args[0] + " spawned next to you";
             }
             else
             {
-                return "Unknown item. Cannot spawn.";
+                return "Unknown ammo. Cannot spawn. E.g. to spawn pistol ammo, you need to write \"giveammo 0\"";
             }
         }
         else
         {
-            return "Unknown item. Cannot spawn. Did you input the item?";
+            return "Unknown ammo. Cannot spawn. Did you input the number of ammo type?";
         }
     }
     /// <summary>
@@ -224,6 +229,7 @@ public partial class Commands : Node
         GetTree().Root.GetNode<FacilityManager>("Main/Game").Call("ForceRoundStart");
         return "Starting the round... (If round is already started, nothing happens)";
     }
+    /*
     /// <summary>
     /// GDSh command.
     /// </summary>
@@ -252,4 +258,5 @@ public partial class Commands : Node
         }
         return r;
     }
+    */
 }

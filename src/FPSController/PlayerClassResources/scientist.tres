@@ -27,3 +27,4 @@ CustomView = ""
 PreloadedItems = PackedStringArray("res://InventorySystem/Items/key2.tres", "res://InventorySystem/Items/pda.tres", "res://InventorySystem/Items/medkit.tres")
 Ammo = PackedInt32Array(0, 0, 35)
 ClassColor = Color(0.52549, 0.694118, 0.823529, 0.847059)
+ClassType = 1

@@ -142,7 +142,9 @@ theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "[b]v.0.8.0-dev[/b] [i](Alpha)[/i]
 - Added new Light Containment Zone doors.
-- Reworked Facility Manager - the core of the game - now it is possible to have different gamemodes.
+- Reworked the core of the game - now it is possible to have different gamemodes.
+[b][i]Please note, syntax of the most admin commands changed. Please, check the message in[/i] help [i]command.[/i][/b]
+- Thanks to Xandromeda's advice, I have changed the data storage system - now it is safer.
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.
@@ -331,13 +333,13 @@ theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "[color=#84D9FF][i]Contributors:[/i]
 - Yni (Yni Viar, the Creator of this game, the programmer)[/color]
-- Xandromeda
 
 
 [color=green] Many thanks for testers, which pointed me at bugs:
 - William[]
 - cherniichernish (Гражданин)
-- The1Wolfcast [/color]
+- The1Wolfcast
+- Xandromeda[/color]
 
 
 "

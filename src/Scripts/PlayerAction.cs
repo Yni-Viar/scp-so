@@ -5,34 +5,30 @@ using System;
 /// </summary>
 public partial class PlayerAction : Node3D
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
+    }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
+    {
+    }
     /// <summary>
-    /// Spawns an object.
+    /// Spawns an object. (reworked in v.0.8.0-dev)
     /// </summary>
-    /// <param name="key">Object name, as stated in relevant config files</param>
+    /// <param name="key">Object key. Reworked in 0.8.0-dev</param>
     /// <param name="type">Type of object(0 is item, 1 is ammo, 2 is NPC)</param>
     /// <param name="playerId">Player ID. Available since 0.7.2-dev</param>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
-    void SpawnObject(string key, int type, int playerId)
+    void SpawnObject(int key, int type, int playerId)
     {
         switch (type)
         {
             case 0:
-                if (ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json", (Globals.ItemType)type).ContainsKey(key))
+                if (key < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Items.Count && key >= 0)
                 {
-                    string path = ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json", (Globals.ItemType)type)[key];
-
-                    Item item = ResourceLoader.Load<Item>(path);
-                    Pickable pickable = ResourceLoader.Load<PackedScene>(item.PickablePath).Instantiate<Pickable>();
+                    Pickable pickable = ResourceLoader.Load<PackedScene>(GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Items[key].PickablePath).Instantiate<Pickable>();
                     pickable.Position = GetParent().GetNode<Marker3D>(playerId + "/PlayerHead/ItemSpawn").GlobalPosition;
                     GetParent().GetNode<Node3D>("Items").AddChild(pickable);
                 }
@@ -42,11 +38,9 @@ public partial class PlayerAction : Node3D
                 }
                 break;
             case 1:
-                if (ItemParser.ReadJson("user://ammotype_" + Globals.itemsCompatibility + ".json", (Globals.ItemType)type).ContainsKey(key))
+                if (key < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Ammo.Count && key >= 0)
                 {
-                    string path = ItemParser.ReadJson("user://ammotype_" + Globals.itemsCompatibility + ".json", (Globals.ItemType)type)[key];
-
-                    LootableAmmo ammo = ResourceLoader.Load<PackedScene>(path).Instantiate<LootableAmmo>();
+                    LootableAmmo ammo = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Ammo[key].Instantiate<LootableAmmo>();
                     ammo.Position = GetParent().GetNode<Marker3D>(playerId + "/PlayerHead/ItemSpawn").GlobalPosition;
                     GetParent().GetNode<Node3D>("Items").AddChild(ammo);
                 }
@@ -56,11 +50,9 @@ public partial class PlayerAction : Node3D
                 }
                 break;
             case 2:
-                if (ItemParser.ReadJson("user://npcs_" + Globals.itemsCompatibility + ".json", (Globals.ItemType)type).ContainsKey(key))
+                if (key < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Npc.Count && key >= 0)
                 {
-                    string path = ItemParser.ReadJson("user://npcs_" + Globals.itemsCompatibility + ".json", (Globals.ItemType)type)[key];
-
-                    Node3D npc = ResourceLoader.Load<PackedScene>(path).Instantiate<Node3D>();
+                    Node3D npc = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Npc[key].Instantiate<Node3D>();
                     GetParent().GetNode<Node3D>("NPCs").AddChild(npc);
                 }
                 else

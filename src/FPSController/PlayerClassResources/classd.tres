@@ -27,3 +27,4 @@ CustomView = ""
 PreloadedItems = PackedStringArray()
 Ammo = PackedInt32Array(0, 0, 35)
 ClassColor = Color(0.909804, 0.4, 0, 0.847059)
+ClassType = 1

@@ -1,6 +1,8 @@
 using Godot;
 using System;
-
+/// <summary>
+/// MapGen main algorithm.
+/// </summary>
 public partial class MapGenerator : Node
 {
     //(c) juanjp600. License - CC-BY-SA 3.0.
@@ -8,6 +10,9 @@ public partial class MapGenerator : Node
     internal ulong Seed { get => seed; set => seed = value; }
     [Export] bool generateMoreR1s = false;
     [Export] bool generateMoreR4s = false;
+    [Export] int zone;
+    [Export] bool enableDoors;
+    [Export] string doorPrefabPath = "res://MapGen/Resources/Doors/DoorLCZ.tscn";
 
     [Rpc(MultiplayerApi.RpcMode.AnyPeer)]
     internal ulong RandomSeed()
@@ -16,25 +21,29 @@ public partial class MapGenerator : Node
         random.Randomize();
         return random.Randi();
     }
-
+    /// <summary>
+    /// Type of room
+    /// </summary>
     public enum RoomTypes { ROOM1, ROOM2, ROOM2C, ROOM3, ROOM4, EMPTY };
     int room1Amount, room2Amount, room2cAmount, room3Amount, room4Amount;
     internal struct TempRoom
     {
         internal RoomTypes type;
         /* angle can be:
-		   * -1: do not spawn a room
-		   * 0: means 0° rotation; facing east
-		   * 1: means 90° rotation; facing north
-		   * 2: means 180° rotation; facing west
-		   * 3: means 270° rotation; facing south
-		*/
+           * -1: do not spawn a room
+           * 0: means 0 rotation; facing east
+           * 1: means 90 rotation; facing north
+           * 2: means 180 rotation; facing west
+           * 3: means 270 rotation; facing south
+        */
         internal float angle;
         internal string roomName;
     };
 
     internal TempRoom[,] roomTemp = new TempRoom[12, 12];
-
+    /// <summary>
+    /// Main algorithm
+    /// </summary>
     internal virtual void CreateMap()
     {
         RandomNumberGenerator rand = new RandomNumberGenerator();
@@ -455,6 +464,132 @@ public partial class MapGenerator : Node
             }
             Console.WriteLine();
         }*/
+        int currRoom1 = 0;
+        int currRoom2 = 0;
+        int currRoom2C = 0;
+        int currRoom3 = 0;
+        int currRoom4 = 0;
+
+        for (int i = 0; i < 12; i++)
+        {
+            for (int j = 0; j < 12; j++)
+            {
+                StaticBody3D rm;
+                switch (roomTemp[i, j].type)
+                {
+                    case RoomTypes.ROOM1:
+                        if (currRoom1 < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Room1.Count)
+                        {
+                            rm = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Room1[currRoom1].Instantiate<StaticBody3D>();
+                        }
+                        else
+                        {
+                            rm = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Rooms1[rand.RandiRange(0, GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Rooms1.Count - 1)].Instantiate<StaticBody3D>();
+                        }
+                        currRoom1++;
+                        rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
+                        rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
+                        AddChild(rm, true);
+                        roomTemp[i, j].roomName = rm.Name;
+                        break;
+                    case RoomTypes.ROOM2:
+                        if (currRoom2 < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Room2.Count)
+                        {
+                            rm = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Room2[currRoom2].Instantiate<StaticBody3D>();
+                        }
+                        else
+                        {
+                            rm = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Rooms2[rand.RandiRange(0, GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Rooms2.Count - 1)].Instantiate<StaticBody3D>();
+                        }
+                        currRoom2++;
+                        rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
+                        rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
+                        AddChild(rm, true);
+                        roomTemp[i, j].roomName = rm.Name;
+                        break;
+                    case RoomTypes.ROOM2C:
+                        if (currRoom2C < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Room2C.Count)
+                        {
+                            rm = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Room2C[currRoom2C].Instantiate<StaticBody3D>();
+                        }
+                        else
+                        {
+                            rm = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Rooms2C[rand.RandiRange(0, GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Rooms2C.Count - 1)].Instantiate<StaticBody3D>();
+                        }
+                        currRoom2C++;
+                        rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
+                        rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
+                        AddChild(rm, true);
+                        roomTemp[i, j].roomName = rm.Name;
+                        break;
+                    case RoomTypes.ROOM3:
+                        if (currRoom3 < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Room3.Count)
+                        {
+                            rm = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Room3[currRoom3].Instantiate<StaticBody3D>();
+                        }
+                        else
+                        {
+                            rm = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Rooms3[rand.RandiRange(0, GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Rooms3.Count - 1)].Instantiate<StaticBody3D>();
+                        }
+                        currRoom3++;
+                        rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
+                        rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
+                        AddChild(rm, true);
+                        roomTemp[i, j].roomName = rm.Name;
+                        break;
+                    case RoomTypes.ROOM4:
+                        if (currRoom4 < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Room4.Count)
+                        {
+                            rm = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Room4[currRoom4].Instantiate<StaticBody3D>();
+                        }
+                        else
+                        {
+                            rm = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Rooms4[rand.RandiRange(0, GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Rooms4.Count - 1)].Instantiate<StaticBody3D>();
+                        }
+                        currRoom4++;
+                        rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
+                        rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
+                        AddChild(rm, true);
+                        roomTemp[i, j].roomName = rm.Name;
+                        break;
+                }
+            }
+        }
+
+        if (enableDoors)
+        {
+            for (int k = 0; k < 12; k++)
+            {
+                for (int l = 0; l < 12; l++)
+                {
+                    bool southC, eastC;
+                    southC = eastC = false;
+                    if (k < 11)
+                    {
+                        eastC = (roomTemp[k + 1, l].type != RoomTypes.EMPTY) && (roomTemp[k, l].type != RoomTypes.EMPTY);
+                    }
+                    if (l < 11)
+                    {
+                        southC = (roomTemp[k, l + 1].type != RoomTypes.EMPTY) && (roomTemp[k, l].type != RoomTypes.EMPTY);
+                    }
+                    Node3D d; //doors
+                    if (eastC)
+                    {
+                        d = (Node3D)ResourceLoader.Load<PackedScene>(doorPrefabPath).Instantiate();
+                        d.Position = new Vector3(k * 20.48f + 10.24f, 0, l * 20.48f);
+                        d.RotationDegrees = new Vector3(0, 90, 0);
+                        AddChild(d, true);
+                    }
+                    if (southC)
+                    {
+                        d = (Node3D)ResourceLoader.Load<PackedScene>(doorPrefabPath).Instantiate();
+                        d.Position = new Vector3(k * 20.48f, 0, l * 20.48f + 10.24f);
+                        d.RotationDegrees = new Vector3(0, 0, 0);
+                        AddChild(d, true);
+                    }
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -512,5 +647,14 @@ public partial class MapGenerator : Node
             }
         }
         return tmp;
+    }
+
+    public override void _Ready()
+    {
+        if (Multiplayer.IsServer())
+        {
+            Seed = RandomSeed();
+        }
+        CreateMap();
     }
 }

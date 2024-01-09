@@ -1,8 +1,11 @@
 using Godot;
 using System;
+/// <summary>
+/// This class is responsible for items pick-ups.
+/// </summary>
 public partial class Pickable : RigidBody3D
 {
-    [Export] internal Item itemResource;
+    [Export] internal int itemNumber;
     PlayerScript holder;
     // Note for Yni: if the RigidBody keeps falling, check rotation!
     // December 2023 edit: idk, is this Godot Physics issue... Because I switched to Godot Jolt!
@@ -23,7 +26,7 @@ public partial class Pickable : RigidBody3D
     {
         Inventory inv = player.GetNode<Inventory>("InventoryContainer/Inventory");
         AudioStreamPlayer3D interactSound = player.GetNode<AudioStreamPlayer3D>("InteractSound");
-        interactSound.Stream = ResourceLoader.Load<AudioStream>(itemResource.PickupSoundPath);
+        interactSound.Stream = ResourceLoader.Load<AudioStream>(GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Items[itemNumber].PickupSoundPath);
         interactSound.Play();
         if (!Multiplayer.IsServer())
         {
@@ -42,10 +45,10 @@ public partial class Pickable : RigidBody3D
     void PickUpRpc(string invPath)
     {
         // This opens JSON, find item and add it to inventory.
-        if (ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json", Globals.ItemType.item).ContainsKey(itemResource.InternalName))
+        if (itemNumber < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Items.Count && itemNumber >= 0)
         {
             //after trimming, we will get an item from json.
-            GetNode<Inventory>(invPath).AddItem(ResourceLoader.Load(ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json", Globals.ItemType.item)[SceneFilePath.TrimSuffix(".tscn").TrimPrefix("res://InventorySystem/Items/PickablePrefabs/")]));
+            GetNode<Inventory>(invPath).AddItem(GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Items[itemNumber]);
             Rpc("DestroyPickedItem");
 
         }

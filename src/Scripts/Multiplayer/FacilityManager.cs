@@ -22,12 +22,12 @@ public partial class FacilityManager : Node3D
     [Export] Godot.Collections.Dictionary<string, string> ammo = new Godot.Collections.Dictionary<string, string>();
     [Export] Godot.Collections.Dictionary<string, string> npcs = new Godot.Collections.Dictionary<string, string>();
     */
-    [Export] GameData data;
-    internal Godot.Collections.Array<int> singleSpawnClasses;
-    internal Godot.Collections.Array<int> multiSpawnClasses;
-    internal Godot.Collections.Array<int> arrivingClasses;
-    internal Godot.Collections.Array<int> specialClasses;
-    internal Godot.Collections.Array<int> bonusSpawnClasses; //For 131.
+    [Export] internal GameData data;
+    internal Godot.Collections.Array<int> singleSpawnClasses = new Godot.Collections.Array<int>();
+    internal Godot.Collections.Array<int> multiSpawnClasses = new Godot.Collections.Array<int>();
+    internal Godot.Collections.Array<int> arrivingClasses = new Godot.Collections.Array<int>();
+    internal Godot.Collections.Array<int> specialClasses = new Godot.Collections.Array<int>();
+    internal Godot.Collections.Array<int> bonusSpawnClasses = new Godot.Collections.Array<int>(); //For 131.
     [Export] bool friendlyFireFm;
     [Export] internal int maxSpawnableObjects;
     bool trueBreach;
@@ -78,6 +78,7 @@ public partial class FacilityManager : Node3D
             maxSpawnableObjects = GetParent<NetworkManager>().maxObjects;
             scpLimit = GetParent<NetworkManager>().maxScps;
             */
+            /*
             if (ResourceLoader.Exists("user://save_" + Globals.gameDataCompatibility + ".tres"))
             {
                 data = ResourceLoader.Load<GameData>("user://save_" + Globals.gameDataCompatibility + ".tres");
@@ -87,6 +88,7 @@ public partial class FacilityManager : Node3D
                 data = ResourceLoader.Load<GameData>("res://Scripts/GameData/GameData.tres");
                 ResourceSaver.Save(data, "user://save_" + Globals.gameDataCompatibility + ".tres");
             }
+            */
             ArrangeClasses();
         }
         else
@@ -113,7 +115,7 @@ public partial class FacilityManager : Node3D
                 ItemParser.SaveJson("user://npcs_" + Globals.itemsCompatibility + ".json", npcs);
             }
             */
-            ResourceSaver.Save(data, "user://save_" + Globals.gameDataCompatibility + ".tres");
+            //ResourceSaver.Save(data, "user://save_" + Globals.gameDataCompatibility + ".tres");
             return;
         }
         friendlyFireFm = GetParent<NetworkManager>().friendlyFire;
@@ -270,7 +272,7 @@ public partial class FacilityManager : Node3D
 
         // PreloadInventory(playerName, classData.PreloadedItems);
         // RpcId(int.Parse(playerName), "UpdateClassUI", GetNode<PlayerScript>(playerName).className, GetNode<PlayerScript>(playerName).health);
-        LoadModels(playerName);
+        LoadModels(playerName, nameOfClass);
         if (GetTree().Root.GetNodeOrNull(classData.SpawnPoints[rng.RandiRange(0, classData.SpawnPoints.Length - 1)]) != null) //SCP CB Multiplayer moment (:
         {
             GetNode<PlayerScript>(playerName).Position = GetTree().Root.GetNode<Marker3D>(classData.SpawnPoints[rng.RandiRange(0, classData.SpawnPoints.Length - 1)]).GlobalPosition;
@@ -297,23 +299,26 @@ public partial class FacilityManager : Node3D
         }
         Rpc("CleanRagdolls");
     }
+    /*
     /// <summary>
     /// Loads the models of a player.
     /// </summary>
     /// <param name="playerName">Name of a player</param>
-    void LoadModels(string playerName)
+    /// */
+    
+
+    void LoadModels(string playerName, int classId)
     {
         PlayerScript playerScript = GetNode<PlayerScript>(playerName);
         //if class exists, then despawn old model, and change it on a new one.
-        if (ResourceLoader.Exists("res://FPSController/PlayerClassResources/" + playerScript.classKey + ".tres"))
+        if (classId < data.Classes.Count && classId >= 0)
         {
             Node modelRoot = playerScript.GetNode("PlayerModel");
             foreach (Node itemUsedBefore in modelRoot.GetChildren())
             {
                 itemUsedBefore.QueueFree();
             }
-            BaseClass classData = GD.Load<BaseClass>("res://FPSController/PlayerClassResources/" + playerScript.classKey + ".tres");
-            Node tmpModel = ResourceLoader.Load<PackedScene>(classData.PlayerModelSource).Instantiate();
+            Node tmpModel = ResourceLoader.Load<PackedScene>(data.Classes[classId].PlayerModelSource).Instantiate();
             modelRoot.AddChild(tmpModel, true);
         }
     }

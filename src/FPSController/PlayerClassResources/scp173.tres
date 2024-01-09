@@ -26,3 +26,4 @@ CustomView = "EdgeDetectShader"
 PreloadedItems = PackedStringArray()
 Ammo = PackedInt32Array(0, 0, 0)
 ClassColor = Color(0.752941, 0, 0, 0.847059)
+ClassType = 0

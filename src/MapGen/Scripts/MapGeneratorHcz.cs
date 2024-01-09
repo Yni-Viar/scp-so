@@ -15,7 +15,7 @@ public partial class MapGeneratorHcz : MapGenerator
         int currRoom1 = 0;
         int currRoom2 = 0;
         // you can add more vars for different needs, e.g. currRoom3 or currRoom2c
-        
+        /*old 0.7.x code. Use MapGenerator.cs instead.
         for (int i = 0; i < 12; i++)
         {
             for (int j = 0; j < 12; j++)
@@ -89,38 +89,7 @@ public partial class MapGeneratorHcz : MapGenerator
                 }
             }
         }
-
-        for (int k = 0; k < 12; k++)
-        {
-            for (int l = 0; l < 12; l++)
-            {
-                bool southC, eastC;
-                southC = eastC = false;
-                if (k < 11)
-                {
-                    eastC = (roomTemp[k + 1,l].type != RoomTypes.EMPTY) && (roomTemp[k,l].type != RoomTypes.EMPTY);
-                }
-                if (l < 11)
-                {
-                    southC = (roomTemp[k,l + 1].type != RoomTypes.EMPTY) && (roomTemp[k,l].type != RoomTypes.EMPTY);
-                }
-                Node3D d; //doors
-                if (eastC)
-                {
-                    d = (Node3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/Doors/DoorLCZ.tscn").Instantiate();
-                    d.Position = new Vector3(k * 20.48f + 10.24f, 0, l*20.48f);
-                    d.RotationDegrees = new Vector3(0, 90, 0);
-                    AddChild(d, true);
-                }
-                if (southC)
-                {
-                    d = (Node3D)ResourceLoader.Load<PackedScene>("res://MapGen/Resources/Doors/DoorLCZ.tscn").Instantiate();
-                    d.Position = new Vector3(k * 20.48f, 0, l*20.48f + 10.24f);
-                    d.RotationDegrees = new Vector3(0, 0, 0);
-                    AddChild(d, true);
-                }
-            }
-        }
+        */
     }
 
     public override void _Ready()
