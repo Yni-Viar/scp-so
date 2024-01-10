@@ -1,8 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://dk80o4q00bb7i"]
+[gd_scene load_steps=26 format=3 uid="uid://dk80o4q00bb7i"]
 
 [ext_resource type="Texture2D" uid="uid://cqfc8sooid8xb" path="res://Assets/Models/Items-weapons/mtf_rifle/M4.png" id="1_0bj1u"]
 [ext_resource type="Script" path="res://InventorySystem/Items/Pickable.cs" id="1_ove0h"]
-[ext_resource type="Resource" uid="uid://cwja0eq2d3qxj" path="res://InventorySystem/Items/mtfrifle.tres" id="2_5s3dv"]
 [ext_resource type="Texture2D" uid="uid://bdfyvpmqxrkl4" path="res://Assets/Models/Items-weapons/mtf_rifle/M4NormalMap_NRM.png" id="2_s8nvj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxiat"]
@@ -288,7 +287,7 @@ size = Vector3(0.0725498, 0.448142, 0.667556)
 [node name="mtfrifle" type="RigidBody3D"]
 collision_layer = 8
 script = ExtResource("1_ove0h")
-itemResource = ExtResource("2_5s3dv")
+itemNumber = 12
 
 [node name="Mesh" type="Node3D" parent="."]
 transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0, 0)

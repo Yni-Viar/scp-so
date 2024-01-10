@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://mu7j26by23js"]
+[gd_scene load_steps=31 format=3 uid="uid://mu7j26by23js"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/GameMode/BreachGameMode.cs" id="1_4ab2v"]
 [ext_resource type="Script" path="res://Scripts/Multiplayer/AdminCommands.cs" id="2_m73g2"]
@@ -15,8 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://cy72pcjf5uj72" path="res://MapGen/Resources/PD.tscn" id="11_jjunp"]
 [ext_resource type="Script" path="res://Scripts/FPSCounter.cs" id="12_xkdk3"]
 [ext_resource type="Script" path="res://Scripts/SkyEnabler.cs" id="13_b3jdh"]
+[ext_resource type="Texture2D" uid="uid://dj66rmlusn18r" path="res://Assets/HUD/healthbar.png" id="15_5ah0v"]
 [ext_resource type="Theme" uid="uid://4k2un7nm7xc6" path="res://UITheme.tres" id="15_g2wd3"]
 [ext_resource type="Script" path="res://Scripts/AdminConsole.cs" id="15_y3cek"]
+[ext_resource type="Texture2D" uid="uid://d2pd3ydxm2tfw" path="res://Assets/HUD/sanitybar.png" id="16_pxr4e"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_pw38j"]
 properties/0/path = NodePath("MapGenLcz:seed")
@@ -291,16 +293,30 @@ theme_override_font_sizes/bold_italics_font_size = 32
 theme_override_font_sizes/mono_font_size = 32
 bbcode_enabled = true
 
+[node name="HealthBarIcon" type="TextureRect" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.015
+anchor_top = 0.967
+anchor_right = 0.015
+anchor_bottom = 0.967
+offset_left = -20.8
+offset_top = -20.3601
+offset_right = 19.2
+offset_bottom = 19.6399
+grow_vertical = 0
+texture = ExtResource("15_5ah0v")
+
 [node name="HealthBar" type="ProgressBar" parent="PlayerUI"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.008
+anchor_left = 0.029
 anchor_top = 0.941
-anchor_right = 0.229
+anchor_right = 0.25
 anchor_bottom = 0.985
-offset_left = 0.639999
+offset_left = 0.32
 offset_top = -0.280029
-offset_right = 0.319946
+offset_right = -6.10352e-05
 offset_bottom = 0.199951
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("8_1slp4")
@@ -309,6 +325,20 @@ theme_override_styles/background = SubResource("StyleBoxFlat_5wgsy")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6wo10")
 allow_greater = true
 
+[node name="SanityBarIcon" type="TextureRect" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.015
+anchor_top = 0.885
+anchor_right = 0.015
+anchor_bottom = 0.885
+offset_left = -20.8
+offset_top = -19.8
+offset_right = 19.2
+offset_bottom = 20.2
+grow_vertical = 0
+texture = ExtResource("16_pxr4e")
+
 [node name="SanityBar" type="ProgressBar" parent="PlayerUI"]
 layout_mode = 1
 anchors_preset = -1
@@ -316,10 +346,10 @@ anchor_left = 0.008
 anchor_top = 0.911
 anchor_right = 0.229
 anchor_bottom = 0.933
-offset_left = 0.639999
-offset_top = 0.119934
-offset_right = 0.319977
-offset_bottom = 0.359985
+offset_left = 40.64
+offset_top = -31.88
+offset_right = 40.32
+offset_bottom = -31.64
 grow_vertical = 0
 theme_override_styles/background = SubResource("StyleBoxFlat_ld0ka")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ryfe2")

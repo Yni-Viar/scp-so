@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtycbwx1gobbl"]
+[gd_scene load_steps=7 format=3 uid="uid://dtycbwx1gobbl"]
 
 [ext_resource type="Texture2D" uid="uid://nisq3p05nsgx" path="res://Assets/Models/Items-Keycards/keycard4.png" id="1_aivup"]
 [ext_resource type="Script" path="res://InventorySystem/Items/Pickable.cs" id="1_mbw2s"]
-[ext_resource type="Resource" uid="uid://qyweqdwnyu5v" path="res://InventorySystem/Items/key4.tres" id="2_nm2ft"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a63is"]
 resource_name = "material0.001"
@@ -50,7 +49,7 @@ size = Vector3(0.386, 0.26, 0.05)
 collision_layer = 8
 continuous_cd = true
 script = ExtResource("1_mbw2s")
-itemResource = ExtResource("2_nm2ft")
+itemNumber = 3
 
 [node name="Scene_Root_001" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_65i4l")

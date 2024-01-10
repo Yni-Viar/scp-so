@@ -1,6 +1,8 @@
 using Godot;
 using System;
-
+/// <summary>
+/// Default game-mode
+/// </summary>
 public partial class BreachGameMode : FacilityManager
 {
     [Export] uint scpLimit = 4; //SCP Limit

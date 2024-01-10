@@ -28,16 +28,15 @@ public partial class FacilityManager : Node3D
     internal Godot.Collections.Array<int> arrivingClasses = new Godot.Collections.Array<int>();
     internal Godot.Collections.Array<int> specialClasses = new Godot.Collections.Array<int>();
     internal Godot.Collections.Array<int> bonusSpawnClasses = new Godot.Collections.Array<int>(); //For 131.
-    [Export] bool friendlyFireFm;
+    [Export] bool friendlyFireOn;
     [Export] internal int maxSpawnableObjects;
-    bool trueBreach;
     internal bool IsRoundStarted
     { 
         get=>isRoundStarted; set=>isRoundStarted = value;
     }
     internal bool FriendlyFire
     {
-        get => friendlyFireFm; private set => friendlyFireFm = value;
+        get => friendlyFireOn; private set => friendlyFireOn = value;
     }
 
     
@@ -118,8 +117,7 @@ public partial class FacilityManager : Node3D
             //ResourceSaver.Save(data, "user://save_" + Globals.gameDataCompatibility + ".tres");
             return;
         }
-        friendlyFireFm = GetParent<NetworkManager>().friendlyFire;
-        trueBreach = false; //NetworkManager.tBrSim;
+        friendlyFireOn = GetParent<NetworkManager>().friendlyFire;
 
         Multiplayer.PeerConnected += AddPlayer;
         Multiplayer.PeerDisconnected += RemovePlayer;

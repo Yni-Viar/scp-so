@@ -1,8 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://dfvhhtlnusbb3"]
+[gd_scene load_steps=19 format=3 uid="uid://dfvhhtlnusbb3"]
 
 [ext_resource type="Texture2D" uid="uid://cbevfcw4lqtq0" path="res://Assets/Models/Items-weapons/tranquilizer/Untitled.png" id="1_v6ca8"]
 [ext_resource type="Script" path="res://InventorySystem/Items/Pickable.cs" id="1_wfjbw"]
-[ext_resource type="Resource" uid="uid://dod32q1ljd0nv" path="res://InventorySystem/Items/tranquilizer.tres" id="2_tfg6u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmtnc"]
 resource_name = "Material"
@@ -256,7 +255,7 @@ size = Vector3(0.18158, 0.226013, 0.110107)
 [node name="tranquilizer" type="RigidBody3D"]
 collision_layer = 8
 script = ExtResource("1_wfjbw")
-itemResource = ExtResource("2_tfg6u")
+itemNumber = 13
 
 [node name="Mesh" type="Node3D" parent="."]
 transform = Transform3D(0.0408005, 0, 0, 0, 0.0408005, 0, 0, 0, 0.0408005, 0, 0, 0)

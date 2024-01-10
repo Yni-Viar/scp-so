@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b12fg2a4x7oeg"]
+[gd_scene load_steps=7 format=3 uid="uid://b12fg2a4x7oeg"]
 
 [ext_resource type="Texture2D" uid="uid://da3wl6hjpuqpl" path="res://Assets/Models/Items-scp018/scp018_base.png" id="1_dn3yi"]
 [ext_resource type="Script" path="res://InventorySystem/Items/Pickable.cs" id="1_opx3o"]
-[ext_resource type="Resource" uid="uid://cik2wjse27nig" path="res://InventorySystem/Items/scp018.tres" id="2_kjpf3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_87d45"]
 resource_name = "Material.001"
@@ -51,7 +50,7 @@ radius = 0.1
 [node name="scp018" type="RigidBody3D"]
 collision_layer = 8
 script = ExtResource("1_opx3o")
-itemResource = ExtResource("2_kjpf3")
+itemNumber = 11
 
 [node name="Sphere_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
