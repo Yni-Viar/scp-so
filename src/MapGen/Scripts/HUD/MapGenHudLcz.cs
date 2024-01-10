@@ -23,7 +23,7 @@ public partial class MapGenHudLcz : GridContainer
     /// </summary>
     void UpdateItems()
     {
-        MapGeneratorLcz lcz = GetTree().Root.GetNode<MapGeneratorLcz>("Main/Game/MapGenLcz");
+        MapGenerator lcz = GetTree().Root.GetNode<MapGenerator>("Main/Game/MapGenLcz");
         for (int i = 0; i < 144; i++)
         {
             GetChild<SlotDisplay>(i).DisplayData(lcz.GetMapData()[i][0], lcz.GetMapData()[i][1], "Lcz");

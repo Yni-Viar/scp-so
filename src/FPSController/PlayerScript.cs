@@ -21,8 +21,7 @@ public partial class PlayerScript : CharacterBody3D
     //Walk sounds.
     AudioStreamPlayer3D walkSounds;
     AudioStreamPlayer3D interactSound;
-    [Export] internal float currentHealth = 1f;
-    [Export] internal float currentSanity = 50f;
+    internal float[] currentHealth = new float[] { 1f, 50f };
 
     double decayTimer = 0d;
 
@@ -43,8 +42,7 @@ public partial class PlayerScript : CharacterBody3D
     [Export] internal string classDescription;
     [Export] internal string spawnPoint;
     [Export] internal string playerModelSource;
-    [Export] internal float health = 1f;
-    [Export] internal float sanity = 50f;
+    internal float[] health = new float[] { 1f, 50f };
     [Export] internal float speed = 0f;
     [Export] internal float jump = 0f;
     [Export] internal bool sprintEnabled = false;
@@ -314,17 +312,17 @@ public partial class PlayerScript : CharacterBody3D
                 Decay();
                 decayTimer = 0;
             }
-            if (currentSanity < sanity)
+            if (currentHealth[1] < health[1] && direction.IsZeroApprox())
             {
-                currentSanity += (float)delta / 10;
+                currentHealth[1] += (float)delta / 10;
             }
-            if (currentHealth < health && scpNumber >= 0 && direction.IsZeroApprox())
+            if (currentHealth[0] < health[0] && scpNumber >= 0 && direction.IsZeroApprox())
             {
-                currentHealth += (float)delta;
+                currentHealth[0] += (float)delta;
             }
 
-            GetParent().GetNode<ProgressBar>("PlayerUI/HealthBar").Value = Mathf.Ceil(currentHealth);
-            GetParent().GetNode<ProgressBar>("PlayerUI/SanityBar").Value = Mathf.Ceil(currentSanity);
+            GetParent().GetNode<ProgressBar>("PlayerUI/HealthBar").Value = Mathf.Ceil(currentHealth[0]);
+            GetParent().GetNode<ProgressBar>("PlayerUI/SanityBar").Value = Mathf.Ceil(currentHealth[1]);
         }
         UpDirection = Vector3.Up;
         MoveAndSlide();
@@ -410,41 +408,24 @@ public partial class PlayerScript : CharacterBody3D
             }
         }
     }
-
     /// <summary>
-    /// Helper method to teleport. Will be moved to PlayerAction in future versions.
-    /// </summary>
-    /// <param name="placeToTeleport">Place to teleport</param>
-    internal void CallTeleport(string placeToTeleport)
-    {
-        GetParent().GetParent().GetNode<FacilityManager>("Game").Rpc("TeleportTo", Multiplayer.GetUniqueId().ToString(), PlacesForTeleporting.defaultData[placeToTeleport]);
-    }
-
-    /// <summary>
-    /// Helper method to call FacilityManager for changing player class. Will be moved to PlayerAction in future versions.
-    /// </summary>
-    /// <param name="to">Player class to become</param>
-    internal void CallForceclass(string to, string reason)
-    {
-        GetParent().GetParent().GetNode<FacilityManager>("Game").Rpc("SetPlayerClass", Multiplayer.GetUniqueId().ToString(), to, reason);
-    }
-
-    /// <summary>
-    /// Add or depletes health (don't work on spectators). If health is below 0, the players forceclasses as spectator. Will be reworked in future update.
+    /// Method that manages health of the player (don't work on spectators). If health is below 0, the players forceclasses as spectator.
     /// </summary>
     /// <param name="amount">How much health to add/deplete</param>
+    /// <param name="depleteReason">Reason to add or deplete</param>
+    /// <param name="typeOfHealth">Type of health (0 is health, 1 is sanity)</param>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
-    void HealthManage(double amount, string depleteReason)
+    void HealthManage(double amount, string depleteReason, int typeOfHealth)
     {
         if (scpNumber != -2)
         {
-            if (currentHealth + amount <= health)
+            if (currentHealth[typeOfHealth] + amount <= health[typeOfHealth])
             {
-                currentHealth += (float)amount;
+                currentHealth[typeOfHealth] += (float)amount;
             }
             else
             {
-                currentHealth = health;
+                currentHealth[typeOfHealth] = health[typeOfHealth];
             }
         }
         else
@@ -452,42 +433,20 @@ public partial class PlayerScript : CharacterBody3D
             GD.Print("You cannot change HP for dead");
         }
         // Temporary feature, will be reworked in future...
-        if (currentHealth <= 0)
+        if (currentHealth[typeOfHealth] <= 0)
         {
-            GetParent<FacilityManager>().Rpc("SpawnRagdoll", this.Name, ragdollSource, false);
-            CallForceclass("spectator", depleteReason);
+            switch (typeOfHealth)
+            {
+                case 0:
+                    GetParent<FacilityManager>().Rpc("SpawnRagdoll", this.Name, ragdollSource, false);
+                    break;
+                case 1:
+                    GetParent<FacilityManager>().Rpc("SpawnRagdoll", this.Name, ragdollSource, true);
+                    break;
+            }
+            GetTree().Root.GetNode<PlayerAction>("Main/Game/PlayerAction").CallForceclass(0, depleteReason);
         }
     }
-    /// <summary>
-    /// Temporary method. Manages sanity.
-    /// </summary>
-    /// <param name="amount">How much sanity to add/deplete</param>
-    /// <param name="depleteReason">Reason to deplete</param>
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
-    void SanityManage(double amount, string depleteReason)
-    {
-        if (scpNumber != -2)
-        {
-            if (currentSanity + amount <= sanity)
-            {
-                currentSanity += (float)amount;
-            }
-            else
-            {
-                currentSanity = sanity;
-            }
-        }
-        else
-        {
-            GD.Print("You can't change sanity for dead");
-        }
-        if (currentSanity <= 0)
-        {
-            GetParent<FacilityManager>().Rpc("SpawnRagdoll", this.Name, ragdollSource, true);
-            CallForceclass("spectator", depleteReason);
-        }
-    }
-
     /// <summary>
     /// "Pocket dimension" controller
     /// </summary>
@@ -495,11 +454,11 @@ public partial class PlayerScript : CharacterBody3D
     {
         if (scpNumber != 106)
         {
-            HealthManage(-1, "Decayed at SCP-106's pocket dimension");
+            HealthManage(-1, "Decayed at SCP-106's pocket dimension", 0);
         }
         else
         {
-            HealthManage(1, "Decayed at SCP-106's pocket dimension");
+            HealthManage(1, "Decayed at SCP-106's pocket dimension", 0);
         }
     }
     /// <summary>
@@ -570,10 +529,10 @@ public partial class PlayerScript : CharacterBody3D
         StyleBoxFlat classRepresent = new StyleBoxFlat();
         classRepresent.BgColor = classColor;
         GetParent().GetNode<ProgressBar>("PlayerUI/HealthBar").AddThemeStyleboxOverride("fill", classRepresent);
-        GetParent().GetNode<ProgressBar>("PlayerUI/HealthBar").MaxValue = health;
-        GetParent().GetNode<ProgressBar>("PlayerUI/HealthBar").Value = currentHealth;
-        GetParent().GetNode<ProgressBar>("PlayerUI/SanityBar").MaxValue = sanity;
-        GetParent().GetNode<ProgressBar>("PlayerUI/SanityBar").Value = currentSanity;
+        GetParent().GetNode<ProgressBar>("PlayerUI/HealthBar").MaxValue = health[0];
+        GetParent().GetNode<ProgressBar>("PlayerUI/HealthBar").Value = currentHealth[0];
+        GetParent().GetNode<ProgressBar>("PlayerUI/SanityBar").MaxValue = health[1];
+        GetParent().GetNode<ProgressBar>("PlayerUI/SanityBar").Value = currentHealth[1];
         if (GetParent().GetNode<Label>("PlayerUI/ClassInfo").HasThemeColorOverride("font_color"))
         {
             GetParent().GetNode<Label>("PlayerUI/ClassInfo").RemoveThemeColorOverride("font_color");

@@ -50,7 +50,7 @@ public partial class Scp3199PlayerScript : Node3D
                         Rpc("SetState", "3199_Hurt");
                         interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/SCPCommon/SCPAttack.ogg");
                         interactSound.Play();
-                        player.RpcId(int.Parse(player.Name), "HealthManage", -35, "Hit by SCP-3199");
+                        player.RpcId(int.Parse(player.Name), "HealthManage", -35, "Hit by SCP-3199", 0);
                     }
                 }
             }

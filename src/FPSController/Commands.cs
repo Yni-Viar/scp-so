@@ -39,12 +39,12 @@ public partial class Commands : Node
         {
             if (classId < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Classes.Count && classId >= 0)
             {
-                GetParent<PlayerScript>().CallForceclass(args[0], "Forceclass.");
+                GetTree().Root.GetNode<PlayerAction>("Main/Game/PlayerAction").CallForceclass(classId, "Forceclass.");
                 return "Forceclassed to " + args[0];
             }
             else
             {
-                return "Wrong number. E.g. to spawn as Scientist, you need to write \"forceclass 1\""
+                return "Wrong number. E.g. to spawn as Scientist, you need to write \"forceclass 1\"";
             }
         }
         else
@@ -64,7 +64,7 @@ public partial class Commands : Node
         {
             if (PlacesForTeleporting.defaultData.ContainsKey(args[0]))
             {
-                GetParent<PlayerScript>().CallTeleport(args[0]);
+                GetTree().Root.GetNode<PlayerAction>("Main/Game/PlayerAction").CallTeleport(args[0]);
                 return "Teleported to: " + args[0];
             }
             else
@@ -82,43 +82,41 @@ public partial class Commands : Node
             return "You need ONLY 1 argument to teleport.";
         }
     }
-    /*
     /// <summary>
-    /// GDSh command.
+    /// GDSh command. Reworked in 0.8.0-dev
     /// </summary>
     /// <param name="args">Necessary by GDsh but not used</param>
     /// <returns>List of classes, available ingame</returns>
     string ClassList(string[] args)
     {
-        Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classes = ClassParser.ReadJson("user://playerclasses.json");
-        string[] groups = new string[] { "spawnableHuman", "arrivingHuman", "spawnableScps" };
+        int i = 0;
         string r = "";
-        for (int i = 0; i < groups.Length; i++)
-        {
-            foreach (var val in classes[groups[i]])
-            {
-                r += val + "\n";
-            }
-        }
         
+        foreach (BaseClass val in GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Classes)
+        {
+            r += i + " - " + val.ClassName + "\n";
+            i++;
+        }
         return r;
     }
-    
+
     /// <summary>
-    /// GDSh command.
+    /// GDSh command. Reworked in 0.8.0-dev
     /// </summary>
     /// <param name="args">Necessary by GDsh but not used</param>
     /// <returns>Shows all available items</returns>
     string ItemList(string[] args)
     {
+        int i = 0;
         string r = "";
-        foreach (var val in ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json", Globals.ItemType.item))
+
+        foreach (Item val in GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Items)
         {
-            r += val.Key + "\n";
+            r += i + " - " + val.Name + "\n";
+            i++;
         }
         return r;
     }
-    */
     /// <summary>
     /// GDSh command.
     /// </summary>
@@ -148,10 +146,12 @@ public partial class Commands : Node
             return "Unknown item. Cannot spawn. Did you input the number of item?";
         }
     }
+
     /// <summary>
-    /// Gives item
+    /// Gives object.
     /// </summary>
-    /// <param name="itemPath">Path to item resource</param>
+    /// <param name="itemPath">Path to object</param>
+    /// <param name="type">Type of object</param>
     void GiveItemCmd(string itemPath, int type)
     {
         GetTree().Root.GetNode<PlayerAction>("Main/Game/PlayerAction").Rpc("SpawnObject", itemPath, type, Multiplayer.GetUniqueId());
@@ -165,7 +165,7 @@ public partial class Commands : Node
     {
         if (args.Length == 1)
         {
-            GetParent<PlayerScript>().RpcId(Multiplayer.GetUniqueId(), "HealthManage", Convert.ToDouble(args[0]), "Forced health change.");
+            GetParent<PlayerScript>().RpcId(Multiplayer.GetUniqueId(), "HealthManage", Convert.ToDouble(args[0]), "Forced health change.", 0);
             return "Given " + args[0] + " health (if is possible).";
         }
         else
@@ -211,7 +211,7 @@ public partial class Commands : Node
     {
         if (args.Length == 1)
         {
-            GetParent<PlayerScript>().RpcId(Multiplayer.GetUniqueId(), "SanityManage", Convert.ToDouble(args[0]), "Forced sanity change.");
+            GetParent<PlayerScript>().RpcId(Multiplayer.GetUniqueId(), "SanityManage", Convert.ToDouble(args[0]), "Forced sanity change.", 1);
             return "Given " + args[0] + " sanity (if is possible).";
         }
         else

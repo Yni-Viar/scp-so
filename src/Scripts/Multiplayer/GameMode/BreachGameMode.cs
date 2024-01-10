@@ -35,18 +35,14 @@ public partial class BreachGameMode : FacilityManager
         {
             BeginGame();
         }
-        /*
         if (GetParent<NetworkManager>().spawnNpcs)
         {
-            string[] temp = new string[npcs.Keys.Count];
-            npcs.Keys.CopyTo(temp, 0);
             //Spawn NPC with 67% chance
             if (rng.RandiRange(0, 100) <= 67 && playersList.Count > 1)
             {
-                GetTree().Root.GetNode<PlayerAction>("Main/Game/PlayerAction").Rpc("SpawnObject", temp[rng.RandiRange(0, temp.Length - 1)], 2, 1);
+                GetTree().Root.GetNode<PlayerAction>("Main/Game/PlayerAction").Rpc("SpawnObject", rng.RandiRange(0, data.Npc.Count - 1), 2, 1);
             }
         }
-        */
     }
 
     /// <summary>

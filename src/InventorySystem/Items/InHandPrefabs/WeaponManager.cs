@@ -124,22 +124,14 @@ public partial class WeaponManager : ItemAction
             var collider = rayCast.GetCollider();
             if (collider is PlayerScript playerScript && playerScript.Name != Multiplayer.GetUniqueId().ToString())
             {
-                if (isTranquilizer)
+                //Deplete HP
+                if (playerScript.className == "SCP-106 \"The Old Man\"")
                 {
-                    //Stun
-                    playerScript.RpcId(int.Parse(playerScript.Name), "SanityManage", -damage / 2, "Recontained by " + Name);
+                    playerScript.RpcId(int.Parse(playerScript.Name), "HealthManage", -damage / 24, "Shot by " + Name);
                 }
                 else
                 {
-                    //Deplete HP
-                    /*if (playerScript.classKey == "scp106")
-                    {
-                        playerScript.RpcId(int.Parse(playerScript.Name), "HealthManage", -damage / 24, "Shot by " + Name);
-                    }
-                    else
-                    {
-                        playerScript.RpcId(int.Parse(playerScript.Name), "HealthManage", -damage / 4 /*GlobalPosition.DistanceTo(playerScript.GlobalPosition)*///, "Shot by " + Name);
-                    //}
+                    playerScript.RpcId(int.Parse(playerScript.Name), "HealthManage", -damage / 4 /*GlobalPosition.DistanceTo(playerScript.GlobalPosition)*/, "Shot by " + Name, isTranquilizer ? 1 : 0);
                 }
             }
             else
@@ -147,7 +139,6 @@ public partial class WeaponManager : ItemAction
                 SpawnDecal(rayCast.GetCollisionPoint() + rayCast.GetCollisionNormal() * 0.9f, rayCast.GetCollisionNormal()); //Hit point
             }
         }
-        
     }
     /// <summary>
     /// Networked part of shooting. Available since 0.7.0

@@ -32,7 +32,7 @@ public partial class BallProjectile : Pickable
     {
         if (body is PlayerScript player && scp018)
         {
-            player.RpcId(int.Parse(player.Name), "HealthManage", vel.Y * -4, "Hit by SCP-018");
+            player.RpcId(int.Parse(player.Name), "HealthManage", vel.Y * -4, "Hit by SCP-018", 0);
         }
     }
 }

@@ -53,7 +53,7 @@ public partial class Scp173PlayerScript : Node3D
                     {
                         interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/173/NeckSnap" + rng.RandiRange(1, 3) + ".ogg");
                         interactSound.Play();
-                        player.RpcId(int.Parse(player.Name), "HealthManage", -16777216, "Crunched by SCP-173");
+                        player.RpcId(int.Parse(player.Name), "HealthManage", -16777216, "Crunched by SCP-173", 0);
                         Rpc("SetState", poseArr[rng.RandiRange(0, poseArr.Length - 1)]);
                     }
                 }

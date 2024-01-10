@@ -252,10 +252,10 @@ public partial class FacilityManager : Node3D
         GetNode<PlayerScript>(playerName).sprintSounds = classData.SprintSounds;
         GetNode<PlayerScript>(playerName).speed = classData.Speed;
         GetNode<PlayerScript>(playerName).jump = classData.Jump;
-        GetNode<PlayerScript>(playerName).health = classData.Health;
-        GetNode<PlayerScript>(playerName).sanity = classData.Sanity;
-        GetNode<PlayerScript>(playerName).currentHealth = classData.Health;
-        GetNode<PlayerScript>(playerName).currentSanity = classData.Sanity;
+        GetNode<PlayerScript>(playerName).health[0] = classData.Health;
+        GetNode<PlayerScript>(playerName).health[1] = classData.Sanity;
+        GetNode<PlayerScript>(playerName).currentHealth[0] = classData.Health;
+        GetNode<PlayerScript>(playerName).currentHealth[1] = classData.Sanity;
         GetNode<PlayerScript>(playerName).team = classData.Team;
 
         GetNode<AmmoSystem>(playerName + "/AmmoSystem").ammo = classData.Ammo;

@@ -21,7 +21,7 @@ public partial class ItemMedkit : ItemAction
     }
     internal override void OnUse(PlayerScript player)
     {
-        player.RpcId(int.Parse(player.Name), "HealthManage", 50, "Healed by medkit");
+        player.RpcId(int.Parse(player.Name), "HealthManage", 50, "Healed by medkit", 0);
         base.OnUse(player);
     }
 }

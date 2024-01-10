@@ -53,7 +53,7 @@ public partial class PlayerUI : Control
 
         if (Input.IsActionJustPressed("player_list"))
         {
-            InputValues("playerslist");
+            InputValues("playerlist");
         }
         if (Input.IsActionJustPressed("console"))
         {

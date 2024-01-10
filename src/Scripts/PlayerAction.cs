@@ -65,4 +65,22 @@ public partial class PlayerAction : Node3D
                 break;
         }
     }
+
+    /// <summary>
+    /// Helper method to teleport. Will be moved to PlayerAction in future versions.
+    /// </summary>
+    /// <param name="placeToTeleport">Place to teleport</param>
+    internal void CallTeleport(string placeToTeleport)
+    {
+        GetParent<FacilityManager>().Rpc("TeleportTo", Multiplayer.GetUniqueId().ToString(), PlacesForTeleporting.defaultData[placeToTeleport]);
+    }
+
+    /// <summary>
+    /// Helper method to call FacilityManager for changing player class. Will be moved to PlayerAction in future versions.
+    /// </summary>
+    /// <param name="to">Player class to become</param>
+    internal void CallForceclass(int to, string reason)
+    {
+        GetParent<FacilityManager>().Rpc("SetPlayerClass", Multiplayer.GetUniqueId().ToString(), to, reason);
+    }
 }

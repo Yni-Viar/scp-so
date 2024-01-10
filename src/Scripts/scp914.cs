@@ -160,7 +160,7 @@ public partial class Scp914 : AnimatableBody3D
                             if (Multiplayer.IsServer())
                             {
                                 GD.Print("Rough");
-                                player.RpcId(int.Parse(player.Name), "HealthManage", -16777216, "Died at Rough setting at SCP-914");
+                                player.RpcId(int.Parse(player.Name), "HealthManage", -16777216, "Died at Rough setting at SCP-914", 0);
                             }
                             break;
                         case Modes.COARSE:
@@ -168,7 +168,7 @@ public partial class Scp914 : AnimatableBody3D
                             if (Multiplayer.IsServer())
                             {
                                 GD.Print("Coarse");
-                                player.RpcId(int.Parse(player.Name), "HealthManage", -30);
+                                player.RpcId(int.Parse(player.Name), "HealthManage", -30, "Died at Coarse setting at SCP-914", 0);
                             }
                             break;
                         case Modes.ONETOONE:
