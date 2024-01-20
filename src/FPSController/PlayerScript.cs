@@ -102,8 +102,11 @@ public partial class PlayerScript : CharacterBody3D
         // Player initialization.
         if (IsMultiplayerAuthority())
         {
+            //Fixing sky glitch, if exiting the game from Surface Zone.
+            GetParent().GetNode<WorldEnvironment>("WorldEnvironment").Environment.BackgroundMode = Godot.Environment.BGMode.Color;
             //Loading settings and player nickname
             settings = GetTree().Root.GetNode<Settings>("Settings");
+
             if (FileAccess.FileExists("user://playername.txt"))
             {
                 string nick = TxtParser.Load("user://playername.txt");
