@@ -20,7 +20,7 @@ public partial class PlayerAction : Node3D
     /// <param name="key">Object key. Reworked in 0.8.0-dev</param>
     /// <param name="type">Type of object(0 is item, 1 is ammo, 2 is NPC)</param>
     /// <param name="playerId">Player ID. Available since 0.7.2-dev</param>
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    [Obsolete("SpawnObject is an obsolete script. Use ItemManager instead...")]
     void SpawnObject(int key, int type, int playerId)
     {
         switch (type)
@@ -28,9 +28,7 @@ public partial class PlayerAction : Node3D
             case 0:
                 if (key < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Items.Count && key >= 0)
                 {
-                    Pickable pickable = ResourceLoader.Load<PackedScene>(GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Items[key].PickablePath).Instantiate<Pickable>();
-                    pickable.Position = GetParent().GetNode<Marker3D>(playerId + "/PlayerHead/ItemSpawn").GlobalPosition;
-                    GetParent().GetNode<Node3D>("Items").AddChild(pickable);
+                    GetParent().GetNode<ItemManager>("Items").RpcId(1, "CallAddOrRemoveItem", true, key, playerId + "");
                 }
                 else
                 {
@@ -40,9 +38,7 @@ public partial class PlayerAction : Node3D
             case 1:
                 if (key < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Ammo.Count && key >= 0)
                 {
-                    LootableAmmo ammo = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Ammo[key].Instantiate<LootableAmmo>();
-                    ammo.Position = GetParent().GetNode<Marker3D>(playerId + "/PlayerHead/ItemSpawn").GlobalPosition;
-                    GetParent().GetNode<Node3D>("Items").AddChild(ammo);
+                    GetParent().GetNode<ItemManager>("Ammo").RpcId(1, "CallAddOrRemoveItem", true, key, playerId);
                 }
                 else
                 {
@@ -52,8 +48,7 @@ public partial class PlayerAction : Node3D
             case 2:
                 if (key < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Npc.Count && key >= 0)
                 {
-                    Node3D npc = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Npc[key].Instantiate<Node3D>();
-                    GetParent().GetNode<Node3D>("NPCs").AddChild(npc);
+                    GetParent().GetNode<ItemManager>("Npcs").RpcId(1, "CallAddOrRemoveItem", true, key, playerId);
                 }
                 else
                 {

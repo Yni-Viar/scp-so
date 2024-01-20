@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_53e84")
+InternalId = 11
 InternalName = "scp018"
 Name = "SCP-018"
 Texture = ExtResource("1_508i0")

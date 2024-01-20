@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dfiw4astkg0oo"]
 
 [ext_resource type="Script" path="res://InventorySystem/InventorySlotDisplay.cs" id="1_66jt7"]
-[ext_resource type="Texture2D" uid="uid://dbuijxl0c8q82" path="res://InventorySystem/inventoryitem_background.png" id="2_bx2h6"]
+[ext_resource type="Texture2D" uid="uid://w15x3ud7t7ea" path="res://InventorySystem/InventoryItemBackground.png" id="2_td23o"]
 
 [node name="InventorySlotDisplay" type="CenterContainer"]
 anchors_preset = 8
@@ -21,10 +21,10 @@ script = ExtResource("1_66jt7")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("2_bx2h6")
+texture = ExtResource("2_td23o")
 
 [node name="ItemTextureRect" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 stretch_mode = 4
 

@@ -45,13 +45,17 @@ public partial class Scp3199PlayerScript : Node3D
                 var collidedWith = ray.GetCollider();
                 if (collidedWith is PlayerScript player)
                 {
-                    if (player.scpNumber == -1)
+                    if (player.scpNumber == -1 || player.team == Globals.Team.NSE)
                     {
                         Rpc("SetState", "3199_Hurt");
                         interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/SCPCommon/SCPAttack.ogg");
                         interactSound.Play();
                         player.RpcId(int.Parse(player.Name), "HealthManage", -35, "Hit by SCP-3199", 0);
                     }
+                }
+                if (collidedWith is Scp2522Recontain recon)
+                {
+                    recon.Rpc("Eject");
                 }
             }
         }

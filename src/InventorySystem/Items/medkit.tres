@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_nlbd2")
+InternalId = 6
 InternalName = "medkit"
 Name = "First Aid"
 Texture = ExtResource("1_jmq1g")

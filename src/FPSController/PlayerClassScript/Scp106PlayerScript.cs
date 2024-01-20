@@ -49,12 +49,12 @@ public partial class Scp106PlayerScript : Node3D
         }
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
-            if (Input.IsActionJustPressed("attack") && ray.IsColliding())
+            if (Input.IsActionJustPressed("attack") && ray.IsColliding() && GetParent().GetParent<PlayerScript>().CanMove)
             {
                 var collidedWith = ray.GetCollider();
                 if (collidedWith is PlayerScript player)
                 {
-                    if (player.scpNumber == -1 && GetParent().GetParent<PlayerScript>().CanMove)
+                    if (player.scpNumber == -1 || player.team == Globals.Team.NSE)
                     {
                         interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/106/Laugh.ogg");
                         interactSound.Play();
@@ -67,6 +67,10 @@ public partial class Scp106PlayerScript : Node3D
                             GetParent().GetParent().GetParent().GetParent().GetNode<FacilityManager>("Game").Rpc("TeleportTo", player.Name, PlacesForTeleporting.defaultData["pd_start"]);
                         }
                     }
+                }
+                if (collidedWith is Scp2522Recontain recon)
+                {
+                    recon.Rpc("Eject");
                 }
             }
 

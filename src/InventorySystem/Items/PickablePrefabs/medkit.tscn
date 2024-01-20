@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvk3py60of4fm"]
+[gd_scene load_steps=8 format=3 uid="uid://cvk3py60of4fm"]
 
 [ext_resource type="Script" path="res://InventorySystem/Items/Pickable.cs" id="1_k8o58"]
 [ext_resource type="Texture2D" uid="uid://cm28ww741bu5g" path="res://Assets/Models/Items-FirstAid/FirstAid.png" id="1_l8oa2"]
+[ext_resource type="Resource" uid="uid://cigjp5sl4xe7x" path="res://InventorySystem/Items/medkit.tres" id="2_j3u2p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ewlx"]
 resource_name = "Material.001"
@@ -50,13 +51,13 @@ size = Vector3(0.765801, 0.218289, 0.658428)
 [node name="FirstAid" type="RigidBody3D"]
 collision_layer = 8
 script = ExtResource("1_k8o58")
-itemNumber = 6
+item = ExtResource("2_j3u2p")
 
 [node name="FirstAid2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, -0.6, 0, 0.6, -2.62268e-08, 0, -0.213251, 0)
+transform = Transform3D(-2.62268e-08, 0.6, -2.62268e-08, 0, -2.62268e-08, -0.6, -0.6, -2.62268e-08, 1.14641e-15, -6.36904e-06, -0.213251, -1.01088e-05)
 mesh = SubResource("ArrayMesh_m3b3e")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -3.57628e-07, -1, 0, 1, -3.57628e-07, 0, 0.113729, -1.41216e-05)
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 6.36904e-06, 0.113729, -4.01282e-06)
 shape = SubResource("BoxShape3D_5jedo")

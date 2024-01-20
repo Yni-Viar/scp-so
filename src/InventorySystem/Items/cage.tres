@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_ernur")
+InternalId = 8
 InternalName = "cage"
 Name = "Cage for containing"
 Texture = ExtResource("1_15r8e")

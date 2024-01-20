@@ -72,3 +72,15 @@
 - LightContainment.ogg - Kevin MacLeod
 - HeavyContainment.ogg, EntranceZone.ogg - FireFox, Kevin MacLeod
 - Room079.ogg - Class401
+
+### SCPs:
+- "SCP-018" by Epic Phail Spy
+- "SCP-079" by Unknown author
+- "SCP-106" by Dr Gears
+- "SCP-131" by Lt Masipag
+- "SCP-173" by Moto42
+- "SCP-650" by Dr Talson
+- "SCP-914" by Dr Gears
+- "SCP-2306" by Jacob Conwell
+- "SCP-2522" by djkaktus
+- "SCP-3199" by bittermixin

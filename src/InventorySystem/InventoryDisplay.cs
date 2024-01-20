@@ -18,11 +18,12 @@ public partial class InventoryDisplay : GridContainer
         // GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("give", new Callable(this, "AddItemAlias"), "Gives an item to inventory (experimental)");
         
 	}
-
+    /*
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 	}
+    */
     /// <summary>
     /// Refreshes inventory UI.
     /// </summary>

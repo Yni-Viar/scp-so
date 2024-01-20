@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bbalcs68vprgt"]
+
+[ext_resource type="Texture2D" uid="uid://cffbggt7lqg2q" path="res://LoadingScreens/Images/scp650.png" id="1_x1rmu"]
+[ext_resource type="Script" path="res://Scripts/LoadingScreenResource.cs" id="2_27jgc"]
+
+[resource]
+script = ExtResource("2_27jgc")
+Name = "SCP-650"
+Description = "SCP-650 is a black statue of a stylized humanoid 167cm tall. The statue does not possess hands or facial features: the limbs taper off into rounded points and the head is a smooth surface all around.
+If the statue is not being observed, it will relocate itself to a point immediately behind whomever is in the containment site and assume a threatening posture.No noise is made during this relocation process, so the precise method of locomotion is as of yet unknown."
+Texture = ExtResource("1_x1rmu")

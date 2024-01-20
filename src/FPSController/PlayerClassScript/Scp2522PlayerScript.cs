@@ -62,6 +62,18 @@ public partial class Scp2522PlayerScript : ComputerPlayerScript
             {
                 energy += 0.01f;
             }
+
+            if (GetTree().Root.GetNodeOrNull<Scp2522Recontain>("Main/Game/MapGenRz/RZ_room2_servers/laptop_2522") != null)
+            {
+                if (GetTree().Root.GetNode<Scp2522Recontain>("Main/Game/MapGenRz/RZ_room2_servers/laptop_2522").recontaining)
+                {
+                    GetNode<Label>("UI/Scp2306Warning").Show();
+                }
+                else
+                {
+                    GetNode<Label>("UI/Scp2306Warning").Hide();
+                }
+            }
         }
 	}
     /// <summary>

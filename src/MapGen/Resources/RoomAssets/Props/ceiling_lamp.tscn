@@ -738,8 +738,8 @@ mesh = SubResource("ArrayMesh_ppi4t")
 skeleton = NodePath("")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.505443, 0)
-light_size = 0.2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.662486, 0)
+light_size = 0.1
 distance_fade_enabled = true
 omni_range = 12.0
 script = ExtResource("1_1wuna")

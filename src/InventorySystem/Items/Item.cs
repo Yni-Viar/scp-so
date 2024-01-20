@@ -6,6 +6,8 @@ public partial class Item : Resource
 {
     [ExportGroup("Common item properties")]
     [Export]
+    public int InternalId { get; set; }
+    [Export]
     public string InternalName { get; set; }
     [Export]
     public string Name { get; set; }
@@ -37,10 +39,11 @@ public partial class Item : Resource
     [Export]
     public string[] VeryFine { get; set; }
 
-    public Item() : this(null, null, null, null, null, null, true, null, null, null, null, null) {}
-    public Item(string internalName, string name, Texture2D texture, string pickablePath, string pickupSoundPath, 
+    public Item() : this(-1, null, null, null, null, null, null, true, null, null, null, null, null) {}
+    public Item(int internalId, string internalName, string name, Texture2D texture, string pickablePath, string pickupSoundPath, 
         string firstPersonPrefabPath, bool oneTimeUse, string[] rough, string[] coarse, string[] oneToOne, string[] fine, string[] veryFine)
     {
+        InternalId = internalId;
         InternalName = internalName;
         Name = name;
         Texture = texture;

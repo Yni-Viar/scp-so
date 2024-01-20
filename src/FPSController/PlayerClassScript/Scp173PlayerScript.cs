@@ -57,6 +57,10 @@ public partial class Scp173PlayerScript : Node3D
                         Rpc("SetState", poseArr[rng.RandiRange(0, poseArr.Length - 1)]);
                     }
                 }
+                if (collidedWith is Scp2522Recontain recon)
+                {
+                    recon.Rpc("Eject");
+                }
             }
             Scp173Stare((float)delta);
         }

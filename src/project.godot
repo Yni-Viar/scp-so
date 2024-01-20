@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SCP: Site Online"
-config/version="0.7.2"
+config/version="0.8.0"
 config/tags=PackedStringArray("scp_foundation", "game")
 run/main_scene="res://Scenes/Main.tscn"
 config/use_custom_user_dir=true
@@ -31,7 +31,8 @@ Settings="*res://Scripts/Settings.cs"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=2
+window/size/mode=3
+window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
@@ -209,8 +210,6 @@ weapon_reload={
 
 [physics]
 
-2d/run_on_separate_thread=true
-3d/run_on_separate_thread=true
 3d/physics_engine="JoltPhysics3D"
 
 [rendering]
@@ -219,3 +218,7 @@ occlusion_culling/bvh_build_quality=1
 occlusion_culling/occlusion_rays_per_thread=256
 global_illumination/sdfgi/frames_to_update_lights=3
 limits/opengl/max_lights_per_object=64
+
+[threading]
+
+worker_pool/max_threads=1

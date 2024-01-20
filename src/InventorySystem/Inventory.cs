@@ -17,11 +17,11 @@ public partial class Inventory : Node
     internal Godot.Collections.Array<Resource> items = new Godot.Collections.Array<Resource>{
         null, null, null, null, null, null, null, null, null, null
     };
-
+    /*
     public override void _Process(double delta)
     {
-        base._Process(delta);
     }
+    */
     /// <summary>
     /// Gets item from inventory
     /// </summary>
@@ -72,7 +72,7 @@ public partial class Inventory : Node
         //Spawn item ingame
         if (previousItem is Item _item && itemSpawn) // anti-dupe
         {
-            Rpc("DropItemRpc", _item.PickablePath);
+            GetTree().Root.GetNode<ItemManager>("Main/Game/Items").RpcId(1, "CallAddOrRemoveItem", true, _item.InternalId, Multiplayer.GetUniqueId() + "/PlayerHead/ItemSpawn");
         }
         EmitSignal(SignalName.ItemsChanged, new Godot.Collections.Array{itemIndex});
         return previousItem;
@@ -125,8 +125,7 @@ public partial class Inventory : Node
             return;
         }*//*
         RemoveItem(itemIndex, itemSpawn);
-    }*/
-
+    }
     /// <summary>
     /// Drops item for all players.
     /// </summary>
@@ -139,4 +138,5 @@ public partial class Inventory : Node
         GetTree().Root.GetNode<Node3D>("Main/Game/Items").AddChild(pickable);
         GetTree().Root.GetNode<Node3D>("Main/Game/Items/" + pickable.Name).Position = GetParent().GetParent().GetNode<Marker3D>("PlayerHead/ItemSpawn").GlobalPosition;
     }
+    */
 }

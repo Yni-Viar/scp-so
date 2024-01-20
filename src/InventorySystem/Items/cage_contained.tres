@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_3v377")
+InternalId = 9
 InternalName = "cage_contained"
 Name = "Cage with an SCP inside"
 Texture = ExtResource("1_2xcey")

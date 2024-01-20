@@ -3,7 +3,7 @@ using System;
 /// <summary>
 /// SCP-650 NPC code
 /// </summary>
-public partial class Scp650Npc : Node3D
+public partial class Scp650Npc : BaseNpc
 {
     RandomNumberGenerator rng = new RandomNumberGenerator();
     [Export] bool stare = false;

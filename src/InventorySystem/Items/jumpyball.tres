@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_vdy7r")
+InternalId = 16
 InternalName = "jumpyball"
 Name = "An ordinary ball with label \"Jumpy\""
 Texture = ExtResource("1_l1ox8")

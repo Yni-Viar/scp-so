@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://duvebkaj518ex" path="res://MapGen/Resources/Buttons/button_interact.tscn" id="3_mkb0f"]
 [ext_resource type="Script" path="res://Scripts/DoorsSystem/DoorStaticOpener.cs" id="3_y53gv"]
 
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76br2"]
 resource_name = "material0.001"
 cull_mode = 2

@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_u64iv")
+InternalId = 12
 InternalName = "mtfrifle"
 Name = "MTF Rifle"
 Texture = ExtResource("1_3nv6d")

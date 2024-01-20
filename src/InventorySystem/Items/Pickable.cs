@@ -5,8 +5,9 @@ using System;
 /// </summary>
 public partial class Pickable : RigidBody3D
 {
-    [Export] internal int itemNumber;
+    [Export] internal Item item;
     PlayerScript holder;
+    /*
     // Note for Yni: if the RigidBody keeps falling, check rotation!
     // December 2023 edit: idk, is this Godot Physics issue... Because I switched to Godot Jolt!
 	// Called when the node enters the scene tree for the first time.
@@ -14,8 +15,8 @@ public partial class Pickable : RigidBody3D
 	{
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	/*public override void _Process(double delta)
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
 	{
 	}*/
     /// <summary>
@@ -24,17 +25,24 @@ public partial class Pickable : RigidBody3D
     /// <param name="player">Player to add an item</param>
     internal void PickUpItem(PlayerScript player)
     {
-        Inventory inv = player.GetNode<Inventory>("InventoryContainer/Inventory");
-        AudioStreamPlayer3D interactSound = player.GetNode<AudioStreamPlayer3D>("InteractSound");
-        interactSound.Stream = ResourceLoader.Load<AudioStream>(GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Items[itemNumber].PickupSoundPath);
-        interactSound.Play();
-        if (!Multiplayer.IsServer())
+        if (Freeze)
         {
-            RpcId(Multiplayer.GetUniqueId(), "PickUpRpc", inv.GetPath());
+            return;
         }
         else
         {
-            PickUpRpc(inv.GetPath());
+            Inventory inv = player.GetNode<Inventory>("InventoryContainer/Inventory");
+            AudioStreamPlayer3D interactSound = player.GetNode<AudioStreamPlayer3D>("InteractSound");
+            interactSound.Stream = ResourceLoader.Load<AudioStream>(GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Items[item.InternalId].PickupSoundPath);
+            interactSound.Play();
+            if (!Multiplayer.IsServer())
+            {
+                RpcId(Multiplayer.GetUniqueId(), "PickUpRpc", inv.GetPath());
+            }
+            else
+            {
+                PickUpRpc(inv.GetPath());
+            }
         }
     }
     /// <summary>
@@ -45,10 +53,10 @@ public partial class Pickable : RigidBody3D
     void PickUpRpc(string invPath)
     {
         // This opens JSON, find item and add it to inventory.
-        if (itemNumber < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Items.Count && itemNumber >= 0)
+        if (item.InternalId < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Items.Count && item.InternalId >= 0)
         {
             //after trimming, we will get an item from json.
-            GetNode<Inventory>(invPath).AddItem(GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Items[itemNumber]);
+            GetNode<Inventory>(invPath).AddItem(GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Items[item.InternalId]);
             Rpc("DestroyPickedItem");
 
         }

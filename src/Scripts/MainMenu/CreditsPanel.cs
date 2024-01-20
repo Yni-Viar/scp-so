@@ -17,48 +17,6 @@ public partial class CreditsPanel : Panel
     {
         this.Hide();
     }
-
-
-    private void OnMapGenPressed()
-    {
-        GetNode<Control>("CreditsMenu").Hide();
-        GetNode<Panel>("MapGenCredits").Show();
-    }
-
-
-    private void OnFpsPressed()
-    {
-        GetNode<Control>("CreditsMenu").Hide();
-        GetNode<Panel>("FPSCredits").Show();
-    }
-
-
-    private void OnOtherCodePressed()
-    {
-        GetNode<Control>("CreditsMenu").Hide();
-        GetNode<Panel>("OtherCodeCredits").Show();
-    }
-
-
-    private void OnModelsPressed()
-    {
-        GetNode<Control>("CreditsMenu").Hide();
-        GetNode<Panel>("ModelsCredits").Show();
-    }
-
-
-    private void OnSoundsPressed()
-    {
-        GetNode<Control>("CreditsMenu").Hide();
-        GetNode<Panel>("SoundsCredits").Show();
-    }
-
-
-    private void OnOtherArtPressed()
-    {
-        GetNode<Control>("CreditsMenu").Hide();
-        GetNode<Panel>("OtherArtCredits").Show();
-    }
 }
 
 

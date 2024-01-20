@@ -127,7 +127,7 @@ public partial class WeaponManager : ItemAction
                 //Deplete HP
                 if (playerScript.className == "SCP-106 \"The Old Man\"")
                 {
-                    playerScript.RpcId(int.Parse(playerScript.Name), "HealthManage", -damage / 24, "Shot by " + Name);
+                    playerScript.RpcId(int.Parse(playerScript.Name), "HealthManage", -damage / 24, "Shot by " + Name, isTranquilizer ? 0 : 1);
                 }
                 else
                 {

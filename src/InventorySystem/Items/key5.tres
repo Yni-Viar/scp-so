@@ -1,16 +1,17 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://lubq7b1s5e4p"]
 
-[ext_resource type="Texture2D" uid="uid://c4noc4t1o1wn3" path="res://InventorySystem/Items/InventoryIcons/Keycard1.png" id="1_ypcib"]
+[ext_resource type="Texture2D" uid="uid://dk071p2uf40k3" path="res://InventorySystem/Items/InventoryIcons/Keycard5.png" id="1_r85kx"]
 [ext_resource type="Script" path="res://InventorySystem/Items/Item.cs" id="2_luma7"]
 
 [resource]
 script = ExtResource("2_luma7")
-InternalName = "key1"
-Name = "Keycard level 1"
-Texture = ExtResource("1_ypcib")
-PickablePath = "res://InventorySystem/Items/PickablePrefabs/key1.tscn"
+InternalId = 4
+InternalName = "key5"
+Name = "Keycard level 5"
+Texture = ExtResource("1_r85kx")
+PickablePath = "res://InventorySystem/Items/PickablePrefabs/key5.tscn"
 PickupSoundPath = "res://Sounds/Interact/PickItem1.ogg"
-FirstPersonPrefabPath = "res://InventorySystem/Items/InHandPrefabs/key1.tscn"
+FirstPersonPrefabPath = "res://InventorySystem/Items/InHandPrefabs/key5.tscn"
 OneTimeUse = false
 Rough = PackedStringArray("res://InventorySystem/Items/PickablePrefabs/key1.tscn", "res://InventorySystem/Items/PickablePrefabs/key2.tscn")
 Coarse = PackedStringArray("res://InventorySystem/Items/PickablePrefabs/key3.tscn", "res://InventorySystem/Items/PickablePrefabs/key4.tscn")

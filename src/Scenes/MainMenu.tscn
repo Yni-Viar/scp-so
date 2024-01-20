@@ -142,10 +142,17 @@ theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "[b]v.0.8.0-dev[/b] [i](Alpha)[/i]
 - Added new Light Containment Zone doors.
+- Added SCP-2306 and a game mechanic specified for this SCP.
+- SCP-2522 is now enabled.
+- Now SCP-131 instances are counted as targets as human classes.
 - Reworked the core of the game - now it is possible to have different gamemodes.
 [b][i]Please note, syntax of the most admin commands changed. Please, check the message in[/i] help [i]command.[/i][/b]
 - Thanks to Xandromeda's advice, I have changed the data storage system - now it is safer.
 - Added health, sanity and energy (for SCP-2522) bar icons, as well as some other currently unused ones.
+- Fixed player name not syncing.
+- Increased inventory icons size.
+- Third-person item now using Pickable - and not first-person prefabs.
+- Fixed keycard level 5 to be identified as keycard level 1.
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.
@@ -317,7 +324,6 @@ text = "[b]This work is based on SCP Foundation.[/b]
 SCP Ideas, used ingame, are made by scpwiki community. [i]License - CC-BY-SA 3.0[/i]
 
 [b]SCP: Site Online code is licensed under MIT License[/b]
-This game, mostly (exceptions are below) made by Yni.
 
 
 "
@@ -333,14 +339,14 @@ theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "[color=#84D9FF][i]Contributors:[/i]
-- Yni (Yni Viar, the Creator of this game, the programmer)[/color]
+- Yni (Yni Viar, the Creator)
+- Xandromeda[/color]
 
 
 [color=green] Many thanks for testers, which pointed me at bugs:
 - William[]
 - cherniichernish (Гражданин)
-- The1Wolfcast
-- Xandromeda[/color]
+- The1Wolfcast[/color]
 
 
 "

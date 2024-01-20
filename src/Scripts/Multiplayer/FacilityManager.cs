@@ -73,10 +73,9 @@ public partial class FacilityManager : Node3D
             ammo = ItemParser.ReadJson("user://ammotype_" + Globals.itemsCompatibility + ".json", Globals.ItemType.ammo);
 
             npcs = ItemParser.ReadJson("user://npcs_" + Globals.itemsCompatibility + ".json", Globals.ItemType.npc);
-
-            maxSpawnableObjects = GetParent<NetworkManager>().maxObjects;
-            scpLimit = GetParent<NetworkManager>().maxScps;
             */
+            maxSpawnableObjects = GetParent<NetworkManager>().maxObjects;
+            
             /*
             if (ResourceLoader.Exists("user://save_" + Globals.gameDataCompatibility + ".tres"))
             {
@@ -230,11 +229,12 @@ public partial class FacilityManager : Node3D
         {
             tickets[0]--;
         }
-        if (classData.ScpNumber == -1)
+        if (classData.ScpNumber == -1 || classData.Team == Globals.Team.NSE)
         {
             targets++;
         }
-        else if (GetNode<PlayerScript>(playerName).scpNumber == -1 && classData.ScpNumber != -1)
+        else if ((GetNode<PlayerScript>(playerName).scpNumber == -1 && classData.ScpNumber != -1) ||
+            (GetNode<PlayerScript>(playerName).team == Globals.Team.NSE && classData.Team != Globals.Team.NSE))
         {
             targets--;
         }

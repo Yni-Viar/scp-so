@@ -73,18 +73,16 @@ public partial class NetworkManager : Node
             TxtParser.Save("user://ipbans.txt", "");
         }
 
-        /* foreach (var argument in OS.GetCmdlineArgs()) // unused as for now.
+        if (DisplayServer.GetName() == "headless")
         {
-            if (argument == "--server")
-            {
-                Host();
-            }
-            else
-            {
-                continue;
-            }
+            // Run your server startup code here...
+            //
+            // Using this check, you can start a dedicated server by running
+            // a Godot binary (editor or export template) with the `--headless`
+            // command-line argument
+            
+            Host();
         }
-        */
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.

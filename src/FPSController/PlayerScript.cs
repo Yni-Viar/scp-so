@@ -94,28 +94,6 @@ public partial class PlayerScript : CharacterBody3D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        //Loading settings and player nickname
-        settings = GetTree().Root.GetNode<Settings>("Settings");
-        if (FileAccess.FileExists("user://playername.txt"))
-        {
-            string nick = TxtParser.Load("user://playername.txt");
-            if (!string.IsNullOrEmpty(nick))
-            {
-                playerName = nick;
-            }
-            else
-            {
-                RandomNumberGenerator rng = new RandomNumberGenerator();
-                rng.Randomize();
-                playerName = "Unknown player " + rng.Randi();
-            }
-        }
-        else
-        {
-            RandomNumberGenerator rng = new RandomNumberGenerator();
-            rng.Randomize();
-            playerName = "Unknown player " + rng.Randi();
-        }
         // Grant admin and moderator privilegies
         if (Multiplayer.IsServer())
         {
@@ -124,6 +102,29 @@ public partial class PlayerScript : CharacterBody3D
         // Player initialization.
         if (IsMultiplayerAuthority())
         {
+            //Loading settings and player nickname
+            settings = GetTree().Root.GetNode<Settings>("Settings");
+            if (FileAccess.FileExists("user://playername.txt"))
+            {
+                string nick = TxtParser.Load("user://playername.txt");
+                if (!string.IsNullOrEmpty(nick))
+                {
+                    playerName = nick;
+                }
+                else
+                {
+                    RandomNumberGenerator rng = new RandomNumberGenerator();
+                    rng.Randomize();
+                    playerName = "Unknown player " + rng.Randi();
+                }
+            }
+            else
+            {
+                RandomNumberGenerator rng = new RandomNumberGenerator();
+                rng.Randomize();
+                playerName = "Unknown player " + rng.Randi();
+            }
+
             GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = true;
             playerHead = GetNode<Node3D>("PlayerHead");
             walkSounds = GetNode<AudioStreamPlayer3D>("WalkSounds");
@@ -338,21 +339,24 @@ public partial class PlayerScript : CharacterBody3D
         {
             Item item = GD.Load<Item>("res://InventorySystem/Items/" + itemName + ".tres");
             // If third person view exists, else will be used first person view.
-            if (GetNode<Node3D>("PlayerModel").GetChild(0).GetNodeOrNull<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand") != null)
+            if (GetNode<Node3D>("PlayerModel").GetChild(0).GetNodeOrNull<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand") != null && IsMultiplayerAuthority())
             {
-                if (!IsMultiplayerAuthority())
-                {
-                    GetNode<Marker3D>("PlayerHead/PlayerHand").Hide();
-                }
+                GetNode<Marker3D>("PlayerHead/PlayerHand").Hide();
                 Node thirdPersonHandRoot = GetNode<Node3D>("PlayerModel").GetChild(0).GetNode<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand");
                 foreach (Node itemUsedBefore in thirdPersonHandRoot.GetChildren())
                 {
                     itemUsedBefore.QueueFree();
                 }
+                /* old 0.7.x code.
                 ItemAction tpsModel = ResourceLoader.Load<PackedScene>(item.FirstPersonPrefabPath).Instantiate<ItemAction>();
                 tpsModel.oneTimeUse = item.OneTimeUse;
                 tpsModel.index = int.Parse(itemIndex);
                 thirdPersonHandRoot.AddChild(tpsModel, true);
+                */
+
+                Pickable tpsModel = ResourceLoader.Load<PackedScene>(item.PickablePath).Instantiate<Pickable>();
+                tpsModel.Freeze = true;
+                thirdPersonHandRoot.AddChild(tpsModel);
             }
             else
             {

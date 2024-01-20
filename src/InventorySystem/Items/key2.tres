@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_ishtn")
+InternalId = 1
 InternalName = "key2"
 Name = "Keycard level 2"
 Texture = ExtResource("1_omwkj")

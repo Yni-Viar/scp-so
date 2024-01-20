@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxve6ffw6cl3q"]
+[gd_scene load_steps=14 format=3 uid="uid://bxve6ffw6cl3q"]
 
 [ext_resource type="Texture2D" uid="uid://t4i6qu3w3w78" path="res://Assets/Models/Items-SCPCage/closed/Metal030_2K-PNG_Color.png" id="1_1jusd"]
 [ext_resource type="Script" path="res://InventorySystem/Items/Pickable.cs" id="1_lu8ed"]
 [ext_resource type="Texture2D" uid="uid://cmya6ofigd0j" path="res://Assets/Models/Items-SCPCage/closed/Metal030_2K-PNG_Metalness-Metal030_2K-PNG_Roughness.png" id="2_0530e"]
+[ext_resource type="Resource" uid="uid://d3ayictart6ws" path="res://InventorySystem/Items/cage_contained.tres" id="2_b8tvq"]
 [ext_resource type="Texture2D" uid="uid://dvv42mq3esv6l" path="res://Assets/Models/Items-SCPCage/closed/Metal030_2K-PNG_NormalGL.png" id="3_yh7ng"]
 [ext_resource type="Texture2D" uid="uid://d0et5tf21etoa" path="res://Assets/Models/Items-SCPCage/closed/Metal030_2K-PNG_Color_painted.png" id="4_gdl3h"]
 
@@ -100,14 +101,16 @@ size = Vector3(1.47321, 3.21094, 1.47321)
 [node name="cage_contained" type="RigidBody3D"]
 collision_layer = 8
 script = ExtResource("1_lu8ed")
-itemNumber = 9
+item = ExtResource("2_b8tvq")
 
-[node name="Cage" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="Node3D" parent="."]
+
+[node name="Cage" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, 0, 0, 0)
 mesh = SubResource("ArrayMesh_v84w5")
 skeleton = NodePath("")
 
-[node name="Cage_001" type="MeshInstance3D" parent="."]
+[node name="Cage_001" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, 0, 0, 0)
 mesh = SubResource("ArrayMesh_c7plx")
 skeleton = NodePath("")

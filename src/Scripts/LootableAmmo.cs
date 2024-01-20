@@ -3,7 +3,8 @@ using System;
 
 public partial class LootableAmmo : RigidBody3D
 {
-	[Export] int type;
+	[Export] internal int objectId;
+	[Export] int ammoType;
 	[Export] int amount;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -20,7 +21,7 @@ public partial class LootableAmmo : RigidBody3D
 	/// <param name="player">Which player</param>
 	void AddAmmo(PlayerScript player)
 	{
-		player.GetNode<AmmoSystem>("AmmoSystem").ammo[type] += amount;
+		player.GetNode<AmmoSystem>("AmmoSystem").ammo[ammoType] += amount;
 		Rpc("DestroyPickedItem");
 	}
 

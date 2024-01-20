@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://dk80o4q00bb7i"]
+[gd_scene load_steps=27 format=3 uid="uid://dk80o4q00bb7i"]
 
 [ext_resource type="Texture2D" uid="uid://cqfc8sooid8xb" path="res://Assets/Models/Items-weapons/mtf_rifle/M4.png" id="1_0bj1u"]
 [ext_resource type="Script" path="res://InventorySystem/Items/Pickable.cs" id="1_ove0h"]
+[ext_resource type="Resource" uid="uid://cwja0eq2d3qxj" path="res://InventorySystem/Items/mtfrifle.tres" id="2_5honb"]
 [ext_resource type="Texture2D" uid="uid://bdfyvpmqxrkl4" path="res://Assets/Models/Items-weapons/mtf_rifle/M4NormalMap_NRM.png" id="2_s8nvj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxiat"]
@@ -287,10 +288,10 @@ size = Vector3(0.0725498, 0.448142, 0.667556)
 [node name="mtfrifle" type="RigidBody3D"]
 collision_layer = 8
 script = ExtResource("1_ove0h")
-itemNumber = 12
+item = ExtResource("2_5honb")
 
 [node name="Mesh" type="Node3D" parent="."]
-transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0, 0)
+transform = Transform3D(-0.18, 0, -1.57361e-08, 0, 0.18, 0, 1.57361e-08, 0, -0.18, 0, 0, 0)
 
 [node name="M4BoltCharge" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(0.167242, 0, 0, 0, 0.167241, 0, 0, 0, 0.167241, 0, 0, -2.68495)
@@ -309,7 +310,7 @@ mesh = SubResource("ArrayMesh_of5h8")
 skeleton = NodePath("")
 
 [node name="M4Stock2_002" type="MeshInstance3D" parent="Mesh"]
-transform = Transform3D(0.155423, -0.000619503, 0.00336184, 0.000522894, 0.155395, 0.00446143, -0.00337822, -0.00444904, 0.15536, 0.107026, 0.921312, -4.47507)
+transform = Transform3D(0.155423, -0.000619503, 0.00336184, 0.000522894, 0.155395, 0.00446144, -0.00337822, -0.00444904, 0.15536, 0.107026, 0.921312, -4.47507)
 mesh = SubResource("ArrayMesh_ly2rp")
 skeleton = NodePath("")
 
@@ -328,13 +329,13 @@ mesh = SubResource("ArrayMesh_1adev")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0247101, -0.21085)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0247101, 0.20347)
 shape = SubResource("BoxShape3D_4m1sd")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011811, 0.283645, 0.516988)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011811, 0.283645, -0.52251)
 shape = SubResource("BoxShape3D_ku8xv")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0122264, 0.0866626, -0.742331)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0122264, 0.0866626, 0.737382)
 shape = SubResource("BoxShape3D_eftq0")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxj3dd8r00p7v"]
+[gd_scene load_steps=8 format=3 uid="uid://bxj3dd8r00p7v"]
 
 [ext_resource type="Texture2D" uid="uid://c4xf01f13t5fp" path="res://Assets/Models/Items-Keycards/keycard2.png" id="1_hme0x"]
 [ext_resource type="Script" path="res://InventorySystem/Items/Pickable.cs" id="1_mlole"]
+[ext_resource type="Resource" uid="uid://c8qvrpfwg367g" path="res://InventorySystem/Items/key2.tres" id="2_uoaa2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vqitp"]
 resource_name = "material0.004"
@@ -49,12 +50,13 @@ size = Vector3(0.386, 0.26, 0.05)
 collision_layer = 8
 continuous_cd = true
 script = ExtResource("1_mlole")
-itemNumber = 1
+item = ExtResource("2_uoaa2")
 
 [node name="Scene_Root_001" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_wersr")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00312073, -0.00231515)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.00312073, -0.00231515)
 shape = SubResource("BoxShape3D_gcteg")

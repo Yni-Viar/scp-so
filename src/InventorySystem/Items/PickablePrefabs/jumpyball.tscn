@@ -51,7 +51,7 @@ radius = 0.1
 [node name="jumpyball" type="RigidBody3D"]
 collision_layer = 8
 script = ExtResource("1_xaees")
-itemResource = ExtResource("2_s0ccg")
+item = ExtResource("2_s0ccg")
 
 [node name="Sphere_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)

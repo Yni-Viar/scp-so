@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://qkwar6d6wrkx"]
+[gd_scene load_steps=15 format=3 uid="uid://qkwar6d6wrkx"]
 
 [ext_resource type="Texture2D" uid="uid://dn3cwfq47jax5" path="res://Assets/Models/Items-weapons/com16/1911 Magazine Uv.png" id="1_dak8u"]
 [ext_resource type="Script" path="res://InventorySystem/Items/Pickable.cs" id="1_fnw7r"]
+[ext_resource type="Resource" uid="uid://d18i1wbbiixld" path="res://InventorySystem/Items/com16.tres" id="2_nf4hl"]
 [ext_resource type="Texture2D" uid="uid://ck7h8qgpkre0g" path="res://Assets/Models/Items-weapons/com16/1911 UV3.png" id="2_o4mc6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_at6iu"]
@@ -120,36 +121,39 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5r622")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1lj0s"]
-size = Vector3(0.10376, 0.258318, 0.0882284)
+[sub_resource type="BoxShape3D" id="BoxShape3D_3kxbo"]
+size = Vector3(0.0541992, 0.27002, 0.178589)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_cmfdu"]
-size = Vector3(0.392772, 0.115773, 0.0943131)
+[sub_resource type="BoxShape3D" id="BoxShape3D_4sw4m"]
+size = Vector3(0.0571289, 0.1651, 0.408691)
 
 [node name="com16" type="RigidBody3D"]
 collision_layer = 8
 script = ExtResource("1_fnw7r")
-itemNumber = 10
+item = ExtResource("2_nf4hl")
 
-[node name="1911_001" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="1911_001" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(-0.471363, -0.166784, -7.54979e-08, -0.166784, 0.471363, -1.24751e-08, 7.53351e-08, 1.34231e-08, -0.5, 0.17288, -0.0914282, 0.011009)
 mesh = SubResource("ArrayMesh_6a8dl")
 skeleton = NodePath("")
 
-[node name="1911" type="MeshInstance3D" parent="."]
+[node name="1911" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(-0.471363, -0.166784, -7.54979e-08, -0.166784, 0.471363, -1.24751e-08, 7.53351e-08, 1.34231e-08, -0.5, 0.17288, -0.0914282, 0.011009)
 mesh = SubResource("ArrayMesh_t8i48")
 skeleton = NodePath("")
 
-[node name="1911_003" type="MeshInstance3D" parent="."]
+[node name="1911_003" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(-0.471363, -0.166784, -7.54979e-08, -0.166784, 0.471363, -1.24751e-08, 7.53351e-08, 1.34231e-08, -0.5, 0.17288, -0.0914282, 0.011009)
 mesh = SubResource("ArrayMesh_lno7a")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.972235, -0.234005, 0, 0.234005, 0.972235, 0, 0, 0, 1, 0.207686, -0.0317366, 0.015089)
-shape = SubResource("BoxShape3D_1lj0s")
+transform = Transform3D(1, 0, 0, 0, 0.951525, 0.307573, 0, -0.307573, 0.951525, -0.0119629, -0.0235313, 0.220392)
+shape = SubResource("BoxShape3D_3kxbo")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0926996, 0.0491305, 0.00304234)
-shape = SubResource("BoxShape3D_cmfdu")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0134277, 0.0522766, 0.101318)
+shape = SubResource("BoxShape3D_4sw4m")

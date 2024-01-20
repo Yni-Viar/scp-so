@@ -3,7 +3,7 @@ using System;
 
 public partial class Settings : Node
 {
-    public int LoadingScreens; //how much is loading screens.
+    public int LoadingScreens = 11; //how much is loading screens.
     public bool SdfgiSetting;
     public bool SsaoSetting;
     public bool SsilSetting;
@@ -36,7 +36,6 @@ public partial class Settings : Node
     {
         IniSaver ini = new IniSaver();
         ini.SaveIni("Settings", new Godot.Collections.Array<string>{
-            "LoadingScreens", 
             "SdfgiSetting",
             "SsaoSetting",
             "SsilSetting",
@@ -48,7 +47,6 @@ public partial class Settings : Node
             "MouseSensitivity",
             "WindowSizeSetting"
         }, new Godot.Collections.Array{
-            10, //how many default loading screens will be loaded.
             true, //sdfgi
             true, //ssao
             true, //ssil
@@ -77,7 +75,6 @@ public partial class Settings : Node
             GD.Print("The settings has not saved, saving default settings...");
         }
         // Fetch the data for each section.
-        LoadingScreens = (int)config.GetValue("Settings", "LoadingScreens");
         SdfgiSetting = (bool)config.GetValue("Settings", "SdfgiSetting");
         SsaoSetting = (bool)config.GetValue("Settings", "SsaoSetting");
         SsilSetting = (bool)config.GetValue("Settings", "SsilSetting");

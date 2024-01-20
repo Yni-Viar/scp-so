@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_8tk5c")
+InternalId = 7
 InternalName = "pda"
 Name = "PDA"
 Texture = ExtResource("2_2rvge")

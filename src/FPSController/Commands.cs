@@ -10,9 +10,9 @@ public partial class Commands : Node
         if (GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
             GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("forceclass", new Callable(this, "Forceclass"), "Forceclass the player (needed the number of class, unlike previous versions)");
-            //GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("classlist", new Callable(this, "ClassList"), "Returns class names (for forceclass)");
+            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("classlist", new Callable(this, "ClassList"), "Returns class names (for forceclass)");
             GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("tp", new Callable(this, "TeleportCmd"), "Teleports you. (1 arguments needed)");
-            //GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("itemlist", new Callable(this, "ItemList"), "Returns item names");
+            GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("itemlist", new Callable(this, "ItemList"), "Returns item names");
             GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("give", new Callable(this, "GiveItem"), "Gives an item to inventory (needed the number of item, unlike previous versions)");
             GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("giveammo", new Callable(this, "GiveAmmo"), "Gives an ammo to inventory (needed the number of ammo, unlike previous versions)");
             GetTree().Root.GetNode<GDShellSharp>("GdShellSharp").AddCommand("givehp", new Callable(this, "SetHealth"), "Sets health on a current player");
@@ -132,7 +132,7 @@ public partial class Commands : Node
         {
             if (itemId < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Items.Count && itemId >= 0)
             {
-                GiveItemCmd(args[0], 0);
+                GiveItemCmd(int.Parse(args[0]), 0);
                 itemLimit++;
                 return "Item " + args[0] + " spawned next to you";
             }
@@ -146,15 +146,50 @@ public partial class Commands : Node
             return "Unknown item. Cannot spawn. Did you input the number of item?";
         }
     }
-
+    
     /// <summary>
-    /// Gives object.
+    /// Gives an object to this player, calling ItemManager.
     /// </summary>
-    /// <param name="itemPath">Path to object</param>
-    /// <param name="type">Type of object</param>
-    void GiveItemCmd(string itemPath, int type)
+    /// <param name="key">Object ID</param>
+    /// <param name="type">Type of object. 0 is item, 1 is ammo, 2 is NPC</param>
+    void GiveItemCmd(int key, int type)
     {
-        GetTree().Root.GetNode<PlayerAction>("Main/Game/PlayerAction").Rpc("SpawnObject", itemPath, type, Multiplayer.GetUniqueId());
+        switch (type)
+        {
+            case 0:
+                if (key < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Items.Count && key >= 0)
+                {
+                    GetParent().GetParent().GetNode<ItemManager>("Items").RpcId(1, "CallAddOrRemoveItem", true, key, Multiplayer.GetUniqueId() + "/PlayerHead/ItemSpawn");
+                }
+                else
+                {
+                    GD.Print("Error. Could not spawn an item.");
+                }
+                break;
+            case 1:
+                if (key < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Ammo.Count && key >= 0)
+                {
+                    GetParent().GetParent().GetNode<ItemManager>("Ammo").RpcId(1, "CallAddOrRemoveItem", true, key, Multiplayer.GetUniqueId() + "/PlayerHead/ItemSpawn");
+                }
+                else
+                {
+                    GD.Print("Error. Could not spawn ammo.");
+                }
+                break;
+            case 2:
+                if (key < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Npc.Count && key >= 0)
+                {
+                    GetParent().GetParent().GetNode<ItemManager>("Npcs").RpcId(1, "CallAddOrRemoveItem", true, key, Multiplayer.GetUniqueId() + "/PlayerHead/ItemSpawn");
+                }
+                else
+                {
+                    GD.Print("Error. Could not spawn an NPC.");
+                }
+                break;
+            default:
+                GD.Print("Error. Could not parse type of object. Please, use correct parameters");
+                break;
+        }
     }
     /// <summary>
     /// Sets health on a current player
@@ -188,7 +223,7 @@ public partial class Commands : Node
         {
             if (itemId < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Ammo.Count && itemId >= 0)
             {
-                GiveItemCmd(args[0], 1);
+                GiveItemCmd(int.Parse(args[0]), 1);
                 itemLimit++;
                 return "Ammo " + args[0] + " spawned next to you";
             }

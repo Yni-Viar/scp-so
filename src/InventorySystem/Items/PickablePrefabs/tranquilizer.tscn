@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://dfvhhtlnusbb3"]
+[gd_scene load_steps=20 format=3 uid="uid://dfvhhtlnusbb3"]
 
 [ext_resource type="Texture2D" uid="uid://cbevfcw4lqtq0" path="res://Assets/Models/Items-weapons/tranquilizer/Untitled.png" id="1_v6ca8"]
 [ext_resource type="Script" path="res://InventorySystem/Items/Pickable.cs" id="1_wfjbw"]
+[ext_resource type="Resource" uid="uid://dod32q1ljd0nv" path="res://InventorySystem/Items/tranquilizer.tres" id="2_ehou1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmtnc"]
 resource_name = "Material"
@@ -255,10 +256,10 @@ size = Vector3(0.18158, 0.226013, 0.110107)
 [node name="tranquilizer" type="RigidBody3D"]
 collision_layer = 8
 script = ExtResource("1_wfjbw")
-itemNumber = 13
+item = ExtResource("2_ehou1")
 
 [node name="Mesh" type="Node3D" parent="."]
-transform = Transform3D(0.0408005, 0, 0, 0, 0.0408005, 0, 0, 0, 0.0408005, 0, 0, 0)
+transform = Transform3D(1.35285e-05, 0, 0.0408005, 0, 0.0408005, 0, -0.0408005, 0, 1.35285e-05, -0.078941, 0, -0.0796182)
 
 [node name="körper" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.48399, 0)
@@ -291,9 +292,9 @@ mesh = SubResource("ArrayMesh_07dch")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0181885, 0.262299, -0.000854492)
+transform = Transform3D(0.000331575, 0, 1, 0, 1, 0, -1, 0, 0.000331575, -0.0797895, 0.262299, -0.097807)
 shape = SubResource("BoxShape3D_obf5x")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.860644, 0.509207, 0, -0.509207, 0.860644, 0, 0, 0, 1, -0.256067, 0.187128, -0.00012207)
+transform = Transform3D(0.000285367, 0.000168843, 1, -0.509207, 0.860644, -2.1186e-09, -0.860644, -0.509207, 0.000331575, -0.079148, 0.187128, 0.176449)
 shape = SubResource("BoxShape3D_a8jan")

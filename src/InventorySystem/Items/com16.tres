@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_jap66")
+InternalId = 10
 InternalName = "com16"
 Name = "Pistol COM-16"
 Texture = ExtResource("1_nlf7t")

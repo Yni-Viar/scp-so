@@ -21,16 +21,11 @@ public partial class Globals
     /// <summary>
     /// Compatibility of settings file. In later versions will be changed to a new format, similar to SCPSL one.
     /// </summary>
-    public static string settingsCompatibility = "0.7.0";
+    public static string settingsCompatibility = "0.8.0-dev";
     /// <summary>
     /// Game data compatibility. Available since 0.8.0.
     /// </summary>
     public static string gameDataCompatibility = "0.8.0-dev";
-    /// <summary>
-    /// Items compatibility. Available since 0.7.0. Deprecated at 0.8.0
-    /// </summary>
-    [Obsolete("Since SCP: Site Online has moved from JSONs to Resources, this parameter is deprecated since 0.8.0-dev.")]
-    public static string itemsCompatibility = "0.7.2";
     /// <summary>
     /// Rooms compatibility. Available since 0.7.0.
     /// </summary>
@@ -70,26 +65,6 @@ public partial class Globals
             { "friendlyScps", new Godot.Collections.Array<string> { "scp131a", "scp131b" } },
             { "special", new Godot.Collections.Array<string> {"spectator" } },
         };
-    /// <summary>
-    /// Default item presets.
-    /// </summary>
-    [Obsolete("Since SCP: Site Online has moved from JSONs to Resources, this parameter is deprecated since 0.8.0-dev.")]
-    internal static Godot.Collections.Dictionary<string, string> items = new Godot.Collections.Dictionary<string, string>{
-        { "key1", "res://InventorySystem/Items/key1.tres" },
-        { "key2", "res://InventorySystem/Items/key2.tres" },
-        { "key3", "res://InventorySystem/Items/key3.tres" },
-        { "key4", "res://InventorySystem/Items/key4.tres" },
-        { "key5", "res://InventorySystem/Items/key5.tres" },
-        { "keyomni", "res://InventorySystem/Items/keyomni.tres" },
-        { "pda", "res://InventorySystem/Items/pda.tres" },
-        { "medkit", "res://InventorySystem/Items/medkit.tres" },
-        { "scp018", "res://InventorySystem/Items/scp018.tres" },
-        { "com16", "res://InventorySystem/Items/com16.tres" },
-        { "mtfrifle", "res://InventorySystem/Items/mtfrifle.tres" },
-        { "cage", "res://InventorySystem/Items/cage.tres" },
-        { "cage_contained", "res://InventorySystem/Items/cage_contained.tres" },
-        { "tranquilizer", "res://InventorySystem/Items/tranquilizer.tres" }
-    };
 
     /// <summary>
     /// Default room presets.

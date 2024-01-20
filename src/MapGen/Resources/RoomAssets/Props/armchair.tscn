@@ -89,14 +89,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_dactv")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_quup4"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8l2fp"]
 points = PackedVector3Array(-0.19703, 0.951511, -0.567123, -0.398638, -0.00751567, 0.422849, 0.342348, 0.00107817, -0.559212, -0.3391, 0.00828577, -0.55245, -0.384894, 0.7379, 0.326664, 0.291114, 1.00081, -0.474606, 0.413158, 0.730361, 0.325548, -0.303978, 1.0097, -0.500262, 0.396808, -0.00761735, 0.357925, 0.331857, 0.75521, 0.357925, -0.414917, 0.690226, 0.17931, -0.187588, 1.03132, -0.421163, 0.413005, 0.674056, 0.0819734, 0.212058, 0.858595, -0.553202, 0.364333, 0.0248239, -0.518598, 0.299381, -0.00761735, -0.567365, 0.348054, 0.0572652, 0.422948, 0.120807, 1.01494, -0.388652, 0.429284, 0.690226, 0.293001, 0.302313, 0.946571, -0.484081, -0.0877971, 0.955297, -0.571302, -0.398638, -0.00751567, 0.357827, 0.348054, -0.00761735, 0.422948, -0.304416, 0.994684, -0.516453, 0.289676, 0.982503, -0.50404, -0.11831, 1.014, -0.519608, -0.414917, 0.674056, 0.26049, -0.259193, 0.950516, -0.550424, 0.386668, 0.00590272, 0.40985, -0.345276, 0.618994, -0.340801, 0.273295, 0.950179, -0.518697, -0.259551, 1.01403, -0.519627)
 
 [node name="Armchair" type="StaticBody3D"]
 
 [node name="modern_arm_chair_01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 mesh = SubResource("ArrayMesh_sdx2w")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("ConvexPolygonShape3D_quup4")
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_8l2fp")

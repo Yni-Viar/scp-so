@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_7ctnl")
+InternalId = 13
 InternalName = "tranquilizer"
 Name = "Tranquilizer Pistol"
 Texture = ExtResource("1_gxy7i")

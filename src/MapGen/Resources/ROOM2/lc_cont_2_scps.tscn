@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bb68x1f7rj18j"]
+[gd_scene load_steps=63 format=3 uid="uid://bb68x1f7rj18j"]
 
 [ext_resource type="Texture2D" uid="uid://bu6g2m2vgheb6" path="res://MapGen/Resources/RoomAssets/LCZ3/OfficeCeiling001_2K_Color.png" id="1_nkhnp"]
 [ext_resource type="Texture2D" uid="uid://c4a72sb0ussc8" path="res://MapGen/Resources/RoomAssets/LCZ3/OfficeCeiling001_2K_Metalness-OfficeCeiling001_2K_Roughness.png" id="2_4ldq6"]
@@ -21,8 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://ggkfnlch55w4" path="res://MapGen/Resources/Cameras/cctv_lcz.tscn" id="20_3mftk"]
 [ext_resource type="PackedScene" uid="uid://5dvdvnwsudc6" path="res://MapGen/Resources/RoomAssets/Props/steel_frame_shelves_01_4k.tscn" id="22_fqwap"]
 [ext_resource type="PackedScene" uid="uid://mtaiulg3une7" path="res://InventorySystem/Items/PickablePrefabs/key3.tscn" id="23_tosyh"]
+[ext_resource type="PackedScene" uid="uid://dj5gpl252yt3e" path="res://InventorySystem/Items/PickablePrefabs/scp2306.tscn" id="24_nyvym"]
 [ext_resource type="PackedScene" uid="uid://qkwar6d6wrkx" path="res://InventorySystem/Items/PickablePrefabs/com16.tscn" id="24_ybonx"]
 [ext_resource type="PackedScene" uid="uid://b0wia77m5lgkk" path="res://Assets/Ammo/9_mm.tscn" id="25_fclds"]
+[ext_resource type="PackedScene" uid="uid://cujxpx83txp1y" path="res://MapGen/Resources/RoomAssets/Props/scp983.tscn" id="25_h72v2"]
+[ext_resource type="PackedScene" uid="uid://2828a7yd1ya4" path="res://MapGen/Resources/RoomAssets/Props/armchair.tscn" id="26_o3doe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8quih"]
 resource_name = "Material.004"
@@ -694,15 +697,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.53562, 6.51179, -3.61702)
 
 [node name="CeilingLamp5" parent="." instance=ExtResource("16_2wdui")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.31841, 6.51179, 5.22306)
-visible = false
 
 [node name="CeilingLamp6" parent="." instance=ExtResource("16_2wdui")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.31841, 6.51179, -3.61702)
-visible = false
 
 [node name="KeycardedDoor" parent="." instance=ExtResource("11_koehk")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.16863, -2.38419e-07, -0.00581607)
 requirements = 1
+
+[node name="KeycardedDoor2" parent="." instance=ExtResource("11_koehk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.17376, 2.38419e-07, 0.0314111)
+requirements = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.38443, 0.0527943, -7.19911)
@@ -784,6 +789,12 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 4.84311, 0, 8.5822)
 [node name="steel_frame_shelves_01_4k3" parent="." instance=ExtResource("22_fqwap")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 5.17697, 0, -7.80388)
 
+[node name="steel_frame_shelves_01_4k4" parent="." instance=ExtResource("22_fqwap")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -5.00981, 0, -8.65995)
+
+[node name="steel_frame_shelves_01_4k5" parent="." instance=ExtResource("22_fqwap")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -8.06763, 0.0327753, -8.65995)
+
 [node name="key3" parent="." instance=ExtResource("23_tosyh")]
 transform = Transform3D(1, 0, 0, 0, 0.82657, -0.562834, 0, 0.562834, 0.82657, 7.93812, 1.73194, 8.64213)
 
@@ -793,7 +804,20 @@ transform = Transform3D(1, 0, 0, 0, 0.246509, -0.969141, 0, 0.969141, 0.246509, 
 [node name="Ammo_9mm" parent="." instance=ExtResource("25_fclds")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.50828, 0.469455, 8.47398)
 
-[node name="KeycardedDoor2" parent="." instance=ExtResource("11_koehk")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.17376, 2.38419e-07, 0.0314111)
-requirements = 1
-canOpen = false
+[node name="scp2306" parent="." instance=ExtResource("24_nyvym")]
+transform = Transform3D(0.0238564, 0, -0.999715, 0, 1, 0, 0.999715, 0, 0.0238564, -8.17713, 1.69542, -8.57495)
+
+[node name="scp983" parent="." instance=ExtResource("25_h72v2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.10824, 1.82364, -8.72618)
+
+[node name="Armchair" parent="." instance=ExtResource("26_o3doe")]
+transform = Transform3D(-0.865973, 0, -0.500091, 0, 1, 0, 0.500091, 0, -0.865973, -4.49191, 0.0419145, 7.6674)
+
+[node name="office-desk-with-drawers3" parent="." instance=ExtResource("19_s7puo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.50144, 0, 4.3868)
+
+[node name="office-desk-with-drawers4" parent="." instance=ExtResource("19_s7puo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.41029, 0, 0.740578)
+
+[node name="office-desk-with-drawers5" parent="." instance=ExtResource("19_s7puo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.41863, 0, -2.66636)
