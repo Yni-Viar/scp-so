@@ -47,11 +47,7 @@ public partial class CctvCamera : Node3D
             if (ray.IsColliding() && Input.IsActionJustPressed("interact"))
             {
                 var collidedWith = ray.GetCollider();
-                if (collidedWith is ButtonInteract)
-                {
-                    collidedWith.Call("Interact", this);
-                }
-                if (collidedWith is ButtonKeycardInteract)
+                if (collidedWith is InteractableCommon)
                 {
                     collidedWith.Call("Interact", this);
                 }

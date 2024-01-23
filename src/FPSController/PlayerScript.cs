@@ -256,6 +256,11 @@ public partial class PlayerScript : CharacterBody3D
             if (ray.IsColliding() && Input.IsActionJustPressed("interact") && scpNumber != -2)
             {
                 var collidedWith = ray.GetCollider();
+                if (collidedWith is InteractableCommon)
+                {
+                    collidedWith.Call("Interact", this);
+                }
+                /* old button scripts from 0.7.x and earlier.
                 if (collidedWith is ButtonInteract)
                 {
                     collidedWith.Call("Interact", this);
@@ -264,6 +269,7 @@ public partial class PlayerScript : CharacterBody3D
                 {
                     collidedWith.Call("Interact", this);
                 }
+                */
                 if (collidedWith is Scp914DeviceKey)
                 {
                     collidedWith.Call("RefineCall");
@@ -342,7 +348,7 @@ public partial class PlayerScript : CharacterBody3D
         {
             Item item = GD.Load<Item>("res://InventorySystem/Items/" + itemName + ".tres");
             // If third person view exists, else will be used first person view.
-            if (GetNode<Node3D>("PlayerModel").GetChild(0).GetNodeOrNull<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand") != null && IsMultiplayerAuthority())
+            if (GetNode<Node3D>("PlayerModel").GetChild(0).GetNodeOrNull<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand") != null && !IsMultiplayerAuthority())
             {
                 GetNode<Marker3D>("PlayerHead/PlayerHand").Hide();
                 Node thirdPersonHandRoot = GetNode<Node3D>("PlayerModel").GetChild(0).GetNode<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand");

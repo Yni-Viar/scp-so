@@ -366,7 +366,3 @@ replication_config = SubResource("SceneReplicationConfig_wyagc")
 
 [connection signal="body_entered" from="ExitArea" to="." method="OnExitAreaBodyEntered"]
 [connection signal="body_entered" from="DeadlyArea" to="DeadlyArea" method="OnBodyEntered"]
-[connection signal="Interacted" from="Button1" to="." method="OnButtonOneInteracted"]
-[connection signal="Interacted" from="Button2" to="." method="OnButtonTwoInteracted"]
-[connection signal="Interacted" from="Button3" to="." method="OnButtonThreeInteracted"]
-[connection signal="Interacted" from="Button4" to="." method="OnButtonFourInteracted"]

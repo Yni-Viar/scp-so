@@ -102,7 +102,7 @@ public partial class SurfaceElevator : Node3D
         canInteract = true;
     }
 
-    private void OnButtonInteractInteracted(GodotObject player)
+    private void Interact(Node3D player)
     {
         if (destinationPoints.Length == 2 && canInteract) // call elevator method.
         {
@@ -145,7 +145,7 @@ public partial class SurfaceElevator : Node3D
         playersToTeleport.Remove(name);
     }
 
-    private void OnButtonInteractUpInteracted(CharacterBody3D player)
+    private void InteractUp(Node3D player)
     {
         if (GetChild<Marker3D>(0).Name != destinationPoints[1] && canInteract)
         {
@@ -153,7 +153,7 @@ public partial class SurfaceElevator : Node3D
         }
     }
     
-    private void OnButtonInteractDownInteracted(CharacterBody3D player)
+    private void InteractDown(Node3D player)
     {
         if (GetChild<Marker3D>(0).Name != destinationPoints[0] && canInteract)
         {

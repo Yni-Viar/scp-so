@@ -722,6 +722,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.58784, 6.19824, -5.91173)
 
 [node name="Ammo_9mm4" parent="." instance=ExtResource("21_8lm7p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.59706, 6.20362, -8.05277)
-
-[connection signal="Interacted" from="KeycardedDoor/ButtonKeycard" to="KeycardedDoor" method="OnButtonKeycardInteracted"]
-[connection signal="Interacted" from="KeycardedDoor/ButtonKeycard2" to="KeycardedDoor" method="OnButtonKeycardInteracted"]

@@ -44,14 +44,14 @@ public partial class KeycardedDoor : Door
     void PlayButtonSound(bool enable)
     {
         AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("ButtonKeycard/ButtonSound");
-        sfx.Stream = enable ? GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse1.ogg") : sfx.Stream = GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse2.ogg"); ;
+        sfx.Stream = enable ? GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse1.ogg") : GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse2.ogg"); ;
         sfx.Play();
         AudioStreamPlayer3D sfx2 = GetNode<AudioStreamPlayer3D>("ButtonKeycard2/ButtonSound");
-        sfx2.Stream = enable ? GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse1.ogg") : sfx.Stream = GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse2.ogg"); ;
+        sfx2.Stream = enable ? GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse1.ogg") : GD.Load<AudioStream>("res://Sounds/Interact/KeycardUse2.ogg"); ;
         sfx2.Play();
     }
 
-    private void OnButtonKeycardInteracted(Node3D player, int keycardRequire)
+    private void InteractKeycard(Node3D player, int keycardRequire)
     {
         Rpc("DoorControl", player.GetPath(), keycardRequire);
     }

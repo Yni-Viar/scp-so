@@ -153,6 +153,8 @@ text = "[b]v.0.8.0-dev[/b] [i](Alpha)[/i]
 - Increased inventory icons size.
 - Third-person item now using Pickable - and not first-person prefabs.
 - Fixed keycard level 5 to be identified as keycard level 1.
+- Reworked button system, switching to our own solution.
+- Fixed collision in SCP-650 containment chamber.
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.
@@ -510,22 +512,6 @@ text = "[i]Weapon manager (CC-BY-SA 3.0)[/i]
 
 - Copyright (c) Hubert Moszka.
 - The stream ( https://youtu.be/pRhDdg6uU5c ) is licensed under CC-BY-SA 3.0. The code perhaps too..."
-fit_content = true
-
-[node name="CreditsCode9" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1234, 0)
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 24
-theme_override_font_sizes/bold_font_size = 24
-theme_override_font_sizes/italics_font_size = 24
-theme_override_font_sizes/bold_italics_font_size = 24
-theme_override_font_sizes/mono_font_size = 24
-bbcode_enabled = true
-text = "[i]Button Interaction (MIT License)[/i]
-
-- Copyright (c) 2022 Nagi
-
-"
 fit_content = true
 
 [node name="CreditsArt" type="RichTextLabel" parent="CreditsPanel/Panel/ScrollContainer/VBoxContainer"]

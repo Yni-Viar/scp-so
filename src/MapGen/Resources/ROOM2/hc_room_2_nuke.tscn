@@ -792,6 +792,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94712, 1.76304, 2.37993)
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="KeycardedDoor"]
 replication_interval = 0.25
 replication_config = SubResource("SceneReplicationConfig_mccg3")
-
-[connection signal="Interacted" from="KeycardedDoor/ButtonKeycard" to="KeycardedDoor" method="OnButtonKeycardInteracted"]
-[connection signal="Interacted" from="KeycardedDoor/ButtonKeycard2" to="KeycardedDoor" method="OnButtonKeycardInteracted"]

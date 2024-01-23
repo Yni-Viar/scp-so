@@ -31,11 +31,8 @@ public partial class CommonDoor : Door
         }
     }
 
-    private void OnButtonInteractInteracted(CharacterBody3D player)
+    private void Interact(PlayerScript player)
     {
-        if (player is PlayerScript)
-        {
-            Rpc("DoorControl", player.GetPath(), -1);
-        }
+        Rpc("DoorControl", player.GetPath(), -1);
     }
 }

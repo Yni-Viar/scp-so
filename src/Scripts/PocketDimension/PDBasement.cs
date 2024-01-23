@@ -66,28 +66,23 @@ public partial class PDBasement : StaticBody3D
         GetParent().GetParent().GetParent<FacilityManager>().Rpc("TeleportTo", player.Name, position);
     }
 
-
-    private void OnButtonOneInteracted(CharacterBody3D player)
+    void Interact(string name)
     {
-        playerInputCode += "1";
-    }
-
-
-    private void OnButtonTwoInteracted(CharacterBody3D player)
-    {
-        playerInputCode += "2";
-    }
-
-
-    private void OnButtonThreeInteracted(CharacterBody3D player)
-    {
-        playerInputCode += "3";
-    }
-
-
-    private void OnButtonFourInteracted(CharacterBody3D player)
-    {
-        playerInputCode += "4";
+        switch(name)
+        {
+            case "Button1":
+                playerInputCode += "1";
+                break;
+            case "Button2":
+                playerInputCode += "2";
+                break;
+            case "Button3":
+                playerInputCode += "3";
+                break;
+            case "Button4":
+                playerInputCode += "4";
+                break;
+        }
     }
 }
 

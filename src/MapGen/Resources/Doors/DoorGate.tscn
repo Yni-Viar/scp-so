@@ -182,6 +182,3 @@ transform = Transform3D(0.796119, 0, 0, 0, 0.796119, 0, 0, 0, 0.796119, 3.87643,
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_interval = 0.25
 replication_config = SubResource("SceneReplicationConfig_dsm0d")
-
-[connection signal="Interacted" from="ButtonInteract" to="." method="OnButtonInteractInteracted"]
-[connection signal="Interacted" from="ButtonInteract2" to="." method="OnButtonInteractInteracted"]

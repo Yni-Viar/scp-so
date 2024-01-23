@@ -1,7 +1,9 @@
 using Godot;
 using System;
 
-
+/// <summary>
+/// Used in between-zones elevators. (I know, that this script is sh*tcode, but I don't know how to fix it... - Yni)
+/// </summary>
 public partial class TeleportElevator : Node3D
 {
     [Export] internal string[] elevators; // need to handle open-close doors
@@ -53,12 +55,16 @@ public partial class TeleportElevator : Node3D
             DoorOpen();
         }
     }
-
+    /*
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
     }
-
+    */
+    /// <summary>
+    /// Moves the elevator.
+    /// </summary>
+    /// <param name="direction">How much floors the elevator goes up (or down)</param>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
     public async void ElevatorMove(int direction)
     {
@@ -98,7 +104,7 @@ public partial class TeleportElevator : Node3D
         toTeleport.canInteract = true;
     }
 
-    private void OnButtonInteractInteracted(GodotObject player)
+    private void Interact(Node3D player)
     {
         if (destinationPoints.Length == 4 && canInteract) // call elevator method.
         {
@@ -187,7 +193,7 @@ public partial class TeleportElevator : Node3D
         playersToTeleport.Remove(name);
     }
 
-    private void OnButtonInteractUpInteracted(CharacterBody3D player)
+    private void InteractUp(Node3D player)
     {
         if (GetChild<Marker3D>(0).Name != destinationPoints[3] && canInteract)
         {
@@ -195,7 +201,7 @@ public partial class TeleportElevator : Node3D
         }
     }
     
-    private void OnButtonInteractDownInteracted(CharacterBody3D player)
+    private void InteractDown(Node3D player)
     {
         if (GetChild<Marker3D>(0).Name != destinationPoints[0] && canInteract)
         {
