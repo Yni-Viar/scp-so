@@ -196,6 +196,10 @@ weapon_reload={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://Translations/mainmenu.en.translation", "res://Translations/mainmenu.ru.translation", "res://Translations/settings.en.translation", "res://Translations/settings.ru.translation")
+
 [layer_names]
 
 3d_render/layer_1="generic"

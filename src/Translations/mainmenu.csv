@@ -1,0 +1,12 @@
+keys,en,ru
+PLAY,Play,Играть
+SETTINGS,Settings,Настройки
+CREDITS,Credits,Титры
+IPADDR,IP Address (connect only),IP адрес (только для присоединения)
+PORT,Port,Порт
+MAXCLIENTS,Max clients (host only),Максимум клиентов (только для сервера)
+HOST,Host,Создание сервера
+CONNECT,Connect,Подключение к серверу
+PRERELEASE_WARN,"WARNING! This game is in ALPHA stage of development.\nThis means, that the game has some incomplete, not-working and unstable features.","Внимание! Игра еще находится в состоянии АЛЬФА версии.\nЭто означает, что игра имеет незаконченные, неработающие или нестабильные функции."
+PLAYER_NICK,"Please, set you nickname!",Задайте свое имя!
+EXIT,Exit,Выход

@@ -57,7 +57,7 @@ offset_right = -16.0
 offset_bottom = 55.0
 grow_horizontal = 0
 theme = ExtResource("5_gi3lh")
-placeholder_text = "Please, set you nickname!"
+placeholder_text = "PLAYER_NICK"
 
 [node name="Title" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -86,28 +86,28 @@ layout_mode = 2
 theme = ExtResource("5_gi3lh")
 theme_override_fonts/font = ExtResource("4_yqqir")
 theme_override_font_sizes/font_size = 32
-text = "Play"
+text = "PLAY"
 
 [node name="Settings" type="Button" parent="Title"]
 layout_mode = 2
 theme = ExtResource("5_gi3lh")
 theme_override_fonts/font = ExtResource("4_yqqir")
 theme_override_font_sizes/font_size = 32
-text = "Settings"
+text = "SETTINGS"
 
 [node name="Credits" type="Button" parent="Title"]
 layout_mode = 2
 theme = ExtResource("5_gi3lh")
 theme_override_fonts/font = ExtResource("4_yqqir")
 theme_override_font_sizes/font_size = 32
-text = "Credits"
+text = "CREDITS"
 
 [node name="Exit" type="Button" parent="Title"]
 layout_mode = 2
 theme = ExtResource("5_gi3lh")
 theme_override_fonts/font = ExtResource("4_yqqir")
 theme_override_font_sizes/font_size = 32
-text = "Exit"
+text = "EXIT"
 
 [node name="MainPanel" type="Panel" parent="."]
 layout_mode = 1
@@ -195,31 +195,31 @@ theme_override_constants/separation = 16
 layout_mode = 2
 theme = ExtResource("5_gi3lh")
 theme_override_font_sizes/font_size = 24
-text = "Host"
+text = "HOST"
 
 [node name="IPAddress" type="LineEdit" parent="PlayPanel/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("5_gi3lh")
 theme_override_font_sizes/font_size = 24
-placeholder_text = "IP Address (connect only)"
+placeholder_text = "IPADDR"
 
 [node name="Port" type="LineEdit" parent="PlayPanel/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("5_gi3lh")
 theme_override_font_sizes/font_size = 24
-placeholder_text = "Port"
+placeholder_text = "PORT"
 
 [node name="MaxClients" type="LineEdit" parent="PlayPanel/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("5_gi3lh")
 theme_override_font_sizes/font_size = 24
-placeholder_text = "Max clients (host only)"
+placeholder_text = "MAXCLIENTS"
 
 [node name="Connect" type="Button" parent="PlayPanel/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("5_gi3lh")
 theme_override_font_sizes/font_size = 24
-text = "Connect"
+text = "CONNECT"
 
 [node name="Info" type="Label" parent="PlayPanel/VBoxContainer"]
 layout_mode = 2
@@ -242,8 +242,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
-text = "WARNING! This game is in ALPHA stage of development.
-This means, that the game has some missing, incomplete or not-working features."
+text = "PRERELEASE_WARN"
 horizontal_alignment = 1
 
 [node name="Settings" parent="." instance=ExtResource("6_0nqn5")]

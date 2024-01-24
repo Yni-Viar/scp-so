@@ -62,7 +62,6 @@ public partial class SettingsPanel : Panel
     {
         IniSaver ini = new IniSaver();
         ini.SaveIni("Settings", new Godot.Collections.Array<string>{
-            "LoadingScreens", 
             "SdfgiSetting",
             "SsaoSetting",
             "SsilSetting",
@@ -72,7 +71,8 @@ public partial class SettingsPanel : Panel
             "SoundSetting", 
             "FullscreenSetting",
             "MouseSensitivity", 
-            "WindowSizeSetting"
+            "WindowSizeSetting",
+            "LanguageSetting"
         }, new Godot.Collections.Array{
             10, 
             settings.SdfgiSetting,
@@ -84,8 +84,9 @@ public partial class SettingsPanel : Panel
             settings.SoundSetting,
             settings.FullscreenSetting,
             settings.MouseSensitivity, 
-            settings.WindowSizeSetting
-        }, "user://settings_" + Globals.settingsCompatibility + ".ini");
+            settings.WindowSizeSetting,
+            settings.LanguageSetting
+        }, "user://settings.ini");
         settings.LoadIni();
     }
 
@@ -246,5 +247,12 @@ public partial class SettingsPanel : Panel
         {
             AudioServer.SetBusMute(bus, false);
         }
+    }
+
+    private void OnLanguageSetItemSelected(long index)
+    {
+        TranslationServer.SetLocale(settings.availableLanguages[index]);
+        settings.LanguageSetting = settings.availableLanguages[index];
+        SaveCurrentSettings();
     }
 }

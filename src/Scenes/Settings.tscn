@@ -8,27 +8,29 @@
 [node name="Settings" type="CanvasLayer"]
 
 [node name="SettingsPanel" type="Panel" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_right = 0.561
 anchor_bottom = 1.0
+offset_right = -0.120117
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_fv068")
 
 [node name="Back" type="Button" parent="SettingsPanel"]
 layout_mode = 0
-offset_right = 448.0
+offset_right = 206.0
 offset_bottom = 128.0
 theme = ExtResource("3_2qins")
 theme_override_font_sizes/font_size = 24
 text = "Back"
 
 [node name="Save" type="Button" parent="SettingsPanel"]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -448.0
+offset_left = -196.0
 offset_bottom = 128.0
 grow_horizontal = 0
 theme = ExtResource("3_2qins")
@@ -50,7 +52,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_boifm")
 theme_override_font_sizes/font_size = 48
-text = "Settings"
+text = "SETTINGS"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SettingsPanel"]
 layout_mode = 1
@@ -69,10 +71,27 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel/ScrollContainer"]
 layout_mode = 2
 
+[node name="LangLabel" type="Label" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_2qins")
+theme_override_font_sizes/font_size = 48
+text = "LANGUAGE"
+
+[node name="LanguageSet" type="OptionButton" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_2qins")
+theme_override_font_sizes/font_size = 24
+item_count = 2
+selected = 0
+popup/item_0/text = "English"
+popup/item_0/id = 0
+popup/item_1/text = "Russian"
+popup/item_1/id = 1
+
 [node name="GraphicsLabel" type="Label" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "Graphics:"
+text = "GRAPHICS"
 
 [node name="WindowSizeSet" type="OptionButton" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -104,7 +123,7 @@ layout_mode = 2
 theme = ExtResource("3_2qins")
 theme_override_font_sizes/font_size = 24
 button_pressed = true
-text = "SDFGI"
+text = "DYNAMIC_GI_SET"
 
 [node name="SSAOSet" type="CheckButton" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -131,19 +150,17 @@ layout_mode = 2
 theme = ExtResource("3_2qins")
 theme_override_font_sizes/font_size = 24
 button_pressed = true
-text = "Fog set
-(it is NOT recommended to disable this,
-so use this at last resort if you have low performance)"
+text = "FOG_SET"
 
 [node name="SoundsLabel" type="Label" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "Sounds:"
+text = "SOUNDS"
 
 [node name="MusicLabel" type="Label" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Music volume"
+text = "MUSIC_SET"
 
 [node name="MusicSet" type="HSlider" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -155,7 +172,7 @@ value = 0.5
 [node name="SoundLabel" type="Label" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Sound volume"
+text = "SOUND_SET"
 
 [node name="SoundSet" type="HSlider" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -164,15 +181,15 @@ max_value = 1.0
 step = 0.01
 value = 0.5
 
-[node name="Label4" type="Label" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
+[node name="InputLabel" type="Label" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "Input:"
+text = "INPUT"
 
 [node name="MouseSens" type="Label" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Mouse sensivity"
+text = "SENS_SET"
 
 [node name="MouseSensSet" type="HSlider" parent="SettingsPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -186,22 +203,26 @@ value = 2.0
 stream = ExtResource("4_jktnn")
 
 [node name="Label" type="Label" parent="SettingsPanel"]
+visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -11.5
-offset_bottom = 11.5
+offset_left = -311.0
+offset_top = -47.0
+offset_bottom = 54.0
 grow_horizontal = 0
 grow_vertical = 2
-text = "Beginning with 0.6.1, the settings are auto-saving, when you toggle buttons.
+text = "Beginning with 0.6.1,
+the settings are auto-saving,
+when you toggle buttons.
 As for now, \"Save\" button is deprecated."
 
 [connection signal="pressed" from="SettingsPanel/Back" to="SettingsPanel" method="OnBackPressed"]
 [connection signal="pressed" from="SettingsPanel/Save" to="SettingsPanel" method="OnSavePressed"]
+[connection signal="item_selected" from="SettingsPanel/ScrollContainer/VBoxContainer/LanguageSet" to="SettingsPanel" method="OnLanguageSetItemSelected"]
 [connection signal="item_selected" from="SettingsPanel/ScrollContainer/VBoxContainer/WindowSizeSet" to="SettingsPanel" method="OnWindowSizeSetItemSelected"]
 [connection signal="toggled" from="SettingsPanel/ScrollContainer/VBoxContainer/FullscreenSet" to="SettingsPanel" method="OnFullscreenSetToggled"]
 [connection signal="toggled" from="SettingsPanel/ScrollContainer/VBoxContainer/SDFGISet" to="SettingsPanel" method="OnSdfgiSetToggled"]

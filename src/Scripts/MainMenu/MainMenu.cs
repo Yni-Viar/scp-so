@@ -53,6 +53,7 @@ public partial class MainMenu : Control
         }
 
         DisplayServer.WindowSetMode(settings.FullscreenSetting ? DisplayServer.WindowMode.Fullscreen : DisplayServer.WindowMode.Windowed);
+        TranslationServer.SetLocale(settings.LanguageSetting);
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
