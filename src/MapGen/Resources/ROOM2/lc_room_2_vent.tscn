@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://buegk54il4j7y"]
+[gd_scene load_steps=48 format=3 uid="uid://buegk54il4j7y"]
 
 [ext_resource type="Texture2D" uid="uid://bu6g2m2vgheb6" path="res://MapGen/Resources/RoomAssets/LCZ3/OfficeCeiling001_2K_Color.png" id="1_3rbeg"]
 [ext_resource type="Texture2D" uid="uid://c4a72sb0ussc8" path="res://MapGen/Resources/RoomAssets/LCZ3/OfficeCeiling001_2K_Metalness-OfficeCeiling001_2K_Roughness.png" id="2_ge6jt"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://ggkfnlch55w4" path="res://MapGen/Resources/Cameras/cctv_lcz.tscn" id="12_d2qm5"]
 [ext_resource type="PackedScene" uid="uid://bmacptdhvw6h7" path="res://MapGen/Resources/RoomAssets/Props/ceiling_lamp.tscn" id="13_sqwmm"]
 [ext_resource type="AudioStream" uid="uid://bqqldp6ybjfbm" path="res://Sounds/Ambience/Fan.ogg" id="14_umei4"]
+[ext_resource type="PackedScene" uid="uid://djp0sa154mm7a" path="res://MapGen/Resources/RoomAssets/Props/security_light.tscn" id="15_cp511"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xtisd"]
 resource_name = "Material.004"
@@ -802,3 +803,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.35672, 3.74471, 0.265106)
 stream = ExtResource("14_umei4")
 autoplay = true
 max_distance = 24.0
+
+[node name="SecurityLight" parent="." instance=ExtResource("15_cp511")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.37209, 3.86687, 1.70399)
+
+[node name="SecurityLight2" parent="." instance=ExtResource("15_cp511")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.37209, 3.86687, -1.53415)

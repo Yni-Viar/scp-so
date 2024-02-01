@@ -1,11 +1,13 @@
 # Credits
 ## SCP: Site Online (license - [MIT](/LICENSE.MIT))
-### Authors:
-- Yni (Yni Viar, the Creator of this game)
+### Contributors:
+- Yni (Yni Viar, the Creator)
+- Xandromeda
 
 ### Testers:
 - William[]
 - cherniichernish (Гражданин)
+- The1Wolfcast
 
 # Third-party data credits
 ## Code
@@ -72,6 +74,7 @@
 - LightContainment.ogg - Kevin MacLeod
 - HeavyContainment.ogg, EntranceZone.ogg - FireFox, Kevin MacLeod
 - Room079.ogg - Class401
+- Elevator.ogg - Kevin MacLeod
 
 ### SCPs:
 - "SCP-018" by Epic Phail Spy

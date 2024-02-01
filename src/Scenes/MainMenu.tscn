@@ -155,6 +155,7 @@ text = "[b]v.0.8.0-dev[/b] [i](Alpha)[/i]
 - Fixed keycard level 5 to be identified as keycard level 1.
 - Reworked button system, switching to our own solution.
 - Fixed collision in SCP-650 containment chamber.
+- Initial support of translations.
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.
@@ -569,6 +570,7 @@ text = "[i]Sounds and music (license - CC-BY-SA 3.0)[/i]
 - LightContainment.ogg - Kevin MacLeod
 - HeavyContainment.ogg, EntranceZone.ogg - FireFox, Kevin MacLeod
 - Room079.ogg - Class401
+- Elevator.ogg - Kevin MacLeod
 
 
 "

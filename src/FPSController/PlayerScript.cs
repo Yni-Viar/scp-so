@@ -130,7 +130,7 @@ public partial class PlayerScript : CharacterBody3D
 
             GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = true;
             playerHead = GetNode<Node3D>("PlayerHead");
-            walkSounds = GetNode<AudioStreamPlayer3D>("WalkSounds");
+            
             interactSound = GetNode<AudioStreamPlayer3D>("InteractSound");
             acceleration = groundAcceleration;
             FloorMaxAngle = 1.48353f; //85 degrees.
@@ -139,6 +139,7 @@ public partial class PlayerScript : CharacterBody3D
         {
             GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = false;
         }
+        walkSounds = GetNode<AudioStreamPlayer3D>("WalkSounds");
         ray = GetNode<RayCast3D>("PlayerHead/RayCast3D");
         ray.AddException(this);
         watchRay = GetNode<RayCast3D>("PlayerHead/VisionRadius");
@@ -411,16 +412,25 @@ public partial class PlayerScript : CharacterBody3D
         {
             if (isWalking)
             {
-                walkSounds.Stream = GD.Load<AudioStream>(footstepSounds[rng.RandiRange(0, footstepSounds.Length - 1)]);
-                walkSounds.Play();
+                Rpc("PlayFootstepSound", false);
             }
             if (isSprinting)
             {
-                walkSounds.Stream = GD.Load<AudioStream>(sprintSounds[rng.RandiRange(0, footstepSounds.Length - 1)]);
-                walkSounds.Play();
+                Rpc("PlayFootstepSound", true);
             }
         }
     }
+    /// <summary>
+    /// Make footstep sounds audible to all.
+    /// </summary>
+    /// <param name="sprint">Is player sprinting</param>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    void PlayFootstepSound(bool sprint)
+    {
+        walkSounds.Stream = sprint ? GD.Load<AudioStream>(sprintSounds[rng.RandiRange(0, footstepSounds.Length - 1)]) : GD.Load<AudioStream>(footstepSounds[rng.RandiRange(0, footstepSounds.Length - 1)]);
+        walkSounds.Play();
+    }
+
     /// <summary>
     /// Method that manages health of the player (don't work on spectators). If health is below 0, the players forceclasses as spectator.
     /// </summary>

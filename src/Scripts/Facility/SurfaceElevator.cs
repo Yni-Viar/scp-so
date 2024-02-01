@@ -1,7 +1,9 @@
 using Godot;
 using System;
 
-
+/// <summary>
+/// Elevators between Surface Zone and Research Zone. Will be replaced in future by new ElevatorSystem.
+/// </summary>
 public partial class SurfaceElevator : Node3D
 {
     [Export] internal string[] elevators; // need to handle open-close doors

@@ -7,13 +7,13 @@ public partial class Door : Node3D
 {
     [Export] bool canOpen = true;
     [Export] bool isOpened = false;
+    [Export] bool enableSounds = true;
     [Export] string[] openDoorSounds;
     [Export] string[] closeDoorSounds;
     [Export] string lockDoorSound;
 
     bool CanOpen { get=>canOpen; set=>canOpen = value; }
     internal bool IsOpened { get=>isOpened; private set=>isOpened = value; }
-    internal AnimationPlayer animPlayer;
 
     /// <summary>
     /// Main control method, which checks - is the door opened.
@@ -49,10 +49,13 @@ public partial class Door : Node3D
     internal void DoorOpen()
     {
         RandomNumberGenerator rng = new RandomNumberGenerator();
-        animPlayer.Play("door_open");
-        AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");
-        sfx.Stream = GD.Load<AudioStream>(openDoorSounds[rng.RandiRange(0, openDoorSounds.Length - 1)]);
-        sfx.Play();
+        GetNode<AnimationPlayer>("AnimationPlayer").Play("door_open");
+        if (enableSounds)
+        {
+            AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");
+            sfx.Stream = GD.Load<AudioStream>(openDoorSounds[rng.RandiRange(0, openDoorSounds.Length - 1)]);
+            sfx.Play();
+        }
         IsOpened = true;
     }
     /// <summary>
@@ -61,11 +64,13 @@ public partial class Door : Node3D
     internal void DoorClose()
     {
         RandomNumberGenerator rng = new RandomNumberGenerator();
-        AnimationPlayer animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-        animPlayer.Play("door_open", -1, -1, true);
-        AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");
-        sfx.Stream = GD.Load<AudioStream>(closeDoorSounds[rng.RandiRange(0, closeDoorSounds.Length - 1)]);
-        sfx.Play();
+        GetNode<AnimationPlayer>("AnimationPlayer").Play("door_open", -1, -1, true);
+        if (enableSounds)
+        {
+            AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");
+            sfx.Stream = GD.Load<AudioStream>(closeDoorSounds[rng.RandiRange(0, closeDoorSounds.Length - 1)]);
+            sfx.Play();
+        }
         IsOpened = false;
     }
     /// <summary>
@@ -85,7 +90,6 @@ public partial class Door : Node3D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         if (IsOpened)
         {
             DoorOpen();
@@ -98,6 +102,3 @@ public partial class Door : Node3D
     }
     */
 }
-
-
-

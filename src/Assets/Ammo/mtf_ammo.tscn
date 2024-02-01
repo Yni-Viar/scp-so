@@ -46,19 +46,20 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0ck7y")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m0f2s"]
-size = Vector3(0.200684, 0.664627, 0.296883)
+size = Vector3(0.200684, 0.453815, 0.235109)
 
 [node name="mtf_ammo" type="RigidBody3D"]
 collision_layer = 8
 script = ExtResource("1_8wf40")
-type = 1
+objectId = 1
+ammoType = 1
 amount = 50
 
 [node name="M4Mag" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.035, 0, 0, 0, 0.035, 0, 0, 0, 0.035, 0.0683358, -0.108786, 0.0928034)
+transform = Transform3D(0.0253787, 0, 0, 0, 0.0253787, 0, 0, 0, 0.0253787, 0.0683358, -0.108786, 0.0928034)
 mesh = SubResource("ArrayMesh_x2e8s")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0657115, -0.094963, 0.0889394)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0657115, -0.107881, 0.0919902)
 shape = SubResource("BoxShape3D_m0f2s")

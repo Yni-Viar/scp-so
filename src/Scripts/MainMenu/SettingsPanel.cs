@@ -74,7 +74,6 @@ public partial class SettingsPanel : Panel
             "WindowSizeSetting",
             "LanguageSetting"
         }, new Godot.Collections.Array{
-            10, 
             settings.SdfgiSetting,
             settings.SsaoSetting,
             settings.SsilSetting,

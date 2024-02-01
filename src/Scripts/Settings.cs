@@ -71,6 +71,7 @@ public partial class Settings : Node
         {
             SaveDefaultSettings();
             GD.Print("The settings has not saved, saving default settings...");
+            return;
         }
         if (checkForMissing)
         {

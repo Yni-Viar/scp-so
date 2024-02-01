@@ -198,7 +198,7 @@ weapon_reload={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://Translations/mainmenu.en.translation", "res://Translations/mainmenu.ru.translation", "res://Translations/settings.en.translation", "res://Translations/settings.ru.translation")
+locale/translations=PackedStringArray("res://Translations/mainmenu.en.translation", "res://Translations/mainmenu.ru.translation", "res://Translations/settings.en.translation", "res://Translations/settings.ru.translation", "res://Translations/facility.en.translation", "res://Translations/facility.ru.translation")
 
 [layer_names]
 

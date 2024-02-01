@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 /// <summary>
-/// Used in between-zones elevators. (I know, that this script is sh*tcode, but I don't know how to fix it... - Yni)
+/// Used in between-zones elevators. Will be replaced in future by new ElevatorSystem.
 /// </summary>
 public partial class TeleportElevator : Node3D
 {

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 /// <summary>
-/// Elevator button.
+/// Teleporting elevator button. (If you want to see code for moving elevator, see ElevatorButton)
 /// </summary>
 public partial class ElevatorCallButton : InteractableCommon
 {

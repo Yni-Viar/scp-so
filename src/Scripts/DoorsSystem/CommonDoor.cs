@@ -21,11 +21,11 @@ public partial class CommonDoor : Door
     internal override void DoorController(int keycard)
     {
         base.DoorController(keycard);
-        if (IsOpened && !animPlayer.IsPlaying())
+        if (IsOpened && !GetNode<AnimationPlayer>("AnimationPlayer").IsPlaying())
         {
             DoorClose();
         }
-        else if (!animPlayer.IsPlaying())
+        else if (!GetNode<AnimationPlayer>("AnimationPlayer").IsPlaying())
         {
             DoorOpen();
         }

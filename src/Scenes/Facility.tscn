@@ -402,7 +402,7 @@ offset_bottom = 56.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("8_1slp4")
 theme_override_font_sizes/font_size = 32
-text = "Admin Console"
+text = "ADMIN_INFO"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -419,7 +419,7 @@ offset_right = 104.5
 offset_bottom = 18.12
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 16
-text = "Please, enter Password"
+text = "ADMIN_WELCOME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -496,7 +496,7 @@ offset_bottom = 56.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("8_1slp4")
 theme_override_font_sizes/font_size = 32
-text = "Players list"
+text = "PLAYERSLIST_INFO"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -533,8 +533,7 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_1slp4")
 theme_override_font_sizes/font_size = 32
-text = "The round will start soon...
-"
+text = "ROUND_WELCOME"
 horizontal_alignment = 1
 
 [node name="Amount" type="Label" parent="PreRoundStartPanel/PreRoundStart"]
@@ -549,7 +548,7 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_1slp4")
 theme_override_font_sizes/font_size = 24
-text = "players connected."
+text = "ROUND_PLCONN"
 horizontal_alignment = 1
 
 [connection signal="body_entered" from="SkyEnabler" to="SkyEnabler" method="OnBodyEntered"]
