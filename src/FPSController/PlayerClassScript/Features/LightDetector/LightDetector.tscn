@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bixfgo6a2xia2"]
+
+[ext_resource type="Script" path="res://FPSController/PlayerClassScript/Features/LightDetector/LightDetector.cs" id="1_gah5g"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_74jdq"]
+
+[node name="LightDetector" type="Node3D"]
+script = ExtResource("1_gah5g")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="DetectorCam" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+far = 20.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/DetectorCam"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 4.37114e-08, -1)
+layers = 524288
+mesh = SubResource("PlaneMesh_74jdq")
+skeleton = NodePath("../..")

@@ -23,8 +23,10 @@ public partial class Scp173PlayerScript : Node3D
         set => stareCounter = value;
     }
     float blinkTimer = 0f;
+    bool abilityCooldown = true;
+    [Export] bool blindAbilityActive = false;
     // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+    public override async void _Ready()
     {
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
@@ -37,6 +39,10 @@ public partial class Scp173PlayerScript : Node3D
         ray = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/RayCast3D");
         //vision = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/VisionRadius");
         interactSound = GetParent().GetParent<PlayerScript>().GetNode<AudioStreamPlayer3D>("InteractSound");
+        GetNode<Label>("AbilityUI/VBoxContainer/Blind").Text = "Blind ability: Cooldown.";
+        await ToSignal(GetTree().CreateTimer(5.0), "timeout");
+        abilityCooldown = true;
+        GetNode<Label>("AbilityUI/VBoxContainer/Blind").Text = "Blind ability: Ready.";
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -62,6 +68,10 @@ public partial class Scp173PlayerScript : Node3D
                     recon.Rpc("Eject");
                 }
             }
+            if (!abilityCooldown && Input.IsActionJustPressed("scp173_blind"))
+            {
+                AbilityBlind();
+            }
             Scp173Stare((float)delta);
         }
     }
@@ -72,7 +82,7 @@ public partial class Scp173PlayerScript : Node3D
     /// <param name="delta">Used for timeout</param>
     async void Scp173Stare(float delta)
     {
-        if (isWatching && stareCounter > 0 /*&& GetNode<LightDetector>("LightDetector").LightnessDetect() > 0.2*/) //Light detector is broken
+        if (isWatching && stareCounter > 0 && GetNode<LightDetector>("LightDetector").LightnessDetect() > 0.2 && !blindAbilityActive) //Light detector is broken
         {
             //If SCP-173 is not moving, it should stand still!
             if (GetParent().GetParent<PlayerScript>().CanMove && blinkTimer > 0f)
@@ -92,6 +102,31 @@ public partial class Scp173PlayerScript : Node3D
             //move freely
             GetParent().GetParent<PlayerScript>().CanMove = true;
         }
+    }
+    /// <summary>
+    /// Blind ablilty (local part). Available since 0.8.0-dev
+    /// </summary>
+    async void AbilityBlind()
+    {
+        Rpc(nameof(AbilityBlindNetworked));
+        blindAbilityActive = true;
+        abilityCooldown = true;
+        GetNode<Label>("AbilityUI/VBoxContainer/Blind").Text = "Blind ability: You can move freely for 5 seconds!";
+        await ToSignal(GetTree().CreateTimer(5.0), "timeout");
+        blindAbilityActive = false;
+        GetNode<Label>("AbilityUI/VBoxContainer/Blind").Text = "Blind ability: Cooldown.";
+        await ToSignal(GetTree().CreateTimer(30.0), "timeout");
+        abilityCooldown = false;
+        GetNode<Label>("AbilityUI/VBoxContainer/Blind").Text = "Blind ability: Ready.";
+    }
+    /// <summary>
+    /// Blind ability (networked part). Available since 0.8.0-dev.
+    /// </summary>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    void AbilityBlindNetworked()
+    {
+        interactSound.Stream = GD.Load<AudioStream>("res://Sounds/Character/173/Ability173.ogg");
+        interactSound.Play();
     }
 
     /// <summary>

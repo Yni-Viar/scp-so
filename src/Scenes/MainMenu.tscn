@@ -143,7 +143,7 @@ bbcode_enabled = true
 text = "[b]v.0.8.0-dev[/b] [i](Alpha)[/i]
 - Added new Light Containment Zone doors.
 - Added SCP-2306 and a game mechanic specified for this SCP.
-- SCP-2522 is now enabled.
+- SCP-2522 is now enabled, but is still experimental.
 - Now SCP-131 instances are counted as targets as human classes.
 - Reworked the core of the game - now it is possible to have different gamemodes.
 [b][i]Please note, syntax of the most admin commands changed. Please, check the message in[/i] help [i]command.[/i][/b]
@@ -156,6 +156,8 @@ text = "[b]v.0.8.0-dev[/b] [i](Alpha)[/i]
 - Reworked button system, switching to our own solution.
 - Fixed collision in SCP-650 containment chamber.
 - Initial support of translations.
+- Added new ability for SCP-173, as well as returning Light Detector.
+- Added level system for SCP-2522.
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.

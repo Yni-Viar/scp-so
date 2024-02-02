@@ -63,12 +63,13 @@ public partial class CctvCamera : Node3D
                 {
                     collidedWith.Call("CallLock");
                     computer.energy -= 10f;
+                    computer.levelUp += 20f / computer.level;
                 }
             }
 
             if (Input.IsActionJustPressed("scp2522_blackout") && computer != null)
             {
-                if (computer.energy - 50f >= 0f)
+                if (computer.energy - 50f >= 0f && computer.level > 2)
                 {
                     computer.energy -= 50f;
                     Rpc("RoomBlackout");
@@ -143,6 +144,10 @@ public partial class CctvCamera : Node3D
                     light.Visible = true;
                 }
             }*/
+        }
+        if (computer != null)
+        {
+            computer.levelUp += 50f / computer.level;
         }
     }
 }

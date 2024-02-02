@@ -10,6 +10,8 @@ public partial class Scp2522PlayerScript : ComputerPlayerScript
     //Godot.Collections.Array<Node> rzCamList = new Godot.Collections.Array<Node>();
     string currentCam = "";
     [Export(PropertyHint.Range, "0,100,0.01")] internal float energy = 100f;
+    [Export] internal int level = 1;
+    [Export(PropertyHint.Range, "0,100,0.01")] internal float levelUp = 0f;
 	// Called when the node enters the scene tree for the first time.
 	internal override void OnStart()
 	{
@@ -34,7 +36,7 @@ public partial class Scp2522PlayerScript : ComputerPlayerScript
                     }
                 }
             }*/
-            SwitchCamera("Lcz", "LC_cont1_079");
+            SwitchCamera("Rz", "RZ_room2_servers");
         }
         Input.MouseMode = Input.MouseModeEnum.Visible;
 	}
@@ -60,7 +62,7 @@ public partial class Scp2522PlayerScript : ComputerPlayerScript
             }
             if (energy < 100)
             {
-                energy += 0.01f;
+                energy += 0.02f * (level / 2);
             }
 
             if (GetTree().Root.GetNodeOrNull<Scp2522Recontain>("Main/Game/MapGenRz/RZ_room2_servers/laptop_2522") != null)

@@ -195,6 +195,11 @@ weapon_reload={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":82,"physical_keycode":0,"key_label":0,"unicode":114,"echo":false,"script":null)
 ]
 }
+scp173_blind={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":70,"physical_keycode":0,"key_label":0,"unicode":102,"echo":false,"script":null)
+]
+}
 
 [internationalization]
 
@@ -207,6 +212,7 @@ locale/translations=PackedStringArray("res://Translations/mainmenu.en.translatio
 3d_render/layer_3="doors"
 3d_render/layer_4="items"
 3d_render/layer_5="scp173"
+3d_render/layer_20="invisible mechanics, such as light detector"
 3d_physics/layer_1="World"
 3d_physics/layer_2="Players"
 3d_physics/layer_3="Doors"

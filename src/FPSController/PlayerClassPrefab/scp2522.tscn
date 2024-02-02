@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ekckj1irrths"]
+[gd_scene load_steps=9 format=3 uid="uid://ekckj1irrths"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerClassScript/Scp2522PlayerScript.cs" id="1_rd54c"]
 [ext_resource type="FontFile" uid="uid://cqaasvtiakcsw" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="4_bycpf"]
+[ext_resource type="Texture2D" uid="uid://onts4gx0dbm7" path="res://Assets/HUD/levelbar.png" id="5_88gl2"]
 [ext_resource type="Texture2D" uid="uid://cgxah7benn8tk" path="res://Assets/HUD/energybar.png" id="5_q2nfg"]
 [ext_resource type="FontFile" uid="uid://dbcvx5qht5ass" path="res://Assets/Fonts/PixelifySans/PixelifySans-Regular.ttf" id="8_7eus5"]
 [ext_resource type="PackedScene" uid="uid://181xd3hx0uq" path="res://MapGen/HUD/MapGenHUD.tscn" id="9_dp7s1"]
@@ -38,7 +39,8 @@ offset_right = 169.0
 offset_bottom = 114.36
 theme_override_fonts/font = ExtResource("8_7eus5")
 theme_override_font_sizes/font_size = 24
-text = "Arrows key - rotate camera.
+text = "
+Arrows key - rotate camera.
 E - open door.
 R - lock REGULAR door.
 Tab - open map."
@@ -57,43 +59,16 @@ anchor_top = 0.875
 anchor_right = 0.169
 anchor_bottom = 0.875
 offset_left = -243.48
-offset_top = -22.0001
+offset_top = -25.0
 offset_right = 243.52
-offset_bottom = 20.9999
+offset_bottom = 15.0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("8_7eus5")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/background = SubResource("StyleBoxFlat_4t5cu")
 theme_override_styles/fill = SubResource("StyleBoxFlat_70njf")
 
-[node name="Label" type="Label" parent="UI"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.167
-anchor_top = 0.838
-anchor_right = 0.167
-anchor_bottom = 0.838
-offset_left = -40.64
-offset_top = -16.04
-offset_right = 42.36
-offset_bottom = 16.96
-theme_override_fonts/font = ExtResource("8_7eus5")
-theme_override_font_sizes/font_size = 24
-text = "Energy"
-horizontal_alignment = 1
-
-[node name="TargetCount" type="Label" parent="UI"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -280.0
-offset_bottom = 33.0
-grow_horizontal = 0
-theme_override_fonts/font = ExtResource("4_bycpf")
-theme_override_font_sizes/font_size = 32
-
-[node name="TextureRect" type="TextureRect" parent="UI"]
+[node name="EnergyIcon" type="TextureRect" parent="UI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.023
@@ -106,6 +81,48 @@ offset_right = 19.84
 offset_bottom = 20.3999
 grow_vertical = 0
 texture = ExtResource("5_q2nfg")
+
+[node name="LevelBar" type="ProgressBar" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.168
+anchor_top = 0.93
+anchor_right = 0.168
+anchor_bottom = 0.93
+offset_left = -242.56
+offset_top = -20.4001
+offset_right = 244.44
+offset_bottom = 19.5999
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("8_7eus5")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/background = SubResource("StyleBoxFlat_4t5cu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_70njf")
+
+[node name="LevelIcon" type="TextureRect" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.023
+anchor_top = 0.93
+anchor_right = 0.023
+anchor_bottom = 0.93
+offset_left = -20.16
+offset_top = -20.4001
+offset_right = 19.84
+offset_bottom = 19.5999
+grow_vertical = 0
+texture = ExtResource("5_88gl2")
+
+[node name="TargetCount" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -280.0
+offset_bottom = 33.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("4_bycpf")
+theme_override_font_sizes/font_size = 32
 
 [node name="Scp2306Warning" type="Label" parent="UI"]
 visible = false
@@ -125,3 +142,17 @@ theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("8_7eus5")
 theme_override_font_sizes/font_size = 32
 text = "/!\\ Something is trying to crash me..."
+
+[node name="ExperimentalWarning" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("8_7eus5")
+theme_override_font_sizes/font_size = 24
+text = "[i] Currenly, SCP-2522 \"hatbot.aic\" is an experimental class"

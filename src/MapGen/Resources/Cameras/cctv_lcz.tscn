@@ -95,6 +95,7 @@ transform = Transform3D(1, 0, 0, 0, 0.499999, -0.866025, 0, 0.866025, 0.499999, 
 [node name="Camera3D" type="Camera3D" parent="RotatingNode"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.17397, -1.49012e-08)
 visible = false
+cull_mask = 524287
 
 [node name="RayCast3D" type="RayCast3D" parent="RotatingNode/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 0, -0.999999, 0, 0.999999, 0, 0, -1.49012e-08, 0.17397)
