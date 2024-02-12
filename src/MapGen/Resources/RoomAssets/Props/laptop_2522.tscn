@@ -1,9 +1,9 @@
 [gd_scene load_steps=20 format=3 uid="uid://daqqwtojxind7"]
 
-[ext_resource type="Texture2D" uid="uid://c74sd50joiti5" path="res://MapGen/Resources/RoomAssets/Props/Laptop/keyboard.png" id="1_45fx0"]
+[ext_resource type="Texture2D" uid="uid://cxrjfxp2x0mmj" path="res://MapGen/Resources/RoomAssets/Props/Laptop/keyboard.png" id="1_45fx0"]
 [ext_resource type="Script" path="res://FPSController/PlayerClassScript/Features/HatbotAicRecontainment/Scp2522Recontain.cs" id="1_y3nu5"]
-[ext_resource type="Texture2D" uid="uid://7f1yc3clbsnj" path="res://MapGen/Resources/RoomAssets/Props/Laptop/keycard reader.png" id="2_jvd80"]
-[ext_resource type="Texture2D" uid="uid://c4mpdv10eterh" path="res://MapGen/Resources/RoomAssets/Props/Laptop/blank.png" id="3_0446h"]
+[ext_resource type="Texture2D" uid="uid://dxh1p4ifmpxmo" path="res://MapGen/Resources/RoomAssets/Props/Laptop/keycard reader.png" id="2_jvd80"]
+[ext_resource type="Texture2D" uid="uid://dxwt63fgxf0r0" path="res://MapGen/Resources/RoomAssets/Props/Laptop/blank.png" id="3_0446h"]
 [ext_resource type="Texture2D" uid="uid://bhxxf2iyo6jy0" path="res://MapGen/Resources/RoomAssets/Props/Laptop/screens/scom2_2522.png" id="4_rnafg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3tvj"]

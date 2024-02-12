@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://mu7j26by23js"]
+[gd_scene load_steps=33 format=3 uid="uid://mu7j26by23js"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/GameMode/BreachGameMode.cs" id="1_4ab2v"]
 [ext_resource type="Script" path="res://Scripts/Multiplayer/AdminCommands.cs" id="2_m73g2"]
@@ -10,9 +10,10 @@
 [ext_resource type="Script" path="res://Scripts/PlayerUI.cs" id="6_l6v83"]
 [ext_resource type="Texture2D" uid="uid://bmw4fxmnmwhov" path="res://Assets/HUD/arrow.png" id="7_bwdaw"]
 [ext_resource type="PackedScene" uid="uid://dxk8akb87bv4u" path="res://MapGen/Resources/startroom.tscn" id="8_1kvjl"]
-[ext_resource type="FontFile" uid="uid://cqaasvtiakcsw" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="8_1slp4"]
+[ext_resource type="FontFile" uid="uid://c5notad62nmgy" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="8_1slp4"]
 [ext_resource type="Script" path="res://InventorySystem/ItemManager.cs" id="8_80c5t"]
 [ext_resource type="PackedScene" uid="uid://cn6ghiygcjiq3" path="res://MapGen/Resources/surface_map.tscn" id="9_1te4l"]
+[ext_resource type="Script" path="res://Scripts/WarheadControl/WarheadController.cs" id="9_50t46"]
 [ext_resource type="PackedScene" uid="uid://cy72pcjf5uj72" path="res://MapGen/Resources/PD.tscn" id="11_jjunp"]
 [ext_resource type="Script" path="res://Scripts/FPSCounter.cs" id="12_xkdk3"]
 [ext_resource type="Script" path="res://Scripts/SkyEnabler.cs" id="13_b3jdh"]
@@ -46,6 +47,9 @@ properties/6/replication_mode = 2
 properties/7/path = NodePath(".:maxSpawnableObjects")
 properties/7/spawn = true
 properties/7/replication_mode = 2
+properties/8/path = NodePath(".:omegaWarheadKeycode")
+properties/8/spawn = true
+properties/8/replication_mode = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ttxax"]
 size = Vector3(6410.33, 1969.08, 6412.47)
@@ -204,6 +208,15 @@ objectType = 1
 [node name="NPCs" type="Node" parent="."]
 script = ExtResource("8_80c5t")
 objectType = 2
+
+[node name="OmegaWarhead" type="Node" parent="."]
+script = ExtResource("9_50t46")
+omegaWarhead = true
+countdownAudioPath = "res://Sounds/General/Warhead/warhead_countdown.ogg"
+boomSoundPath = "res://Sounds/General/Warhead/Nuke2.ogg"
+
+[node name="WarheadCountdown" type="Timer" parent="OmegaWarhead"]
+one_shot = true
 
 [node name="Decals" type="Node3D" parent="."]
 
@@ -551,6 +564,7 @@ theme_override_font_sizes/font_size = 24
 text = "ROUND_PLCONN"
 horizontal_alignment = 1
 
+[connection signal="timeout" from="OmegaWarhead/WarheadCountdown" to="OmegaWarhead" method="OnWarheadCountdownTimeout"]
 [connection signal="body_entered" from="SkyEnabler" to="SkyEnabler" method="OnBodyEntered"]
 [connection signal="body_exited" from="SkyEnabler" to="SkyEnabler" method="OnBodyExited"]
 [connection signal="pressed" from="PlayerUI/AdminConsole/ContinueBtn" to="PlayerUI/AdminConsole" method="OnContinueBtnPressed"]

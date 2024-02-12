@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://cigjp5sl4xe7x"]
 
-[ext_resource type="Texture2D" uid="uid://i70kqlwuqo1g" path="res://InventorySystem/Items/InventoryIcons/medkit.png" id="1_jmq1g"]
+[ext_resource type="Texture2D" uid="uid://ngsan0fpbpd5" path="res://InventorySystem/Items/InventoryIcons/medkit.png" id="1_jmq1g"]
 [ext_resource type="Script" path="res://InventorySystem/Items/Item.cs" id="2_nlbd2"]
 
 [resource]

@@ -1,13 +1,13 @@
 [gd_scene load_steps=33 format=3 uid="uid://bqgf6wgbcnloq"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerClassScript/Scp173PlayerScript.cs" id="1_4av21"]
-[ext_resource type="Texture2D" uid="uid://cq03mwmo3ey0c" path="res://Assets/Models/scp173-BaseTexture/scp173NEO_low_Merged_PM3D_Sphere3D4_AlbedoTransparency.png" id="2_h3yhc"]
-[ext_resource type="Texture2D" uid="uid://bc7a8k1ag20kd" path="res://Assets/Models/scp173-BaseTexture/scp173NEO_low_Merged_PM3D_Sphere3D4_MetallicSmoothness.png" id="3_y2wk8"]
-[ext_resource type="Texture2D" uid="uid://dhk6piqm87b2n" path="res://Assets/Models/scp173-BaseTexture/scp173NEO_low_Merged_PM3D_Sphere3D4_Normal.png" id="4_m76d2"]
+[ext_resource type="Texture2D" uid="uid://tt35hyl44sem" path="res://Assets/Models/scp173-BaseTexture/scp173NEO_low_Merged_PM3D_Sphere3D4_AlbedoTransparency.png" id="2_h3yhc"]
+[ext_resource type="Texture2D" uid="uid://h3gw33mqk6yv" path="res://Assets/Models/scp173-BaseTexture/scp173NEO_low_Merged_PM3D_Sphere3D4_MetallicSmoothness.png" id="3_y2wk8"]
+[ext_resource type="Texture2D" uid="uid://wgwpwy2pol35" path="res://Assets/Models/scp173-BaseTexture/scp173NEO_low_Merged_PM3D_Sphere3D4_Normal.png" id="4_m76d2"]
 [ext_resource type="Shader" path="res://Shaders/MixShader/mix.gdshader" id="5_wsa7v"]
-[ext_resource type="Texture2D" uid="uid://ip5h0psqi2fr" path="res://Assets/Models/scp173-FaceTextures/face_1.png" id="6_cn7o5"]
+[ext_resource type="Texture2D" uid="uid://c5vm7t6e80e74" path="res://Assets/Models/scp173-FaceTextures/face_1.png" id="6_cn7o5"]
 [ext_resource type="PackedScene" uid="uid://bixfgo6a2xia2" path="res://FPSController/PlayerClassScript/Features/LightDetector/LightDetector.tscn" id="7_pauxd"]
-[ext_resource type="FontFile" uid="uid://cqaasvtiakcsw" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="7_pwjc2"]
+[ext_resource type="FontFile" uid="uid://c5notad62nmgy" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="7_pwjc2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g7cr3"]
 resource_name = "phong2"

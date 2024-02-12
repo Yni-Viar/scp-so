@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Scripts/MainMenu/MainMenu.cs" id="1_s5ksq"]
 [ext_resource type="Texture2D" uid="uid://boboxmvoqy61t" path="res://Assets/Menu/MainMenuForeground.png" id="2_647vp"]
-[ext_resource type="FontFile" uid="uid://bmquuud55yceh" path="res://Assets/Fonts/Righteous/Righteous-Regular.ttf" id="3_gq784"]
+[ext_resource type="FontFile" uid="uid://bqfvf7d62xqdu" path="res://Assets/Fonts/Righteous/Righteous-Regular.ttf" id="3_gq784"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/CreditsPanel.cs" id="4_okfnt"]
-[ext_resource type="FontFile" uid="uid://cqaasvtiakcsw" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="4_yqqir"]
+[ext_resource type="FontFile" uid="uid://c5notad62nmgy" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="4_yqqir"]
 [ext_resource type="Theme" uid="uid://4k2un7nm7xc6" path="res://UITheme.tres" id="5_gi3lh"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/PlayPanel.cs" id="5_yqbst"]
 [ext_resource type="PackedScene" uid="uid://bjbe75eis8tu6" path="res://Scenes/Settings.tscn" id="6_0nqn5"]
@@ -158,11 +158,13 @@ text = "[b]v.0.8.0-dev[/b] [i](Alpha)[/i]
 - Initial support of translations.
 - Added new ability for SCP-173, as well as returning Light Detector.
 - Added level system for SCP-2522.
+- New elevator system - currently used only for nuke.
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.
+- Alpha Warhead still not implemented.
+- You can reach the facility even after Omega Warhead detonation.
 - Connecting to ongoing game may be unstable.
-- Standing in front of SCP-173 through wall still thiggers the sculpture (maybe).
 - Hand rigs are just... meh..."
 
 [node name="PlayPanel" type="Panel" parent="."]
@@ -552,7 +554,6 @@ text = "[i]Models (license - CC-BY-SA 3.0)[/i]
 - SCP-3199 model - Aruspice (model, textures), Shakles (rig, animation)
 - PDA - Model and textures by Shadowscale
 - COM-16 model by EternalChaos011
-
 
 "
 fit_content = true

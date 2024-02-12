@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://y4wnab53n0bv"
+uid="uid://r0hxq0ljs0i3"
 path="res://.godot/imported/RZ_room2_poffices.gltf-02d7493ca6736e14d960242156eced1a.scn"
 
 [deps]
@@ -13,8 +13,8 @@ dest_files=["res://.godot/imported/RZ_room2_poffices.gltf-02d7493ca6736e14d96024
 
 [params]
 
-nodes/root_type="Node3D"
-nodes/root_name="Scene Root"
+nodes/root_type=""
+nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 meshes/ensure_tangents=true
@@ -29,61 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"materials": {
-"mat0.005": {
-"use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/RZ/Mat02/mat0.005.tres"
-},
-"mat1.005": {
-"use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/RZ/Mat02/mat1.005.tres"
-},
-"mat10.004": {
-"use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/RZ/Mat02/mat10.004.tres"
-},
-"mat11.003": {
-"use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/RZ/Mat02/mat11.003.tres"
-},
-"mat12.001": {
-"use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/RZ/Mat02/mat12.001.tres"
-},
-"mat2.005": {
-"use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/RZ/Mat02/mat2.005.tres"
-},
-"mat3.005": {
-"use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/RZ/Mat02/mat3.005.tres"
-},
-"mat4.005": {
-"use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/RZ/Mat02/mat4.005.tres"
-},
-"mat5.005": {
-"use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/RZ/Mat02/mat5.005.tres"
-},
-"mat6.005": {
-"use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/RZ/Mat02/mat6.005.tres"
-},
-"mat7.005": {
-"use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/RZ/Mat02/mat7.005.tres"
-},
-"mat8.005": {
-"use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/RZ/Mat02/mat8.005.tres"
-},
-"mat9.004": {
-"use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/RZ/Mat02/mat9.004.tres"
-}
-}
-}
-gltf/naming_version=0
+_subresources={}
+gltf/naming_version=1
 gltf/embedded_image_handling=1

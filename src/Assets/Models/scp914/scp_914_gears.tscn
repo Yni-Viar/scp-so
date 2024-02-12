@@ -1,12 +1,12 @@
 [gd_scene load_steps=32 format=3 uid="uid://bg4tvglg4thjc"]
 
 [ext_resource type="Script" path="res://Scripts/Scp914Gears.cs" id="1_22nco"]
-[ext_resource type="Texture2D" uid="uid://ccngcy4ytlca" path="res://Assets/Models/scp914/scp914_gears/scp914_device_dial_AlbedoTransparency.png" id="1_xjb2g"]
-[ext_resource type="Texture2D" uid="uid://ci77v4sgujf5q" path="res://Assets/Models/scp914/scp914_gears/scp914_device_dial_MetallicSmoothness.png" id="2_s874c"]
-[ext_resource type="Texture2D" uid="uid://bitjtlpjm6dww" path="res://Assets/Models/scp914/scp914_gears/scp914_device_dial_Normal.png" id="3_2qyb6"]
-[ext_resource type="Texture2D" uid="uid://bwlrk5v6fjena" path="res://Assets/Models/scp914/scp914_gears/scp914_device_gearset_AlbedoTransparency.png" id="4_ai5e6"]
-[ext_resource type="Texture2D" uid="uid://ch407hfw5535t" path="res://Assets/Models/scp914/scp914_gears/scp914_device_gearset_MetallicSmoothness.png" id="5_1k7b2"]
-[ext_resource type="Texture2D" uid="uid://pmoiryhqddw" path="res://Assets/Models/scp914/scp914_gears/scp914_device_gearset_Normal.png" id="6_ag6eu"]
+[ext_resource type="Texture2D" uid="uid://bbkrrnlvjrce4" path="res://Assets/Models/scp914/scp914_gears/scp914_device_dial_AlbedoTransparency.png" id="1_xjb2g"]
+[ext_resource type="Texture2D" uid="uid://cbgkbh4ptyrvb" path="res://Assets/Models/scp914/scp914_gears/scp914_device_dial_MetallicSmoothness.png" id="2_s874c"]
+[ext_resource type="Texture2D" uid="uid://bmx7xyxlniynq" path="res://Assets/Models/scp914/scp914_gears/scp914_device_dial_Normal.png" id="3_2qyb6"]
+[ext_resource type="Texture2D" uid="uid://cg504uj58ucaa" path="res://Assets/Models/scp914/scp914_gears/scp914_device_gearset_AlbedoTransparency.png" id="4_ai5e6"]
+[ext_resource type="Texture2D" uid="uid://4vhkfhicfdnh" path="res://Assets/Models/scp914/scp914_gears/scp914_device_gearset_MetallicSmoothness.png" id="5_1k7b2"]
+[ext_resource type="Texture2D" uid="uid://pb4yatc07csn" path="res://Assets/Models/scp914/scp914_gears/scp914_device_gearset_Normal.png" id="6_ag6eu"]
 [ext_resource type="AudioStream" uid="uid://bfplb6dxnpk4l" path="res://Sounds/Interact/LeverFlip.ogg" id="8_l20m2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6fiqu"]

@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bl3l27fkd20xh"]
 
-[ext_resource type="Texture2D" uid="uid://6atirug73xa8" path="res://MapGen/Resources/RoomAssets/HCZ/concretewall.jpg" id="1_0oiki"]
+[ext_resource type="Texture2D" uid="uid://dnwqjsmtdhnds" path="res://MapGen/Resources/RoomAssets/HCZ/concretewall.jpg" id="1_0oiki"]
 
 [resource]
 resource_name = "mat5.002"

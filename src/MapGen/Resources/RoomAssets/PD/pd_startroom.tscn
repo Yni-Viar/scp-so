@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://bekjyt2bxsv0f"]
 
-[ext_resource type="Texture2D" uid="uid://b6smopi37raug" path="res://MapGen/Resources/RoomAssets/PD/Rock046S_2K_Color.png" id="1_qy1qm"]
-[ext_resource type="Texture2D" uid="uid://bkb5biqrjm5x1" path="res://MapGen/Resources/RoomAssets/PD/Rock046S_2K_Roughness.png" id="2_nkj2j"]
-[ext_resource type="Texture2D" uid="uid://c4ftmxx6huuxb" path="res://MapGen/Resources/RoomAssets/PD/Rock046S_2K_NormalGL.png" id="3_s84qu"]
-[ext_resource type="Texture2D" uid="uid://4pu5t1ddnvhu" path="res://MapGen/Resources/RoomAssets/PD/rockmoss.jpg" id="4_nwt1f"]
+[ext_resource type="Texture2D" uid="uid://qy1ppb23va6i" path="res://MapGen/Resources/RoomAssets/PD/Rock046S_2K_Color.png" id="1_qy1qm"]
+[ext_resource type="Texture2D" uid="uid://urhu4qxvwh33" path="res://MapGen/Resources/RoomAssets/PD/Rock046S_2K_Roughness.png" id="2_nkj2j"]
+[ext_resource type="Texture2D" uid="uid://bgpss4mbmq3cj" path="res://MapGen/Resources/RoomAssets/PD/Rock046S_2K_NormalGL.png" id="3_s84qu"]
+[ext_resource type="Texture2D" uid="uid://yhx5x4s6l8k1" path="res://MapGen/Resources/RoomAssets/PD/rockmoss.jpg" id="4_nwt1f"]
 [ext_resource type="Script" path="res://Scripts/PocketDimension/PDRandomExitArea.cs" id="5_bwjsw"]
 [ext_resource type="Script" path="res://Scripts/DeadlyArea.cs" id="6_7opl1"]
 

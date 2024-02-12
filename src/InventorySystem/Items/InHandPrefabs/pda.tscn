@@ -1,9 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8rv60el787ki"]
+[gd_scene load_steps=20 format=3 uid="uid://c8rv60el787ki"]
 
-[ext_resource type="Script" path="res://InventorySystem/Items/InHandPrefabs/ItemAction.cs" id="1_goxqf"]
-[ext_resource type="Texture2D" uid="uid://c3ior04hosg8a" path="res://Assets/Models/Items-PDA/PDA_PDA_AlbedoTransparency.png" id="1_xn5mn"]
-[ext_resource type="Texture2D" uid="uid://cjiqeouuslhjv" path="res://Assets/Models/Items-PDA/PDA_PDA_MetallicSmoothness.png" id="2_yjdvy"]
-[ext_resource type="Texture2D" uid="uid://dyue2yqs3bitx" path="res://Assets/Models/Items-PDA/PDA_PDA_Normal.png" id="3_ghlm1"]
+[ext_resource type="Script" path="res://InventorySystem/Items/InHandPrefabs/ItemPda.cs" id="1_23yhg"]
+[ext_resource type="Texture2D" uid="uid://bgewck8t8oh6n" path="res://Assets/Models/Items-PDA/PDA_PDA_AlbedoTransparency.png" id="1_xn5mn"]
+[ext_resource type="Texture2D" uid="uid://dsxwpcbdwhfxl" path="res://Assets/Models/Items-PDA/PDA_PDA_MetallicSmoothness.png" id="2_yjdvy"]
+[ext_resource type="Texture2D" uid="uid://chwr6gd7o2r3y" path="res://Assets/Models/Items-PDA/PDA_PDA_Normal.png" id="3_ghlm1"]
+[ext_resource type="StyleBox" uid="uid://eqpsk5ij6hcc" path="res://UI/button_normal.tres" id="6_rrrbp"]
+[ext_resource type="StyleBox" uid="uid://ckcxid44gxi7b" path="res://UI/button_hover.tres" id="7_fi6fj"]
+[ext_resource type="StyleBox" uid="uid://dv7h7m12minrf" path="res://UI/button_pressed.tres" id="8_delby"]
+[ext_resource type="StyleBox" uid="uid://ca5urmqniyo1i" path="res://UI/button_disabled.tres" id="9_rdefg"]
+[ext_resource type="Texture2D" uid="uid://bg3cyqcgfmgjk" path="res://Assets/HUD/PDA/map_icon.png" id="10_1o6la"]
+[ext_resource type="Texture2D" uid="uid://dqohq1f110qex" path="res://Assets/HUD/PDA/manage_icon.png" id="11_ec356"]
+[ext_resource type="FontFile" uid="uid://c5notad62nmgy" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="11_seoo7"]
+[ext_resource type="Script" path="res://Scripts/PuzzleBase.cs" id="13_ap0fh"]
+[ext_resource type="PackedScene" uid="uid://dy6wivx867lc1" path="res://InventorySystem/Items/InHandPrefabs/PDAComponents/PdaMap.tscn" id="13_ywt7u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nuh4e"]
 resource_name = "PDA"
@@ -52,15 +61,179 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_rcq83")
 
+[sub_resource type="QuadMesh" id="QuadMesh_4njbc"]
+size = Vector2(0.138, 0.185)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5126f"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s3tqv"]
+resource_local_to_scene = true
+albedo_color = Color(0.133333, 0.133333, 0.133333, 1)
+emission_enabled = true
+emission_texture = SubResource("ViewportTexture_5126f")
+
 [node name="pda" type="Node3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-script = ExtResource("1_goxqf")
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.156236, 0.0935229, 0.229295)
+script = ExtResource("1_23yhg")
 
 [node name="PDA2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.265485, 0)
 mesh = SubResource("ArrayMesh_o23sy")
 skeleton = NodePath("")
 
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(0.00112384, 0, 0.0974105, 0, 0.097417, 0, -0.0974105, 0, 0.00112384, 0.03008, -0.0891595, -1.31484e-09)
-text = "Coming soon..."
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(600, 800)
+
+[node name="GUI" type="Control" parent="SubViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 600.0
+offset_bottom = 800.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport/GUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MainScreen" type="Control" parent="SubViewport/GUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/GUI/MainScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.58
+anchor_right = 0.5
+anchor_bottom = 0.58
+offset_left = -300.0
+offset_top = -336.0
+offset_right = 300.0
+offset_bottom = 264.0
+
+[node name="MapView" type="Button" parent="SubViewport/GUI/MainScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_seoo7")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("6_rrrbp")
+theme_override_styles/hover = ExtResource("7_fi6fj")
+theme_override_styles/pressed = ExtResource("8_delby")
+theme_override_styles/disabled = ExtResource("9_rdefg")
+text = "View (m)ap
+"
+icon = ExtResource("10_1o6la")
+
+[node name="KeycodeView" type="Button" parent="SubViewport/GUI/MainScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_seoo7")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("6_rrrbp")
+theme_override_styles/hover = ExtResource("7_fi6fj")
+theme_override_styles/pressed = ExtResource("8_delby")
+theme_override_styles/disabled = ExtResource("9_rdefg")
+text = "Input (k)eycode"
+icon = ExtResource("11_ec356")
+
+[node name="Welcome" type="Label" parent="SubViewport/GUI/MainScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.502
+anchor_top = 0.071
+anchor_right = 0.502
+anchor_bottom = 0.071
+offset_left = -277.2
+offset_top = -24.8
+offset_right = 277.8
+offset_bottom = 24.2
+theme_override_fonts/font = ExtResource("11_seoo7")
+theme_override_font_sizes/font_size = 48
+text = "What do you want to do?"
+
+[node name="Hint" type="Label" parent="SubViewport/GUI/MainScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.502
+anchor_top = 0.071
+anchor_right = 0.502
+anchor_bottom = 0.071
+offset_left = -277.2
+offset_top = 679.2
+offset_right = 277.8
+offset_bottom = 728.2
+theme_override_fonts/font = ExtResource("11_seoo7")
+theme_override_font_sizes/font_size = 24
+text = "Because there is no cursor, you need to input keys,
+mentioned between (...), such as (m) is key \"M\""
+
+[node name="Map" type="Control" parent="SubViewport/GUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Back" type="Button" parent="SubViewport/GUI/Map"]
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("11_seoo7")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("6_rrrbp")
+theme_override_styles/hover = ExtResource("7_fi6fj")
+theme_override_styles/pressed = ExtResource("8_delby")
+theme_override_styles/disabled = ExtResource("9_rdefg")
+text = "Back"
+
+[node name="PdaMap" parent="SubViewport/GUI/Map" instance=ExtResource("13_ywt7u")]
+offset_top = 80.0
+offset_bottom = 784.0
+
+[node name="FastKeycode" type="Control" parent="SubViewport/GUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("13_ap0fh")
+
+[node name="Back" type="Button" parent="SubViewport/GUI/FastKeycode"]
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("11_seoo7")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("6_rrrbp")
+theme_override_styles/hover = ExtResource("7_fi6fj")
+theme_override_styles/pressed = ExtResource("8_delby")
+theme_override_styles/disabled = ExtResource("9_rdefg")
+text = "Back"
+
+[node name="AccessLabel" type="Label" parent="SubViewport/GUI/FastKeycode"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 80.0
+offset_right = 451.0
+offset_bottom = 114.0
+theme_override_font_sizes/font_size = 24
+text = "Unauthorized - please enter the code.
+"
+
+[node name="Screen" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0241783, -0.104971, -0.00117852)
+mesh = SubResource("QuadMesh_4njbc")
+surface_material_override/0 = SubResource("StandardMaterial3D_s3tqv")

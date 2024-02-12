@@ -1,9 +1,9 @@
 [gd_scene load_steps=29 format=3 uid="uid://xbv8i0drk5uj"]
 
 [ext_resource type="Script" path="res://InventorySystem/Items/InHandPrefabs/WeaponManager.cs" id="1_0vhpi"]
-[ext_resource type="Texture2D" uid="uid://cqfc8sooid8xb" path="res://Assets/Models/Items-weapons/mtf_rifle/M4.png" id="1_b5xdc"]
+[ext_resource type="Texture2D" uid="uid://j0yfyagckglc" path="res://Assets/Models/Items-weapons/mtf_rifle/M4.png" id="1_b5xdc"]
 [ext_resource type="AudioStream" uid="uid://3ot1l3b1knjt" path="res://Sounds/Weapons/mtfrifle/Gunshot.ogg" id="2_ndqqj"]
-[ext_resource type="Texture2D" uid="uid://bdfyvpmqxrkl4" path="res://Assets/Models/Items-weapons/mtf_rifle/M4NormalMap_NRM.png" id="2_o74ci"]
+[ext_resource type="Texture2D" uid="uid://b6s1y4yptjni1" path="res://Assets/Models/Items-weapons/mtf_rifle/M4NormalMap_NRM.png" id="2_o74ci"]
 [ext_resource type="AudioStream" uid="uid://d1n6u41c6mg7k" path="res://Sounds/Weapons/reload/assaultriflereload1.wav" id="3_vfgku"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxiat"]

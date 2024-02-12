@@ -1,9 +1,9 @@
 [gd_scene load_steps=18 format=3 uid="uid://cookhnsjcrpak"]
 
-[ext_resource type="Texture2D" uid="uid://dn3cwfq47jax5" path="res://Assets/Models/Items-weapons/com16/1911 Magazine Uv.png" id="1_2vy2a"]
+[ext_resource type="Texture2D" uid="uid://cm00dtr7xf4y6" path="res://Assets/Models/Items-weapons/com16/1911 Magazine Uv.png" id="1_2vy2a"]
 [ext_resource type="Script" path="res://InventorySystem/Items/InHandPrefabs/WeaponManager.cs" id="1_smc47"]
 [ext_resource type="AudioStream" uid="uid://d2epavxqy7ddv" path="res://Sounds/Weapons/com16/shoot1.ogg" id="2_30jn0"]
-[ext_resource type="Texture2D" uid="uid://ck7h8qgpkre0g" path="res://Assets/Models/Items-weapons/com16/1911 UV3.png" id="2_ioynq"]
+[ext_resource type="Texture2D" uid="uid://lcj7afftlvmo" path="res://Assets/Models/Items-weapons/com16/1911 UV3.png" id="2_ioynq"]
 [ext_resource type="AudioStream" uid="uid://bxalgpu2dynyb" path="res://Sounds/Weapons/com16/shoot2.ogg" id="3_x87l7"]
 [ext_resource type="AudioStream" uid="uid://b1gfyn1qkmyrj" path="res://Sounds/Weapons/reload/gunreload1.wav" id="4_uefem"]
 

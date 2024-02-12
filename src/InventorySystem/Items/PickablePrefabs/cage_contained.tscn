@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://bxve6ffw6cl3q"]
 
-[ext_resource type="Texture2D" uid="uid://t4i6qu3w3w78" path="res://Assets/Models/Items-SCPCage/closed/Metal030_2K-PNG_Color.png" id="1_1jusd"]
+[ext_resource type="Texture2D" uid="uid://d3mmpx74dgyre" path="res://Assets/Models/Items-SCPCage/closed/Metal030_2K-PNG_Color.png" id="1_1jusd"]
 [ext_resource type="Script" path="res://InventorySystem/Items/Pickable.cs" id="1_lu8ed"]
-[ext_resource type="Texture2D" uid="uid://cmya6ofigd0j" path="res://Assets/Models/Items-SCPCage/closed/Metal030_2K-PNG_Metalness-Metal030_2K-PNG_Roughness.png" id="2_0530e"]
+[ext_resource type="Texture2D" uid="uid://dgv6satuj6ese" path="res://Assets/Models/Items-SCPCage/closed/Metal030_2K-PNG_Metalness-Metal030_2K-PNG_Roughness.png" id="2_0530e"]
 [ext_resource type="Resource" uid="uid://d3ayictart6ws" path="res://InventorySystem/Items/cage_contained.tres" id="2_b8tvq"]
-[ext_resource type="Texture2D" uid="uid://dvv42mq3esv6l" path="res://Assets/Models/Items-SCPCage/closed/Metal030_2K-PNG_NormalGL.png" id="3_yh7ng"]
-[ext_resource type="Texture2D" uid="uid://d0et5tf21etoa" path="res://Assets/Models/Items-SCPCage/closed/Metal030_2K-PNG_Color_painted.png" id="4_gdl3h"]
+[ext_resource type="Texture2D" uid="uid://bpr0cpo2dhren" path="res://Assets/Models/Items-SCPCage/closed/Metal030_2K-PNG_NormalGL.png" id="3_yh7ng"]
+[ext_resource type="Texture2D" uid="uid://cpdr33u1l4pqx" path="res://Assets/Models/Items-SCPCage/closed/Metal030_2K-PNG_Color_painted.png" id="4_gdl3h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_asysj"]
 resource_name = "Material.001"

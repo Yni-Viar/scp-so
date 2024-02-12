@@ -1,39 +1,42 @@
-[gd_scene load_steps=86 format=3 uid="uid://nk0fuqbihi8y"]
+[gd_scene load_steps=96 format=3 uid="uid://nk0fuqbihi8y"]
 
-[ext_resource type="Texture2D" uid="uid://bvvfkca4t62cp" path="res://MapGen/Resources/RoomAssets/HCZ/ctwalls2.png" id="1_q0ix3"]
-[ext_resource type="Texture2D" uid="uid://6atirug73xa8" path="res://MapGen/Resources/RoomAssets/HCZ/concretewall.jpg" id="2_hqp1t"]
-[ext_resource type="Texture2D" uid="uid://4p5lnqvb7ato" path="res://MapGen/Resources/RoomAssets/HCZ/miscsigns2.jpg" id="3_06dqi"]
-[ext_resource type="Texture2D" uid="uid://dsiiqdxk6fc46" path="res://MapGen/Resources/RoomAssets/HCZ/metal3.jpg" id="4_qkwmn"]
-[ext_resource type="Texture2D" uid="uid://bxtl2tmj6pffc" path="res://MapGen/Resources/RoomAssets/HCZ/concretefloor.jpg" id="5_o3sco"]
-[ext_resource type="Texture2D" uid="uid://b1t4ns16034wn" path="res://MapGen/Resources/RoomAssets/HCZ/metalpanels2.jpg" id="6_xet5e"]
-[ext_resource type="Texture2D" uid="uid://htotu3nbgtnn" path="res://MapGen/Resources/RoomAssets/HCZ/misc.jpg" id="7_8v81t"]
-[ext_resource type="Texture2D" uid="uid://ceum83t0xoiak" path="res://MapGen/Resources/RoomAssets/HCZ/controlpanel.jpg" id="8_ntobv"]
-[ext_resource type="Texture2D" uid="uid://c6ug2umd27c0w" path="res://MapGen/Resources/RoomAssets/HCZ/dirtymetal.jpg" id="9_ooevd"]
-[ext_resource type="Texture2D" uid="uid://bflsa0lctyfc7" path="res://MapGen/Resources/RoomAssets/HCZ/vent.jpg" id="10_eyl0k"]
-[ext_resource type="Texture2D" uid="uid://df253seh8xe0o" path="res://MapGen/Resources/RoomAssets/HCZ/metal_darker.jpg" id="11_q53u6"]
-[ext_resource type="Texture2D" uid="uid://c5hk3hq5jw67f" path="res://MapGen/Resources/RoomAssets/HCZ/metal.jpg" id="12_o7lwr"]
-[ext_resource type="Texture2D" uid="uid://cvrvqvg5op6dj" path="res://MapGen/Resources/RoomAssets/HCZ/metalpanels.jpg" id="13_ih0gg"]
-[ext_resource type="Texture2D" uid="uid://dsqdicflhvon0" path="res://MapGen/Resources/RoomAssets/HCZ/miscsigns.jpg" id="14_mg8r7"]
-[ext_resource type="Texture2D" uid="uid://d2pe11cjbrt86" path="res://MapGen/Resources/RoomAssets/HCZ/scplogo.jpg" id="15_kgebf"]
-[ext_resource type="Texture2D" uid="uid://b2phwm4y42p7a" path="res://MapGen/Resources/RoomAssets/HCZ/glass.png" id="16_8m3h4"]
+[ext_resource type="Texture2D" uid="uid://bcytn2cisq71c" path="res://MapGen/Resources/RoomAssets/HCZ/ctwalls2.png" id="1_q0ix3"]
+[ext_resource type="Texture2D" uid="uid://dnwqjsmtdhnds" path="res://MapGen/Resources/RoomAssets/HCZ/concretewall.jpg" id="2_hqp1t"]
+[ext_resource type="Texture2D" uid="uid://d0a6mbftrt61m" path="res://MapGen/Resources/RoomAssets/HCZ/miscsigns2.jpg" id="3_06dqi"]
+[ext_resource type="Texture2D" uid="uid://b02rkvt4e0e34" path="res://MapGen/Resources/RoomAssets/HCZ/metal3.jpg" id="4_qkwmn"]
+[ext_resource type="Texture2D" uid="uid://8807huc3a22n" path="res://MapGen/Resources/RoomAssets/HCZ/concretefloor.jpg" id="5_o3sco"]
+[ext_resource type="Texture2D" uid="uid://buug7v2yi6oi8" path="res://MapGen/Resources/RoomAssets/HCZ/metalpanels2.jpg" id="6_xet5e"]
+[ext_resource type="Texture2D" uid="uid://cojhw4upinujk" path="res://MapGen/Resources/RoomAssets/HCZ/misc.jpg" id="7_8v81t"]
+[ext_resource type="Texture2D" uid="uid://i8ak50qmdqc3" path="res://MapGen/Resources/RoomAssets/HCZ/controlpanel.jpg" id="8_ntobv"]
+[ext_resource type="Texture2D" uid="uid://lbeu75a7ig1x" path="res://MapGen/Resources/RoomAssets/HCZ/dirtymetal.jpg" id="9_ooevd"]
+[ext_resource type="Texture2D" uid="uid://8fiopbm4k6su" path="res://MapGen/Resources/RoomAssets/HCZ/vent.jpg" id="10_eyl0k"]
+[ext_resource type="Texture2D" uid="uid://ciak6nqdsta4o" path="res://MapGen/Resources/RoomAssets/HCZ/metal_darker.jpg" id="11_q53u6"]
+[ext_resource type="Texture2D" uid="uid://b08ww4hkcy532" path="res://MapGen/Resources/RoomAssets/HCZ/metal.jpg" id="12_o7lwr"]
+[ext_resource type="Texture2D" uid="uid://bnbkpucxhf2kr" path="res://MapGen/Resources/RoomAssets/HCZ/metalpanels.jpg" id="13_ih0gg"]
+[ext_resource type="Texture2D" uid="uid://dn38gdg3p4ina" path="res://MapGen/Resources/RoomAssets/HCZ/miscsigns.jpg" id="14_mg8r7"]
+[ext_resource type="Texture2D" uid="uid://c7fw5kgpx50hp" path="res://MapGen/Resources/RoomAssets/HCZ/scplogo.jpg" id="15_kgebf"]
+[ext_resource type="Texture2D" uid="uid://ym07sujyghmi" path="res://MapGen/Resources/RoomAssets/HCZ/glass.png" id="16_8m3h4"]
 [ext_resource type="PackedScene" uid="uid://dn7xcp8e6o86h" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="17_tg1f2"]
 [ext_resource type="Script" path="res://Scripts/DoorsSystem/KeycardedDoor.cs" id="19_35p8c"]
-[ext_resource type="Texture2D" uid="uid://ben08ytu3hn3q" path="res://MapGen/Resources/Doors/DoorLCZOld/Door01.jpg" id="19_wjj88"]
+[ext_resource type="Texture2D" uid="uid://cln4s2e8nbj0k" path="res://MapGen/Resources/Doors/DoorLCZOld/Door01.jpg" id="19_wjj88"]
 [ext_resource type="PackedScene" uid="uid://cksy6yj1cwku7" path="res://MapGen/Resources/Buttons/button_keycard.tscn" id="21_782c7"]
 [ext_resource type="PackedScene" uid="uid://dme4cvlaar7xi" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="21_frfoc"]
 [ext_resource type="PackedScene" uid="uid://cfy6bi30bslmr" path="res://MapGen/Resources/Elevator/elevator.tscn" id="22_ti45g"]
-[ext_resource type="PackedScene" uid="uid://m4o6tqiukqy1" path="res://InventorySystem/Items/PickablePrefabs/keyomni.tscn" id="23_ej137"]
 [ext_resource type="PackedScene" uid="uid://dfvhhtlnusbb3" path="res://InventorySystem/Items/PickablePrefabs/tranquilizer.tscn" id="24_2tagy"]
 [ext_resource type="PackedScene" uid="uid://dk80o4q00bb7i" path="res://InventorySystem/Items/PickablePrefabs/mtfrifle.tscn" id="25_7iwfo"]
 [ext_resource type="PackedScene" uid="uid://bvccstchbatcr" path="res://Assets/Ammo/mtf_ammo.tscn" id="26_d6ksh"]
 [ext_resource type="Script" path="res://Scripts/DoorsSystem/Door.cs" id="27_h1kub"]
-[ext_resource type="Texture2D" uid="uid://dtilswx3ldqa3" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Albedo.png" id="27_k44fq"]
-[ext_resource type="Texture2D" uid="uid://btxyucv21odxe" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Metallic-Door_Texturize_door_Roughness.png" id="28_bf3cv"]
-[ext_resource type="Texture2D" uid="uid://bu5386c6b4hda" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Normal.png" id="29_0lp47"]
-[ext_resource type="Texture2D" uid="uid://w8narsewlp87" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Metallic_png-Door_Texturize_door_Roughness_png.png" id="30_uili1"]
-[ext_resource type="Texture2D" uid="uid://t3e0eywk6cth" path="res://MapGen/Resources/Buttons/ButtonPrefab/button_texture_elevator.png" id="32_4rl30"]
+[ext_resource type="Texture2D" uid="uid://dwec3l5rgohbd" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Albedo.png" id="27_k44fq"]
+[ext_resource type="Texture2D" uid="uid://qhfsccjall0n" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Metallic-Door_Texturize_door_Roughness.png" id="28_bf3cv"]
+[ext_resource type="Texture2D" uid="uid://b1t12q1kwppon" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Normal.png" id="29_0lp47"]
+[ext_resource type="Texture2D" uid="uid://nfri6qslyqwr" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Metallic_png-Door_Texturize_door_Roughness_png.png" id="30_uili1"]
+[ext_resource type="Texture2D" uid="uid://dqbvwbw2fqcs1" path="res://MapGen/Resources/Buttons/ButtonPrefab/button_texture_elevator.png" id="32_4rl30"]
 [ext_resource type="Script" path="res://Scripts/ButtonSystem/ElevatorButton.cs" id="32_258lc"]
 [ext_resource type="AudioStream" uid="uid://dg7p2iunxk0x4" path="res://Sounds/Interact/Button.ogg" id="33_7o5ws"]
+[ext_resource type="Script" path="res://Scripts/WarheadControl/OmegaButton.cs" id="35_4l4sf"]
+[ext_resource type="Script" path="res://Scripts/ButtonSystem/InteractableButton.cs" id="36_gv3m5"]
+[ext_resource type="Texture2D" uid="uid://dyavt0udfya6" path="res://MapGen/Resources/Buttons/ButtonPrefab/button_warhead.png" id="37_6cnua"]
+[ext_resource type="PackedScene" uid="uid://fcupexhvllay" path="res://InventorySystem/Items/PickablePrefabs/key5.tscn" id="37_s2ckp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ij68h"]
 resource_name = "mat0.004"
@@ -879,6 +882,58 @@ _data = {
 "door_open": SubResource("Animation_x41cn")
 }
 
+[sub_resource type="BoxMesh" id="BoxMesh_vltfs"]
+size = Vector3(0.16, 2.048, 2.048)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j1sud"]
+albedo_texture = ExtResource("9_ooevd")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_i0ern"]
+data = PackedVector3Array(-0.08, 1.024, 1.024, 0.08, 1.024, 1.024, -0.08, -1.024, 1.024, 0.08, 1.024, 1.024, 0.08, -1.024, 1.024, -0.08, -1.024, 1.024, 0.08, 1.024, -1.024, -0.08, 1.024, -1.024, 0.08, -1.024, -1.024, -0.08, 1.024, -1.024, -0.08, -1.024, -1.024, 0.08, -1.024, -1.024, 0.08, 1.024, 1.024, 0.08, 1.024, -1.024, 0.08, -1.024, 1.024, 0.08, 1.024, -1.024, 0.08, -1.024, -1.024, 0.08, -1.024, 1.024, -0.08, 1.024, -1.024, -0.08, 1.024, 1.024, -0.08, -1.024, -1.024, -0.08, 1.024, 1.024, -0.08, -1.024, 1.024, -0.08, -1.024, -1.024, 0.08, 1.024, 1.024, -0.08, 1.024, 1.024, 0.08, 1.024, -1.024, -0.08, 1.024, 1.024, -0.08, 1.024, -1.024, 0.08, 1.024, -1.024, -0.08, -1.024, 1.024, 0.08, -1.024, 1.024, -0.08, -1.024, -1.024, 0.08, -1.024, 1.024, 0.08, -1.024, -1.024, -0.08, -1.024, -1.024)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hyrte"]
+size = Vector3(0.418883, 0.472926, 0.377265)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kiwlp"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+roughness = 0.804545
+emission_enabled = true
+emission_texture = ExtResource("37_6cnua")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vmd20"]
+_surfaces = [{
+"aabb": AABB(-0.325, -0.325, -0.325, 0.65, 0.65001, 0.65),
+"format": 34896613377,
+"index_count": 174,
+"index_data": PackedByteArray(2, 0, 8, 0, 5, 0, 2, 0, 3, 0, 8, 0, 4, 0, 11, 0, 9, 0, 4, 0, 6, 0, 11, 0, 6, 0, 10, 0, 11, 0, 6, 0, 7, 0, 10, 0, 7, 0, 8, 0, 10, 0, 7, 0, 5, 0, 8, 0, 9, 0, 0, 0, 4, 0, 9, 0, 1, 0, 0, 0, 12, 0, 18, 0, 13, 0, 12, 0, 15, 0, 18, 0, 14, 0, 21, 0, 16, 0, 14, 0, 19, 0, 21, 0, 16, 0, 20, 0, 17, 0, 16, 0, 21, 0, 20, 0, 17, 0, 18, 0, 15, 0, 17, 0, 20, 0, 18, 0, 19, 0, 0, 0, 1, 0, 19, 0, 14, 0, 0, 0, 2, 0, 28, 0, 3, 0, 2, 0, 25, 0, 28, 0, 24, 0, 31, 0, 26, 0, 24, 0, 29, 0, 31, 0, 26, 0, 30, 0, 27, 0, 26, 0, 31, 0, 30, 0, 27, 0, 28, 0, 25, 0, 27, 0, 30, 0, 28, 0, 29, 0, 22, 0, 23, 0, 29, 0, 24, 0, 22, 0, 12, 0, 36, 0, 33, 0, 12, 0, 13, 0, 36, 0, 32, 0, 39, 0, 37, 0, 32, 0, 34, 0, 39, 0, 34, 0, 38, 0, 39, 0, 34, 0, 35, 0, 38, 0, 35, 0, 36, 0, 38, 0, 35, 0, 33, 0, 36, 0, 37, 0, 22, 0, 32, 0, 37, 0, 23, 0, 22, 0, 11, 0, 1, 0, 9, 0, 1, 0, 21, 0, 19, 0, 21, 0, 18, 0, 20, 0, 13, 0, 38, 0, 36, 0, 21, 0, 13, 0, 18, 0, 11, 0, 21, 0, 1, 0, 8, 0, 11, 0, 10, 0, 30, 0, 3, 0, 28, 0, 3, 0, 11, 0, 8, 0, 11, 0, 13, 0, 21, 0, 13, 0, 39, 0, 38, 0, 39, 0, 23, 0, 37, 0, 23, 0, 31, 0, 29, 0, 31, 0, 3, 0, 30, 0, 3, 0, 13, 0, 11, 0, 13, 0, 23, 0, 39, 0, 23, 0, 3, 0, 31, 0, 13, 0, 3, 0, 23, 0),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 40,
+"vertex_data": PackedByteArray(0, 0, 253, 255, 255, 127, 0, 0, 255, 255, 253, 255, 255, 127, 0, 0, 0, 0, 254, 127, 0, 0, 0, 0, 255, 255, 254, 127, 0, 0, 0, 0, 0, 0, 253, 255, 251, 28, 0, 0, 0, 0, 2, 227, 0, 0, 0, 0, 0, 0, 27, 252, 125, 14, 0, 0, 0, 0, 128, 241, 226, 3, 0, 0, 255, 255, 2, 227, 0, 0, 0, 0, 255, 255, 253, 255, 251, 28, 0, 0, 255, 255, 128, 241, 226, 3, 0, 0, 255, 255, 27, 252, 125, 14, 0, 0, 0, 0, 254, 127, 255, 255, 0, 0, 255, 255, 254, 127, 255, 255, 0, 0, 0, 0, 253, 255, 3, 227, 0, 0, 0, 0, 2, 227, 255, 255, 0, 0, 0, 0, 27, 252, 129, 241, 0, 0, 0, 0, 128, 241, 28, 252, 0, 0, 255, 255, 2, 227, 255, 255, 0, 0, 255, 255, 253, 255, 3, 227, 0, 0, 255, 255, 128, 241, 28, 252, 0, 0, 255, 255, 27, 252, 129, 241, 0, 0, 0, 0, 0, 0, 255, 127, 0, 0, 255, 255, 0, 0, 255, 127, 0, 0, 0, 0, 0, 0, 251, 28, 0, 0, 0, 0, 251, 28, 0, 0, 0, 0, 0, 0, 226, 3, 125, 14, 0, 0, 0, 0, 125, 14, 226, 3, 0, 0, 255, 255, 251, 28, 0, 0, 0, 0, 255, 255, 0, 0, 251, 28, 0, 0, 255, 255, 125, 14, 226, 3, 0, 0, 255, 255, 226, 3, 125, 14, 0, 0, 0, 0, 0, 0, 3, 227, 0, 0, 0, 0, 251, 28, 255, 255, 0, 0, 0, 0, 226, 3, 129, 241, 0, 0, 0, 0, 125, 14, 28, 252, 0, 0, 255, 255, 251, 28, 255, 255, 0, 0, 255, 255, 0, 0, 3, 227, 0, 0, 255, 255, 125, 14, 28, 252, 0, 0, 255, 255, 226, 3, 129, 241, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vygmh"]
+resource_name = "Button_Cube_005"
+_surfaces = [{
+"aabb": AABB(-0.325, -0.325, -0.325, 0.65, 0.65001, 0.65),
+"attribute_data": PackedByteArray(4, 170, 92, 147, 83, 203, 173, 201, 4, 170, 173, 201, 83, 203, 255, 255, 255, 127, 214, 228, 4, 170, 92, 147, 83, 203, 173, 201, 4, 170, 173, 201, 83, 203, 255, 255, 40, 155, 173, 201, 11, 233, 92, 147, 85, 224, 173, 201, 80, 182, 173, 201, 49, 239, 92, 147, 126, 251, 173, 201, 30, 236, 92, 147, 30, 236, 92, 147, 190, 253, 173, 201, 80, 182, 255, 255, 49, 239, 173, 201, 37, 134, 173, 201, 11, 233, 173, 201, 85, 224, 255, 255, 255, 127, 211, 207, 30, 236, 173, 201, 190, 253, 255, 255, 18, 131, 128, 202, 126, 251, 255, 255, 30, 236, 173, 201, 210, 128, 192, 204, 1, 149, 173, 201, 9, 212, 173, 201, 1, 149, 92, 147, 9, 212, 92, 147, 40, 155, 255, 255, 68, 242, 92, 147, 1, 149, 92, 147, 255, 127, 173, 201, 88, 245, 173, 201, 126, 251, 173, 201, 49, 239, 92, 147, 68, 242, 173, 201, 190, 253, 173, 201, 255, 127, 92, 147, 88, 245, 92, 147, 37, 134, 255, 255, 68, 242, 173, 201, 1, 149, 173, 201, 255, 127, 216, 249, 68, 242, 92, 147, 190, 253, 92, 147, 18, 131, 44, 255, 126, 251, 92, 147, 49, 239, 173, 201, 210, 128, 235, 252, 6, 191, 173, 201, 88, 245, 255, 255, 6, 191, 92, 147, 88, 245, 173, 201, 80, 182, 214, 228, 9, 212, 173, 201, 88, 245, 255, 255, 88, 245, 92, 147, 6, 191, 92, 147, 107, 248, 255, 255, 190, 253, 255, 255, 254, 255, 255, 255, 107, 248, 92, 147, 88, 245, 173, 201, 6, 191, 173, 201, 42, 176, 173, 201, 9, 212, 92, 147, 88, 245, 173, 201, 80, 182, 211, 207, 254, 255, 173, 201, 107, 248, 173, 201, 61, 179, 128, 202, 107, 248, 173, 201, 190, 253, 173, 201, 126, 181, 192, 204, 85, 224, 255, 255, 126, 251, 255, 255, 107, 248, 173, 201, 11, 233, 173, 201, 107, 248, 255, 255, 254, 255, 173, 201, 190, 253, 173, 201, 126, 251, 173, 201, 107, 248, 92, 147, 11, 233, 92, 147, 42, 176, 255, 255, 85, 224, 173, 201, 126, 251, 173, 201, 80, 182, 216, 249, 190, 253, 92, 147, 126, 251, 92, 147, 61, 179, 44, 255, 107, 248, 173, 201, 255, 255, 92, 147, 126, 181, 235, 252),
+"format": 34896613399,
+"index_count": 174,
+"index_data": PackedByteArray(6, 0, 18, 0, 12, 0, 6, 0, 8, 0, 18, 0, 10, 0, 28, 0, 21, 0, 10, 0, 15, 0, 28, 0, 14, 0, 25, 0, 27, 0, 14, 0, 17, 0, 25, 0, 16, 0, 19, 0, 24, 0, 16, 0, 13, 0, 19, 0, 22, 0, 1, 0, 11, 0, 22, 0, 3, 0, 1, 0, 30, 0, 43, 0, 32, 0, 30, 0, 37, 0, 43, 0, 35, 0, 53, 0, 40, 0, 35, 0, 46, 0, 53, 0, 39, 0, 50, 0, 42, 0, 39, 0, 52, 0, 50, 0, 41, 0, 44, 0, 38, 0, 41, 0, 49, 0, 44, 0, 47, 0, 0, 0, 2, 0, 47, 0, 36, 0, 0, 0, 5, 0, 69, 0, 7, 0, 5, 0, 63, 0, 69, 0, 61, 0, 77, 0, 64, 0, 61, 0, 72, 0, 77, 0, 65, 0, 74, 0, 66, 0, 65, 0, 78, 0, 74, 0, 67, 0, 68, 0, 62, 0, 67, 0, 75, 0, 68, 0, 71, 0, 55, 0, 57, 0, 71, 0, 60, 0, 55, 0, 31, 0, 89, 0, 83, 0, 31, 0, 33, 0, 89, 0, 81, 0, 97, 0, 92, 0, 81, 0, 84, 0, 97, 0, 85, 0, 94, 0, 98, 0, 85, 0, 86, 0, 94, 0, 87, 0, 88, 0, 95, 0, 87, 0, 82, 0, 88, 0, 91, 0, 56, 0, 80, 0, 91, 0, 58, 0, 56, 0, 29, 0, 4, 0, 23, 0, 4, 0, 54, 0, 48, 0, 54, 0, 45, 0, 51, 0, 34, 0, 96, 0, 90, 0, 54, 0, 34, 0, 45, 0, 29, 0, 54, 0, 4, 0, 20, 0, 29, 0, 26, 0, 76, 0, 9, 0, 70, 0, 9, 0, 29, 0, 20, 0, 29, 0, 34, 0, 54, 0, 34, 0, 99, 0, 96, 0, 99, 0, 59, 0, 93, 0, 59, 0, 79, 0, 73, 0, 79, 0, 9, 0, 76, 0, 9, 0, 34, 0, 29, 0, 34, 0, 59, 0, 99, 0, 59, 0, 9, 0, 79, 0, 34, 0, 9, 0, 59, 0),
+"material": SubResource("StandardMaterial3D_kiwlp"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(2, 2, 0, 0),
+"vertex_count": 100,
+"vertex_data": PackedByteArray(0, 0, 253, 255, 255, 127, 84, 213, 0, 0, 253, 255, 255, 127, 84, 213, 255, 255, 253, 255, 255, 127, 84, 213, 255, 255, 253, 255, 255, 127, 84, 213, 255, 255, 253, 255, 255, 127, 84, 213, 0, 0, 254, 127, 0, 0, 255, 255, 0, 0, 254, 127, 0, 0, 255, 255, 255, 255, 254, 127, 0, 0, 255, 255, 255, 255, 254, 127, 0, 0, 255, 255, 255, 255, 254, 127, 0, 0, 84, 213, 0, 0, 253, 255, 251, 28, 187, 219, 0, 0, 253, 255, 251, 28, 84, 213, 0, 0, 2, 227, 0, 0, 255, 255, 0, 0, 2, 227, 0, 0, 119, 248, 0, 0, 27, 252, 125, 14, 170, 233, 0, 0, 27, 252, 125, 14, 187, 219, 0, 0, 128, 241, 226, 3, 119, 248, 0, 0, 128, 241, 226, 3, 170, 233, 255, 255, 2, 227, 0, 0, 255, 255, 255, 255, 2, 227, 0, 0, 119, 248, 255, 255, 2, 227, 0, 0, 84, 213, 255, 255, 253, 255, 251, 28, 187, 219, 255, 255, 253, 255, 251, 28, 84, 213, 255, 255, 253, 255, 251, 28, 84, 213, 255, 255, 128, 241, 226, 3, 119, 248, 255, 255, 128, 241, 226, 3, 170, 233, 255, 255, 128, 241, 226, 3, 84, 213, 255, 255, 27, 252, 125, 14, 170, 233, 255, 255, 27, 252, 125, 14, 187, 219, 255, 255, 27, 252, 125, 14, 84, 213, 0, 0, 254, 127, 255, 255, 255, 191, 0, 0, 254, 127, 255, 255, 255, 191, 255, 255, 254, 127, 255, 255, 255, 191, 255, 255, 254, 127, 255, 255, 255, 191, 255, 255, 254, 127, 255, 255, 84, 213, 0, 0, 253, 255, 3, 227, 119, 207, 0, 0, 253, 255, 3, 227, 84, 213, 0, 0, 2, 227, 255, 255, 255, 191, 0, 0, 2, 227, 255, 255, 176, 192, 0, 0, 27, 252, 129, 241, 252, 197, 0, 0, 27, 252, 129, 241, 119, 207, 0, 0, 128, 241, 28, 252, 176, 192, 0, 0, 128, 241, 28, 252, 252, 197, 255, 255, 2, 227, 255, 255, 255, 191, 255, 255, 2, 227, 255, 255, 176, 192, 255, 255, 2, 227, 255, 255, 84, 213, 255, 255, 253, 255, 3, 227, 119, 207, 255, 255, 253, 255, 3, 227, 84, 213, 255, 255, 253, 255, 3, 227, 84, 213, 255, 255, 128, 241, 28, 252, 176, 192, 255, 255, 128, 241, 28, 252, 252, 197, 255, 255, 128, 241, 28, 252, 84, 213, 255, 255, 27, 252, 129, 241, 252, 197, 255, 255, 27, 252, 129, 241, 119, 207, 255, 255, 27, 252, 129, 241, 84, 213, 0, 0, 0, 0, 255, 127, 84, 213, 0, 0, 0, 0, 255, 127, 84, 213, 255, 255, 0, 0, 255, 127, 84, 213, 255, 255, 0, 0, 255, 127, 84, 213, 255, 255, 0, 0, 255, 127, 84, 213, 0, 0, 0, 0, 251, 28, 84, 213, 0, 0, 0, 0, 251, 28, 187, 219, 0, 0, 251, 28, 0, 0, 119, 248, 0, 0, 251, 28, 0, 0, 255, 255, 0, 0, 226, 3, 125, 14, 187, 219, 0, 0, 226, 3, 125, 14, 170, 233, 0, 0, 125, 14, 226, 3, 170, 233, 0, 0, 125, 14, 226, 3, 119, 248, 255, 255, 251, 28, 0, 0, 119, 248, 255, 255, 251, 28, 0, 0, 255, 255, 255, 255, 251, 28, 0, 0, 84, 213, 255, 255, 0, 0, 251, 28, 84, 213, 255, 255, 0, 0, 251, 28, 187, 219, 255, 255, 0, 0, 251, 28, 84, 213, 255, 255, 125, 14, 226, 3, 170, 233, 255, 255, 125, 14, 226, 3, 119, 248, 255, 255, 125, 14, 226, 3, 84, 213, 255, 255, 226, 3, 125, 14, 187, 219, 255, 255, 226, 3, 125, 14, 170, 233, 255, 255, 226, 3, 125, 14, 84, 213, 0, 0, 0, 0, 3, 227, 84, 213, 0, 0, 0, 0, 3, 227, 119, 207, 0, 0, 251, 28, 255, 255, 176, 192, 0, 0, 251, 28, 255, 255, 255, 191, 0, 0, 226, 3, 129, 241, 119, 207, 0, 0, 226, 3, 129, 241, 252, 197, 0, 0, 125, 14, 28, 252, 252, 197, 0, 0, 125, 14, 28, 252, 176, 192, 255, 255, 251, 28, 255, 255, 176, 192, 255, 255, 251, 28, 255, 255, 255, 191, 255, 255, 251, 28, 255, 255, 84, 213, 255, 255, 0, 0, 3, 227, 84, 213, 255, 255, 0, 0, 3, 227, 119, 207, 255, 255, 0, 0, 3, 227, 84, 213, 255, 255, 125, 14, 28, 252, 252, 197, 255, 255, 125, 14, 28, 252, 176, 192, 255, 255, 125, 14, 28, 252, 84, 213, 255, 255, 226, 3, 129, 241, 119, 207, 255, 255, 226, 3, 129, 241, 252, 197, 255, 255, 226, 3, 129, 241, 84, 213, 84, 213, 170, 42, 84, 213, 170, 42, 84, 213, 170, 42, 84, 213, 170, 42, 170, 170, 85, 85, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 169, 170, 84, 85, 190, 209, 64, 46, 84, 213, 170, 42, 255, 63, 255, 191, 243, 195, 11, 60, 250, 202, 4, 53, 190, 209, 64, 46, 243, 195, 11, 60, 250, 202, 4, 53, 255, 63, 255, 191, 243, 195, 11, 60, 170, 170, 84, 85, 190, 209, 64, 46, 84, 213, 170, 42, 170, 170, 85, 85, 243, 195, 11, 60, 250, 202, 4, 53, 170, 170, 84, 85, 250, 202, 4, 53, 190, 209, 64, 46, 170, 170, 85, 85, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 170, 170, 84, 85, 63, 217, 191, 38, 84, 213, 170, 42, 255, 127, 255, 127, 86, 141, 86, 141, 254, 156, 254, 156, 63, 217, 191, 38, 86, 141, 86, 141, 254, 156, 254, 156, 255, 127, 255, 127, 86, 141, 86, 141, 170, 170, 85, 85, 63, 217, 191, 38, 84, 213, 170, 42, 170, 170, 85, 85, 86, 141, 86, 141, 254, 156, 254, 156, 170, 170, 85, 85, 254, 156, 254, 156, 63, 217, 191, 38, 170, 170, 85, 85, 84, 85, 85, 85, 84, 85, 84, 85, 84, 85, 84, 85, 84, 85, 84, 85, 170, 170, 84, 85, 84, 85, 85, 85, 190, 81, 190, 81, 11, 60, 243, 195, 255, 63, 255, 191, 190, 81, 190, 81, 250, 74, 250, 74, 250, 74, 250, 74, 11, 60, 243, 195, 11, 60, 243, 195, 255, 63, 255, 191, 169, 170, 84, 85, 84, 85, 84, 85, 190, 81, 190, 81, 170, 170, 85, 85, 250, 74, 250, 74, 11, 60, 243, 195, 169, 170, 84, 85, 190, 81, 190, 81, 250, 74, 250, 74, 170, 170, 85, 85, 84, 85, 84, 85, 63, 89, 63, 89, 168, 114, 168, 114, 255, 127, 255, 127, 63, 89, 63, 89, 0, 99, 0, 99, 0, 99, 0, 99, 168, 114, 168, 114, 168, 114, 168, 114, 255, 127, 255, 127, 170, 170, 84, 85, 84, 85, 84, 85, 63, 89, 63, 89, 170, 170, 85, 85, 0, 99, 0, 99, 168, 114, 168, 114, 170, 170, 84, 85, 63, 89, 63, 89, 0, 99, 0, 99, 170, 170, 85, 85)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_vmd20")
+
 [node name="HC_room2_nuke" type="StaticBody3D"]
 
 [node name="HC_room2_nuke2" type="MeshInstance3D" parent="."]
@@ -929,7 +984,7 @@ shape = SubResource("BoxShape3D_41nqb")
 [node name="KeycardedDoor" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.340653, 0.090099, -1.58395)
 script = ExtResource("19_35p8c")
-requirements = 4
+requirements = 3
 openDoorSounds = PackedStringArray("res://Sounds/Door/DoorOpen1.ogg", "res://Sounds/Door/DoorOpen2.ogg", "res://Sounds/Door/DoorOpen3.ogg")
 closeDoorSounds = PackedStringArray("res://Sounds/Door/DoorClose1.ogg", "res://Sounds/Door/DoorClose2.ogg", "res://Sounds/Door/DoorClose3.ogg")
 
@@ -988,9 +1043,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.39658, -31.0408, 0.00775158
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.39658, 0.00990677, 0.00775158)
 floors = PackedStringArray("Elevator_Nuke")
 elevatorDoors = PackedStringArray("Game/MapGenHcz/HC_room2_nuke/Door")
-
-[node name="keyomni" parent="." instance=ExtResource("23_ej137")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5397, -29.5135, 7.79998)
 
 [node name="tranquilizer" parent="." instance=ExtResource("24_2tagy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0693, -29.6909, 6.73761)
@@ -1110,3 +1162,42 @@ shape = SubResource("BoxShape3D_u1q2i")
 [node name="ButtonSound" type="AudioStreamPlayer3D" parent="Door_Bottom/ButtonInteractCall"]
 stream = ExtResource("33_7o5ws")
 max_distance = 24.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7082, -28.5825, 4.35486)
+mesh = SubResource("BoxMesh_vltfs")
+surface_material_override/0 = SubResource("StandardMaterial3D_j1sud")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_i0ern")
+
+[node name="OmegaLabel" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13.6261, -27.9205, 4.88499)
+text = "Omega
+warhead
+detonation"
+
+[node name="OmegaPush" type="Node3D" parent="."]
+script = ExtResource("35_4l4sf")
+
+[node name="ButtonInteract" type="StaticBody3D" parent="OmegaPush"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13.6282, -28.9149, 4.97378)
+script = ExtResource("36_gv3m5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OmegaPush/ButtonInteract"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00534013, 0.0654113, -0.0981762)
+shape = SubResource("BoxShape3D_hyrte")
+
+[node name="ButtonSound" type="AudioStreamPlayer3D" parent="OmegaPush/ButtonInteract"]
+stream = ExtResource("33_7o5ws")
+max_distance = 24.0
+
+[node name="Cube" type="MeshInstance3D" parent="OmegaPush/ButtonInteract"]
+transform = Transform3D(-2.55711e-08, 0, -0.585, 0, 0.585, 0, 0.585, 0, -2.55711e-08, 0, 0.0607643, -0.133277)
+mesh = SubResource("ArrayMesh_vygmh")
+skeleton = NodePath("")
+
+[node name="key5" parent="." instance=ExtResource("37_s2ckp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4459, -29.5221, 7.72047)

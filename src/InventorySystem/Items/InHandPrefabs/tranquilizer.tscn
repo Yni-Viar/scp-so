@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://InventorySystem/Items/InHandPrefabs/WeaponManager.cs" id="1_p0gf7"]
 [ext_resource type="AudioStream" uid="uid://cso4afy1g5o5t" path="res://Sounds/Tranquilizer.ogg" id="2_ap1lb"]
-[ext_resource type="Texture2D" uid="uid://cbevfcw4lqtq0" path="res://Assets/Models/Items-weapons/tranquilizer/Untitled.png" id="3_ip606"]
+[ext_resource type="Texture2D" uid="uid://b30ec2mexlv7g" path="res://Assets/Models/Items-weapons/tranquilizer/Untitled.png" id="3_ip606"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmtnc"]
 resource_name = "Material"

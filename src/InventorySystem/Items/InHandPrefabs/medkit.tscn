@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://jumptvdjuu0f"]
 
-[ext_resource type="Texture2D" uid="uid://cm28ww741bu5g" path="res://Assets/Models/Items-FirstAid/FirstAid.png" id="1_5dssq"]
+[ext_resource type="Texture2D" uid="uid://ck44jedptwvxp" path="res://Assets/Models/Items-FirstAid/FirstAid.png" id="1_5dssq"]
 [ext_resource type="Script" path="res://InventorySystem/Items/InHandPrefabs/ItemMedkit.cs" id="1_j2q8j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ewlx"]

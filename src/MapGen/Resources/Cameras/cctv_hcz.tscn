@@ -101,3 +101,6 @@ cull_mask = 524287
 transform = Transform3D(1, 0, 0, 0, -2.98023e-08, -0.999999, 0, 0.999999, -2.98023e-08, 0, -1.49012e-08, 0.17397)
 target_position = Vector3(0, -48, 0)
 collision_mask = 5
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+max_distance = 16.0

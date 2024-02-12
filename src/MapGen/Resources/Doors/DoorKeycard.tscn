@@ -1,15 +1,15 @@
 [gd_scene load_steps=24 format=3 uid="uid://dvjl4o6hjxwmq"]
 
 [ext_resource type="Script" path="res://Scripts/DoorsSystem/KeycardedDoor.cs" id="1_ds058"]
-[ext_resource type="Texture2D" uid="uid://b3up0lku4jlwv" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_frame_Albedo.png" id="2_2y3gb"]
-[ext_resource type="Texture2D" uid="uid://d1ae3q5xl4rv5" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_frame_Metallic-Door_Texturize_door_frame_Roughness.png" id="3_1rnx5"]
+[ext_resource type="Texture2D" uid="uid://dfnr2n5oncm83" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_frame_Albedo.png" id="2_2y3gb"]
+[ext_resource type="Texture2D" uid="uid://ck8isbfx72rc" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_frame_Metallic-Door_Texturize_door_frame_Roughness.png" id="3_1rnx5"]
 [ext_resource type="PackedScene" uid="uid://cksy6yj1cwku7" path="res://MapGen/Resources/Buttons/button_keycard.tscn" id="3_jdxpk"]
-[ext_resource type="Texture2D" uid="uid://cfbqypjk2t2gj" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_frame_Normal.png" id="4_sxxds"]
-[ext_resource type="Texture2D" uid="uid://dtilswx3ldqa3" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Albedo.png" id="5_d1fca"]
-[ext_resource type="Texture2D" uid="uid://btxyucv21odxe" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Metallic-Door_Texturize_door_Roughness.png" id="6_io33w"]
-[ext_resource type="Texture2D" uid="uid://bu5386c6b4hda" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Normal.png" id="7_65kau"]
+[ext_resource type="Texture2D" uid="uid://c6e6lexleh82f" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_frame_Normal.png" id="4_sxxds"]
+[ext_resource type="Texture2D" uid="uid://dwec3l5rgohbd" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Albedo.png" id="5_d1fca"]
+[ext_resource type="Texture2D" uid="uid://qhfsccjall0n" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Metallic-Door_Texturize_door_Roughness.png" id="6_io33w"]
+[ext_resource type="Texture2D" uid="uid://b1t12q1kwppon" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Normal.png" id="7_65kau"]
 [ext_resource type="Script" path="res://Scripts/DoorsSystem/DoorStaticOpener.cs" id="8_r37om"]
-[ext_resource type="Texture2D" uid="uid://w8narsewlp87" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Metallic_png-Door_Texturize_door_Roughness_png.png" id="9_3b3vs"]
+[ext_resource type="Texture2D" uid="uid://nfri6qslyqwr" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Metallic_png-Door_Texturize_door_Roughness_png.png" id="9_3b3vs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oxch3"]
 resource_name = "door_frame"
@@ -192,6 +192,8 @@ mesh = SubResource("ArrayMesh_40ivy")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube_001"]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("8_r37om")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_001/StaticBody3D"]
@@ -204,6 +206,8 @@ mesh = SubResource("ArrayMesh_2hd3i")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube_002"]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("8_r37om")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_002/StaticBody3D"]

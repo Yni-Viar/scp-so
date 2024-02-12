@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://djp0sa154mm7a"]
 
-[ext_resource type="Texture2D" uid="uid://bjrngh40uf46y" path="res://MapGen/Resources/RoomAssets/Props/SecurityLight/security_light_diff_2k.jpg" id="1_pm37v"]
-[ext_resource type="Texture2D" uid="uid://df4267ebeufa4" path="res://MapGen/Resources/RoomAssets/Props/SecurityLight/security_light_arm_2k.jpg" id="2_thi5h"]
-[ext_resource type="Texture2D" uid="uid://c8lk8h33mq630" path="res://MapGen/Resources/RoomAssets/Props/SecurityLight/security_light_nor_gl_2k.jpg" id="3_rha0d"]
-[ext_resource type="Texture2D" uid="uid://duk6ghhautp07" path="res://MapGen/Resources/RoomAssets/Props/SecurityLight/security_light_diff_2k-1.png" id="4_6ofuo"]
+[ext_resource type="Texture2D" uid="uid://cvvpul65bew1g" path="res://MapGen/Resources/RoomAssets/Props/SecurityLight/security_light_diff_2k.jpg" id="1_pm37v"]
+[ext_resource type="Texture2D" uid="uid://4873jeq44itx" path="res://MapGen/Resources/RoomAssets/Props/SecurityLight/security_light_arm_2k.jpg" id="2_thi5h"]
+[ext_resource type="Texture2D" uid="uid://bmraddhu6plhw" path="res://MapGen/Resources/RoomAssets/Props/SecurityLight/security_light_nor_gl_2k.jpg" id="3_rha0d"]
+[ext_resource type="Texture2D" uid="uid://cyimhf3kvejp7" path="res://MapGen/Resources/RoomAssets/Props/SecurityLight/security_light_diff_2k-1.png" id="4_6ofuo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_df5nb"]
 resource_name = "security_light"
@@ -150,4 +150,5 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.168266, 0.230098)
 light_color = Color(1, 0, 0, 1)
 distance_fade_enabled = true
+distance_fade_begin = 32.0
 spot_range = 6.07136

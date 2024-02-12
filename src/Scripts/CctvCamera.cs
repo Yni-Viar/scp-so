@@ -74,6 +74,10 @@ public partial class CctvCamera : Node3D
                     computer.energy -= 50f;
                     Rpc("RoomBlackout");
                 }
+                else
+                {
+                    Rpc("PlaySound", "2522_error");
+                }
             }
         }
 	}
@@ -149,5 +153,15 @@ public partial class CctvCamera : Node3D
         {
             computer.levelUp += 50f / computer.level;
         }
+    }
+    /// <summary>
+    /// Plays the sound for all players
+    /// </summary>
+    /// <param name="what">Which sound to play (only in 2522 folder)</param>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    void PlaySound(string what)
+    {
+        GetNode<AudioStreamPlayer3D>("AudioStreamPlayer3D").Stream = ResourceLoader.Load<AudioStream>("res://Sounds/Character/2522/" + what + ".ogg");
+        GetNode<AudioStreamPlayer3D>("AudioStreamPlayer3D").Play();
     }
 }

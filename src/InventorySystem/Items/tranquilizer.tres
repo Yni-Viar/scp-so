@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://dod32q1ljd0nv"]
 
 [ext_resource type="Script" path="res://InventorySystem/Items/Item.cs" id="1_7ctnl"]
-[ext_resource type="Texture2D" uid="uid://vvfafm8vq04g" path="res://InventorySystem/Items/InventoryIcons/tranquilizer.png" id="1_gxy7i"]
+[ext_resource type="Texture2D" uid="uid://ct3r0x31yhfba" path="res://InventorySystem/Items/InventoryIcons/tranquilizer.png" id="1_gxy7i"]
 
 [resource]
 script = ExtResource("1_7ctnl")

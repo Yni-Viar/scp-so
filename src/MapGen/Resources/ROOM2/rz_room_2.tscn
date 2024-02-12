@@ -1,11 +1,11 @@
 [gd_scene load_steps=19 format=3 uid="uid://dhb23jnigpnb7"]
 
-[ext_resource type="Texture2D" uid="uid://cxftat62183me" path="res://MapGen/Resources/RoomAssets/RZ/officewall.jpg" id="1_6gdk0"]
-[ext_resource type="Texture2D" uid="uid://qii5pwoih6n0" path="res://MapGen/Resources/RoomAssets/RZ/ceiling.jpg" id="2_tjy8r"]
-[ext_resource type="Texture2D" uid="uid://b6uak211o0ufw" path="res://MapGen/Resources/RoomAssets/RZ/misc.jpg" id="3_f5x7l"]
-[ext_resource type="Texture2D" uid="uid://bdepgdphwfa72" path="res://MapGen/Resources/RoomAssets/RZ/tilefloor.jpg" id="4_0av8e"]
-[ext_resource type="Texture2D" uid="uid://b84yss2lwoi36" path="res://MapGen/Resources/RoomAssets/RZ/metal.jpg" id="5_5svju"]
-[ext_resource type="Texture2D" uid="uid://dgocffdh4cq02" path="res://MapGen/Resources/RoomAssets/RZ/metalpanels.jpg" id="6_h116u"]
+[ext_resource type="Texture2D" uid="uid://bqdtcarmb2g3m" path="res://MapGen/Resources/RoomAssets/RZ/officewall.jpg" id="1_6gdk0"]
+[ext_resource type="Texture2D" uid="uid://camaucc7i3qjt" path="res://MapGen/Resources/RoomAssets/RZ/ceiling.jpg" id="2_tjy8r"]
+[ext_resource type="Texture2D" uid="uid://djte7umjkf0we" path="res://MapGen/Resources/RoomAssets/RZ/misc.jpg" id="3_f5x7l"]
+[ext_resource type="Texture2D" uid="uid://5nxgkyhv7df5" path="res://MapGen/Resources/RoomAssets/RZ/tilefloor.jpg" id="4_0av8e"]
+[ext_resource type="Texture2D" uid="uid://6ntwfkej7hjg" path="res://MapGen/Resources/RoomAssets/RZ/metal.jpg" id="5_5svju"]
+[ext_resource type="Texture2D" uid="uid://dcj273s8h82qj" path="res://MapGen/Resources/RoomAssets/RZ/metalpanels.jpg" id="6_h116u"]
 [ext_resource type="PackedScene" uid="uid://b7xwwuyi26i62" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="7_jrm6e"]
 [ext_resource type="PackedScene" uid="uid://c8brqgry3c6r2" path="res://MapGen/Resources/Cameras/cctv_rz.tscn" id="8_5hgyl"]
 

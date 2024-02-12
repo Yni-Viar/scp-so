@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bapwn6hml00i2"
+uid="uid://cht2t34f41s65"
 path.s3tc="res://.godot/imported/914Final_914_Main_Normal.png-5434df970ffe4417baac39ee25b97969.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -24,8 +24,8 @@ compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://Assets/Models/scp914/scp914/914Final_914_Main_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

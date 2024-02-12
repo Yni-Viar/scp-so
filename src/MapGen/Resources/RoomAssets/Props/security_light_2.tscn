@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://cgk0ex8u6sfcp"]
 
-[ext_resource type="Texture2D" uid="uid://bjrngh40uf46y" path="res://MapGen/Resources/RoomAssets/Props/SecurityLight/security_light_diff_2k.jpg" id="1_upy52"]
-[ext_resource type="Texture2D" uid="uid://df4267ebeufa4" path="res://MapGen/Resources/RoomAssets/Props/SecurityLight/security_light_arm_2k.jpg" id="2_0n5km"]
-[ext_resource type="Texture2D" uid="uid://c8lk8h33mq630" path="res://MapGen/Resources/RoomAssets/Props/SecurityLight/security_light_nor_gl_2k.jpg" id="3_nbmw3"]
-[ext_resource type="Texture2D" uid="uid://duk6ghhautp07" path="res://MapGen/Resources/RoomAssets/Props/SecurityLight/security_light_diff_2k-1.png" id="4_3ldj5"]
+[ext_resource type="Texture2D" uid="uid://cvvpul65bew1g" path="res://MapGen/Resources/RoomAssets/Props/SecurityLight/security_light_diff_2k.jpg" id="1_upy52"]
+[ext_resource type="Texture2D" uid="uid://4873jeq44itx" path="res://MapGen/Resources/RoomAssets/Props/SecurityLight/security_light_arm_2k.jpg" id="2_0n5km"]
+[ext_resource type="Texture2D" uid="uid://bmraddhu6plhw" path="res://MapGen/Resources/RoomAssets/Props/SecurityLight/security_light_nor_gl_2k.jpg" id="3_nbmw3"]
+[ext_resource type="Texture2D" uid="uid://cyimhf3kvejp7" path="res://MapGen/Resources/RoomAssets/Props/SecurityLight/security_light_diff_2k-1.png" id="4_3ldj5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_df5nb"]
 resource_name = "security_light"

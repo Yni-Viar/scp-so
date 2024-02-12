@@ -1,7 +1,6 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b2jic8w2iufsi"]
 
-[ext_resource type="Texture2D" uid="uid://bxtl2tmj6pffc" path="res://MapGen/Resources/RoomAssets/HCZ/concretefloor.jpg" id="1_8nyj4"]
-
+[ext_resource type="Texture2D" uid="uid://8807huc3a22n" path="res://MapGen/Resources/RoomAssets/HCZ/concretefloor.jpg" id="1_8nyj4"]
 
 [resource]
 resource_name = "mat2.011"

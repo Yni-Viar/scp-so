@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://lubq7b1s5e4p"]
 
-[ext_resource type="Texture2D" uid="uid://dk071p2uf40k3" path="res://InventorySystem/Items/InventoryIcons/Keycard5.png" id="1_r85kx"]
+[ext_resource type="Texture2D" uid="uid://ujvsowbk2iqc" path="res://InventorySystem/Items/InventoryIcons/Keycard5.png" id="1_r85kx"]
 [ext_resource type="Script" path="res://InventorySystem/Items/Item.cs" id="2_luma7"]
 
 [resource]

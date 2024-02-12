@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pmoiryhqddw"
+uid="uid://pb4yatc07csn"
 path.s3tc="res://.godot/imported/scp914_device_gearset_Normal.png-aa9a156136f6483d41e9d6f68037457d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -24,8 +24,8 @@ compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://Assets/Models/scp914/scp914_gears/scp914_device_gearset_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

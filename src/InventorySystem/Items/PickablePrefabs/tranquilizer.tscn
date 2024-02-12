@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://dfvhhtlnusbb3"]
 
-[ext_resource type="Texture2D" uid="uid://cbevfcw4lqtq0" path="res://Assets/Models/Items-weapons/tranquilizer/Untitled.png" id="1_v6ca8"]
+[ext_resource type="Texture2D" uid="uid://b30ec2mexlv7g" path="res://Assets/Models/Items-weapons/tranquilizer/Untitled.png" id="1_v6ca8"]
 [ext_resource type="Script" path="res://InventorySystem/Items/Pickable.cs" id="1_wfjbw"]
 [ext_resource type="Resource" uid="uid://dod32q1ljd0nv" path="res://InventorySystem/Items/tranquilizer.tres" id="2_ehou1"]
 

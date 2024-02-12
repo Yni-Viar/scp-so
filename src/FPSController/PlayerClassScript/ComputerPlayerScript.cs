@@ -31,4 +31,9 @@ public partial class ComputerPlayerScript : Node3D
 	{
 
 	}
+
+    internal virtual void Reveal(string zone, string room)
+	{
+
+	}
 }

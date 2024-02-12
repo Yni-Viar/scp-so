@@ -41,6 +41,7 @@ public partial class MapGenerator : Node
     };
 
     internal TempRoom[,] roomTemp = new TempRoom[12, 12];
+
     /// <summary>
     /// Main algorithm
     /// </summary>
@@ -464,6 +465,7 @@ public partial class MapGenerator : Node
             }
             Console.WriteLine();
         }*/
+
         int currRoom1 = 0;
         int currRoom2 = 0;
         int currRoom2C = 0;
@@ -481,12 +483,13 @@ public partial class MapGenerator : Node
                         if (currRoom1 < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Room1.Count)
                         {
                             rm = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Room1[currRoom1].Instantiate<StaticBody3D>();
+                            currRoom1++;
                         }
                         else
                         {
                             rm = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Rooms1[rand.RandiRange(0, GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Rooms1.Count - 1)].Instantiate<StaticBody3D>();
                         }
-                        currRoom1++;
+                        
                         rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
                         rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
                         AddChild(rm, true);
@@ -496,12 +499,13 @@ public partial class MapGenerator : Node
                         if (currRoom2 < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Room2.Count)
                         {
                             rm = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Room2[currRoom2].Instantiate<StaticBody3D>();
+                            currRoom2++;
                         }
                         else
                         {
                             rm = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Rooms2[rand.RandiRange(0, GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Rooms2.Count - 1)].Instantiate<StaticBody3D>();
                         }
-                        currRoom2++;
+                        
                         rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
                         rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
                         AddChild(rm, true);
@@ -511,12 +515,13 @@ public partial class MapGenerator : Node
                         if (currRoom2C < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Room2C.Count)
                         {
                             rm = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Room2C[currRoom2C].Instantiate<StaticBody3D>();
+                            currRoom2C++;
                         }
                         else
                         {
                             rm = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Rooms2C[rand.RandiRange(0, GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Rooms2C.Count - 1)].Instantiate<StaticBody3D>();
                         }
-                        currRoom2C++;
+                        
                         rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
                         rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
                         AddChild(rm, true);
@@ -526,12 +531,13 @@ public partial class MapGenerator : Node
                         if (currRoom3 < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Room3.Count)
                         {
                             rm = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Room3[currRoom3].Instantiate<StaticBody3D>();
+                            currRoom3++;
                         }
                         else
                         {
                             rm = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Rooms3[rand.RandiRange(0, GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.MapGenRooms[zone].Rooms3.Count - 1)].Instantiate<StaticBody3D>();
                         }
-                        currRoom3++;
+                        
                         rm.Position = new Vector3(i * 20.48f, 0, j * 20.48f);
                         rm.RotationDegrees = new Vector3(0, roomTemp[i, j].angle, 0);
                         AddChild(rm, true);

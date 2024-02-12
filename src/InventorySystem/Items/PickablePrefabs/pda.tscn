@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://dkhqc4ewjs2h2"]
 
-[ext_resource type="Texture2D" uid="uid://c3ior04hosg8a" path="res://Assets/Models/Items-PDA/PDA_PDA_AlbedoTransparency.png" id="1_2wagw"]
+[ext_resource type="Texture2D" uid="uid://bgewck8t8oh6n" path="res://Assets/Models/Items-PDA/PDA_PDA_AlbedoTransparency.png" id="1_2wagw"]
 [ext_resource type="Script" path="res://InventorySystem/Items/Pickable.cs" id="1_tnl3g"]
 [ext_resource type="Resource" uid="uid://itlfhdutbowo" path="res://InventorySystem/Items/pda.tres" id="2_gvlur"]
-[ext_resource type="Texture2D" uid="uid://cjiqeouuslhjv" path="res://Assets/Models/Items-PDA/PDA_PDA_MetallicSmoothness.png" id="2_i5iur"]
-[ext_resource type="Texture2D" uid="uid://dyue2yqs3bitx" path="res://Assets/Models/Items-PDA/PDA_PDA_Normal.png" id="3_3lil4"]
+[ext_resource type="Texture2D" uid="uid://dsxwpcbdwhfxl" path="res://Assets/Models/Items-PDA/PDA_PDA_MetallicSmoothness.png" id="2_i5iur"]
+[ext_resource type="Texture2D" uid="uid://chwr6gd7o2r3y" path="res://Assets/Models/Items-PDA/PDA_PDA_Normal.png" id="3_3lil4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nuh4e"]
 resource_name = "PDA"

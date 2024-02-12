@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://cuglygfhc25fj"]
 
-[ext_resource type="Texture2D" uid="uid://dqbxm30281k2a" path="res://LoadingScreens/Images/scp018.png" id="1_4fd2p"]
+[ext_resource type="Texture2D" uid="uid://tj6n5ahsjwbs" path="res://LoadingScreens/Images/scp018.png" id="1_4fd2p"]
 [ext_resource type="Script" path="res://Scripts/LoadingScreenResource.cs" id="2_72803"]
 
 [resource]

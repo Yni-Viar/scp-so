@@ -1,11 +1,11 @@
 [gd_scene load_steps=44 format=3 uid="uid://pn84e87jf7hj"]
 
-[ext_resource type="Texture2D" uid="uid://bgcw3evtgemd" path="res://Assets/Models/scp131/SCP-131-Yellow/scp131_low_1001_AlbedoTransparency_yellow.png" id="1_m3qrq"]
+[ext_resource type="Texture2D" uid="uid://chxaqjjis607v" path="res://Assets/Models/scp131/SCP-131-Yellow/scp131_low_1001_AlbedoTransparency_yellow.png" id="1_m3qrq"]
 [ext_resource type="Script" path="res://FPSController/PlayerClassScript/Scp131PlayerScript.cs" id="1_w24t6"]
-[ext_resource type="Texture2D" uid="uid://bbxhvwexbmqd6" path="res://Assets/Models/scp131/SCP-131-Yellow/scp131_low_1001_Emission.png" id="2_isntr"]
-[ext_resource type="Texture2D" uid="uid://bcit86mgpl7e1" path="res://Assets/Models/scp131/SCP-131-Yellow/scp131_low_1001_MetallicSmoothness.png" id="3_aqk7h"]
-[ext_resource type="Texture2D" uid="uid://dmie5u1kaclpu" path="res://Assets/Models/scp131/SCP-131-Yellow/scp131_low_1001_Normal.png" id="4_yegkc"]
-[ext_resource type="FontFile" uid="uid://cqaasvtiakcsw" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="6_n6xjx"]
+[ext_resource type="Texture2D" uid="uid://dj8gkuk1acox7" path="res://Assets/Models/scp131/SCP-131-Yellow/scp131_low_1001_Emission.png" id="2_isntr"]
+[ext_resource type="Texture2D" uid="uid://bfrstmblqs4jw" path="res://Assets/Models/scp131/SCP-131-Yellow/scp131_low_1001_MetallicSmoothness.png" id="3_aqk7h"]
+[ext_resource type="Texture2D" uid="uid://du1qiyv75rri6" path="res://Assets/Models/scp131/SCP-131-Yellow/scp131_low_1001_Normal.png" id="4_yegkc"]
+[ext_resource type="FontFile" uid="uid://c5notad62nmgy" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="6_n6xjx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a1dr6"]
 resource_name = "lambert8"

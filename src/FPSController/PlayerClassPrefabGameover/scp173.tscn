@@ -1,9 +1,9 @@
 [gd_scene load_steps=16 format=3 uid="uid://cnm52nawkjos4"]
 
-[ext_resource type="Texture2D" uid="uid://rm687b6qqdcm" path="res://Assets/Models/scp173-Fracture/scp173NEO_low_Merged_PM3D_Sphere3D4_AlbedoTransparency.png" id="1_oio7w"]
+[ext_resource type="Texture2D" uid="uid://d24qs53owsqs0" path="res://Assets/Models/scp173-Fracture/scp173NEO_low_Merged_PM3D_Sphere3D4_AlbedoTransparency.png" id="1_oio7w"]
 [ext_resource type="Script" path="res://FPSController/PlayerClassPrefabGameover/GameOver.cs" id="1_v8poa"]
-[ext_resource type="Texture2D" uid="uid://ckx2wd7wx8igf" path="res://Assets/Models/scp173-Fracture/scp173NEO_low_Merged_PM3D_Sphere3D4_MetallicSmoothness.png" id="2_wqbut"]
-[ext_resource type="Texture2D" uid="uid://ugdrrl34oia7" path="res://Assets/Models/scp173-Fracture/scp173NEO_low_Merged_PM3D_Sphere3D4_Normal.png" id="3_upv1h"]
+[ext_resource type="Texture2D" uid="uid://bf7uc7eb4kcoy" path="res://Assets/Models/scp173-Fracture/scp173NEO_low_Merged_PM3D_Sphere3D4_MetallicSmoothness.png" id="2_wqbut"]
+[ext_resource type="Texture2D" uid="uid://uohvq25wmvvr" path="res://Assets/Models/scp173-Fracture/scp173NEO_low_Merged_PM3D_Sphere3D4_Normal.png" id="3_upv1h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_so10w"]
 resource_name = "phong2"

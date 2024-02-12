@@ -39,13 +39,20 @@ public partial class SlotDisplay : CenterContainer
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        if (Input.IsActionJustPressed("fire") && itemHover && mapData.Name != "empty")
+        if (itemHover && mapData.Name != "empty")
 		{
             if (GetParent().GetParent().GetParent().GetParentOrNull<ComputerPlayerScript>() != null)
             {
                 if (GetParent().GetParent().GetParent().GetParent().GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
                 {
-                    GetParent().GetParent().GetParent().GetParent<ComputerPlayerScript>().SwitchCamera(whichZone, mapData.Name);
+                    if (Input.IsActionJustPressed("fire"))
+                    {
+                        GetParent().GetParent().GetParent().GetParent<ComputerPlayerScript>().SwitchCamera(whichZone, mapData.Name);
+                    }
+                    if (Input.IsActionJustPressed("scp2522_reveal"))
+                    {
+                        GetParent().GetParent().GetParent().GetParent<ComputerPlayerScript>().Reveal(whichZone, mapData.Name);
+                    }
                 }
             }
         }

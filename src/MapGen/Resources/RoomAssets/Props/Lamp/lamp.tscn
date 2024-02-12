@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://dn7xcp8e6o86h"]
 
-[ext_resource type="Texture2D" uid="uid://bxvg0cttj488k" path="res://MapGen/Resources/RoomAssets/Props/Lamp/Metal032_2K_Color.png" id="1_xh8lu"]
-[ext_resource type="Texture2D" uid="uid://cctw1awha25xm" path="res://MapGen/Resources/RoomAssets/Props/Lamp/Metal032_2K_Metalness-Metal032_2K_Roughness.png" id="2_876id"]
-[ext_resource type="Texture2D" uid="uid://cl6y7nxxe15tx" path="res://MapGen/Resources/RoomAssets/Props/Lamp/Metal032_2K_NormalGL.png" id="3_fl7jd"]
+[ext_resource type="Texture2D" uid="uid://dvk0y6bpfnjy1" path="res://MapGen/Resources/RoomAssets/Props/Lamp/Metal032_2K_Color.png" id="1_xh8lu"]
+[ext_resource type="Texture2D" uid="uid://bjf20i6v03vfy" path="res://MapGen/Resources/RoomAssets/Props/Lamp/Metal032_2K_Metalness-Metal032_2K_Roughness.png" id="2_876id"]
+[ext_resource type="Texture2D" uid="uid://7m0qn821kkc4" path="res://MapGen/Resources/RoomAssets/Props/Lamp/Metal032_2K_NormalGL.png" id="3_fl7jd"]
 [ext_resource type="Script" path="res://Scripts/LightSystem.cs" id="4_c6eo8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_igbql"]

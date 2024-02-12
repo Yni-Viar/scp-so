@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://h0wdlfrw2mbf"
+uid="uid://buykn1afp2tc0"
 path="res://.godot/imported/HC_room4.gltf-5b2f37007f6b8f1e2746e02529a4fbf8.scn"
 
 [deps]
@@ -13,8 +13,8 @@ dest_files=["res://.godot/imported/HC_room4.gltf-5b2f37007f6b8f1e2746e02529a4fbf
 
 [params]
 
-nodes/root_type="Node3D"
-nodes/root_name="Scene Root"
+nodes/root_type=""
+nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 meshes/ensure_tangents=true
@@ -29,41 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"materials": {
-"mat0.013": {
-"use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/HCZ/Mat/mat0.013.tres"
-},
-"mat1.013": {
-"use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/HCZ/Mat/mat1.013.tres"
-},
-"mat2.013": {
-"use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/HCZ/Mat/mat2.013.tres"
-},
-"mat3.013": {
-"use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/HCZ/Mat/mat3.013.tres"
-},
-"mat4.010": {
-"use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/HCZ/Mat/mat4.010.tres"
-},
-"mat5.010": {
-"use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/HCZ/Mat/mat5.010.tres"
-},
-"mat6.008": {
-"use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/HCZ/Mat/mat6.008.tres"
-},
-"mat7.005": {
-"use_external/enabled": true,
-"use_external/path": "res://Addons/MapGen/Resources/RoomAssets/HCZ/Mat/mat7.005.tres"
-}
-}
-}
-gltf/naming_version=0
+_subresources={}
+gltf/naming_version=1
 gltf/embedded_image_handling=1

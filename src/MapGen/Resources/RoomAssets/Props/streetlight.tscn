@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://c3d40b7m618dw"]
 
-[ext_resource type="Texture2D" uid="uid://cdbsbi6wjjt3p" path="res://MapGen/Resources/RoomAssets/Props/streetlight/Metal_seamless2_ch16.jpg" id="1_jr6e3"]
-[ext_resource type="Texture2D" uid="uid://6u2qonuiucal" path="res://MapGen/Resources/RoomAssets/Props/streetlight/Leds.png" id="2_q524x"]
+[ext_resource type="Texture2D" uid="uid://cfegdp6lephrn" path="res://MapGen/Resources/RoomAssets/Props/streetlight/Metal_seamless2_ch16.jpg" id="1_jr6e3"]
+[ext_resource type="Texture2D" uid="uid://divir8acuod62" path="res://MapGen/Resources/RoomAssets/Props/streetlight/Leds.png" id="2_q524x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gk38p"]
 resource_name = "Metal"

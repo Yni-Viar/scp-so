@@ -1,0 +1,130 @@
+[gd_scene load_steps=8 format=3 uid="uid://dy6wivx867lc1"]
+
+[ext_resource type="PackedScene" uid="uid://cuyy2rxp68fl6" path="res://MapGen/HUD/RZ_HUD.tscn" id="1_airyq"]
+[ext_resource type="Script" path="res://InventorySystem/Items/InHandPrefabs/PDAComponents/PdaMapHud.cs" id="1_da1ad"]
+[ext_resource type="Texture2D" uid="uid://bxp7u54jgterd" path="res://Assets/HUD/PDA/Map/Rz.png" id="2_asqsc"]
+[ext_resource type="PackedScene" uid="uid://gr0sk21idpvd" path="res://MapGen/HUD/LCZ_HUD.tscn" id="3_s6iar"]
+[ext_resource type="PackedScene" uid="uid://mxkkr1nvap8g" path="res://MapGen/HUD/HCZ_HUD.tscn" id="4_pmbxg"]
+[ext_resource type="Texture2D" uid="uid://cdewg2d8h75aq" path="res://Assets/HUD/PDA/Map/Lcz.png" id="4_yn5er"]
+[ext_resource type="Texture2D" uid="uid://l0i4vcrdlsct" path="res://Assets/HUD/PDA/Map/Hcz.png" id="6_5tboj"]
+
+[node name="PdaMap" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 600.0
+offset_bottom = 704.0
+script = ExtResource("1_da1ad")
+
+[node name="Rz" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainerRz" parent="Rz" instance=ExtResource("1_airyq")]
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 104.0
+offset_top = 64.0
+offset_right = 920.0
+offset_bottom = 876.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.5, 0.5)
+
+[node name="ColorRect" type="TextureRect" parent="Rz"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -192.0
+offset_right = 300.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_asqsc")
+
+[node name="Lcz" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainerLcz" parent="Lcz" instance=ExtResource("3_s6iar")]
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 104.0
+offset_top = 64.0
+offset_right = 920.0
+offset_bottom = 876.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.5, 0.5)
+
+[node name="ColorRect" type="TextureRect" parent="Lcz"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -192.0
+offset_right = 300.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_yn5er")
+
+[node name="Hcz" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainerHcz" parent="Hcz" instance=ExtResource("4_pmbxg")]
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 104.0
+offset_top = 64.0
+offset_right = 920.0
+offset_bottom = 876.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.5, 0.5)
+
+[node name="ColorRect2" type="TextureRect" parent="Hcz"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -192.0
+offset_right = 300.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("6_5tboj")

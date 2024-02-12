@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://crhayrvdwdo1q"]
 
-[ext_resource type="Texture2D" uid="uid://ben08ytu3hn3q" path="res://MapGen/Resources/Doors/DoorLCZOld/Door01.jpg" id="1_jhaf4"]
+[ext_resource type="Texture2D" uid="uid://cln4s2e8nbj0k" path="res://MapGen/Resources/Doors/DoorLCZOld/Door01.jpg" id="1_jhaf4"]
 [ext_resource type="Script" path="res://Scripts/DoorsSystem/CommonDoor.cs" id="1_ur8xu"]
 [ext_resource type="PackedScene" uid="uid://duvebkaj518ex" path="res://MapGen/Resources/Buttons/button_interact.tscn" id="3_mkb0f"]
 [ext_resource type="Script" path="res://Scripts/DoorsSystem/DoorStaticOpener.cs" id="3_y53gv"]

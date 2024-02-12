@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fgmtwm6x03a5"
+uid="uid://8coy0eit5ctl"
 path.s3tc="res://.godot/imported/Class D2_Face_Normal_png.png-114d43276a8927f3b324fd5de98b43d9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -25,7 +25,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Assets/Models/classd_test/Class D2_Face_Normal_png.png"
+roughness/src_normal="res://Assets/Models/classd/Class D2_Face_Normal_png.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

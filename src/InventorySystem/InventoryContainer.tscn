@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://hw0aruclawku"]
 
-[ext_resource type="PackedScene" uid="uid://dcviffwgvwh4k" path="res://InventorySystem/InventoryDisplay.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://nr0ubtnr2xlw" path="res://InventorySystem/InventoryDisplay.tscn" id="1"]
 [ext_resource type="Script" path="res://InventorySystem/Inventory.cs" id="2_rjun4"]
 
 [node name="InventoryContainer" type="ColorRect"]

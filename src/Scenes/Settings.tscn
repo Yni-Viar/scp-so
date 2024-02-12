@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/MainMenu/SettingsPanel.cs" id="2_fv068"]
 [ext_resource type="Theme" uid="uid://4k2un7nm7xc6" path="res://UITheme.tres" id="3_2qins"]
-[ext_resource type="FontFile" uid="uid://bmquuud55yceh" path="res://Assets/Fonts/Righteous/Righteous-Regular.ttf" id="3_boifm"]
+[ext_resource type="FontFile" uid="uid://bqfvf7d62xqdu" path="res://Assets/Fonts/Righteous/Righteous-Regular.ttf" id="3_boifm"]
 [ext_resource type="AudioStream" uid="uid://dyncp4ycjupw4" path="res://Sounds/Interact/PickItem1.ogg" id="4_jktnn"]
 
 [node name="Settings" type="CanvasLayer"]

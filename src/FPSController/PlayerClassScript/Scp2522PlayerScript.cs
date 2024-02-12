@@ -1,6 +1,8 @@
 using Godot;
 using System;
-
+/// <summary>
+/// SCP-2522 main script. Available since 0.6.0-dev (as SCP-079, only in 0.7.0-dev it became 2522)
+/// </summary>
 public partial class Scp2522PlayerScript : ComputerPlayerScript
 {
     // to be added in future.
@@ -36,6 +38,7 @@ public partial class Scp2522PlayerScript : ComputerPlayerScript
                     }
                 }
             }*/
+            GetNode<Label>("UI/LevelCount").Text = "Level " + level;
             SwitchCamera("Rz", "RZ_room2_servers");
         }
         Input.MouseMode = Input.MouseModeEnum.Visible;
@@ -76,6 +79,12 @@ public partial class Scp2522PlayerScript : ComputerPlayerScript
                     GetNode<Label>("UI/Scp2306Warning").Hide();
                 }
             }
+            if (levelUp >= 100f)
+            {
+                level++;
+                GetNode<Label>("UI/LevelCount").Text = "Level " + level;
+                levelUp = 0f;
+            }
         }
 	}
     /// <summary>
@@ -99,5 +108,55 @@ public partial class Scp2522PlayerScript : ComputerPlayerScript
             currentCam = "Main/Game/MapGenRz/RZ_room2_servers/cctv2";
             GetTree().Root.GetNode<CctvCamera>(currentCam).Initialize(true, this);
         }
+    }
+    /// <summary>
+    /// Scans subjects in the room (this feature was originally intended for SCP-079, but later their concept was scrapped,
+    /// and SCP-2522 gained their ability).
+    /// </summary>
+    /// <param name="zone">Specified zone</param>
+    /// <param name="room">Name of the room</param>
+    internal override void Reveal(string zone, string room)
+    {
+        if (level < 3)
+        {
+            return;
+        }
+        int scpsCount = 0;
+        int otherObjectsCount = 0;
+        int classDCount = 0;
+        int mtfCount = 0;
+        int scientistsCount = 0;
+        energy -= 80;
+        string roomPath = "Main/Game/MapGen" + zone + "/" + room;
+        GetTree().Root.GetNode<CctvCamera>(roomPath + "/cctv").Rpc("PlaySound", "2522_control");
+        GetTree().Root.GetNode<Area3D>(roomPath + "/CheckArea").Monitoring = true;
+        foreach (Node3D node in GetTree().Root.GetNode<Area3D>(roomPath + "/CheckArea").GetOverlappingBodies())
+        {
+            if (node is PlayerScript player)
+            {
+                switch (player.team)
+                {
+                    case Globals.Team.CDP:
+                        classDCount++;
+                        break;
+                    case Globals.Team.SCI:
+                        scientistsCount++;
+                        break;
+                    case Globals.Team.MTF:
+                        mtfCount++;
+                        break;
+                    case Globals.Team.NSE:
+                        otherObjectsCount++;
+                        break;
+                    case Globals.Team.DSE:
+                        scpsCount++;
+                        break;
+                }
+            }
+        }
+        GetTree().Root.GetNode<Area3D>(roomPath + "/CheckArea").Monitoring = false;
+        GetNode<Label>("UI/RevealLabel").Text = "The room has been scanned. Found:\n " + classDCount + " Class-D,\n" + scientistsCount +
+            " science personnel,\n" + mtfCount + " Mobile Task Force troopers,\n" + (scpsCount + otherObjectsCount) + " wandering SCP subjects,\nwhere " +
+            scpsCount + " may be dangerous.";
     }
 }

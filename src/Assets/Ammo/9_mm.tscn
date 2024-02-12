@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b0wia77m5lgkk"]
 
 [ext_resource type="Script" path="res://Scripts/LootableAmmo.cs" id="1_rf6ch"]
-[ext_resource type="Texture2D" uid="uid://dn3cwfq47jax5" path="res://Assets/Models/Items-weapons/com16/1911 Magazine Uv.png" id="1_x5vpk"]
+[ext_resource type="Texture2D" uid="uid://cm00dtr7xf4y6" path="res://Assets/Models/Items-weapons/com16/1911 Magazine Uv.png" id="1_x5vpk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_at6iu"]
 resource_name = "Material.003"

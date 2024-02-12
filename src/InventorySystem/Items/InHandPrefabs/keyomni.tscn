@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bnyymqefdt0tu"]
 
-[ext_resource type="Texture2D" uid="uid://c5w7eyv75hn53" path="res://Assets/Models/Items-Keycards/keycardomni.png" id="1_4m3ya"]
+[ext_resource type="Texture2D" uid="uid://divd8x8wjx47a" path="res://Assets/Models/Items-Keycards/keycardomni.png" id="1_4m3ya"]
 [ext_resource type="Script" path="res://InventorySystem/Items/InHandPrefabs/ItemAction.cs" id="1_dc85u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oy8v7"]

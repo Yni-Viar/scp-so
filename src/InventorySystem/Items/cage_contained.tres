@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://d3ayictart6ws"]
 
-[ext_resource type="Texture2D" uid="uid://bgmf3kweb1c0p" path="res://InventorySystem/Items/InventoryIcons/cage_contained.png" id="1_2xcey"]
+[ext_resource type="Texture2D" uid="uid://c7ao63ys5snfh" path="res://InventorySystem/Items/InventoryIcons/cage_contained.png" id="1_2xcey"]
 [ext_resource type="Script" path="res://InventorySystem/Items/Item.cs" id="2_3v377"]
 
 [resource]

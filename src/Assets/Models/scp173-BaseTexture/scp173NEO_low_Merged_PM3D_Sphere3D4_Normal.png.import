@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhk6piqm87b2n"
+uid="uid://wgwpwy2pol35"
 path.s3tc="res://.godot/imported/scp173NEO_low_Merged_PM3D_Sphere3D4_Normal.png-30038cae212b378e1cde21ebf9fe473c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -25,7 +25,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Assets/Models/SCP-173-BaseTexture-GLTF/scp173NEO_low_Merged_PM3D_Sphere3D4_Normal.png"
+roughness/src_normal="res://Assets/Models/scp173-BaseTexture/scp173NEO_low_Merged_PM3D_Sphere3D4_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

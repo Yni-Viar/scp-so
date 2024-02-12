@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://ekckj1irrths"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerClassScript/Scp2522PlayerScript.cs" id="1_rd54c"]
-[ext_resource type="FontFile" uid="uid://cqaasvtiakcsw" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="4_bycpf"]
+[ext_resource type="FontFile" uid="uid://c5notad62nmgy" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="4_bycpf"]
 [ext_resource type="Texture2D" uid="uid://onts4gx0dbm7" path="res://Assets/HUD/levelbar.png" id="5_88gl2"]
 [ext_resource type="Texture2D" uid="uid://cgxah7benn8tk" path="res://Assets/HUD/energybar.png" id="5_q2nfg"]
-[ext_resource type="FontFile" uid="uid://dbcvx5qht5ass" path="res://Assets/Fonts/PixelifySans/PixelifySans-Regular.ttf" id="8_7eus5"]
-[ext_resource type="PackedScene" uid="uid://181xd3hx0uq" path="res://MapGen/HUD/MapGenHUD.tscn" id="9_dp7s1"]
+[ext_resource type="FontFile" uid="uid://qdbcohd7rt4m" path="res://Assets/Fonts/PixelifySans/PixelifySans-Regular.ttf" id="8_7eus5"]
+[ext_resource type="PackedScene" uid="uid://181xd3hx0uq" path="res://FPSController/PlayerClassScript/Features/MapView/MapGenHUD.tscn" id="9_dp7s1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4t5cu"]
 bg_color = Color(0, 0, 0, 1)
@@ -46,6 +46,20 @@ R - lock REGULAR door.
 Tab - open map."
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ExperimentalWarning" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -345.0
+offset_right = 345.0
+offset_bottom = 30.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("8_7eus5")
+theme_override_font_sizes/font_size = 24
+text = "[i] Currenly, SCP-2522 \"hatbot.aic\" is an experimental class"
 
 [node name="MapGenHUD" parent="UI" instance=ExtResource("9_dp7s1")]
 visible = false
@@ -113,6 +127,20 @@ offset_bottom = 19.5999
 grow_vertical = 0
 texture = ExtResource("5_88gl2")
 
+[node name="LevelCount" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -928.0
+offset_top = 1040.0
+offset_right = -392.0
+offset_bottom = 1070.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("8_7eus5")
+theme_override_font_sizes/font_size = 24
+text = "LEVEL"
+
 [node name="TargetCount" type="Label" parent="UI"]
 layout_mode = 1
 anchors_preset = 1
@@ -143,16 +171,12 @@ theme_override_fonts/font = ExtResource("8_7eus5")
 theme_override_font_sizes/font_size = 32
 text = "/!\\ Something is trying to crash me..."
 
-[node name="ExperimentalWarning" type="Label" parent="UI"]
+[node name="RevealLabel" type="Label" parent="UI"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("8_7eus5")
-theme_override_font_sizes/font_size = 24
-text = "[i] Currenly, SCP-2522 \"hatbot.aic\" is an experimental class"
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -96.0
+offset_right = 576.0
+offset_bottom = 96.0
+grow_vertical = 2

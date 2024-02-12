@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://bsv4bn1kgu5pm"]
 
-[ext_resource type="Texture2D" uid="uid://c74sd50joiti5" path="res://MapGen/Resources/RoomAssets/Props/Laptop/keyboard.png" id="1_c6g3t"]
-[ext_resource type="Texture2D" uid="uid://7f1yc3clbsnj" path="res://MapGen/Resources/RoomAssets/Props/Laptop/keycard reader.png" id="2_pp6s3"]
-[ext_resource type="Texture2D" uid="uid://c4mpdv10eterh" path="res://MapGen/Resources/RoomAssets/Props/Laptop/blank.png" id="3_eulco"]
+[ext_resource type="Texture2D" uid="uid://cxrjfxp2x0mmj" path="res://MapGen/Resources/RoomAssets/Props/Laptop/keyboard.png" id="1_c6g3t"]
+[ext_resource type="Texture2D" uid="uid://dxh1p4ifmpxmo" path="res://MapGen/Resources/RoomAssets/Props/Laptop/keycard reader.png" id="2_pp6s3"]
+[ext_resource type="Texture2D" uid="uid://dxwt63fgxf0r0" path="res://MapGen/Resources/RoomAssets/Props/Laptop/blank.png" id="3_eulco"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3tvj"]
 resource_name = "Material"

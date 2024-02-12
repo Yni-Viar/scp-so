@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://dfcq4opaedydk"]
 
 [ext_resource type="Script" path="res://InventorySystem/Items/Pickable.cs" id="1_56m2n"]
-[ext_resource type="Texture2D" uid="uid://bkm1eu376x008" path="res://Assets/Models/scp079computer/079_computer_2.png" id="1_ohhiq"]
+[ext_resource type="Texture2D" uid="uid://dyv3uyd0hl1wy" path="res://Assets/Models/scp079computer/079_computer_2.png" id="1_ohhiq"]
 [ext_resource type="Resource" uid="uid://t2wutxm5ihci" path="res://InventorySystem/Items/scp079computer.tres" id="2_r3f83"]
-[ext_resource type="Texture2D" uid="uid://bdxj2sr361uts" path="res://Assets/Models/scp079computer/079_computer_1_nocopyright.png" id="2_u5fjm"]
+[ext_resource type="Texture2D" uid="uid://ctxttchlvs556" path="res://Assets/Models/scp079computer/079_computer_1_nocopyright.png" id="2_u5fjm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_24jl7"]
 resource_name = "079_computer_2"

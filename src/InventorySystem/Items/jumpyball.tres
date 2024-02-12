@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://c6v1bx70lwp5r"]
 
-[ext_resource type="Texture2D" uid="uid://b6ikhevo04vl6" path="res://InventorySystem/Items/InventoryIcons/JumpyBall.png" id="1_l1ox8"]
+[ext_resource type="Texture2D" uid="uid://cwnwpp7nhgaih" path="res://InventorySystem/Items/InventoryIcons/JumpyBall.png" id="1_l1ox8"]
 [ext_resource type="Script" path="res://InventorySystem/Items/Item.cs" id="2_vdy7r"]
 
 [resource]

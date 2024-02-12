@@ -1,14 +1,14 @@
 [gd_scene load_steps=24 format=3 uid="uid://bcg2tcn1pfy24"]
 
-[ext_resource type="Texture2D" uid="uid://d4a1s35jefp5r" path="res://MapGen/Resources/RoomAssets/LCZ/whitewall_2k.jpg" id="1_6ujl4"]
-[ext_resource type="Texture2D" uid="uid://b067ykrbqruf0" path="res://MapGen/Resources/RoomAssets/LCZ/dirtymetal.jpg" id="2_xignr"]
-[ext_resource type="Texture2D" uid="uid://dit7t4ogxcbj" path="res://MapGen/Resources/RoomAssets/LCZ/tilefloor.jpg" id="3_ku2c2"]
-[ext_resource type="Texture2D" uid="uid://cfp7ltqfnw2qx" path="res://MapGen/Resources/RoomAssets/LCZ/metalpanels2.jpg" id="4_g0mpa"]
-[ext_resource type="Texture2D" uid="uid://dvsk20b8yaygd" path="res://MapGen/Resources/RoomAssets/LCZ/misc.jpg" id="5_6u8he"]
-[ext_resource type="Texture2D" uid="uid://14w10x3oqfbv" path="res://MapGen/Resources/RoomAssets/LCZ/concretefloor.jpg" id="6_7uwbj"]
-[ext_resource type="Texture2D" uid="uid://b4mexeiu2kw0e" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_Color.png" id="7_3wukd"]
-[ext_resource type="Texture2D" uid="uid://jal6u6cusnv3" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_Metalness-Metal032_2K_Roughness.png" id="8_2hdqr"]
-[ext_resource type="Texture2D" uid="uid://bhv585dwr87xd" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_NormalGL.png" id="9_mwsgs"]
+[ext_resource type="Texture2D" uid="uid://bssjiickxaxlb" path="res://MapGen/Resources/RoomAssets/LCZ/whitewall_2k.jpg" id="1_6ujl4"]
+[ext_resource type="Texture2D" uid="uid://sd2w1rcpgku2" path="res://MapGen/Resources/RoomAssets/LCZ/dirtymetal.jpg" id="2_xignr"]
+[ext_resource type="Texture2D" uid="uid://bqpu7ykrcfa3r" path="res://MapGen/Resources/RoomAssets/LCZ/tilefloor.jpg" id="3_ku2c2"]
+[ext_resource type="Texture2D" uid="uid://llood6tscaaj" path="res://MapGen/Resources/RoomAssets/LCZ/metalpanels2.jpg" id="4_g0mpa"]
+[ext_resource type="Texture2D" uid="uid://c52dc7w8qxxky" path="res://MapGen/Resources/RoomAssets/LCZ/misc.jpg" id="5_6u8he"]
+[ext_resource type="Texture2D" uid="uid://b0bfaqdknv2ih" path="res://MapGen/Resources/RoomAssets/LCZ/concretefloor.jpg" id="6_7uwbj"]
+[ext_resource type="Texture2D" uid="uid://bfy41bneqt3rv" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_Color.png" id="7_3wukd"]
+[ext_resource type="Texture2D" uid="uid://broigkb6vowds" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_Metalness-Metal032_2K_Roughness.png" id="8_2hdqr"]
+[ext_resource type="Texture2D" uid="uid://634udvw8bn76" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_NormalGL.png" id="9_mwsgs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atac0"]
 resource_name = "mat0.009"

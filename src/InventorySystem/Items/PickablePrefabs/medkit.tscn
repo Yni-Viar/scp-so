@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cvk3py60of4fm"]
 
 [ext_resource type="Script" path="res://InventorySystem/Items/Pickable.cs" id="1_k8o58"]
-[ext_resource type="Texture2D" uid="uid://cm28ww741bu5g" path="res://Assets/Models/Items-FirstAid/FirstAid.png" id="1_l8oa2"]
+[ext_resource type="Texture2D" uid="uid://ck44jedptwvxp" path="res://Assets/Models/Items-FirstAid/FirstAid.png" id="1_l8oa2"]
 [ext_resource type="Resource" uid="uid://cigjp5sl4xe7x" path="res://InventorySystem/Items/medkit.tres" id="2_j3u2p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ewlx"]

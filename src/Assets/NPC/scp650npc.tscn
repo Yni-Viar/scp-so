@@ -1,9 +1,9 @@
 [gd_scene load_steps=21 format=3 uid="uid://vshaof0ucdmw"]
 
-[ext_resource type="Texture2D" uid="uid://uxsb8qne4l3q" path="res://Assets/Models/scp650/650_Base_Color.png" id="1_8tral"]
+[ext_resource type="Texture2D" uid="uid://cxh2hwdknhw2k" path="res://Assets/Models/scp650/650_Base_Color.png" id="1_8tral"]
 [ext_resource type="Script" path="res://Scripts/NPC/Scp650Npc.cs" id="1_vt50j"]
-[ext_resource type="Texture2D" uid="uid://bytkre107q4nu" path="res://Assets/Models/scp650/650_Metallic-650_Roughness.png" id="2_fruee"]
-[ext_resource type="Texture2D" uid="uid://chkcivmmetcwa" path="res://Assets/Models/scp650/650_Normal_OpenGL.png" id="3_a178t"]
+[ext_resource type="Texture2D" uid="uid://j43fu6yhjq2e" path="res://Assets/Models/scp650/650_Metallic-650_Roughness.png" id="2_fruee"]
+[ext_resource type="Texture2D" uid="uid://ckdmgcy137846" path="res://Assets/Models/scp650/650_Normal_OpenGL.png" id="3_a178t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s2ay8"]
 resource_name = "650"

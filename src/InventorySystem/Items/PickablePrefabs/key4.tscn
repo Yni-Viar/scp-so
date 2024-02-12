@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dtycbwx1gobbl"]
 
-[ext_resource type="Texture2D" uid="uid://nisq3p05nsgx" path="res://Assets/Models/Items-Keycards/keycard4.png" id="1_aivup"]
+[ext_resource type="Texture2D" uid="uid://drc3u6p8dne6r" path="res://Assets/Models/Items-Keycards/keycard4.png" id="1_aivup"]
 [ext_resource type="Script" path="res://InventorySystem/Items/Pickable.cs" id="1_mbw2s"]
 [ext_resource type="Resource" uid="uid://qyweqdwnyu5v" path="res://InventorySystem/Items/key4.tres" id="2_kvy33"]
 

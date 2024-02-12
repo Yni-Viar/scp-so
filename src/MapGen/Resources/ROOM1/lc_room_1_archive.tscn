@@ -1,9 +1,9 @@
 [gd_scene load_steps=16 format=3 uid="uid://doq3frunqgmx5"]
 
-[ext_resource type="Texture2D" uid="uid://bkt1gmp7oma23" path="res://MapGen/Resources/RoomAssets/LCZ/metal.jpg" id="1_dm65m"]
-[ext_resource type="Texture2D" uid="uid://dvsk20b8yaygd" path="res://MapGen/Resources/RoomAssets/LCZ/misc.jpg" id="2_aw14e"]
-[ext_resource type="Texture2D" uid="uid://d4a1s35jefp5r" path="res://MapGen/Resources/RoomAssets/LCZ/whitewall_2k.jpg" id="3_ydbee"]
-[ext_resource type="Texture2D" uid="uid://b067ykrbqruf0" path="res://MapGen/Resources/RoomAssets/LCZ/dirtymetal.jpg" id="4_lpk2r"]
+[ext_resource type="Texture2D" uid="uid://b7cp4noqbp48s" path="res://MapGen/Resources/RoomAssets/LCZ/metal.jpg" id="1_dm65m"]
+[ext_resource type="Texture2D" uid="uid://c52dc7w8qxxky" path="res://MapGen/Resources/RoomAssets/LCZ/misc.jpg" id="2_aw14e"]
+[ext_resource type="Texture2D" uid="uid://bssjiickxaxlb" path="res://MapGen/Resources/RoomAssets/LCZ/whitewall_2k.jpg" id="3_ydbee"]
+[ext_resource type="Texture2D" uid="uid://sd2w1rcpgku2" path="res://MapGen/Resources/RoomAssets/LCZ/dirtymetal.jpg" id="4_lpk2r"]
 [ext_resource type="PackedScene" uid="uid://bmacptdhvw6h7" path="res://MapGen/Resources/RoomAssets/Props/ceiling_lamp.tscn" id="7_5cwih"]
 [ext_resource type="PackedScene" uid="uid://ggkfnlch55w4" path="res://MapGen/Resources/Cameras/cctv_lcz.tscn" id="7_hkf7c"]
 [ext_resource type="PackedScene" uid="uid://d16x8u00dwy8k" path="res://MapGen/Resources/Doors/DoorLCZ2.tscn" id="7_hse22"]

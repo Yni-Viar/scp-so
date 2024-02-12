@@ -1,11 +1,11 @@
 [gd_scene load_steps=19 format=3 uid="uid://bskf2ruxmf76r"]
 
 [ext_resource type="Script" path="res://Scripts/DoorsSystem/KeycardedDoor.cs" id="1_5qydv"]
-[ext_resource type="Texture2D" uid="uid://b4mexeiu2kw0e" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_Color.png" id="2_jxird"]
-[ext_resource type="Texture2D" uid="uid://jal6u6cusnv3" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_Metalness-Metal032_2K_Roughness.png" id="3_fkvh6"]
-[ext_resource type="Texture2D" uid="uid://bhv585dwr87xd" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_NormalGL.png" id="4_sh5wh"]
-[ext_resource type="Texture2D" uid="uid://o5giewh76qkn" path="res://MapGen/Resources/Doors/DoorGate/GateFrame/Metal032_2K_Color.png" id="5_yo8wa"]
-[ext_resource type="Texture2D" uid="uid://q7qhbxch3lsf" path="res://MapGen/Resources/Doors/DoorGate/GateFrame/Metal032_2K_Metalness-Metal032_2K_Roughness.png" id="6_ppjkb"]
+[ext_resource type="Texture2D" uid="uid://bfy41bneqt3rv" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_Color.png" id="2_jxird"]
+[ext_resource type="Texture2D" uid="uid://broigkb6vowds" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_Metalness-Metal032_2K_Roughness.png" id="3_fkvh6"]
+[ext_resource type="Texture2D" uid="uid://634udvw8bn76" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_NormalGL.png" id="4_sh5wh"]
+[ext_resource type="Texture2D" uid="uid://dy4hugtit0ywn" path="res://MapGen/Resources/Doors/DoorGate/GateFrame/Metal032_2K_Color.png" id="5_yo8wa"]
+[ext_resource type="Texture2D" uid="uid://wkxmvrfmckp8" path="res://MapGen/Resources/Doors/DoorGate/GateFrame/Metal032_2K_Metalness-Metal032_2K_Roughness.png" id="6_ppjkb"]
 [ext_resource type="PackedScene" uid="uid://cksy6yj1cwku7" path="res://MapGen/Resources/Buttons/button_keycard.tscn" id="7_2n1cc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r77rk"]

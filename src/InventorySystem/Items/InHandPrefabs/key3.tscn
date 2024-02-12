@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bidxwpord148e"]
 
 [ext_resource type="Script" path="res://InventorySystem/Items/InHandPrefabs/ItemAction.cs" id="1_aqp5a"]
-[ext_resource type="Texture2D" uid="uid://vmdiuu3h7ff2" path="res://Assets/Models/Items-Keycards/keycard3.png" id="1_k4v1s"]
+[ext_resource type="Texture2D" uid="uid://dmhe6gbs7ks6c" path="res://Assets/Models/Items-Keycards/keycard3.png" id="1_k4v1s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6806"]
 resource_name = "material0.002"

@@ -50,7 +50,7 @@ public partial class ElevatorSystem : Node3D
             GlobalPosition = GlobalPosition.MoveToward(targetPos[counter], speed * (float)delta);
             if (GlobalPosition == targetPos[counter])
             {
-                if (counter < targetPos.Count)
+                if (counter < targetPos.Count - 1)
                 {
                     counter++;
                 }

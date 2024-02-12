@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dl0653hv0mrkg"]
 
-[ext_resource type="Texture2D" uid="uid://80pegekbbcl6" path="res://MapGen/Resources/RoomAssets/Props/FirTree3/LeafSet019_2K_Color_A.png" id="1_hl2eq"]
+[ext_resource type="Texture2D" uid="uid://cqmq2eg7vw3c2" path="res://MapGen/Resources/RoomAssets/Props/FirTree3/LeafSet019_2K_Color_A.png" id="1_hl2eq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_48ddl"]
 resource_name = "LeafSet019_2K_Color_A.001"

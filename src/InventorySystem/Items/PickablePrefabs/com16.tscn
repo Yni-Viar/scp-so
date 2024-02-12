@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://qkwar6d6wrkx"]
 
-[ext_resource type="Texture2D" uid="uid://dn3cwfq47jax5" path="res://Assets/Models/Items-weapons/com16/1911 Magazine Uv.png" id="1_dak8u"]
+[ext_resource type="Texture2D" uid="uid://cm00dtr7xf4y6" path="res://Assets/Models/Items-weapons/com16/1911 Magazine Uv.png" id="1_dak8u"]
 [ext_resource type="Script" path="res://InventorySystem/Items/Pickable.cs" id="1_fnw7r"]
 [ext_resource type="Resource" uid="uid://d18i1wbbiixld" path="res://InventorySystem/Items/com16.tres" id="2_nf4hl"]
-[ext_resource type="Texture2D" uid="uid://ck7h8qgpkre0g" path="res://Assets/Models/Items-weapons/com16/1911 UV3.png" id="2_o4mc6"]
+[ext_resource type="Texture2D" uid="uid://lcj7afftlvmo" path="res://Assets/Models/Items-weapons/com16/1911 UV3.png" id="2_o4mc6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_at6iu"]
 resource_name = "Material.003"

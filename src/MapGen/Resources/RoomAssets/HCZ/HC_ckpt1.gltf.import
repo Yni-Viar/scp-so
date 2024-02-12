@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://x56hlom7q8gs"
+uid="uid://cl1v77nne4le5"
 path="res://.godot/imported/HC_ckpt1.gltf-5acf151513fc6a9d15fd9a418d4190c6.scn"
 
 [deps]
@@ -13,8 +13,8 @@ dest_files=["res://.godot/imported/HC_ckpt1.gltf-5acf151513fc6a9d15fd9a418d4190c
 
 [params]
 
-nodes/root_type="Node3D"
-nodes/root_name="Scene Root"
+nodes/root_type=""
+nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 meshes/ensure_tangents=true
@@ -29,81 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"materials": {
-"mat0.002": {
-"use_external/enabled": true,
-"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat0.002.tres"
-},
-"mat1.002": {
-"use_external/enabled": true,
-"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat1.002.tres"
-},
-"mat10.001": {
-"use_external/enabled": true,
-"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat10.001.tres"
-},
-"mat11.001": {
-"use_external/enabled": true,
-"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat11.001.tres"
-},
-"mat12.001": {
-"use_external/enabled": true,
-"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat12.001.tres"
-},
-"mat13.001": {
-"use_external/enabled": true,
-"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat13.001.tres"
-},
-"mat14.001": {
-"use_external/enabled": true,
-"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat14.001.tres"
-},
-"mat15.001": {
-"use_external/enabled": true,
-"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat15.001.tres"
-},
-"mat16.001": {
-"use_external/enabled": true,
-"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat16.001.tres"
-},
-"mat17.001": {
-"use_external/enabled": true,
-"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat17.001.tres"
-},
-"mat2.002": {
-"use_external/enabled": true,
-"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat2.002.tres"
-},
-"mat3.002": {
-"use_external/enabled": true,
-"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat3.002.tres"
-},
-"mat4.002": {
-"use_external/enabled": true,
-"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat4.002.tres"
-},
-"mat5.002": {
-"use_external/enabled": true,
-"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat5.002.tres"
-},
-"mat6.002": {
-"use_external/enabled": true,
-"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat6.002.tres"
-},
-"mat7.001": {
-"use_external/enabled": true,
-"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat7.001.tres"
-},
-"mat8.001": {
-"use_external/enabled": true,
-"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat8.001.tres"
-},
-"mat9.001": {
-"use_external/enabled": true,
-"use_external/path": "res://MapGen/Resources/RoomAssets/HCZ/Mat/mat9.001.tres"
-}
-}
-}
-gltf/naming_version=0
+_subresources={}
+gltf/naming_version=1
 gltf/embedded_image_handling=1

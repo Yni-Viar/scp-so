@@ -1,10 +1,10 @@
 [gd_scene load_steps=20 format=3 uid="uid://vhfm55imkrf7"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerClassPrefabGameover/GameOver.cs" id="1_av5pa"]
-[ext_resource type="Texture2D" uid="uid://bgcw3evtgemd" path="res://Assets/Models/scp131/SCP-131-Yellow/scp131_low_1001_AlbedoTransparency_yellow.png" id="2_0xeoo"]
-[ext_resource type="Texture2D" uid="uid://bbxhvwexbmqd6" path="res://Assets/Models/scp131/SCP-131-Yellow/scp131_low_1001_Emission.png" id="3_417k3"]
-[ext_resource type="Texture2D" uid="uid://bcit86mgpl7e1" path="res://Assets/Models/scp131/SCP-131-Yellow/scp131_low_1001_MetallicSmoothness.png" id="4_iiggv"]
-[ext_resource type="Texture2D" uid="uid://dmie5u1kaclpu" path="res://Assets/Models/scp131/SCP-131-Yellow/scp131_low_1001_Normal.png" id="5_gs5c3"]
+[ext_resource type="Texture2D" uid="uid://chxaqjjis607v" path="res://Assets/Models/scp131/SCP-131-Yellow/scp131_low_1001_AlbedoTransparency_yellow.png" id="2_0xeoo"]
+[ext_resource type="Texture2D" uid="uid://dj8gkuk1acox7" path="res://Assets/Models/scp131/SCP-131-Yellow/scp131_low_1001_Emission.png" id="3_417k3"]
+[ext_resource type="Texture2D" uid="uid://bfrstmblqs4jw" path="res://Assets/Models/scp131/SCP-131-Yellow/scp131_low_1001_MetallicSmoothness.png" id="4_iiggv"]
+[ext_resource type="Texture2D" uid="uid://du1qiyv75rri6" path="res://Assets/Models/scp131/SCP-131-Yellow/scp131_low_1001_Normal.png" id="5_gs5c3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rkdk2"]
 resource_name = "lambert8"

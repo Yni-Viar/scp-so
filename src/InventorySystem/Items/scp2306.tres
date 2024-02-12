@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://qd217y2btp0y"]
 
-[ext_resource type="Texture2D" uid="uid://duvn2vqo2qppt" path="res://InventorySystem/Items/InventoryIcons/scp2306.png" id="1_l58ns"]
+[ext_resource type="Texture2D" uid="uid://di5y6gvhwb1oo" path="res://InventorySystem/Items/InventoryIcons/scp2306.png" id="1_l58ns"]
 [ext_resource type="Script" path="res://InventorySystem/Items/Item.cs" id="2_fiwkt"]
 
 [resource]

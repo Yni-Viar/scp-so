@@ -1,9 +1,9 @@
 [gd_scene load_steps=25 format=3 uid="uid://cujxpx83txp1y"]
 
-[ext_resource type="Texture2D" uid="uid://dgm3jxjfny4j" path="res://MapGen/Resources/RoomAssets/Props/Scp983/1001_Base_Color.png" id="1_n3q6d"]
-[ext_resource type="Texture2D" uid="uid://b8n4yvejesqky" path="res://MapGen/Resources/RoomAssets/Props/Scp983/1001_Emissive.png" id="2_gweh4"]
-[ext_resource type="Texture2D" uid="uid://d2hgcxg181c0h" path="res://MapGen/Resources/RoomAssets/Props/Scp983/1001_Metallic-1001_Roughness.png" id="3_lyjo3"]
-[ext_resource type="Texture2D" uid="uid://cd6qrqybhd2t0" path="res://MapGen/Resources/RoomAssets/Props/Scp983/1001_Normal_OpenGL.png" id="4_cjcxi"]
+[ext_resource type="Texture2D" uid="uid://b685m1opvedin" path="res://MapGen/Resources/RoomAssets/Props/Scp983/1001_Base_Color.png" id="1_n3q6d"]
+[ext_resource type="Texture2D" uid="uid://dlx3gs8a38dmt" path="res://MapGen/Resources/RoomAssets/Props/Scp983/1001_Emissive.png" id="2_gweh4"]
+[ext_resource type="Texture2D" uid="uid://f3rty2ikr6vu" path="res://MapGen/Resources/RoomAssets/Props/Scp983/1001_Metallic-1001_Roughness.png" id="3_lyjo3"]
+[ext_resource type="Texture2D" uid="uid://dnwlidyjgf7ce" path="res://MapGen/Resources/RoomAssets/Props/Scp983/1001_Normal_OpenGL.png" id="4_cjcxi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_msp1o"]
 resource_name = "1001"

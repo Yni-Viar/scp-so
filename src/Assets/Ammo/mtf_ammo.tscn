@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://bvccstchbatcr"]
 
-[ext_resource type="Texture2D" uid="uid://cqfc8sooid8xb" path="res://Assets/Models/Items-weapons/mtf_rifle/M4.png" id="1_5xvlu"]
+[ext_resource type="Texture2D" uid="uid://j0yfyagckglc" path="res://Assets/Models/Items-weapons/mtf_rifle/M4.png" id="1_5xvlu"]
 [ext_resource type="Script" path="res://Scripts/LootableAmmo.cs" id="1_8wf40"]
-[ext_resource type="Texture2D" uid="uid://bdfyvpmqxrkl4" path="res://Assets/Models/Items-weapons/mtf_rifle/M4NormalMap_NRM.png" id="2_p0akm"]
+[ext_resource type="Texture2D" uid="uid://b6s1y4yptjni1" path="res://Assets/Models/Items-weapons/mtf_rifle/M4NormalMap_NRM.png" id="2_p0akm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7uhdr"]
 resource_name = "Material.001"

@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dxwaa0wrqja7p"]
 
-[ext_resource type="Texture2D" uid="uid://df253seh8xe0o" path="res://MapGen/Resources/RoomAssets/HCZ/metal_darker.jpg" id="1_wpsnr"]
+[ext_resource type="Texture2D" uid="uid://ciak6nqdsta4o" path="res://MapGen/Resources/RoomAssets/HCZ/metal_darker.jpg" id="1_wpsnr"]
 
 [resource]
 resource_name = "mat9.001"

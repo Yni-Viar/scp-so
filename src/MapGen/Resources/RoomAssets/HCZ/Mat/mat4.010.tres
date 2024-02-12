@@ -1,7 +1,6 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b8bk25qj77hpn"]
 
-[ext_resource type="Texture2D" uid="uid://dkmrtml4cvxyg" path="res://MapGen/Resources/RoomAssets/HCZ/tilefloor.jpg" id="1_lmaca"]
-
+[ext_resource type="Texture2D" uid="uid://b5wss3ojk1yfo" path="res://MapGen/Resources/RoomAssets/HCZ/tilefloor.jpg" id="1_lmaca"]
 
 [resource]
 resource_name = "mat4.010"

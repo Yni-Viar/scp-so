@@ -1,13 +1,13 @@
 [gd_scene load_steps=16 format=3 uid="uid://dj5gpl252yt3e"]
 
 [ext_resource type="Script" path="res://InventorySystem/Items/Pickable.cs" id="1_tmx4r"]
-[ext_resource type="Texture2D" uid="uid://cgs3ngrlfvwfk" path="res://Assets/Models/Items-scp2306/scp2306_hold_Albedo.png" id="1_u12vs"]
-[ext_resource type="Texture2D" uid="uid://rssumtjsooed" path="res://Assets/Models/Items-scp2306/scp2306_hold_Metallic-scp2306_hold_Roughness.png" id="2_3w08k"]
+[ext_resource type="Texture2D" uid="uid://dbdi66n4at5w" path="res://Assets/Models/Items-scp2306/scp2306_hold_Albedo.png" id="1_u12vs"]
+[ext_resource type="Texture2D" uid="uid://fuhcu5v2ume3" path="res://Assets/Models/Items-scp2306/scp2306_hold_Metallic-scp2306_hold_Roughness.png" id="2_3w08k"]
 [ext_resource type="Resource" uid="uid://qd217y2btp0y" path="res://InventorySystem/Items/scp2306.tres" id="2_n775w"]
-[ext_resource type="Texture2D" uid="uid://bscyytw361q7u" path="res://Assets/Models/Items-scp2306/scp2306_hold_Normal.png" id="3_4gqd3"]
-[ext_resource type="Texture2D" uid="uid://cjopj0uq2jtj8" path="res://Assets/Models/Items-scp2306/scp2306_Albedo.png" id="4_iui12"]
-[ext_resource type="Texture2D" uid="uid://v3lxpva4m5np" path="res://Assets/Models/Items-scp2306/scp2306_Metallic-scp2306_Roughness.png" id="5_4viuy"]
-[ext_resource type="Texture2D" uid="uid://cob6tcvu2h42f" path="res://Assets/Models/Items-scp2306/scp2306_Normal.png" id="6_c4x1q"]
+[ext_resource type="Texture2D" uid="uid://b5rsawc7cet05" path="res://Assets/Models/Items-scp2306/scp2306_hold_Normal.png" id="3_4gqd3"]
+[ext_resource type="Texture2D" uid="uid://bvhb6sao5ratw" path="res://Assets/Models/Items-scp2306/scp2306_Albedo.png" id="4_iui12"]
+[ext_resource type="Texture2D" uid="uid://ckn8dper2v3st" path="res://Assets/Models/Items-scp2306/scp2306_Metallic-scp2306_Roughness.png" id="5_4viuy"]
+[ext_resource type="Texture2D" uid="uid://c1fkgdb717fse" path="res://Assets/Models/Items-scp2306/scp2306_Normal.png" id="6_c4x1q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ubdif"]
 resource_name = "hold"

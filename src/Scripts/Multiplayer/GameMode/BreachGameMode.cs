@@ -5,10 +5,20 @@ using System;
 /// </summary>
 public partial class BreachGameMode : FacilityManager
 {
+    [Export] internal string omegaWarheadKeycode;
+    internal string alphaWarheadKeycode = GD.Hash(Globals.version).ToString().Substr(0, 4);
     [Export] uint scpLimit = 4; //SCP Limit
     Godot.Collections.Array<int> usedScps = new Godot.Collections.Array<int>(); //Already spawned SCPs
     internal override void OnServerStart()
     {
+        omegaWarheadKeycode = rng.RandiRange(1000, 9999).ToString();
+        foreach (Node node in GetTree().GetNodesInGroup("WarheadCodeLabel3d"))
+        {
+            if (node is Label3D label)
+            {
+                label.Text = omegaWarheadKeycode;
+            }
+        }
         WaitForBeginning();
     }
     internal override void OnUpdate(double delta)

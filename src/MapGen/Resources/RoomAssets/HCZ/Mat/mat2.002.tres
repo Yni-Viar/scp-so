@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cohdxfphjfmnc"]
 
-[ext_resource type="Texture2D" uid="uid://dksabbqqvn0bw" path="res://MapGen/Resources/RoomAssets/HCZ/whitewall.jpg" id="1_fdtju"]
+[ext_resource type="Texture2D" uid="uid://c0ee3gigb2gyy" path="res://MapGen/Resources/RoomAssets/HCZ/whitewall.jpg" id="1_fdtju"]
 
 [resource]
 resource_name = "mat2.002"

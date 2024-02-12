@@ -1,12 +1,12 @@
 [gd_scene load_steps=16 format=3 uid="uid://cfkv6o5rblpes"]
 
 [ext_resource type="Script" path="res://InventorySystem/Items/InHandPrefabs/ItemScp2306.cs" id="1_7d0h0"]
-[ext_resource type="Texture2D" uid="uid://cgs3ngrlfvwfk" path="res://Assets/Models/Items-scp2306/scp2306_hold_Albedo.png" id="2_omeug"]
-[ext_resource type="Texture2D" uid="uid://rssumtjsooed" path="res://Assets/Models/Items-scp2306/scp2306_hold_Metallic-scp2306_hold_Roughness.png" id="3_03gmq"]
-[ext_resource type="Texture2D" uid="uid://bscyytw361q7u" path="res://Assets/Models/Items-scp2306/scp2306_hold_Normal.png" id="4_y8ycp"]
-[ext_resource type="Texture2D" uid="uid://cjopj0uq2jtj8" path="res://Assets/Models/Items-scp2306/scp2306_Albedo.png" id="5_08mmg"]
-[ext_resource type="Texture2D" uid="uid://v3lxpva4m5np" path="res://Assets/Models/Items-scp2306/scp2306_Metallic-scp2306_Roughness.png" id="6_bqkju"]
-[ext_resource type="Texture2D" uid="uid://cob6tcvu2h42f" path="res://Assets/Models/Items-scp2306/scp2306_Normal.png" id="7_tx614"]
+[ext_resource type="Texture2D" uid="uid://dbdi66n4at5w" path="res://Assets/Models/Items-scp2306/scp2306_hold_Albedo.png" id="2_omeug"]
+[ext_resource type="Texture2D" uid="uid://fuhcu5v2ume3" path="res://Assets/Models/Items-scp2306/scp2306_hold_Metallic-scp2306_hold_Roughness.png" id="3_03gmq"]
+[ext_resource type="Texture2D" uid="uid://b5rsawc7cet05" path="res://Assets/Models/Items-scp2306/scp2306_hold_Normal.png" id="4_y8ycp"]
+[ext_resource type="Texture2D" uid="uid://bvhb6sao5ratw" path="res://Assets/Models/Items-scp2306/scp2306_Albedo.png" id="5_08mmg"]
+[ext_resource type="Texture2D" uid="uid://ckn8dper2v3st" path="res://Assets/Models/Items-scp2306/scp2306_Metallic-scp2306_Roughness.png" id="6_bqkju"]
+[ext_resource type="Texture2D" uid="uid://c1fkgdb717fse" path="res://Assets/Models/Items-scp2306/scp2306_Normal.png" id="7_tx614"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ubdif"]
 resource_name = "hold"

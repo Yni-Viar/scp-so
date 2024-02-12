@@ -1,20 +1,22 @@
-[gd_scene load_steps=32 format=3 uid="uid://c3jhovax3c7pf"]
+[gd_scene load_steps=34 format=3 uid="uid://c3jhovax3c7pf"]
 
-[ext_resource type="Texture2D" uid="uid://b84yss2lwoi36" path="res://MapGen/Resources/RoomAssets/RZ/metal.jpg" id="1_i3rf0"]
-[ext_resource type="Texture2D" uid="uid://bdepgdphwfa72" path="res://MapGen/Resources/RoomAssets/RZ/tilefloor.jpg" id="2_cvk38"]
-[ext_resource type="Texture2D" uid="uid://qii5pwoih6n0" path="res://MapGen/Resources/RoomAssets/RZ/ceiling.jpg" id="3_q71t4"]
-[ext_resource type="Texture2D" uid="uid://b6uak211o0ufw" path="res://MapGen/Resources/RoomAssets/RZ/misc.jpg" id="4_5dwtg"]
-[ext_resource type="Texture2D" uid="uid://cxftat62183me" path="res://MapGen/Resources/RoomAssets/RZ/officewall.jpg" id="5_1nldc"]
-[ext_resource type="Texture2D" uid="uid://clp585p5gbssi" path="res://MapGen/Resources/RoomAssets/RZ/white.jpg" id="6_o7i0r"]
-[ext_resource type="Texture2D" uid="uid://cafn7r37c2kli" path="res://MapGen/Resources/RoomAssets/RZ/door01.jpg" id="7_yy40k"]
-[ext_resource type="Texture2D" uid="uid://dc08jsqcrtk8c" path="res://MapGen/Resources/RoomAssets/RZ/dirtymetal.jpg" id="8_eo47d"]
-[ext_resource type="Texture2D" uid="uid://o81boppd4rx0" path="res://MapGen/Resources/RoomAssets/RZ/miscsigns3.jpg" id="9_4gbf8"]
-[ext_resource type="Texture2D" uid="uid://7o4a42bl2o55" path="res://MapGen/Resources/RoomAssets/RZ/concretefloor.jpg" id="10_xktyb"]
-[ext_resource type="Texture2D" uid="uid://vcyo2coo1147" path="res://MapGen/Resources/RoomAssets/RZ/papertexture.jpg" id="11_hj2p8"]
-[ext_resource type="Texture2D" uid="uid://cj24pjqmvob1l" path="res://MapGen/Resources/RoomAssets/RZ/red.jpg" id="12_ehgvx"]
-[ext_resource type="PackedScene" uid="uid://b7xwwuyi26i62" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="13_tikae"]
+[ext_resource type="Texture2D" uid="uid://6ntwfkej7hjg" path="res://MapGen/Resources/RoomAssets/RZ/metal.jpg" id="1_i3rf0"]
+[ext_resource type="Texture2D" uid="uid://5nxgkyhv7df5" path="res://MapGen/Resources/RoomAssets/RZ/tilefloor.jpg" id="2_cvk38"]
+[ext_resource type="Texture2D" uid="uid://camaucc7i3qjt" path="res://MapGen/Resources/RoomAssets/RZ/ceiling.jpg" id="3_q71t4"]
+[ext_resource type="Texture2D" uid="uid://djte7umjkf0we" path="res://MapGen/Resources/RoomAssets/RZ/misc.jpg" id="4_5dwtg"]
+[ext_resource type="Texture2D" uid="uid://bqdtcarmb2g3m" path="res://MapGen/Resources/RoomAssets/RZ/officewall.jpg" id="5_1nldc"]
+[ext_resource type="Texture2D" uid="uid://su0asmjdsrbj" path="res://MapGen/Resources/RoomAssets/RZ/white.jpg" id="6_o7i0r"]
+[ext_resource type="Texture2D" uid="uid://d1ipx0v1ocbx0" path="res://MapGen/Resources/RoomAssets/RZ/door01.jpg" id="7_yy40k"]
+[ext_resource type="Texture2D" uid="uid://tqyi07sd54k3" path="res://MapGen/Resources/RoomAssets/RZ/dirtymetal.jpg" id="8_eo47d"]
+[ext_resource type="Texture2D" uid="uid://duk35eee5vwcy" path="res://MapGen/Resources/RoomAssets/RZ/miscsigns3.jpg" id="9_4gbf8"]
+[ext_resource type="Texture2D" uid="uid://dclliu4f2g6q5" path="res://MapGen/Resources/RoomAssets/RZ/concretefloor.jpg" id="10_xktyb"]
+[ext_resource type="Texture2D" uid="uid://db1lds78yqlws" path="res://MapGen/Resources/RoomAssets/RZ/papertexture.jpg" id="11_hj2p8"]
+[ext_resource type="Texture2D" uid="uid://cxgm5gvqsps5m" path="res://MapGen/Resources/RoomAssets/RZ/red.jpg" id="12_ehgvx"]
 [ext_resource type="PackedScene" uid="uid://bxj3dd8r00p7v" path="res://InventorySystem/Items/PickablePrefabs/key2.tscn" id="14_2fvdf"]
 [ext_resource type="PackedScene" uid="uid://c8brqgry3c6r2" path="res://MapGen/Resources/Cameras/cctv_rz.tscn" id="15_5ub8t"]
+[ext_resource type="PackedScene" uid="uid://dn57xh81cw2di" path="res://MapGen/Resources/RoomAssets/Props/scp294.tscn" id="15_jnhb1"]
+[ext_resource type="PackedScene" uid="uid://bmacptdhvw6h7" path="res://MapGen/Resources/RoomAssets/Props/ceiling_lamp.tscn" id="16_xx1il"]
+[ext_resource type="PackedScene" uid="uid://djp0sa154mm7a" path="res://MapGen/Resources/RoomAssets/Props/security_light.tscn" id="17_057ca"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7wuu"]
 resource_name = "mat0.001"
@@ -390,24 +392,6 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConcavePolygonShape3D_woflg")
 
-[node name="modern_ceiling_lamp_01_4k" parent="." instance=ExtResource("13_tikae")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.91898, 4.59702, 3.20995)
-
-[node name="modern_ceiling_lamp_01_4k2" parent="." instance=ExtResource("13_tikae")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.91898, 4.59702, -3.28799)
-
-[node name="modern_ceiling_lamp_01_4k3" parent="." instance=ExtResource("13_tikae")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.96498, 4.59702, -3.28799)
-
-[node name="modern_ceiling_lamp_01_4k4" parent="." instance=ExtResource("13_tikae")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.96498, 4.59702, 2.87313)
-
-[node name="modern_ceiling_lamp_01_4k5" parent="." instance=ExtResource("13_tikae")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.186014, -1.48525, -7.2842)
-
-[node name="modern_ceiling_lamp_01_4k6" parent="." instance=ExtResource("13_tikae")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.186014, -1.48525, 5.60352)
-
 [node name="key2" parent="." instance=ExtResource("14_2fvdf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10384, -3.35831, -5.08182)
 
@@ -432,3 +416,24 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CheckArea"]
 shape = SubResource("BoxShape3D_cdbri")
+
+[node name="scp294" parent="." instance=ExtResource("15_jnhb1")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.1154, -3.84, -9.11503)
+
+[node name="CeilingLamp" parent="." instance=ExtResource("16_xx1il")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9711, 5.68792, -3.06463)
+
+[node name="CeilingLamp5" parent="." instance=ExtResource("16_xx1il")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.490873, -0.402729, -1.71712)
+
+[node name="CeilingLamp2" parent="." instance=ExtResource("16_xx1il")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.95683, 5.68792, 3.16333)
+
+[node name="CeilingLamp3" parent="." instance=ExtResource("16_xx1il")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.97337, 5.68792, 3.18108)
+
+[node name="CeilingLamp4" parent="." instance=ExtResource("16_xx1il")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.96163, 5.68792, -3.15498)
+
+[node name="SecurityLight" parent="." instance=ExtResource("17_057ca")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.92189, -0.688434, -6.59777)

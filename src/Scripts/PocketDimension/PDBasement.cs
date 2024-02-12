@@ -33,7 +33,7 @@ public partial class PDBasement : StaticBody3D
                 }
                 else
                 {
-                    GetNode<AudioStreamPlayer>("AudioStreamPlayer").Stream = ResourceLoader.Load<AudioStream>("");
+                    GetNode<AudioStreamPlayer>("AudioStreamPlayer").Stream = ResourceLoader.Load<AudioStream>("res://Sounds/Character/106/Laugh.ogg");
                     GetNode<AudioStreamPlayer>("AudioStreamPlayer").Play();
                     playerInputCode = "";
                 }
