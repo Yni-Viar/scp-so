@@ -11,12 +11,28 @@ public partial class WarheadController : Node
 	[Export] float secondsLeft = 90f;
 	[Export] string countdownAudioPath;
 	[Export] string boomSoundPath;
-	/// <summary>
-	/// Starts the warhead countdown.
-	/// </summary>
+	[Export] bool enableWarheadLights;
+
+    public override void _Ready()
+    {
+		enableWarheadLights = GetTree().Root.GetNode<Settings>("Settings").EnableWarheadLights;
+    }
+    /// <summary>
+    /// Starts the warhead countdown.
+    /// </summary>
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     internal void Countdown()
 	{
+		if (enableWarheadLights)
+		{
+            foreach (Node node in GetTree().GetNodesInGroup("Lamp"))
+            {
+				if (node is LightSystem light)
+				{
+					light.LightColor = new Color(1, 0, 0);
+				}
+            }
+        }
 		detonationProgress = true;
 		GetParent().GetNode<PlayerScript>(Multiplayer.GetUniqueId().ToString()).customMusic = true;
 		SetWarheadMusic(countdownAudioPath, secondsLeft);
@@ -30,6 +46,16 @@ public partial class WarheadController : Node
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void Cancel()
 	{
+        if (enableWarheadLights)
+        {
+            foreach (Node node in GetTree().GetNodesInGroup("Lamp"))
+            {
+                if (node is LightSystem light)
+                {
+                    light.LightColor = new Color(1, 1, 1);
+                }
+            }
+        }
         if (detonationProgress && !detonated)
 		{
 			secondsLeft = (float)GetNode<Timer>("WarheadCountdown").TimeLeft;

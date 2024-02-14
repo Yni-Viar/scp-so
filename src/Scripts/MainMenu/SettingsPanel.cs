@@ -20,6 +20,7 @@ public partial class SettingsPanel : Panel
         GetNode<HSlider>("ScrollContainer/VBoxContainer/MouseSensSet").Value = settings.MouseSensitivity;
         GetNode<HSlider>("ScrollContainer/VBoxContainer/MusicSet").Value = settings.MusicSetting;
         GetNode<HSlider>("ScrollContainer/VBoxContainer/SoundSet").Value = settings.SoundSetting;
+        GetNode<CheckButton>("ScrollContainer/VBoxContainer/WarheadLightsSet").ButtonPressed = settings.EnableWarheadLights;
 
 
         if (settings.FullscreenSetting)
@@ -31,11 +32,12 @@ public partial class SettingsPanel : Panel
             DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
         }
     }
+    /*
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
     }
-
+    */
 
     private void OnBackPressed()
     {
@@ -72,7 +74,8 @@ public partial class SettingsPanel : Panel
             "FullscreenSetting",
             "MouseSensitivity", 
             "WindowSizeSetting",
-            "LanguageSetting"
+            "LanguageSetting",
+            "WarheadLights"
         }, new Godot.Collections.Array{
             settings.SdfgiSetting,
             settings.SsaoSetting,
@@ -84,7 +87,8 @@ public partial class SettingsPanel : Panel
             settings.FullscreenSetting,
             settings.MouseSensitivity, 
             settings.WindowSizeSetting,
-            settings.LanguageSetting
+            settings.LanguageSetting,
+            settings.EnableWarheadLights,
         }, "user://settings.ini");
         settings.LoadIni();
     }
@@ -252,6 +256,19 @@ public partial class SettingsPanel : Panel
     {
         TranslationServer.SetLocale(settings.availableLanguages[index]);
         settings.LanguageSetting = settings.availableLanguages[index];
+        SaveCurrentSettings();
+    }
+
+    private void OnWarheadLightsSetToggled(bool button_pressed)
+    {
+        if (button_pressed)
+        {
+            settings.EnableWarheadLights = true;
+        }
+        else
+        {
+            settings.EnableWarheadLights = false;
+        }
         SaveCurrentSettings();
     }
 }

@@ -8,5 +8,5 @@ MUSIC_SET,Music volume,Громкость музыки
 SOUND_SET,Sound volume (affects ALL sounds),Общая громкость
 SENS_SET,Mouse sensivity,Чувствительность мыши
 DYNAMIC_GI_SET,Dynamic GI,Динамичная графика (например свечение текстур)
-FOG_SET,"Volumetric fog toggle\n
-(if disabled, then standard fog appears instead of volumetric)","Объемная дымка\n(если отключено, применяется обычная дымка)"
+FOG_SET,"Volumetric fog toggle\n(if disabled, then standard fog appears instead of volumetric)","Объемная дымка\n(если отключено, применяется обычная дымка)"
+WARHEAD_LIGHTS_SET,Warhead red lights\n(disable this if you want more performance),"Красное освещение при запущенной боеголовки\n(если хотите больше производительности, отключите этот параметр)"

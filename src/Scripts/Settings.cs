@@ -16,6 +16,7 @@ public partial class Settings : Node
     public float MouseSensitivity; 
     public Vector2I WindowSizeSetting = new Vector2I((int)ProjectSettings.GetSetting("display/window/size/width"), (int)ProjectSettings.GetSetting("display/window/size/height"));
     public string LanguageSetting = "en";
+    public bool EnableWarheadLights;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -42,7 +43,8 @@ public partial class Settings : Node
             "FullscreenSetting",
             "MouseSensitivity",
             "WindowSizeSetting",
-            "LanguageSetting"
+            "LanguageSetting",
+            "WarheadLights"
         }, new Godot.Collections.Array{
             true, //sdfgi
             true, //ssao
@@ -54,7 +56,8 @@ public partial class Settings : Node
             false, //fullscreen
             0.05f, //sensivity
             new Vector2(1920, 1080), //resolution
-            availableLanguages[0] //language
+            availableLanguages[0], //language
+            true //warhead lights
         }, "user://settings.ini");
         LoadIni();
     }
@@ -86,7 +89,8 @@ public partial class Settings : Node
                 "FullscreenSetting",
                 "MouseSensitivity",
                 "WindowSizeSetting",
-                "LanguageSetting"
+                "LanguageSetting",
+                "WarheadLights"
                 }, new Godot.Collections.Array{
                 true, //sdfgi
                 true, //ssao
@@ -98,7 +102,8 @@ public partial class Settings : Node
                 false, //fullscreen
                 0.05f, //sensivity
                 new Vector2(1920, 1080), //resolution
-                availableLanguages[0] //language
+                availableLanguages[0], //language
+                true //warhead lights
                 });
         }
 
@@ -114,6 +119,7 @@ public partial class Settings : Node
         FullscreenSetting = (bool)config.GetValue("Settings", "FullscreenSetting");
         MouseSensitivity = (float)config.GetValue("Settings", "MouseSensitivity");
         WindowSizeSetting = (Vector2I)config.GetValue("Settings", "WindowSizeSetting");
+        EnableWarheadLights = (bool)config.GetValue("Settings", "WarheadLights");
     }
 
     void CheckIfASettingExists(ConfigFile config, Godot.Collections.Array<string> settingValues, Godot.Collections.Array defaultValues)
@@ -122,8 +128,9 @@ public partial class Settings : Node
         {
             if (!config.HasSectionKey("Settings", settingValues[i]))
             {
-                config.SetValue("Setting", settingValues[i], defaultValues[i]);
+                config.SetValue("Settings", settingValues[i], defaultValues[i]);
             }
         }
+        config.Save("user://settings.ini");
     }
 }

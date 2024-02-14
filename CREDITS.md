@@ -6,7 +6,7 @@
 
 ### Testers:
 - William[]
-- cherniichernish (Гражданин)
+- cherniichernish
 - The1Wolfcast
 
 # Third-party data credits
@@ -52,6 +52,11 @@
 
 - Copyright (c) Hubert Moszka.
 - The stream ( https://youtu.be/pRhDdg6uU5c ) is licensed under CC-BY-SA 3.0. The code perhaps too...
+
+### Lightness Detector (MIT License)
+
+- Copyright (c) 2022 Reun Media Partnership
+
 
 ## Assets
 ### Models (license - [CC-BY-SA 3.0](/LICENSE.CCBYSA3))

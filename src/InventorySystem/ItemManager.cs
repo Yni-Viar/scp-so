@@ -47,7 +47,7 @@ public partial class ItemManager : Node
         worldItems.Add(newItem);
 
         // Notify clients about the new item
-        ClientAddItem(objectType, itemID, position);
+        Rpc(nameof(ClientAddItem), objectType, itemID, position);
     }
     /// <summary>
     /// Check, does item exists? (item type is determined by objectType of the node)

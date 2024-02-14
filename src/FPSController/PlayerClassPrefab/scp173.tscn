@@ -5316,6 +5316,7 @@ autoplay = "173_TPose"
 [node name="LightDetector" parent="." instance=ExtResource("7_pauxd")]
 
 [node name="AbilityUI" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

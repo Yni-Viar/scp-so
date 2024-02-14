@@ -54,7 +54,7 @@ public partial class BreachGameMode : FacilityManager
             {
                 //GetTree().Root.GetNode<PlayerAction>("Main/Game/PlayerAction").Rpc("SpawnObject", rng.RandiRange(0, data.Npc.Count - 1), 2, 1);
                 int key = rng.RandiRange(0, data.Npc.Count - 1);
-                GetParent().GetParent().GetNode<ItemManager>("Npcs").RpcId(1, "CallAddOrRemoveItem", true, key, Multiplayer.GetUniqueId() + "/PlayerHead/ItemSpawn");
+                GetNode<ItemManager>("Npcs").RpcId(1, "CallAddOrRemoveItem", true, key, Multiplayer.GetUniqueId() + "/PlayerHead/ItemSpawn");
             }
         }
     }

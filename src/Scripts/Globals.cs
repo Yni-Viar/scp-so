@@ -17,15 +17,11 @@ public partial class Globals
     /// <summary>
     /// Version string. In 0.7.1, the value is changed to development stage, because Godot already has version setter feature.
     /// </summary>
-    public static string version = "0.8.0-dev";
-    /// <summary>
-    /// Compatibility of settings file. In later versions will be changed to a new format, similar to SCPSL one.
-    /// </summary>
-    public static string settingsCompatibility = "0.8.0-dev";
+    public static string version = "0.8.0-RC";
     /// <summary>
     /// Game data compatibility. Available since 0.8.0.
     /// </summary>
-    public static string gameDataCompatibility = "0.8.0-dev";
+    public static string gameDataCompatibility = "0.8.0-RC";
     /// <summary>
     /// Rooms compatibility. Available since 0.7.0.
     /// </summary>
@@ -37,7 +33,7 @@ public partial class Globals
     /// <summary>
     /// Current stage. Used by main menu.
     /// </summary>
-    public static Stages currentStage = Stages.dev;
+    public static Stages currentStage = Stages.testing;
     /// <summary>
     /// Type of class. singleSpawnClasses - SCP. multiSpawnClasses - Human, arrivingClasses - MTF, 
     /// SpecialClasses - spectator, bonusSpawnClasses - neutral SCPs, such as 131-A and -B. Available since 0.8.0-dev.
@@ -53,57 +49,6 @@ public partial class Globals
     /// Teams. Spectators, D-class, Scientists, MTF, Dangerous SCP entities, Normal SCP entities, Chaos Insurgency, Serpent's hand.
     /// </summary>
     public enum Team { SPT, CDP, SCI, MTF, DSE, NSE, CHI, SEH }
-    /// <summary>
-    /// Default class presets.
-    /// </summary>
-    [Obsolete("Since SCP: Site Online has moved from JSONs to Resources, this parameter is deprecated since 0.8.0-dev.")]
-    internal static Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classData =
-        new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> {
-            { "spawnableHuman", new Godot.Collections.Array<string>{"classd", "scientist", "guard" } },
-            { "arrivingHuman", new Godot.Collections.Array<string>{ "mtfe11" } },
-            { "spawnableScps", new Godot.Collections.Array<string> { "scp106", "scp173", "scp3199" } },
-            { "friendlyScps", new Godot.Collections.Array<string> { "scp131a", "scp131b" } },
-            { "special", new Godot.Collections.Array<string> {"spectator" } },
-        };
-
-    /// <summary>
-    /// Default room presets.
-    /// </summary>
-    [Obsolete("Since SCP: Site Online has moved from JSONs to Resources, this parameter is deprecated since 0.8.0-dev.")]
-    internal static Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> roomData =
-        new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> {
-            { "RzCommon1", new Godot.Collections.Array<string>{ "lc_room_1_endroom" } },
-            { "RzCommon2", new Godot.Collections.Array<string>{ "rz_room_2"} },
-            { "RzCommon2C", new Godot.Collections.Array<string>{ "rz_room_2c" } },
-            { "RzCommon3", new Godot.Collections.Array<string>{ "rz_room_3" } },
-            { "RzCommon4", new Godot.Collections.Array<string>{ "rz_room_4" } },
-            { "RzSingle1", new Godot.Collections.Array<string>{ } },
-            { "RzSingle2", new Godot.Collections.Array<string>{ "rz_room_2_offices", "rz_room_2_offices_2", "rz_room_2_poffices", "rz_room_2_toilets",
-                "rz_room_2_cafeteria", "rz_room_2_servers" } },
-            { "RzSingle2C", new Godot.Collections.Array<string>{ } },
-            { "RzSingle3", new Godot.Collections.Array<string>{ } },
-            { "RzSingle4", new Godot.Collections.Array<string>{ } },
-            { "LczCommon1", new Godot.Collections.Array<string>{ "lc_room_1_endroom" } },
-            { "LczCommon2", new Godot.Collections.Array<string>{ "lc_room_2", "lc_room_2_vent", "lc_room_2_offices"} },
-            { "LczCommon2C", new Godot.Collections.Array<string>{ "lc_room_2c" } },
-            { "LczCommon3", new Godot.Collections.Array<string>{ "lc_room_3" } },
-            { "LczCommon4", new Godot.Collections.Array<string>{ "lc_room_4" } },
-            { "LczSingle1", new Godot.Collections.Array<string>{ "lc_cont_1_testroom", "lc_cont_1_079", "lc_room_1_archive" } },
-            { "LczSingle2", new Godot.Collections.Array<string>{ "lc_cont_2_650", "lc_cont_2_scps", "lc_room_2_sl" } },
-            { "LczSingle2C", new Godot.Collections.Array<string>{ } },
-            { "LczSingle3", new Godot.Collections.Array<string>{ } },
-            { "LczSingle4", new Godot.Collections.Array<string>{ } },
-            { "HczCommon1", new Godot.Collections.Array<string>{ "hc_room_1_endroom" } },
-            { "HczCommon2", new Godot.Collections.Array<string>{ "hc_room_2"} },
-            { "HczCommon2C", new Godot.Collections.Array<string>{ "hc_room_2c" } },
-            { "HczCommon3", new Godot.Collections.Array<string>{ "hc_room_3" } },
-            { "HczCommon4", new Godot.Collections.Array<string>{ "hc_room_4" } },
-            { "HczSingle1", new Godot.Collections.Array<string>{ "hc_cont_1_173", "hc_cont_1_3199", "hc_cont_1_106", "hc_cont_1_049" } },
-            { "HczSingle2", new Godot.Collections.Array<string>{ "hc_room_2_nuke", "hc_cont_2_testroom" } },
-            { "HczSingle2C", new Godot.Collections.Array<string>{ } },
-            { "HczSingle3", new Godot.Collections.Array<string>{ } },
-            { "HczSingle4", new Godot.Collections.Array<string>{ } },
-        };
     /// <summary>
     /// Ammo presets.
     /// </summary>
