@@ -349,10 +349,11 @@ public partial class PlayerScript : CharacterBody3D
         {
             Item item = GD.Load<Item>("res://InventorySystem/Items/" + itemName + ".tres");
             // If third person view exists, else will be used first person view.
-            if (GetNode<Node3D>("PlayerModel").GetChild(0).GetNodeOrNull<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand") != null && !IsMultiplayerAuthority())
+            // These bunch of GetNodes check human player + it's armature
+            if (GetNode<Node3D>("PlayerModel").GetChild<HumanPlayerScript>(0).GetNodeOrNull<Marker3D>(GetNode<Node3D>("PlayerModel").GetChild<HumanPlayerScript>(0).armatureName + "/Skeleton3D/ItemAttachment/ItemInHand") != null && !IsMultiplayerAuthority())
             {
                 GetNode<Marker3D>("PlayerHead/PlayerHand").Hide();
-                Node thirdPersonHandRoot = GetNode<Node3D>("PlayerModel").GetChild(0).GetNode<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand");
+                Node thirdPersonHandRoot = GetNode<Node3D>("PlayerModel").GetChild<HumanPlayerScript>(0).GetNodeOrNull<Marker3D>(GetNode<Node3D>("PlayerModel").GetChild<HumanPlayerScript>(0).armatureName + "/Skeleton3D/ItemAttachment/ItemInHand");
                 foreach (Node itemUsedBefore in thirdPersonHandRoot.GetChildren())
                 {
                     itemUsedBefore.QueueFree();

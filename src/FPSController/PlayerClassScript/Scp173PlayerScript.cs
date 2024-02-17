@@ -82,7 +82,7 @@ public partial class Scp173PlayerScript : Node3D
     /// <param name="delta">Used for timeout</param>
     async void Scp173Stare(float delta)
     {
-        if (isWatching && stareCounter > 0 && GetNode<LightDetector>("LightDetector").lightness > 0.2 && !blindAbilityActive) //Light detector is broken
+        if (isWatching && stareCounter > 0 && GetNode<LightDetector>("LightDetector").lightness > 0.3 && !blindAbilityActive) //Light detector is broken
         {
             //If SCP-173 is not moving, it should stand still!
             if (GetParent().GetParent<PlayerScript>().CanMove && blinkTimer > 0f)

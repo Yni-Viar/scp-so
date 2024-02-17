@@ -39,11 +39,13 @@ public partial class LightDetector : Node3D
         {
             cam = GetNode<Camera3D>("SubViewport/DetectorCam");
 		    view = GetNode<SubViewport>("SubViewport");
+            view.DebugDraw = Viewport.DebugDrawEnum.Lighting;
         }
 		else
         {
             GetNode<SubViewport>("SubViewport").QueueFree();
             lightness = 1;
+            Hide();
             SetProcess(false);
         }
     }

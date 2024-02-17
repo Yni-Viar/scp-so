@@ -6223,22 +6223,27 @@ bones/15/rotation = Quaternion(0.00197984, -0.0113448, 0.171908, 0.985046)
 bones/15/scale = Vector3(1, 1, 1)
 
 [node name="scp131_body_low" type="MeshInstance3D" parent="SCP131_skeleton/Skeleton3D"]
+visibility_range_end = 144.0
 mesh = SubResource("ArrayMesh_fxjf4")
 skin = SubResource("Skin_r5js5")
 
 [node name="scp131_eye_camera_low" type="MeshInstance3D" parent="SCP131_skeleton/Skeleton3D"]
+visibility_range_end = 144.0
 mesh = SubResource("ArrayMesh_yemtg")
 skin = SubResource("Skin_r5js5")
 
 [node name="scp131_eye_focus_low" type="MeshInstance3D" parent="SCP131_skeleton/Skeleton3D"]
+visibility_range_end = 144.0
 mesh = SubResource("ArrayMesh_jgl4h")
 skin = SubResource("Skin_r5js5")
 
 [node name="scp131_eye_low" type="MeshInstance3D" parent="SCP131_skeleton/Skeleton3D"]
+visibility_range_end = 144.0
 mesh = SubResource("ArrayMesh_vyock")
 skin = SubResource("Skin_r5js5")
 
 [node name="scp131_wheel_low" type="MeshInstance3D" parent="SCP131_skeleton/Skeleton3D"]
+visibility_range_end = 144.0
 mesh = SubResource("ArrayMesh_la11b")
 skin = SubResource("Skin_r5js5")
 

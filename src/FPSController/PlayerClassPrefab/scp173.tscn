@@ -5303,6 +5303,7 @@ bones/37/rotation = Quaternion(-0.500489, 0.781321, 0.103227, -0.35832)
 bones/37/scale = Vector3(1, 1, 1)
 
 [node name="scp173_MESH" type="MeshInstance3D" parent="SCP173_Rig/Skeleton3D"]
+visibility_range_end = 192.0
 mesh = SubResource("ArrayMesh_tp4nr")
 skin = SubResource("Skin_0xw2i")
 surface_material_override/0 = SubResource("ShaderMaterial_6twfe")

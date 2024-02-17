@@ -52,7 +52,7 @@ public partial class ScientistPlayerScript : HumanPlayerScript
                 }
             }
             //item in hand animation
-            if (GetNode<Marker3D>("Armature/Skeleton3D/ItemAttachment/ItemInHand").GetChildCount() > 0)
+            if (GetNode<Marker3D>(armatureName + "/Skeleton3D/ItemAttachment/ItemInHand").GetChildCount() > 0)
             {
                 if (!(GetNode<AnimationTree>("AnimationTree").Get("parameters/items_blend/blend_amount").AsDouble() == 1))
                 {

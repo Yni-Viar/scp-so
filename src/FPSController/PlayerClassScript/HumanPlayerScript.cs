@@ -5,7 +5,7 @@ using System;
 /// </summary>
 public partial class HumanPlayerScript : Node3D
 {
-    [Export] string armatureName;
+    [Export] internal string armatureName;
     [Export] internal bool isWatchingAtScp173 = false;
     bool isBlinking = false;
     RayCast3D vision;

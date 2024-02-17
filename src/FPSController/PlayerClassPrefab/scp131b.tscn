@@ -6428,25 +6428,30 @@ bones/15/scale = Vector3(1, 1, 1)
 
 [node name="scp131_body_low" type="MeshInstance3D" parent="SCP131_skeleton/Skeleton3D"]
 transform = Transform3D(1, 7.10543e-15, -4.23516e-22, -7.10543e-15, 1, -3.55271e-15, 0, 3.55271e-15, 1, 0, 0, 0)
+visibility_range_end = 144.0
 mesh = SubResource("ArrayMesh_g42en")
 skin = SubResource("Skin_3ywfl")
 
 [node name="scp131_eye_camera_low" type="MeshInstance3D" parent="SCP131_skeleton/Skeleton3D"]
 transform = Transform3D(1, 7.10543e-15, -4.23516e-22, -7.10543e-15, 1, -3.55271e-15, 0, 3.55271e-15, 1, 0, 0, 0)
+visibility_range_end = 144.0
 mesh = SubResource("ArrayMesh_5twmo")
 skin = SubResource("Skin_3ywfl")
 
 [node name="scp131_eye_focus_low" type="MeshInstance3D" parent="SCP131_skeleton/Skeleton3D"]
 transform = Transform3D(1, 7.10543e-15, -4.23516e-22, -7.10543e-15, 1, -3.55271e-15, 0, 3.55271e-15, 1, 0, 0, 0)
+visibility_range_end = 144.0
 mesh = SubResource("ArrayMesh_w55to")
 skin = SubResource("Skin_3ywfl")
 
 [node name="scp131_eye_low" type="MeshInstance3D" parent="SCP131_skeleton/Skeleton3D"]
+visibility_range_end = 144.0
 mesh = SubResource("ArrayMesh_ikglf")
 skin = SubResource("Skin_3ywfl")
 
 [node name="scp131_wheel_low" type="MeshInstance3D" parent="SCP131_skeleton/Skeleton3D"]
 transform = Transform3D(1, 7.10543e-15, -4.23516e-22, -7.10543e-15, 1, -3.55271e-15, 0, 3.55271e-15, 1, 0, 0, 0)
+visibility_range_end = 144.0
 mesh = SubResource("ArrayMesh_acqmg")
 skin = SubResource("Skin_3ywfl")
 

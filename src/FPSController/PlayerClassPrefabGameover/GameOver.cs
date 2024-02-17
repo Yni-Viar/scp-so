@@ -7,6 +7,7 @@ public partial class GameOver : Node3D
     [Export] string state;
     [Export] internal bool isContainable;
     [Export] ObjectType objectType = ObjectType.Static;
+    [Export] string armatureName = "Armature";
 	// Called when the node enters the scene tree for the first time.
 	public override async void _Ready()
 	{
@@ -16,7 +17,7 @@ public partial class GameOver : Node3D
                 SetState(state);
                 break;
             case ObjectType.Ragdoll:
-                GetNode<Skeleton3D>("Armature/Skeleton3D").PhysicalBonesStartSimulation();
+                GetNode<Skeleton3D>(armatureName + "/Skeleton3D").PhysicalBonesStartSimulation();
                 break;
         }
         await ToSignal(GetTree().CreateTimer(30.0), "timeout");

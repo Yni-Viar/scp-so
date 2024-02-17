@@ -160,6 +160,8 @@ text = "[b]v.0.8.0-RC[/b] [i](Alpha)[/i]
 - Added level system for SCP-2522.
 - New elevator system - currently used only for nuke.
 - PDA item is now working!
+- Added new female scientist model (Welcome to the facility, Charlotte!)
+- More optimization.
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.
