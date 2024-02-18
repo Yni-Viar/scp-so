@@ -31,7 +31,7 @@ public partial class CommonDoor : Door
         }
     }
 
-    private void Interact(PlayerScript player)
+    private void Interact(Node3D player)
     {
         Rpc("DoorControl", player.GetPath(), -1);
     }

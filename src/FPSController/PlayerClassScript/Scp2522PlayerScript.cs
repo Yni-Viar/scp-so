@@ -50,6 +50,7 @@ public partial class Scp2522PlayerScript : ComputerPlayerScript
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
             GetNode<ProgressBar>("UI/EnergyBar").Value = energy;
+            GetNode<ProgressBar>("UI/LevelBar").Value = levelUp;
             if (Input.IsActionJustPressed("scp_map"))
             {
                 if (GetParent().GetParent().GetParent().GetNode<PlayerUI>("PlayerUI").SpecialScreen)

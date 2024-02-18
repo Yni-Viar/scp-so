@@ -41,9 +41,9 @@ public partial class SlotDisplay : CenterContainer
 	{
         if (itemHover && mapData.Name != "empty")
 		{
-            if (GetParent().GetParent().GetParent().GetParentOrNull<ComputerPlayerScript>() != null)
+            if (GetTree().Root.GetNode("Main/Game/" + Multiplayer.GetUniqueId() + "/PlayerModel").GetChildOrNull<ComputerPlayerScript>(0) != null)
             {
-                if (GetParent().GetParent().GetParent().GetParent().GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
+                if (GetTree().Root.GetNode("Main/Game/" + Multiplayer.GetUniqueId()).IsMultiplayerAuthority())
                 {
                     if (Input.IsActionJustPressed("fire"))
                     {
