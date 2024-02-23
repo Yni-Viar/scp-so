@@ -101,6 +101,10 @@ public partial class ElevatorSystem : Node3D
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
 	internal void ElevatorMove(int floor)
 	{
+		if (isMoving)
+		{
+			return;
+		}
 		if (floors.Length == 1)
 		{
 			switch (lastMove)

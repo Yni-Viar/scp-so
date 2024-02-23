@@ -17,11 +17,11 @@ public partial class Globals
     /// <summary>
     /// Version string. In 0.7.1, the value is changed to development stage, because Godot already has version setter feature.
     /// </summary>
-    public static string version = "0.8.0-RC";
+    public static string version = "0.8.0-Release";
     /// <summary>
     /// Game data compatibility. Available since 0.8.0.
     /// </summary>
-    public static string gameDataCompatibility = "0.8.0-RC";
+    public static string gameDataCompatibility = "0.8.0";
     /// <summary>
     /// Rooms compatibility. Available since 0.7.0.
     /// </summary>
@@ -33,7 +33,7 @@ public partial class Globals
     /// <summary>
     /// Current stage. Used by main menu.
     /// </summary>
-    public static Stages currentStage = Stages.testing;
+    public static Stages currentStage = Stages.release;
     /// <summary>
     /// Type of class. singleSpawnClasses - SCP. multiSpawnClasses - Human, arrivingClasses - MTF, 
     /// SpecialClasses - spectator, bonusSpawnClasses - neutral SCPs, such as 131-A and -B. Available since 0.8.0-dev.

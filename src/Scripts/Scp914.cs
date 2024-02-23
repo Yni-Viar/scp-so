@@ -54,7 +54,7 @@ public partial class Scp914 : AnimatableBody3D
 		await ToSignal(GetTree().CreateTimer(6.0), "timeout");
         for (int i = 0; i < itemsToRefine.Count; i++)
         {
-            GD.Print("FOR works.");
+            //GD.Print("FOR works.");
             if (itemsToRefine.Count == 0)
             {
                 break;
@@ -62,12 +62,12 @@ public partial class Scp914 : AnimatableBody3D
             if (GetTree().Root.GetNodeOrNull("Main/Game/Items/" + itemsToRefine[i]) is Pickable inputPickable)
             {
                 Item item = GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Items[inputPickable.item.InternalId];
-                GD.Print("IS an item");
-                GD.Print(item.Rough.Length);
-                GD.Print(item.Coarse.Length);
-                GD.Print(item.OneToOne.Length);
-                GD.Print(item.Fine.Length);
-                GD.Print(item.VeryFine.Length);
+                //GD.Print("IS an item");
+                //GD.Print(item.Rough.Length);
+                //GD.Print(item.Coarse.Length);
+                //GD.Print(item.OneToOne.Length);
+                //GD.Print(item.Fine.Length);
+                //GD.Print(item.VeryFine.Length);
                 switch (currentMode)
                 {
                     case Modes.ROUGH:
@@ -78,9 +78,9 @@ public partial class Scp914 : AnimatableBody3D
                         }
                         else
                         {
-                            Pickable pickable = (Pickable)ResourceLoader.Load<PackedScene>(item.Rough[rnd.Next(0, item.Rough.Length)]).Instantiate();
-                            pickable.GlobalPosition = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
-                            GetTree().Root.GetNode<Node3D>("Main/Game/Items").AddChild(pickable);
+                            Item process = ResourceLoader.Load<Item>(item.Rough[rnd.Next(0, item.Rough.Length)]);
+                            GetTree().Root.GetNode<ItemManager>("Main/Game/Items").RpcId(1, "CallAddOrRemoveItem", true,
+                                process.InternalId, GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition);
                             GD.Print("Rough");
                         }
                         break;
@@ -92,9 +92,9 @@ public partial class Scp914 : AnimatableBody3D
                         }
                         else
                         {
-                            Pickable pickable = (Pickable)ResourceLoader.Load<PackedScene>(item.Coarse[rnd.Next(0, item.Coarse.Length)]).Instantiate();
-                            pickable.GlobalPosition = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
-                            GetTree().Root.GetNode<Node3D>("Main/Game/Items").AddChild(pickable);
+                            Item process = ResourceLoader.Load<Item>(item.Coarse[rnd.Next(0, item.Coarse.Length)]);
+                            GetTree().Root.GetNode<ItemManager>("Main/Game/Items").RpcId(1, "CallAddOrRemoveItem", true,
+                                process.InternalId, GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition);
                             GD.Print("Coarse");
                         }
                         break;
@@ -106,9 +106,9 @@ public partial class Scp914 : AnimatableBody3D
                         }
                         else
                         {
-                            Pickable pickable = (Pickable)ResourceLoader.Load<PackedScene>(item.OneToOne[rnd.Next(0, item.OneToOne.Length)]).Instantiate();
-                            pickable.GlobalPosition = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
-                            GetTree().Root.GetNode<Node3D>("Main/Game/Items").AddChild(pickable);
+                            Item process = ResourceLoader.Load<Item>(item.OneToOne[rnd.Next(0, item.OneToOne.Length)]);
+                            GetTree().Root.GetNode<ItemManager>("Main/Game/Items").RpcId(1, "CallAddOrRemoveItem", true,
+                                process.InternalId, GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition);
                             GD.Print("1:1");
                         }
                         break;
@@ -120,9 +120,9 @@ public partial class Scp914 : AnimatableBody3D
                         }
                         else
                         {
-                            Pickable pickable = (Pickable)ResourceLoader.Load<PackedScene>(item.Fine[rnd.Next(0, item.Fine.Length)]).Instantiate();
-                            pickable.GlobalPosition = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
-                            GetTree().Root.GetNode<Node3D>("Main/Game/Items").AddChild(pickable);
+                            Item process = ResourceLoader.Load<Item>(item.Fine[rnd.Next(0, item.Fine.Length)]);
+                            GetTree().Root.GetNode<ItemManager>("Main/Game/Items").RpcId(1, "CallAddOrRemoveItem", true,
+                                process.InternalId, GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition);
                             GD.Print("Fine");
                         }
                         break;
@@ -134,9 +134,9 @@ public partial class Scp914 : AnimatableBody3D
                         }
                         else
                         {
-                            Pickable pickable = (Pickable)ResourceLoader.Load<PackedScene>(item.VeryFine[rnd.Next(0, item.VeryFine.Length)]).Instantiate();
-                            pickable.GlobalPosition = GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition;
-                            GetTree().Root.GetNode<Node3D>("Main/Game/Items").AddChild(pickable);
+                            Item process = ResourceLoader.Load<Item>(item.VeryFine[rnd.Next(0, item.VeryFine.Length)]);
+                            GetTree().Root.GetNode<ItemManager>("Main/Game/Items").RpcId(1, "CallAddOrRemoveItem", true,
+                                process.InternalId, GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition);
                             GD.Print("VeryFine");
                         }
                         break;

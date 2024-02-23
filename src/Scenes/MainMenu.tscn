@@ -140,7 +140,7 @@ theme_override_font_sizes/italics_font_size = 24
 theme_override_font_sizes/bold_italics_font_size = 24
 theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
-text = "[b]v.0.8.0-RC[/b] [i](Alpha)[/i]
+text = "[b]v.0.8.0[/b] [i](Alpha)[/i]
 - Added new Light Containment Zone doors.
 - Added SCP-2306 and a game mechanic specified for this SCP.
 - SCP-2522 is now enabled, but is still experimental.
@@ -165,7 +165,7 @@ text = "[b]v.0.8.0-RC[/b] [i](Alpha)[/i]
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.
-- Alpha Warhead still not implemented.
+- Alpha Warhead and SCP-294 are still not implemented.
 - You can reach the facility even after Omega Warhead detonation.
 - Connecting to ongoing game may be unstable.
 - Hand rigs are just... meh..."

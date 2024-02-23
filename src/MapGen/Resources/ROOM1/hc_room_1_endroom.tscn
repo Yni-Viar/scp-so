@@ -1,9 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://csn53ea7qd6s8"]
+[gd_scene load_steps=23 format=3 uid="uid://csn53ea7qd6s8"]
 
-[ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat0.007.tres" id="1_uhdkg"]
-[ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat1.007.tres" id="2_8ljrl"]
-[ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat2.007.tres" id="3_mnnah"]
-[ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat3.007.tres" id="4_75nmr"]
+[ext_resource type="Material" uid="uid://075qshmhw3vf" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat0.007.tres" id="1_uhdkg"]
+[ext_resource type="Material" uid="uid://dnyqyyri1thk5" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat1.007.tres" id="2_8ljrl"]
+[ext_resource type="Material" uid="uid://bn8c6ot04bf7e" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat2.007.tres" id="3_mnnah"]
+[ext_resource type="Material" uid="uid://cukhvolagjnds" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat3.007.tres" id="4_75nmr"]
 [ext_resource type="AudioStream" uid="uid://d5igvpb2o1qh" path="res://Sounds/Alarm/Alarm.ogg" id="5_44nk0"]
 [ext_resource type="Texture2D" uid="uid://bfy41bneqt3rv" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_Color.png" id="6_8qlky"]
 [ext_resource type="Texture2D" uid="uid://broigkb6vowds" path="res://MapGen/Resources/Doors/DoorGate/Gate/Metal032_2K_Metalness-Metal032_2K_Roughness.png" id="7_qnf72"]
@@ -203,6 +203,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lgrmp")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ueh7h"]
+size = Vector3(8.30289, 4.24704, 1.28131)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_j5156"]
 size = Vector3(19.6761, 9.08363, 20.2893)
 
@@ -262,6 +265,12 @@ skeleton = NodePath("")
 visibility_range_end = 80.0
 mesh = SubResource("ArrayMesh_c20ja")
 skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Gate"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gate/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.104355, 2.09983, -0.0204759)
+shape = SubResource("BoxShape3D_ueh7h")
 
 [node name="cctv" parent="." instance=ExtResource("11_5t8rk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0514334, 4.12, 8.15384)

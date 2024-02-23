@@ -379,6 +379,7 @@ max_distance = 24.0
 
 [node name="Cube" type="MeshInstance3D" parent="ButtonInteractUp"]
 transform = Transform3D(-2.55712e-08, 0, 0.585, 0, 0.585, 0, -0.585, 0, -2.55712e-08, 0, 0.0585526, 0)
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_kx2s7")
 skeleton = NodePath("")
 
@@ -389,6 +390,7 @@ elevatorDirection = 0
 
 [node name="Cube" type="MeshInstance3D" parent="ButtonInteractDown"]
 transform = Transform3D(-2.55712e-08, 0, 0.585, 0, 0.585, 0, -0.585, 0, -2.55712e-08, 0, 0, 0)
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_bfgl0")
 skeleton = NodePath("")
 

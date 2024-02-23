@@ -41,8 +41,8 @@ public partial class Scp173PlayerScript : Node3D
         interactSound = GetParent().GetParent<PlayerScript>().GetNode<AudioStreamPlayer3D>("InteractSound");
         GetNode<Label>("AbilityUI/VBoxContainer/Blind").Text = "Blind ability: Cooldown.";
         await ToSignal(GetTree().CreateTimer(5.0), "timeout");
-        abilityCooldown = true;
-        GetNode<Label>("AbilityUI/VBoxContainer/Blind").Text = "Blind ability: Ready.";
+        abilityCooldown = false;
+        GetNode<Label>("AbilityUI/VBoxContainer/Blind").Text = "Blind ability: Ready. Press [F] to blind other players.";
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.

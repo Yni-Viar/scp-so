@@ -1,6 +1,7 @@
-[gd_scene load_steps=93 format=3 uid="uid://dn57xh81cw2di"]
+[gd_scene load_steps=94 format=3 uid="uid://dn57xh81cw2di"]
 
 [ext_resource type="Texture2D" uid="uid://ddfst5iwq8mrn" path="res://MapGen/Resources/RoomAssets/Props/Scp294/294.png" id="1_olvo7"]
+[ext_resource type="Texture2D" uid="uid://b5q4nnnml58i1" path="res://MapGen/Resources/RoomAssets/Props/Scp294/294_emission.png" id="2_fcymg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6lwxn"]
 resource_name = "294"
@@ -8,7 +9,7 @@ cull_mode = 2
 albedo_texture = ExtResource("1_olvo7")
 roughness = 0.683772
 emission_enabled = true
-emission = Color(0.155865, 0.155865, 0.155865, 1)
+emission_texture = ExtResource("2_fcymg")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aubnx"]
 resource_name = "Black"

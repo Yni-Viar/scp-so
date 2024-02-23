@@ -27,7 +27,7 @@ public partial class Item : Resource
     [Export]
     public bool OneTimeUse { get; set; }
 
-    [ExportGroup("SCP-914 Outputs (path to a PICKABLE, not ITEM)")]
+    [ExportGroup("SCP-914 Outputs (path to an ITEM (since 0.8.0))")]
     [Export]
     public string[] Rough { get; set; }
     [Export]

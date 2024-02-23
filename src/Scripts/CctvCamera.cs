@@ -23,11 +23,11 @@ public partial class CctvCamera : Node3D
 	{
         if (active)
         {
-            if (Input.IsActionPressed("move_left_alt") || Input.IsActionPressed("move_right_alt"))
+            if (Input.IsActionPressed("move_left") || Input.IsActionPressed("move_right"))
             {
-                rotatingCamera.RotateY(Input.GetAxis("move_right_alt", "move_left_alt") * 0.025f);
+                rotatingCamera.RotateY(Input.GetAxis("move_right", "move_left") * 0.025f);
             }
-            else if (Input.IsActionPressed("move_forward_alt") || Input.IsActionPressed("move_backward_alt"))
+            else if (Input.IsActionPressed("move_forward") || Input.IsActionPressed("move_backward"))
             {
                 if (rotatingCamera.GetNode<Camera3D>("Camera3D").RotationDegrees.X < -120.01f)
                 {
@@ -39,7 +39,7 @@ public partial class CctvCamera : Node3D
                 }
                 else
                 {
-                    rotatingCamera.GetNode<Camera3D>("Camera3D").RotateX(Input.GetAxis("move_backward_alt", "move_forward_alt") * 0.01f);
+                    rotatingCamera.GetNode<Camera3D>("Camera3D").RotateX(Input.GetAxis("move_backward", "move_forward") * 0.01f);
                 }
             }
 

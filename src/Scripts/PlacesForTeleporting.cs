@@ -1,6 +1,6 @@
 using Godot;
 using System;
-//It will be a JSON script in future.
+
 public class PlacesForTeleporting
 {
     internal static Godot.Collections.Dictionary<string, string> defaultData = new Godot.Collections.Dictionary<string, string> {
@@ -21,6 +21,7 @@ public class PlacesForTeleporting
         { "hcz_testroom", "Main/Game/MapGenHcz/HC_cont2_testroom/entityspawn" },
         { "hcz_3199spawn", "Main/Game/MapGenHcz/HC_cont1_3199/entityspawn" },
         { "hcz_106spawn", "Main/Game/MapGenHcz/HC_cont1_106/entityspawn" },
+        { "hcz_warhead", "Main/Game/MapGenHcz/HC_room2_nuke/entityspawn" },
         { "pd_start", "Main/Game/PD/PD_startroom/entityspawn" },
         { "pd_basement", "Main/Game/PD/PD_basement/entityspawn" },
     };
