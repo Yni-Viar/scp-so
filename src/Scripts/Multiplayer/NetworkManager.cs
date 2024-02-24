@@ -21,9 +21,6 @@ public partial class NetworkManager : Node
     {
         get => GD.Hash(adminPassword);
     }
-    //True breach simulation - if enabled, second SCP will be 2522 and if currentPlayerCounter % 8 equals 4 - then a new SCP is present in round.
-    //Else, players becomes SCP only if is second player or multiple of 8. Will be changed in future updates.
-    internal static bool tBrSim; 
 
     ENetMultiplayerPeer peer;
 
@@ -46,7 +43,6 @@ public partial class NetworkManager : Node
                 "Port",
                 "MaxPlayers",
                 "FriendlyFire", 
-                "TrueBreachSimulation",
                 "AdminPassword",
                 "ModeratorPassword",
                 "MaxSpawnableObjects",
@@ -57,7 +53,6 @@ public partial class NetworkManager : Node
                 7877,
                 20,
                 false, 
-                false,
                 "changeitplease",
                 "",
                 12,
@@ -101,7 +96,7 @@ public partial class NetworkManager : Node
             {
                 GetTree().Root.GetNode<ProgressBar>("Main/LoadingScreen/MainPanel/ProgressBar").Value = 100;
                 PrepareLevel(ResourceLoader.LoadThreadedGet("res://Scenes/Facility.tscn") as PackedScene);
-                loading = false;
+                
             }
         }
     }
@@ -125,7 +120,6 @@ public partial class NetworkManager : Node
         port = (int)config.GetValue("ServerConfig", "Port");
         maxPlayers = (int)config.GetValue("ServerConfig", "MaxPlayers");
         friendlyFire = (bool)config.GetValue("ServerConfig", "FriendlyFire");
-        tBrSim = (bool)config.GetValue("ServerConfig", "TrueBreachSimulation");
         adminPassword = (string)config.GetValue("ServerConfig", "AdminPassword");
         moderatorPassword = (string)config.GetValue("ServerConfig", "ModeratorPassword");
         maxObjects = (int)config.GetValue("ServerConfig", "MaxSpawnableObjects");
@@ -200,6 +194,7 @@ public partial class NetworkManager : Node
                 n.QueueFree();
             }
         }
+        loading = false;
         AddChild(scene.Instantiate());
         //Loading screen.
         GetTree().Root.GetNode<CanvasLayer>("Main/LoadingScreen/").Visible = false;
@@ -232,6 +227,7 @@ public partial class NetworkManager : Node
     /// </summary>
     internal void ServerDisconnected()
     {
+        GetNode<Control>("CanvasLayer/InGameConsole").Hide();
         Multiplayer.MultiplayerPeer = null;
         peer.Close();
         if (GetNodeOrNull("Game") != null)

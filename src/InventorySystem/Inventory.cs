@@ -72,7 +72,7 @@ public partial class Inventory : Node
         //Spawn item ingame
         if (previousItem is Item _item && itemSpawn) // anti-dupe
         {
-            GetTree().Root.GetNode<ItemManager>("Main/Game/Items").RpcId(1, "CallAddOrRemoveItem", true, _item.InternalId, Multiplayer.GetUniqueId() + "/PlayerHead/ItemSpawn");
+            GetTree().Root.GetNode<ItemManager>("Main/Game/Items").RpcId(1, "CallAddOrRemoveItem", true, _item.InternalId, GetTree().Root.GetNode<Node3D>("Main/Game/" + Multiplayer.GetUniqueId() + "/PlayerHead/ItemSpawn").GetPath());
         }
         EmitSignal(SignalName.ItemsChanged, new Godot.Collections.Array{itemIndex});
         return previousItem;

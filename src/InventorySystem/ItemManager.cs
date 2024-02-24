@@ -206,7 +206,7 @@ public partial class ItemManager : Node
     {
         if (creation)
         {
-            AddItem(itemId, GetTree().Root.GetNode<Node3D>("Main/Game/" + pos).GlobalPosition);
+            AddItem(itemId, GetNode<Node3D>(pos).GlobalPosition);
         }
         else
         {

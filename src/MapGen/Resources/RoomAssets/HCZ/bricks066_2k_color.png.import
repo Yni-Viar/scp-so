@@ -3,15 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://mi8c4tfr0rfy"
-path="res://.godot/imported/bricks066_2k_color.png-4d763e9e3b32df93e3b91dba1cd66cd0.ctex"
+path.s3tc="res://.godot/imported/bricks066_2k_color.png-4d763e9e3b32df93e3b91dba1cd66cd0.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://MapGen/Resources/RoomAssets/HCZ/bricks066_2k_color.png"
-dest_files=["res://.godot/imported/bricks066_2k_color.png-4d763e9e3b32df93e3b91dba1cd66cd0.ctex"]
+dest_files=["res://.godot/imported/bricks066_2k_color.png-4d763e9e3b32df93e3b91dba1cd66cd0.s3tc.ctex"]
 
 [params]
 

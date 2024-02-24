@@ -80,7 +80,7 @@ public partial class Scp914 : AnimatableBody3D
                         {
                             Item process = ResourceLoader.Load<Item>(item.Rough[rnd.Next(0, item.Rough.Length)]);
                             GetTree().Root.GetNode<ItemManager>("Main/Game/Items").RpcId(1, "CallAddOrRemoveItem", true,
-                                process.InternalId, GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition);
+                                process.InternalId, GetNode<Marker3D>("SpawnRefinedItems").GetPath());
                             GD.Print("Rough");
                         }
                         break;
@@ -94,7 +94,7 @@ public partial class Scp914 : AnimatableBody3D
                         {
                             Item process = ResourceLoader.Load<Item>(item.Coarse[rnd.Next(0, item.Coarse.Length)]);
                             GetTree().Root.GetNode<ItemManager>("Main/Game/Items").RpcId(1, "CallAddOrRemoveItem", true,
-                                process.InternalId, GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition);
+                                process.InternalId, GetNode<Marker3D>("SpawnRefinedItems").GetPath());
                             GD.Print("Coarse");
                         }
                         break;
@@ -108,7 +108,7 @@ public partial class Scp914 : AnimatableBody3D
                         {
                             Item process = ResourceLoader.Load<Item>(item.OneToOne[rnd.Next(0, item.OneToOne.Length)]);
                             GetTree().Root.GetNode<ItemManager>("Main/Game/Items").RpcId(1, "CallAddOrRemoveItem", true,
-                                process.InternalId, GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition);
+                                process.InternalId, GetNode<Marker3D>("SpawnRefinedItems").GetPath());
                             GD.Print("1:1");
                         }
                         break;
@@ -122,7 +122,7 @@ public partial class Scp914 : AnimatableBody3D
                         {
                             Item process = ResourceLoader.Load<Item>(item.Fine[rnd.Next(0, item.Fine.Length)]);
                             GetTree().Root.GetNode<ItemManager>("Main/Game/Items").RpcId(1, "CallAddOrRemoveItem", true,
-                                process.InternalId, GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition);
+                                process.InternalId, GetNode<Marker3D>("SpawnRefinedItems").GetPath());
                             GD.Print("Fine");
                         }
                         break;
@@ -136,7 +136,7 @@ public partial class Scp914 : AnimatableBody3D
                         {
                             Item process = ResourceLoader.Load<Item>(item.VeryFine[rnd.Next(0, item.VeryFine.Length)]);
                             GetTree().Root.GetNode<ItemManager>("Main/Game/Items").RpcId(1, "CallAddOrRemoveItem", true,
-                                process.InternalId, GetNode<Marker3D>("SpawnRefinedItems").GlobalPosition);
+                                process.InternalId, GetNode<Marker3D>("SpawnRefinedItems").GetPath());
                             GD.Print("VeryFine");
                         }
                         break;

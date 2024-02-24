@@ -197,10 +197,9 @@ public partial class PlayerScript : CharacterBody3D
             }
 
             //jumping
-            if (GetNode<PlayerSync>("PlayerSync").isJumping && IsOnFloor())
+            if (Input.IsActionJustPressed("move_jump") && IsOnFloor())
             {
                 gravityVector = Vector3.Up * jump;
-                GetNode<PlayerSync>("PlayerSync").isJumping = false;
             }
             Vector3 direction = (Transform.Basis * new Vector3(GetNode<PlayerSync>("PlayerSync").direction.X, 0, GetNode<PlayerSync>("PlayerSync").direction.Y));
             dir = direction; // Save this for outer value, used by class player scripts, but don't reveal the "true" direction variable.

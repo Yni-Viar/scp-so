@@ -6,7 +6,7 @@ using System;
 public partial class PDRandomExitArea : Area3D
 {
 	RandomNumberGenerator rng = new RandomNumberGenerator();
-	string[] pdRooms = new string[] { "PD/PD_basement/entityspawn" };
+	string[] pdRooms = new string[] { "Main/Game/PD/PD_basement/entityspawn" };
     string[] exitValues = new string[PlacesForTeleporting.defaultData.Values.Count];
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()

@@ -31,11 +31,11 @@ public partial class PlayerUI : Control
 
         if (GetParent<FacilityManager>().IsRoundStarted)
         {
-            GetParent().GetNode<Panel>("PreRoundStartPanel").Visible = false;
+            GetNode<Panel>("PreRoundStartPanel").Visible = false;
         }
         else
         {
-            GetParent().GetNode<Panel>("PreRoundStartPanel").Visible = true;
+            GetNode<Panel>("PreRoundStartPanel").Visible = true;
         }
 	}
 

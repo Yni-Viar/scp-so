@@ -162,7 +162,7 @@ poofSounds = [ExtResource("2_30jn0"), ExtResource("3_x87l7")]
 reloadSound = ExtResource("4_uefem")
 
 [node name="Mesh" type="Node3D" parent="."]
-transform = Transform3D(0.991183, 0, 0.132499, 0, 1, 0, -0.132499, 0, 0.991183, 0.111752, 0, 0)
+transform = Transform3D(0.991183, 0, 0.132499, 0, 1, 0, -0.132499, 0, 0.991183, 0.272577, -0.22626, 0)
 
 [node name="1911_001" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(-1.48591e-08, 2.68205e-09, 0.3, -0.100071, 0.282818, -7.48497e-09, -0.282818, -0.100071, -1.31134e-08, 0, -0.151, 0)

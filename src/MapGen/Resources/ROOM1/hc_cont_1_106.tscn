@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://ccwx3eoue86rt"]
+[gd_scene load_steps=57 format=3 uid="uid://ccwx3eoue86rt"]
 
 [ext_resource type="Texture2D" uid="uid://b02rkvt4e0e34" path="res://MapGen/Resources/RoomAssets/HCZ/metal3.jpg" id="1_oessh"]
 [ext_resource type="Texture2D" uid="uid://8807huc3a22n" path="res://MapGen/Resources/RoomAssets/HCZ/concretefloor.jpg" id="2_ayl16"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://qhfsccjall0n" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Metallic-Door_Texturize_door_Roughness.png" id="25_8erwa"]
 [ext_resource type="Texture2D" uid="uid://b1t12q1kwppon" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Normal.png" id="26_qc0is"]
 [ext_resource type="Texture2D" uid="uid://nfri6qslyqwr" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Metallic_png-Door_Texturize_door_Roughness_png.png" id="27_ldpgv"]
+[ext_resource type="PackedScene" uid="uid://dn7xcp8e6o86h" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="28_fcgwf"]
 [ext_resource type="Texture2D" uid="uid://dfnr2n5oncm83" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_frame_Albedo.png" id="32_0dwwe"]
 [ext_resource type="PackedScene" uid="uid://bdpbyddveudfx" path="res://MapGen/Resources/RoomAssets/Props/scp106cube.tscn" id="32_kjki4"]
 [ext_resource type="Texture2D" uid="uid://ck8isbfx72rc" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_frame_Metallic-Door_Texturize_door_frame_Roughness.png" id="33_u444g"]
@@ -650,3 +651,6 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0046401, 1.64388, 0.00439453)
 shape = SubResource("BoxShape3D_5dney")
+
+[node name="Lamp" parent="." instance=ExtResource("28_fcgwf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.581889, 4.47998, 6.85064)

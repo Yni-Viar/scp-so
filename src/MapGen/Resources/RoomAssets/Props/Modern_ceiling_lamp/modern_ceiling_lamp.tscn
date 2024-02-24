@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://b7xwwuyi26i62"]
 
-[ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/materials/modern_ceiling_lamp_01_glass.tres" id="1_gjw6f"]
-[ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/materials/modern_ceiling_lamp_01.tres" id="2_ah316"]
-[ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/materials/modern_ceiling_globe.tres" id="3_k7217"]
+[ext_resource type="Material" uid="uid://cjc6w8riy6cht" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/materials/modern_ceiling_lamp_01_glass.tres" id="1_gjw6f"]
+[ext_resource type="Material" uid="uid://cxfw7u6ovhv2h" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/materials/modern_ceiling_lamp_01.tres" id="2_ah316"]
+[ext_resource type="Material" uid="uid://c0y3kn6p5q6ux" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/materials/modern_ceiling_globe.tres" id="3_k7217"]
 [ext_resource type="Script" path="res://Scripts/LightSystem.cs" id="4_wq4hj"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_7u8t7"]

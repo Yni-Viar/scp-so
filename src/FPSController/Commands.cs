@@ -159,7 +159,7 @@ public partial class Commands : Node
             case 0:
                 if (key < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Items.Count && key >= 0)
                 {
-                    GetParent().GetParent().GetNode<ItemManager>("Items").RpcId(1, "CallAddOrRemoveItem", true, key, Multiplayer.GetUniqueId() + "/PlayerHead/ItemSpawn");
+                    GetParent().GetParent().GetNode<ItemManager>("Items").RpcId(1, "CallAddOrRemoveItem", true, key, GetTree().Root.GetNode<Node3D>("Main/Game/" + Multiplayer.GetUniqueId() + "/PlayerHead/ItemSpawn").GetPath());
                 }
                 else
                 {
@@ -169,7 +169,7 @@ public partial class Commands : Node
             case 1:
                 if (key < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Ammo.Count && key >= 0)
                 {
-                    GetParent().GetParent().GetNode<ItemManager>("Ammo").RpcId(1, "CallAddOrRemoveItem", true, key, Multiplayer.GetUniqueId() + "/PlayerHead/ItemSpawn");
+                    GetParent().GetParent().GetNode<ItemManager>("Ammo").RpcId(1, "CallAddOrRemoveItem", true, key, GetTree().Root.GetNode<Node3D>("Main/Game/" + Multiplayer.GetUniqueId() + "/PlayerHead/ItemSpawn").GetPath());
                 }
                 else
                 {
@@ -179,7 +179,7 @@ public partial class Commands : Node
             case 2:
                 if (key < GetTree().Root.GetNode<FacilityManager>("Main/Game/").data.Npc.Count && key >= 0)
                 {
-                    GetParent().GetParent().GetNode<ItemManager>("Npcs").RpcId(1, "CallAddOrRemoveItem", true, key, Multiplayer.GetUniqueId() + "/PlayerHead/ItemSpawn");
+                    GetParent().GetParent().GetNode<ItemManager>("NPCs").RpcId(1, "CallAddOrRemoveItem", true, key, GetTree().Root.GetNode<Node3D>("Main/Game/" + Multiplayer.GetUniqueId() + "/PlayerHead/ItemSpawn").GetPath());
                 }
                 else
                 {
@@ -264,7 +264,7 @@ public partial class Commands : Node
         GetTree().Root.GetNode<FacilityManager>("Main/Game").Call("ForceRoundStart");
         return "Starting the round... (If round is already started, nothing happens)";
     }
-    /*
+    /* 0.7.x content, that was deprecated at 0.8.0.
     /// <summary>
     /// GDSh command.
     /// </summary>

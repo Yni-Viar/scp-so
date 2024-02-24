@@ -54,6 +54,13 @@ properties/8/replication_mode = 2
 [sub_resource type="BoxShape3D" id="BoxShape3D_ttxax"]
 size = Vector3(6410.33, 1969.08, 6412.47)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4g4w"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5wgsy"]
 bg_color = Color(0, 0, 0, 0.847059)
 
@@ -145,13 +152,6 @@ _data = {
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3wvqa"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4g4w"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 2
 border_width_top = 2
@@ -269,6 +269,58 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_bwdaw")
+
+[node name="PreRoundStartPanel" type="Panel" parent="PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -124.0
+offset_right = 232.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x4g4w")
+
+[node name="PreRoundStart" type="VBoxContainer" parent="PlayerUI/PreRoundStartPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.064
+anchor_top = 0.091
+anchor_right = 0.919
+anchor_bottom = 0.909
+offset_left = -0.184002
+offset_top = -0.0160007
+offset_right = -0.0640259
+offset_bottom = 0.0159912
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Welcome" type="Label" parent="PlayerUI/PreRoundStartPanel/PreRoundStart"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_1slp4")
+theme_override_font_sizes/font_size = 32
+text = "ROUND_WELCOME"
+horizontal_alignment = 1
+
+[node name="Amount" type="Label" parent="PlayerUI/PreRoundStartPanel/PreRoundStart"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_1slp4")
+theme_override_font_sizes/font_size = 64
+text = "
+"
+horizontal_alignment = 1
+
+[node name="Welcome2" type="Label" parent="PlayerUI/PreRoundStartPanel/PreRoundStart"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_1slp4")
+theme_override_font_sizes/font_size = 24
+text = "ROUND_PLCONN"
+horizontal_alignment = 1
 
 [node name="ClassInfo" type="Label" parent="PlayerUI"]
 layout_mode = 1
@@ -512,57 +564,6 @@ theme_override_font_sizes/font_size = 32
 text = "PLAYERSLIST_INFO"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="PreRoundStartPanel" type="Panel" parent="."]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -224.0
-offset_top = -124.0
-offset_right = 232.0
-offset_bottom = 52.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_x4g4w")
-
-[node name="PreRoundStart" type="VBoxContainer" parent="PreRoundStartPanel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.064
-anchor_top = 0.091
-anchor_right = 0.919
-anchor_bottom = 0.909
-offset_left = -0.184002
-offset_top = -0.0160007
-offset_right = -0.0640259
-offset_bottom = 0.0159912
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Welcome" type="Label" parent="PreRoundStartPanel/PreRoundStart"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_1slp4")
-theme_override_font_sizes/font_size = 32
-text = "ROUND_WELCOME"
-horizontal_alignment = 1
-
-[node name="Amount" type="Label" parent="PreRoundStartPanel/PreRoundStart"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_1slp4")
-theme_override_font_sizes/font_size = 64
-text = "
-"
-horizontal_alignment = 1
-
-[node name="Welcome2" type="Label" parent="PreRoundStartPanel/PreRoundStart"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_1slp4")
-theme_override_font_sizes/font_size = 24
-text = "ROUND_PLCONN"
-horizontal_alignment = 1
 
 [connection signal="timeout" from="OmegaWarhead/WarheadCountdown" to="OmegaWarhead" method="OnWarheadCountdownTimeout"]
 [connection signal="body_entered" from="SkyEnabler" to="SkyEnabler" method="OnBodyEntered"]

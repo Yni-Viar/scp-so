@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://dd0udtsfci3ey"]
 
-[ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat0.009.tres" id="1_r776u"]
-[ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat1.009.tres" id="2_aiup7"]
-[ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat2.009.tres" id="3_ue707"]
-[ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat3.009.tres" id="4_vxkwl"]
+[ext_resource type="Material" uid="uid://b6g4wchstatds" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat0.009.tres" id="1_r776u"]
+[ext_resource type="Material" uid="uid://beca2213e83yk" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat1.009.tres" id="2_aiup7"]
+[ext_resource type="Material" uid="uid://dsuj2x62fw1qh" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat2.009.tres" id="3_ue707"]
+[ext_resource type="Material" uid="uid://byc24310peyfc" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat3.009.tres" id="4_vxkwl"]
 [ext_resource type="PackedScene" uid="uid://dn7xcp8e6o86h" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="5_jodhf"]
 [ext_resource type="PackedScene" uid="uid://dme4cvlaar7xi" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="6_ibmco"]
 

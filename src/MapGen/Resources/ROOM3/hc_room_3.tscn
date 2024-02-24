@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://bbjnlhtwvoov"]
 
-[ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat0.012.tres" id="1_fp0q8"]
-[ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat1.012.tres" id="2_i3bo3"]
-[ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat2.012.tres" id="3_17y2g"]
-[ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat3.012.tres" id="4_sek8g"]
-[ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat4.009.tres" id="5_6hbjt"]
-[ext_resource type="Material" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat5.009.tres" id="6_ykexq"]
+[ext_resource type="Material" uid="uid://vylhn7vmwrld" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat0.012.tres" id="1_fp0q8"]
+[ext_resource type="Material" uid="uid://b3rwrccy5hh2b" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat1.012.tres" id="2_i3bo3"]
+[ext_resource type="Material" uid="uid://c21cfa26v13d2" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat2.012.tres" id="3_17y2g"]
+[ext_resource type="Material" uid="uid://b8oxsp3ass38q" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat3.012.tres" id="4_sek8g"]
+[ext_resource type="Material" uid="uid://bv0gylvwvmf36" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat4.009.tres" id="5_6hbjt"]
+[ext_resource type="Material" uid="uid://cinbk3hh5t363" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat5.009.tres" id="6_ykexq"]
 [ext_resource type="PackedScene" uid="uid://dn7xcp8e6o86h" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="7_5obbu"]
 [ext_resource type="PackedScene" uid="uid://dme4cvlaar7xi" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="8_u5l1b"]
 

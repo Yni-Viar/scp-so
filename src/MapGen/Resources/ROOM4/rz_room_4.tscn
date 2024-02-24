@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bqdtcarmb2g3m" path="res://MapGen/Resources/RoomAssets/RZ/officewall.jpg" id="6_mj05b"]
 [ext_resource type="Texture2D" uid="uid://djte7umjkf0we" path="res://MapGen/Resources/RoomAssets/RZ/misc.jpg" id="7_jsavf"]
 [ext_resource type="Texture2D" uid="uid://dcj273s8h82qj" path="res://MapGen/Resources/RoomAssets/RZ/metalpanels.jpg" id="8_7vnqt"]
-[ext_resource type="PackedScene" uid="uid://dn7xcp8e6o86h" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="9_sydkh"]
+[ext_resource type="PackedScene" uid="uid://bmacptdhvw6h7" path="res://MapGen/Resources/RoomAssets/Props/ceiling_lamp.tscn" id="10_1vk1p"]
 [ext_resource type="PackedScene" uid="uid://c8brqgry3c6r2" path="res://MapGen/Resources/Cameras/cctv_rz.tscn" id="10_co2bi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvosm"]
@@ -269,14 +269,8 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConcavePolygonShape3D_33ubp")
 
-[node name="Lamp" parent="." instance=ExtResource("9_sydkh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94362, 4.89512, 1.78934)
-
-[node name="Lamp2" parent="." instance=ExtResource("9_sydkh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75369, 4.89512, -2.023)
-
 [node name="cctv" parent="." instance=ExtResource("10_co2bi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000601411, 5.12, 0.00820351)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00760138, 5.12, 0.632112)
 
 [node name="CheckArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.92772, 0)
@@ -287,3 +281,6 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CheckArea"]
 shape = SubResource("BoxShape3D_aa7rv")
+
+[node name="CeilingLamp" parent="." instance=ExtResource("10_1vk1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.04713, -0.759902)

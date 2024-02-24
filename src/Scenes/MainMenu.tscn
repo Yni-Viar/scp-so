@@ -162,6 +162,7 @@ text = "[b]v.0.8.0[/b] [i](Alpha)[/i]
 - PDA item is now working!
 - Added new female scientist model (Welcome to the facility, Charlotte!)
 - More optimization.
+- Fixed wrong normals at SCP-650 containment chamber.
 
 [b]KNOWN ISSUES:[/b]
 - There may be freezes. Try to restart the game to fix this.

@@ -29,7 +29,7 @@ public partial class Globals
     /// <summary>
     /// Server config compatibility. Available since 0.7.0.
     /// </summary>
-    public static string serverConfigCompatibility = "0.7.2";
+    public static string serverConfigCompatibility = "0.8.0";
     /// <summary>
     /// Current stage. Used by main menu.
     /// </summary>

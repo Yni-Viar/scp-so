@@ -1058,13 +1058,13 @@ monitorable = false
 shape = SubResource("BoxShape3D_gdnqd")
 
 [node name="CeilingLamp" parent="." instance=ExtResource("14_4k5x5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.3953, 6.4194)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.351, 6.4194)
 
 [node name="CeilingLamp4" parent="." instance=ExtResource("14_4k5x5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.3953, -6.15717)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.351, -6.15717)
 
 [node name="CeilingLamp2" parent="." instance=ExtResource("14_4k5x5")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.05514, 6.3953, -0.409485)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.05514, 6.351, -0.409485)
 
 [node name="CeilingLamp3" parent="." instance=ExtResource("14_4k5x5")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.22559, 6.3953, -0.0889835)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.22559, 6.351, -0.0889835)

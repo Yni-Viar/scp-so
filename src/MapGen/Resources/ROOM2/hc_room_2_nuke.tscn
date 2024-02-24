@@ -966,11 +966,13 @@ closeDoorSounds = PackedStringArray("res://Sounds/Door/DoorClose1.ogg", "res://S
 
 [node name="Cube_003" type="MeshInstance3D" parent="KeycardedDoor2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.37843, 0, 0, 0)
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_o6hxu")
 skeleton = NodePath("")
 
 [node name="Cube_001" type="MeshInstance3D" parent="KeycardedDoor2"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.00306701, 0, 0)
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_40ivy")
 skeleton = NodePath("")
 
@@ -985,6 +987,7 @@ shape = SubResource("BoxShape3D_6wkhu")
 
 [node name="Cube_002" type="MeshInstance3D" parent="KeycardedDoor2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00306701, 0, 0)
+visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_2hd3i")
 skeleton = NodePath("")
 
@@ -1031,7 +1034,7 @@ shape = SubResource("BoxShape3D_41nqb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.39658, 0.00990677, 0.00775158)
 
 [node name="ElevatorBottom" type="Marker3D" parent="." groups=["Elevator_NukeBottom"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.39658, -31.0408, 0.00775158)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.39658, -30.7169, 0.00775158)
 
 [node name="Elevator" parent="." groups=["Elevator_Nuke"] instance=ExtResource("22_ti45g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.39658, 0.00990677, 0.00775158)

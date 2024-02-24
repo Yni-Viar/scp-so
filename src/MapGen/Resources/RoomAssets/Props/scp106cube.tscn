@@ -1,11 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://bdpbyddveudfx"]
+[gd_scene load_steps=14 format=3 uid="uid://bdpbyddveudfx"]
 
 [ext_resource type="Texture2D" uid="uid://cxaxqmu8wapk6" path="res://MapGen/Resources/RoomAssets/Props/Scp106Cube/Metal022_2K-PNG_Color.png" id="1_7sd2m"]
 [ext_resource type="Texture2D" uid="uid://csudcsspx0bha" path="res://MapGen/Resources/RoomAssets/Props/Scp106Cube/Metal022_2K-PNG_Metalness-Metal022_2K-PNG_Roughness.png" id="2_uuuan"]
 [ext_resource type="Texture2D" uid="uid://ch4714f8ncn03" path="res://MapGen/Resources/RoomAssets/Props/Scp106Cube/Metal022_2K-PNG_NormalGL.png" id="3_x1jo7"]
-[ext_resource type="Texture2D" uid="uid://swi3ujd3x1fe" path="res://MapGen/Resources/RoomAssets/Props/Scp106Cube/106cube_Material_001_Albedo.png" id="4_li02l"]
-[ext_resource type="Texture2D" uid="uid://dfkxo3ilcuvt4" path="res://MapGen/Resources/RoomAssets/Props/Scp106Cube/106cube_Material_001_Metallic-106cube_Material_001_Roughness.png" id="5_yrhn0"]
-[ext_resource type="Texture2D" uid="uid://3l5t2jpcrqnd" path="res://MapGen/Resources/RoomAssets/Props/Scp106Cube/106cube_Material_001_Normal.png" id="6_sleje"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o460x"]
 resource_name = "Material.002"
@@ -57,14 +54,10 @@ data = PackedVector3Array(-0.4004, -1.6061, 1.001, -0.4004, 1.6061, -1.001, -0.4
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qe26w"]
 resource_name = "Material.001"
 cull_mode = 2
-albedo_texture = ExtResource("4_li02l")
 metallic = 1.0
-metallic_texture = ExtResource("5_yrhn0")
 metallic_texture_channel = 2
-roughness_texture = ExtResource("5_yrhn0")
 roughness_texture_channel = 1
 normal_enabled = true
-normal_texture = ExtResource("6_sleje")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wgpv4"]
 _surfaces = [{
