@@ -21,7 +21,7 @@ public partial class Scp2522PlayerScript : ComputerPlayerScript
         GetParent().GetParent<PlayerScript>().SetCollisionMaskValue(3, true);
         if (GetParent().GetParent<PlayerScript>().IsMultiplayerAuthority())
         {
-            GetParent().GetParent<PlayerScript>().GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = false;
+            GetParent().GetParent<PlayerScript>().GetNode<Camera3D>("PlayerHead/PlayerRecoil/PlayerCamera").Current = false;
             GetNode<Control>("UI").Show();
             //dcczCamList = GetTree().GetNodesInGroup("DCCZ_CCTV");
             /*hczCamList = GetTree().GetNodesInGroup("HCZ_CCTV");

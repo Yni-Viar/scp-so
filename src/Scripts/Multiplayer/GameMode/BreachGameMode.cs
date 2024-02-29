@@ -72,7 +72,7 @@ public partial class BreachGameMode : FacilityManager
         {
             if (player is PlayerScript playerScript)
             {
-                Rpc("SetPlayerClass", playerScript.Name, TossPlayerClass(i), "Round start.");
+                RpcId(int.Parse(playerScript.Name), "SetPlayerClass", playerScript.Name, TossPlayerClass(i), "Round start.", false);
                 i++;
             }
         }
@@ -88,7 +88,7 @@ public partial class BreachGameMode : FacilityManager
             PlayerScript player = GetNode<PlayerScript>(item);
             if (player.classKey == 0) //spectator
             {
-                Rpc("SetPlayerClass", item, "mtfe11", "MTF arrive.");
+                RpcId(int.Parse(item), "SetPlayerClass", item, "mtfe11", "MTF arrive.", false);
             }
         }
     }
@@ -178,6 +178,10 @@ public partial class BreachGameMode : FacilityManager
                 }
             }
         }
+        else if (GetNode<WarheadController>("OmegaWarhead").detonated)
+        {
+            Rpc("RoundEnd", 4);
+        }
     }
     /// <summary>
     /// Round end scenario. After 15 seconds shutdowns the server.
@@ -199,6 +203,9 @@ public partial class BreachGameMode : FacilityManager
                 break;
             case 3:
                 GetNode<RichTextLabel>("PlayerUI/GameEnd").Text = "Stalemate!\nThe server will be turned off soon...";
+                break;
+            case 4:
+                GetNode<RichTextLabel>("PlayerUI/GameEnd").Text = "Stalemate - The warhead has been detonated!\nThe server will be turned off soon...";
                 break;
             default:
                 break;

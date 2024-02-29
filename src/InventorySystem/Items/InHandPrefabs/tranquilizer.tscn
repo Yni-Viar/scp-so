@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://crkshxc0i6kxc"]
+[gd_scene load_steps=19 format=3 uid="uid://crkshxc0i6kxc"]
 
 [ext_resource type="Script" path="res://InventorySystem/Items/InHandPrefabs/WeaponManager.cs" id="1_p0gf7"]
-[ext_resource type="AudioStream" uid="uid://cso4afy1g5o5t" path="res://Sounds/Tranquilizer.ogg" id="2_ap1lb"]
+[ext_resource type="AudioStream" uid="uid://3c6mr4st55e3" path="res://Sounds/Weapons/tranquilizer/Retro_Shot.ogg" id="2_h8x8g"]
+[ext_resource type="AudioStream" uid="uid://8prcsgx4h2lk" path="res://Sounds/Weapons/tranquilizer/Retro_Reload.ogg" id="3_2sq02"]
 [ext_resource type="Texture2D" uid="uid://b30ec2mexlv7g" path="res://Assets/Models/Items-weapons/tranquilizer/Untitled.png" id="3_ip606"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmtnc"]
@@ -255,11 +256,15 @@ damage = 10.0
 reloadingTime = 1.0
 isTranquilizer = true
 fovAjustingSpeed = 2.0
-recoilAmount = 1.0
-poofSounds = [ExtResource("2_ap1lb")]
+recoilAmount = 15.0
+recoilSpeed = 15.0
+recoilTarget = Vector3(1.5, 1.5, 1.5)
+aimTarget = Vector3(1, 1, 1)
+poofSounds = [ExtResource("2_h8x8g")]
+reloadSound = ExtResource("3_2sq02")
 
 [node name="Mesh" type="Node3D" parent="."]
-transform = Transform3D(-0.0019241, 0, 0.0407551, 0, 0.0408005, 0, -0.0407551, 0, -0.0019241, 0, -0.365584, 0)
+transform = Transform3D(-0.0019241, 0, 0.0407551, 0, 0.0408005, 0, -0.0407551, 0, -0.0019241, 0.132918, -0.365584, 0)
 
 [node name="körper" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.48399, 0)
@@ -290,11 +295,6 @@ skeleton = NodePath("")
 transform = Transform3D(0, 0.857944, 0, -0.645649, 0, 0, 0, 0, 0.645649, -4.35879, 6.63917, -0.720953)
 mesh = SubResource("ArrayMesh_07dch")
 skeleton = NodePath("")
-
-[node name="ShootingRange" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.344639)
-target_position = Vector3(0, 0, -1024)
-collision_mask = 7
 
 [node name="WeaponSound" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0478334)

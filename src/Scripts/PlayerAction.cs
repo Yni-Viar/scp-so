@@ -76,6 +76,6 @@ public partial class PlayerAction : Node3D
     /// <param name="to">Player class to become</param>
     internal void CallForceclass(int to, string reason)
     {
-        GetParent<FacilityManager>().Rpc("SetPlayerClass", Multiplayer.GetUniqueId().ToString(), to, reason);
+        GetParent<FacilityManager>().RpcId(Multiplayer.GetUniqueId(), "SetPlayerClass", Multiplayer.GetUniqueId().ToString(), to, reason, false);
     }
 }

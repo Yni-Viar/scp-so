@@ -737,7 +737,7 @@ visibility_range_end = 128.0
 mesh = SubResource("ArrayMesh_ppi4t")
 skeleton = NodePath("")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="Light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.662486, 0)
 light_size = 0.1
 distance_fade_enabled = true

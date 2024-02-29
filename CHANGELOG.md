@@ -1,6 +1,30 @@
 # Changelog
 The current state of the game - Alpha.
 ## Alpha versions
+### v.0.8.0 (2024.02.29)
+*Please note, syntax of the most admin commands changed. Please, check the message in* `help` *command.*
+- Added new Light Containment Zone doors.
+- Added SCP-2306 and a game mechanic specified for this SCP.
+- SCP-2522 is now enabled, but is still experimental.
+- Now SCP-131 instances are counted as targets as human classes.
+- Reworked the core of the game - now it is possible to have different gamemodes.
+- Thanks to Xandromeda's advice, I have changed the data storage system - now it is safer.
+- Added health, sanity and energy (for SCP-2522) bar icons, as well as some other currently unused ones.
+- Fixed player name not syncing.
+- Increased inventory icons size.
+- Third-person item now using Pickable - and not first-person prefabs.
+- Fixed keycard level 5 to be identified as keycard level 1.
+- Reworked button system, switching to our own solution.
+- Fixed collision in SCP-650 containment chamber.
+- Initial support of translations.
+- Added new ability for SCP-173, as well as returning Light Detector.
+- Added level system for SCP-2522.
+- New elevator system - currently used only for nuke.
+- PDA item is now working!
+- Added new female scientist model (Welcome to the facility, Charlotte!)
+- More optimization.
+- Fixed wrong normals at SCP-650 containment chamber.
+- Added proper recoil
 ### v.0.7.2 (2024.01.06)
 - Added force start command (requested by users)
 - Added NPC subsystem (SCP-650 included). (There is a chance for a NPC spawning)

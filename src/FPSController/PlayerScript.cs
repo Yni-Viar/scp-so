@@ -128,7 +128,7 @@ public partial class PlayerScript : CharacterBody3D
                 playerName = "Unknown player " + rng.Randi();
             }
 
-            GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = true;
+            GetNode<Camera3D>("PlayerHead/PlayerRecoil/PlayerCamera").Current = true;
             playerHead = GetNode<Node3D>("PlayerHead");
             
             interactSound = GetNode<AudioStreamPlayer3D>("InteractSound");
@@ -137,12 +137,12 @@ public partial class PlayerScript : CharacterBody3D
         }
         else
         {
-            GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = false;
+            GetNode<Camera3D>("PlayerHead/PlayerRecoil/PlayerCamera").Current = false;
         }
         walkSounds = GetNode<AudioStreamPlayer3D>("WalkSounds");
         ray = GetNode<RayCast3D>("PlayerHead/RayCast3D");
         ray.AddException(this);
-        watchRay = GetNode<RayCast3D>("PlayerHead/VisionRadius");
+        watchRay = GetNode<RayCast3D>("PlayerHead/PlayerRecoil/VisionRadius");
         watchRay.AddException(this);
     }
     //unused
@@ -491,13 +491,13 @@ public partial class PlayerScript : CharacterBody3D
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void ApplyShader(string res)
     {
-        if (GetNodeOrNull("PlayerHead/PlayerCamera/" + res) != null && res != null && res != "")
+        if (GetNodeOrNull("PlayerHead/PlayerRecoil/PlayerCamera" + res) != null && res != null && res != "")
         {
-            GetNode<MeshInstance3D>("PlayerHead/PlayerCamera/" + res).Visible = true;
+            GetNode<MeshInstance3D>("PlayerHead/PlayerRecoil/PlayerCamera" + res).Visible = true;
         }
         else
         {
-            foreach (Node node in GetNode("PlayerHead/PlayerCamera/").GetChildren())
+            foreach (Node node in GetNode("PlayerHead/PlayerRecoil/PlayerCamera").GetChildren())
             {
                 if (node is MeshInstance3D shader)
                 {
@@ -524,7 +524,7 @@ public partial class PlayerScript : CharacterBody3D
     {
         if (defaultCamera)
         {
-            GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = true;
+            GetNode<Camera3D>("PlayerHead/PlayerRecoil/PlayerCamera").Current = true;
             if (!OS.IsDebugBuild()) //this method checks is this a debug build and does the current class have custom camera.
             {
                 Input.MouseMode = Input.MouseModeEnum.Captured;

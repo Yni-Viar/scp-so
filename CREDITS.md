@@ -57,6 +57,10 @@
 
 - Copyright (c) 2022 Reun Media Partnership
 
+### Recoil System (MIT License)
+
+- Copyright (c) 2024 AceSpectre
+
 
 ## Assets
 ### Models (license - [CC-BY-SA 3.0](/LICENSE.CCBYSA3))

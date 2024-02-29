@@ -133,7 +133,7 @@ public partial class Scp106PlayerScript : Node3D
     {
         //Part 1. Stop movement, change camera and show the model.
         GetParent().GetParent<PlayerScript>().CanMove = false;
-        GetParent().GetParent<PlayerScript>().GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = false;
+        GetParent().GetParent<PlayerScript>().GetNode<Camera3D>("PlayerHead/PlayerRecoil/PlayerCamera").Current = false;
         GetNode<Camera3D>("TeleportCamera").Current = true;
         GetNode<Node3D>("106_Rig").Show();
         //Part 2. Play the animation with sound, and wait for 3 seconds.
@@ -152,7 +152,7 @@ public partial class Scp106PlayerScript : Node3D
         GetNode<Node3D>("106_Rig").Hide();
         GetNode<Camera3D>("TeleportCamera").RotateY(-180);
         GetNode<Camera3D>("TeleportCamera").Current = false;
-        GetParent().GetParent<PlayerScript>().GetNode<Camera3D>("PlayerHead/PlayerCamera").Current = true;
+        GetParent().GetParent<PlayerScript>().GetNode<Camera3D>("PlayerHead/PlayerRecoil/PlayerCamera").Current = true;
         GetParent().GetParent<PlayerScript>().CanMove = true;
         stalkCooldown = true;
         GetNode<Label>("AbilityUI/VBoxContainer/Stalk").Text = "Stalk: cooldown...";

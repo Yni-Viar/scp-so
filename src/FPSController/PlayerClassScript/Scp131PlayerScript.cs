@@ -6,7 +6,7 @@ using System;
 public partial class Scp131PlayerScript : Node3D
 {
     //[Export] internal bool isWatchingAtScp173 = false;
-    RayCast3D vision;
+    //RayCast3D vision;
     bool scanCooldown = false;
     bool danger = false;
     // Called when the node enters the scene tree for the first time.
@@ -19,7 +19,7 @@ public partial class Scp131PlayerScript : Node3D
         }
         GetParent().GetParent<PlayerScript>().SetCollisionMaskValue(3, true);
         GetParent().GetParent<PlayerScript>().CanMove = true;
-        vision = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/VisionRadius");
+        //vision = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/PlayerRecoil/VisionRadius");
         GetNode<Label>("AbilityUI/VBoxContainer/ScanHostiles").Text = "Scan hostiles: ready! Click [F] to scan.";
     }
 

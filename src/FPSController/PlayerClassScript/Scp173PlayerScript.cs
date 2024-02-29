@@ -37,7 +37,7 @@ public partial class Scp173PlayerScript : Node3D
         }
         SetRandomFace();
         ray = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/RayCast3D");
-        //vision = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/VisionRadius");
+        //vision = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/PlayerRecoil/VisionRadius");
         interactSound = GetParent().GetParent<PlayerScript>().GetNode<AudioStreamPlayer3D>("InteractSound");
         GetNode<Label>("AbilityUI/VBoxContainer/Blind").Text = "Blind ability: Cooldown.";
         await ToSignal(GetTree().CreateTimer(5.0), "timeout");
@@ -82,23 +82,37 @@ public partial class Scp173PlayerScript : Node3D
     /// <param name="delta">Used for timeout</param>
     async void Scp173Stare(float delta)
     {
-        if (isWatching && stareCounter > 0 && GetNode<LightDetector>("LightDetector").lightness > 0.3 && !blindAbilityActive) //Light detector is broken
+        if (isWatching && stareCounter > 0 && !blindAbilityActive) //Light detector is broken
         {
-            //If SCP-173 is not moving, it should stand still!
-            if (GetParent().GetParent<PlayerScript>().CanMove && blinkTimer > 0f)
+            GetNode<SubViewport>("LightDetector/SubViewport").RenderTargetUpdateMode = SubViewport.UpdateMode.WhenParentVisible;
+            if (GetNode<LightDetector>("LightDetector").LightnessDetect() > 0.3)
             {
-                GetParent().GetParent<PlayerScript>().CanMove = false;
+                //If SCP-173 is not moving, it should stand still!
+                if (GetParent().GetParent<PlayerScript>().CanMove && blinkTimer > 0f)
+                {
+                    GetParent().GetParent<PlayerScript>().CanMove = false;
+                }
+                else if (blinkTimer < 0f)//blink
+                {
+                    GetParent().GetParent<PlayerScript>().CanMove = true;
+                    await ToSignal(GetTree().CreateTimer(0.5), "timeout");
+                    blinkTimer = 4.7f;
+                }
+                blinkTimer -= delta;
             }
-            else if (blinkTimer < 0f)//blink
+            else
             {
+                //move freely
                 GetParent().GetParent<PlayerScript>().CanMove = true;
-                await ToSignal(GetTree().CreateTimer(0.5), "timeout");
-                blinkTimer = 4.7f;
             }
-            blinkTimer -= delta;
         }
         else
-        { 
+        {
+            //optimization
+            if (GetNode<SubViewport>("LightDetector/SubViewport").RenderTargetUpdateMode == SubViewport.UpdateMode.WhenParentVisible)
+            {
+                GetNode<SubViewport>("LightDetector/SubViewport").RenderTargetUpdateMode = SubViewport.UpdateMode.Disabled;
+            }
             //move freely
             GetParent().GetParent<PlayerScript>().CanMove = true;
         }

@@ -204,20 +204,65 @@ public partial class FacilityManager : Node3D
             GD.Print("Player " + id.ToString() + " has left the server!");
         }
     }
-    /// <summary>
-    /// Sets player class through the RPC.
-    /// </summary>
-    /// <param name="playerName">Player ID, contained in name</param>
-    /// <param name="nameOfClass">Class, that will be granted</param>
+    
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal=true)]
-    internal void SetPlayerClass(string playerName, int nameOfClass, string reason) //Note: RPC ONLY HANDLES PRIMITIVE TYPES, NOT PLAYERSCRIPT!
+    internal void SetPlayerClass(string playerName, int nameOfClass, string reason, bool postStart) //Note: RPC ONLY HANDLES PRIMITIVE TYPES, NOT PLAYERSCRIPT!
     {
         if (nameOfClass < 0 || nameOfClass >= data.Classes.Count)
         {
             GD.PrintErr("For security reasons, you cannot change to class, that is unsupported by this server");
             return;
         }
-        //BaseClass classData = GD.Load<BaseClass>("res://FPSController/PlayerClassResources/" + nameOfClass + ".tres");
+        BaseClass classData = data.Classes[nameOfClass];
+        if (!postStart)
+        {
+            Rpc("SetPlayerClassPublic", playerName, nameOfClass);
+        }
+        //Applying properties to a player.
+        GetNode<PlayerScript>(playerName).classKey = nameOfClass;
+        GetNode<PlayerScript>(playerName).classDescription = classData.ClassDescription;
+        GetNode<PlayerScript>(playerName).scpNumber = classData.ScpNumber;
+        GetNode<PlayerScript>(playerName).sprintEnabled = classData.SprintEnabled;
+
+        GetNode<PlayerScript>(playerName).speed = classData.Speed;
+        GetNode<PlayerScript>(playerName).jump = classData.Jump;
+
+        GetNode<PlayerScript>(playerName).team = classData.Team;
+
+        GetNode<AmmoSystem>(playerName + "/AmmoSystem").ammo = classData.Ammo;
+        //Server calls
+        //if (Multiplayer.IsServer())
+        //{
+        //    GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "CameraManager", !classData.CustomCamera);
+        //    GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "UpdateClassUI", classData.ClassColor.ToRgba32());
+        //    GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "ApplyPlayerHeadPosition", classData.DefaultCameraPos);
+        //    GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "ApplyShader", classData.CustomView);
+        //    RpcId(int.Parse(playerName), "PreloadInventory", playerName, classData.PreloadedItems);
+        //}
+
+        GetNode<PlayerScript>(playerName).Call("CameraManager", !classData.CustomCamera);
+        GetNode<PlayerScript>(playerName).Call("UpdateClassUI", classData.ClassColor.ToRgba32());
+        GetNode<PlayerScript>(playerName).Call("ApplyPlayerHeadPosition", classData.DefaultCameraPos);
+        GetNode<PlayerScript>(playerName).Call("ApplyShader", classData.CustomView);
+        Call("PreloadInventory", playerName, classData.PreloadedItems);
+
+        if (GetTree().Root.GetNodeOrNull(classData.SpawnPoints[rng.RandiRange(0, classData.SpawnPoints.Length - 1)]) != null) //SCP CB Multiplayer moment (:
+        {
+            GetNode<PlayerScript>(playerName).Position = GetTree().Root.GetNode<Marker3D>(classData.SpawnPoints[rng.RandiRange(0, classData.SpawnPoints.Length - 1)]).GlobalPosition;
+        }
+        else //if simpler, if there is no spawnroom this round - force spawn in HCZ testroom.
+        {
+            GetNode<PlayerScript>(playerName).Position = GetTree().Root.GetNode<Marker3D>("Main/Game/MapGenHcz/HC_cont2_testroom/entityspawn").GlobalPosition;
+        }
+    }
+    /// <summary>
+    /// Sets player class through the RPC.
+    /// </summary>
+    /// <param name="playerName">Player ID, contained in name</param>
+    /// <param name="nameOfClass">Class, that will be granted</param>
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    void SetPlayerClassPublic(string playerName, int nameOfClass)
+    {
         BaseClass classData = data.Classes[nameOfClass];
 
         //tickets and targets
@@ -239,47 +284,19 @@ public partial class FacilityManager : Node3D
             targets--;
         }
 
-        //Applying properties to a player.
-        GetNode<PlayerScript>(playerName).classKey = nameOfClass;
         GetNode<PlayerScript>(playerName).className = classData.ClassName;
-        GetNode<PlayerScript>(playerName).classDescription = classData.ClassDescription;
-        GetNode<PlayerScript>(playerName).scpNumber = classData.ScpNumber;
-        GetNode<PlayerScript>(playerName).sprintEnabled = classData.SprintEnabled;
         GetNode<PlayerScript>(playerName).moveSoundsEnabled = classData.MoveSoundsEnabled;
         GetNode<PlayerScript>(playerName).footstepSounds = classData.FootstepSounds;
         GetNode<PlayerScript>(playerName).sprintSounds = classData.SprintSounds;
-        GetNode<PlayerScript>(playerName).speed = classData.Speed;
-        GetNode<PlayerScript>(playerName).jump = classData.Jump;
         GetNode<PlayerScript>(playerName).health[0] = classData.Health;
         GetNode<PlayerScript>(playerName).health[1] = classData.Sanity;
         GetNode<PlayerScript>(playerName).currentHealth[0] = classData.Health;
         GetNode<PlayerScript>(playerName).currentHealth[1] = classData.Sanity;
-        GetNode<PlayerScript>(playerName).team = classData.Team;
-
-        GetNode<AmmoSystem>(playerName + "/AmmoSystem").ammo = classData.Ammo;
-        //Server calls
-        if (Multiplayer.IsServer())
-        {
-            GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "CameraManager", !classData.CustomCamera);
-            GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "UpdateClassUI", classData.ClassColor.ToRgba32());
-            GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "ApplyPlayerHeadPosition", classData.DefaultCameraPos);
-            GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "ApplyShader", classData.CustomView);
-            RpcId(int.Parse(playerName), "PreloadInventory", playerName, classData.PreloadedItems);
-        }
         GetNode<PlayerScript>(playerName).ragdollSource = classData.PlayerRagdollSource;
-
-        // PreloadInventory(playerName, classData.PreloadedItems);
-        // RpcId(int.Parse(playerName), "UpdateClassUI", GetNode<PlayerScript>(playerName).className, GetNode<PlayerScript>(playerName).health);
         LoadModels(playerName, nameOfClass);
-        if (GetTree().Root.GetNodeOrNull(classData.SpawnPoints[rng.RandiRange(0, classData.SpawnPoints.Length - 1)]) != null) //SCP CB Multiplayer moment (:
-        {
-            GetNode<PlayerScript>(playerName).Position = GetTree().Root.GetNode<Marker3D>(classData.SpawnPoints[rng.RandiRange(0, classData.SpawnPoints.Length - 1)]).GlobalPosition;
-        }
-        else //if simpler, if there is no spawnroom this round - force spawn in HCZ testroom.
-        {
-            GetNode<PlayerScript>(playerName).Position = GetTree().Root.GetNode<Marker3D>("Main/Game/MapGenHcz/HC_cont2_testroom/entityspawn").GlobalPosition;
-        }
+
     }
+
     /// <summary>
     /// Recall player classes for player, which got connected to ongoing round.
     /// </summary>
@@ -287,24 +304,22 @@ public partial class FacilityManager : Node3D
     /// <param name="target">A player connected mid-round</param>
     internal virtual void PostRoundStart(Godot.Collections.Array<string> players, long target)
     {
-        Rpc("SetPlayerClass", playerScene.Name, 0, "Post-roundstart arriving.");
+        RpcId(int.Parse(playerScene.Name), "SetPlayerClass", playerScene.Name, 0, "Post-roundstart arriving.", false);
         foreach (string playerName in players)
         {
             if (playerName != playerScene.Name)
             {
-                RpcId(target, "SetPlayerClass", playerName, GetNode<PlayerScript>(playerName).classKey, "Previous player");
+                RpcId(target, "SetPlayerClass", playerName, GetNode<PlayerScript>(playerName).classKey, "Previous player", true);
             }
         }
         Rpc("CleanRagdolls");
     }
-    /*
+
     /// <summary>
     /// Loads the models of a player.
     /// </summary>
-    /// <param name="playerName">Name of a player</param>
-    /// */
-    
-
+    /// <param name="playerName">ID of a player</param>
+    /// <param name="classId">ID of the player class</param>
     void LoadModels(string playerName, int classId)
     {
         PlayerScript playerScript = GetNode<PlayerScript>(playerName);
@@ -325,7 +340,6 @@ public partial class FacilityManager : Node3D
     /// </summary>
     /// <param name="playerName">Name of the player</param>
     /// <param name="itemsArray">Preloaded items</param>
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void PreloadInventory(string playerName, string[] itemsArray)
     {
         for (int i = 0; i < GetNode<Inventory>(playerName + "/InventoryContainer/Inventory").items.Count; i++)

@@ -90,7 +90,7 @@ public partial class Scp2522Recontain : StaticBody3D
 		{
 			if (GetTree().Root.GetNode<PlayerScript>("Main/Game/" + peer).className == "SCP-2522,\"hatbot.aic\"")
 			{
-				GetTree().Root.GetNode<FacilityManager>("Main/Game/").Rpc("SetPlayerClass", peer, 0, "Recontained by SCP-2306.");
+				GetTree().Root.GetNode<FacilityManager>("Main/Game/").RpcId(int.Parse(peer), "SetPlayerClass", peer, 0, "Recontained by SCP-2306.", false);
             }
         }
     }

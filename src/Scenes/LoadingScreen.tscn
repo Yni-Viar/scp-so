@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cspahtxouvnr2"]
+[gd_scene load_steps=4 format=3 uid="uid://cspahtxouvnr2"]
 
 [ext_resource type="Script" path="res://Scripts/LoadingScreen.cs" id="1_2iio4"]
+[ext_resource type="FontFile" uid="uid://c5notad62nmgy" path="res://Assets/Fonts/SansNormalcy/Normalcy-v0.1.7.otf" id="2_6kgxs"]
 [ext_resource type="Theme" uid="uid://4k2un7nm7xc6" path="res://UITheme.tres" id="2_v4mot"]
 
 [node name="LoadingScreen" type="CanvasLayer"]
@@ -48,6 +49,7 @@ offset_right = 392.0
 offset_bottom = 96.24
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_6kgxs")
 theme_override_font_sizes/font_size = 64
 horizontal_alignment = 1
 vertical_alignment = 1

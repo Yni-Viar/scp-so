@@ -31,7 +31,6 @@ public partial class LightDetector : Node3D
 {
 	SubViewport view;
 	Camera3D cam;
-    [Export] internal float lightness;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -44,7 +43,6 @@ public partial class LightDetector : Node3D
 		else
         {
             GetNode<SubViewport>("SubViewport").QueueFree();
-            lightness = 1;
             Hide();
             SetProcess(false);
         }
@@ -55,8 +53,6 @@ public partial class LightDetector : Node3D
         if (GetTree().Root.GetNode<PlayerScript>("Main/Game/" + Multiplayer.GetUniqueId()).IsMultiplayerAuthority())
         {
             cam.GlobalPosition = GlobalPosition;
-            lightness = LightnessDetect();
-            GD.Print("Lightess" + lightness);
         }
     }
     /// <summary>

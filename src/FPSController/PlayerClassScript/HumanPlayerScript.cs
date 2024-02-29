@@ -20,7 +20,7 @@ public partial class HumanPlayerScript : Node3D
         }
         GetParent().GetParent<PlayerScript>().SetCollisionMaskValue(3, true);
         GetParent().GetParent<PlayerScript>().CanMove = true;
-        vision = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/VisionRadius");
+        vision = GetParent().GetParent<PlayerScript>().GetNode<RayCast3D>("PlayerHead/PlayerRecoil/VisionRadius");
         OnStart();
     }
 

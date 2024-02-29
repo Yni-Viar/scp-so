@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://cu440emlhve1m"]
+[gd_scene load_steps=18 format=3 uid="uid://cu440emlhve1m"]
 
 [ext_resource type="Script" path="res://FPSController/PlayerScript.cs" id="1_tw8h1"]
 [ext_resource type="PackedScene" uid="uid://hw0aruclawku" path="res://InventorySystem/InventoryContainer.tscn" id="2_6uw7r"]
 [ext_resource type="Script" path="res://FPSController/Commands.cs" id="2_decth"]
+[ext_resource type="Script" path="res://FPSController/PlayerRecoil.cs" id="3_1fwcl"]
 [ext_resource type="Shader" path="res://Shaders/ToonShader/toon.gdshader" id="3_kc8a4"]
 [ext_resource type="Material" uid="uid://ci0m68xlui2q5" path="res://Shaders/EdgeDetectShade.tres" id="4_fjjm1"]
 [ext_resource type="Material" uid="uid://ckvs50m51c56c" path="res://Shaders/DitherShade.tres" id="4_kaaud"]
@@ -104,27 +105,36 @@ script = ExtResource("2_decth")
 [node name="PlayerHead" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.968611, -0.292869)
 
-[node name="PlayerCamera" type="Camera3D" parent="PlayerHead"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.53674e-07, 0.133102)
+[node name="PlayerRecoil" type="Node3D" parent="PlayerHead"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.968611, 0.292869)
+script = ExtResource("3_1fwcl")
+
+[node name="PlayerCamera" type="Camera3D" parent="PlayerHead/PlayerRecoil"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96861, -0.159767)
 cull_mask = 524287
 
-[node name="ToonShader" type="MeshInstance3D" parent="PlayerHead/PlayerCamera"]
+[node name="ToonShader" type="MeshInstance3D" parent="PlayerHead/PlayerRecoil/PlayerCamera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.038706)
 visible = false
 mesh = SubResource("QuadMesh_wuaka")
 surface_material_override/0 = SubResource("ShaderMaterial_qaxjx")
 
-[node name="EdgeDetectShader" type="MeshInstance3D" parent="PlayerHead/PlayerCamera"]
+[node name="EdgeDetectShader" type="MeshInstance3D" parent="PlayerHead/PlayerRecoil/PlayerCamera"]
 visible = false
 extra_cull_margin = 4096.0
 mesh = SubResource("PlaneMesh_3c6ve")
 surface_material_override/0 = ExtResource("4_fjjm1")
 
-[node name="DitherShader" type="MeshInstance3D" parent="PlayerHead/PlayerCamera"]
+[node name="DitherShader" type="MeshInstance3D" parent="PlayerHead/PlayerRecoil/PlayerCamera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.038706)
 visible = false
 mesh = SubResource("PlaneMesh_xm0hl")
 surface_material_override/0 = ExtResource("4_kaaud")
+
+[node name="VisionRadius" type="RayCast3D" parent="PlayerHead/PlayerRecoil"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.968611, -0.292869)
+target_position = Vector3(0, 0, -128)
+collision_mask = 15
 
 [node name="RayCast3D" type="RayCast3D" parent="PlayerHead"]
 target_position = Vector3(0, 0, -3)
@@ -132,10 +142,6 @@ collision_mask = 15
 
 [node name="ItemSpawn" type="Marker3D" parent="PlayerHead"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.197413, -0.0797351)
-
-[node name="VisionRadius" type="RayCast3D" parent="PlayerHead"]
-target_position = Vector3(0, 0, -48)
-collision_mask = 15
 
 [node name="PlayerHand" type="Marker3D" parent="PlayerHead"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.33)
