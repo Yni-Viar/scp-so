@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://buug7v2yi6oi8" path="res://MapGen/Resources/RoomAssets/HCZ/metalpanels2.jpg" id="4_ga1a1"]
 [ext_resource type="Texture2D" uid="uid://dnwqjsmtdhnds" path="res://MapGen/Resources/RoomAssets/HCZ/concretewall.jpg" id="5_gd7jk"]
 [ext_resource type="Texture2D" uid="uid://lbeu75a7ig1x" path="res://MapGen/Resources/RoomAssets/HCZ/dirtymetal.jpg" id="6_igox0"]
-[ext_resource type="PackedScene" uid="uid://dn7xcp8e6o86h" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="7_cnlbm"]
+[ext_resource type="PackedScene" uid="uid://dn7xcp8e6o86h" path="res://Assets/Props/Lamp/lamp.tscn" id="7_cnlbm"]
 [ext_resource type="PackedScene" uid="uid://dme4cvlaar7xi" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="8_2ouvq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xps3k"]

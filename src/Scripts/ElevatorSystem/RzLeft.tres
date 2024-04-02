@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b8kkxxwsiwrdc"]
+
+[ext_resource type="Script" path="res://Scripts/ElevatorSystem/ElevatorFloor.cs" id="1_ae0nk"]
+
+[resource]
+script = ExtResource("1_ae0nk")
+DestinationPoint = "/root/Main/Game/MapGenRz/RZ_ckpt1/RzLeftBoard"
+UpHelperPoint = ""
+DownHelperPoint = "/root/Main/Game/MapGenRz/RZ_ckpt1/RzLeftDown"

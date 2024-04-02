@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://tqyi07sd54k3" path="res://MapGen/Resources/RoomAssets/RZ/dirtymetal.jpg" id="5_fvkvu"]
 [ext_resource type="Texture2D" uid="uid://6ntwfkej7hjg" path="res://MapGen/Resources/RoomAssets/RZ/metal.jpg" id="6_hodhc"]
 [ext_resource type="Texture2D" uid="uid://dcj273s8h82qj" path="res://MapGen/Resources/RoomAssets/RZ/metalpanels.jpg" id="7_ouuud"]
-[ext_resource type="PackedScene" uid="uid://b7xwwuyi26i62" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="8_ix4vk"]
+[ext_resource type="PackedScene" uid="uid://b7xwwuyi26i62" path="res://Assets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="8_ix4vk"]
 [ext_resource type="PackedScene" uid="uid://c8brqgry3c6r2" path="res://MapGen/Resources/Cameras/cctv_rz.tscn" id="9_1qbl3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6gkhg"]

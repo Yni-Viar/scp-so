@@ -24,7 +24,7 @@ public partial class ElevatorButton : InteractableCommon
         if (GetTree().GetFirstNodeInGroup(group) != null)
         {
             ElevatorSystem elevator = (ElevatorSystem)GetTree().GetFirstNodeInGroup(group);
-            elevator.Rpc("ElevatorMove", floor);
+            elevator.Rpc("CallElevator", floor);
         }
     }
 }

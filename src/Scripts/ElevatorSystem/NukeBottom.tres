@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://1jkhbjp86n6o"]
+
+[ext_resource type="Script" path="res://Scripts/ElevatorSystem/ElevatorFloor.cs" id="1_1t5fx"]
+
+[resource]
+script = ExtResource("1_1t5fx")
+DestinationPoint = "/root/Main/Game/MapGenHcz/HC_room2_nuke/ElevatorBottom"
+UpHelperPoint = ""
+DownHelperPoint = ""

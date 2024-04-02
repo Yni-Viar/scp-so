@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=16 format=3 uid="uid://d2gmepcgbida"]
 
 [ext_resource type="Script" path="res://Scripts/GameData/Rooms.cs" id="1_26k64"]
-[ext_resource type="PackedScene" uid="uid://bn8u5ptu0w363" path="res://MapGen/Resources/ROOM1/lc_ckpt_1.tscn" id="1_r7qja"]
+[ext_resource type="PackedScene" uid="uid://b3pk15hfqudyf" path="res://MapGen/Resources/ROOM1/lc_ckpt_1.tscn" id="1_hohs6"]
 [ext_resource type="PackedScene" uid="uid://m1l1c23oc4vx" path="res://MapGen/Resources/ROOM1/lc_cont_1_testroom.tscn" id="2_5n4i0"]
 [ext_resource type="PackedScene" uid="uid://doq3frunqgmx5" path="res://MapGen/Resources/ROOM1/lc_room_1_archive.tscn" id="3_u7cil"]
 [ext_resource type="PackedScene" uid="uid://b12x32et3kcdn" path="res://MapGen/Resources/ROOM1/lc_cont_1_079.tscn" id="4_dx20s"]
@@ -18,7 +18,7 @@
 
 [resource]
 script = ExtResource("1_26k64")
-Room1 = [ExtResource("1_r7qja"), ExtResource("2_5n4i0"), ExtResource("3_u7cil"), ExtResource("4_dx20s")]
+Room1 = [ExtResource("1_hohs6"), ExtResource("2_5n4i0"), ExtResource("3_u7cil"), ExtResource("4_dx20s")]
 Room2 = [ExtResource("5_rwg5b"), ExtResource("6_6q1kg"), ExtResource("7_ma2il")]
 Room2C = []
 Room3 = []

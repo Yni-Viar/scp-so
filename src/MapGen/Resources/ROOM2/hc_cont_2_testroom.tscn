@@ -17,8 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://wkxmvrfmckp8" path="res://MapGen/Resources/Doors/DoorGate/GateFrame/Metal032_2K_Metalness-Metal032_2K_Roughness.png" id="16_x2dlx"]
 [ext_resource type="PackedScene" uid="uid://bxj3dd8r00p7v" path="res://InventorySystem/Items/PickablePrefabs/key2.tscn" id="17_m7qc2"]
 [ext_resource type="PackedScene" uid="uid://dme4cvlaar7xi" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="18_hjlf8"]
-[ext_resource type="PackedScene" uid="uid://djp0sa154mm7a" path="res://MapGen/Resources/RoomAssets/Props/security_light.tscn" id="18_k2aad"]
-[ext_resource type="PackedScene" uid="uid://bmacptdhvw6h7" path="res://MapGen/Resources/RoomAssets/Props/ceiling_lamp.tscn" id="19_k1pif"]
+[ext_resource type="PackedScene" uid="uid://djp0sa154mm7a" path="res://Assets/Props/security_light.tscn" id="18_k2aad"]
+[ext_resource type="PackedScene" uid="uid://bmacptdhvw6h7" path="res://Assets/Props/ceiling_lamp.tscn" id="19_k1pif"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_b4c73"]
 _surfaces = [{

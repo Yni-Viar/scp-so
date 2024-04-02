@@ -488,7 +488,6 @@ public partial class PlayerScript : CharacterBody3D
     /// Applies player camera shader. Only spatial shaders could be applied due to project structure.
     /// </summary>
     /// <param name="res">Child node path</param>
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void ApplyShader(string res)
     {
         if (GetNodeOrNull("PlayerHead/PlayerRecoil/PlayerCamera" + res) != null && res != null && res != "")
@@ -510,7 +509,6 @@ public partial class PlayerScript : CharacterBody3D
     /// Applies player head position.
     /// </summary>
     /// <param name="cameraPos"></param>
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     internal void ApplyPlayerHeadPosition(float cameraPos)
     {
         playerHead.Position = new Vector3(0, cameraPos, 0);
@@ -519,7 +517,6 @@ public partial class PlayerScript : CharacterBody3D
     /// Manages default camera. If custom camera, cursor won't be locked.
     /// </summary>
     /// <param name="defaultCamera">Check if is a default camera</param>
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void CameraManager(bool defaultCamera)
     {
         if (defaultCamera)
@@ -541,7 +538,6 @@ public partial class PlayerScript : CharacterBody3D
     /// Sets player class color. Available since 0.7.0-dev
     /// </summary>
     /// <param name="color"></param>
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
     void UpdateClassUI(uint color)
     {
         Color classColor = new Color(color);

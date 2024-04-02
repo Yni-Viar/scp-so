@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ks76w0xoewcp" path="res://MapGen/Resources/RoomAssets/RZ/scplogo.jpg" id="9_dh5fj"]
 [ext_resource type="Texture2D" uid="uid://db1lds78yqlws" path="res://MapGen/Resources/RoomAssets/RZ/papertexture.jpg" id="10_c3jj4"]
 [ext_resource type="Texture2D" uid="uid://cxgm5gvqsps5m" path="res://MapGen/Resources/RoomAssets/RZ/red.jpg" id="11_32472"]
-[ext_resource type="PackedScene" uid="uid://b7xwwuyi26i62" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="12_82mhx"]
+[ext_resource type="PackedScene" uid="uid://b7xwwuyi26i62" path="res://Assets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="12_82mhx"]
 [ext_resource type="PackedScene" uid="uid://dkhqc4ewjs2h2" path="res://InventorySystem/Items/PickablePrefabs/pda.tscn" id="13_eekl3"]
 [ext_resource type="PackedScene" uid="uid://mtaiulg3une7" path="res://InventorySystem/Items/PickablePrefabs/key3.tscn" id="14_2oycn"]
 [ext_resource type="PackedScene" uid="uid://c8brqgry3c6r2" path="res://MapGen/Resources/Cameras/cctv_rz.tscn" id="15_rvodt"]

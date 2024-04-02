@@ -1,14 +1,14 @@
 using Godot;
 using System;
-using System.Drawing;
+using System.Collections.Generic;
 /// <summary>
 /// Moving elevator system
 /// </summary>
 public partial class ElevatorSystem : Node3D
 {
 	enum LastMove { Up, Down }
-	[Export] LastMove lastMove = LastMove.Up;
-	[Export] string[] floors;
+	[Export] LastMove lastMove = LastMove.Up; 
+	[Export] Godot.Collections.Array<ElevatorFloor> floors = new Godot.Collections.Array<ElevatorFloor>();
 	[Export] string[] elevatorDoors;
 	[Export] float speed = 2f;
 	[Export] bool isMoving = false;
@@ -16,58 +16,79 @@ public partial class ElevatorSystem : Node3D
 	[Export] string[] closeDoorSounds;
     [Export] Godot.Collections.Array<string> objectsToTeleport = new Godot.Collections.Array<string>();
     [Export] int currentFloor;
-	int nextFloor;
-	Godot.Collections.Array<Vector3> targetPos = new Godot.Collections.Array<Vector3>();
+	[Export] int targetFloor;
+    [Export] Godot.Collections.Array<Vector3[]> waypoints = new Godot.Collections.Array<Vector3[]>();
 	int counter = 0;
+    bool passFloor = false;
+	Vector3 rotation;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		rotation = Rotation;
 		if (!isMoving)
 		{
-			if (floors.Length == 1)
-			{
-				switch (lastMove)
-				{
-					case LastMove.Up:
-						GetTree().Root.GetNode<Door>("Main/" + elevatorDoors[currentFloor] + "_Up").DoorOpen();
-						break;
-					case LastMove.Down:
-						GetTree().Root.GetNode<Door>("Main/" + elevatorDoors[currentFloor] + "_Bottom").DoorOpen();
-						break;
-				}
-			}
-			else
-			{
-				GetTree().Root.GetNode<Door>(elevatorDoors[currentFloor]).DoorOpen();
-			}
+			GetTree().Root.GetNode<Door>("Main/" + elevatorDoors[currentFloor]).DoorOpen();
 			DoorOpen();
 		}
 	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (isMoving)
+		if (isMoving && waypoints.Count > 0)
 		{
-			GlobalPosition = GlobalPosition.MoveToward(targetPos[counter], speed * (float)delta);
+			GlobalPosition = GlobalPosition.MoveToward(waypoints[counter][0], speed * (float)delta);
+			GlobalRotation = GlobalRotation.MoveToward(waypoints[counter][1] + rotation, speed * 0.25f * (float) delta);
 			for (int i = 0; i < objectsToTeleport.Count; i++)
 			{
 				Node3D node = GetNode<Node3D>(objectsToTeleport[i]);
 				node.GlobalPosition += GetNode<Marker3D>("ObjectPos").GlobalPosition;
-			}
-			if (GlobalPosition == targetPos[counter])
+				node.Rotation += GetNode<Marker3D>("ObjectPos").GlobalRotation;
+            }
+            //remember, floating numbers needs IsEqualApprox, Yni!
+			if (GlobalPosition.IsEqualApprox(waypoints[counter][0]))
 			{
-				if (counter < targetPos.Count - 1)
+				if (counter < waypoints.Count - 1)
 				{
 					counter++;
 				}
 				else
 				{
-					Rpc(nameof(OpenDestDoors));
+					counter = 0;
+					waypoints.Clear();
 					isMoving = false;
-					GetNode<AudioStreamPlayer3D>("Move").Stop();
-					targetPos.Clear();
+                    if (passFloor)
+                    {
+                        if (lastMove == LastMove.Down && Multiplayer.IsServer())
+                        {
+                            if (currentFloor < targetFloor)
+                            {
+                                ElevatorMove(true);
+                            }
+                            else
+                            {
+                                ElevatorMove(false);
+                            }
+                        }
+                        else if (lastMove == LastMove.Up && Multiplayer.IsServer())
+                        {
+                            if (currentFloor > targetFloor)
+                            {
+                                ElevatorMove(true);
+                            }
+                            else
+                            {
+                                ElevatorMove(false);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        GetNode<AudioStreamPlayer3D>("Move").Stop();
+                        Rpc(nameof(OpenDestDoors));
+                    }
 				}
 			}
+			
 		}
 	}
 	/// <summary>
@@ -94,67 +115,101 @@ public partial class ElevatorSystem : Node3D
 		sfx.Stream = GD.Load<AudioStream>(closeDoorSounds[rng.RandiRange(0, closeDoorSounds.Length - 1)]);
 		sfx.Play();
 	}
+    /*
 	/// <summary>
 	/// Moves elevator (network method)
 	/// </summary>
-	/// <param name="floor">Which floor (if there is only floor, then 0)</param>
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
-	internal void ElevatorMove(int floor)
-	{
-		if (isMoving)
+	/// <param name="floor">Up or down (0.8.1 change)</param>
+
+    */
+
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
+    internal void CallElevator(int floor)
+    {
+		if (isMoving || floor == currentFloor)
 		{
 			return;
 		}
-		if (floors.Length == 1)
-		{
-			switch (lastMove)
-			{
-				case LastMove.Up:
-					GetTree().Root.GetNode<Door>("Main/" + elevatorDoors[0] + "_Up").DoorClose();
-					break;
-				case LastMove.Down:
-					GetTree().Root.GetNode<Door>("Main/" + elevatorDoors[0] + "_Bottom").DoorClose();
-					break;
-			}
-		}
-		else
-		{
-			GetTree().Root.GetNode<Door>("Main/" + elevatorDoors[currentFloor]).DoorClose();
-		}
-		DoorClose();
-		
-		if (floors.Length == 1)
-		{
-			switch (lastMove)
-			{
-				case LastMove.Up:
-					lastMove = LastMove.Down;
-					targetPos.Add(FindNearestPoint(floor, false));
-					break;
-				case LastMove.Down:
-					targetPos.Add(FindNearestPoint(floor, true));
-					lastMove = LastMove.Up;
-					break;
-			}
-		}
-		else
-		{
-			if (floor < currentFloor)
-			{
-				for (int i = GetTree().GetNodesInGroup(floors[floor] + "Up").Count; i > 0; i--)
-				{
-					targetPos.Add(FindNearestPoint(floor, true));
-				}
-			}
-			else if (floor > currentFloor)
-			{
-				for (int i = GetTree().GetNodesInGroup(floors[floor] + "Bottom").Count; i > 0; i--)
-				{
-					targetPos.Add(FindNearestPoint(floor, false));
-				}
-			}
-			currentFloor = floor;
-		}
+        targetFloor = floor;
+        if (floors.Count == 1 || Mathf.Abs(targetFloor - currentFloor) == 1)
+        {
+            ElevatorMove(false);
+        }
+        else
+        {
+            ElevatorMove(true);
+        }
+    }
+
+	internal void ElevatorMove(bool pass)
+	{
+        passFloor = pass;
+        if (!pass)
+        {
+		    GetTree().Root.GetNode<Door>("Main/" + elevatorDoors[currentFloor]).DoorClose();
+		    DoorClose();
+        }
+        int floor;
+        if (targetFloor < currentFloor)
+        {
+            lastMove = LastMove.Up;
+            floor = currentFloor - 1;
+            //check if upper point of current floor exist
+            if (!string.IsNullOrEmpty(floors[currentFloor].UpHelperPoint))
+		    {
+                waypoints.Add(new Vector3[]
+                {
+                    GetNode<Marker3D>(floors[currentFloor].UpHelperPoint).GlobalPosition,
+                    GetNode<Marker3D>(floors[currentFloor].UpHelperPoint).GlobalRotation
+                });
+		    }
+            //check if lower point of next floor exist
+            if (!string.IsNullOrEmpty(floors[floor].DownHelperPoint))
+		    {
+                waypoints.Add(new Vector3[]
+                {
+                    GetNode<Marker3D>(floors[floor].DownHelperPoint).GlobalPosition,
+                    GetNode<Marker3D>(floors[floor].DownHelperPoint).GlobalRotation
+                });
+		    }
+            //destination point
+            waypoints.Add(new Vector3[]
+            {
+                GetNode<Marker3D>(floors[floor].DestinationPoint).GlobalPosition,
+                GetNode<Marker3D>(floors[floor].DestinationPoint).GlobalRotation
+            });
+            currentFloor = floor;
+        }
+        else if (targetFloor > currentFloor)
+        {
+            lastMove = LastMove.Down;
+            floor = currentFloor + 1;
+            //check if lower point of current floor exist
+            if (!string.IsNullOrEmpty(floors[currentFloor].DownHelperPoint))
+		    {
+                waypoints.Add(new Vector3[]
+                {
+                    GetNode<Marker3D>(floors[currentFloor].DownHelperPoint).GlobalPosition,
+                    GetNode<Marker3D>(floors[currentFloor].DownHelperPoint).GlobalRotation
+                });
+		    }
+            //check if upper point of next floor exist
+            if (!string.IsNullOrEmpty(floors[floor].UpHelperPoint))
+		    {
+                waypoints.Add(new Vector3[]
+                {
+                    GetNode<Marker3D>(floors[floor].UpHelperPoint).GlobalPosition,
+                    GetNode<Marker3D>(floors[floor].UpHelperPoint).GlobalRotation
+                });
+		    }
+            //destination point
+            waypoints.Add(new Vector3[]
+            {
+                GetNode<Marker3D>(floors[floor].DestinationPoint).GlobalPosition,
+                GetNode<Marker3D>(floors[floor].DestinationPoint).GlobalRotation
+            });
+            currentFloor = floor;
+        }
 		isMoving = true;
 		GetNode<AudioStreamPlayer3D>("Move").Play();
 	}
@@ -164,74 +219,25 @@ public partial class ElevatorSystem : Node3D
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
 	void OpenDestDoors()
 	{
-		if (floors.Length == 1)
-		{
-			switch (lastMove)
-			{
-				case LastMove.Up:
-					GetTree().Root.GetNode<Door>("Main/" + elevatorDoors[0] + "_Up").DoorOpen();
-					break;
-				case LastMove.Down:
-					GetTree().Root.GetNode<Door>("Main/" + elevatorDoors[0] + "_Bottom").DoorOpen();
-					break;
-			}
-		}
-		else
-		{
-			GetTree().Root.GetNode<Door>(elevatorDoors[currentFloor]).DoorOpen();
-		}
+		GetTree().Root.GetNode<Door>("Main/" + elevatorDoors[currentFloor]).DoorOpen();
 
 		DoorOpen();
 	}
-	/// <summary>
-	/// Finds nearest point.
-	/// </summary>
-	/// <param name="floor">Which floor (if there is only floor, then 0)</param>
-	/// <param name="direction">Which direction is elevator going</param>
-	/// <returns>Nearest point, where elevator will go through MoveToward</returns>
-	Vector3 FindNearestPoint(int floor, bool direction)
-	{
-		float temp = 0f;
-		float result = 0f;
-		Vector3 resultPoint = Vector3.Zero;
-		foreach (Node item in GetTree().GetNodesInGroup(floors[floor] + (direction ? "Up" : "Bottom")))
-		{
-			if (item is Marker3D pos)
-			{
-				temp = GlobalPosition.DistanceTo(pos.GlobalPosition);
-				if (result > temp || result == 0f)
-				{
-					result = temp;
-					resultPoint = pos.GlobalPosition;
-				}
-			}
-		}
-		return resultPoint;
-	}
-
 	private void InteractUp(Node3D player)
 	{
-		int dir = currentFloor--;
-		if (floors.Length == 1 && lastMove == LastMove.Down)
+		int dir = currentFloor - 1;
+        if (currentFloor >= 0 && !isMoving)
 		{
-			Rpc("ElevatorMove", 0);
-		}
-		else if (dir >= 0 && !isMoving)
-		{
-			Rpc("ElevatorMove", dir); //move the elevator up.
+			Rpc(nameof(CallElevator), dir); //move the elevator up.
 		}
 	}
 
 	private void InteractDown(Node3D player)
 	{
-		int dir = currentFloor++;
-		if (floors.Length == 1 && lastMove == LastMove.Up)
+		int dir = currentFloor + 1;
+        if (currentFloor < floors.Count && !isMoving)
 		{
-			Rpc("ElevatorMove", 0);
-		}
-		else if (dir < floors.Length && !isMoving)
-		{
-			Rpc("ElevatorMove", dir); //move the elevator down.
+			Rpc(nameof(CallElevator), dir); //move the elevator down.
 		}
 	}
 	

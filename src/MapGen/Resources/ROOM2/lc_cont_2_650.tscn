@@ -12,12 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://v6jb7rtwyvea" path="res://MapGen/Resources/RoomAssets/LCZ3/SheetMetal001_2K-PNG_Metalness-SheetMetal001_2K-PNG_Roughness.png" id="10_oh8aw"]
 [ext_resource type="Texture2D" uid="uid://bfm1mgjorusyk" path="res://MapGen/Resources/RoomAssets/LCZ3/SheetMetal001_2K-PNG_NormalGL.png" id="11_mcitm"]
 [ext_resource type="Texture2D" uid="uid://bx8xydew215t8" path="res://MapGen/Resources/RoomAssets/LCZ3/SheetMetal001_2K-PNG_Metalness_png-SheetMetal001_2K-PNG_Roughness_png.png" id="12_giey2"]
-[ext_resource type="PackedScene" uid="uid://dk6afsf7jh72a" path="res://MapGen/Resources/RoomAssets/Props/office_desk_with_drawers.tscn" id="13_2fxk7"]
-[ext_resource type="PackedScene" uid="uid://bsv4bn1kgu5pm" path="res://MapGen/Resources/RoomAssets/Props/laptop.tscn" id="14_hk8xp"]
+[ext_resource type="PackedScene" uid="uid://dk6afsf7jh72a" path="res://Assets/Props/office_desk_with_drawers.tscn" id="13_2fxk7"]
+[ext_resource type="PackedScene" uid="uid://bsv4bn1kgu5pm" path="res://Assets/Props/laptop.tscn" id="14_hk8xp"]
 [ext_resource type="PackedScene" uid="uid://bxj3dd8r00p7v" path="res://InventorySystem/Items/PickablePrefabs/key2.tscn" id="17_jum5n"]
 [ext_resource type="PackedScene" uid="uid://dvjl4o6hjxwmq" path="res://MapGen/Resources/Doors/DoorKeycard.tscn" id="17_osd70"]
 [ext_resource type="PackedScene" uid="uid://ggkfnlch55w4" path="res://MapGen/Resources/Cameras/cctv_lcz.tscn" id="18_htcvj"]
-[ext_resource type="PackedScene" uid="uid://bmacptdhvw6h7" path="res://MapGen/Resources/RoomAssets/Props/ceiling_lamp.tscn" id="19_58mj5"]
+[ext_resource type="PackedScene" uid="uid://bmacptdhvw6h7" path="res://Assets/Props/ceiling_lamp.tscn" id="19_58mj5"]
 [ext_resource type="PackedScene" uid="uid://cvk3py60of4fm" path="res://InventorySystem/Items/PickablePrefabs/medkit.tscn" id="19_kj3ln"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qved7"]
@@ -110,8 +110,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8ht0o")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_udke3"]
-points = PackedVector3Array(8, 6.99689, 9.93548, 0.958498, 3.19951, 10.2383, 8, -0.00311089, 9.93548, -8, 6.99689, 9.93548, 0.958498, -0.00311089, 10.2383, -0.961627, 3.19951, 10.2383, -8, -0.00311089, 9.93548, -0.961627, -0.00311089, 10.2383)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_fbqvs"]
+data = PackedVector3Array(-0.9603, -0.0031, 9.9355, -8, 6.9969, 9.9355, -8, -0.0031, 9.9355, 8, 6.9969, 9.9355, 0.9599, -0.0031, 9.9355, 8, -0.0031, 9.9355, 8, 6.9969, 9.9355, 0.9599, 1.5577, 9.9355, 0.9599, -0.0031, 9.9355, -0.9601, 1.5577, 9.9355, -8, 6.9969, 9.9355, -0.9603, -0.0031, 9.9355, 0.9599, 3.1999, 9.9355, -0.9601, 3.1999, 9.9355, -0.004, 3.1999, 9.9355, -0.9601, 3.1999, 9.9355, -8, 6.9969, 9.9355, -0.9601, 1.5577, 9.9355, 8, 6.9969, 9.9355, 0.9599, 3.1999, 9.9355, 0.9599, 1.5577, 9.9355, 0.9599, 3.1999, 9.9355, -8, 6.9969, 9.9355, -0.9601, 3.1999, 9.9355, -8, 6.9969, 9.9355, 0.9599, 3.1999, 9.9355, 8, 6.9969, 9.9355, -0.9601, 3.1999, 9.9355, -0.004, 3.1999, 9.9355, -0.004, 3.1999, 9.9355, -0.9601, 3.1999, 9.9355, -0.9601, 3.1999, 9.9355, -0.004, 3.1999, 9.9355, -8, 6.9969, 9.9355, -8, -0.0031, 9.9355, -8, -0.0031, 9.9355, -8, 6.9969, 9.9355, -8, 6.9969, 9.9355, -8, -0.0031, 9.9355, -0.9603, -0.0031, 9.9355, -0.9601, 1.5577, 9.9355, -0.9601, 1.5577, 9.9355, -0.9603, -0.0031, 9.9355, -0.9603, -0.0031, 9.9355, -0.9601, 1.5577, 9.9355, 0.9599, -0.0031, 9.9355, 8, -0.0031, 9.9355, 8, -0.0031, 9.9355, 0.9599, -0.0031, 9.9355, 0.9599, -0.0031, 9.9355, 8, -0.0031, 9.9355, 8, -0.0031, 9.9355, 8, 6.9969, 9.9355, 8, 6.9969, 9.9355, 8, -0.0031, 9.9355, 8, -0.0031, 9.9355, 8, 6.9969, 9.9355, 0.9599, 1.5577, 9.9355, 0.9599, -0.0031, 9.9355, 0.9599, -0.0031, 9.9355, 0.9599, 1.5577, 9.9355, 0.9599, 1.5577, 9.9355, 0.9599, -0.0031, 9.9355, 8, 6.9969, 9.9355, -8, 6.9969, 9.9355, -8, 6.9969, 9.9355, 8, 6.9969, 9.9355, 8, 6.9969, 9.9355, -8, 6.9969, 9.9355, -0.004, 3.1999, 9.9355, 0.9599, 3.1999, 9.9355, 0.9599, 3.1999, 9.9355, -0.004, 3.1999, 9.9355, -0.004, 3.1999, 9.9355, 0.9599, 3.1999, 9.9355, -8, -0.0031, 9.9355, -0.9603, -0.0031, 9.9355, -0.9603, -0.0031, 9.9355, -8, -0.0031, 9.9355, -8, -0.0031, 9.9355, -0.9603, -0.0031, 9.9355, -0.9601, 1.5577, 9.9355, -0.9601, 3.1999, 9.9355, -0.9601, 3.1999, 9.9355, -0.9601, 1.5577, 9.9355, -0.9601, 1.5577, 9.9355, -0.9601, 3.1999, 9.9355, 0.9599, 3.1999, 9.9355, 0.9599, 1.5577, 9.9355, 0.9599, 1.5577, 9.9355, 0.9599, 3.1999, 9.9355, 0.9599, 3.1999, 9.9355, 0.9599, 1.5577, 9.9355, 0.9599, 1.5577, 9.9355, 0.9599, -0.0031, 10.2383, 0.9599, -0.0031, 9.9355, 0.9599, 1.5577, 9.9355, 0.9599, 1.5577, 10.2383, 0.9599, -0.0031, 10.2383, -0.004, 3.1999, 9.9355, 0.9599, 3.1999, 10.2383, 0.9599, 3.1999, 9.9355, -0.004, 3.1999, 9.9355, -0.004, 3.1999, 10.2383, 0.9599, 3.1999, 10.2383, -0.9601, 1.5577, 9.9355, -0.9601, 3.1999, 10.2383, -0.9601, 3.1999, 9.9355, -0.9601, 1.5577, 9.9355, -0.9601, 1.5577, 10.2383, -0.9601, 3.1999, 10.2383, 0.9599, 3.1999, 9.9355, 0.9599, 1.5577, 10.2383, 0.9599, 1.5577, 9.9355, 0.9599, 3.1999, 9.9355, 0.9599, 3.1999, 10.2383, 0.9599, 1.5577, 10.2383, -0.9601, 3.1999, 9.9355, -0.004, 3.1999, 10.2383, -0.004, 3.1999, 9.9355, -0.9601, 3.1999, 9.9355, -0.9601, 3.1999, 10.2383, -0.004, 3.1999, 10.2383, -0.9603, -0.0031, 9.9355, -0.9601, 1.5577, 10.2383, -0.9601, 1.5577, 9.9355, -0.9603, -0.0031, 9.9355, -0.9603, -0.0031, 10.2383, -0.9601, 1.5577, 10.2383)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idxhd"]
 resource_name = "Material.013"
@@ -796,7 +796,7 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_udke3")
+shape = SubResource("ConcavePolygonShape3D_fbqvs")
 
 [node name="Floor_001" type="MeshInstance3D" parent="."]
 visibility_range_end = 80.0

@@ -15,13 +15,6 @@ public partial class FacilityManager : Node3D
     PlayerScript playerScene;
     [Export] internal Godot.Collections.Array<string> playersList = new Godot.Collections.Array<string>();
     [Export] bool isRoundStarted = false;
-    /*
-    [Export] Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> classes = new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>>();
-    [Export] Godot.Collections.Dictionary<string, Godot.Collections.Array<string>> rooms = new Godot.Collections.Dictionary<string, Godot.Collections.Array<string>>();
-    [Export] Godot.Collections.Dictionary<string, string> items = new Godot.Collections.Dictionary<string, string>();
-    [Export] Godot.Collections.Dictionary<string, string> ammo = new Godot.Collections.Dictionary<string, string>();
-    [Export] Godot.Collections.Dictionary<string, string> npcs = new Godot.Collections.Dictionary<string, string>();
-    */
     [Export] internal GameData data;
     internal Godot.Collections.Array<int> singleSpawnClasses = new Godot.Collections.Array<int>();
     internal Godot.Collections.Array<int> multiSpawnClasses = new Godot.Collections.Array<int>();
@@ -63,57 +56,12 @@ public partial class FacilityManager : Node3D
         // For custom classes, rooms, items support.
         if (Multiplayer.IsServer())
         {
-            /* old 0.7.x code
-            rooms = RoomParser.ReadJson("user://rooms_" + Globals.roomsCompatibility + ".json");
-
-            classes = ClassParser.ReadJson("user://playerclasses_" + Globals.classesCompatibility + ".json");
-
-            items = ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json", Globals.ItemType.item);
-
-            ammo = ItemParser.ReadJson("user://ammotype_" + Globals.itemsCompatibility + ".json", Globals.ItemType.ammo);
-
-            npcs = ItemParser.ReadJson("user://npcs_" + Globals.itemsCompatibility + ".json", Globals.ItemType.npc);
-            */
             maxSpawnableObjects = GetParent<NetworkManager>().maxObjects;
-            
-            /*
-            if (ResourceLoader.Exists("user://save_" + Globals.gameDataCompatibility + ".tres"))
-            {
-                data = ResourceLoader.Load<GameData>("user://save_" + Globals.gameDataCompatibility + ".tres");
-            }
-            else
-            {
-                data = ResourceLoader.Load<GameData>("res://Scripts/GameData/GameData.tres");
-                ResourceSaver.Save(data, "user://save_" + Globals.gameDataCompatibility + ".tres");
-            }
-            */
             ArrangeClasses();
         }
         else
         {
-            /* old 0.7.x code
-            if (GD.Hash(RoomParser.ReadJson("user://rooms_" + Globals.roomsCompatibility + ".json")) != GD.Hash(rooms) && rooms.Count > 0)
-            {
-                RoomParser.SaveJson("user://rooms_" + Globals.roomsCompatibility + ".json", rooms);
-            }
-            if (GD.Hash(ClassParser.ReadJson("user://playerclasses_" + Globals.classesCompatibility + ".json")) != GD.Hash(classes) && classes.Count > 0)
-            {
-                ClassParser.SaveJson("user://playerclasses_" + Globals.classesCompatibility + ".json", classes);
-            }
-            if (GD.Hash(ItemParser.ReadJson("user://itemlist_" + Globals.itemsCompatibility + ".json", Globals.ItemType.item)) != GD.Hash(items) && items.Count > 0)
-            {
-                ItemParser.SaveJson("user://itemlist_" + Globals.itemsCompatibility + ".json", items);
-            }
-            if (GD.Hash(ItemParser.ReadJson("user://ammotype_" + Globals.itemsCompatibility + ".json", Globals.ItemType.ammo)) != GD.Hash(ammo) && ammo.Count > 0)
-            {
-                ItemParser.SaveJson("user://ammotype_" + Globals.itemsCompatibility + ".json", ammo);
-            }
-            if (GD.Hash(ItemParser.ReadJson("user://npcs_" + Globals.itemsCompatibility + ".json", Globals.ItemType.npc)) != GD.Hash(npcs) && npcs.Count > 0)
-            {
-                ItemParser.SaveJson("user://npcs_" + Globals.itemsCompatibility + ".json", npcs);
-            }
-            */
-            //ResourceSaver.Save(data, "user://save_" + Globals.gameDataCompatibility + ".tres");
+            //OnClientStart();
             return;
         }
         friendlyFireOn = GetParent<NetworkManager>().friendlyFire;
@@ -230,15 +178,6 @@ public partial class FacilityManager : Node3D
         GetNode<PlayerScript>(playerName).team = classData.Team;
 
         GetNode<AmmoSystem>(playerName + "/AmmoSystem").ammo = classData.Ammo;
-        //Server calls
-        //if (Multiplayer.IsServer())
-        //{
-        //    GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "CameraManager", !classData.CustomCamera);
-        //    GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "UpdateClassUI", classData.ClassColor.ToRgba32());
-        //    GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "ApplyPlayerHeadPosition", classData.DefaultCameraPos);
-        //    GetNode<PlayerScript>(playerName).RpcId(int.Parse(playerName), "ApplyShader", classData.CustomView);
-        //    RpcId(int.Parse(playerName), "PreloadInventory", playerName, classData.PreloadedItems);
-        //}
 
         GetNode<PlayerScript>(playerName).Call("CameraManager", !classData.CustomCamera);
         GetNode<PlayerScript>(playerName).Call("UpdateClassUI", classData.ClassColor.ToRgba32());
@@ -265,7 +204,7 @@ public partial class FacilityManager : Node3D
     {
         BaseClass classData = data.Classes[nameOfClass];
 
-        //tickets and targets
+        //tickets and targets (will move to game mode script in future)
         if (classData.Team == Globals.Team.DSE)
         {
             tickets[0]++;
@@ -294,7 +233,7 @@ public partial class FacilityManager : Node3D
         GetNode<PlayerScript>(playerName).currentHealth[1] = classData.Sanity;
         GetNode<PlayerScript>(playerName).ragdollSource = classData.PlayerRagdollSource;
         LoadModels(playerName, nameOfClass);
-
+        //OnSetPlayerClassPublic(); //for future use.
     }
 
     /// <summary>

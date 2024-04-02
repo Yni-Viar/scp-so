@@ -8,7 +8,7 @@
 [ext_resource type="Material" uid="uid://duxxfysrk807h" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat5.010.tres" id="6_eqsfy"]
 [ext_resource type="Material" uid="uid://n4umjpspoxjs" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat6.008.tres" id="7_w14uf"]
 [ext_resource type="Material" uid="uid://bpva68hllohy1" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat7.005.tres" id="8_2o3x4"]
-[ext_resource type="PackedScene" uid="uid://dn7xcp8e6o86h" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="9_wm1ma"]
+[ext_resource type="PackedScene" uid="uid://dn7xcp8e6o86h" path="res://Assets/Props/Lamp/lamp.tscn" id="9_wm1ma"]
 [ext_resource type="PackedScene" uid="uid://dme4cvlaar7xi" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="10_7sycy"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_pkicm"]

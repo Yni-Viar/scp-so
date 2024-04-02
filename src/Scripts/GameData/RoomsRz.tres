@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=15 format=3 uid="uid://df3whkh45nx1y"]
 
-[ext_resource type="PackedScene" uid="uid://duhnxk60hxf15" path="res://MapGen/Resources/ROOM1/rz_ckpt_1.tscn" id="1_h7bdi"]
+[ext_resource type="PackedScene" uid="uid://bc0uvjeon7rx8" path="res://MapGen/Resources/ROOM1/rz_ckpt_1.tscn" id="1_ysqu6"]
 [ext_resource type="PackedScene" uid="uid://v0subdwv7xas" path="res://MapGen/Resources/ROOM1/rz_exit_1.tscn" id="2_i58et"]
 [ext_resource type="PackedScene" uid="uid://ck84sc5gtcx67" path="res://MapGen/Resources/ROOM2/rz_room_2_servers.tscn" id="4_onayq"]
 [ext_resource type="PackedScene" uid="uid://c3jhovax3c7pf" path="res://MapGen/Resources/ROOM2/rz_room_2_cafeteria.tscn" id="5_dmo17"]
@@ -17,7 +17,7 @@
 
 [resource]
 script = ExtResource("14_tb6jf")
-Room1 = [ExtResource("1_h7bdi"), ExtResource("2_i58et")]
+Room1 = [ExtResource("1_ysqu6"), ExtResource("2_i58et")]
 Room2 = [ExtResource("4_onayq"), ExtResource("5_dmo17"), ExtResource("10_j3wji"), ExtResource("6_18old")]
 Room2C = []
 Room3 = []

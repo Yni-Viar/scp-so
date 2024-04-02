@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://v6jb7rtwyvea" path="res://MapGen/Resources/RoomAssets/LCZ3/SheetMetal001_2K-PNG_Metalness-SheetMetal001_2K-PNG_Roughness.png" id="10_hrb22"]
 [ext_resource type="PackedScene" uid="uid://ggkfnlch55w4" path="res://MapGen/Resources/Cameras/cctv_lcz.tscn" id="11_7qyym"]
 [ext_resource type="Texture2D" uid="uid://bfm1mgjorusyk" path="res://MapGen/Resources/RoomAssets/LCZ3/SheetMetal001_2K-PNG_NormalGL.png" id="11_yuh4m"]
-[ext_resource type="PackedScene" uid="uid://bmacptdhvw6h7" path="res://MapGen/Resources/RoomAssets/Props/ceiling_lamp.tscn" id="12_m5jgx"]
+[ext_resource type="PackedScene" uid="uid://bmacptdhvw6h7" path="res://Assets/Props/ceiling_lamp.tscn" id="12_m5jgx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_baueh"]
 resource_name = "Material.007"

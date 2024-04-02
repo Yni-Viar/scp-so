@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c78dgxo4dd3y" path="res://MapGen/Resources/RoomAssets/HCZ/concrete034_2k_color.png" id="4_f7wnq"]
 [ext_resource type="Texture2D" uid="uid://dk700uh7q45bt" path="res://MapGen/Resources/RoomAssets/HCZ/tiles107_2k_color.png" id="5_6rxnr"]
 [ext_resource type="Texture2D" uid="uid://b08ww4hkcy532" path="res://MapGen/Resources/RoomAssets/HCZ/metal.jpg" id="6_ju5gc"]
-[ext_resource type="PackedScene" uid="uid://dn7xcp8e6o86h" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="7_6v3w8"]
+[ext_resource type="PackedScene" uid="uid://dn7xcp8e6o86h" path="res://Assets/Props/Lamp/lamp.tscn" id="7_6v3w8"]
 [ext_resource type="PackedScene" uid="uid://bsy8he5i86n0y" path="res://MapGen/Resources/Doors/DoorGate.tscn" id="8_you4l"]
 [ext_resource type="PackedScene" uid="uid://crhayrvdwdo1q" path="res://MapGen/Resources/Doors/DoorLCZ.tscn" id="9_t7fhb"]
 [ext_resource type="PackedScene" uid="uid://dme4cvlaar7xi" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="10_80mlk"]

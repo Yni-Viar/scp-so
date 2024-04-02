@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dnlfkibh48q0s" path="res://MapGen/Resources/Elevator/src/Elevator_uv_Floor_Metallic-Elevator_uv_Floor_Roughness.png" id="2_clsi8"]
 [ext_resource type="Texture2D" uid="uid://qhfsccjall0n" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Metallic-Door_Texturize_door_Roughness.png" id="3_2siud"]
 [ext_resource type="Texture2D" uid="uid://mvuqulm2kmc4" path="res://MapGen/Resources/Elevator/src/Elevator_uv_Floor_Normal.png" id="3_3ltsm"]
-[ext_resource type="PackedScene" uid="uid://bmacptdhvw6h7" path="res://MapGen/Resources/RoomAssets/Props/ceiling_lamp.tscn" id="4_rr8i8"]
+[ext_resource type="PackedScene" uid="uid://bmacptdhvw6h7" path="res://Assets/Props/ceiling_lamp.tscn" id="4_rr8i8"]
 [ext_resource type="Texture2D" uid="uid://b1t12q1kwppon" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Normal.png" id="4_xja7d"]
 [ext_resource type="Texture2D" uid="uid://nfri6qslyqwr" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Metallic_png-Door_Texturize_door_Roughness_png.png" id="5_nps68"]
 [ext_resource type="Texture2D" uid="uid://clbrja261bjhl" path="res://MapGen/Resources/Elevator/src/DiamondPlate008A_2K-PNG_Color.png" id="5_pnbc0"]

@@ -14,11 +14,11 @@
 [ext_resource type="Script" path="res://Scripts/BackgroundMusicChanger.cs" id="12_1jhib"]
 [ext_resource type="Texture2D" uid="uid://bx8xydew215t8" path="res://MapGen/Resources/RoomAssets/LCZ3/SheetMetal001_2K-PNG_Metalness_png-SheetMetal001_2K-PNG_Roughness_png.png" id="12_65mbu"]
 [ext_resource type="PackedScene" uid="uid://bskf2ruxmf76r" path="res://MapGen/Resources/Doors/DoorGateKeycard.tscn" id="16_bsry8"]
-[ext_resource type="PackedScene" uid="uid://dk6afsf7jh72a" path="res://MapGen/Resources/RoomAssets/Props/office_desk_with_drawers.tscn" id="16_xlj21"]
-[ext_resource type="PackedScene" uid="uid://rprv2t0mtn4j" path="res://MapGen/Resources/RoomAssets/Props/scp079item.tscn" id="17_a41c7"]
-[ext_resource type="PackedScene" uid="uid://bsv4bn1kgu5pm" path="res://MapGen/Resources/RoomAssets/Props/laptop.tscn" id="17_lovbu"]
+[ext_resource type="PackedScene" uid="uid://dk6afsf7jh72a" path="res://Assets/Props/office_desk_with_drawers.tscn" id="16_xlj21"]
+[ext_resource type="PackedScene" uid="uid://rprv2t0mtn4j" path="res://Assets/Props/scp079item.tscn" id="17_a41c7"]
+[ext_resource type="PackedScene" uid="uid://bsv4bn1kgu5pm" path="res://Assets/Props/laptop.tscn" id="17_lovbu"]
 [ext_resource type="PackedScene" uid="uid://dtycbwx1gobbl" path="res://InventorySystem/Items/PickablePrefabs/key4.tscn" id="19_0yxvl"]
-[ext_resource type="PackedScene" uid="uid://bmacptdhvw6h7" path="res://MapGen/Resources/RoomAssets/Props/ceiling_lamp.tscn" id="19_3jpi2"]
+[ext_resource type="PackedScene" uid="uid://bmacptdhvw6h7" path="res://Assets/Props/ceiling_lamp.tscn" id="19_3jpi2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4lk2k"]
 resource_name = "Background.006"

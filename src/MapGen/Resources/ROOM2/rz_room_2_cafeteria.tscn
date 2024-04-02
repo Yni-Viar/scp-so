@@ -14,9 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://cxgm5gvqsps5m" path="res://MapGen/Resources/RoomAssets/RZ/red.jpg" id="12_ehgvx"]
 [ext_resource type="PackedScene" uid="uid://bxj3dd8r00p7v" path="res://InventorySystem/Items/PickablePrefabs/key2.tscn" id="14_2fvdf"]
 [ext_resource type="PackedScene" uid="uid://c8brqgry3c6r2" path="res://MapGen/Resources/Cameras/cctv_rz.tscn" id="15_5ub8t"]
-[ext_resource type="PackedScene" uid="uid://dn57xh81cw2di" path="res://MapGen/Resources/RoomAssets/Props/scp294.tscn" id="15_jnhb1"]
-[ext_resource type="PackedScene" uid="uid://bmacptdhvw6h7" path="res://MapGen/Resources/RoomAssets/Props/ceiling_lamp.tscn" id="16_xx1il"]
-[ext_resource type="PackedScene" uid="uid://djp0sa154mm7a" path="res://MapGen/Resources/RoomAssets/Props/security_light.tscn" id="17_057ca"]
+[ext_resource type="PackedScene" uid="uid://dn57xh81cw2di" path="res://Assets/Props/scp294.tscn" id="15_jnhb1"]
+[ext_resource type="PackedScene" uid="uid://bmacptdhvw6h7" path="res://Assets/Props/ceiling_lamp.tscn" id="16_xx1il"]
+[ext_resource type="PackedScene" uid="uid://djp0sa154mm7a" path="res://Assets/Props/security_light.tscn" id="17_057ca"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7wuu"]
 resource_name = "mat0.001"

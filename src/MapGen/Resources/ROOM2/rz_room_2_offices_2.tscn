@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bqdtcarmb2g3m" path="res://MapGen/Resources/RoomAssets/RZ/officewall.jpg" id="7_1lwwf"]
 [ext_resource type="Texture2D" uid="uid://c133oo4lii3fc" path="res://MapGen/Resources/RoomAssets/RZ/controlpanel.jpg" id="8_x462k"]
 [ext_resource type="Texture2D" uid="uid://duk35eee5vwcy" path="res://MapGen/Resources/RoomAssets/RZ/miscsigns3.jpg" id="9_pv8ko"]
-[ext_resource type="PackedScene" uid="uid://b7xwwuyi26i62" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="10_vju72"]
+[ext_resource type="PackedScene" uid="uid://b7xwwuyi26i62" path="res://Assets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="10_vju72"]
 [ext_resource type="PackedScene" uid="uid://dkhqc4ewjs2h2" path="res://InventorySystem/Items/PickablePrefabs/pda.tscn" id="11_ydqjd"]
 [ext_resource type="PackedScene" uid="uid://c8brqgry3c6r2" path="res://MapGen/Resources/Cameras/cctv_rz.tscn" id="12_c4qg4"]
 

@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bqdtcarmb2g3m" path="res://MapGen/Resources/RoomAssets/RZ/officewall.jpg" id="6_mj05b"]
 [ext_resource type="Texture2D" uid="uid://djte7umjkf0we" path="res://MapGen/Resources/RoomAssets/RZ/misc.jpg" id="7_jsavf"]
 [ext_resource type="Texture2D" uid="uid://dcj273s8h82qj" path="res://MapGen/Resources/RoomAssets/RZ/metalpanels.jpg" id="8_7vnqt"]
-[ext_resource type="PackedScene" uid="uid://bmacptdhvw6h7" path="res://MapGen/Resources/RoomAssets/Props/ceiling_lamp.tscn" id="10_1vk1p"]
+[ext_resource type="PackedScene" uid="uid://bmacptdhvw6h7" path="res://Assets/Props/ceiling_lamp.tscn" id="10_1vk1p"]
 [ext_resource type="PackedScene" uid="uid://c8brqgry3c6r2" path="res://MapGen/Resources/Cameras/cctv_rz.tscn" id="10_co2bi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvosm"]

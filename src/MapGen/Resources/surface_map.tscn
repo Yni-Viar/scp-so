@@ -9,11 +9,11 @@
 [ext_resource type="Shader" path="res://addons/zylann.hterrain/tools/bump2normal_tex.gdshader" id="7_edbd8"]
 [ext_resource type="PackedScene" uid="uid://bqaktbd34noa6" path="res://MapGen/Resources/RoomAssets/SZ/sz_site_19.tscn" id="8_iwbld"]
 [ext_resource type="Script" path="res://Scripts/EscapeArea.cs" id="9_bo2ma"]
-[ext_resource type="PackedScene" uid="uid://c55e05hyff3nh" path="res://MapGen/Resources/RoomAssets/Props/fir_tree_1.tscn" id="10_wf8sa"]
-[ext_resource type="PackedScene" uid="uid://x5x2we6rb77a" path="res://MapGen/Resources/RoomAssets/Props/fir_tree_4.tscn" id="11_6utox"]
-[ext_resource type="PackedScene" uid="uid://dl0653hv0mrkg" path="res://MapGen/Resources/RoomAssets/Props/fir_tree_3.tscn" id="12_3um2k"]
-[ext_resource type="PackedScene" uid="uid://b33ilytoknreq" path="res://MapGen/Resources/RoomAssets/Props/fir_tree_2.tscn" id="13_v2j5v"]
-[ext_resource type="PackedScene" uid="uid://c3d40b7m618dw" path="res://MapGen/Resources/RoomAssets/Props/streetlight.tscn" id="14_of6yg"]
+[ext_resource type="PackedScene" uid="uid://c55e05hyff3nh" path="res://Assets/Props/fir_tree_1.tscn" id="10_wf8sa"]
+[ext_resource type="PackedScene" uid="uid://x5x2we6rb77a" path="res://Assets/Props/fir_tree_4.tscn" id="11_6utox"]
+[ext_resource type="PackedScene" uid="uid://dl0653hv0mrkg" path="res://Assets/Props/fir_tree_3.tscn" id="12_3um2k"]
+[ext_resource type="PackedScene" uid="uid://b33ilytoknreq" path="res://Assets/Props/fir_tree_2.tscn" id="13_v2j5v"]
+[ext_resource type="PackedScene" uid="uid://c3d40b7m618dw" path="res://Assets/Props/streetlight.tscn" id="14_of6yg"]
 
 [sub_resource type="Resource" id="Resource_025en"]
 script = ExtResource("3_hqlis")

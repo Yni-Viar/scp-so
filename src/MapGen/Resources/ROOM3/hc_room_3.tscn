@@ -6,7 +6,7 @@
 [ext_resource type="Material" uid="uid://b8oxsp3ass38q" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat3.012.tres" id="4_sek8g"]
 [ext_resource type="Material" uid="uid://bv0gylvwvmf36" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat4.009.tres" id="5_6hbjt"]
 [ext_resource type="Material" uid="uid://cinbk3hh5t363" path="res://MapGen/Resources/RoomAssets/HCZ/Mat/mat5.009.tres" id="6_ykexq"]
-[ext_resource type="PackedScene" uid="uid://dn7xcp8e6o86h" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="7_5obbu"]
+[ext_resource type="PackedScene" uid="uid://dn7xcp8e6o86h" path="res://Assets/Props/Lamp/lamp.tscn" id="7_5obbu"]
 [ext_resource type="PackedScene" uid="uid://dme4cvlaar7xi" path="res://MapGen/Resources/Cameras/cctv_hcz.tscn" id="8_u5l1b"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_nlg34"]

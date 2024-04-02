@@ -23,9 +23,9 @@
 [ext_resource type="Texture2D" uid="uid://qhfsccjall0n" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Metallic-Door_Texturize_door_Roughness.png" id="25_8erwa"]
 [ext_resource type="Texture2D" uid="uid://b1t12q1kwppon" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Normal.png" id="26_qc0is"]
 [ext_resource type="Texture2D" uid="uid://nfri6qslyqwr" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_Metallic_png-Door_Texturize_door_Roughness_png.png" id="27_ldpgv"]
-[ext_resource type="PackedScene" uid="uid://dn7xcp8e6o86h" path="res://MapGen/Resources/RoomAssets/Props/Lamp/lamp.tscn" id="28_fcgwf"]
+[ext_resource type="PackedScene" uid="uid://dn7xcp8e6o86h" path="res://Assets/Props/Lamp/lamp.tscn" id="28_fcgwf"]
 [ext_resource type="Texture2D" uid="uid://dfnr2n5oncm83" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_frame_Albedo.png" id="32_0dwwe"]
-[ext_resource type="PackedScene" uid="uid://bdpbyddveudfx" path="res://MapGen/Resources/RoomAssets/Props/scp106cube.tscn" id="32_kjki4"]
+[ext_resource type="PackedScene" uid="uid://bdpbyddveudfx" path="res://Assets/Props/scp106cube.tscn" id="32_kjki4"]
 [ext_resource type="Texture2D" uid="uid://ck8isbfx72rc" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_frame_Metallic-Door_Texturize_door_frame_Roughness.png" id="33_u444g"]
 [ext_resource type="Texture2D" uid="uid://c6e6lexleh82f" path="res://MapGen/Resources/Doors/DoorLCZ/Door_Texturize_door_frame_Normal.png" id="34_sh32q"]
 

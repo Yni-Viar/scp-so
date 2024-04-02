@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://0xq13kxbvufe" path="res://MapGen/Resources/RoomAssets/RZ/door.jpg" id="11_c70vp"]
 [ext_resource type="Texture2D" uid="uid://cxgm5gvqsps5m" path="res://MapGen/Resources/RoomAssets/RZ/red.jpg" id="12_3w2jh"]
 [ext_resource type="Texture2D" uid="uid://su0asmjdsrbj" path="res://MapGen/Resources/RoomAssets/RZ/white.jpg" id="13_f3un7"]
-[ext_resource type="PackedScene" uid="uid://b7xwwuyi26i62" path="res://MapGen/Resources/RoomAssets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="14_50w72"]
+[ext_resource type="PackedScene" uid="uid://b7xwwuyi26i62" path="res://Assets/Props/Modern_ceiling_lamp/modern_ceiling_lamp.tscn" id="14_50w72"]
 [ext_resource type="PackedScene" uid="uid://dvjl4o6hjxwmq" path="res://MapGen/Resources/Doors/DoorKeycard.tscn" id="15_hm7hw"]
 [ext_resource type="PackedScene" uid="uid://mtaiulg3une7" path="res://InventorySystem/Items/PickablePrefabs/key3.tscn" id="17_dpcet"]
 [ext_resource type="PackedScene" uid="uid://dtycbwx1gobbl" path="res://InventorySystem/Items/PickablePrefabs/key4.tscn" id="18_i1hrg"]
