@@ -17,7 +17,7 @@ public partial class Globals
     /// <summary>
     /// Version string. In 0.7.1, the value is changed to development stage, because Godot already has version setter feature.
     /// </summary>
-    public static string version = "0.8.1-Dev";
+    public static string version = "0.8.1";
     /// <summary>
     /// Game data compatibility. Available since 0.8.0. Currently has no usage, but will be useful for mods.
     /// </summary>

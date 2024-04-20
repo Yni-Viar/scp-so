@@ -326,6 +326,8 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_oiubw")
 
 [node name="PlayerArea" type="Area3D" parent="."]
+collision_layer = 3
+collision_mask = 7
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="PlayerArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0282593, 1.93358, 0.00437164)
@@ -370,6 +372,7 @@ max_distance = 40.0
 [node name="Move" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2.05812, 0)
 stream = ExtResource("12_eit23")
+max_distance = 48.0
 
 [node name="CeilingLamp" parent="." instance=ExtResource("13_6ping")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.127697, 3.80586, -0.020656)

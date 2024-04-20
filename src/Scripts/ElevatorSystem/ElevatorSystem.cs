@@ -27,68 +27,76 @@ public partial class ElevatorSystem : Node3D
 		rotation = Rotation;
 		if (!isMoving)
 		{
-			GetTree().Root.GetNode<Door>("Main/" + elevatorDoors[currentFloor]).DoorOpen();
+            if (elevatorDoors != null)
+            {
+			    GetTree().Root.GetNode<Door>("Main/" + elevatorDoors[currentFloor]).DoorOpen();
+            }
 			DoorOpen();
 		}
 	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
-		if (isMoving && waypoints.Count > 0)
+		if (isMoving && waypoints != null)
 		{
-			GlobalPosition = GlobalPosition.MoveToward(waypoints[counter][0], speed * (float)delta);
-			GlobalRotation = GlobalRotation.MoveToward(waypoints[counter][1] + rotation, speed * 0.25f * (float) delta);
-			for (int i = 0; i < objectsToTeleport.Count; i++)
-			{
-				Node3D node = GetNode<Node3D>(objectsToTeleport[i]);
-				node.GlobalPosition += GetNode<Marker3D>("ObjectPos").GlobalPosition;
-				node.Rotation += GetNode<Marker3D>("ObjectPos").GlobalRotation;
+            if (waypoints.Count > 0)
+            {
+                GlobalPosition = GlobalPosition.MoveToward(waypoints[counter][0], speed * (float)delta);
+			    GlobalRotation = GlobalRotation.MoveToward(waypoints[counter][1] + rotation, speed * 0.25f * (float) delta);
+			    for (int i = 0; i < objectsToTeleport.Count; i++)
+			    {
+			    	Node3D node = GetNode<Node3D>(objectsToTeleport[i]);
+                    // Player can't move.
+			    	//node.GlobalPosition = GetNode<Marker3D>("ObjectPos").GlobalPosition;
+                    // Player CAN move! Yay!
+                    node.GlobalPosition = node.GlobalPosition.MoveToward(waypoints[counter][0], speed * (float)delta);
+			    	//node.Rotation = GetNode<Marker3D>("ObjectPos").GlobalRotation;
+                }
+                //remember, floating numbers needs IsEqualApprox, Yni!
+			    if (GlobalPosition.IsEqualApprox(waypoints[counter][0]))
+			    {
+			    	if (counter < waypoints.Count - 1)
+			    	{
+			    		counter++;
+			    	}
+			    	else
+			    	{
+			    		counter = 0;
+			    		waypoints.Clear();
+                        if (passFloor)
+                        {
+                            if (lastMove == LastMove.Down && Multiplayer.IsServer())
+                            {
+                                if (currentFloor < targetFloor - 1)
+                                {
+                                    ElevatorMove(true);
+                                }
+                                else
+                                {
+                                    ElevatorMove(false);
+                                }
+                            }
+                            else if (lastMove == LastMove.Up && Multiplayer.IsServer())
+                            {
+                                if (currentFloor > targetFloor - 1)
+                                {
+                                    ElevatorMove(true);
+                                }
+                                else
+                                {
+                                    ElevatorMove(false);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            isMoving = false;
+                            GetNode<AudioStreamPlayer3D>("Move").Stop();
+                            Rpc(nameof(OpenDestDoors));
+                        }
+			    	}
+			    }
             }
-            //remember, floating numbers needs IsEqualApprox, Yni!
-			if (GlobalPosition.IsEqualApprox(waypoints[counter][0]))
-			{
-				if (counter < waypoints.Count - 1)
-				{
-					counter++;
-				}
-				else
-				{
-					counter = 0;
-					waypoints.Clear();
-					isMoving = false;
-                    if (passFloor)
-                    {
-                        if (lastMove == LastMove.Down && Multiplayer.IsServer())
-                        {
-                            if (currentFloor < targetFloor)
-                            {
-                                ElevatorMove(true);
-                            }
-                            else
-                            {
-                                ElevatorMove(false);
-                            }
-                        }
-                        else if (lastMove == LastMove.Up && Multiplayer.IsServer())
-                        {
-                            if (currentFloor > targetFloor)
-                            {
-                                ElevatorMove(true);
-                            }
-                            else
-                            {
-                                ElevatorMove(false);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        GetNode<AudioStreamPlayer3D>("Move").Stop();
-                        Rpc(nameof(OpenDestDoors));
-                    }
-				}
-			}
-			
 		}
 	}
 	/// <summary>
@@ -99,9 +107,12 @@ public partial class ElevatorSystem : Node3D
 		RandomNumberGenerator rng = new RandomNumberGenerator();
 		AnimationPlayer animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		animPlayer.Play("door_open");
-		AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");
-		sfx.Stream = GD.Load<AudioStream>(openDoorSounds[rng.RandiRange(0, openDoorSounds.Length - 1)]);
-		sfx.Play();
+        if (openDoorSounds != null)
+        {
+            AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");
+            sfx.Stream = GD.Load<AudioStream>(openDoorSounds[rng.RandiRange(0, openDoorSounds.Length - 1)]);
+            sfx.Play();
+        }
 	}
 	/// <summary>
 	/// Closes the door
@@ -111,9 +122,12 @@ public partial class ElevatorSystem : Node3D
 		RandomNumberGenerator rng = new RandomNumberGenerator();
 		AnimationPlayer animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		animPlayer.Play("door_open", -1, -1, true);
-		AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");
-		sfx.Stream = GD.Load<AudioStream>(closeDoorSounds[rng.RandiRange(0, closeDoorSounds.Length - 1)]);
-		sfx.Play();
+        if (closeDoorSounds != null)
+        {
+            AudioStreamPlayer3D sfx = GetNode<AudioStreamPlayer3D>("DoorSound");
+            sfx.Stream = GD.Load<AudioStream>(closeDoorSounds[rng.RandiRange(0, closeDoorSounds.Length - 1)]);
+            sfx.Play();
+        }
 	}
     /*
 	/// <summary>
@@ -133,20 +147,23 @@ public partial class ElevatorSystem : Node3D
         targetFloor = floor;
         if (floors.Count == 1 || Mathf.Abs(targetFloor - currentFloor) == 1)
         {
-            ElevatorMove(false);
+            ElevatorMove(false, true);
         }
         else
         {
-            ElevatorMove(true);
+            ElevatorMove(true, true);
         }
     }
 
-	internal void ElevatorMove(bool pass)
+	internal void ElevatorMove(bool pass, bool first = false)
 	{
         passFloor = pass;
-        if (!pass)
+        if (first)
         {
-		    GetTree().Root.GetNode<Door>("Main/" + elevatorDoors[currentFloor]).DoorClose();
+            if (elevatorDoors != null)
+            {
+                GetTree().Root.GetNode<Door>("Main/" + elevatorDoors[currentFloor]).DoorClose();
+            }
 		    DoorClose();
         }
         int floor;
@@ -219,8 +236,10 @@ public partial class ElevatorSystem : Node3D
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
 	void OpenDestDoors()
 	{
-		GetTree().Root.GetNode<Door>("Main/" + elevatorDoors[currentFloor]).DoorOpen();
-
+        if (elevatorDoors != null)
+        {
+		    GetTree().Root.GetNode<Door>("Main/" + elevatorDoors[currentFloor]).DoorOpen();
+        }
 		DoorOpen();
 	}
 	private void InteractUp(Node3D player)

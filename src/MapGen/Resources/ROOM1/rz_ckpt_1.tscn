@@ -727,10 +727,10 @@ max_distance = 24.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.37717, 0, -6.87391)
 floors = [ExtResource("25_p7s6u"), ExtResource("26_v1bvj"), ExtResource("27_etsbs"), ExtResource("28_r7r6w")]
 elevatorDoors = PackedStringArray("Game/MapGenRz/RZ_ckpt1/Door_Right", "Game/MapGenLcz/LC_ckpt1/Door_Right", "Game/MapGenHcz/HC_ckpt1/Door_Right", "Game/DC_jail/Door_Right")
-speed = 4.0
+speed = 6.0
 
 [node name="Elevator2" parent="." groups=["Elevator_Zones_Left"] instance=ExtResource("23_6gotw")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.38239, 0, -6.87391)
 floors = [ExtResource("29_4ra6v"), ExtResource("30_fangb"), ExtResource("31_qln4o"), ExtResource("32_6revs")]
 elevatorDoors = PackedStringArray("Game/MapGenRz/RZ_ckpt1/Door_Left", "Game/MapGenLcz/LC_ckpt1/Door_Left", "Game/MapGenHcz/HC_ckpt1/Door_Left", "Game/DC_jail/Door_Left")
-speed = 4.0
+speed = 6.0

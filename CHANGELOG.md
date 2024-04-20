@@ -1,6 +1,10 @@
 # Changelog
 The current state of the game - Alpha.
 ## Alpha versions
+### v.0.8.1 (2024.04.04)
+- New HCZ room is included.
+- Rewrote elevator-related code, so it is possible to make multi-floor elevators, eventually replacing those teleporting elevators between underground zones.
+- New temporary checkpoint rooms.
 ### v.0.8.0 (2024.02.29)
 *Please note, syntax of the most admin commands changed. Please, check the message in* `help` *command.*
 - Added new Light Containment Zone doors.
