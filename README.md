@@ -1,7 +1,12 @@
 # SCP: Site Online
 
+## ⚠ The project is deprecated.
+> The project is stuck due to C# usage.
+> C# is good for games, that won't have modification support, and I originally wanted that feature to be in the game, since Godot supports modding.
+> I also lost motivation to continue to develop this game.
+> [TGPY](https://github.com/Yni-Viar/tgpy) is the spiritual successor to SCP: Site Online (althrough it is NOT an SCP game, but has modding support - just as I wanted)
+
 ## Info.
-### ⚠ Currently, this project is unmaintained.
 A multiplayer game, based on SCP Universe. Currently in *alpha* state of development.
 
 - Most assets are licensed by [CC-BY-SA 3.0](/LICENSE.CCBYSA3) license. More info about SCP licensing at [SCP-Wiki](https://scp-wiki.wikidot.com/licensing-guide).
